@@ -1,7 +1,25 @@
 android {
-    buildToolsVersion "29.0.2"
-    compileSdkVersion 29
+//     signingConfigs {
+//        releaseconfig {
+//            storeFile file('C:/Users/Richard/Google Drive/Development/Keystore//android.jks')
+//            keyAlias 'dungeonRelease'
+//            keyPassword 'fhwxmy/9'
+//            storePassword 'qkwuud@3'
+//        }
+//
+//        debugconfig {
+//            storeFile file('C:/Users/Richard/Google Drive/Development/Keystore//android.jks')
+//            keyAlias 'dungeonDebug'
+//            keyPassword 'dfg67hj'
+//            storePassword 'qkwuud@3'
+//        }
+//    }
+
+    buildToolsVersion "28.0.3"
+    compileSdkVersion 28
+
     sourceSets {
+        //noinspection GroovyAssignabilityCheck
         main {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = ['src']
@@ -11,23 +29,29 @@ android {
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
         }
+    }
 
-    }
-    packagingOptions {
-        exclude 'META-INF/robovm/ios/robovm.xml'
-    }
     defaultConfig {
         applicationId "com.red7projects.dungeon"
-        minSdkVersion 9
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        multiDexEnabled true
+        minSdkVersion 19
+        targetSdkVersion 28
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.releaseconfig
         }
+
+        debug {
+            minifyEnabled false
+//            signingConfig signingConfigs.debugconfig
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -87,4 +111,38 @@ task run(type: Exec) {
 
     def adb = path + "/platform-tools/adb"
     commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.red7projects.dungeon/com.red7projects.dungeon.AndroidLauncher'
+}
+
+// sets up the Android Idea project, using the old Ant based build.
+idea {
+    module {
+        sourceDirs += file("src")
+        scopes = [ COMPILE: [plus:[project.configurations.compile]]]
+
+        iml {
+            withXml {
+                def node = it.asNode()
+                def builder = NodeBuilder.newInstance()
+                builder.current = node
+                builder.component(name: "FacetManager") {
+                    facet(type: "android", name: "Android") {
+                        configuration {
+                            option(name: "UPDATE_PROPERTY_FILES", value:"true")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-games:18.0.1'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
 }

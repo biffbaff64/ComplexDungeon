@@ -1,16 +1,48 @@
 package com.red7projects.dungeon;
 
+import android.content.Intent;
 import android.os.Bundle;
-
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.red7projects.dungeon.MainGame;
+import com.red7projects.dungeon.game.MainGame;
 
-public class AndroidLauncher extends AndroidApplication {
+public class AndroidLauncher extends AndroidApplication
+{
+    private GoogleServices googleServices;
+
 	@Override
-	protected void onCreate (Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
+
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new MainGame(), config);
+
+		config.useImmersiveMode     = true;
+		config.useWakelock          = true;
+		config.hideStatusBar        = true;
+		config.useAccelerometer     = false;
+
+		googleServices = new GoogleServices(this);
+
+		MainGame mainGame = new MainGame(googleServices);
+
+		initialize(mainGame, config);
+
+        Gdx.app.log("AndroidLauncher", "-------------------- APP START --------------------");
 	}
+
+	@Override
+    public void onStart()
+    {
+        super.onStart();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        googleServices.onActivityResult(requestCode, data);
+    }
 }

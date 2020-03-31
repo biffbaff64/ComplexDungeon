@@ -1,58 +1,76 @@
 buildscript {
-    
-
     repositories {
         mavenLocal()
-        mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         jcenter()
+        maven { setUrl('https://oss.sonatype.org/content/repositories/snapshots/') }
         google()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
-        
 
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
+        classpath 'com.google.gms:google-services:4.3.3'
     }
 }
 
 allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
 
     version = '1.0'
+
     ext {
-        appName = "ComplexDungeon"
+        appName = "dungeon"
+
+        lwjglVersion = '1.9.9'
         gdxVersion = '1.9.10'
-        roboVMVersion = '2.3.7'
+        roboVMVersion = '2.3.1'
+        annotationsVersion = '16.0.2'
         box2DLightsVersion = '1.4'
-        ashleyVersion = '1.7.0'
-        aiVersion = '1.8.0'
+        ashleyVersion = '1.7.3'
+        aiVersion = '1.8.1'
+        libgdxUtilsVersion = '0.13.4'
+        libgdxUtilsBox2DVersion = '0.13.4'
+        gdxDialogsVersion = '1.3.0'
+        commonsLangVersion = '3.4'
+        inGameConsoleVersion = '1.0.0'
     }
 
     repositories {
         mavenLocal()
         mavenCentral()
-        jcenter()
+        maven { setUrl('https://oss.sonatype.org/content/repositories/snapshots/') }
+        maven { setUrl('https://oss.sonatype.org/content/repositories/releases/') }
+        maven { setUrl('https://maven.google.com') }
         google()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'com.google.android.gms'
+                        && !details.requested.name.contains('multidex') ) {
+                    details.useVersion "12.0.1"
+                }
+            }
+        }
     }
 }
 
 project(":desktop") {
-    apply plugin: "java-library"
-
+    apply plugin: "java"
 
     dependencies {
         implementation project(":core")
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-        api "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:1.2.5"
-        
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$lwjglVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        implementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        implementation "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        implementation "de.tomgrill.gdxdialogs:gdx-dialogs-desktop:$gdxDialogsVersion"
+        implementation "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
+        implementation "com.badlogicgames.gdx:gdx-ai:$aiVersion"
     }
 }
 
@@ -63,52 +81,54 @@ project(":android") {
 
     dependencies {
         implementation project(":core")
-        api "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
+        implementation "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+        implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        implementation "de.tomgrill.gdxdialogs:gdx-dialogs-android:$gdxDialogsVersion"
+        implementation "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
-        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
-        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
-        api "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
-        api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-        api "com.badlogicgames.ashley:ashley:$ashleyVersion"
-        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-        api "de.tomgrill.gdxdialogs:gdx-dialogs-android:1.2.5"
-        
     }
 }
 
 project(":core") {
-    apply plugin: "java-library"
-
+    apply plugin: "java"
 
     dependencies {
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
-        api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
-        api "com.badlogicgames.ashley:ashley:$ashleyVersion"
-        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
-        api "com.esotericsoftware.spine:spine-libgdx:3.6.53.1"
-        api "com.underwaterapps.overlap2druntime:overlap2d-runtime-libgdx:0.1.0"
-        api "com.kotcrab.vis:vis-ui:1.3.0"
-        api "net.dermetfan.libgdx-utils:libgdx-utils:0.13.4"
-        api "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.2.5"
-        api "net.dermetfan.libgdx-utils:libgdx-utils-box2d:0.13.4"
-        
+        implementation fileTree(dir: "libs", include: "*.jar")
+        implementation "org.apache.commons:commons-lang3:$commonsLangVersion"
+        implementation "org.jetbrains:annotations:$annotationsVersion"
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
+        implementation "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
+        implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+        implementation "net.dermetfan.libgdx-utils:libgdx-utils:$libgdxUtilsVersion"
+        implementation "net.dermetfan.libgdx-utils:libgdx-utils-box2d:$libgdxUtilsBox2DVersion"
+        implementation "de.tomgrill.gdxdialogs:gdx-dialogs-core:$gdxDialogsVersion"
+        implementation "com.strongjoshua:libgdx-inGameConsole:$inGameConsoleVersion"
     }
+}
+
+repositories {
+    mavenCentral()
 }
