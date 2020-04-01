@@ -17,13 +17,12 @@
  *
  */
 
-package com.red7projects.dungeon.graphics.effects;
+package com.red7projects.dungeon.graphics.parallax;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.logging.Trace;
-import com.red7projects.dungeon.map.LayerImage;
 import com.red7projects.dungeon.physics.Movement;
 
 public class ParallaxBackground implements Disposable

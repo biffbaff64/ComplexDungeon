@@ -158,7 +158,7 @@ public class RoomManager
 
         setRoom(startRow, startColumn, _START_POSITION);
 
-        activeRoom.mysteryChestsAvailable = countRoomMarkers(MarkerID._MYSTERY_CHEST_TILE, activeRoom);
+        activeRoom.mysteryChestsAvailable = countRoomMarkers(TileID._MYSTERY_CHEST_TILE, activeRoom);
     }
 
     private void setRoom(int row, int column, int position)
@@ -280,7 +280,7 @@ public class RoomManager
         roomList.sort();
     }
 
-    private int countRoomMarkers(MarkerID _marker, Room _room)
+    private int countRoomMarkers(TileID _marker, Room _room)
     {
         TmxMapLoader      tmxMapLoader = new TmxMapLoader();
         TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(_room.roomName));
@@ -296,7 +296,7 @@ public class RoomManager
 
                 if (cell != null)
                 {
-                    if (_marker.equals(MarkerID.fromValue(cell.getTile().getId())))
+                    if (_marker.equals(TileID.fromValue(cell.getTile().getId())))
                     {
                         markerCount++;
                     }
@@ -333,9 +333,9 @@ public class RoomManager
 
                             if (cell != null)
                             {
-                                MarkerID markerID = MarkerID.fromValue(cell.getTile().getId());
+                                TileID tileID = TileID.fromValue(cell.getTile().getId());
 
-                                switch (markerID)
+                                switch (tileID)
                                 {
                                     case _NORTH_TILE:
                                     {

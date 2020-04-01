@@ -17,7 +17,7 @@
  *
  */
 
-package com.red7projects.dungeon.map;
+package com.red7projects.dungeon.graphics.parallax;
 
 public class LayerImage
 {

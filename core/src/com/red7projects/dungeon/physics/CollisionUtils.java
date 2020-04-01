@@ -24,7 +24,7 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.logging.Trace;
-import com.red7projects.dungeon.map.MarkerID;
+import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
 import com.red7projects.dungeon.game.Actions;
@@ -137,18 +137,18 @@ public class CollisionUtils implements Disposable
      *
      * @return the marker tile on
      */
-    public MarkerID getMarkerTileOn(int x, int y)
+    public TileID getMarkerTileOn(int x, int y)
     {
-        MarkerID markerID = MarkerID._UNKNOWN;
+        TileID tileID = TileID._UNKNOWN;
 
         TiledMapTileLayer.Cell cell = app.mapData.markerTilesLayer.getCell(x, y);
 
         if (cell != null)
         {
-            markerID = MarkerID.fromValue(cell.getTile().getId());
+            tileID = TileID.fromValue(cell.getTile().getId());
         }
 
-        return markerID;
+        return tileID;
     }
 
     /**

@@ -60,7 +60,7 @@ public abstract class AbstractBaseScreen extends ScreenAdapter implements Dispos
         {
             if (AppConfig.gameScreenActive)
             {
-                app.screenUtils.update();
+                app.mapData.update();
                 app.gameListener.update();
             }
 

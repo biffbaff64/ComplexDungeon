@@ -115,7 +115,7 @@ public class MapCreator
         int xOffset = 0;
         int yOffset = 0;
 
-        MarkerID  markerID;
+        TileID    tileID;
         GraphicID graphicID = GraphicID.G_NO_ID;
 
         for (int y = 0; y < app.mapData.markerTilesLayer.getHeight(); y++)
@@ -129,14 +129,14 @@ public class MapCreator
 
                 if (cell != null)
                 {
-                    markerID = MarkerID.fromValue(cell.getTile().getId());
+                    tileID = TileID.fromValue(cell.getTile().getId());
 
                     boolean isSpawnPoint = false;
                     boolean isIgnoreTile = false;
 
                     for (EntityDef entityDef : Entities.entityList)
                     {
-                        if (entityDef.markerID.equals(markerID))
+                        if (entityDef.tileID.equals(tileID))
                         {
                             graphicID       = entityDef.graphicID;
                             isSpawnPoint    = true;
@@ -145,7 +145,7 @@ public class MapCreator
 
                     if (!isSpawnPoint)
                     {
-                        switch (markerID)
+                        switch (tileID)
                         {
                             case _NORTH_TILE:
                             case _EAST_TILE:
@@ -166,9 +166,9 @@ public class MapCreator
 
                     if (isSpawnPoint)
                     {
-                        Trace.dbg(markerID.name());
+                        Trace.dbg(tileID.name());
 
-                        switch (markerID)
+                        switch (tileID)
                         {
                             case _ARROW_TILE:
                             case _GEM_TILE:
@@ -188,8 +188,7 @@ public class MapCreator
                             case _CRATE_TILE:
                             case _BARREL_TILE:
                             case _POT_TILE:
-                            case _GREEN_POT_TILE:
-                            case _BROWN_POT_TILE:
+                            case _SACKS_TILE:
                             {
                                 setEntityPlaceable(GraphicID._DECORATION, true);
                             }
@@ -245,7 +244,7 @@ public class MapCreator
                                 (
                                     xOffset,
                                     yOffset,
-                                    markerID,
+                                    tileID,
                                     graphicID,
                                     placementTiles.size,
                                     ""
@@ -261,8 +260,8 @@ public class MapCreator
                             Trace.dbg
                                 (
                                     " - Unknown tile: "
-                                    + markerID
-                                    + "(" + markerID.get() + ")"
+                                    + tileID
+                                    + "(" + tileID.get() + ")"
                                     + " at " + x + ", " + y
                                 );
                         }
@@ -302,7 +301,7 @@ public class MapCreator
         Trace.__FILE_FUNC();
 
         GraphicID graphicID;
-        MarkerID  markerID;
+        TileID    tileID;
         String    asset;
 
         for (MapObject object : app.mapData.mapObjects)
@@ -317,7 +316,7 @@ public class MapCreator
                 boolean isLinked        = false;
 
                 graphicID = GraphicID.G_NO_ID;
-                markerID  = MarkerID._DEFAULT_TILE;
+                tileID    = TileID._DEFAULT_TILE;
                 asset     = "";
 
                 //
@@ -331,7 +330,7 @@ public class MapCreator
                         if (object.getName().equals(entityDef.objectName))
                         {
                             graphicID = entityDef.graphicID;
-                            markerID  = entityDef.markerID;
+                            tileID    = entityDef.tileID;
                             asset     = entityDef.asset;
                             isFound   = true;
                         }
@@ -468,7 +467,7 @@ public class MapCreator
                         markerTile._X     = (int) (((TiledMapTileMapObject) object).getX() / Gfx.getTileWidth());
                         markerTile._Y     = (int) (((TiledMapTileMapObject) object).getY() / Gfx.getTileHeight());
                         markerTile._GID   = graphicID;
-                        markerTile._TILE  = markerID;
+                        markerTile._TILE  = tileID;
                         markerTile._ASSET = asset;
                         markerTile._INDEX = placementTiles.size;
                         markerTile._DIST  = new SimpleVec2F();

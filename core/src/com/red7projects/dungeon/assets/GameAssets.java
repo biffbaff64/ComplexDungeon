@@ -201,6 +201,7 @@ public class GameAssets
     public static final String _DOCUMENT_ASSET              = "paper";
     public static final String _FLOATING_PLATFORM_ASSET     = "floating_plank";
     public static final String _TURRET_ASSET                = "turret";
+    public static final String _SACKS_ASSET                 = "sacks";
 
     public static final String _QUESTION_MARK_ASSET       = "question_mark";
     public static final String _EXCLAMATION_MARK_ASSET    = "exclamation_mark";
@@ -263,6 +264,7 @@ public class GameAssets
     public static final int _FLOATING_PLATFORM_FRAMES      = 1;
     public static final int _TURRET_FRAMES                 = 1;
     public static final int _PRESS_BUTTON_MESSAGES_FRAMES  = 3;
+    public static final int _SACKS_FRAMES                  = 1;
 
     //
     // Fonts and HUD assets
@@ -316,6 +318,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_BARREL,                   90, 152),
             new AssetSize(GraphicID.G_TORCH,                    71, 64),
             new AssetSize(GraphicID.G_ALCOVE_TORCH,             64, 192),
+            new AssetSize(GraphicID.G_SACKS,                    124, 170),
 
             // Interactive items
             new AssetSize(GraphicID.G_FLOOR_BUTTON,             64,  64),

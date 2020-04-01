@@ -27,7 +27,6 @@ import com.red7projects.dungeon.development.DebugRenderer;
 import com.red7projects.dungeon.development.Developer;
 import com.red7projects.dungeon.entities.EntityData;
 import com.red7projects.dungeon.graphics.CameraUtils;
-import com.red7projects.dungeon.graphics.ScreenUtils;
 import com.red7projects.dungeon.graphics.camera.Shake;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
 import com.red7projects.dungeon.input.InputManager;
@@ -68,7 +67,6 @@ public class Startup
         app.googleServices.setup(app);
         app.googleServices.createApiClient();
 
-        app.screenUtils    = new ScreenUtils(app);
         app.cameraUtils    = new CameraUtils(app);
         app.baseRenderer   = new BaseRenderer(app);
         app.worldModel     = new WorldModel(app);

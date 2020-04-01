@@ -19,7 +19,7 @@
 
 package com.red7projects.dungeon.map;
 
-public enum MarkerID
+public enum TileID
 {
     _DEFAULT_TILE(0),
 
@@ -28,7 +28,7 @@ public enum MarkerID
     _POT_TILE(2),
     _CRATE_TILE(3),
     _BARREL_TILE(4),
-    _GREEN_POT_TILE(5),
+    _SACKS_TILE(5),
     _LASER_TILE(6),
     _DOOR_TILE(7),
     _VILLAGER_TILE(8),
@@ -40,7 +40,7 @@ public enum MarkerID
     _FLAME_THROWER_TILE(12),
     _SHIELD_TILE(13),
     _ARROW_TILE(14),
-    _BROWN_POT_TILE(15),
+    _U15_TILE(15),
     _SPIKE_BALL_TILE(16),
     _SPIKE_BLOCK_TILE(17),
     _SPIKE_BLOCK_VERTICAL_TILE(18),
@@ -143,6 +143,13 @@ public enum MarkerID
     _BLANK_TILE(99),
     _NO_ACTION_TILE(100),
 
+    // Tile IDs that are used in path finding
+    _GROUND(150),
+    _HOLE(151),
+    _WATER(152),
+    _GRASS(153),
+    _WALL_EDGE(154),
+
     // Tile IDs that aren't indexes into the tileset
     _EXPLOSION_TILE(200),
     _LASER_HORIZONTAL_TILE(201),
@@ -157,7 +164,7 @@ public enum MarkerID
 
     private final int tileNumber;
 
-    MarkerID(int value)
+    TileID(int value)
     {
         this.tileNumber = value;
     }
@@ -167,15 +174,15 @@ public enum MarkerID
         return tileNumber;
     }
 
-    public static MarkerID fromValue(int value)
+    public static TileID fromValue(int value)
     {
-        MarkerID returnValue = _UNKNOWN;
+        TileID returnValue = _UNKNOWN;
 
-        for (MarkerID markerID : values())
+        for (TileID tileID : values())
         {
-            if (markerID.get() == value)
+            if (tileID.get() == value)
             {
-                returnValue = markerID;
+                returnValue = tileID;
             }
         }
 

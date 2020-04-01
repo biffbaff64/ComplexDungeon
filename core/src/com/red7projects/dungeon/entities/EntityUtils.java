@@ -157,6 +157,7 @@ public class EntityUtils
             case G_CRATE:
             case G_BARREL:
             case G_TORCH:
+            case G_SACKS:
 
             // ----------
             case G_DOOR:
@@ -325,6 +326,7 @@ public class EntityUtils
             case G_TREASURE_CHEST:
             case G_MYSTERY_CHEST:
             case G_TURRET:
+            case G_SACKS:
             {
                 zed = 8;
             }
@@ -419,7 +421,7 @@ public class EntityUtils
 
     public boolean isOnScreen(@NotNull GdxSprite spriteObject)
     {
-        return app.screenUtils.viewportBox.overlaps(spriteObject.sprite.getBoundingRectangle());
+        return app.mapData.viewportBox.overlaps(spriteObject.sprite.getBoundingRectangle());
     }
 
     public GdxSprite findFirstOf(final GraphicID _gid)

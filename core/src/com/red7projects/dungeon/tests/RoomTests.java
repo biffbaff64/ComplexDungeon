@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.map.MapData;
-import com.red7projects.dungeon.map.MarkerID;
+import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.map.Room;
 
 public abstract class RoomTests
@@ -18,8 +18,8 @@ public abstract class RoomTests
     {
         app = _app;
 
-        markerIDCheck(MarkerID._PLAYER_TILE, true);
-        markerIDCheck(MarkerID._SHIELD_TILE, false);
+        markerIDCheck(TileID._PLAYER_TILE, true);
+        markerIDCheck(TileID._SHIELD_TILE, false);
 
         objectIDCheck();
 
@@ -48,7 +48,7 @@ public abstract class RoomTests
         }
     }
 
-    private static void markerIDCheck(MarkerID targetMarkerID, boolean oneOnly)
+    private static void markerIDCheck(TileID targetTileID, boolean oneOnly)
     {
         for (int roomRow = 0; roomRow < app.getRoomSystem().getWorldHeight(); roomRow++)
         {
@@ -73,7 +73,7 @@ public abstract class RoomTests
 
                             if (cell != null)
                             {
-                                if (MarkerID.fromValue(cell.getTile().getId()) == targetMarkerID)
+                                if (TileID.fromValue(cell.getTile().getId()) == targetTileID)
                                 {
                                     roomPassed = true;
                                     tileCount++;
@@ -89,7 +89,7 @@ public abstract class RoomTests
                         sb.append("WARNING:  Room ");
                         sb.append(app.getRoomSystem().getRoomMap()[roomRow][roomColumn].roomName);
                         sb.append(" contains TOO MANY instances of ");
-                        sb.append(targetMarkerID.name());
+                        sb.append(targetTileID.name());
                         sb.append(" (").append(tileCount).append(")");
 
                         Trace.__FILE_FUNC(sb.toString());
@@ -101,7 +101,7 @@ public abstract class RoomTests
                             sb.append("WARNING:  Room ");
                             sb.append(app.getRoomSystem().getRoomMap()[roomRow][roomColumn].roomName);
                             sb.append(" does not contain ");
-                            sb.append(targetMarkerID.name());
+                            sb.append(targetTileID.name());
 
                             Trace.__FILE_FUNC(sb.toString());
                         }

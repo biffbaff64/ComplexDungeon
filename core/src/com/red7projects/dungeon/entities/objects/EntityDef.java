@@ -16,14 +16,14 @@
 
 package com.red7projects.dungeon.entities.objects;
 
-import com.red7projects.dungeon.map.MarkerID;
+import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.graphics.GraphicID;
 
 public class EntityDef
 {
     public String    objectName;
     public GraphicID graphicID;
-    public MarkerID  markerID;
+    public TileID    tileID;
     public String    asset;
     public int       frames;
     public GraphicID type;
@@ -31,24 +31,24 @@ public class EntityDef
     public EntityDef()
     {
         this.objectName = "";
-        this.graphicID  = GraphicID.G_NO_ID;
-        this.markerID   = MarkerID._DEFAULT_TILE;
-        this.asset      = "";
+        this.graphicID = GraphicID.G_NO_ID;
+        this.tileID    = TileID._DEFAULT_TILE;
+        this.asset     = "";
         this.frames     = 0;
         this.type       = GraphicID.G_NO_ID;
     }
 
     public EntityDef(final String _objectName,
                      final GraphicID _graphicID,
-                     final MarkerID _markerID,
+                     final TileID _tileID,
                      final String _asset,
                      final int _frames,
                      final GraphicID _type)
     {
         this.objectName = _objectName;
-        this.graphicID  = _graphicID;
-        this.markerID   = _markerID;
-        this.asset      = _asset;
+        this.graphicID = _graphicID;
+        this.tileID    = _tileID;
+        this.asset     = _asset;
         this.frames     = _frames;
         this.type       = _type;
     }

@@ -62,6 +62,7 @@ public class Gfx
     public static final int   _DESKTOP_HEIGHT   = 720;
     public static final float _DEFAULT_ZOOM     = 1.0f;
     public static final float _DEFAULT_SCALE    = 1.0f;
+    public static final float _LERP_SPEED       = 0.075f;
     public static       float _SCENE_WIDTH      = (_VIEW_WIDTH / _PPM);
     public static       float _SCENE_HEIGHT     = (_VIEW_HEIGHT / _PPM);
 

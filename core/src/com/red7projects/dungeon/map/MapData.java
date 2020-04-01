@@ -34,6 +34,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.graphics.camera.GameCamera;
+import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
@@ -73,17 +75,20 @@ public class MapData implements Disposable
     public SimpleVec2  previousMapPosition;
     public SimpleVec2F checkPoint;
     public Rectangle   mapBox;
+    public Rectangle   viewportBox;
+    public Rectangle   innerViewportBox;
+    public Rectangle   extendedViewportBox;
 
     public TiledMapTileLayer gameTilesLayer;
     public TiledMapTileLayer extraGameTilesLayer;
     public TiledMapTileLayer markerTilesLayer;
 
-    public TiledMap   currentMap;
-    public MapObjects mapObjects;
+    public TiledMap         currentMap;
+    public MapObjects       mapObjects;
     public Array<Rectangle> enemyFreeZones;
 
-    private String currentMapName;
-    private final App app;
+    private       String currentMapName;
+    private final App    app;
 
     public MapData(App _app)
     {
@@ -96,6 +101,9 @@ public class MapData implements Disposable
         checkPoint          = new SimpleVec2F();
         tmxMapLoader        = new TmxMapLoader();
         mapBox              = new Rectangle();
+        viewportBox         = new Rectangle();
+        innerViewportBox    = new Rectangle();
+        extendedViewportBox = new Rectangle();
         enemyFreeZones      = new Array<>();
     }
 
@@ -110,7 +118,7 @@ public class MapData implements Disposable
     public void initialiseMap(String gameMap, String[] mapLayers)
     {
         currentMapName = gameMap;
-        currentMap = tmxMapLoader.load(gameMap);
+        currentMap     = tmxMapLoader.load(gameMap);
 
         setGameLevelMap(mapLayers);
         setEnemyFreeZones();
@@ -130,6 +138,57 @@ public class MapData implements Disposable
         debugMap();
     }
 
+    /**
+     * Update the screen virtual window.
+     * This box is used for checking that entities are
+     * visible on screen.
+     */
+    public void update()
+    {
+        OrthographicCamera camera = app.baseRenderer.spriteGameCamera.camera;
+
+        float xPos          = camera.position.x;
+        float yPos          = camera.position.y;
+        float viewWidth     = camera.viewportWidth;
+        float viewHeight    = camera.viewportHeight;
+        float zoom          = camera.zoom;
+
+        float x             = (xPos - ((viewWidth * zoom) / 2));
+        float y             = (yPos - ((viewHeight * zoom) / 2));
+        float width         = (viewWidth * zoom);
+        float height        = (viewHeight * zoom);
+
+        viewportBox.set(x, y, width, height);
+
+        innerViewportBox.set
+            (
+                app.mapData.mapPosition.x,
+                app.mapData.mapPosition.y,
+                Gfx._VIEW_WIDTH,
+                Gfx._VIEW_HEIGHT
+            );
+
+        extendedViewportBox.set
+            (
+                x - (width / 4),
+                y - (height / 4),
+                width + (width / 2),
+                height + (height / 2)
+            );
+    }
+
+    /**
+     * Draws the TiledMap game tile layers.
+     *
+     * @param camera The {@link OrthographicCamera} to use.
+     */
+    public void render(OrthographicCamera camera)
+    {
+        mapRenderer.setView(camera);
+        mapRenderer.renderTileLayer(gameTilesLayer);
+        mapRenderer.renderTileLayer(extraGameTilesLayer);
+    }
+
     private void setGameLevelMap(String[] mapLayers)
     {
         gameTilesLayer      = (TiledMapTileLayer) currentMap.getLayers().get(mapLayers[_GAME_TILES]);
@@ -137,15 +196,15 @@ public class MapData implements Disposable
         markerTilesLayer    = (TiledMapTileLayer) currentMap.getLayers().get(mapLayers[_MARKER_TILES]);
         mapObjects          = currentMap.getLayers().get(mapLayers[_COLLISION_LAYER]).getObjects();
 
-        Gfx.tileWidth       = currentMap.getProperties().get("tilewidth", Integer.class);
-        Gfx.tileHeight      = currentMap.getProperties().get("tileheight", Integer.class);
-        Gfx.mapWidth        = (currentMap.getProperties().get("width", Integer.class) * Gfx.tileWidth);
-        Gfx.mapHeight       = (currentMap.getProperties().get("height", Integer.class) * Gfx.tileHeight);
+        Gfx.tileWidth  = currentMap.getProperties().get("tilewidth", Integer.class);
+        Gfx.tileHeight = currentMap.getProperties().get("tileheight", Integer.class);
+        Gfx.mapWidth   = (currentMap.getProperties().get("width", Integer.class) * Gfx.tileWidth);
+        Gfx.mapHeight  = (currentMap.getProperties().get("height", Integer.class) * Gfx.tileHeight);
 
-        maxScrollX          = Gfx.mapWidth - Gfx._VIEW_WIDTH;
-        maxScrollY          = Gfx.mapHeight - Gfx._VIEW_HEIGHT;
-        minScrollX          = 0;
-        minScrollY          = 0;
+        maxScrollX = Gfx.mapWidth - Gfx._VIEW_WIDTH;
+        maxScrollY = Gfx.mapHeight - Gfx._VIEW_HEIGHT;
+        minScrollX = 0;
+        minScrollY = 0;
 
         previousMapPosition.set(mapPosition.x, mapPosition.y);
 
@@ -166,18 +225,6 @@ public class MapData implements Disposable
                 enemyFreeZones.add(new Rectangle(((RectangleMapObject) object).getRectangle()));
             }
         }
-    }
-
-    /**
-     * Draws the TiledMap game tile layers.
-     *
-     * @param camera The {@link OrthographicCamera} to use.
-     */
-    public void render(OrthographicCamera camera)
-    {
-        mapRenderer.setView(camera);
-        mapRenderer.renderTileLayer(gameTilesLayer);
-        mapRenderer.renderTileLayer(extraGameTilesLayer);
     }
 
     private void debugMap()

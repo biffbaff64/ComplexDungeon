@@ -31,7 +31,6 @@ import com.red7projects.dungeon.entities.hero.MainPlayer;
 import com.red7projects.dungeon.google.AdsController;
 import com.red7projects.dungeon.google.PlayServices;
 import com.red7projects.dungeon.graphics.CameraUtils;
-import com.red7projects.dungeon.graphics.ScreenUtils;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
 import com.red7projects.dungeon.input.InputManager;
 import com.red7projects.dungeon.logging.Trace;
@@ -63,7 +62,6 @@ public abstract class App extends com.badlogic.gdx.Game
     public WorldModel     worldModel;
     public Preferences    preferences;
     public CameraUtils    cameraUtils;
-    public ScreenUtils    screenUtils;
     public MapUtils       mapUtils;
     public MainMenuScreen mainMenuScreen;
     public MainGameScreen mainGameScreen;

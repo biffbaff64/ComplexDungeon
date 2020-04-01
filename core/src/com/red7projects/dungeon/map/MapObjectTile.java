@@ -22,14 +22,14 @@ public class MapObjectTile
 {
     public final String    name;
     public final GraphicID gid;
-    public final MarkerID  markerID;
+    public final TileID    tileID;
     public final String    asset;
 
-    public MapObjectTile(String _name, GraphicID _gid, MarkerID _markerID, String _asset)
+    public MapObjectTile(String _name, GraphicID _gid, TileID _tileID, String _asset)
     {
         this.name   = _name;
         this.gid    = _gid;
-        this.markerID = _markerID;
+        this.tileID = _tileID;
         this.asset  = _asset;
     }
 }

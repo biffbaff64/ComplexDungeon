@@ -17,7 +17,7 @@
  *
  */
 
-package com.red7projects.dungeon.graphics.effects;
+package com.red7projects.dungeon.graphics.parallax;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

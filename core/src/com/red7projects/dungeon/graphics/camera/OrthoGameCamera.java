@@ -18,6 +18,7 @@ package com.red7projects.dungeon.graphics.camera;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -26,19 +27,22 @@ import com.red7projects.dungeon.graphics.Gfx;
 
 public class OrthoGameCamera implements GameCamera, Disposable
 {
-    public Viewport             viewport;
-    public OrthographicCamera   camera;
-    public String               name;
-    public boolean              isInUse;
+    public Viewport           viewport;
+    public OrthographicCamera camera;
+    public String             name;
+    public boolean            isInUse;
 
-    private float     defaultZoom;
-    private final App app;
+    private       float   defaultZoom;
+    private       Vector3 lerpVector;
+    private final App     app;
 
     public OrthoGameCamera(float _sceneWidth, float _sceneHeight, String _name, App _app)
     {
         this.name    = _name;
         this.app     = _app;
         this.isInUse = false;
+
+        lerpVector = new Vector3();
 
         camera = new OrthographicCamera(_sceneWidth, _sceneHeight);
         camera.position.set(_sceneWidth / 2, _sceneHeight / 2, 0);
@@ -98,6 +102,42 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
+    public void lerpTo(float _x, float _y, float _z, float _speed)
+    {
+        if (isInUse)
+        {
+            lerpVector.set(_x, _y, _z);
+
+            camera.position.lerp(lerpVector, _speed);
+            camera.update();
+
+            app.spriteBatch.setProjectionMatrix(camera.combined);
+        }
+    }
+
+    @Override
+    public void lerpTo(float _x, float _y, float _z, float _speed, float _zoom, boolean _shake)
+    {
+        if (isInUse)
+        {
+            lerpVector.set(_x, _y, _z);
+
+            camera.position.lerp(lerpVector, _speed);
+
+            camera.zoom += _zoom;
+
+            if (_shake)
+            {
+                Shake.update(Gdx.graphics.getDeltaTime(), camera, app);
+            }
+
+            camera.update();
+
+            app.spriteBatch.setProjectionMatrix(camera.combined);
+        }
+    }
+
+    @Override
     public void resizeViewport(int _width, int _height, boolean _centerCamera)
     {
         viewport.update(_width, _height, _centerCamera);
@@ -140,8 +180,9 @@ public class OrthoGameCamera implements GameCamera, Disposable
     @Override
     public void dispose()
     {
-        camera   = null;
-        viewport = null;
-        name     = null;
+        camera     = null;
+        viewport   = null;
+        name       = null;
+        lerpVector = null;
     }
 }

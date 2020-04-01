@@ -147,7 +147,7 @@ public class Pickup extends GdxSprite
 
             case _HIDING:
             {
-                if (!app.screenUtils.viewportBox.contains(collisionObject.rectangle.x, collisionObject.rectangle.y))
+                if (!app.mapData.viewportBox.contains(collisionObject.rectangle.x, collisionObject.rectangle.y))
                 {
                     collect();
 

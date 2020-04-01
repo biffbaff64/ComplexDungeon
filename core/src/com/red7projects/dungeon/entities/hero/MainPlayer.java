@@ -68,6 +68,7 @@ public class MainPlayer extends GdxSprite
     public boolean isMovingX;
     public boolean isMovingY;
     public boolean isGrabbing;
+    public boolean isCasting;
     public boolean isOnPlatform;
     public boolean isOnFloorButton;
     public boolean isPossessed;
@@ -106,6 +107,7 @@ public class MainPlayer extends GdxSprite
         isHurting       = false;
         isShooting      = false;
         isGrabbing      = false;
+        isCasting       = false;
         isOnPlatform    = false;
         isOnFloorButton = false;
         isPossessed     = false;
@@ -153,8 +155,11 @@ public class MainPlayer extends GdxSprite
         isFlippedX      = false;
         isFlippedY      = false;
         canFlip         = false;
+
         isHurting       = false;
         isShooting      = false;
+        isCasting       = false;
+        isGrabbing      = false;
         localIsDrawable = false;
         isDrawable      = true;
 

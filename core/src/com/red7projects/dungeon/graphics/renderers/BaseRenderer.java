@@ -145,11 +145,12 @@ public class BaseRenderer implements Disposable
         // ----- Draw the TiledMap, if enabled -----
         if (tiledGameCamera.isInUse)
         {
-            tiledGameCamera.setPosition
+            tiledGameCamera.lerpTo
                 (
                     (float) (app.mapData.mapPosition.x + (Gfx._VIEW_WIDTH / 2)),
                     (float) (app.mapData.mapPosition.y + (Gfx._VIEW_HEIGHT / 2)),
                     0,
+                    Gfx._LERP_SPEED,
                     gameZoom.getZoomValue(),
                     true
                 );
@@ -169,11 +170,12 @@ public class BaseRenderer implements Disposable
         {
             if (AppConfig.gameScreenActive)
             {
-                spriteGameCamera.setPosition
+                spriteGameCamera.lerpTo
                     (
                         (float) (app.mapData.mapPosition.x + (Gfx._VIEW_WIDTH / 2)),
                         (float) (app.mapData.mapPosition.y + (Gfx._VIEW_HEIGHT / 2)),
                         0,
+                        Gfx._LERP_SPEED,
                         gameZoom.getZoomValue(),
                         true
                     );

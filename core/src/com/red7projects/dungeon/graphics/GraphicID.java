@@ -38,6 +38,7 @@ public enum GraphicID
     G_BARREL,
     G_TORCH,
     G_ALCOVE_TORCH,
+    G_SACKS,
 
     // ----------------------------
     // Interactive items

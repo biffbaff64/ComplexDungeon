@@ -78,7 +78,7 @@ public class GameUtils
             app.entityManager.initialiseManagerList();
 
             app.getHud().createHud();
-            app.screenUtils.update();
+            app.mapData.update();
         }
 
         isFirstTime = false;
