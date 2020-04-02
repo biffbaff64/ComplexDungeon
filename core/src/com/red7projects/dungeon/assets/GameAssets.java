@@ -30,42 +30,42 @@ public class GameAssets
     public static final String _RUN_UP_ASSET   = "walk_up";
     public static final String _IDLE_UP_ASSET  = "stand_up";
     public static final String _FIGHT_UP_ASSET = "fight_up";
-    public static final String _CAST_UP_ASSET = "cast_up";
+    public static final String _CAST_UP_ASSET  = "cast_up";
 
     public static final String _RUN_DOWN_ASSET   = "walk_down";
     public static final String _IDLE_DOWN_ASSET  = "stand_down";
     public static final String _FIGHT_DOWN_ASSET = "fight_down";
-    public static final String _CAST_DOWN_ASSET = "cast_down";
+    public static final String _CAST_DOWN_ASSET  = "cast_down";
 
     public static final String _RUN_LEFT_ASSET   = "walk_left";
     public static final String _IDLE_LEFT_ASSET  = "stand_left";
     public static final String _FIGHT_LEFT_ASSET = "fight_left";
-    public static final String _CAST_LEFT_ASSET = "cast_left";
+    public static final String _CAST_LEFT_ASSET  = "cast_left";
 
     public static final String _RUN_RIGHT_ASSET   = "walk_right";
     public static final String _IDLE_RIGHT_ASSET  = "stand_right";
     public static final String _FIGHT_RIGHT_ASSET = "fight_right";
-    public static final String _CAST_RIGHT_ASSET = "cast_right";
+    public static final String _CAST_RIGHT_ASSET  = "cast_right";
 
     public static final String _RUN_UP_LEFT_ASSET   = "walk_up_left";
     public static final String _IDLE_UP_LEFT_ASSET  = "stand_up_left";
     public static final String _FIGHT_UP_LEFT_ASSET = "fight_up_left";
-    public static final String _CAST_UP_LEFT_ASSET = "cast_up_left";
+    public static final String _CAST_UP_LEFT_ASSET  = "cast_up_left";
 
     public static final String _RUN_DOWN_LEFT_ASSET   = "walk_down_left";
     public static final String _IDLE_DOWN_LEFT_ASSET  = "stand_down_left";
     public static final String _FIGHT_DOWN_LEFT_ASSET = "fight_down_left";
-    public static final String _CAST_DOWN_LEFT_ASSET = "cast_down_left";
+    public static final String _CAST_DOWN_LEFT_ASSET  = "cast_down_left";
 
     public static final String _RUN_UP_RIGHT_ASSET   = "walk_up_right";
     public static final String _IDLE_UP_RIGHT_ASSET  = "stand_up_right";
     public static final String _FIGHT_UP_RIGHT_ASSET = "fight_up_right";
-    public static final String _CAST_UP_RIGHT_ASSET = "cast_up_right";
+    public static final String _CAST_UP_RIGHT_ASSET  = "cast_up_right";
 
     public static final String _RUN_DOWN_RIGHT_ASSET   = "walk_down_right";
     public static final String _IDLE_DOWN_RIGHT_ASSET  = "stand_down_right";
     public static final String _FIGHT_DOWN_RIGHT_ASSET = "fight_down_right";
-    public static final String _CAST_DOWN_RIGHT_ASSET = "cast_down_right";
+    public static final String _CAST_DOWN_RIGHT_ASSET  = "cast_down_right";
 
     public static final String _DYING_ASSET        = "ljm_death";
     public static final String _PLAYER_SPAWN_ASSET = "player_appear";
@@ -106,7 +106,6 @@ public class GameAssets
 
     //
     // Soldier assets
-
     public static final String _SOLDIER_RUN_UP_ASSET         = "soldier_walk_up";
     public static final String _SOLDIER_RUN_DOWN_ASSET       = "soldier_walk_down";
     public static final String _SOLDIER_RUN_LEFT_ASSET       = "soldier_walk_left";
@@ -139,12 +138,7 @@ public class GameAssets
     public static final int _SOLDIER_FIGHT_FRAMES = 6;
 
     //
-    // Asset names for all game graphics
-    public static final String _LASER_BEAM_VERTICAL_ASSET   = "laservert9";
-    public static final String _LASER_BEAM_HORIZONTAL_ASSET = "laserhoriz9";
-    public static final String _EXPLOSION64_ASSET           = "explosion64";
-    public static final String _LASER_ASSET                 = "player_laser";
-    public static final String _ARROW_ASSET                 = "arrows";
+    // Pickups
     public static final String _BLUE_GEMS_ASSET             = "gems_blue";
     public static final String _GREEN_GEMS_ASSET            = "gems";
     public static final String _GOLD_GEMS_ASSET             = "gems_gold";
@@ -160,22 +154,43 @@ public class GameAssets
     public static final String _GOLD_ARMOUR_ASSET           = "gold_armour";
     public static final String _GOLD_KEY_ASSET              = "key_held_panel";
     public static final String _SHIELD_ASSET                = "shield";
+    public static final String _DOCUMENT_ASSET              = "paper";
+
+    //
+    // Interactive Items
+    public static final String _FLOATING_PLATFORM_ASSET     = "floating_plank";
+    public static final String _FLOOR_BUTTON_ASSET          = "floor_button";
+    public static final String _LEVER_SWITCH_ASSET          = "lever";
+    public static final String _WOOD_DOOR_ASSET             = "wood_door";
+    public static final String _LOCKED_DOOR_ASSET           = "locked_door";
+    public static final String _TREASURE_CHEST_ASSET        = "treasure_chest";
+    public static final String _MYSTERY_CHEST_ASSET         = "chest1";
+    public static final String _TELEPORTER_ASSET            = "teleporter";
+    public static final String _LASER_BEAM_VERTICAL_ASSET   = "laservert9";
+    public static final String _LASER_BEAM_HORIZONTAL_ASSET = "laserhoriz9";
+
+    //
+    // Decorations
     public static final String _ALCOVE_TORCH_ASSET          = "alcove_torch";
     public static final String _POT_1_ASSET                 = "pot1";
     public static final String _POT_2_ASSET                 = "pot2";
     public static final String _POT_3_ASSET                 = "pot3";
     public static final String _POT_4_ASSET                 = "pot4";
     public static final String _CRATE_ASSET                 = "crate";
-    public static final String _FLOOR_BUTTON_ASSET          = "floor_button";
-    public static final String _LEVER_SWITCH_ASSET          = "lever";
     public static final String _BARREL_1_ASSET              = "barrel1";
     public static final String _BARREL_2_ASSET              = "barrel2";
     public static final String _BARREL_3_ASSET              = "barrel3";
     public static final String _BARREL_4_ASSET              = "barrel4";
-    public static final String _WOOD_DOOR_ASSET             = "wood_door";
-    public static final String _LOCKED_DOOR_ASSET           = "locked_door";
-    public static final String _TREASURE_CHEST_ASSET        = "treasure_chest";
-    public static final String _MYSTERY_CHEST_ASSET         = "chest1";
+    public static final String _SACKS_ASSET                 = "sacks";
+
+    //
+    // Static Enemies
+    public static final String _TURRET_ASSET                = "turret";
+    public static final String _FLAME_THROW_ASSET           = "flame_thrower";
+    public static final String _FLAME_THROW_VERTICAL_ASSET  = "flame_thrower_vertical";
+
+    //
+    // Mobile Enemies
     public static final String _STORM_DEMON_ASSET           = "storm_demon";
     public static final String _RED_MINE_ASSET              = "red_mine";
     public static final String _BOUNCER_ASSET               = "bouncer";
@@ -183,8 +198,6 @@ public class GameAssets
     public static final String _LAVA_BALL_ASSET             = "lava_ball";
     public static final String _FIRE_BALL_ASSET             = "fireball";
     public static final String _MINI_FIRE_BALL_ASSET        = "mini_fireball";
-    public static final String _FLAME_THROW_ASSET           = "flame_thrower";
-    public static final String _FLAME_THROW_VERTICAL_ASSET  = "flame_thrower_vertical";
     public static final String _SCORPION_ASSET              = "scorpìon_walk";
     public static final String _GREEN_BEETLE_ASSET          = "green_beetle";
     public static final String _SPIKE_BALL_1_ASSET          = "round2";
@@ -193,16 +206,11 @@ public class GameAssets
     public static final String _SPIKE_BLOCK_ASSET           = "spinning_spikes";
     public static final String _SPIKE_BLOCK_VERTICAL_ASSET  = "spinning_spikes_vertical";
     public static final String _LOOP_BLOCK_ASSET            = "spinning_spikes_vertical";
-    public static final String _TELEPORTER_ASSET            = "teleporter";
+
+    //
+    // In-Game Messaging
     public static final String _HELP_ME_ASSET               = "help_bubble";
     public static final String _OPEN_ME_ASSET               = "open_me";
-    public static final String _PHASER_BULLET_ASSET         = "bullet1";
-    public static final String _FIREBALL_BULLET_ASSET       = "bullet2";
-    public static final String _DOCUMENT_ASSET              = "paper";
-    public static final String _FLOATING_PLATFORM_ASSET     = "floating_plank";
-    public static final String _TURRET_ASSET                = "turret";
-    public static final String _SACKS_ASSET                 = "sacks";
-
     public static final String _QUESTION_MARK_ASSET       = "question_mark";
     public static final String _EXCLAMATION_MARK_ASSET    = "exclamation_mark";
     public static final String _TALK_BOX_ASSET            = "talk_box";
@@ -218,6 +226,14 @@ public class GameAssets
     public static final String _PRESS_FOR_PRISONER_ASSET  = "press_for_prisoner";
     public static final String _PRESS_FOR_GUIDE_ASSET     = "press_for_guide";
     public static final String _STORM_DEMON_WARNING_ASSET = "storm_demon_warning";
+
+    //
+    // Weaponry and Explosions
+    public static final String _EXPLOSION64_ASSET           = "explosion64";
+    public static final String _LASER_ASSET                 = "player_laser";
+    public static final String _ARROW_ASSET                 = "arrows";
+    public static final String _PHASER_BULLET_ASSET         = "bullet1";
+    public static final String _FIREBALL_BULLET_ASSET       = "bullet2";
 
     //
     // Frame counts for animations

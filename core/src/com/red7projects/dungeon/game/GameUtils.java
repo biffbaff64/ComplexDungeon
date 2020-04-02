@@ -18,7 +18,7 @@ package com.red7projects.dungeon.game;
 
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.entities.EntityManager;
-import com.red7projects.dungeon.entities.EntityUtils;
+import com.red7projects.dungeon.entities.utils.EntityUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.map.MapCreator;

@@ -20,7 +20,7 @@ import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.maths.SimpleVec2;
 
 /**
- * Matches graphical asset width & height
+ * Matches graphics asset width & height
  * to a Graphic ID.
  */
 public class AssetSize

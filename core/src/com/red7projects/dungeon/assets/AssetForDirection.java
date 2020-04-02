@@ -19,7 +19,7 @@ package com.red7projects.dungeon.assets;
 import com.red7projects.dungeon.physics.Movement;
 
 /**
- * Matches a graphical asset with a Movement.Dir direction.
+ * Matches a graphics asset with a Movement.Dir direction.
  * Useful for maps of assets which differ depending upon
  * direction of movement.
  */

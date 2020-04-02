@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities;
+package com.red7projects.dungeon.entities.utils;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -26,7 +26,6 @@ import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.logging.Trace;
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("WeakerAccess")
 public class EntityUtils
 {
     private final App app;
