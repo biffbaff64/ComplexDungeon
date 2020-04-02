@@ -16,6 +16,7 @@
 
 package com.red7projects.dungeon.entities;
 
+import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
@@ -38,7 +39,8 @@ public class EntityManager implements Disposable
     public boolean      _playerReady;
     public RenderSystem renderSystem;
 
-    private final App app;
+    private Engine engine;
+    private App app;
 
     public EntityManager(App _app)
     {

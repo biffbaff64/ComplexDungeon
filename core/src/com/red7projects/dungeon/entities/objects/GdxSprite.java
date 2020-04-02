@@ -77,9 +77,9 @@ public class GdxSprite implements GameSprite, Linker, Disposable
 
     // -----------------------------------------------
     // Animation related
-    public Animation       animation;
-    public float           elapsedAnimTime;
-    public TextureRegion[] animFrames;
+    public Animation<TextureRegion> animation;
+    public float                    elapsedAnimTime;
+    public TextureRegion[]          animFrames;
 
     // -----------------------------------------------
     // Collision related

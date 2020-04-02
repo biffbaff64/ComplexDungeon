@@ -166,8 +166,6 @@ public class MapCreator
 
                     if (isSpawnPoint)
                     {
-                        Trace.dbg(tileID.name());
-
                         switch (tileID)
                         {
                             case _ARROW_TILE:
@@ -274,8 +272,6 @@ public class MapCreator
             xOffset = 0;
             yOffset++;
         }
-
-        app.entityData.debugManagerList();
 
         Trace.divider();
     }
