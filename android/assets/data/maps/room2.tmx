@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
- <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="550" columns="22">
-  <image source="tileset2.png" width="1408" height="1600"/>
+ <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="616" columns="22">
+  <image source="tileset2.png" width="1408" height="1792"/>
  </tileset>
  <layer id="62" name="game tiles" width="125" height="117">
   <data encoding="csv">
@@ -369,7 +369,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="14" name="collision">
+ <objectgroup color="#ffaa00" id="14" name="collision" visible="0">
   <object id="446" name="Wall" type="Collision" x="0" y="5056" width="1664" height="2432"/>
   <object id="480" name="Wall" type="Collision" x="0" y="3136" width="256" height="1472"/>
   <object id="481" name="Wall" type="Collision" x="0" y="4608" width="960" height="448"/>
@@ -403,26 +403,6 @@
     <property name="yspeed" type="float" value="0"/>
    </properties>
   </object>
-  <object id="625" name="Spike Block Vertical" gid="18" x="2176" y="3136" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="xdistance" type="int" value="0"/>
-    <property name="xspeed" type="float" value="0"/>
-    <property name="ydirection" value="up"/>
-    <property name="ydistance" type="int" value="10"/>
-    <property name="yspeed" type="float" value="0"/>
-   </properties>
-  </object>
-  <object id="626" name="Spike Block Vertical" gid="18" x="2752" y="3136" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="xdistance" type="int" value="0"/>
-    <property name="xspeed" type="float" value="0"/>
-    <property name="ydirection" value="up"/>
-    <property name="ydistance" type="int" value="10"/>
-    <property name="yspeed" type="float" value="0"/>
-   </properties>
-  </object>
   <object id="627" name="Wall" type="Collision" x="2048" y="3008" width="128" height="128"/>
   <object id="668" name="Wall" type="Collision" x="3712" y="6656" width="2496" height="832"/>
   <object id="671" name="Wall" type="Collision" x="6208" y="6656" width="256" height="832"/>
@@ -435,11 +415,6 @@
   <object id="724" name="Wall" type="Collision" x="4032" y="1856" width="128" height="448"/>
   <object id="725" name="Wall" type="Collision" x="256" y="3584" width="1088" height="192"/>
   <object id="727" name="Wall" type="Collision" x="4032" y="2304" width="1024" height="192"/>
-  <object id="733" name="Prisoner" gid="25" x="6272" y="6464" width="64" height="64">
-   <properties>
-    <property name="facing" value="up"/>
-   </properties>
-  </object>
   <object id="737" name="Wall" type="Collision" x="5056" y="3072" width="448" height="256"/>
   <object id="738" name="Wall" type="Collision" x="5056" y="3328" width="128" height="512"/>
   <object id="739" name="Wall" type="Collision" x="5056" y="3840" width="960" height="256"/>
@@ -468,21 +443,6 @@
   <object id="793" name="Wall" type="Collision" x="2560" y="384" width="128" height="448"/>
   <object id="794" name="Wall" type="Collision" x="2560" y="832" width="768" height="192"/>
   <object id="795" name="Wall" type="Collision" x="5440" y="4480" width="576" height="192"/>
-  <object id="827" name="Death Tiles" x="896" y="4352" width="64" height="64"/>
-  <object id="828" name="Death Tiles" x="3200" y="4672" width="64" height="64"/>
-  <object id="829" name="Death Tiles" x="5056" y="4736" width="64" height="64"/>
-  <object id="835" name="Flame Thrower" gid="12" x="3328" y="3968" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="right"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
-  <object id="836" name="Flame Thrower" gid="12" x="6784" y="2624" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="left"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
   <object id="895" name="Auto Floor" x="2496" y="1984" width="192" height="640"/>
   <object id="897" name="Auto Floor" x="3648" y="2944" width="128" height="192"/>
   <object id="898" name="Wall" type="Collision" x="6912" y="2176" width="128" height="896"/>

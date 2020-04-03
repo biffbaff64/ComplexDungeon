@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
- <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="550" columns="22">
-  <image source="tileset2.png" width="1408" height="1600"/>
+ <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="616" columns="22">
+  <image source="tileset2.png" width="1408" height="1792"/>
  </tileset>
  <layer id="78" name="game tiles" width="130" height="112">
   <data encoding="csv">
@@ -354,7 +354,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="14" name="collision">
+ <objectgroup color="#ffaa00" id="14" name="collision" visible="0">
   <object id="496" name="Wall" type="Collision" x="0" y="0" width="1920" height="2624"/>
   <object id="497" name="Wall" type="Collision" x="0" y="3008" width="896" height="4160"/>
   <object id="498" name="Wall" type="Collision" x="896" y="5760" width="1536" height="1408"/>
@@ -413,27 +413,12 @@
   <object id="540" name="Wall" type="Collision" x="1792" y="5056" width="640" height="704"/>
   <object id="543" name="Wall" type="Collision" x="2496" y="0" width="1920" height="1472"/>
   <object id="564" name="Wall" type="Collision" x="1600" y="4608" width="256" height="256"/>
-  <object id="569" name="Mystery Box" gid="28" x="3264" y="1792" width="64" height="64">
-   <properties>
-    <property name="contents" value="key"/>
-   </properties>
-  </object>
   <object id="570" name="Wall" type="Collision" x="4032" y="3328" width="192" height="128"/>
-  <object id="571" name="Mystery Box" gid="28" x="3712" y="3776" width="64" height="64">
-   <properties>
-    <property name="contents" value="coin"/>
-   </properties>
-  </object>
   <object id="572" name="Wall" type="Collision" x="2496" y="1472" width="576" height="512"/>
   <object id="573" name="Wall" type="Collision" x="2816" y="2304" width="128" height="512"/>
   <object id="574" name="Wall" type="Collision" x="2688" y="2560" width="128" height="576"/>
   <object id="575" name="Wall" type="Collision" x="5888" y="4928" width="128" height="448"/>
   <object id="576" name="Wall" type="Collision" x="5888" y="4288" width="512" height="256"/>
-  <object id="577" name="Mystery Box" gid="28" x="4736" y="5824" width="64" height="64">
-   <properties>
-    <property name="contents" value="coin"/>
-   </properties>
-  </object>
   <object id="578" name="Wall" type="Collision" x="4864" y="4544" width="384" height="192"/>
   <object id="579" name="Wall" type="Collision" x="5248" y="4544" width="128" height="640"/>
   <object id="580" name="Wall" type="Collision" x="6016" y="3328" width="128" height="960"/>
@@ -457,11 +442,6 @@
     <property name="direction" value="horizontal"/>
     <property name="height" type="int" value="1"/>
     <property name="width" type="int" value="4"/>
-   </properties>
-  </object>
-  <object id="620" name="Prisoner" gid="25" x="2304" y="1792" width="64" height="64">
-   <properties>
-    <property name="facing" value="down"/>
    </properties>
   </object>
   <object id="621" name="Floor Button" gid="19" x="2496" y="2048" width="64" height="64">

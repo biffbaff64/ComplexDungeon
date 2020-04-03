@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
- <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="550" columns="22">
-  <image source="tileset2.png" width="1408" height="1600"/>
+ <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="616" columns="22">
+  <image source="tileset2.png" width="1408" height="1792"/>
  </tileset>
  <layer id="63" name="game tiles" width="152" height="104">
   <data encoding="csv">
@@ -313,7 +313,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -330,7 +330,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="48" name="collision">
+ <objectgroup color="#ffaa00" id="48" name="collision" visible="0">
   <object id="915" name="Wall" type="Collision" x="6592" y="2304" width="128" height="512"/>
   <object id="924" name="Wall" type="Collision" x="7168" y="0" width="2240" height="512"/>
   <object id="940" name="Wall" type="Collision" x="2112" y="5248" width="384" height="512"/>
@@ -373,24 +373,6 @@
   <object id="1156" name="Wall" type="Collision" x="5888" y="2944" width="128" height="1088"/>
   <object id="1157" name="Wall" type="Collision" x="7872" y="1280" width="128" height="1024"/>
   <object id="1158" name="Wall" type="Collision" x="4736" y="0" width="128" height="1280"/>
-  <object id="1167" name="Flame Thrower" gid="12" x="5888" y="3136" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="left"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
-  <object id="1168" name="Flame Thrower" gid="12" x="1024" y="2304" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="right"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
-  <object id="1169" name="Flame Thrower" gid="12" x="2688" y="5312" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="right"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
   <object id="1170" name="Spike Block Vertical" gid="18" x="3776" y="6272" width="64" height="64">
    <properties>
     <property name="xdirection" value="still"/>
@@ -417,35 +399,7 @@
   <object id="1176" name="Wall" type="Collision" x="4480" y="6272" width="256" height="384"/>
   <object id="1177" name="Wall" type="Collision" x="3776" y="6272" width="256" height="384"/>
   <object id="1178" name="Wall" type="Collision" x="4032" y="6144" width="448" height="512"/>
-  <object id="1181" name="Flame Thrower" gid="12" x="7872" y="1792" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="left"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
-  <object id="1185" name="Flame Thrower" gid="12" x="8832" y="2624" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="left"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
-  <object id="1186" name="Flame Thrower" gid="12" x="8000" y="1344" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="right"/>
-    <property name="ydirection" value="still"/>
-   </properties>
-  </object>
   <object id="1191" name="Wall" type="Collision" x="2944" y="1536" width="576" height="256"/>
-  <object id="1192" name="Prisoner" gid="25" x="6720" y="6080" width="64" height="64">
-   <properties>
-    <property name="facing" value="up"/>
-   </properties>
-  </object>
-  <object id="1195" name="Mystery Box" gid="28" x="7424" y="6016" width="64" height="64">
-   <properties>
-    <property name="contents" value="key"/>
-   </properties>
-  </object>
   <object id="1203" name="Wall" type="Collision" x="3392" y="3200" width="1472" height="192"/>
   <object id="1205" name="Spike Block Vertical" gid="18" x="3776" y="640" width="64" height="64">
    <properties>

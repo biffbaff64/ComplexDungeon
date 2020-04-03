@@ -28,7 +28,7 @@ public abstract class Entities
     public static final EntityDef[] entityList =
         {
             // Main Characters
-            new EntityDef("", GraphicID.G_PLAYER, TileID._PLAYER_TILE, GameAssets._IDLE_DOWN_ASSET, GameAssets._PLAYER_STAND_FRAMES, GraphicID._MAIN),
+            new EntityDef("Player", GraphicID.G_PLAYER, TileID._PLAYER_TILE, GameAssets._IDLE_DOWN_ASSET, GameAssets._PLAYER_STAND_FRAMES, GraphicID._MAIN),
             new EntityDef("Prisoner", GraphicID.G_PRISONER, TileID._PRISONER_TILE, GameAssets._PRISONER_IDLE_DOWN_ASSET, GameAssets._PRISONER_IDLE_FRAMES, GraphicID._MAIN),
             new EntityDef("Villager", GraphicID.G_VILLAGER, TileID._VILLAGER_TILE, GameAssets._VILLAGER_IDLE_DOWN_ASSET, GameAssets._VILLAGER_IDLE_FRAMES, GraphicID._MAIN),
 
@@ -57,12 +57,12 @@ public abstract class Entities
             new EntityDef("", GraphicID.G_SACKS, TileID._SACKS_TILE, GameAssets._SACKS_ASSET, GameAssets._SACKS_FRAMES, GraphicID._DECORATION),
 
             // Interactive, But NOT Pickups
-            new EntityDef("", GraphicID.G_TREASURE_CHEST, TileID._CHEST_TILE, GameAssets._TREASURE_CHEST_ASSET, GameAssets._TREASURE_CHEST_FRAMES, GraphicID._INTERACTIVE),
+            new EntityDef("Treasure Chest", GraphicID.G_TREASURE_CHEST, TileID._CHEST_TILE, GameAssets._TREASURE_CHEST_ASSET, GameAssets._TREASURE_CHEST_FRAMES, GraphicID._INTERACTIVE),
             new EntityDef("Mystery Box", GraphicID.G_MYSTERY_CHEST, TileID._MYSTERY_CHEST_TILE, GameAssets._MYSTERY_CHEST_ASSET, GameAssets._MYSTERY_CHEST_FRAMES, GraphicID._INTERACTIVE),
             new EntityDef("Door", GraphicID.G_DOOR, TileID._DOOR_TILE, GameAssets._WOOD_DOOR_ASSET, GameAssets._DOOR_FRAMES, GraphicID._INTERACTIVE),
             new EntityDef("Floor Button", GraphicID.G_FLOOR_BUTTON, TileID._FLOOR_BUTTON_TILE, GameAssets._FLOOR_BUTTON_ASSET, GameAssets._FLOOR_BUTTON_FRAMES, GraphicID._INTERACTIVE),
             new EntityDef("Lever Switch", GraphicID.G_LEVER_SWITCH, TileID._LEVER_TILE, GameAssets._LEVER_SWITCH_ASSET, GameAssets._LEVER_SWITCH_FRAMES, GraphicID._INTERACTIVE),
-            new EntityDef("", GraphicID.G_TELEPORTER, TileID._UNKNOWN, GameAssets._TELEPORTER_ASSET, GameAssets._TELEPORTER_FRAMES, GraphicID._INTERACTIVE),
+            new EntityDef("Teleporter", GraphicID.G_TELEPORTER, TileID._UNKNOWN, GameAssets._TELEPORTER_ASSET, GameAssets._TELEPORTER_FRAMES, GraphicID._INTERACTIVE),
 
             // Interactive, but not handled by InteractiveManager
             new EntityDef("Floating Platform", GraphicID.G_FLOATING_PLATFORM, TileID._FLOATING_PLATFORM_TILE, GameAssets._FLOATING_PLATFORM_ASSET, GameAssets._FLOATING_PLATFORM_FRAMES, GraphicID._PLATFORM),
@@ -73,7 +73,7 @@ public abstract class Entities
             new EntityDef("", GraphicID.G_LASER_BEAM_HORIZONTAL, TileID._LASER_HORIZONTAL_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_LASER_BEAM_VERTICAL, TileID._LASER_VERTICAL_TILE, GameAssets._LASER_BEAM_VERTICAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
             new EntityDef("Flame Thrower", GraphicID.G_FLAME_THROWER, TileID._FLAME_THROWER_TILE, GameAssets._FLAME_THROW_ASSET, GameAssets._FLAME_THROW_FRAMES, GraphicID._ENEMY),
-            new EntityDef("", GraphicID.G_FLAME_THROWER_VERTICAL, TileID._FLAME_THROWER_TILE, GameAssets._FLAME_THROW_VERTICAL_ASSET, GameAssets._FLAME_THROW_FRAMES, GraphicID._ENEMY),
+            new EntityDef("Flame Thrower Vertical", GraphicID.G_FLAME_THROWER_VERTICAL, TileID._FLAME_THROWER_TILE, GameAssets._FLAME_THROW_VERTICAL_ASSET, GameAssets._FLAME_THROW_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_TURRET, TileID._TURRET_TILE, GameAssets._TURRET_ASSET, GameAssets._TURRET_FRAMES, GraphicID._ENEMY),
 
             // Mobile Enemies
@@ -84,8 +84,8 @@ public abstract class Entities
             new EntityDef("", GraphicID.G_JELLY_MONSTER, TileID._JELLY_MONSTER_TILE, GameAssets._JELLY_MONSTER_ASSET, GameAssets._JELLY_MONSTER_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_SOLDIER, TileID._SOLDIER_TILE, GameAssets._SOLDIER_IDLE_DOWN_ASSET, GameAssets._SOLDIER_IDLE_FRAMES, GraphicID._ENEMY),
             new EntityDef("Spike Ball", GraphicID.G_SPIKE_BALL, TileID._SPIKE_BALL_TILE, GameAssets._SPIKE_BALL_1_ASSET, GameAssets._SPIKE_BALL_FRAMES, GraphicID._ENEMY),
-            new EntityDef("Spike Block", GraphicID.G_SPIKE_BLOCK_HORIZONTAL, TileID._SPIKE_BLOCK_TILE, GameAssets._SPIKE_BLOCK_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
-            new EntityDef("Spike Block Vertical", GraphicID.G_SPIKE_BLOCK_VERTICAL, TileID._SPIKE_BLOCK_VERTICAL_TILE, GameAssets._SPIKE_BLOCK_VERTICAL_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
+            new EntityDef("Spike Block", GraphicID.G_SPIKE_BLOCK_HORIZONTAL, TileID._SPIKE_BLOCK_RIGHT_TILE, GameAssets._SPIKE_BLOCK_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
+            new EntityDef("Spike Block Vertical", GraphicID.G_SPIKE_BLOCK_VERTICAL, TileID._SPIKE_BLOCK_UP_TILE, GameAssets._SPIKE_BLOCK_VERTICAL_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
             new EntityDef("Loop Block", GraphicID.G_LOOP_BLOCK_HORIZONTAL, TileID._LOOP_BLOCK_HORIZONTAL_TILE, GameAssets._SPIKE_BLOCK_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
             new EntityDef("Loop Block Vertical", GraphicID.G_LOOP_BLOCK_VERTICAL, TileID._LOOP_BLOCK_VERTICAL_TILE, GameAssets._SPIKE_BLOCK_VERTICAL_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
 

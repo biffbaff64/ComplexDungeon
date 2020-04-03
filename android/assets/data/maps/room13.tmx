@@ -237,7 +237,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="66" name="marker tiles" width="120" height="105" visible="0">
+ <layer id="66" name="marker tiles" width="120" height="105">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -369,21 +369,6 @@
   <object id="949" name="Wall" type="Collision" x="2432" y="1088" width="640" height="256"/>
   <object id="950" name="Wall" type="Collision" x="1984" y="2560" width="448" height="576"/>
   <object id="952" name="Wall" type="Collision" x="3968" y="3904" width="448" height="256"/>
-  <object id="955" name="Prisoner" gid="25" x="1216" y="2944" width="64" height="64">
-   <properties>
-    <property name="facing" value="left"/>
-   </properties>
-  </object>
-  <object id="956" name="Prisoner" gid="25" x="1792" y="2944" width="64" height="64">
-   <properties>
-    <property name="facing" value="left"/>
-   </properties>
-  </object>
-  <object id="957" name="Prisoner" gid="25" x="5248" y="4928" width="64" height="64">
-   <properties>
-    <property name="facing" value="left"/>
-   </properties>
-  </object>
   <object id="958" name="Wall" type="Collision" x="4928" y="4544" width="768" height="192"/>
   <object id="959" name="Wall" type="Collision" x="6528" y="4544" width="1152" height="192"/>
   <object id="961" name="Wall" type="Collision" x="4288" y="2624" width="128" height="1280"/>
@@ -485,60 +470,6 @@
    </properties>
   </object>
   <object id="1036" name="Wall" type="Collision" x="7424" y="3200" width="256" height="1344"/>
-  <object id="1046" name="Loop Block Vertical" gid="24" x="3712" y="64" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1057" name="Loop Block Vertical" gid="24" x="3712" y="1024" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1058" name="Loop Block Vertical" gid="24" x="3712" y="1984" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1059" name="Loop Block Vertical" gid="24" x="3712" y="2944" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1060" name="Loop Block Vertical" gid="24" x="3712" y="3904" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1061" name="Loop Block Vertical" gid="24" x="3712" y="4864" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1062" name="Loop Block Vertical" gid="24" x="3712" y="5824" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1063" name="Loop Block Vertical" gid="24" x="3712" y="3264" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
-  <object id="1064" name="Loop Block Vertical" gid="24" x="3712" y="3584" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="down"/>
-   </properties>
-  </object>
   <object id="1065" name="Wall" type="Collision" x="2496" y="4544" width="192" height="384"/>
  </objectgroup>
 </map>

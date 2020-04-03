@@ -337,11 +337,6 @@ public class MapCreator
                 {
                     switch (object.getName())
                     {
-                        case "Death Tiles":
-                        {
-                        }
-                        break;
-
                         case "Laser":
                         {
                             if (object.getProperties().get("direction").equals("horizontal"))
@@ -398,57 +393,6 @@ public class MapCreator
                         }
                         break;
 
-                        case "Flame Thrower":
-                        {
-                            hasDirection = true;
-
-                            setEntityPlaceable(GraphicID.G_FLAME_THROWER, true);
-                        }
-                        break;
-
-                        case "Loop Block":
-                        case "Loop Block Vertical":
-                        {
-                            hasDirection = true;
-
-                            setEntityPlaceable(GraphicID._BLOCKS, true);
-                        }
-                        break;
-
-                        case "Prisoner":
-                        {
-                            switch ((String) object.getProperties().get("facing"))
-                            {
-                                case "left":
-                                {
-                                    asset = GameAssets._PRISONER_IDLE_LEFT_ASSET;
-                                }
-                                break;
-
-                                case "right":
-                                {
-                                    asset = GameAssets._PRISONER_IDLE_RIGHT_ASSET;
-                                }
-                                break;
-
-                                case "up":
-                                {
-                                    asset = GameAssets._PRISONER_IDLE_UP_ASSET;
-                                }
-                                break;
-
-                                case "down":
-                                default:
-                                {
-                                    asset = GameAssets._PRISONER_IDLE_DOWN_ASSET;
-                                }
-                                break;
-                            }
-
-                            setEntityPlaceable(GraphicID.G_PRISONER, true);
-                        }
-                        break;
-
                         default:
                         {
                             Trace.__FILE_FUNC("Unknown Object name: " + object.getName());
@@ -469,11 +413,6 @@ public class MapCreator
                         markerTile._DIST  = new SimpleVec2F();
                         markerTile._DIR   = new Direction();
                         markerTile._SPEED = new Speed();
-
-                        if (isLockedDoor)
-                        {
-                            markerTile._GID = GraphicID.G_LOCKED_DOOR;
-                        }
 
                         if (isSizeBoxNeeded)
                         {

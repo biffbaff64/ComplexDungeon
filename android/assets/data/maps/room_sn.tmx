@@ -3,8 +3,8 @@
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
- <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="550" columns="22">
-  <image source="tileset2.png" width="1408" height="1600"/>
+ <tileset firstgid="101" name="tileset2" tilewidth="64" tileheight="64" tilecount="616" columns="22">
+  <image source="tileset2.png" width="1408" height="1792"/>
  </tileset>
  <layer id="70" name="game tiles" width="90" height="90">
   <data encoding="csv">
@@ -288,7 +288,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="66" name="collision">
+ <objectgroup color="#ffaa00" id="66" name="collision" visible="0">
   <object id="865" name="Wall" type="Collision" x="4800" y="3520" width="960" height="2240"/>
   <object id="867" name="Wall" type="Collision" x="1536" y="0" width="256" height="1472"/>
   <object id="868" name="Wall" type="Collision" x="1600" y="3968" width="3200" height="1792"/>
@@ -310,12 +310,6 @@
     <property name="yspeed" type="float" value="0"/>
    </properties>
   </object>
-  <object id="885" name="Flame Thrower" gid="12" x="2688" y="3968" width="64" height="64">
-   <properties>
-    <property name="xdirection" value="still"/>
-    <property name="ydirection" value="up"/>
-   </properties>
-  </object>
   <object id="887" name="Wall" type="Collision" x="1920" y="2688" width="1984" height="192"/>
   <object id="888" name="Wall" type="Collision" x="3776" y="2176" width="704" height="192"/>
   <object id="889" name="Wall" type="Collision" x="3392" y="2176" width="128" height="512"/>
@@ -333,11 +327,6 @@
     <property name="yspeed" type="float" value="0"/>
    </properties>
   </object>
-  <object id="899" name="Prisoner" gid="25" x="3584" y="2560" width="64" height="64">
-   <properties>
-    <property name="facing" value="up"/>
-   </properties>
-  </object>
   <object id="900" name="Wall" type="Collision" x="3776" y="2368" width="128" height="320"/>
   <object id="901" name="Spike Ball" gid="16" x="320" y="3328" width="64" height="64">
    <properties>
@@ -348,11 +337,6 @@
     <property name="ydirection" value="still"/>
     <property name="ydistance" type="int" value="0"/>
     <property name="yspeed" type="float" value="0"/>
-   </properties>
-  </object>
-  <object id="904" name="Mystery Box" gid="28" x="2752" y="768" width="64" height="64">
-   <properties>
-    <property name="contents" value="key"/>
    </properties>
   </object>
   <object id="905" name="Wall" type="Collision" x="1792" y="1280" width="512" height="192"/>
