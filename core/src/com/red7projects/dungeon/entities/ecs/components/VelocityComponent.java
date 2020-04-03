@@ -1,6 +1,7 @@
 package com.red7projects.dungeon.entities.ecs.components;
 
-import com.badlogic.ashley.core.Component;
+
+import com.red7projects.dungeon.entities.ecs.ashley.core.Component;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.types.XYSetF;
