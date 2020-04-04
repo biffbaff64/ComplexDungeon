@@ -1,8 +1,8 @@
 package com.red7projects.dungeon.tests;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.red7projects.dungeon.map.tiled.TiledMap;
+import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
+import com.red7projects.dungeon.map.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.logging.Trace;

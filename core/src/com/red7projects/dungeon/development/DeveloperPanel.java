@@ -57,6 +57,8 @@ public class DeveloperPanel extends BasicPanel
     private int externalControllerRow;
     private int virtualControllerColumn;
     private int virtualControllerRow;
+    private int keyboardControllerColumn;
+    private int keyboardControllerRow;
     private int androidOnDesktopColumn;
     private int androidOnDesktopRow;
     private int player2Column;
@@ -169,7 +171,8 @@ public class DeveloperPanel extends BasicPanel
         controllersGroup.add
         (
             buttons[virtualControllerRow][virtualControllerColumn],
-            buttons[externalControllerRow][externalControllerColumn]
+            buttons[externalControllerRow][externalControllerColumn],
+            buttons[keyboardControllerRow][keyboardControllerColumn]
         );
         controllersGroup.setMinCheckCount(1);
         controllersGroup.setMaxCheckCount(1);
@@ -394,17 +397,20 @@ public class DeveloperPanel extends BasicPanel
         }
 
         if (buttons[virtualControllerRow][virtualControllerColumn].isChecked()
-            && buttons[externalControllerRow][externalControllerColumn].isChecked())
+            && buttons[externalControllerRow][externalControllerColumn].isChecked()
+            && buttons[keyboardControllerRow][keyboardControllerColumn].isChecked())
         {
             if (AppConfig.isAndroidApp() || app.preferences.isEnabled(Preferences._ANDROID_ON_DESKTOP))
             {
                 buttons[virtualControllerRow][virtualControllerColumn].setChecked(true);
                 buttons[externalControllerRow][externalControllerColumn].setChecked(false);
+                buttons[keyboardControllerRow][keyboardControllerColumn].setChecked(false);
             }
             else
             {
                 buttons[virtualControllerRow][virtualControllerColumn].setChecked(false);
-                buttons[externalControllerRow][externalControllerColumn].setChecked(true);
+                buttons[externalControllerRow][externalControllerColumn].setChecked(false);
+                buttons[keyboardControllerRow][keyboardControllerColumn].setChecked(true);
             }
         }
 
@@ -566,6 +572,13 @@ public class DeveloperPanel extends BasicPanel
                     }
                     break;
 
+                    case Preferences._KEYBOARD_CONTROL:
+                    {
+                        keyboardControllerColumn = column;
+                        keyboardControllerRow = row;
+                    }
+                    break;
+
                     case Preferences._ANDROID_ON_DESKTOP:
                     {
                         androidOnDesktopColumn = column;
@@ -586,19 +599,19 @@ public class DeveloperPanel extends BasicPanel
             {
                 {
                     new DMEntry("Dev. mode", Preferences._DEV_MODE, false),
-                    new DMEntry("", "", false),
+                    new DMEntry("V. Controller", Preferences._ON_SCREEN_CONTROLLER, false),
                     new DMEntry("", "", false),
                     new DMEntry("Turrets", Preferences._TURRETS, true),
                 },
                 {
                     new DMEntry("Invincible", Preferences._GOD_MODE, false),
-                    new DMEntry("", "", false),
+                    new DMEntry("E. Controller", Preferences._EXTERNAL_CONTROLLER, false),
                     new DMEntry("Force Prefs Reset", Preferences._FORCE_PREFS_RESET, false),
                     new DMEntry("Bouncer", Preferences._BOUNCER, true),
                 },
                 {
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Keyboard", Preferences._KEYBOARD_CONTROL, false),
                     new DMEntry("Game Trace Output", Preferences._SHOW_TRACE, false),
                     new DMEntry("Soldiers", Preferences._SOLDIER, true),
                 },
@@ -633,13 +646,13 @@ public class DeveloperPanel extends BasicPanel
                     new DMEntry("Scorpion", Preferences._SCORPION, true),
                 },
                 {
-                    new DMEntry("V. Controller", Preferences._ON_SCREEN_CONTROLLER, false),
+                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Marker Tiles", Preferences._SPAWNPOINTS, false),
                     new DMEntry("Flame Thrower", Preferences._FLAME_THROWER, true),
                 },
                 {
-                    new DMEntry("E. Controller", Preferences._EXTERNAL_CONTROLLER, false),
+                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Map Window", Preferences._MAP_WINDOW, false),
                     new DMEntry("Decorations", Preferences._DECORATIONS, false),

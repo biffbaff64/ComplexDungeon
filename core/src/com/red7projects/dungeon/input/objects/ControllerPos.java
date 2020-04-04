@@ -21,7 +21,8 @@ import com.red7projects.dungeon.physics.Movement;
 public enum ControllerPos
 {
     _LEFT("LEFT", Movement._DIRECTION_LEFT),
-    _RIGHT("RIGHT", Movement._DIRECTION_RIGHT);
+    _RIGHT("RIGHT", Movement._DIRECTION_RIGHT),
+    _HIDDEN("HIDDEN", Movement._DIRECTION_STILL);
 
     final int    value;
     final String text;

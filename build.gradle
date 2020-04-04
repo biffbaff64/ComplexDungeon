@@ -83,7 +83,7 @@ project(":android") {
         implementation project(":core")
         implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
+//        implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
         implementation "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         implementation "de.tomgrill.gdxdialogs:gdx-dialogs-android:$gdxDialogsVersion"
@@ -117,7 +117,7 @@ project(":core") {
         implementation "org.jetbrains:annotations:$annotationsVersion"
         implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
+//        implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
         implementation "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         implementation "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"

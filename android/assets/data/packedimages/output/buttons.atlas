@@ -1,600 +1,614 @@
 
 buttons.png
-size: 2048,1024
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 arrow_left_blue
   rotate: false
-  xy: 1002, 424
+  xy: 1971, 1980
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_left_blue_pressed
   rotate: false
-  xy: 646, 634
+  xy: 1971, 1912
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_right_blue
   rotate: false
-  xy: 646, 566
+  xy: 1365, 1508
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_right_blue_pressed
   rotate: false
-  xy: 1133, 229
+  xy: 1279, 1365
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 btn_google_signin_dark
   rotate: false
-  xy: 182, 10
+  xy: 1042, 1564
   size: 191, 46
   orig: 191, 46
   offset: 0, 0
   index: -1
 btn_google_signin_dark_disabled
   rotate: false
-  xy: 1655, 15
+  xy: 646, 1164
   size: 233, 56
   orig: 233, 56
   offset: 0, 0
   index: -1
 btn_google_signin_dark_pressed
   rotate: false
-  xy: 1691, 715
+  xy: 1042, 1516
   size: 191, 46
   orig: 191, 46
   offset: 0, 0
   index: -1
 btn_google_signout_dark
   rotate: false
-  xy: 1691, 667
+  xy: 1042, 1468
   size: 191, 46
   orig: 191, 46
   offset: 0, 0
   index: -1
 btn_google_signout_dark_pressed
   rotate: false
-  xy: 646, 428
+  xy: 1042, 1420
   size: 191, 46
   orig: 191, 46
   offset: 0, 0
   index: -1
 button1p
   rotate: false
-  xy: 1557, 899
+  xy: 214, 27
   size: 121, 23
   orig: 121, 23
   offset: 0, 0
   index: -1
 button1p_pressed
   rotate: false
-  xy: 1680, 899
+  xy: 214, 2
   size: 121, 23
   orig: 121, 23
   offset: 0, 0
   index: -1
 button2p
   rotate: false
-  xy: 1269, 899
+  xy: 1310, 1625
   size: 142, 23
   orig: 142, 23
   offset: 0, 0
   index: -1
 button2p_pressed
   rotate: false
-  xy: 1413, 899
+  xy: 974, 1070
   size: 142, 23
   orig: 142, 23
   offset: 0, 0
   index: -1
+buttonControl
+  rotate: false
+  xy: 1004, 1950
+  size: 543, 96
+  orig: 543, 96
+  offset: 0, 0
+  index: -1
+buttonControl_pressed
+  rotate: false
+  xy: 2, 742
+  size: 543, 96
+  orig: 543, 96
+  offset: 0, 0
+  index: -1
 buttonExit
   rotate: false
-  xy: 1006, 590
+  xy: 646, 1636
   size: 260, 96
   orig: 260, 96
   offset: 0, 0
   index: -1
 buttonExit_pressed
   rotate: false
-  xy: 1006, 492
+  xy: 646, 1538
   size: 260, 96
   orig: 260, 96
   offset: 0, 0
   index: -1
 buttonFXOff
   rotate: false
-  xy: 1191, 830
+  xy: 2, 52
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonFXOn
   rotate: false
-  xy: 1539, 831
+  xy: 324, 1094
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonHome
   rotate: false
-  xy: 1691, 599
+  xy: 324, 1026
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonHomePressed
   rotate: false
-  xy: 1691, 531
+  xy: 324, 958
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonMusicOff
   rotate: false
-  xy: 1691, 463
+  xy: 324, 890
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonMusicOn
   rotate: false
-  xy: 1691, 395
+  xy: 994, 1882
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonOptions
   rotate: false
-  xy: 646, 926
+  xy: 2, 644
   size: 543, 96
   orig: 543, 96
   offset: 0, 0
   index: -1
 buttonOptions_pressed
   rotate: false
-  xy: 646, 828
+  xy: 2, 546
   size: 543, 96
   orig: 543, 96
   offset: 0, 0
   index: -1
 buttonPauseExit
   rotate: false
-  xy: 872, 424
+  xy: 1235, 1482
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 buttonPauseExit_pressed
   rotate: false
-  xy: 738, 294
+  xy: 1022, 1290
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 buttonResumeOff
   rotate: false
-  xy: 1691, 327
+  xy: 994, 1814
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonResumeOn
   rotate: false
-  xy: 1691, 259
+  xy: 994, 1746
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: -1
 buttonStart
   rotate: false
-  xy: 519, 12
+  xy: 2, 1906
   size: 748, 98
   orig: 748, 98
   offset: 0, 0
   index: -1
 buttonStart_pressed
   rotate: false
-  xy: 1269, 924
+  xy: 2, 1806
   size: 748, 98
   orig: 748, 98
   offset: 0, 0
   index: -1
 button_achievements
   rotate: false
-  xy: 1191, 898
+  xy: 818, 1038
   size: 76, 124
   orig: 76, 124
   offset: 0, 0
   index: -1
 button_achievements_pressed
   rotate: false
-  xy: 646, 702
+  xy: 896, 1072
   size: 76, 124
   orig: 76, 124
   offset: 0, 0
   index: -1
 button_d
   rotate: false
-  xy: 1201, 229
+  xy: 1279, 1297
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_d_pressed
   rotate: false
-  xy: 1965, 191
+  xy: 547, 788
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_drop
   rotate: false
-  xy: 470, 246
+  xy: 672, 884
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_drop_pressed
   rotate: false
-  xy: 470, 112
+  xy: 424, 412
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_fire
   rotate: false
-  xy: 604, 246
+  xy: 424, 278
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_fire_pressed
   rotate: false
-  xy: 604, 112
+  xy: 908, 1600
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_keyboard
   rotate: false
-  xy: 868, 356
+  xy: 752, 1938
   size: 240, 66
   orig: 240, 66
   offset: 0, 0
   index: -1
 button_keyboard_pressed
   rotate: false
-  xy: 868, 288
+  xy: 752, 1870
   size: 240, 66
   orig: 240, 66
   offset: 0, 0
   index: -1
 button_no
   rotate: false
-  xy: 1887, 770
+  xy: 1342, 1736
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 button_no_pressed
   rotate: false
-  xy: 1740, 763
+  xy: 424, 210
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 button_open_leaderboard
   rotate: false
-  xy: 1269, 232
+  xy: 646, 1408
   size: 240, 60
   orig: 240, 60
   offset: 0, 0
   index: -1
 button_open_leaderboard_pressed
   rotate: false
-  xy: 1723, 197
+  xy: 646, 1346
   size: 240, 60
   orig: 240, 60
   offset: 0, 0
   index: -1
 button_pause
   rotate: false
-  xy: 1965, 123
+  xy: 547, 720
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_pause_pressed
   rotate: false
-  xy: 1655, 90
+  xy: 547, 652
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_settings
   rotate: false
-  xy: 324, 234
+  xy: 1342, 1804
   size: 144, 144
   orig: 144, 144
   offset: 0, 0
   index: -1
 button_settings_pressed
   rotate: false
-  xy: 324, 88
+  xy: 672, 1018
   size: 144, 144
   orig: 144, 144
   offset: 0, 0
   index: -1
 button_show_achievements
   rotate: false
-  xy: 1723, 135
+  xy: 646, 1284
   size: 240, 60
   orig: 240, 60
   offset: 0, 0
   index: -1
 button_show_achievements_pressed
   rotate: false
-  xy: 1723, 73
+  xy: 646, 1222
   size: 240, 60
   orig: 240, 60
   offset: 0, 0
   index: -1
 button_x
   rotate: false
-  xy: 738, 125
+  xy: 1042, 1612
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_x_pressed
   rotate: false
-  xy: 738, 652
+  xy: 1176, 1612
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_y
   rotate: false
-  xy: 872, 125
+  xy: 908, 1466
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_y_pressed
   rotate: false
-  xy: 872, 554
+  xy: 888, 1332
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_yes
   rotate: false
-  xy: 1884, 702
+  xy: 974, 1095
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 button_yes_pressed
   rotate: false
-  xy: 1110, 297
+  xy: 1488, 1816
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 hud_pause_button
   rotate: false
-  xy: 1006, 132
+  xy: 1022, 1163
   size: 125, 125
   orig: 125, 125
   offset: 0, 0
   index: -1
 hud_pause_button_pressed
   rotate: false
-  xy: 1133, 365
+  xy: 1152, 1293
   size: 125, 125
   orig: 125, 125
   offset: 0, 0
   index: -1
 joystick_ball
   rotate: false
-  xy: 738, 518
+  xy: 888, 1198
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 new_back_button
   rotate: false
-  xy: 375, 2
+  xy: 1310, 1650
   size: 142, 84
   orig: 142, 84
   offset: 0, 0
   index: -1
 new_back_button_pressed
   rotate: false
-  xy: 1887, 838
+  xy: 388, 124
   size: 142, 84
   orig: 142, 84
   offset: 0, 0
   index: -1
 new_developer_options_button
   rotate: false
-  xy: 646, 476
+  xy: 2, 10
   size: 210, 40
   orig: 210, 40
   offset: 0, 0
   index: -1
 new_developer_options_button_pressed
   rotate: false
-  xy: 1133, 119
+  xy: 324, 848
   size: 210, 40
   orig: 210, 40
   offset: 0, 0
   index: -1
 new_exit_button
   rotate: false
-  xy: 1511, 226
+  xy: 1632, 1816
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 new_exit_button_pressed
   rotate: false
-  xy: 1511, 55
+  xy: 1776, 1816
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 new_objectives_button
   rotate: false
-  xy: 1269, 704
+  xy: 1549, 1966
   size: 420, 80
   orig: 420, 80
   offset: 0, 0
   index: -1
 new_objectives_button_pressed
   rotate: false
-  xy: 1269, 622
+  xy: 1549, 1884
   size: 420, 80
   orig: 420, 80
   offset: 0, 0
   index: -1
 new_privacy_policy_button
   rotate: false
-  xy: 1269, 540
+  xy: 2, 464
   size: 420, 80
   orig: 420, 80
   offset: 0, 0
   index: -1
 new_privacy_policy_button_pressed
   rotate: false
-  xy: 1269, 458
+  xy: 2, 382
   size: 420, 80
   orig: 420, 80
   offset: 0, 0
   index: -1
 new_stats_button
   rotate: false
-  xy: 1269, 376
+  xy: 2, 300
   size: 420, 80
   orig: 420, 80
   offset: 0, 0
   index: -1
 new_stats_button_pressed
   rotate: false
-  xy: 1269, 294
+  xy: 2, 218
   size: 420, 80
   orig: 420, 80
   offset: 0, 0
   index: -1
 new_test_access_button
   rotate: false
-  xy: 1269, 51
+  xy: 752, 1802
   size: 240, 66
   orig: 240, 66
   offset: 0, 0
   index: -1
 new_test_access_button_pressed
   rotate: false
-  xy: 1481, 158
+  xy: 646, 1470
   size: 240, 66
   orig: 240, 66
   offset: 0, 0
   index: -1
 slice02
   rotate: false
-  xy: 1133, 161
+  xy: 646, 1734
   size: 346, 66
   orig: 346, 66
   offset: 0, 0
   index: 2
 slider_background
   rotate: false
-  xy: 738, 786
+  xy: 2, 2006
   size: 1000, 40
   orig: 1000, 40
   offset: 0, 0
   index: -1
 slider_knob
   rotate: false
-  xy: 1070, 430
+  xy: 1235, 1420
   size: 40, 60
   orig: 40, 60
   offset: 0, 0
   index: -1
 toggle_left
   rotate: false
-  xy: 1884, 668
+  xy: 536, 856
   size: 96, 32
   orig: 96, 32
   offset: 0, 0
   index: -1
 toggle_off
   rotate: false
-  xy: 2, 9
+  xy: 1277, 1433
   size: 88, 47
   orig: 88, 47
   offset: 0, 0
   index: -1
 toggle_on
   rotate: false
-  xy: 92, 9
+  xy: 1365, 1576
   size: 88, 47
   orig: 88, 47
   offset: 0, 0
   index: -1
 toggle_right
   rotate: false
-  xy: 738, 260
+  xy: 1488, 1782
   size: 96, 32
   orig: 96, 32
   offset: 0, 0
   index: -1
 touch
   rotate: false
-  xy: 872, 688
+  xy: 2, 120
   size: 384, 96
   orig: 384, 96
   offset: 0, 0
   index: -1
 touch_background
   rotate: false
-  xy: 2, 702
+  xy: 2, 1484
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
   index: -1
 touch_background_down
   rotate: false
-  xy: 2, 380
+  xy: 2, 1162
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
   index: -1
 touch_background_left
   rotate: false
-  xy: 2, 58
+  xy: 324, 1484
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
   index: -1
 touch_background_right
   rotate: false
-  xy: 324, 702
+  xy: 2, 840
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
   index: -1
 touch_background_up)
   rotate: false
-  xy: 324, 380
+  xy: 324, 1162
   size: 320, 320
   orig: 320, 320
   offset: 0, 0

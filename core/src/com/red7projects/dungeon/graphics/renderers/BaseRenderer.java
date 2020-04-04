@@ -23,7 +23,7 @@ package com.red7projects.dungeon.graphics.renderers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile;
+import com.red7projects.dungeon.map.tiled.tiles.AnimatedTiledMapTile;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;

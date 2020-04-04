@@ -19,6 +19,8 @@ package com.red7projects.dungeon.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.Cursor;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
@@ -60,7 +62,13 @@ public class InputManager extends AbstractInputManager
                 gameController = new GameController(app);
                 gameController.setup();
             }
-        }
+
+            Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
+            int xHotspot = pixmap.getWidth() / 2;
+            int yHotspot = pixmap.getHeight() / 2;
+            Cursor cursor   = Gdx.graphics.newCursor(pixmap, xHotspot, yHotspot);
+            Gdx.graphics.setCursor(cursor);
+            pixmap.dispose();        }
 
         UIButtons.createButtons(app);
         UIButtons.overrideControllerIfNotFitted(app);

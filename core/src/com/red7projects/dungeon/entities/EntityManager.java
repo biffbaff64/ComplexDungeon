@@ -16,12 +16,12 @@
 
 package com.red7projects.dungeon.entities;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.development.Developer;
 import com.red7projects.dungeon.entities.components.EntityManagerComponent;
+import com.red7projects.dungeon.entities.ecs.ashley.core.Engine;
 import com.red7projects.dungeon.entities.managers.*;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.entities.systems.RenderSystem;
@@ -40,7 +40,7 @@ public class EntityManager implements Disposable
     public RenderSystem renderSystem;
 
     private Engine engine;
-    private App app;
+    private App    app;
 
     public EntityManager(App _app)
     {

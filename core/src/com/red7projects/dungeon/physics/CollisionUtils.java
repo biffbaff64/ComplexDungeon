@@ -16,7 +16,7 @@
 
 package com.red7projects.dungeon.physics;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.entities.objects.GdxSprite;

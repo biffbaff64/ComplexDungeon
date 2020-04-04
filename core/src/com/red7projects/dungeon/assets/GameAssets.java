@@ -168,6 +168,7 @@ public class GameAssets
     public static final String _TELEPORTER_ASSET            = "teleporter";
     public static final String _LASER_BEAM_VERTICAL_ASSET   = "laservert9";
     public static final String _LASER_BEAM_HORIZONTAL_ASSET = "laserhoriz9";
+    public static final String _CROSSHAIRS_ASSET            = "crosshairs";
 
     //
     // Decorations
@@ -281,6 +282,7 @@ public class GameAssets
     public static final int _TURRET_FRAMES                 = 1;
     public static final int _PRESS_BUTTON_MESSAGES_FRAMES  = 3;
     public static final int _SACKS_FRAMES                  = 1;
+    public static final int _CROSSHAIRS_FRAMES             = 1;
 
     //
     // Fonts and HUD assets
@@ -349,6 +351,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_EXCLAMATION_MARK,         30,  48),
             new AssetSize(GraphicID.G_TALK_BOX,                 832, 264),
             new AssetSize(GraphicID.G_FLOATING_PLATFORM,        128, 128),
+            new AssetSize(GraphicID.G_CROSSHAIRS,               64,  64),
 
             // Messages
             new AssetSize(GraphicID._PRESS_FOR_TREASURE,        1024, 114),

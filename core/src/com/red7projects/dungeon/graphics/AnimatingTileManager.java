@@ -1,6 +1,6 @@
 package com.red7projects.dungeon.graphics;
 
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
+import com.red7projects.dungeon.map.tiled.tiles.StaticTiledMapTile;
 
 import java.util.HashMap;
 

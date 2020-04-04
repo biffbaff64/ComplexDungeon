@@ -59,6 +59,7 @@ public enum GraphicID
     G_TALK_BOX,
     G_FLOATING_PLATFORM,
     G_SELECTION_RING,
+    G_CROSSHAIRS,
 
     // ----------------------------
     G_EXPLOSION12,

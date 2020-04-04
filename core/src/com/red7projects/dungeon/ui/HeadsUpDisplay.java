@@ -480,6 +480,7 @@ public class HeadsUpDisplay implements Disposable
             sb.append("   :   ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
             sb.append("   :   ").append(app.getRoomSystem().getActiveRoomName());
             sb.append("   :   ").append("mysteryChestsAvailable: ").append(app.getRoomSystem().activeRoom.mysteryChestsAvailable);
+            sb.append("   :   MOUSE: ").append(app.inputManager.mouseWorldPosition.toString());
 
             debugLine(midFont, sb.toString(), 400, 50);
         }
