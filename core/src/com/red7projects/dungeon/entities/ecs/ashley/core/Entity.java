@@ -93,9 +93,9 @@ public class Entity
      */
     public Component remove(Class<? extends Component> componentClass)
     {
-        ComponentType                      componentType      = ComponentType.getFor(componentClass);
-        int                                componentTypeIndex = componentType.getIndex();
-        Component removeComponent    = components.get(componentTypeIndex);
+        ComponentType componentType      = ComponentType.getFor(componentClass);
+        int           componentTypeIndex = componentType.getIndex();
+        Component     removeComponent    = components.get(componentTypeIndex);
 
         if (removeComponent != null && removeInternal(componentClass))
         {
