@@ -42,7 +42,7 @@ public class GameController extends AbstractInputManager implements ControllerLi
     }
 
     @Override
-    public void setup()
+    public boolean setup()
     {
         AppConfig.controllersFitted = false;
         AppConfig.gameButtonsReady  = false;
@@ -69,6 +69,8 @@ public class GameController extends AbstractInputManager implements ControllerLi
 
             Controllers.clearListeners();
         }
+
+        return AppConfig.controllersFitted;
     }
 
     @Override
@@ -85,24 +87,25 @@ public class GameController extends AbstractInputManager implements ControllerLi
 
     public void addExternalController()
     {
-        try {
-            if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER)) {
-                if (Controllers.getControllers().size > 0) {
-                    controller = Controllers.getControllers().first();
+        try
+        {
+            if (Controllers.getControllers().size > 0)
+            {
+                controller = Controllers.getControllers().first();
 
-                    if (controller != null) {
-                        Trace.__FILE_FUNC("Controller [" + controller.getName() + "] found");
+                if (controller != null)
+                {
+                    Trace.__FILE_FUNC("Controller [" + controller.getName() + "] found");
 
-                        AppConfig.controllersFitted = true;
+                    AppConfig.controllersFitted = true;
 
-                        createControllerMap();
+                    createControllerMap();
 
-                        controller.addListener(this);
+                    controller.addListener(this);
 
-                        app.inputManager.getInputMultiplexer().addProcessor(this);
+                    app.inputManager.inputMultiplexer.addProcessor(this);
 
-                        Trace.dbg("Controller added");
-                    }
+                    Trace.dbg("Controller added");
                 }
             }
         }
@@ -122,7 +125,7 @@ public class GameController extends AbstractInputManager implements ControllerLi
         // NOTE: removeProcessor() checks that this processor
         // exists in the multiplexor first, so there is no
         // risk of null pointer exceptions etc.
-        app.inputManager.getInputMultiplexer().removeProcessor(this);
+        app.inputManager.inputMultiplexer.removeProcessor(this);
     }
 
     @Override
@@ -140,71 +143,68 @@ public class GameController extends AbstractInputManager implements ControllerLi
     @Override
     public boolean buttonDown(Controller controller, int buttonCode)
     {
-        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
+        UIButtons.controllerButtonCode = buttonCode;
+
+        if (buttonCode == controllerMap._BUTTON_A)
         {
-            UIButtons.controllerButtonCode = buttonCode;
+            UIButtons.controllerAPressed = true;
+        }
+        else if (buttonCode == controllerMap._BUTTON_B)
+        {
+            UIButtons.controllerBPressed = true;
+        }
+        else if (buttonCode == controllerMap._BUTTON_X)
+        {
+            UIButtons.controllerXPressed = true;
+        }
+        else if (buttonCode == controllerMap._BUTTON_Y)
+        {
+            UIButtons.controllerYPressed = true;
+        }
+        else if (buttonCode == controllerMap._BUTTON_LB)
+        {
+            UIButtons.controllerLBPressed = true;
+        }
+        else if (buttonCode == controllerMap._BUTTON_RB)
+        {
+            UIButtons.controllerRBPressed = true;
 
-            if (buttonCode == controllerMap._BUTTON_A)
+            if (app.getHud().buttonA != null)
             {
-                UIButtons.controllerAPressed = true;
+                app.getHud().buttonA.press();
             }
-            else if (buttonCode == controllerMap._BUTTON_B)
-            {
-                UIButtons.controllerBPressed = true;
-            }
-            else if (buttonCode == controllerMap._BUTTON_X)
-            {
-                UIButtons.controllerXPressed = true;
-            }
-            else if (buttonCode == controllerMap._BUTTON_Y)
-            {
-                UIButtons.controllerYPressed = true;
-            }
-            else if (buttonCode == controllerMap._BUTTON_LB)
-            {
-                UIButtons.controllerLBPressed = true;
-            }
-            else if (buttonCode == controllerMap._BUTTON_RB)
-            {
-                UIButtons.controllerRBPressed = true;
+        }
+        else if (buttonCode == controllerMap._BUTTON_START)
+        {
+            UIButtons.controllerStartPressed = true;
 
-                if (app.getHud().buttonA != null)
-                {
-                    app.getHud().buttonA.press();
-                }
-            }
-            else if (buttonCode == controllerMap._BUTTON_START)
+            if (app.getHud().buttonPause != null)
             {
-                UIButtons.controllerStartPressed = true;
+                app.getHud().buttonPause.press();
+            }
+        }
+        else if (buttonCode == controllerMap._BUTTON_BACK)
+        {
+            UIButtons.controllerBackPressed = true;
+        }
+        else if (buttonCode == controllerMap._LEFT_TRIGGER)
+        {
+            UIButtons.controllerLeftFirePressed = true;
+            UIButtons.controllerFirePressed     = true;
 
-                if (app.getHud().buttonPause != null)
-                {
-                    app.getHud().buttonPause.press();
-                }
-            }
-            else if (buttonCode == controllerMap._BUTTON_BACK)
+            if (app.getHud().buttonB != null)
             {
-                UIButtons.controllerBackPressed = true;
+                app.getHud().buttonB.press();
             }
-            else if (buttonCode == controllerMap._LEFT_TRIGGER)
-            {
-                UIButtons.controllerLeftFirePressed = true;
-                UIButtons.controllerFirePressed = true;
+        }
+        else if (buttonCode == controllerMap._RIGHT_TRIGGER)
+        {
+            UIButtons.controllerRightFirePressed = true;
+            UIButtons.controllerFirePressed      = true;
 
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.press();
-                }
-            }
-            else if (buttonCode == controllerMap._RIGHT_TRIGGER)
+            if (app.getHud().buttonB != null)
             {
-                UIButtons.controllerRightFirePressed = true;
-                UIButtons.controllerFirePressed = true;
-
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.press();
-                }
+                app.getHud().buttonB.press();
             }
         }
 
@@ -214,66 +214,63 @@ public class GameController extends AbstractInputManager implements ControllerLi
     @Override
     public boolean buttonUp(Controller controller, int buttonCode)
     {
-        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
+        UIButtons.controllerButtonCode = -1;
+
+        if (buttonCode == controllerMap._BUTTON_A)
         {
-            UIButtons.controllerButtonCode = -1;
+            UIButtons.controllerAPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_B)
+        {
+            UIButtons.controllerBPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_X)
+        {
+            UIButtons.controllerXPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_Y)
+        {
+            UIButtons.controllerYPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_LB)
+        {
+            UIButtons.controllerLBPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_RB)
+        {
+            UIButtons.controllerRBPressed = false;
 
-            if (buttonCode == controllerMap._BUTTON_A)
+            if (app.getHud().buttonA != null)
             {
-                UIButtons.controllerAPressed = false;
+                app.getHud().buttonA.release();
             }
-            else if (buttonCode == controllerMap._BUTTON_B)
-            {
-                UIButtons.controllerBPressed = false;
-            }
-            else if (buttonCode == controllerMap._BUTTON_X)
-            {
-                UIButtons.controllerXPressed = false;
-            }
-            else if (buttonCode == controllerMap._BUTTON_Y)
-            {
-                UIButtons.controllerYPressed = false;
-            }
-            else if (buttonCode == controllerMap._BUTTON_LB)
-            {
-                UIButtons.controllerLBPressed = false;
-            }
-            else if (buttonCode == controllerMap._BUTTON_RB)
-            {
-                UIButtons.controllerRBPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_START)
+        {
+            UIButtons.controllerStartPressed = false;
+        }
+        else if (buttonCode == controllerMap._BUTTON_BACK)
+        {
+            UIButtons.controllerBackPressed = false;
+        }
+        else if (buttonCode == controllerMap._LEFT_TRIGGER)
+        {
+            UIButtons.controllerLeftFirePressed = false;
+            UIButtons.controllerFirePressed     = false;
 
-                if (app.getHud().buttonA != null)
-                {
-                    app.getHud().buttonA.release();
-                }
-            }
-            else if (buttonCode == controllerMap._BUTTON_START)
+            if (app.getHud().buttonB != null)
             {
-                UIButtons.controllerStartPressed = false;
+                app.getHud().buttonB.release();
             }
-            else if (buttonCode == controllerMap._BUTTON_BACK)
-            {
-                UIButtons.controllerBackPressed = false;
-            }
-            else if (buttonCode == controllerMap._LEFT_TRIGGER)
-            {
-                UIButtons.controllerLeftFirePressed = false;
-                UIButtons.controllerFirePressed = false;
+        }
+        else if (buttonCode == controllerMap._RIGHT_TRIGGER)
+        {
+            UIButtons.controllerRightFirePressed = false;
+            UIButtons.controllerFirePressed      = false;
 
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.release();
-                }
-            }
-            else if (buttonCode == controllerMap._RIGHT_TRIGGER)
+            if (app.getHud().buttonB != null)
             {
-                UIButtons.controllerRightFirePressed = false;
-                UIButtons.controllerFirePressed = false;
-
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.release();
-                }
+                app.getHud().buttonB.release();
             }
         }
 
@@ -283,114 +280,111 @@ public class GameController extends AbstractInputManager implements ControllerLi
     @Override
     public boolean axisMoved(Controller controller, int axisCode, float value)
     {
-        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
+        UIButtons.controllerAxisCode  = axisCode;
+        UIButtons.controllerAxisValue = value;
+
+        if (UIButtons.controllerAxisValue > 1.0f)
         {
-            UIButtons.controllerAxisCode = axisCode;
-            UIButtons.controllerAxisValue = value;
+            UIButtons.controllerAxisValue = 1.0f;
+        }
 
-            if (UIButtons.controllerAxisValue > 1.0f)
+        if (UIButtons.controllerAxisValue < -1.0f)
+        {
+            UIButtons.controllerAxisValue = -1.0f;
+        }
+
+        if ((axisCode == controllerMap._AXIS_LEFT_X) || (axisCode == controllerMap._AXIS_RIGHT_X))
+        {
+            _horizontalValue = value;
+
+            if (controllerMap.isInNegativeRange(value))
             {
-                UIButtons.controllerAxisValue = 1.0f;
-            }
+                UIButtons.controllerLeftPressed = true;
+                app.getHud().buttonLeft.press();
 
-            if (UIButtons.controllerAxisValue < -1.0f)
-            {
-                UIButtons.controllerAxisValue = -1.0f;
-            }
-
-            if ((axisCode == controllerMap._AXIS_LEFT_X) || (axisCode == controllerMap._AXIS_RIGHT_X))
-            {
-                _horizontalValue = value;
-
-                if (controllerMap.isInNegativeRange(value))
+                if (app.getHud().buttonLeft != null)
                 {
-                    UIButtons.controllerLeftPressed = true;
                     app.getHud().buttonLeft.press();
-
-                    if (app.getHud().buttonLeft != null)
-                    {
-                        app.getHud().buttonLeft.press();
-                    }
-                }
-                else if (controllerMap.isInPositiveRange(value))
-                {
-                    UIButtons.controllerRightPressed = true;
-                    app.getHud().buttonRight.press();
-
-                    if (app.getHud().buttonRight != null)
-                    {
-                        app.getHud().buttonRight.press();
-                    }
-                }
-                else
-                {
-                    if (app.getHud().buttonLeft != null)
-                    {
-                        app.getHud().buttonLeft.release();
-                        app.getHud().buttonRight.release();
-                    }
-
-                    UIButtons.controllerLeftPressed = false;
-                    UIButtons.controllerRightPressed = false;
-
-                    UIButtons.controllerAxisCode = -1;
-                    UIButtons.controllerAxisValue = 0;
                 }
             }
-            else if ((axisCode == controllerMap._AXIS_LEFT_Y) || (axisCode == controllerMap._AXIS_RIGHT_Y))
+            else if (controllerMap.isInPositiveRange(value))
             {
-                _verticalValue = value;
+                UIButtons.controllerRightPressed = true;
+                app.getHud().buttonRight.press();
 
-                if (controllerMap.isInNegativeRange(value))
+                if (app.getHud().buttonRight != null)
                 {
-                    UIButtons.controllerUpPressed = true;
-                    app.getHud().buttonUp.press();
-
-                    if (app.getHud().buttonUp != null)
-                    {
-                        app.getHud().buttonUp.press();
-                    }
-                }
-                else if (controllerMap.isInPositiveRange(value))
-                {
-                    UIButtons.controllerDownPressed = true;
-                    app.getHud().buttonDown.press();
-
-                    if (app.getHud().buttonDown != null)
-                    {
-                        app.getHud().buttonDown.press();
-                    }
-                }
-                else
-                {
-                    if (app.getHud() != null)
-                    {
-                        if (app.getHud().buttonUp != null)
-                        {
-                            app.getHud().buttonUp.release();
-                            app.getHud().buttonDown.release();
-                        }
-                    }
-
-                    UIButtons.controllerUpPressed = false;
-                    UIButtons.controllerDownPressed = false;
-
-                    UIButtons.controllerAxisCode = -1;
-                    UIButtons.controllerAxisValue = 0;
+                    app.getHud().buttonRight.press();
                 }
             }
             else
             {
-                UIButtons.controllerUpPressed = false;
-                UIButtons.controllerDownPressed = false;
-                UIButtons.controllerLeftPressed = false;
+                if (app.getHud().buttonLeft != null)
+                {
+                    app.getHud().buttonLeft.release();
+                    app.getHud().buttonRight.release();
+                }
+
+                UIButtons.controllerLeftPressed  = false;
                 UIButtons.controllerRightPressed = false;
 
-                app.getHud().releaseDirectionButtons();
-
-                UIButtons.controllerAxisCode = -1;
+                UIButtons.controllerAxisCode  = -1;
                 UIButtons.controllerAxisValue = 0;
             }
+        }
+        else if ((axisCode == controllerMap._AXIS_LEFT_Y) || (axisCode == controllerMap._AXIS_RIGHT_Y))
+        {
+            _verticalValue = value;
+
+            if (controllerMap.isInNegativeRange(value))
+            {
+                UIButtons.controllerUpPressed = true;
+                app.getHud().buttonUp.press();
+
+                if (app.getHud().buttonUp != null)
+                {
+                    app.getHud().buttonUp.press();
+                }
+            }
+            else if (controllerMap.isInPositiveRange(value))
+            {
+                UIButtons.controllerDownPressed = true;
+                app.getHud().buttonDown.press();
+
+                if (app.getHud().buttonDown != null)
+                {
+                    app.getHud().buttonDown.press();
+                }
+            }
+            else
+            {
+                if (app.getHud() != null)
+                {
+                    if (app.getHud().buttonUp != null)
+                    {
+                        app.getHud().buttonUp.release();
+                        app.getHud().buttonDown.release();
+                    }
+                }
+
+                UIButtons.controllerUpPressed   = false;
+                UIButtons.controllerDownPressed = false;
+
+                UIButtons.controllerAxisCode  = -1;
+                UIButtons.controllerAxisValue = 0;
+            }
+        }
+        else
+        {
+            UIButtons.controllerUpPressed    = false;
+            UIButtons.controllerDownPressed  = false;
+            UIButtons.controllerLeftPressed  = false;
+            UIButtons.controllerRightPressed = false;
+
+            app.getHud().releaseDirectionButtons();
+
+            UIButtons.controllerAxisCode  = -1;
+            UIButtons.controllerAxisValue = 0;
         }
 
         return false;
@@ -399,10 +393,7 @@ public class GameController extends AbstractInputManager implements ControllerLi
     @Override
     public boolean povMoved(Controller controller, int povCode, PovDirection value)
     {
-        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
-        {
-            UIButtons.controllerPovDirection = value;
-        }
+        UIButtons.controllerPovDirection = value;
 
         return false;
     }
@@ -436,87 +427,87 @@ public class GameController extends AbstractInputManager implements ControllerLi
 
         if (controller.getName().contains("xbox") && controller.getName().contains("360"))
         {
-            controllerMap._MIN_RANGE            = XBox360Pad._MIN_RANGE;
-            controllerMap._MAX_RANGE            = XBox360Pad._MAX_RANGE;
-            controllerMap._DEAD_ZONE            = XBox360Pad._DEAD_ZONE;
-            controllerMap._AXIS_LEFT_TRIGGER    = XBox360Pad._AXIS_LEFT_TRIGGER;
-            controllerMap._AXIS_RIGHT_TRIGGER   = XBox360Pad._AXIS_RIGHT_TRIGGER;
-            controllerMap._AXIS_LEFT_X          = XBox360Pad._AXIS_LEFT_X;
-            controllerMap._AXIS_LEFT_Y          = XBox360Pad._AXIS_LEFT_Y;
-            controllerMap._AXIS_RIGHT_X         = XBox360Pad._AXIS_RIGHT_X;
-            controllerMap._AXIS_RIGHT_Y         = XBox360Pad._AXIS_RIGHT_Y;
-            controllerMap._BUTTON_A             = XBox360Pad._BUTTON_A;
-            controllerMap._BUTTON_B             = XBox360Pad._BUTTON_B;
-            controllerMap._BUTTON_X             = XBox360Pad._BUTTON_X;
-            controllerMap._BUTTON_Y             = XBox360Pad._BUTTON_Y;
-            controllerMap._BUTTON_START         = XBox360Pad._BUTTON_START;
-            controllerMap._BUTTON_BACK          = XBox360Pad._BUTTON_BACK;
-            controllerMap._BUTTON_L3            = XBox360Pad._BUTTON_L3;
-            controllerMap._BUTTON_R3            = XBox360Pad._BUTTON_R3;
-            controllerMap._BUTTON_LB            = XBox360Pad._BUTTON_LB;
-            controllerMap._BUTTON_RB            = XBox360Pad._BUTTON_RB;
-            controllerMap._BUTTON_DPAD_LEFT     = XBox360Pad._BUTTON_DPAD_LEFT;
-            controllerMap._BUTTON_DPAD_RIGHT    = XBox360Pad._BUTTON_DPAD_RIGHT;
-            controllerMap._BUTTON_DPAD_UP       = XBox360Pad._BUTTON_DPAD_UP;
-            controllerMap._BUTTON_DPAD_DOWN     = XBox360Pad._BUTTON_DPAD_DOWN;
-            controllerMap._LEFT_TRIGGER         = XBox360Pad._LEFT_TRIGGER;
-            controllerMap._RIGHT_TRIGGER        = XBox360Pad._RIGHT_TRIGGER;
+            controllerMap._MIN_RANGE          = XBox360Pad._MIN_RANGE;
+            controllerMap._MAX_RANGE          = XBox360Pad._MAX_RANGE;
+            controllerMap._DEAD_ZONE          = XBox360Pad._DEAD_ZONE;
+            controllerMap._AXIS_LEFT_TRIGGER  = XBox360Pad._AXIS_LEFT_TRIGGER;
+            controllerMap._AXIS_RIGHT_TRIGGER = XBox360Pad._AXIS_RIGHT_TRIGGER;
+            controllerMap._AXIS_LEFT_X        = XBox360Pad._AXIS_LEFT_X;
+            controllerMap._AXIS_LEFT_Y        = XBox360Pad._AXIS_LEFT_Y;
+            controllerMap._AXIS_RIGHT_X       = XBox360Pad._AXIS_RIGHT_X;
+            controllerMap._AXIS_RIGHT_Y       = XBox360Pad._AXIS_RIGHT_Y;
+            controllerMap._BUTTON_A           = XBox360Pad._BUTTON_A;
+            controllerMap._BUTTON_B           = XBox360Pad._BUTTON_B;
+            controllerMap._BUTTON_X           = XBox360Pad._BUTTON_X;
+            controllerMap._BUTTON_Y           = XBox360Pad._BUTTON_Y;
+            controllerMap._BUTTON_START       = XBox360Pad._BUTTON_START;
+            controllerMap._BUTTON_BACK        = XBox360Pad._BUTTON_BACK;
+            controllerMap._BUTTON_L3          = XBox360Pad._BUTTON_L3;
+            controllerMap._BUTTON_R3          = XBox360Pad._BUTTON_R3;
+            controllerMap._BUTTON_LB          = XBox360Pad._BUTTON_LB;
+            controllerMap._BUTTON_RB          = XBox360Pad._BUTTON_RB;
+            controllerMap._BUTTON_DPAD_LEFT   = XBox360Pad._BUTTON_DPAD_LEFT;
+            controllerMap._BUTTON_DPAD_RIGHT  = XBox360Pad._BUTTON_DPAD_RIGHT;
+            controllerMap._BUTTON_DPAD_UP     = XBox360Pad._BUTTON_DPAD_UP;
+            controllerMap._BUTTON_DPAD_DOWN   = XBox360Pad._BUTTON_DPAD_DOWN;
+            controllerMap._LEFT_TRIGGER       = XBox360Pad._LEFT_TRIGGER;
+            controllerMap._RIGHT_TRIGGER      = XBox360Pad._RIGHT_TRIGGER;
         }
         else if ("Usb GamePad".equals(controller.getName()))
         {
-            controllerMap._MIN_RANGE            = USBControllerPad._MIN_RANGE;
-            controllerMap._MAX_RANGE            = USBControllerPad._MAX_RANGE;
-            controllerMap._DEAD_ZONE            = USBControllerPad._DEAD_ZONE;
-            controllerMap._AXIS_LEFT_TRIGGER    = USBControllerPad._AXIS_LEFT_TRIGGER;
-            controllerMap._AXIS_RIGHT_TRIGGER   = USBControllerPad._AXIS_RIGHT_TRIGGER;
-            controllerMap._AXIS_LEFT_X          = USBControllerPad._AXIS_LEFT_X;
-            controllerMap._AXIS_LEFT_Y          = USBControllerPad._AXIS_LEFT_Y;
-            controllerMap._AXIS_RIGHT_X         = USBControllerPad._AXIS_RIGHT_X;
-            controllerMap._AXIS_RIGHT_Y         = USBControllerPad._AXIS_RIGHT_Y;
-            controllerMap._BUTTON_A             = USBControllerPad._BUTTON_A;
-            controllerMap._BUTTON_B             = USBControllerPad._BUTTON_B;
-            controllerMap._BUTTON_X             = USBControllerPad._BUTTON_X;
-            controllerMap._BUTTON_Y             = USBControllerPad._BUTTON_Y;
-            controllerMap._BUTTON_START         = USBControllerPad._BUTTON_START;
-            controllerMap._BUTTON_BACK          = USBControllerPad._BUTTON_BACK;
-            controllerMap._BUTTON_L3            = USBControllerPad._BUTTON_L3;
-            controllerMap._BUTTON_R3            = USBControllerPad._BUTTON_R3;
-            controllerMap._BUTTON_LB            = USBControllerPad._BUTTON_LB;
-            controllerMap._BUTTON_RB            = USBControllerPad._BUTTON_RB;
-            controllerMap._BUTTON_DPAD_LEFT     = USBControllerPad._BUTTON_DPAD_LEFT;
-            controllerMap._BUTTON_DPAD_RIGHT    = USBControllerPad._BUTTON_DPAD_RIGHT;
-            controllerMap._BUTTON_DPAD_UP       = USBControllerPad._BUTTON_DPAD_UP;
-            controllerMap._BUTTON_DPAD_DOWN     = USBControllerPad._BUTTON_DPAD_DOWN;
-            controllerMap._LEFT_TRIGGER         = USBControllerPad._LEFT_TRIGGER;
-            controllerMap._RIGHT_TRIGGER        = USBControllerPad._RIGHT_TRIGGER;
+            controllerMap._MIN_RANGE          = USBControllerPad._MIN_RANGE;
+            controllerMap._MAX_RANGE          = USBControllerPad._MAX_RANGE;
+            controllerMap._DEAD_ZONE          = USBControllerPad._DEAD_ZONE;
+            controllerMap._AXIS_LEFT_TRIGGER  = USBControllerPad._AXIS_LEFT_TRIGGER;
+            controllerMap._AXIS_RIGHT_TRIGGER = USBControllerPad._AXIS_RIGHT_TRIGGER;
+            controllerMap._AXIS_LEFT_X        = USBControllerPad._AXIS_LEFT_X;
+            controllerMap._AXIS_LEFT_Y        = USBControllerPad._AXIS_LEFT_Y;
+            controllerMap._AXIS_RIGHT_X       = USBControllerPad._AXIS_RIGHT_X;
+            controllerMap._AXIS_RIGHT_Y       = USBControllerPad._AXIS_RIGHT_Y;
+            controllerMap._BUTTON_A           = USBControllerPad._BUTTON_A;
+            controllerMap._BUTTON_B           = USBControllerPad._BUTTON_B;
+            controllerMap._BUTTON_X           = USBControllerPad._BUTTON_X;
+            controllerMap._BUTTON_Y           = USBControllerPad._BUTTON_Y;
+            controllerMap._BUTTON_START       = USBControllerPad._BUTTON_START;
+            controllerMap._BUTTON_BACK        = USBControllerPad._BUTTON_BACK;
+            controllerMap._BUTTON_L3          = USBControllerPad._BUTTON_L3;
+            controllerMap._BUTTON_R3          = USBControllerPad._BUTTON_R3;
+            controllerMap._BUTTON_LB          = USBControllerPad._BUTTON_LB;
+            controllerMap._BUTTON_RB          = USBControllerPad._BUTTON_RB;
+            controllerMap._BUTTON_DPAD_LEFT   = USBControllerPad._BUTTON_DPAD_LEFT;
+            controllerMap._BUTTON_DPAD_RIGHT  = USBControllerPad._BUTTON_DPAD_RIGHT;
+            controllerMap._BUTTON_DPAD_UP     = USBControllerPad._BUTTON_DPAD_UP;
+            controllerMap._BUTTON_DPAD_DOWN   = USBControllerPad._BUTTON_DPAD_DOWN;
+            controllerMap._LEFT_TRIGGER       = USBControllerPad._LEFT_TRIGGER;
+            controllerMap._RIGHT_TRIGGER      = USBControllerPad._RIGHT_TRIGGER;
         }
         else if ("PC/PS3/Android".equals(controller.getName()))
         {
-            controllerMap._MIN_RANGE            = Qumox3507Pad._MIN_RANGE;
-            controllerMap._MAX_RANGE            = Qumox3507Pad._MAX_RANGE;
-            controllerMap._DEAD_ZONE            = Qumox3507Pad._DEAD_ZONE;
-            controllerMap._AXIS_LEFT_TRIGGER    = Qumox3507Pad._AXIS_LEFT_TRIGGER;
-            controllerMap._AXIS_RIGHT_TRIGGER   = Qumox3507Pad._AXIS_RIGHT_TRIGGER;
-            controllerMap._AXIS_LEFT_X          = Qumox3507Pad._AXIS_LEFT_X;
-            controllerMap._AXIS_LEFT_Y          = Qumox3507Pad._AXIS_LEFT_Y;
-            controllerMap._AXIS_RIGHT_X         = Qumox3507Pad._AXIS_RIGHT_X;
-            controllerMap._AXIS_RIGHT_Y         = Qumox3507Pad._AXIS_RIGHT_Y;
-            controllerMap._BUTTON_A             = Qumox3507Pad._BUTTON_A;
-            controllerMap._BUTTON_B             = Qumox3507Pad._BUTTON_B;
-            controllerMap._BUTTON_X             = Qumox3507Pad._BUTTON_X;
-            controllerMap._BUTTON_Y             = Qumox3507Pad._BUTTON_Y;
-            controllerMap._BUTTON_START         = Qumox3507Pad._BUTTON_START;
-            controllerMap._BUTTON_BACK          = Qumox3507Pad._BUTTON_BACK;
-            controllerMap._BUTTON_L3            = Qumox3507Pad._BUTTON_L3;
-            controllerMap._BUTTON_R3            = Qumox3507Pad._BUTTON_R3;
-            controllerMap._BUTTON_LB            = Qumox3507Pad._BUTTON_LB;
-            controllerMap._BUTTON_RB            = Qumox3507Pad._BUTTON_RB;
-            controllerMap._BUTTON_DPAD_LEFT     = Qumox3507Pad._BUTTON_DPAD_LEFT;
-            controllerMap._BUTTON_DPAD_RIGHT    = Qumox3507Pad._BUTTON_DPAD_RIGHT;
-            controllerMap._BUTTON_DPAD_UP       = Qumox3507Pad._BUTTON_DPAD_UP;
-            controllerMap._BUTTON_DPAD_DOWN     = Qumox3507Pad._BUTTON_DPAD_DOWN;
-            controllerMap._LEFT_TRIGGER         = Qumox3507Pad._LEFT_TRIGGER;
-            controllerMap._RIGHT_TRIGGER        = Qumox3507Pad._RIGHT_TRIGGER;
+            controllerMap._MIN_RANGE          = Qumox3507Pad._MIN_RANGE;
+            controllerMap._MAX_RANGE          = Qumox3507Pad._MAX_RANGE;
+            controllerMap._DEAD_ZONE          = Qumox3507Pad._DEAD_ZONE;
+            controllerMap._AXIS_LEFT_TRIGGER  = Qumox3507Pad._AXIS_LEFT_TRIGGER;
+            controllerMap._AXIS_RIGHT_TRIGGER = Qumox3507Pad._AXIS_RIGHT_TRIGGER;
+            controllerMap._AXIS_LEFT_X        = Qumox3507Pad._AXIS_LEFT_X;
+            controllerMap._AXIS_LEFT_Y        = Qumox3507Pad._AXIS_LEFT_Y;
+            controllerMap._AXIS_RIGHT_X       = Qumox3507Pad._AXIS_RIGHT_X;
+            controllerMap._AXIS_RIGHT_Y       = Qumox3507Pad._AXIS_RIGHT_Y;
+            controllerMap._BUTTON_A           = Qumox3507Pad._BUTTON_A;
+            controllerMap._BUTTON_B           = Qumox3507Pad._BUTTON_B;
+            controllerMap._BUTTON_X           = Qumox3507Pad._BUTTON_X;
+            controllerMap._BUTTON_Y           = Qumox3507Pad._BUTTON_Y;
+            controllerMap._BUTTON_START       = Qumox3507Pad._BUTTON_START;
+            controllerMap._BUTTON_BACK        = Qumox3507Pad._BUTTON_BACK;
+            controllerMap._BUTTON_L3          = Qumox3507Pad._BUTTON_L3;
+            controllerMap._BUTTON_R3          = Qumox3507Pad._BUTTON_R3;
+            controllerMap._BUTTON_LB          = Qumox3507Pad._BUTTON_LB;
+            controllerMap._BUTTON_RB          = Qumox3507Pad._BUTTON_RB;
+            controllerMap._BUTTON_DPAD_LEFT   = Qumox3507Pad._BUTTON_DPAD_LEFT;
+            controllerMap._BUTTON_DPAD_RIGHT  = Qumox3507Pad._BUTTON_DPAD_RIGHT;
+            controllerMap._BUTTON_DPAD_UP     = Qumox3507Pad._BUTTON_DPAD_UP;
+            controllerMap._BUTTON_DPAD_DOWN   = Qumox3507Pad._BUTTON_DPAD_DOWN;
+            controllerMap._LEFT_TRIGGER       = Qumox3507Pad._LEFT_TRIGGER;
+            controllerMap._RIGHT_TRIGGER      = Qumox3507Pad._RIGHT_TRIGGER;
         }
         else
         {

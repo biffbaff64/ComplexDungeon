@@ -24,7 +24,6 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.objects.ControllerType;
@@ -32,6 +31,9 @@ import com.red7projects.dungeon.screens.ScreenID;
 
 public class InputManager extends AbstractInputManager
 {
+    public static final int _ON_SCREEN_CONTROLLER   = 1;
+    public static final int _EXTERNAL_CONTROLLER    = 2;
+
     private final App app;
 
     public InputManager(App _app)
@@ -42,40 +44,48 @@ public class InputManager extends AbstractInputManager
     }
 
     @Override
-    public void setup()
+    public boolean setup()
     {
         mousePosition      = new Vector2();
         mouseWorldPosition = new Vector2();
         keyboard           = new Keyboard(app);
-        touchScreen        = new TouchScreen(app);
+        gameButtons        = new Array<>();
 
         inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(app.stage);
         inputMultiplexer.addProcessor(this);
 
-        gameButtons = new Array<>();
-
-        if (AppConfig.isDesktopApp() && !AppConfig.isAndroidOnDesktop())
+        if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
         {
-            if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
+            touchScreen     = new TouchScreen(app);
+            virtualJoystick = new VirtualJoystick(app);
+
+            virtualJoystick.create();
+            virtualJoystick.addToStage();
+        }
+
+        if (AppConfig.isDesktopApp() || AppConfig.isAndroidOnDesktop())
+        {
+            gameController = new GameController(app);
+
+            if (!gameController.setup())
             {
-                gameController = new GameController(app);
-                gameController.setup();
+                gameController = null;
             }
 
             Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
-            int xHotspot = pixmap.getWidth() / 2;
-            int yHotspot = pixmap.getHeight() / 2;
-            Cursor cursor   = Gdx.graphics.newCursor(pixmap, xHotspot, yHotspot);
+            Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
             Gdx.graphics.setCursor(cursor);
-            pixmap.dispose();        }
+            pixmap.dispose();
+        }
 
-        UIButtons.createButtons(app);
-        UIButtons.overrideControllerIfNotFitted(app);
+        UIButtons.setup(app);
 
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
         Gdx.input.setCatchKey(Input.Keys.MENU, true);
         Gdx.input.setInputProcessor(inputMultiplexer);
+
+        return true;
     }
 
     @Override
@@ -83,21 +93,27 @@ public class InputManager extends AbstractInputManager
     {
         float xPercent = 0.0f;
 
-        if ((app.getHud() != null) && (app.getHud().getJoystick() != null))
+        if (app.getHud() != null)
         {
             if (AppConfig.controlMode == ControllerType._VIRTUAL)
             {
-                xPercent = app.getHud().getJoystick().getXPercent();
+                if (virtualJoystick != null)
+                {
+                    xPercent = virtualJoystick.getXPercent();
+                }
             }
             else
             {
                 if (AppConfig.controlMode == ControllerType._EXTERNAL)
                 {
-                    xPercent = gameController._horizontalValue;
+                    xPercent = _horizontalValue;
                 }
                 else
                 {
-                    xPercent = 0.0f;
+                    if (AppConfig.controlMode == ControllerType._KEYBOARD)
+                    {
+                        xPercent = _horizontalValue;
+                    }
                 }
             }
         }
@@ -110,17 +126,20 @@ public class InputManager extends AbstractInputManager
     {
         float yPercent = 0.0f;
 
-        if ((app.getHud() != null) && (app.getHud().getJoystick() != null))
+        if (app.getHud() != null)
         {
             if (AppConfig.controlMode == ControllerType._VIRTUAL)
             {
-                yPercent = app.getHud().getJoystick().getYPercent();
+                if (virtualJoystick != null)
+                {
+                    yPercent = virtualJoystick.getYPercent();
+                }
             }
             else
             {
                 if (AppConfig.controlMode == ControllerType._EXTERNAL)
                 {
-                    yPercent = gameController._verticalValue;
+                    yPercent = _verticalValue;
 
                     if ("PC/PS3/Android".equals(AppConfig.usedController))
                     {
@@ -129,7 +148,10 @@ public class InputManager extends AbstractInputManager
                 }
                 else
                 {
-                    yPercent = 0.0f;
+                    if (AppConfig.controlMode == ControllerType._KEYBOARD)
+                    {
+                        yPercent = _verticalValue;
+                    }
                 }
             }
         }

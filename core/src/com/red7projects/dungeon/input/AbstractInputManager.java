@@ -35,10 +35,11 @@ public abstract class AbstractInputManager implements InputProcessor
     public InputMultiplexer  inputMultiplexer;
     public Controller        controller;
     public ControllerMap     controllerMap;
-    public float             _verticalValue;
+    public VirtualJoystick   virtualJoystick;
     public float             _horizontalValue;
+    public float             _verticalValue;
 
-    public abstract void setup();
+    public abstract boolean setup();
 
     public InputMultiplexer getInputMultiplexer()
     {

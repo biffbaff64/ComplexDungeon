@@ -70,7 +70,7 @@ public class RoomManager
     private static final String _ROOM5_NW       = "room5.tmx";            //
     private static final String _ROOM6_SEW      = "room6.tmx";            //
     private static final String _ROOM7_NS       = "room7.tmx";            //
-    private static final String _ROOM8_NW       = "room8.tmx";            //
+    private static final String _ROOM8_NW       = "room8.tmx";            //7
     private static final String _ROOM9_NESW     = "room9.tmx";            //
     private static final String _ROOM10_NSW     = "room10.tmx";           //
     private static final String _ROOM11_NESW    = "room11.tmx";           //

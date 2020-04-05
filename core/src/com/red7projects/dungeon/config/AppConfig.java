@@ -101,8 +101,8 @@ public abstract class AppConfig
         controllersFitted    = false;
         gameButtonsReady     = false;
 
-        controlMode   = ControllerType._VIRTUAL;
-        controllerPos = ControllerPos._LEFT;
+        controlMode   = ControllerType._KEYBOARD;
+        controllerPos = ControllerPos._HIDDEN;
 
         Stats.setup();
 

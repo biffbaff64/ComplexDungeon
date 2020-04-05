@@ -21,16 +21,16 @@ import com.red7projects.dungeon.development.Developer;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
 
-class TouchScreen
+public class TouchScreen
 {
     private final App app;
 
-    TouchScreen(App _app)
+    public TouchScreen(App _app)
     {
         this.app = _app;
     }
 
-    boolean titleScreenTouchDown(int screenX, int screenY)
+    public boolean titleScreenTouchDown(int screenX, int screenY)
     {
         if (UIButtons.fullScreenButton.contains(screenX, screenY))
         {
@@ -42,7 +42,7 @@ class TouchScreen
         return false;
     }
 
-    boolean titleScreenTouchUp(int screenX, int screenY)
+    public boolean titleScreenTouchUp(int screenX, int screenY)
     {
         if (UIButtons.fullScreenButton.contains(screenX, screenY))
         {
@@ -54,7 +54,7 @@ class TouchScreen
         return false;
     }
 
-    boolean gameScreenTouchDown(int screenX, int screenY, int pointer)
+    public boolean gameScreenTouchDown(int screenX, int screenY, int pointer)
     {
         boolean returnFlag = false;
 
@@ -152,7 +152,7 @@ class TouchScreen
         return returnFlag;
     }
 
-    boolean gameScreenTouchUp(int screenX, int screenY)
+    public boolean gameScreenTouchUp(int screenX, int screenY)
     {
         boolean returnFlag = false;
 

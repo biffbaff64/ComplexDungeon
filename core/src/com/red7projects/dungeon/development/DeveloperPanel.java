@@ -38,6 +38,8 @@ import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.input.InputManager;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.logging.Stats;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.ui.BasicPanel;
@@ -53,16 +55,8 @@ public class DeveloperPanel extends BasicPanel
     private int disableEnemiesRow;
     private int glProfilerRow;
     private int glProfilerColumn;
-    private int externalControllerColumn;
-    private int externalControllerRow;
-    private int virtualControllerColumn;
-    private int virtualControllerRow;
-    private int keyboardControllerColumn;
-    private int keyboardControllerRow;
     private int androidOnDesktopColumn;
     private int androidOnDesktopRow;
-    private int player2Column;
-    private int player2Row;
 
     private static class DMEntry
     {
@@ -81,7 +75,6 @@ public class DeveloperPanel extends BasicPanel
     private static final int _TABLE_COLUMNS = 4;
 
     private DMEntry[][]             devMenu;
-    private ButtonGroup<CheckBox>   controllersGroup;
     private Texture                 foreground;
     private CheckBox[][]            buttons;
     private TextField               heading;
@@ -159,24 +152,12 @@ public class DeveloperPanel extends BasicPanel
 
         updatePreferencesOnEntry();
 
-        previousDisableEnemies      = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
-        previousExternalController  = buttons[externalControllerRow][externalControllerColumn].isChecked();
+        previousDisableEnemies = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
 
         if (Developer.isDevMode())
         {
             glProfilerUpdate();
         }
-
-        controllersGroup = new ButtonGroup<>();
-        controllersGroup.add
-        (
-            buttons[virtualControllerRow][virtualControllerColumn],
-            buttons[externalControllerRow][externalControllerColumn],
-            buttons[keyboardControllerRow][keyboardControllerColumn]
-        );
-        controllersGroup.setMinCheckCount(1);
-        controllersGroup.setMaxCheckCount(1);
-        controllersGroup.setUncheckLast(true);
     }
 
     private Table createTable()
@@ -396,24 +377,6 @@ public class DeveloperPanel extends BasicPanel
             app.preferences.prefs.flush();
         }
 
-        if (buttons[virtualControllerRow][virtualControllerColumn].isChecked()
-            && buttons[externalControllerRow][externalControllerColumn].isChecked()
-            && buttons[keyboardControllerRow][keyboardControllerColumn].isChecked())
-        {
-            if (AppConfig.isAndroidApp() || app.preferences.isEnabled(Preferences._ANDROID_ON_DESKTOP))
-            {
-                buttons[virtualControllerRow][virtualControllerColumn].setChecked(true);
-                buttons[externalControllerRow][externalControllerColumn].setChecked(false);
-                buttons[keyboardControllerRow][keyboardControllerColumn].setChecked(false);
-            }
-            else
-            {
-                buttons[virtualControllerRow][virtualControllerColumn].setChecked(false);
-                buttons[externalControllerRow][externalControllerColumn].setChecked(false);
-                buttons[keyboardControllerRow][keyboardControllerColumn].setChecked(true);
-            }
-        }
-
         updatePreferences();
     }
 
@@ -441,16 +404,6 @@ public class DeveloperPanel extends BasicPanel
 
     private void updatePreferencesOnExit()
     {
-        if ((previousExternalController && !buttons[externalControllerRow][externalControllerColumn].isChecked())
-            || (!previousExternalController && buttons[externalControllerRow][externalControllerColumn].isChecked()))
-        {
-            app.inputManager.getGameController().addExternalController();
-
-            previousExternalController = buttons[externalControllerRow][externalControllerColumn].isChecked();
-        }
-
-        app.preferences.prefs.flush();
-
         AppConfig.canDrawButtonBoxes = app.preferences.isEnabled(Preferences._BUTTON_BOXES);
     }
 
@@ -506,17 +459,6 @@ public class DeveloperPanel extends BasicPanel
         app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, app.googleServices.isSignedIn());
         app.preferences.prefs.putBoolean(Preferences._ANDROID_ON_DESKTOP, AppConfig.isDesktopApp());
 
-        if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
-        {
-            app.preferences.prefs.putBoolean(Preferences._ON_SCREEN_CONTROLLER, true);
-            app.preferences.prefs.putBoolean(Preferences._EXTERNAL_CONTROLLER, false);
-        }
-        else
-        {
-            app.preferences.prefs.putBoolean(Preferences._ON_SCREEN_CONTROLLER, false);
-            app.preferences.prefs.putBoolean(Preferences._EXTERNAL_CONTROLLER, true);
-        }
-
         app.preferences.prefs.flush();
 
         for (int row = 0; row < devMenu.length; row++)
@@ -558,27 +500,6 @@ public class DeveloperPanel extends BasicPanel
                     }
                     break;
 
-                    case Preferences._EXTERNAL_CONTROLLER:
-                    {
-                        externalControllerColumn = column;
-                        externalControllerRow = row;
-                    }
-                    break;
-
-                    case Preferences._ON_SCREEN_CONTROLLER:
-                    {
-                        virtualControllerColumn = column;
-                        virtualControllerRow = row;
-                    }
-                    break;
-
-                    case Preferences._KEYBOARD_CONTROL:
-                    {
-                        keyboardControllerColumn = column;
-                        keyboardControllerRow = row;
-                    }
-                    break;
-
                     case Preferences._ANDROID_ON_DESKTOP:
                     {
                         androidOnDesktopColumn = column;
@@ -599,19 +520,19 @@ public class DeveloperPanel extends BasicPanel
             {
                 {
                     new DMEntry("Dev. mode", Preferences._DEV_MODE, false),
-                    new DMEntry("V. Controller", Preferences._ON_SCREEN_CONTROLLER, false),
+                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Turrets", Preferences._TURRETS, true),
                 },
                 {
                     new DMEntry("Invincible", Preferences._GOD_MODE, false),
-                    new DMEntry("E. Controller", Preferences._EXTERNAL_CONTROLLER, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Force Prefs Reset", Preferences._FORCE_PREFS_RESET, false),
                     new DMEntry("Bouncer", Preferences._BOUNCER, true),
                 },
                 {
                     new DMEntry("", "", false),
-                    new DMEntry("Keyboard", Preferences._KEYBOARD_CONTROL, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Game Trace Output", Preferences._SHOW_TRACE, false),
                     new DMEntry("Soldiers", Preferences._SOLDIER, true),
                 },

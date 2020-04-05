@@ -85,7 +85,6 @@ public class Preferences implements Disposable
     public static final String _EXTERNAL_CONTROLLER     = "game controllers";  // External Game Controller devices
     public static final String _KEYBOARD_CONTROL        = "keyboard control";  // Keyboard control only
     public static final String _SHOW_GAME_BUTTONS       = "show game buttons"; // Enables/Disables showing of on-screen buttons and joystick
-    public static final String _CONTROLLER_POS          = "controller pos";    //
 
     //
     // The Hero...
@@ -200,7 +199,6 @@ public class Preferences implements Disposable
         prefs.putBoolean(_EXTERNAL_CONTROLLER,  _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_KEYBOARD_CONTROL,     _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_SHOW_GAME_BUTTONS,    _PREF_TRUE_DEFAULT);
-        prefs.putInteger(_CONTROLLER_POS,       Movement._DIRECTION_LEFT);
 
         //----------- Achievements -----------
 

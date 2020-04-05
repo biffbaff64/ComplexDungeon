@@ -29,6 +29,7 @@ import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.development.DebugRenderer;
 import com.red7projects.dungeon.development.Developer;
 import com.red7projects.dungeon.development.DeveloperPanel;
 import com.red7projects.dungeon.game.App;
@@ -37,7 +38,7 @@ import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GfxUtils;
-import com.red7projects.dungeon.input.Joystick;
+import com.red7projects.dungeon.input.VirtualJoystick;
 import com.red7projects.dungeon.input.buttons.ButtonID;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.buttons.Switch;
@@ -119,7 +120,6 @@ public class HeadsUpDisplay implements Disposable
     private ProgressBar     healthBar;
     private ProgressBar     livesBar;
     private Texture         scorePanel;
-    private Joystick        joystick;
     private BitmapFont      hudFont;
     private BitmapFont      bigFont;
     private BitmapFont      midFont;
@@ -128,15 +128,13 @@ public class HeadsUpDisplay implements Disposable
     private TextureRegion[] compassTexture;
     private DeveloperPanel  developerPanel;
 
-    private       float   originX;
-    private       float   originY;
-    private       boolean showHUDControls;
-    private final App     app;
+    private float   originX;
+    private float   originY;
+    private boolean showHUDControls;
+    private App     app;
 
     public HeadsUpDisplay(App _app)
     {
-        super();
-
         Trace.__FILE_FUNC();
 
         this.app = _app;
@@ -151,7 +149,6 @@ public class HeadsUpDisplay implements Disposable
         app.baseRenderer.hudGameCamera.camera.zoom = 0;
         app.baseRenderer.hudZoom.setZoomValue(0);
 
-        createVirtualJoystick();
         createHUDButtons();
 
         scorePanel                = app.assets.loadSingleAsset(GameAssets._HUD_PANEL_ASSET, Texture.class);
@@ -203,15 +200,16 @@ public class HeadsUpDisplay implements Disposable
     {
         switch (hudStateID)
         {
+            //
+            // This state can be used for visually setting up the HUD,
+            // or anything else done before HUD update.
             case _STATE_PANEL_START:
             {
-                //
-                // This state can be used for visually setting up the HUD,
-                // or anything else done before HUD update.
                 if (app.baseRenderer.hudGameCamera.camera.zoom >= app.baseRenderer.hudGameCamera.getDefaultZoom())
                 {
                     app.baseRenderer.hudGameCamera.camera.zoom = app.baseRenderer.hudGameCamera.getDefaultZoom();
-                    hudStateID                                 = StateID._STATE_PANEL_UPDATE;
+
+                    hudStateID = StateID._STATE_PANEL_UPDATE;
                 }
                 else
                 {
@@ -242,15 +240,9 @@ public class HeadsUpDisplay implements Disposable
 
             case _STATE_DEVELOPER_PANEL:
             {
-                if (Developer.isDevMode())
+                if (!AppConfig.developerPanelActive)
                 {
-                    if (!AppConfig.developerPanelActive)
-                    {
-                        if (developerPanel != null)
-                        {
-                            developerPanel = null;
-                        }
-                    }
+                    developerPanel = null;
                 }
             }
             break;
@@ -467,8 +459,6 @@ public class HeadsUpDisplay implements Disposable
     {
         if (Developer.isDevMode())
         {
-            midFont.setColor(Color.WHITE);
-
             StringBuilder sb = new StringBuilder("DEV MODE");
 
             if (Developer.isGodMode())
@@ -482,14 +472,8 @@ public class HeadsUpDisplay implements Disposable
             sb.append("   :   ").append("mysteryChestsAvailable: ").append(app.getRoomSystem().activeRoom.mysteryChestsAvailable);
             sb.append("   :   MOUSE: ").append(app.inputManager.mouseWorldPosition.toString());
 
-            debugLine(midFont, sb.toString(), 400, 50);
+            DebugRenderer.drawText(sb.toString(), originX + 400, originY + 50);
         }
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private void debugLine(final BitmapFont _font, final String _message, final int _x, final int _y)
-    {
-        _font.draw(app.spriteBatch, _message, originX + _x, originY + _y);
     }
 
     private void drawControls(OrthographicCamera camera)
@@ -506,20 +490,20 @@ public class HeadsUpDisplay implements Disposable
                     buttonY.draw(app.spriteBatch, camera);
                 }
 
-                if (joystick != null)
+                if (app.inputManager.virtualJoystick != null)
                 {
-                    joystick.getTouchpad().setPosition
+                    app.inputManager.virtualJoystick.getTouchpad().setPosition
                         (
                             originX + displayPos[_JOYSTICK][_X1],
                             originY + displayPos[_JOYSTICK][_Y]
                         );
 
-                    joystick.getTouchpad().setBounds
+                    app.inputManager.virtualJoystick.getTouchpad().setBounds
                         (
                             originX + displayPos[_JOYSTICK][_X1],
                             originY + displayPos[_JOYSTICK][_Y],
-                            joystick.getTouchpad().getWidth(),
-                            joystick.getTouchpad().getHeight()
+                            app.inputManager.virtualJoystick.getTouchpad().getWidth(),
+                            app.inputManager.virtualJoystick.getTouchpad().getHeight()
                         );
                 }
 
@@ -560,9 +544,9 @@ public class HeadsUpDisplay implements Disposable
             buttonX.isDrawable = true;
             buttonY.isDrawable = true;
 
-            if (joystick != null)
+            if (app.inputManager.virtualJoystick != null)
             {
-                joystick.show();
+                app.inputManager.virtualJoystick.show();
             }
         }
 
@@ -580,42 +564,18 @@ public class HeadsUpDisplay implements Disposable
             buttonX.isDrawable = false;
             buttonY.isDrawable = false;
 
-            if (joystick != null)
+            if (app.inputManager.virtualJoystick != null)
             {
-                joystick.hide();
+                app.inputManager.virtualJoystick.hide();
             }
         }
 
         buttonPause.isDrawable = false;
     }
 
-    public void fireTouchpadEvent(InputEvent.Type eventType)
-    {
-        if (joystick != null)
-        {
-            InputEvent event = new InputEvent();
-            event.setType(eventType);
-
-            joystick.getTouchpad().fire(event);
-        }
-    }
-
-    public void setJoystickKnobPosition(float x, float y)
-    {
-        if (joystick != null)
-        {
-            joystick.getTouchpad().setKnobPosition(x, y);
-        }
-    }
-
     public void setStateID(final StateID id)
     {
         this.hudStateID = id;
-    }
-
-    public Joystick getJoystick()
-    {
-        return joystick;
     }
 
     public ProgressBar getHealthBar()
@@ -645,17 +605,6 @@ public class HeadsUpDisplay implements Disposable
         if (buttonRight != null)
         {
             buttonRight.release();
-        }
-    }
-
-    private void createVirtualJoystick()
-    {
-        if (app.preferences.isEnabled(Preferences._ON_SCREEN_CONTROLLER))
-        {
-            Trace.__FILE_FUNC();
-
-            joystick = new Joystick(app);
-            joystick.create();
         }
     }
 
@@ -772,7 +721,7 @@ public class HeadsUpDisplay implements Disposable
         pausePanel.dispose();
         pausePanel = null;
 
-        joystick.remove();
+        app.inputManager.virtualJoystick.remove();
 
         app.assets.unloadAsset(GameAssets._HUD_PANEL_ASSET);
 

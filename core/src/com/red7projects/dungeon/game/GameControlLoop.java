@@ -191,11 +191,6 @@ public class GameControlLoop extends AbstractControlLoop
                 }
             }
 
-            if (app.preferences.isEnabled(Preferences._ON_SCREEN_CONTROLLER))
-            {
-                app.getHud().getJoystick().addToStage();
-            }
-
             app.getHud().showControls();
 
             scr().firstTime = false;

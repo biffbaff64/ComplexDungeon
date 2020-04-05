@@ -313,19 +313,19 @@ public class OptionsPage implements UIPage
         Sfx.inst().setMusicVolume((int) musicSlider.getValue());
         Sfx.inst().setFXVolume((int) fxSlider.getValue());
 
-        app.preferences.prefs.putBoolean(Preferences._ON_SCREEN_CONTROLLER, (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop()));
-        app.preferences.prefs.putBoolean(Preferences._SHOW_GAME_BUTTONS, (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop()));
-        app.preferences.prefs.putBoolean(Preferences._EXTERNAL_CONTROLLER, AppConfig.isDesktopApp());
+//        app.preferences.prefs.putBoolean(Preferences._ON_SCREEN_CONTROLLER, (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop()));
+//        app.preferences.prefs.putBoolean(Preferences._SHOW_GAME_BUTTONS, (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop()));
+//        app.preferences.prefs.putBoolean(Preferences._EXTERNAL_CONTROLLER, AppConfig.isDesktopApp());
 
         app.preferences.prefs.flush();
 
-        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
-        {
-            if (!AppConfig.controllersFitted && (app.inputManager.getGameController() != null))
-            {
-                app.inputManager.getGameController().setup();
-            }
-        }
+//        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
+//        {
+//            if (!AppConfig.controllersFitted && (app.inputManager.getGameController() != null))
+//            {
+//                app.inputManager.getGameController().setup();
+//            }
+//        }
     }
 
     private void updateSettingsOnEntry()

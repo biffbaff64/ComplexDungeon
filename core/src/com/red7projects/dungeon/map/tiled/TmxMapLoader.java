@@ -31,6 +31,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.XmlReader.Element;
+import com.red7projects.dungeon.logging.Trace;
 
 /**
  * @brief synchronous loader for TMX maps created with the Tiled tool
@@ -129,14 +130,20 @@ public class TmxMapLoader extends BaseTmxMapLoader<TmxMapLoader.Parameters>
         for (Element tileset : root.getChildrenByName("tileset"))
         {
             String source = tileset.getAttribute("source", null);
+
             if (source != null)
             {
                 FileHandle tsxFile = getRelativeFileHandle(tmxFile, source);
+
                 tileset = xml.parse(tsxFile);
                 Element imageElement = tileset.getChildByName("image");
+
                 if (imageElement != null)
                 {
                     String     imageSource = tileset.getChildByName("image").getAttribute("source");
+
+                    Trace.__FILE_FUNC("imageSource: " + imageSource);
+
                     FileHandle image       = getRelativeFileHandle(tsxFile, imageSource);
                     fileHandles.add(image);
                 }

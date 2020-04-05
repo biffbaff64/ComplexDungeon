@@ -26,7 +26,7 @@ import com.red7projects.dungeon.physics.Movement;
 
 @SuppressWarnings({"FieldCanBeLocal", "WeakerAccess"})
 //@formatter:off
-public class Joystick
+public class VirtualJoystick
 {
     private static final float PAD_X        = 25;
     private static final float PAD_Y        = 25;
@@ -43,7 +43,7 @@ public class Joystick
     private Drawable                touchKnob;
     private final App               app;
 
-    public Joystick(App _app)
+    public VirtualJoystick(App _app)
     {
         this.app = _app;
     }

@@ -52,7 +52,7 @@ public class UIButtons
     public static boolean       controllerLeftPressed;
     public static boolean       controllerRightPressed;
 
-    public static void createButtons(App app)
+    public static void setup(App app)
     {
         fullScreenButton = new Switch(0, 0, Gfx._VIEW_WIDTH, Gfx._VIEW_HEIGHT, app);
 
@@ -70,21 +70,6 @@ public class UIButtons
 
         controllerButtonCode        = -1;
         systemBackButton            = new Switch(app);
-    }
-
-    /**
-     *  No external game controller has been detected so
-     *  enforce the use of the on-screen virtual controller.
-     */
-    public static void overrideControllerIfNotFitted(App app)
-    {
-        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER) && !AppConfig.controllersFitted)
-        {
-            app.preferences.prefs.putBoolean(Preferences._EXTERNAL_CONTROLLER, false);
-            app.preferences.prefs.putBoolean(Preferences._ON_SCREEN_CONTROLLER, true);
-            app.preferences.prefs.putBoolean(Preferences._SHOW_GAME_BUTTONS, true);
-            app.preferences.prefs.flush();
-        }
     }
 
     public static void releaseAll()

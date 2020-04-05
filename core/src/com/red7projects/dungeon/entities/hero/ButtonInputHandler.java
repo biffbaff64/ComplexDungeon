@@ -83,14 +83,14 @@ public class ButtonInputHandler implements Disposable
             }
         }
 
-        if (app.getHud().getJoystick() != null)
+        if (app.inputManager.virtualJoystick != null)
         {
             //
             // Updates button presses depending
             // upon joystick knob position
-            app.getHud().getJoystick().update();
+            app.inputManager.virtualJoystick.update();
 
-            setDirection(app.getHud().getJoystick().lastRegisteredDirection);
+            setDirection(app.inputManager.virtualJoystick.lastRegisteredDirection);
         }
 
         boolean directionButtonPressed = false;

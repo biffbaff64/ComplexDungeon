@@ -28,8 +28,8 @@ public class InputUtils
 
     public static Vector2 getJoystickVector(App app)
     {
-        float xPerc = app.getHud().getJoystick().getTouchpad().getKnobPercentX();
-        float yPerc = app.getHud().getJoystick().getTouchpad().getKnobPercentY();
+        float xPerc = app.inputManager.virtualJoystick.getTouchpad().getKnobPercentX();
+        float yPerc = app.inputManager.virtualJoystick.getTouchpad().getKnobPercentY();
 
         Vector2 vector2 = new Vector2(xPerc, yPerc);
 
