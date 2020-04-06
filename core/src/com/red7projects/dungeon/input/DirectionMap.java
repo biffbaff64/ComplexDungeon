@@ -19,9 +19,9 @@ package com.red7projects.dungeon.input;
 import com.red7projects.dungeon.physics.DirectionValue;
 import com.red7projects.dungeon.physics.Movement;
 
-public class JoystickMap
+public abstract class DirectionMap
 {
-    public final DirectionValue[] map =
+    public static final DirectionValue[] map =
         {
 /* 00 */    new DirectionValue(Movement._DIRECTION_STILL,   Movement. _DIRECTION_UP,   Movement.Dir._UP),
 /* 01 */    new DirectionValue(Movement._DIRECTION_STILL,   Movement. _DIRECTION_UP,   Movement.Dir._UP),

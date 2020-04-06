@@ -143,7 +143,7 @@ public class MainPlayer extends GdxSprite
     {
         Trace.__FILE_FUNC();
 
-        direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN);
+        direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_STILL);
         lookingAt.set(direction);
 
         maxMoveSpeed.set(_PLAYER_X_SPEED, _PLAYER_Y_SPEED);
@@ -571,6 +571,8 @@ public class MainPlayer extends GdxSprite
     {
         if (getSpriteAction() != newAction)
         {
+            Trace.__FILE_FUNC(newAction);
+
             previousAction = getSpriteAction();
 
             switch (newAction)

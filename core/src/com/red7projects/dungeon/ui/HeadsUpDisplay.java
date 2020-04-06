@@ -463,16 +463,28 @@ public class HeadsUpDisplay implements Disposable
 
             if (Developer.isGodMode())
             {
-                sb.append("   :   GOD MODE");
+                sb.append(" : GOD MODE");
             }
 
-            sb.append("   :   FPS: ").append(Gdx.graphics.getFramesPerSecond());
-            sb.append("   :   ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
-            sb.append("   :   ").append(app.getRoomSystem().getActiveRoomName());
-            sb.append("   :   ").append("mysteryChestsAvailable: ").append(app.getRoomSystem().activeRoom.mysteryChestsAvailable);
-            sb.append("   :   MOUSE: ").append(app.inputManager.mouseWorldPosition.toString());
+            sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
+            sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
+            sb.append(" : ").append(app.getRoomSystem().getActiveRoomName());
+            sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
 
-            DebugRenderer.drawText(sb.toString(), originX + 400, originY + 50);
+            DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
+
+            DebugRenderer.drawText("UP   :" + buttonUp.isPressed, originX + 50, originY + 1130);
+            DebugRenderer.drawText("DOWN :" + buttonDown.isPressed, originX + 50, originY + 1100);
+            DebugRenderer.drawText("LEFT :" + buttonLeft.isPressed, originX + 50, originY + 1070);
+            DebugRenderer.drawText("RIGHT:" + buttonRight.isPressed, originX + 50, originY + 1040);
+            DebugRenderer.drawText("A    :" + buttonA.isPressed, originX + 50, originY + 1010);
+            DebugRenderer.drawText("B    :" + buttonB.isPressed, originX + 50, originY + 980);
+            DebugRenderer.drawText("X    :" + buttonX.isPressed, originX + 50, originY + 950);
+            DebugRenderer.drawText("Y    :" + buttonY.isPressed, originX + 50, originY + 920);
+
+            DebugRenderer.drawText("DIR  :" + app.getPlayer().direction.toString(), originX + 50, originY + 860);
+            DebugRenderer.drawText("LRDIR:" + app.inputManager.lastRegisteredDirection.name(), originX + 50, originY + 830);
+            DebugRenderer.drawText("SPEED:" + app.getPlayer().speed.toString(), originX + 50, originY + 800);
         }
     }
 

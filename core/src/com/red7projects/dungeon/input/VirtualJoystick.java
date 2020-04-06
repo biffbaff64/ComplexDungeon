@@ -33,9 +33,6 @@ public class VirtualJoystick
     private static final float PAD_WIDTH    = 320;
     private static final float PAD_HEIGHT   = 320;
 
-    public Movement.Dir lastRegisteredDirection;
-    public Movement.Dir currentRegisteredDirection;
-
     private Touchpad                touchpad;
     private Touchpad.TouchpadStyle  touchpadStyle;
     private Skin                    touchpadSkin;
@@ -68,8 +65,8 @@ public class VirtualJoystick
             touchpad.setBounds(PAD_X, PAD_Y, PAD_WIDTH, PAD_HEIGHT);
             touchpad.setResetOnTouchUp(true);
 
-            currentRegisteredDirection = evaluateJoypadDirection();
-            lastRegisteredDirection = currentRegisteredDirection;
+            app.inputManager.currentRegisteredDirection = evaluateJoypadDirection();
+            app.inputManager.lastRegisteredDirection = app.inputManager.currentRegisteredDirection;
         }
     }
 
@@ -80,70 +77,67 @@ public class VirtualJoystick
 
     public void update()
     {
-        if (app.preferences.isEnabled(Preferences._ON_SCREEN_CONTROLLER))
+        app.getHud().releaseDirectionButtons();
+
+        switch (evaluateJoypadDirection())
         {
-            app.getHud().releaseDirectionButtons();
-
-            switch (evaluateJoypadDirection())
+            case _UP:
             {
-                case _UP:
-                {
-                    app.getHud().buttonUp.press();
-                }
-                break;
-
-                case _DOWN:
-                {
-                    app.getHud().buttonDown.press();
-                }
-                break;
-
-                case _LEFT:
-                {
-                    app.getHud().buttonLeft.press();
-                }
-                break;
-
-                case _RIGHT:
-                {
-                    app.getHud().buttonRight.press();
-                }
-                break;
-
-                case _UP_LEFT:
-                {
-                    app.getHud().buttonUp.press();
-                    app.getHud().buttonLeft.press();
-                }
-                break;
-
-                case _UP_RIGHT:
-                {
-                    app.getHud().buttonUp.press();
-                    app.getHud().buttonRight.press();
-                }
-                break;
-
-                case _DOWN_LEFT:
-                {
-                    app.getHud().buttonDown.press();
-                    app.getHud().buttonLeft.press();
-                }
-                break;
-
-                case _DOWN_RIGHT:
-                {
-                    app.getHud().buttonDown.press();
-                    app.getHud().buttonRight.press();
-                }
-                break;
-
-                case _STILL:
-                default:
-                {
-                }
-                break;
+                app.getHud().buttonUp.press();
             }
+            break;
+
+            case _DOWN:
+            {
+                app.getHud().buttonDown.press();
+            }
+            break;
+
+            case _LEFT:
+            {
+                app.getHud().buttonLeft.press();
+            }
+            break;
+
+            case _RIGHT:
+            {
+                app.getHud().buttonRight.press();
+            }
+            break;
+
+            case _UP_LEFT:
+            {
+                app.getHud().buttonUp.press();
+                app.getHud().buttonLeft.press();
+            }
+            break;
+
+            case _UP_RIGHT:
+            {
+                app.getHud().buttonUp.press();
+                app.getHud().buttonRight.press();
+            }
+            break;
+
+            case _DOWN_LEFT:
+            {
+                app.getHud().buttonDown.press();
+                app.getHud().buttonLeft.press();
+            }
+            break;
+
+            case _DOWN_RIGHT:
+            {
+                app.getHud().buttonDown.press();
+                app.getHud().buttonRight.press();
+            }
+            break;
+
+            case _STILL:
+            default:
+            {
+            }
+            break;
         }
     }
 
@@ -201,11 +195,9 @@ public class VirtualJoystick
         // so modify so that the result is now clockwise.
         int angle = Math.abs((int) (InputUtils.getJoystickAngle(app) - 360));
 
-        JoystickMap joystickMap = new JoystickMap();
+        joyDir = DirectionMap.map[angle / 10].translated;
 
-        joyDir = joystickMap.map[angle / 10].translated;
-
-        lastRegisteredDirection = joyDir;
+        app.inputManager.lastRegisteredDirection = joyDir;
 
         return joyDir;
     }

@@ -130,13 +130,18 @@ public abstract class AppConfig
         isUsingAshleyECS    = app.preferences.isEnabled((Preferences._USING_ASHLEY_ECS));
 
         Trace.divider();
-        Trace.dbg("isUsingAshleyECS   :" + isUsingAshleyECS);
-        Trace.dbg("isUsingBOX2DPhysics:" + isUsingBOX2DPhysics);
+        Trace.dbg("ANdroid App         : " + isAndroidApp());
+        Trace.dbg("Desktop App         : " + isDesktopApp());
+        Trace.dbg("Android On Desktop? : " + isAndroidOnDesktop());
         Trace.divider();
-        Trace.dbg("_DESKTOP_WIDTH     : " + Gfx._DESKTOP_WIDTH);
-        Trace.dbg("_DESKTOP_HEIGHT    : " + Gfx._DESKTOP_HEIGHT);
-        Trace.dbg("_VIEW_WIDTH        : " + Gfx._VIEW_WIDTH);
-        Trace.dbg("_VIEW_HEIGHT       : " + Gfx._VIEW_HEIGHT);
+        Trace.dbg("isUsingAshleyECS    : " + isUsingAshleyECS);
+        Trace.dbg("isUsingBOX2DPhysics : " + isUsingBOX2DPhysics);
+        Trace.divider();
+        Trace.dbg("_DESKTOP_WIDTH      : " + Gfx._DESKTOP_WIDTH);
+        Trace.dbg("_DESKTOP_HEIGHT     : " + Gfx._DESKTOP_HEIGHT);
+        Trace.dbg("_VIEW_WIDTH         : " + Gfx._VIEW_WIDTH);
+        Trace.dbg("_VIEW_HEIGHT        : " + Gfx._VIEW_HEIGHT);
+        Trace.divider();
     }
 
     public static void freshInstallCheck()

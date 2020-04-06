@@ -17,9 +17,10 @@
 package com.red7projects.dungeon.entities.hero;
 
 import com.badlogic.gdx.utils.Disposable;
+import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.input.JoystickMap;
+import com.red7projects.dungeon.input.DirectionMap;
 import com.red7projects.dungeon.physics.Movement;
 
 public class ButtonInputHandler implements Disposable
@@ -83,14 +84,26 @@ public class ButtonInputHandler implements Disposable
             }
         }
 
-        if (app.inputManager.virtualJoystick != null)
+        if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
         {
-            //
-            // Updates button presses depending
-            // upon joystick knob position
-            app.inputManager.virtualJoystick.update();
+            if (app.inputManager.virtualJoystick != null)
+            {
+                //
+                // Updates button presses depending
+                // upon joystick knob position
+                app.inputManager.virtualJoystick.update();
 
-            setDirection(app.inputManager.virtualJoystick.lastRegisteredDirection);
+                setDirection(app.inputManager.lastRegisteredDirection);
+            }
+        }
+        else
+        {
+            if (AppConfig.isDesktopApp())
+            {
+                app.inputManager.keyboard.update();
+
+                setDirection(app.inputManager.lastRegisteredDirection);
+            }
         }
 
         boolean directionButtonPressed = false;
@@ -204,18 +217,16 @@ public class ButtonInputHandler implements Disposable
         }
     }
 
-    private void setDirection(Movement.Dir joyDir)
+    private void setDirection(Movement.Dir _direction)
     {
-        JoystickMap joystickMap = new JoystickMap();
-
-        for (int i=0; i<joystickMap.map.length; i++)
+        for (int i = 0; i< DirectionMap.map.length; i++)
         {
-            if (joystickMap.map[i].translated == joyDir)
+            if (DirectionMap.map[i].translated == _direction)
             {
                 app.getPlayer().direction.set
                     (
-                        joystickMap.map[i].dirX,
-                        joystickMap.map[i].dirY
+                        DirectionMap.map[i].dirX,
+                        DirectionMap.map[i].dirY
                     );
             }
         }

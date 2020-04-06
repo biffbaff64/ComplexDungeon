@@ -18,7 +18,6 @@ package com.red7projects.dungeon.game;
 
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.screens.MainGameScreen;
