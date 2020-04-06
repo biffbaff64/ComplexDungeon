@@ -32,7 +32,10 @@ import com.red7projects.dungeon.google.AdsController;
 import com.red7projects.dungeon.google.PlayServices;
 import com.red7projects.dungeon.graphics.CameraUtils;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
+import com.red7projects.dungeon.input.GameController;
 import com.red7projects.dungeon.input.InputManager;
+import com.red7projects.dungeon.input.TouchScreen;
+import com.red7projects.dungeon.input.VirtualJoystick;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.map.*;
 import com.red7projects.dungeon.physics.CollisionUtils;
@@ -58,7 +61,6 @@ public abstract class App extends com.badlogic.gdx.Game
     public ScreenID       currentScreenID;
     public BaseRenderer   baseRenderer;
     public GameListener   gameListener;
-    public InputManager   inputManager;
     public WorldModel     worldModel;
     public Preferences    preferences;
     public CameraUtils    cameraUtils;
@@ -68,6 +70,8 @@ public abstract class App extends com.badlogic.gdx.Game
     public GameProgress   gameProgress;
     public AdsController  adsController;
     public PlayServices   googleServices;
+
+    public InputManager    inputManager;
 
     //
     // Globals to be made available when MainGameScreen is active.
@@ -82,7 +86,6 @@ public abstract class App extends com.badlogic.gdx.Game
     public MapData              mapData;
     public CollisionUtils       collisionUtils;
     public PathUtils            pathUtils;
-    public DeveloperPanel       developerPanel;
     public HighScoreUtils       highScoreUtils;
     public EntityManager        entityManager;
     public EntityUtils          entityUtils;

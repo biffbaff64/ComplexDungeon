@@ -16,42 +16,11 @@
 
 package com.red7projects.dungeon.input;
 
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.controllers.Controller;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
-import com.red7projects.dungeon.input.buttons.GameButton;
-import com.red7projects.dungeon.input.objects.ControllerMap;
-
-public abstract class AbstractInputManager implements InputProcessor
+public interface AbstractInputManager
 {
-    public Array<GameButton> gameButtons;
-    public Vector2           mousePosition;
-    public Vector2           mouseWorldPosition;
-    public Keyboard          keyboard;
-    public TouchScreen       touchScreen;
-    public GameController    gameController;
-    public InputMultiplexer  inputMultiplexer;
-    public Controller        controller;
-    public ControllerMap     controllerMap;
-    public VirtualJoystick   virtualJoystick;
-    public float             _horizontalValue;
-    public float             _verticalValue;
+    boolean setup();
 
-    public abstract boolean setup();
+    float getControllerXPercentage();
 
-    public InputMultiplexer getInputMultiplexer()
-    {
-        return inputMultiplexer;
-    }
-
-    public GameController getGameController()
-    {
-        return gameController;
-    }
-
-    public abstract float getControllerXPercentage();
-
-    public abstract float getControllerYPercentage();
+    float getControllerYPercentage();
 }

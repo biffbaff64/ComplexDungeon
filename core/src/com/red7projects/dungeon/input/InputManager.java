@@ -19,6 +19,8 @@ package com.red7projects.dungeon.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector2;
@@ -26,15 +28,26 @@ import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.development.Developer;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.input.buttons.GameButton;
+import com.red7projects.dungeon.input.objects.ControllerMap;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.screens.ScreenID;
 
-public class InputManager extends AbstractInputManager
+@SuppressWarnings("WeakerAccess")
+public class InputManager implements AbstractInputManager, InputProcessor
 {
-    public static final int _ON_SCREEN_CONTROLLER   = 1;
-    public static final int _EXTERNAL_CONTROLLER    = 2;
+    public Array<GameButton> gameButtons;
+    public Vector2           mousePosition;
+    public Vector2           mouseWorldPosition;
+    public Keyboard          keyboard;
+    public VirtualJoystick   virtualJoystick;
+    public TouchScreen       touchScreen;
+    public GameController    gameController;
+    public InputMultiplexer  inputMultiplexer;
+    public float             _horizontalValue;
+    public float             _verticalValue;
 
-    private final App app;
+    protected App app;
 
     public InputManager(App _app)
     {
@@ -46,11 +59,6 @@ public class InputManager extends AbstractInputManager
     @Override
     public boolean setup()
     {
-        mousePosition      = new Vector2();
-        mouseWorldPosition = new Vector2();
-        keyboard           = new Keyboard(app);
-        gameButtons        = new Array<>();
-
         inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(app.stage);
         inputMultiplexer.addProcessor(this);
@@ -64,20 +72,29 @@ public class InputManager extends AbstractInputManager
             virtualJoystick.addToStage();
         }
 
-        if (AppConfig.isDesktopApp() || AppConfig.isAndroidOnDesktop())
+        if (AppConfig.isDesktopApp())
         {
             gameController = new GameController(app);
 
             if (!gameController.setup())
             {
                 gameController = null;
-            }
 
-            Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
-            Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
-            Gdx.graphics.setCursor(cursor);
-            pixmap.dispose();
+                Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
+                Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
+                Gdx.graphics.setCursor(cursor);
+                pixmap.dispose();
+            }
         }
+
+        if (AppConfig.isDesktopApp() || AppConfig.isAndroidOnDesktop())
+        {
+            mousePosition      = new Vector2();
+            mouseWorldPosition = new Vector2();
+            keyboard           = new Keyboard(app);
+        }
+
+        gameButtons = new Array<>();
 
         UIButtons.setup(app);
 
@@ -104,17 +121,9 @@ public class InputManager extends AbstractInputManager
             }
             else
             {
-                if (AppConfig.controlMode == ControllerType._EXTERNAL)
-                {
-                    xPercent = _horizontalValue;
-                }
-                else
-                {
-                    if (AppConfig.controlMode == ControllerType._KEYBOARD)
-                    {
-                        xPercent = _horizontalValue;
-                    }
-                }
+                //
+                // This applies to controllerTypes _EXTERNAL and _KEYBOARD
+                xPercent = _horizontalValue;
             }
         }
 
@@ -277,7 +286,7 @@ public class InputManager extends AbstractInputManager
             if (app.getHud().buttonUp.isPressed)
             {
                 if ((app.getHud().buttonUp.pointer == pointer)
-                    && !app.getHud().buttonUp.contains(touchX, touchY))
+                        && !app.getHud().buttonUp.contains(touchX, touchY))
                 {
                     app.getHud().buttonUp.release();
                     returnFlag = true;
@@ -285,21 +294,21 @@ public class InputManager extends AbstractInputManager
             }
 
             if ((app.getHud().buttonB.pointer == pointer)
-                && !app.getHud().buttonB.contains(touchX, touchY))
+                    && !app.getHud().buttonB.contains(touchX, touchY))
             {
                 app.getHud().buttonB.release();
                 returnFlag = true;
             }
 
             if ((app.getHud().buttonLeft.pointer == pointer)
-                && !app.getHud().buttonLeft.contains(touchX, touchY))
+                    && !app.getHud().buttonLeft.contains(touchX, touchY))
             {
                 app.getHud().buttonLeft.release();
                 returnFlag = true;
             }
 
             if ((app.getHud().buttonRight.pointer == pointer)
-                && !app.getHud().buttonRight.contains(touchX, touchY))
+                    && !app.getHud().buttonRight.contains(touchX, touchY))
             {
                 app.getHud().buttonRight.release();
                 returnFlag = true;

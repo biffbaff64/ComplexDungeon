@@ -90,7 +90,7 @@ public class DeveloperTests extends BasicPanel
         {
             try
             {
-                controllerName.setText(app.inputManager.getGameController().getController().getName());
+                controllerName.setText(app.inputManager.gameController.getController().getName());
                 buttonPress.setText("" + UIButtons.controllerButtonCode);
                 axisCode.setText("" + UIButtons.controllerAxisCode);
                 axisValue.setText("    /    " + UIButtons.controllerAxisValue);
