@@ -16,6 +16,7 @@
 
 package com.red7projects.dungeon.input;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.controllers.PovDirection;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
@@ -28,8 +29,25 @@ import com.red7projects.dungeon.input.buttons.Switch;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class UIButtons
 {
-    public static Switch        fullScreenButton;
-    public static Switch        systemBackButton;
+    // =================================================================
+    // DEFAULT Keyboard options.
+    //
+    public static final int defaultValueUp          = Input.Keys.W;
+    public static final int defaultValueDown        = Input.Keys.S;
+    public static final int defaultValueLeft        = Input.Keys.A;
+    public static final int defaultValueRight       = Input.Keys.D;
+    public static final int defaultValueA           = Input.Keys.NUMPAD_2;
+    public static final int defaultValueB           = Input.Keys.NUMPAD_6;
+    public static final int defaultValueX           = Input.Keys.NUMPAD_1;
+    public static final int defaultValueY           = Input.Keys.NUMPAD_5;
+    public static final int defaultValueHudInfo     = Input.Keys.F9;
+    public static final int defaultValuePause       = Input.Keys.ESCAPE;
+    public static final int defaultValueSettings    = Input.Keys.F10;
+
+    // =================================================================
+    //
+    public static Switch fullScreenButton;
+    public static Switch systemBackButton;
 
     public static int           controllerButtonCode;
     public static int           controllerAxisCode;

@@ -412,8 +412,8 @@ public class GdxSprite implements GameSprite, Linker, Disposable
 
         if (descriptor._SIZE != null)
         {
-            frameWidth  = descriptor._SIZE.x;
-            frameHeight = descriptor._SIZE.y;
+            frameWidth  = descriptor._SIZE.getX();
+            frameHeight = descriptor._SIZE.getY();
         }
         else
         {

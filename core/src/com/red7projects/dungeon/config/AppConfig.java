@@ -30,18 +30,6 @@ import com.red7projects.dungeon.logging.Trace;
 
 public abstract class AppConfig
 {
-    // =================================================================
-    // DEFAULT Keyboard options.
-    //
-    public static final int defaultValueUp          = Input.Keys.W;
-    public static final int defaultValueDown        = Input.Keys.S;
-    public static final int defaultValueLeft        = Input.Keys.A;
-    public static final int defaultValueRight       = Input.Keys.D;
-    public static final int defaultValueAttack      = Input.Keys.SPACE;
-    public static final int defaultValueAction      = Input.Keys.O;
-    public static final int defaultValueHudInfo     = Input.Keys.P;
-    public static final int defaultValuePause       = Input.Keys.ESCAPE;
-    public static final int defaultValueSettings    = Input.Keys.S;
 
     // =================================================================
     //
@@ -101,8 +89,8 @@ public abstract class AppConfig
         controllersFitted    = false;
         gameButtonsReady     = false;
 
-        controlMode   = ControllerType._KEYBOARD;
-        controllerPos = ControllerPos._HIDDEN;
+        controlMode   = ControllerType._VIRTUAL;
+        controllerPos = ControllerPos._LEFT;
 
         Stats.setup();
 

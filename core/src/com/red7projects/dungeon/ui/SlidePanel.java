@@ -103,8 +103,8 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
         _app.spriteBatch.draw
             (
                 textureRegion,
-                (_app.mapData.mapPosition.x + position.x),
-                (_app.mapData.mapPosition.y + position.y)
+                (_app.mapData.mapPosition.getX() + position.x),
+                (_app.mapData.mapPosition.getY() + position.y)
             );
     }
 

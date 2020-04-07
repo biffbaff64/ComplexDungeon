@@ -121,7 +121,7 @@ public class WorldRenderer implements GameScreenRenderer
             (
                 background,
                 xOrigin, yOrigin,
-                bgPosition.x, bgPosition.y,
+                bgPosition.getX(), bgPosition.getY(),
                 Gfx._VIEW_WIDTH, Gfx._VIEW_HEIGHT
             );
     }

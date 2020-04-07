@@ -133,7 +133,7 @@ public class InputManager implements AbstractInputManager
                     {
                         keyboard.translateXPercent();
 
-                        xPercent = _horizontalValue;
+                        xPercent = app.getPlayer().direction.getX();
                     }
                 }
             }
@@ -173,7 +173,7 @@ public class InputManager implements AbstractInputManager
                     {
                         keyboard.translateYPercent();
 
-                        yPercent = _verticalValue;
+                        yPercent = app.getPlayer().direction.getY();
                     }
                 }
             }

@@ -152,8 +152,8 @@ public class RoomManager
         {
             SimpleVec2 roomPos = findRoom(roomList.get(roomIndex).toLowerCase());
 
-            startRow    = roomPos.x;
-            startColumn = roomPos.y;
+            startRow    = roomPos.getX();
+            startColumn = roomPos.getY();
         }
 
         setRoom(startRow, startColumn, _START_POSITION);

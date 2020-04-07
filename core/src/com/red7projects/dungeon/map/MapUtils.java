@@ -81,8 +81,8 @@ public class MapUtils
             (
                 x * Gfx.getTileWidth(),
                 y * Gfx.getTileHeight(),
-                GameAssets.getAssetSize(_gid).x,
-                GameAssets.getAssetSize(_gid).y
+                GameAssets.getAssetSize(_gid).getX(),
+                GameAssets.getAssetSize(_gid).getY()
             );
 
         for(Rectangle rectangle : app.mapData.enemyFreeZones)

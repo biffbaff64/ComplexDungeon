@@ -112,7 +112,7 @@ public class StormDemon extends BaseEnemy
                 (
                     GameAssets._STORM_DEMON_WARNING_ASSET,
                     5000,
-                    (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._STORM_DEMON_WARNING).x) / 2,
+                    (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._STORM_DEMON_WARNING).getX()) / 2,
                     100
                 );
 

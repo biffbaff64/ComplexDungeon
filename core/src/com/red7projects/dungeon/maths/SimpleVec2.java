@@ -20,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class SimpleVec2
 {
-    public int x;
-    public int y;
+    protected int x;
+    protected int y;
 
     public SimpleVec2()
     {

@@ -50,8 +50,8 @@ public class FrontEndBuilder
                 frontEndScroll,
                 0,
                 0,
-                sourcePos.x,
-                sourcePos.y,
+                sourcePos.getX(),
+                sourcePos.getY(),
                 Gfx._VIEW_WIDTH,
                 Gfx._VIEW_HEIGHT
             );

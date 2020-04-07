@@ -97,8 +97,8 @@ public class DecorationsManager extends GenericEntityManager
                             asset,
                             entityDef.frames,
                             (entityDef.frames > 1) ? Animation.PlayMode.LOOP : Animation.PlayMode.NORMAL,
-                            coord.x,
-                            coord.y
+                            coord.getX(),
+                            coord.getY()
                         );
 
                     entityDescriptor._SIZE = GameAssets.getAssetSize(graphicID);

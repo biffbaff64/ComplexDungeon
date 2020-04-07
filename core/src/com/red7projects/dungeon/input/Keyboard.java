@@ -41,65 +41,30 @@ public class Keyboard implements InputProcessor
 
     public void update()
     {
-        switch (evaluateKeyboardDirection())
+        if (app.getHud().buttonUp.isPressed)
         {
-            case _UP:
-            {
-                app.getHud().buttonUp.press();
-            }
-            break;
+            app.getPlayer().direction.setY(Movement._DIRECTION_UP);
+        }
+        else if (app.getHud().buttonDown.isPressed)
+        {
+            app.getPlayer().direction.setY(Movement._DIRECTION_DOWN);
+        }
+        else
+        {
+            app.getPlayer().direction.setY(Movement._DIRECTION_STILL);
+        }
 
-            case _DOWN:
-            {
-                app.getHud().buttonDown.press();
-            }
-            break;
-
-            case _LEFT:
-            {
-                app.getHud().buttonLeft.press();
-            }
-            break;
-
-            case _RIGHT:
-            {
-                app.getHud().buttonRight.press();
-            }
-            break;
-
-            case _UP_LEFT:
-            {
-                app.getHud().buttonUp.press();
-                app.getHud().buttonLeft.press();
-            }
-            break;
-
-            case _UP_RIGHT:
-            {
-                app.getHud().buttonUp.press();
-                app.getHud().buttonRight.press();
-            }
-            break;
-
-            case _DOWN_LEFT:
-            {
-                app.getHud().buttonDown.press();
-                app.getHud().buttonLeft.press();
-            }
-            break;
-
-            case _DOWN_RIGHT:
-            {
-                app.getHud().buttonDown.press();
-                app.getHud().buttonRight.press();
-            }
-            break;
-
-            case _STILL:
-            default:
-            {
-            }
-            break;
+        if (app.getHud().buttonLeft.isPressed)
+        {
+            app.getPlayer().direction.setX(Movement._DIRECTION_LEFT);
+        }
+        else if (app.getHud().buttonRight.isPressed)
+        {
+            app.getPlayer().direction.setX(Movement._DIRECTION_RIGHT);
+        }
+        else
+        {
+            app.getPlayer().direction.setX(Movement._DIRECTION_STILL);
         }
     }
 
@@ -131,32 +96,32 @@ public class Keyboard implements InputProcessor
     {
         boolean returnFlag;
 
-        if (keycode == AppConfig.defaultValueLeft)
+        if (keycode == UIButtons.defaultValueLeft)
         {
             app.getHud().buttonLeft.press();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueRight)
+        else if (keycode == UIButtons.defaultValueRight)
         {
             app.getHud().buttonRight.press();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueUp)
+        else if (keycode == UIButtons.defaultValueUp)
         {
             app.getHud().buttonUp.press();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueDown)
+        else if (keycode == UIButtons.defaultValueDown)
         {
             app.getHud().buttonDown.press();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueAttack)
+        else if (keycode == UIButtons.defaultValueB)
         {
             app.getHud().buttonB.press();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueAction)
+        else if (keycode == UIButtons.defaultValueA)
         {
             app.getHud().buttonA.press();
             returnFlag = true;
@@ -232,32 +197,32 @@ public class Keyboard implements InputProcessor
     {
         boolean returnFlag;
 
-        if (keycode == AppConfig.defaultValueLeft)
+        if (keycode == UIButtons.defaultValueLeft)
         {
             app.getHud().buttonLeft.release();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueRight)
+        else if (keycode == UIButtons.defaultValueRight)
         {
             app.getHud().buttonRight.release();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueUp)
+        else if (keycode == UIButtons.defaultValueUp)
         {
             app.getHud().buttonUp.release();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueDown)
+        else if (keycode == UIButtons.defaultValueDown)
         {
             app.getHud().buttonDown.release();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueAttack)
+        else if (keycode == UIButtons.defaultValueB)
         {
             app.getHud().buttonB.release();
             returnFlag = true;
         }
-        else if (keycode == AppConfig.defaultValueAction)
+        else if (keycode == UIButtons.defaultValueA)
         {
             app.getHud().buttonA.release();
             returnFlag = true;
@@ -329,8 +294,8 @@ public class Keyboard implements InputProcessor
         Vector2 newPoints = new Vector2(touchX, touchY);
         newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
 
-        int screenX = (int) (newPoints.x - app.mapData.mapPosition.x);
-        int screenY = (int) (newPoints.y - app.mapData.mapPosition.y);
+        int screenX = (int) (newPoints.x - app.mapData.mapPosition.getX());
+        int screenY = (int) (newPoints.y - app.mapData.mapPosition.getY());
 
         boolean returnFlag = false;
 
@@ -352,8 +317,8 @@ public class Keyboard implements InputProcessor
         Vector2 newPoints = new Vector2(touchX, touchY);
         newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
 
-        int screenX = (int) (newPoints.x - app.mapData.mapPosition.x);
-        int screenY = (int) (newPoints.y - app.mapData.mapPosition.y);
+        int screenX = (int) (newPoints.x - app.mapData.mapPosition.getX());
+        int screenY = (int) (newPoints.y - app.mapData.mapPosition.getY());
 
         boolean returnFlag = false;
 
@@ -381,8 +346,8 @@ public class Keyboard implements InputProcessor
         Vector2 newPoints = new Vector2(screenX, screenY);
         newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
 
-        int touchX = (int) (newPoints.x - app.mapData.mapPosition.x);
-        int touchY = (int) (newPoints.y - app.mapData.mapPosition.y);
+        int touchX = (int) (newPoints.x - app.mapData.mapPosition.getX());
+        int touchY = (int) (newPoints.y - app.mapData.mapPosition.getY());
 
         boolean returnFlag = false;
 
@@ -443,8 +408,8 @@ public class Keyboard implements InputProcessor
 
             app.inputManager.mouseWorldPosition.set(newPoints.x, newPoints.y);
 
-            int touchX = (int) (newPoints.x - app.mapData.mapPosition.x);
-            int touchY = (int) (newPoints.y - app.mapData.mapPosition.y);
+            int touchX = (int) (newPoints.x - app.mapData.mapPosition.getX());
+            int touchY = (int) (newPoints.y - app.mapData.mapPosition.getY());
 
             app.inputManager.mousePosition.set(touchX, touchY);
         }
@@ -494,7 +459,7 @@ public class Keyboard implements InputProcessor
 
         for (DirectionValue dv : DirectionMap.map)
         {
-            if ((dv.dirX == direction.x) && (dv.dirY == direction.y))
+            if ((dv.dirX == direction.getX()) && (dv.dirY == direction.getY()))
             {
                 keyDir = dv.translated;
             }
@@ -507,33 +472,11 @@ public class Keyboard implements InputProcessor
 
     public void translateXPercent()
     {
-        if (app.getHud().buttonLeft.isPressed)
-        {
-            app.inputManager._horizontalValue = Movement._DIRECTION_LEFT;
-        }
-        else if (app.getHud().buttonRight.isPressed)
-        {
-            app.inputManager._horizontalValue = Movement._DIRECTION_RIGHT;
-        }
-        else
-        {
-            app.inputManager._horizontalValue = Movement._DIRECTION_STILL;
-        }
+        app.inputManager._horizontalValue = app.getPlayer().direction.getX();
     }
 
     public void translateYPercent()
     {
-        if (app.getHud().buttonUp.isPressed)
-        {
-            app.inputManager._verticalValue = Movement._DIRECTION_UP;
-        }
-        else if (app.getHud().buttonDown.isPressed)
-        {
-            app.inputManager._verticalValue = Movement._DIRECTION_DOWN;
-        }
-        else
-        {
-            app.inputManager._verticalValue = Movement._DIRECTION_STILL;
-        }
+        app.inputManager._verticalValue = app.getPlayer().direction.getY();
     }
 }

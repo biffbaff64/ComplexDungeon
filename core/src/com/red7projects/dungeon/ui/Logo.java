@@ -91,7 +91,7 @@ public class Logo extends Actor implements Disposable
         batch.draw
             (
                 textureRegion,
-                logoPosition.x, logoPosition.y,
+                logoPosition.getX(), logoPosition.getY(),
                 textureRegion.getRegionWidth() / 2f, textureRegion.getRegionHeight() / 2f,
                 textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),
                 logoScale,

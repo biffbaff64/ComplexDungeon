@@ -131,8 +131,8 @@ public class BaseRenderer implements Disposable
         {
             backgroundCamera.setPosition
                 (
-                    (float) (app.mapData.mapPosition.x + (Gfx._VIEW_WIDTH / 2)),
-                    (float) (app.mapData.mapPosition.y + (Gfx._VIEW_HEIGHT / 2)),
+                    (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
+                    (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
                     0,
                     backgroundZoom.getZoomValue(),
                     false
@@ -147,8 +147,8 @@ public class BaseRenderer implements Disposable
         {
             tiledGameCamera.lerpTo
                 (
-                    (float) (app.mapData.mapPosition.x + (Gfx._VIEW_WIDTH / 2)),
-                    (float) (app.mapData.mapPosition.y + (Gfx._VIEW_HEIGHT / 2)),
+                    (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
+                    (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
                     0,
                     Gfx._LERP_SPEED,
                     gameZoom.getZoomValue(),
@@ -172,8 +172,8 @@ public class BaseRenderer implements Disposable
             {
                 spriteGameCamera.lerpTo
                     (
-                        (float) (app.mapData.mapPosition.x + (Gfx._VIEW_WIDTH / 2)),
-                        (float) (app.mapData.mapPosition.y + (Gfx._VIEW_HEIGHT / 2)),
+                        (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
+                        (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
                         0,
                         Gfx._LERP_SPEED,
                         gameZoom.getZoomValue(),
@@ -184,8 +184,8 @@ public class BaseRenderer implements Disposable
             {
                 spriteGameCamera.setPosition
                     (
-                        (float) app.mapData.mapPosition.x,
-                        (float) app.mapData.mapPosition.y,
+                        (float) app.mapData.mapPosition.getX(),
+                        (float) app.mapData.mapPosition.getY(),
                         0,
                         gameZoom.getZoomValue(),
                         false
@@ -207,8 +207,8 @@ public class BaseRenderer implements Disposable
         {
             hudGameCamera.setPosition
                 (
-                    (float) (app.mapData.mapPosition.x + (Gfx._VIEW_WIDTH / 2)),
-                    (float) (app.mapData.mapPosition.y + (Gfx._VIEW_HEIGHT / 2)),
+                    (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
+                    (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
                     0,
                     hudZoom.getZoomValue(),
                     false

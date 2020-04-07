@@ -47,27 +47,24 @@ public class VirtualJoystick
 
     public void create()
     {
-        if (app.preferences.isEnabled(Preferences._ON_SCREEN_CONTROLLER))
-        {
-            touchpadSkin = new Skin();
-            touchpadSkin.add("background", new Texture("data/packedimages/input/touch_background.png"));
-            touchpadSkin.add("ball", new Texture("data/packedimages/input/joystick_ball.png"));
+        touchpadSkin = new Skin();
+        touchpadSkin.add("background", new Texture("data/packedimages/input/touch_background.png"));
+        touchpadSkin.add("ball", new Texture("data/packedimages/input/joystick_ball.png"));
 
-            touchpadStyle = new Touchpad.TouchpadStyle();
+        touchpadStyle = new Touchpad.TouchpadStyle();
 
-            touchBackground = touchpadSkin.getDrawable("background");
-            touchKnob = touchpadSkin.getDrawable("ball");
+        touchBackground = touchpadSkin.getDrawable("background");
+        touchKnob = touchpadSkin.getDrawable("ball");
 
-            touchpadStyle.background = touchBackground;
-            touchpadStyle.knob = touchKnob;
+        touchpadStyle.background = touchBackground;
+        touchpadStyle.knob = touchKnob;
 
-            touchpad = new Touchpad(1, touchpadStyle);
-            touchpad.setBounds(PAD_X, PAD_Y, PAD_WIDTH, PAD_HEIGHT);
-            touchpad.setResetOnTouchUp(true);
+        touchpad = new Touchpad(1, touchpadStyle);
+        touchpad.setBounds(PAD_X, PAD_Y, PAD_WIDTH, PAD_HEIGHT);
+        touchpad.setResetOnTouchUp(true);
 
-            app.inputManager.currentRegisteredDirection = evaluateJoypadDirection();
-            app.inputManager.lastRegisteredDirection = app.inputManager.currentRegisteredDirection;
-        }
+//        app.inputManager.currentRegisteredDirection = evaluateJoypadDirection();
+//        app.inputManager.lastRegisteredDirection = app.inputManager.currentRegisteredDirection;
     }
 
     public void addToStage()
@@ -159,26 +156,12 @@ public class VirtualJoystick
 
     public float getXPercent()
     {
-        float percent = 0;
-
-        if (app.preferences.isEnabled(Preferences._ON_SCREEN_CONTROLLER))
-        {
-            percent = touchpad.getKnobPercentX();
-        }
-
-        return percent;
+        return touchpad.getKnobPercentX();
     }
 
     public float getYPercent()
     {
-        float percent = 0;
-
-        if (app.preferences.isEnabled(Preferences._ON_SCREEN_CONTROLLER))
-        {
-            percent = touchpad.getKnobPercentY();
-        }
-
-        return percent;
+        return touchpad.getKnobPercentY();
     }
 
     public Touchpad getTouchpad()

@@ -164,7 +164,7 @@ public class StairsPath
 
         if (spriteObject.direction.getX() == Movement._DIRECTION_CUSTOM)
         {
-            spriteObject.direction.setX(directionReset.x);
+            spriteObject.direction.setX(directionReset.getX());
         }
 
         pathIndex++;

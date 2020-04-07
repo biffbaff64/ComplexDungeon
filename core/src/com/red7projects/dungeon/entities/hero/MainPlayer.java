@@ -272,6 +272,7 @@ public class MainPlayer extends GdxSprite
             }
             break;
 
+            case _CASTING:
             case _FIGHTING:
             {
                 if (animation.isAnimationFinished(elapsedAnimTime))
@@ -352,6 +353,20 @@ public class MainPlayer extends GdxSprite
                 new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._FIGHT_DOWN_ASSET),
             };
 
+        final DirectionAnim[] castAnims =
+            {
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP, GameAssets._CAST_UP_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL, GameAssets._CAST_LEFT_ASSET),
+
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP, GameAssets._CAST_UP_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._CAST_RIGHT_ASSET),
+
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP, GameAssets._CAST_UP_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_ASSET),
+            };
+
         switch (getSpriteAction())
         {
             case _RUNNING:
@@ -404,6 +419,31 @@ public class MainPlayer extends GdxSprite
                 descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(asset);
 
                 setAnimation(descriptor, 1.0f);
+            }
+            break;
+
+            case _CASTING:
+            {
+                EntityDescriptor descriptor = new EntityDescriptor();
+
+                descriptor._FRAMES   = GameAssets._PLAYER_CAST_FRAMES;
+                descriptor._PLAYMODE = Animation.PlayMode.LOOP;
+                descriptor._SIZE     = GameAssets.getAssetSize(GraphicID.G_PLAYER_CAST);
+
+                String asset = castAnims[0].animation;
+
+                for (DirectionAnim directionAnim : castAnims)
+                {
+                    if ((lookingAt.getX() == directionAnim.dirX)
+                        && (lookingAt.getY() == directionAnim.dirY))
+                    {
+                        asset = directionAnim.animation;
+                    }
+                }
+
+                descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(asset);
+
+                setAnimation(descriptor, 0.5f);
             }
             break;
 
@@ -559,7 +599,7 @@ public class MainPlayer extends GdxSprite
                     (
                         GameAssets._KEY_NEEDED_MSG_ASSET,
                         5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._KEY_NEEDED).x) / 2,
+                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._KEY_NEEDED).getX()) / 2,
                         300
                     );
             }
@@ -571,8 +611,6 @@ public class MainPlayer extends GdxSprite
     {
         if (getSpriteAction() != newAction)
         {
-            Trace.__FILE_FUNC(newAction);
-
             previousAction = getSpriteAction();
 
             switch (newAction)

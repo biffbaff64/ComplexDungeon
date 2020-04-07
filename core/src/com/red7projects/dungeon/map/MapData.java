@@ -162,8 +162,8 @@ public class MapData implements Disposable
 
         innerViewportBox.set
             (
-                app.mapData.mapPosition.x,
-                app.mapData.mapPosition.y,
+                app.mapData.mapPosition.getX(),
+                app.mapData.mapPosition.getY(),
                 Gfx._VIEW_WIDTH,
                 Gfx._VIEW_HEIGHT
             );
@@ -206,7 +206,7 @@ public class MapData implements Disposable
         minScrollX = 0;
         minScrollY = 0;
 
-        previousMapPosition.set(mapPosition.x, mapPosition.y);
+        previousMapPosition.set(mapPosition.getX(), mapPosition.getY());
 
         mapBox.set(0, 0, (Gfx.mapWidth - Gfx._VIEW_WIDTH), (Gfx.mapHeight - Gfx._VIEW_HEIGHT));
     }

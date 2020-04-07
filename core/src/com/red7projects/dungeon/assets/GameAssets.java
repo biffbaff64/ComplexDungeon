@@ -27,45 +27,41 @@ public class GameAssets
 {
     //
     // MainPlayer assets
-    public static final String _RUN_UP_ASSET   = "walk_up";
-    public static final String _IDLE_UP_ASSET  = "stand_up";
-    public static final String _FIGHT_UP_ASSET = "fight_up";
-    public static final String _CAST_UP_ASSET  = "cast_up";
-
-    public static final String _RUN_DOWN_ASSET   = "walk_down";
-    public static final String _IDLE_DOWN_ASSET  = "stand_down";
-    public static final String _FIGHT_DOWN_ASSET = "fight_down";
-    public static final String _CAST_DOWN_ASSET  = "cast_down";
-
-    public static final String _RUN_LEFT_ASSET   = "walk_left";
-    public static final String _IDLE_LEFT_ASSET  = "stand_left";
-    public static final String _FIGHT_LEFT_ASSET = "fight_left";
-    public static final String _CAST_LEFT_ASSET  = "cast_left";
-
-    public static final String _RUN_RIGHT_ASSET   = "walk_right";
-    public static final String _IDLE_RIGHT_ASSET  = "stand_right";
-    public static final String _FIGHT_RIGHT_ASSET = "fight_right";
-    public static final String _CAST_RIGHT_ASSET  = "cast_right";
-
-    public static final String _RUN_UP_LEFT_ASSET   = "walk_up_left";
-    public static final String _IDLE_UP_LEFT_ASSET  = "stand_up_left";
-    public static final String _FIGHT_UP_LEFT_ASSET = "fight_up_left";
-    public static final String _CAST_UP_LEFT_ASSET  = "cast_up_left";
-
-    public static final String _RUN_DOWN_LEFT_ASSET   = "walk_down_left";
-    public static final String _IDLE_DOWN_LEFT_ASSET  = "stand_down_left";
-    public static final String _FIGHT_DOWN_LEFT_ASSET = "fight_down_left";
-    public static final String _CAST_DOWN_LEFT_ASSET  = "cast_down_left";
-
+    public static final String _RUN_UP_ASSET         = "walk_up";
+    public static final String _RUN_DOWN_ASSET       = "walk_down";
+    public static final String _RUN_LEFT_ASSET       = "walk_left";
+    public static final String _RUN_RIGHT_ASSET      = "walk_right";
+    public static final String _RUN_UP_LEFT_ASSET    = "walk_up_left";
+    public static final String _RUN_DOWN_LEFT_ASSET  = "walk_down_left";
     public static final String _RUN_UP_RIGHT_ASSET   = "walk_up_right";
-    public static final String _IDLE_UP_RIGHT_ASSET  = "stand_up_right";
-    public static final String _FIGHT_UP_RIGHT_ASSET = "fight_up_right";
-    public static final String _CAST_UP_RIGHT_ASSET  = "cast_up_right";
+    public static final String _RUN_DOWN_RIGHT_ASSET = "walk_down_right";
 
-    public static final String _RUN_DOWN_RIGHT_ASSET   = "walk_down_right";
-    public static final String _IDLE_DOWN_RIGHT_ASSET  = "stand_down_right";
+    public static final String _IDLE_UP_ASSET         = "stand_up";
+    public static final String _IDLE_DOWN_ASSET       = "stand_down";
+    public static final String _IDLE_LEFT_ASSET       = "stand_left";
+    public static final String _IDLE_RIGHT_ASSET      = "stand_right";
+    public static final String _IDLE_UP_LEFT_ASSET    = "stand_up_left";
+    public static final String _IDLE_DOWN_LEFT_ASSET  = "stand_down_left";
+    public static final String _IDLE_UP_RIGHT_ASSET   = "stand_up_right";
+    public static final String _IDLE_DOWN_RIGHT_ASSET = "stand_down_right";
+
+    public static final String _FIGHT_UP_ASSET         = "fight_up";
+    public static final String _FIGHT_DOWN_ASSET       = "fight_down";
+    public static final String _FIGHT_LEFT_ASSET       = "fight_left";
+    public static final String _FIGHT_RIGHT_ASSET      = "fight_right";
+    public static final String _FIGHT_UP_LEFT_ASSET    = "fight_up_left";
+    public static final String _FIGHT_DOWN_LEFT_ASSET  = "fight_down_left";
+    public static final String _FIGHT_UP_RIGHT_ASSET   = "fight_up_right";
     public static final String _FIGHT_DOWN_RIGHT_ASSET = "fight_down_right";
-    public static final String _CAST_DOWN_RIGHT_ASSET  = "cast_down_right";
+
+    public static final String _CAST_UP_ASSET         = "cast_up";
+    public static final String _CAST_DOWN_ASSET       = "cast_down";
+    public static final String _CAST_LEFT_ASSET       = "cast_left";
+    public static final String _CAST_RIGHT_ASSET      = "cast_right";
+    public static final String _CAST_UP_LEFT_ASSET    = "cast_up_left";
+    public static final String _CAST_DOWN_LEFT_ASSET  = "cast_down_left";
+    public static final String _CAST_UP_RIGHT_ASSET   = "cast_up_right";
+    public static final String _CAST_DOWN_RIGHT_ASSET = "cast_down_right";
 
     public static final String _DYING_ASSET        = "ljm_death";
     public static final String _PLAYER_SPAWN_ASSET = "player_appear";
@@ -133,28 +129,28 @@ public class GameAssets
     public static final String _SOLDIER_IDLE_DOWN_LEFT_ASSET  = "soldier_stand_down";
     public static final String _SOLDIER_IDLE_DOWN_RIGHT_ASSET = "soldier_stand_down";
 
-    public static final int _SOLDIER_IDLE_FRAMES = 7;
+    public static final int _SOLDIER_IDLE_FRAMES  = 7;
     public static final int _SOLDIER_RUN_FRAMES   = 10;
     public static final int _SOLDIER_FIGHT_FRAMES = 6;
 
     //
     // Pickups
-    public static final String _BLUE_GEMS_ASSET             = "gems_blue";
-    public static final String _GREEN_GEMS_ASSET            = "gems";
-    public static final String _GOLD_GEMS_ASSET             = "gems_gold";
-    public static final String _RED_GEMS_ASSET              = "gems_red";
-    public static final String _COIN_ASSET                  = "coin";
-    public static final String _KEY_ASSET                   = "keys";
-    public static final String _APPLE_ASSET                 = "apple";
-    public static final String _BOOK_ASSET                  = "book";
-    public static final String _CAKE_ASSET                  = "cake";
-    public static final String _CHERRIES_ASSET              = "cherries";
-    public static final String _GRAPES_ASSET                = "grapes";
-    public static final String _SILVER_ARMOUR_ASSET         = "silver_armour";
-    public static final String _GOLD_ARMOUR_ASSET           = "gold_armour";
-    public static final String _GOLD_KEY_ASSET              = "key_held_panel";
-    public static final String _SHIELD_ASSET                = "shield";
-    public static final String _DOCUMENT_ASSET              = "paper";
+    public static final String _BLUE_GEMS_ASSET     = "gems_blue";
+    public static final String _GREEN_GEMS_ASSET    = "gems";
+    public static final String _GOLD_GEMS_ASSET     = "gems_gold";
+    public static final String _RED_GEMS_ASSET      = "gems_red";
+    public static final String _COIN_ASSET          = "coin";
+    public static final String _KEY_ASSET           = "keys";
+    public static final String _APPLE_ASSET         = "apple";
+    public static final String _BOOK_ASSET          = "book";
+    public static final String _CAKE_ASSET          = "cake";
+    public static final String _CHERRIES_ASSET      = "cherries";
+    public static final String _GRAPES_ASSET        = "grapes";
+    public static final String _SILVER_ARMOUR_ASSET = "silver_armour";
+    public static final String _GOLD_ARMOUR_ASSET   = "gold_armour";
+    public static final String _GOLD_KEY_ASSET      = "key_held_panel";
+    public static final String _SHIELD_ASSET        = "shield";
+    public static final String _DOCUMENT_ASSET      = "paper";
 
     //
     // Interactive Items
@@ -172,46 +168,46 @@ public class GameAssets
 
     //
     // Decorations
-    public static final String _ALCOVE_TORCH_ASSET          = "alcove_torch";
-    public static final String _POT_1_ASSET                 = "pot1";
-    public static final String _POT_2_ASSET                 = "pot2";
-    public static final String _POT_3_ASSET                 = "pot3";
-    public static final String _POT_4_ASSET                 = "pot4";
-    public static final String _CRATE_ASSET                 = "crate";
-    public static final String _BARREL_1_ASSET              = "barrel1";
-    public static final String _BARREL_2_ASSET              = "barrel2";
-    public static final String _BARREL_3_ASSET              = "barrel3";
-    public static final String _BARREL_4_ASSET              = "barrel4";
-    public static final String _SACKS_ASSET                 = "sacks";
+    public static final String _ALCOVE_TORCH_ASSET = "alcove_torch";
+    public static final String _POT_1_ASSET        = "pot1";
+    public static final String _POT_2_ASSET        = "pot2";
+    public static final String _POT_3_ASSET        = "pot3";
+    public static final String _POT_4_ASSET        = "pot4";
+    public static final String _CRATE_ASSET        = "crate";
+    public static final String _BARREL_1_ASSET     = "barrel1";
+    public static final String _BARREL_2_ASSET     = "barrel2";
+    public static final String _BARREL_3_ASSET     = "barrel3";
+    public static final String _BARREL_4_ASSET     = "barrel4";
+    public static final String _SACKS_ASSET        = "sacks";
 
     //
     // Static Enemies
-    public static final String _TURRET_ASSET                = "turret";
-    public static final String _FLAME_THROW_ASSET           = "flame_thrower";
-    public static final String _FLAME_THROW_VERTICAL_ASSET  = "flame_thrower_vertical";
+    public static final String _TURRET_ASSET               = "turret";
+    public static final String _FLAME_THROW_ASSET          = "flame_thrower";
+    public static final String _FLAME_THROW_VERTICAL_ASSET = "flame_thrower_vertical";
 
     //
     // Mobile Enemies
-    public static final String _STORM_DEMON_ASSET           = "storm_demon";
-    public static final String _RED_MINE_ASSET              = "red_mine";
-    public static final String _BOUNCER_ASSET               = "bouncer";
-    public static final String _JELLY_MONSTER_ASSET         = "jelly_monster";
-    public static final String _LAVA_BALL_ASSET             = "lava_ball";
-    public static final String _FIRE_BALL_ASSET             = "fireball";
-    public static final String _MINI_FIRE_BALL_ASSET        = "mini_fireball";
-    public static final String _SCORPION_ASSET              = "scorpìon_walk";
-    public static final String _GREEN_BEETLE_ASSET          = "green_beetle";
-    public static final String _SPIKE_BALL_1_ASSET          = "round2";
-    public static final String _SPIKE_BALL_2_ASSET          = "round2";
-    public static final String _SPIKE_BALL_3_ASSET          = "round2";
-    public static final String _SPIKE_BLOCK_ASSET           = "spinning_spikes";
-    public static final String _SPIKE_BLOCK_VERTICAL_ASSET  = "spinning_spikes_vertical";
-    public static final String _LOOP_BLOCK_ASSET            = "spinning_spikes_vertical";
+    public static final String _STORM_DEMON_ASSET          = "storm_demon";
+    public static final String _RED_MINE_ASSET             = "red_mine";
+    public static final String _BOUNCER_ASSET              = "bouncer";
+    public static final String _JELLY_MONSTER_ASSET        = "jelly_monster";
+    public static final String _LAVA_BALL_ASSET            = "lava_ball";
+    public static final String _FIRE_BALL_ASSET            = "fireball";
+    public static final String _MINI_FIRE_BALL_ASSET       = "mini_fireball";
+    public static final String _SCORPION_ASSET             = "scorpìon_walk";
+    public static final String _GREEN_BEETLE_ASSET         = "green_beetle";
+    public static final String _SPIKE_BALL_1_ASSET         = "round2";
+    public static final String _SPIKE_BALL_2_ASSET         = "round2";
+    public static final String _SPIKE_BALL_3_ASSET         = "round2";
+    public static final String _SPIKE_BLOCK_ASSET          = "spinning_spikes";
+    public static final String _SPIKE_BLOCK_VERTICAL_ASSET = "spinning_spikes_vertical";
+    public static final String _LOOP_BLOCK_ASSET           = "spinning_spikes_vertical";
 
     //
     // In-Game Messaging
-    public static final String _HELP_ME_ASSET               = "help_bubble";
-    public static final String _OPEN_ME_ASSET               = "open_me";
+    public static final String _HELP_ME_ASSET             = "help_bubble";
+    public static final String _OPEN_ME_ASSET             = "open_me";
     public static final String _QUESTION_MARK_ASSET       = "question_mark";
     public static final String _EXCLAMATION_MARK_ASSET    = "exclamation_mark";
     public static final String _TALK_BOX_ASSET            = "talk_box";
@@ -230,11 +226,11 @@ public class GameAssets
 
     //
     // Weaponry and Explosions
-    public static final String _EXPLOSION64_ASSET           = "explosion64";
-    public static final String _LASER_ASSET                 = "player_laser";
-    public static final String _ARROW_ASSET                 = "arrows";
-    public static final String _PHASER_BULLET_ASSET         = "bullet1";
-    public static final String _FIREBALL_BULLET_ASSET       = "bullet2";
+    public static final String _EXPLOSION64_ASSET     = "explosion64";
+    public static final String _LASER_ASSET           = "player_laser";
+    public static final String _ARROW_ASSET           = "arrows";
+    public static final String _PHASER_BULLET_ASSET   = "bullet1";
+    public static final String _FIREBALL_BULLET_ASSET = "bullet2";
 
     //
     // Frame counts for animations
@@ -286,11 +282,11 @@ public class GameAssets
 
     //
     // Fonts and HUD assets
-    public static final String _CENTURY_FONT       = "data/fonts/CENSCBK.ttf";
-    public static final String _ACME_FONT          = "data/fonts/Acme-Regular.ttf";
-    public static final String _PRO_WINDOWS_FONT   = "data/fonts/ProFontWindows.ttf";
-    public static final String _HUD_PANEL_FONT     = "data/fonts/Acme-Regular.ttf";
-    public static final String _HUD_PANEL_ASSET    = "data/hud_panel_rework.png";
+    public static final String _CENTURY_FONT     = "data/fonts/CENSCBK.ttf";
+    public static final String _ACME_FONT        = "data/fonts/Acme-Regular.ttf";
+    public static final String _PRO_WINDOWS_FONT = "data/fonts/ProFontWindows.ttf";
+    public static final String _HUD_PANEL_FONT   = "data/fonts/Acme-Regular.ttf";
+    public static final String _HUD_PANEL_ASSET  = "data/hud_panel_rework.png";
 
     public static int hudPanelWidth;      // Set when object is loaded
     public static int hudPanelHeight;     //
@@ -299,88 +295,88 @@ public class GameAssets
 
     private static final AssetSize[] assetSizes =
         {
-            new AssetSize(GraphicID.G_PLAYER,                   82,  120),
-            new AssetSize(GraphicID.G_PLAYER_FIGHT,             82,  120),
-            new AssetSize(GraphicID.G_PLAYER_CAST,              82,  120),
-            new AssetSize(GraphicID.G_ARROW,                    82,  82),
-            new AssetSize(GraphicID.G_PRISONER,                 128, 128),
-            new AssetSize(GraphicID.G_VILLAGER,                 128, 128),
-            new AssetSize(GraphicID.G_SOLDIER,                  148, 148),
-            new AssetSize(GraphicID.G_SOLDIER_FIGHT,            228, 228),
+            new AssetSize(GraphicID.G_PLAYER, 82, 120),
+            new AssetSize(GraphicID.G_PLAYER_FIGHT, 82, 120),
+            new AssetSize(GraphicID.G_PLAYER_CAST, 82, 120),
+            new AssetSize(GraphicID.G_ARROW, 82, 82),
+            new AssetSize(GraphicID.G_PRISONER, 128, 128),
+            new AssetSize(GraphicID.G_VILLAGER, 128, 128),
+            new AssetSize(GraphicID.G_SOLDIER, 148, 148),
+            new AssetSize(GraphicID.G_SOLDIER_FIGHT, 228, 228),
 
-            new AssetSize(GraphicID.G_EXPLOSION12,              64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION32,              64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION64,              64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION128,             64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION256,             64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION12, 64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION32, 64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION64, 64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION128, 64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION256, 64, 64),
 
             // Pickup Items
-            new AssetSize(GraphicID.G_ARROW,                    64,  64),
-            new AssetSize(GraphicID.G_GEM,                      76,  64),
-            new AssetSize(GraphicID.G_COIN,                     64,  64),
-            new AssetSize(GraphicID.G_SHIELD,                   64,  78),
-            new AssetSize(GraphicID.G_KEY,                      64,  64),
-            new AssetSize(GraphicID.G_HUD_KEY,                  96,  96),
-            new AssetSize(GraphicID.G_DOCUMENT,                 122, 128),
-            new AssetSize(GraphicID.G_APPLE,                    64,  64),
-            new AssetSize(GraphicID.G_BOOK,                     64,  64),
-            new AssetSize(GraphicID.G_CAKE,                     64,  64),
-            new AssetSize(GraphicID.G_CHERRIES,                 64,  64),
-            new AssetSize(GraphicID.G_GRAPES,                   64,  64),
-            new AssetSize(GraphicID.G_SILVER_ARMOUR,            64,  64),
-            new AssetSize(GraphicID.G_GOLD_ARMOUR,              64,  64),
+            new AssetSize(GraphicID.G_ARROW, 64, 64),
+            new AssetSize(GraphicID.G_GEM, 76, 64),
+            new AssetSize(GraphicID.G_COIN, 64, 64),
+            new AssetSize(GraphicID.G_SHIELD, 64, 78),
+            new AssetSize(GraphicID.G_KEY, 64, 64),
+            new AssetSize(GraphicID.G_HUD_KEY, 96, 96),
+            new AssetSize(GraphicID.G_DOCUMENT, 122, 128),
+            new AssetSize(GraphicID.G_APPLE, 64, 64),
+            new AssetSize(GraphicID.G_BOOK, 64, 64),
+            new AssetSize(GraphicID.G_CAKE, 64, 64),
+            new AssetSize(GraphicID.G_CHERRIES, 64, 64),
+            new AssetSize(GraphicID.G_GRAPES, 64, 64),
+            new AssetSize(GraphicID.G_SILVER_ARMOUR, 64, 64),
+            new AssetSize(GraphicID.G_GOLD_ARMOUR, 64, 64),
 
             // Decorations
-            new AssetSize(GraphicID.G_POT,                      93, 128),
-            new AssetSize(GraphicID.G_CRATE,                    98, 120),
-            new AssetSize(GraphicID.G_BARREL,                   90, 152),
-            new AssetSize(GraphicID.G_TORCH,                    71, 64),
-            new AssetSize(GraphicID.G_ALCOVE_TORCH,             64, 192),
-            new AssetSize(GraphicID.G_SACKS,                    124, 170),
+            new AssetSize(GraphicID.G_POT, 93, 128),
+            new AssetSize(GraphicID.G_CRATE, 98, 120),
+            new AssetSize(GraphicID.G_BARREL, 90, 152),
+            new AssetSize(GraphicID.G_TORCH, 71, 64),
+            new AssetSize(GraphicID.G_ALCOVE_TORCH, 64, 192),
+            new AssetSize(GraphicID.G_SACKS, 124, 170),
 
             // Interactive items
-            new AssetSize(GraphicID.G_FLOOR_BUTTON,             64,  64),
-            new AssetSize(GraphicID.G_LEVER_SWITCH,             82,  79),
-            new AssetSize(GraphicID.G_TREASURE_CHEST,           142, 142),
-            new AssetSize(GraphicID.G_MYSTERY_CHEST,            128, 142),
-            new AssetSize(GraphicID.G_DOOR,                     512, 384),
-            new AssetSize(GraphicID.G_LOCKED_DOOR,              512, 384),
-            new AssetSize(GraphicID.G_TELEPORTER,               64,  64),
-            new AssetSize(GraphicID.G_HELP_BUBBLE,              192, 96),
-            new AssetSize(GraphicID.G_QUESTION_MARK,            128, 80),
-            new AssetSize(GraphicID.G_EXCLAMATION_MARK,         30,  48),
-            new AssetSize(GraphicID.G_TALK_BOX,                 832, 264),
-            new AssetSize(GraphicID.G_FLOATING_PLATFORM,        128, 128),
-            new AssetSize(GraphicID.G_CROSSHAIRS,               64,  64),
+            new AssetSize(GraphicID.G_FLOOR_BUTTON, 64, 64),
+            new AssetSize(GraphicID.G_LEVER_SWITCH, 82, 79),
+            new AssetSize(GraphicID.G_TREASURE_CHEST, 142, 142),
+            new AssetSize(GraphicID.G_MYSTERY_CHEST, 128, 142),
+            new AssetSize(GraphicID.G_DOOR, 512, 384),
+            new AssetSize(GraphicID.G_LOCKED_DOOR, 512, 384),
+            new AssetSize(GraphicID.G_TELEPORTER, 64, 64),
+            new AssetSize(GraphicID.G_HELP_BUBBLE, 192, 96),
+            new AssetSize(GraphicID.G_QUESTION_MARK, 128, 80),
+            new AssetSize(GraphicID.G_EXCLAMATION_MARK, 30, 48),
+            new AssetSize(GraphicID.G_TALK_BOX, 832, 264),
+            new AssetSize(GraphicID.G_FLOATING_PLATFORM, 128, 128),
+            new AssetSize(GraphicID.G_CROSSHAIRS, 64, 64),
 
             // Messages
-            new AssetSize(GraphicID._PRESS_FOR_TREASURE,        1024, 114),
-            new AssetSize(GraphicID._PRESS_FOR_PRISONER,        1024, 114),
-            new AssetSize(GraphicID._PRESS_FOR_GUIDE,           1024, 59),
-            new AssetSize(GraphicID._STORM_DEMON_WARNING,       1660, 50),
-            new AssetSize(GraphicID._KEY_NEEDED,                1024, 114),
+            new AssetSize(GraphicID._PRESS_FOR_TREASURE, 1024, 114),
+            new AssetSize(GraphicID._PRESS_FOR_PRISONER, 1024, 114),
+            new AssetSize(GraphicID._PRESS_FOR_GUIDE, 1024, 59),
+            new AssetSize(GraphicID._STORM_DEMON_WARNING, 1660, 50),
+            new AssetSize(GraphicID._KEY_NEEDED, 1024, 114),
 
             // Stationary enemies
-            new AssetSize(GraphicID.G_LASER_BEAM_VERTICAL,      64,  64),
-            new AssetSize(GraphicID.G_LASER_BEAM_HORIZONTAL,    64,  64),
-            new AssetSize(GraphicID.G_FLAME_THROWER,            636, 334),
-            new AssetSize(GraphicID.G_FLAME_THROWER_VERTICAL,   334, 636),
-            new AssetSize(GraphicID.G_TURRET,                   128, 128),
+            new AssetSize(GraphicID.G_LASER_BEAM_VERTICAL, 64, 64),
+            new AssetSize(GraphicID.G_LASER_BEAM_HORIZONTAL, 64, 64),
+            new AssetSize(GraphicID.G_FLAME_THROWER, 636, 334),
+            new AssetSize(GraphicID.G_FLAME_THROWER_VERTICAL, 334, 636),
+            new AssetSize(GraphicID.G_TURRET, 128, 128),
 
             // Mobile enemies
-            new AssetSize(GraphicID.G_STORM_DEMON,              192, 192),
-            new AssetSize(GraphicID.G_BOUNCER,                  96,  96),
-            new AssetSize(GraphicID.G_JELLY_MONSTER,            108, 102),
-            new AssetSize(GraphicID.G_SPIKE_BALL,               128, 128),
-            new AssetSize(GraphicID.G_SPIKE_BLOCK_HORIZONTAL,   147, 256),
-            new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL,     256, 147),
-            new AssetSize(GraphicID.G_LOOP_BLOCK_HORIZONTAL,    147, 256),
-            new AssetSize(GraphicID.G_LOOP_BLOCK_VERTICAL,      256, 147),
-            new AssetSize(GraphicID.G_ENEMY_BULLET,             32,  18),
-            new AssetSize(GraphicID.G_ENEMY_FIREBALL,           64,  64),
-            new AssetSize(GraphicID.G_MINI_FIRE_BALL,           64,  64),
-            new AssetSize(GraphicID.G_SCORPION,                 136, 123),
-            new AssetSize(GraphicID.G_BEETLE,                   76,  64),
+            new AssetSize(GraphicID.G_STORM_DEMON, 192, 192),
+            new AssetSize(GraphicID.G_BOUNCER, 96, 96),
+            new AssetSize(GraphicID.G_JELLY_MONSTER, 108, 102),
+            new AssetSize(GraphicID.G_SPIKE_BALL, 128, 128),
+            new AssetSize(GraphicID.G_SPIKE_BLOCK_HORIZONTAL, 147, 256),
+            new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL, 256, 147),
+            new AssetSize(GraphicID.G_LOOP_BLOCK_HORIZONTAL, 147, 256),
+            new AssetSize(GraphicID.G_LOOP_BLOCK_VERTICAL, 256, 147),
+            new AssetSize(GraphicID.G_ENEMY_BULLET, 32, 18),
+            new AssetSize(GraphicID.G_ENEMY_FIREBALL, 64, 64),
+            new AssetSize(GraphicID.G_MINI_FIRE_BALL, 64, 64),
+            new AssetSize(GraphicID.G_SCORPION, 136, 123),
+            new AssetSize(GraphicID.G_BEETLE, 76, 64),
         };
 
     private GameAssets()

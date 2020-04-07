@@ -59,7 +59,7 @@ public class ActionButtonHandler implements Disposable
                         (
                             GameAssets._PRESS_FOR_PRISONER_ASSET,
                             5000,
-                            (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_PRISONER).x) / 2,
+                            (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_PRISONER).getX()) / 2,
                             100
                         );
                 }
@@ -76,7 +76,7 @@ public class ActionButtonHandler implements Disposable
                     (
                         GameAssets._PRESS_FOR_GUIDE_ASSET,
                         5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_GUIDE).x) / 2,
+                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_GUIDE).getX()) / 2,
                         100
                     );
             }
@@ -92,7 +92,7 @@ public class ActionButtonHandler implements Disposable
                     (
                         GameAssets._PRESS_FOR_TREASURE_ASSET,
                         5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_TREASURE).x) / 2,
+                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_TREASURE).getX()) / 2,
                         100
                     );
             }
@@ -110,7 +110,7 @@ public class ActionButtonHandler implements Disposable
                     (
                         GameAssets._PRESS_FOR_TREASURE_ASSET,
                         5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_TREASURE).x) / 2,
+                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_TREASURE).getX()) / 2,
                         100
                     );
             }

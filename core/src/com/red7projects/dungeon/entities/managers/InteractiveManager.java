@@ -70,8 +70,8 @@ public class InteractiveManager extends GenericEntityManager
                             entityDef.asset,
                             entityDef.frames,
                             (entityDef.frames > 1) ? Animation.PlayMode.LOOP : Animation.PlayMode.NORMAL,
-                            coord.x,
-                            coord.y
+                            coord.getX(),
+                            coord.getY()
                         );
 
                     entityDescriptor._LINK = tile._LINK;

@@ -18,6 +18,7 @@ package com.red7projects.dungeon.entities.hero;
 
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
+import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.DirectionMap;
@@ -45,13 +46,6 @@ public class ButtonInputHandler implements Disposable
     void checkButtons()
     {
         //
-        // ATTACK Button
-        if (app.getHud().buttonB.isPressed)
-        {
-            app.getPlayer().setAction(Actions._FIGHTING);
-        }
-
-        //
         // A Button
         if (app.getHud().buttonA.isPressed)
         {
@@ -60,6 +54,14 @@ public class ButtonInputHandler implements Disposable
                 aButtonActions.process();
                 app.getHud().buttonA.release();
             }
+        }
+
+        //
+        // B Button
+        if (app.getHud().buttonB.isPressed)
+        {
+            bButtonActions.process();
+            app.getPlayer().setAction(Actions._CASTING);
         }
 
         //
@@ -100,9 +102,13 @@ public class ButtonInputHandler implements Disposable
         {
             if (AppConfig.isDesktopApp())
             {
-                app.inputManager.keyboard.update();
-
-                setDirection(app.inputManager.lastRegisteredDirection);
+//                if (app.preferences.isEnabled(Preferences._MOUSE_CONTROL))
+//                {
+//                }
+//                else
+//                {
+                    app.inputManager.keyboard.update();
+//                }
             }
         }
 

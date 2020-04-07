@@ -84,6 +84,7 @@ public class Preferences implements Disposable
     public static final String _ON_SCREEN_CONTROLLER    = "joystick state";    // On Screen Joystick and button controls
     public static final String _EXTERNAL_CONTROLLER     = "game controllers";  // External Game Controller devices
     public static final String _KEYBOARD_CONTROL        = "keyboard control";  // Keyboard control only
+    public static final String _MOUSE_CONTROL           = "mouse control";     // Keyboard control only
     public static final String _SHOW_GAME_BUTTONS       = "show game buttons"; // Enables/Disables showing of on-screen buttons and joystick
 
     //
@@ -195,10 +196,11 @@ public class Preferences implements Disposable
         prefs.putBoolean(_CHALLENGES,           _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_SIGN_IN_STATUS,       _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_ON_SCREEN_CONTROLLER, _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_KEYBOARD_CONTROL,     _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_ON_SCREEN_CONTROLLER, _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_EXTERNAL_CONTROLLER,  _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_KEYBOARD_CONTROL,     _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SHOW_GAME_BUTTONS,    _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_MOUSE_CONTROL,        _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SHOW_GAME_BUTTONS,    _PREF_FALSE_DEFAULT);
 
         //----------- Achievements -----------
 
