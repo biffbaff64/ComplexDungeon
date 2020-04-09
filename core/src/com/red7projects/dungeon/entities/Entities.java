@@ -63,6 +63,10 @@ public abstract class Entities
             new EntityDef("Floor Button", GraphicID.G_FLOOR_BUTTON, TileID._FLOOR_BUTTON_TILE, GameAssets._FLOOR_BUTTON_ASSET, GameAssets._FLOOR_BUTTON_FRAMES, GraphicID._INTERACTIVE),
             new EntityDef("Lever Switch", GraphicID.G_LEVER_SWITCH, TileID._LEVER_TILE, GameAssets._LEVER_SWITCH_ASSET, GameAssets._LEVER_SWITCH_FRAMES, GraphicID._INTERACTIVE),
             new EntityDef("Teleporter", GraphicID.G_TELEPORTER, TileID._UNKNOWN, GameAssets._TELEPORTER_ASSET, GameAssets._TELEPORTER_FRAMES, GraphicID._INTERACTIVE),
+            new EntityDef("Escalator Left", GraphicID.G_ESCALATOR_LEFT, TileID._ESCALATOR_LEFT_TILE, GameAssets._ESCALATOR_LEFT_ASSET, GameAssets._ESCALATOR_FRAMES, GraphicID._INTERACTIVE),
+            new EntityDef("Escalator Right", GraphicID.G_ESCALATOR_RIGHT, TileID._ESCALATOR_RIGHT_TILE, GameAssets._ESCALATOR_RIGHT_ASSET, GameAssets._ESCALATOR_FRAMES, GraphicID._INTERACTIVE),
+            new EntityDef("Escalator Up", GraphicID.G_ESCALATOR_UP, TileID._ESCALATOR_UP_TILE, GameAssets._ESCALATOR_UP_ASSET, GameAssets._ESCALATOR_FRAMES, GraphicID._INTERACTIVE),
+            new EntityDef("Escalator Down", GraphicID.G_ESCALATOR_DOWN, TileID._ESCALATOR_DOWN_TILE, GameAssets._ESCALATOR_DOWN_ASSET, GameAssets._ESCALATOR_FRAMES, GraphicID._INTERACTIVE),
 
             // Interactive, but not handled by InteractiveManager
             new EntityDef("Floating Platform", GraphicID.G_FLOATING_PLATFORM, TileID._FLOATING_PLATFORM_TILE, GameAssets._FLOATING_PLATFORM_ASSET, GameAssets._FLOATING_PLATFORM_FRAMES, GraphicID._PLATFORM),

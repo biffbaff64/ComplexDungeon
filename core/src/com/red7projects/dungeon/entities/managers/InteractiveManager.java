@@ -24,6 +24,7 @@ import com.red7projects.dungeon.entities.Entities;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.*;
 import com.red7projects.dungeon.entities.characters.interactive.Door;
+import com.red7projects.dungeon.entities.characters.interactive.Escalator;
 import com.red7projects.dungeon.entities.characters.interactive.FloorSwitch;
 import com.red7projects.dungeon.entities.characters.interactive.TreasureChest;
 import com.red7projects.dungeon.entities.objects.EntityDef;
@@ -31,6 +32,7 @@ import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
+import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.maths.SimpleVec2;
 
 public class InteractiveManager extends GenericEntityManager
@@ -67,7 +69,7 @@ public class InteractiveManager extends GenericEntityManager
 
                     super.create
                         (
-                            entityDef.asset,
+                            validateAsset(entityDef),
                             entityDef.frames,
                             (entityDef.frames > 1) ? Animation.PlayMode.LOOP : Animation.PlayMode.NORMAL,
                             coord.getX(),
@@ -91,18 +93,37 @@ public class InteractiveManager extends GenericEntityManager
                     {
                         GdxSprite interactive;
 
-                        if ((graphicID == GraphicID.G_FLOOR_BUTTON) || (graphicID == GraphicID.G_LEVER_SWITCH))
+                        switch (graphicID)
                         {
-                            interactive = new FloorSwitch(graphicID, app);
-                        }
-                        else if ((graphicID == GraphicID.G_TREASURE_CHEST)
-                            || (graphicID == GraphicID.G_MYSTERY_CHEST))
-                        {
-                            interactive = new TreasureChest(graphicID, app);
-                        }
-                        else
-                        {
-                            interactive = new Decoration(graphicID, app);
+                            case G_FLOOR_BUTTON:
+                            case G_LEVER_SWITCH:
+                            {
+                                interactive = new FloorSwitch(graphicID, app);
+                            }
+                            break;
+
+                            case G_TREASURE_CHEST:
+                            case G_MYSTERY_CHEST:
+                            {
+                                interactive = new TreasureChest(graphicID, app);
+                            }
+                            break;
+
+                            case G_ESCALATOR_LEFT:
+                            case G_ESCALATOR_RIGHT:
+                            case G_ESCALATOR_UP:
+                            case G_ESCALATOR_DOWN:
+                            case G_ESCALATOR:
+                            {
+                                interactive = new Escalator(graphicID, app);
+                            }
+                            break;
+
+                            default:
+                            {
+                                interactive = new Decoration(graphicID, app);
+                            }
+                            break;
                         }
 
                         interactive.initialise(entityDescriptor);
@@ -113,5 +134,30 @@ public class InteractiveManager extends GenericEntityManager
                 }
             }
         }
+    }
+
+    public String validateAsset(EntityDef _entityDef)
+    {
+        if (_entityDef.graphicID == GraphicID.G_ESCALATOR)
+        {
+            if (_entityDef.tileID == TileID._ESCALATOR_DOWN_TILE)
+            {
+                _entityDef.asset = GameAssets._ESCALATOR_DOWN_ASSET;
+            }
+            else if (_entityDef.tileID == TileID._ESCALATOR_UP_TILE)
+            {
+                _entityDef.asset = GameAssets._ESCALATOR_UP_ASSET;
+            }
+            else if (_entityDef.tileID == TileID._ESCALATOR_LEFT_TILE)
+            {
+                _entityDef.asset = GameAssets._ESCALATOR_LEFT_ASSET;
+            }
+            else
+            {
+                _entityDef.asset = GameAssets._ESCALATOR_RIGHT_ASSET;
+            }
+        }
+
+        return  _entityDef.asset;
     }
 }

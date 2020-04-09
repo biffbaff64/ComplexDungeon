@@ -80,7 +80,7 @@ public enum TileID
     _SILVER_ARMOUR_TILE(46),
     _GOLD_ARMOUR_TILE(47),
     _ARROW_TILE(48),
-    _U49_TILE(49),
+    _GLOW_EYES_TILE(49),
     _U50_TILE(50),
 
     // Row 6
@@ -88,10 +88,10 @@ public enum TileID
     _FLAME_THROW_DOWN_TILE(52),
     _FLAME_THROW_LEFT_TILE(53),
     _FLAME_THROW_RIGHT_TILE(54),
-    _U55_TILE(55),
-    _U56_TILE(56),
-    _U57_TILE(57),
-    _U58_TILE(58),
+    _ESCALATOR_LEFT_TILE(55),
+    _ESCALATOR_RIGHT_TILE(56),
+    _ESCALATOR_DOWN_TILE(57),
+    _ESCALATOR_UP_TILE(58),
     _U59_TILE(59),
     _U60_TILE(60),
 

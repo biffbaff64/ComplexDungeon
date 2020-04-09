@@ -172,6 +172,11 @@ public class EntityUtils
             case G_TELEPORTER:
             case G_FLOATING_PLATFORM:
             case G_TURRET:
+            case G_ESCALATOR:
+            case G_ESCALATOR_LEFT:
+            case G_ESCALATOR_RIGHT:
+            case G_ESCALATOR_UP:
+            case G_ESCALATOR_DOWN:
 
             // ----------
             case G_LASER_BEAM:
@@ -302,6 +307,11 @@ public class EntityUtils
             case G_FLOOR_BUTTON:
             case G_LEVER_SWITCH:
             case G_TELEPORTER:
+            case G_ESCALATOR:
+            case G_ESCALATOR_LEFT:
+            case G_ESCALATOR_RIGHT:
+            case G_ESCALATOR_UP:
+            case G_ESCALATOR_DOWN:
             {
                 zed = 10;
             }

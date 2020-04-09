@@ -36,7 +36,7 @@ public enum GraphicID
     G_POT,
     G_CRATE,
     G_BARREL,
-    G_TORCH,
+    G_GLOW_EYES,
     G_ALCOVE_TORCH,
     G_SACKS,
 
@@ -60,6 +60,11 @@ public enum GraphicID
     G_FLOATING_PLATFORM,
     G_SELECTION_RING,
     G_CROSSHAIRS,
+    G_ESCALATOR,
+    G_ESCALATOR_LEFT,
+    G_ESCALATOR_RIGHT,
+    G_ESCALATOR_UP,
+    G_ESCALATOR_DOWN,
 
     // ----------------------------
     G_EXPLOSION12,

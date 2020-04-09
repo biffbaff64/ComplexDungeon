@@ -62,25 +62,25 @@ public class RoomManager
     private static final String _PRISON_N       = "prison_room_n.tmx";    //
     private static final String _PRISON_S       = "prison_room_s.tmx";    //
 
-    private static final String _ROOM1_S        = "room1.tmx";            // Done
-    private static final String _ROOM2_NS       = "room2.tmx";            //
+    private static final String _ROOM1_NS       = "room1_ns.tmx";         // Done
+    private static final String _ROOM2_NS       = "room2_ns.tmx";         //
     private static final String _ROOM2_NES      = "room2_nes.tmx";        //
-    private static final String _ROOM3_NEW      = "room3.tmx";            //
-    private static final String _ROOM4_SE       = "room4.tmx";            //
-    private static final String _ROOM5_NW       = "room5.tmx";            //
-    private static final String _ROOM6_SEW      = "room6.tmx";            //
-    private static final String _ROOM7_NS       = "room7.tmx";            //
-    private static final String _ROOM8_NW       = "room8.tmx";            //7
-    private static final String _ROOM9_NESW     = "room9.tmx";            //
-    private static final String _ROOM10_NSW     = "room10.tmx";           //
-    private static final String _ROOM11_NESW    = "room11.tmx";           //
-    private static final String _ROOM12_NS      = "room12.tmx";           //
-    private static final String _ROOM13_SEW     = "room13.tmx";           //
-    private static final String _ROOM14_NS      = "room14.tmx";           //
-    private static final String _ROOM15_NE      = "room15.tmx";           //
-    private static final String _ROOM16_NW      = "room16.tmx";           //
-    private static final String _ROOM17_N       = "room17.tmx";           // Done
-    private static final String _ROOM18_N       = "room18.tmx";           //
+    private static final String _ROOM3_NEW      = "room3_new.tmx";        //
+    private static final String _ROOM4_ES       = "room4_es.tmx";         //
+    private static final String _ROOM5_NW       = "room5_ne.tmx";         //
+    private static final String _ROOM6_ESW      = "room6_esw.tmx";        //
+    private static final String _ROOM7_NS       = "room7_ns.tmx";         //
+    private static final String _ROOM8_NW       = "room8_nw.tmx";         //
+    private static final String _ROOM9_NESW     = "room9_nesw.tmx";       //
+    private static final String _ROOM10_NSW     = "room10_nsw.tmx";       //
+    private static final String _ROOM11_NESW    = "room11_nesw.tmx";      //
+    private static final String _ROOM12_NS      = "room12_ns.tmx";        //
+    private static final String _ROOM13_ESW     = "room13_esw.tmx";       //
+    private static final String _ROOM14_NS      = "room14_ns.tmx";        //
+    private static final String _ROOM15_NE      = "room15_ne.tmx";        //
+    private static final String _ROOM16_NW      = "room16_nw.tmx";        //
+    private static final String _ROOM17_N       = "room17_n.tmx";         // Done
+    private static final String _ROOM18_N       = "room18_n.tmx";         //
 
     private static final String _AREA_1         = "area1.tmx";            //
 
@@ -102,12 +102,12 @@ public class RoomManager
             // -----------------------------------------
 
             {null, null,                    null,                   null,                   null,                   null,                   new Room(_PRISON_S),    null},
-            {null, new Room(_ROOM1_S),      new Room(_SECRET1),     new Room(_ROOM4_SE),    new Room(_W),           new Room(_S),           new Room(_SN),          null},
-            {null, new Room(_PASSAGE_NES),  new Room(_NESW2),       new Room(_NESW),        new Room(_ROOM6_SEW),   new Room(_ROOM11_NESW), new Room(_ROOM10_NSW),  null},
+            {null, new Room(_ROOM1_NS),     new Room(_SECRET1),     new Room(_ROOM4_ES),    new Room(_W),           new Room(_S),           new Room(_SN),          null},
+            {null, new Room(_PASSAGE_NES),  new Room(_NESW2),       new Room(_NESW),        new Room(_ROOM6_ESW),   new Room(_ROOM11_NESW), new Room(_ROOM10_NSW),  null},
             {null, new Room(_ROOM2_NES),    new Room(_ROOM3_NEW),   new Room(_ROOM9_NESW),  new Room(_ROOM8_NW),    new Room(_ROOM7_NS),    new Room(_PASSAGE_NS),  null},
             {null, new Room(_N),            new Room(_E),           new Room(_ROOM5_NW),    null,                   new Room(_NES),         new Room(_NW),          null},
             {null, new Room(_PASSAGE_ES),   new Room(_WS),          null,                   null,                   new Room(_ROOM12_NS),   null,                   null},
-            {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_SEW),  new Room(_NWS),         new Room(_VERTICAL),    null},
+            {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_ESW),  new Room(_NWS),         new Room(_VERTICAL),    null},
             {null, new Room(_ROOM17_N),     new Room(_N2),          new Room(_ROOM18_N),    new Room(_ROOM2_NS),    new Room(_ROOM15_NE),   new Room(_ROOM16_NW),   null},
             {null, null,                    null,                   null,                   new Room(_PRISON_N),    null,                   null,                   null},
 

@@ -165,6 +165,10 @@ public class GameAssets
     public static final String _LASER_BEAM_VERTICAL_ASSET   = "laservert9";
     public static final String _LASER_BEAM_HORIZONTAL_ASSET = "laserhoriz9";
     public static final String _CROSSHAIRS_ASSET            = "crosshairs";
+    public static final String _ESCALATOR_LEFT_ASSET        = "escalator_left";
+    public static final String _ESCALATOR_RIGHT_ASSET       = "escalator_right";
+    public static final String _ESCALATOR_UP_ASSET          = "escalator_up";
+    public static final String _ESCALATOR_DOWN_ASSET        = "escalator_down";
 
     //
     // Decorations
@@ -279,6 +283,7 @@ public class GameAssets
     public static final int _PRESS_BUTTON_MESSAGES_FRAMES  = 3;
     public static final int _SACKS_FRAMES                  = 1;
     public static final int _CROSSHAIRS_FRAMES             = 1;
+    public static final int _ESCALATOR_FRAMES              = 16;
 
     //
     // Fonts and HUD assets
@@ -330,7 +335,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_POT, 93, 128),
             new AssetSize(GraphicID.G_CRATE, 98, 120),
             new AssetSize(GraphicID.G_BARREL, 90, 152),
-            new AssetSize(GraphicID.G_TORCH, 71, 64),
+            new AssetSize(GraphicID.G_GLOW_EYES, 71, 64),
             new AssetSize(GraphicID.G_ALCOVE_TORCH, 64, 192),
             new AssetSize(GraphicID.G_SACKS, 124, 170),
 
@@ -348,6 +353,11 @@ public class GameAssets
             new AssetSize(GraphicID.G_TALK_BOX, 832, 264),
             new AssetSize(GraphicID.G_FLOATING_PLATFORM, 128, 128),
             new AssetSize(GraphicID.G_CROSSHAIRS, 64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR, 64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_LEFT, 64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_RIGHT, 64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_UP, 64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_DOWN, 64, 64),
 
             // Messages
             new AssetSize(GraphicID._PRESS_FOR_TREASURE, 1024, 114),

@@ -227,6 +227,10 @@ public class MapCreator
 
                             case _LEVER_TILE:
                             case _DOOR_TILE:
+                            case _ESCALATOR_UP_TILE:
+                            case _ESCALATOR_DOWN_TILE:
+                            case _ESCALATOR_LEFT_TILE:
+                            case _ESCALATOR_RIGHT_TILE:
                             {
                                 setEntityPlaceable(GraphicID._INTERACTIVE, true);
                             }
