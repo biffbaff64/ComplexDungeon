@@ -213,6 +213,11 @@ public abstract class EntityStats
             case G_FLOATING_PLATFORM:
             case G_TELEPORTER:
             case G_TURRET:
+            case G_ESCALATOR:
+            case G_ESCALATOR_LEFT:
+            case G_ESCALATOR_RIGHT:
+            case G_ESCALATOR_UP:
+            case G_ESCALATOR_DOWN:
             {
             }
             break;

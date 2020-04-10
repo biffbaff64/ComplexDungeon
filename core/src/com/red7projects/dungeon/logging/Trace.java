@@ -69,6 +69,9 @@ public class Trace
             debugString.append(" ]");
 
             Gdx.app.debug(debugTag, debugString.toString());
+
+            writeString(debugString.toString());
+            writeString("\n");
         }
     }
 
@@ -348,10 +351,10 @@ public class Trace
                     //noinspection UseOfObsoleteDateTimeApi
                     GregorianCalendar c = new GregorianCalendar();
 
-                    writeString("-----------------------------------------------------------");
-                    writeString("Filename: " + logFile.toString());
-                    writeString("Created: " + c.getTime().toString());
-                    writeString("-----------------------------------------------------------");
+                    writeString("-----------------------------------------------------------\n");
+                    writeString("Filename: " + logFile.toString() + "\n");
+                    writeString("Created: " + c.getTime().toString() + "\n");
+                    writeString("-----------------------------------------------------------\n\n");
                 }
             }
             catch (IOException ex)

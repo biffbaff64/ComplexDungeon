@@ -284,7 +284,7 @@ public class EntityManager implements Disposable
             Trace.dbg("entityMap.size   : " + app.entityData.entityMap.size);
             Trace.dbg("collisionBox.size: " + AABBData.boxes().size);
 
-            Trace.divider(120);
+            Trace.divider();
 
             StringBuilder sb = new StringBuilder();
             GdxSprite gdxSprite;
@@ -297,7 +297,7 @@ public class EntityManager implements Disposable
             {
                 if (AABBData.boxes().get(i).gid != previousGID)
                 {
-                    Trace.divider(120);
+                    Trace.divider();
                 }
 
                 sb.setLength(0);
@@ -330,7 +330,7 @@ public class EntityManager implements Disposable
                 Trace.dbg(sb.toString());
             }
 
-            Trace.divider(120);
+            Trace.divider();
         }
     }
 }

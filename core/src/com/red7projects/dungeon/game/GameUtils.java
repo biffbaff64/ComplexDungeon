@@ -98,12 +98,12 @@ public class GameUtils
         Trace.dbg("firstTime: " + firstTime);
         Trace.dbg("isRestarting: " + app.gameProgress.isRestarting);
         Trace.dbg("levelCompleted: " + app.gameProgress.levelCompleted);
-        Trace.divider(120);
+        Trace.divider();
         Trace.dbg("placementTiles: " + mapCreator.placementTiles.size);
         Trace.dbg("entityMap     : " + app.entityData.entityMap.size);
         Trace.dbg("collisionMap  : " + AABBData.boxes().size);
         Trace.dbg("managerList   : " + app.entityData.managerList.size());
-        Trace.divider(120);
+        Trace.divider();
 
         if (app.gameProgress.isRestarting)
         {

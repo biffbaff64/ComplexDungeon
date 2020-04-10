@@ -36,15 +36,8 @@ import com.red7projects.dungeon.physics.Speed;
 
 public class Villager extends GdxSprite
 {
-    private static final float _DISTANCE = 16.0f;
-    private static final float _SPEED    = 0.2f;
-
     private       EntityDescriptor descriptor;
-    private       SimpleDrawable   exclamationMark;
-    private       Direction        emDirection;
-    private       float            emDistance;
     private       Proximity        proximity;
-    private       boolean          canShowExclamation;
     private       boolean          canShowMessage;
     private final App              app;
 
@@ -77,20 +70,7 @@ public class Villager extends GdxSprite
 
         canFlip = false;
 
-        TextureRegion textureRegion = app.assets.getTextAtlas().findRegion(GameAssets._MINI_SPEECH_BUBBLE_ASSET);
-
-        exclamationMark = new SimpleDrawable
-            (
-                textureRegion,
-                this.sprite.getX() - (float) textureRegion.getRegionWidth(),
-                this.sprite.getY() + (this.frameHeight - 30)
-            );
-
-        emDirection = new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP);
-        emDistance  = _DISTANCE;
-
-        canShowExclamation = false;
-        canShowMessage     = false;
+        canShowMessage = false;
     }
 
     @Override
@@ -100,20 +80,20 @@ public class Villager extends GdxSprite
         {
             case _STANDING:
             {
-                canShowExclamation = !canShowMessage && proximity.isApproaching(this, app.getPlayer());
+                canShowMessage = proximity.isVeryClose(this, app.getPlayer());
 
                 if (canShowMessage)
                 {
                     if (app.getPlayer().getSpriteAction() == Actions._STANDING)
                     {
-                        if (!app.getHud().messageManager.doesPanelExist(GameAssets._TALK_BOX_ASSET))
+                        if (!app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
                         {
                             app.getHud().messageManager.enable();
-                            app.getHud().messageManager.addSlidePanel(GameAssets._TALK_BOX_ASSET);
+                            app.getHud().messageManager.addSlidePanel(GameAssets._MESSAGE_PANEL_ASSET);
                             app.getHud().messageManager.getCurrentPanel().set
                                 (
-                                    new SimpleVec2F(544, -320),
-                                    new SimpleVec2F(0, 360),
+                                    new SimpleVec2F(280, -400),
+                                    new SimpleVec2F(0, 400),
                                     new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
                                     new Speed(0, 40)
                                 );
@@ -121,24 +101,10 @@ public class Villager extends GdxSprite
                     }
                     else
                     {
-                        if (app.getHud().messageManager.doesPanelExist(GameAssets._TALK_BOX_ASSET))
+                        if (app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
                         {
                             app.getHud().messageManager.closeSlidePanel();
                         }
-                    }
-                }
-
-                if (canShowExclamation)
-                {
-                    if (emDistance <= 0)
-                    {
-                        emDirection.toggleY();
-                        emDistance = _DISTANCE;
-                    }
-                    else
-                    {
-                        exclamationMark.position.y += (_SPEED * emDirection.getY());
-                        emDistance -= _SPEED;
                     }
                 }
 
@@ -170,6 +136,11 @@ public class Villager extends GdxSprite
                     }
                 }
 
+            }
+            break;
+
+            case _TALKING:
+            {
             }
             break;
 
@@ -205,16 +176,5 @@ public class Villager extends GdxSprite
 
         rightEdge = collisionObject.rectangle.x + collisionObject.rectangle.width;
         topEdge   = collisionObject.rectangle.y + collisionObject.rectangle.height;
-    }
-
-    @Override
-    public void draw(final SpriteBatch spriteBatch)
-    {
-        super.draw(spriteBatch);
-
-        if (canShowExclamation)
-        {
-            exclamationMark.draw(spriteBatch);
-        }
     }
 }

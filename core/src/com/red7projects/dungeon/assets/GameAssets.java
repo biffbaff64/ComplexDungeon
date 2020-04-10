@@ -211,11 +211,6 @@ public class GameAssets
     //
     // In-Game Messaging
     public static final String _HELP_ME_ASSET             = "help_bubble";
-    public static final String _OPEN_ME_ASSET             = "open_me";
-    public static final String _QUESTION_MARK_ASSET       = "question_mark";
-    public static final String _EXCLAMATION_MARK_ASSET    = "exclamation_mark";
-    public static final String _TALK_BOX_ASSET            = "talk_box";
-    public static final String _MINI_SPEECH_BUBBLE_ASSET  = "small_speech_bubble";
     public static final String _ABXY_ASSET                = "abxy";
     public static final String _WELCOME_MSG_ASSET         = "welcome_message";
     public static final String _KEY_COLLECTED_MSG_ASSET   = "key_collected";
@@ -225,7 +220,6 @@ public class GameAssets
     public static final String _GETREADY_MSG_ASSET        = "getready";
     public static final String _PRESS_FOR_TREASURE_ASSET  = "press_for_treasure";
     public static final String _PRESS_FOR_PRISONER_ASSET  = "press_for_prisoner";
-    public static final String _PRESS_FOR_GUIDE_ASSET     = "press_for_guide";
     public static final String _STORM_DEMON_WARNING_ASSET = "storm_demon_warning";
 
     //
@@ -287,16 +281,16 @@ public class GameAssets
 
     //
     // Fonts and HUD assets
-    public static final String _CENTURY_FONT     = "data/fonts/CENSCBK.ttf";
-    public static final String _ACME_FONT        = "data/fonts/Acme-Regular.ttf";
-    public static final String _PRO_WINDOWS_FONT = "data/fonts/ProFontWindows.ttf";
-    public static final String _HUD_PANEL_FONT   = "data/fonts/Acme-Regular.ttf";
-    public static final String _HUD_PANEL_ASSET  = "data/hud_panel_rework.png";
+    public static final String _GAME_BACKGROUND     = "data/water_background.png";
+    public static final String _CENTURY_FONT        = "data/fonts/CENSCBK.ttf";
+    public static final String _ACME_FONT           = "data/fonts/Acme-Regular.ttf";
+    public static final String _PRO_WINDOWS_FONT    = "data/fonts/ProFontWindows.ttf";
+    public static final String _HUD_PANEL_FONT      = "data/fonts/Acme-Regular.ttf";
+    public static final String _HUD_PANEL_ASSET     = "data/hud_panel_rework.png";
+    public static final String _MESSAGE_PANEL_ASSET = "message_panel";
 
     public static int hudPanelWidth;      // Set when object is loaded
     public static int hudPanelHeight;     //
-
-    public static final String _GAME_BACKGROUND = "data/water_background.png";
 
     private static final AssetSize[] assetSizes =
         {
@@ -350,7 +344,6 @@ public class GameAssets
             new AssetSize(GraphicID.G_HELP_BUBBLE, 192, 96),
             new AssetSize(GraphicID.G_QUESTION_MARK, 128, 80),
             new AssetSize(GraphicID.G_EXCLAMATION_MARK, 30, 48),
-            new AssetSize(GraphicID.G_TALK_BOX, 832, 264),
             new AssetSize(GraphicID.G_FLOATING_PLATFORM, 128, 128),
             new AssetSize(GraphicID.G_CROSSHAIRS, 64, 64),
             new AssetSize(GraphicID.G_ESCALATOR, 64, 64),
@@ -389,9 +382,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_BEETLE, 76, 64),
         };
 
-    private GameAssets()
-    {
-    }
+    private GameAssets() {}
 
     public static SimpleVec2 getAssetSize(GraphicID _gid)
     {

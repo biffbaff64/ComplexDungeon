@@ -85,6 +85,6 @@ public class Room
         Trace.dbg("compassPoints[_E]: " + compassPoints[_E]);
         Trace.dbg("compassPoints[_S]: " + compassPoints[_S]);
         Trace.dbg("compassPoints[_W]: " + compassPoints[_W]);
-        Trace.dbg("compassPoints[_START " + compassPoints[_START]);
+        Trace.dbg("compassPoints[_START]: " + compassPoints[_START]);
     }
 }

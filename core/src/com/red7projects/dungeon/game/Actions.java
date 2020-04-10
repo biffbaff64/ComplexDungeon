@@ -34,6 +34,7 @@ public enum Actions
     _HOLDING,
     _CLIMBING,
     _CIRCLING,
+    _TALKING,
 
     _HIDING,
     _HURT,

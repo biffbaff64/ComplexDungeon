@@ -38,8 +38,6 @@ public class Escalator extends GdxSprite
     @Override
     public void initialise(final EntityDescriptor entityDescriptor)
     {
-        entityDescriptor.debug();
-
         create(entityDescriptor);
 
         collisionObject.bodyCategory = Gfx.CAT_INTERACTIVE;

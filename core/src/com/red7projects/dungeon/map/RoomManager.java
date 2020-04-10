@@ -28,46 +28,41 @@ import org.jetbrains.annotations.NotNull;
 //@formatter:off
 public class RoomManager
 {
-    private static final String _TEST_ROOM      = "aaa_test_room.tmx";        //
-
-    private static final String _N              = "room_n.tmx";           // Done
-    private static final String _N2             = "room_n2.tmx";          // Done
-    private static final String _E              = "room_e.tmx";           // Done
-    private static final String _S              = "room_s.tmx";           //
-    private static final String _NS             = "room_ns.tmx";          //
-    private static final String _SN             = "room_sn.tmx";          //
-    private static final String _W              = "room_w.tmx";           //
-    private static final String _E2             = "room_e2.tmx";          // Done
-    private static final String _EW             = "room_ew.tmx";          // Done
-    private static final String _NES            = "room_nes.tmx";         // Done
-    private static final String _NEW            = "room_new.tmx";         //
-    private static final String _NW             = "room_nw2.tmx";         //
-    private static final String _NWS            = "room_nws.tmx";         //
-    private static final String _WS             = "room_ws.tmx";          //
-    private static final String _SEW            = "room_sew.tmx";         //
-    private static final String _NESW           = "room_nesw.tmx";        //
-    private static final String _NESW2          = "room_nesw2.tmx";       //
-
-    private static final String _PASSAGE_ES     = "passage_es.tmx";       // Done
-    private static final String _PASSAGE_ESW    = "room_horizontal.tmx";  // Done
-    private static final String _PASSAGE_NS     = "passage_ns.tmx";       // Done
-    private static final String _PASSAGE_NES    = "passage_nes.tmx";      // Done
-    private static final String _PASSAGE_NE     = "passage_ne.tmx";       // Done
-
-    private static final String _VERTICAL       = "room_vertical.tmx";    //
-    private static final String _HORIZONTAL     = "room_horizontal.tmx";  // Done
-
-    private static final String _SECRET1        = "room_secret1.tmx";     //
+    private static final String _PASSAGE_ES     = "passage_es.tmx";       //
+    private static final String _PASSAGE_ESW    = "passage_esw.tmx";      //
+    private static final String _PASSAGE_NS     = "passage_ns.tmx";       //
+    private static final String _PASSAGE_NES    = "passage_nes.tmx";      //
+    private static final String _PASSAGE_NE     = "passage_ne.tmx";       //
+    private static final String _PASSAGE_S      = "passage_s.tmx";        //
 
     private static final String _PRISON_N       = "prison_room_n.tmx";    //
     private static final String _PRISON_S       = "prison_room_s.tmx";    //
 
-    private static final String _ROOM1_NS       = "room1_ns.tmx";         // Done
-    private static final String _ROOM2_NS       = "room2_ns.tmx";         //
+    private static final String _E              = "room_e.tmx";           //
+    private static final String _E2             = "room_e2.tmx";          //
+    private static final String _EW             = "room_ew.tmx";          //
+    private static final String _N              = "room_n.tmx";           //
+    private static final String _N2             = "room_n2.tmx";          //
+    private static final String _S2             = "room_s2.tmx";          //
+    private static final String _NES            = "room_nes.tmx";         //
+    private static final String _NESW           = "room_nesw.tmx";        //
+    private static final String _NESW2          = "room_nesw2.tmx";       //
+    private static final String _NEW            = "room_new.tmx";         //
+    private static final String _NW             = "room_nw2.tmx";         //
+    private static final String _NWS            = "room_nws.tmx";         //
+    private static final String _S              = "room_s.tmx";           //
+    private static final String _SEW            = "room_sew.tmx";         //
+    private static final String _SN             = "room_sn.tmx";          //
+    private static final String _W              = "room_w.tmx";           //
+    private static final String _WS             = "room_ws.tmx";          //
+
+    private static final String _ROOM1_NS       = "room1_ns.tmx";         //
     private static final String _ROOM2_NES      = "room2_nes.tmx";        //
+    private static final String _ROOM2_NS       = "room2_ns.tmx";         //
     private static final String _ROOM3_NEW      = "room3_new.tmx";        //
     private static final String _ROOM4_ES       = "room4_es.tmx";         //
-    private static final String _ROOM5_NW       = "room5_ne.tmx";         //
+    private static final String _ROOM5_NE       = "room5_ne.tmx";         //
+    private static final String _ROOM5B_NE      = "room5b_ne.tmx";         //
     private static final String _ROOM6_ESW      = "room6_esw.tmx";        //
     private static final String _ROOM7_NS       = "room7_ns.tmx";         //
     private static final String _ROOM8_NW       = "room8_nw.tmx";         //
@@ -76,19 +71,20 @@ public class RoomManager
     private static final String _ROOM11_NESW    = "room11_nesw.tmx";      //
     private static final String _ROOM12_NS      = "room12_ns.tmx";        //
     private static final String _ROOM13_ESW     = "room13_esw.tmx";       //
+    private static final String _ROOM13B_EW     = "room13b_ew.tmx";       //
     private static final String _ROOM14_NS      = "room14_ns.tmx";        //
     private static final String _ROOM15_NE      = "room15_ne.tmx";        //
     private static final String _ROOM16_NW      = "room16_nw.tmx";        //
-    private static final String _ROOM17_N       = "room17_n.tmx";         // Done
+    private static final String _ROOM17_N       = "room17_n.tmx";         //
     private static final String _ROOM18_N       = "room18_n.tmx";         //
 
-    private static final String _AREA_1         = "area1.tmx";            //
+    private static final String _SECRET1        = "room_secret1.tmx";     //
 
     private static final String _MAPS_PATH      = "data/maps/";
 
     private static final int    _DEFAULT_START_ROW      = 1;
     private static final int    _DEFAULT_START_COLUMN   = 1;
-    private static final String _START_ROOM             = "ROOM13.TMX";
+    private static final String _START_ROOM             = _ROOM13_ESW;
     private static final int    _START_POSITION         = Room._START;
 
     private int worldWidth;
@@ -101,13 +97,13 @@ public class RoomManager
             {null, null, null, null, null, null, null, null},
             // -----------------------------------------
 
-            {null, null,                    null,                   null,                   null,                   null,                   new Room(_PRISON_S),    null},
+            {null, new Room(_S2),           null,                   null,                   null,                   null,                   new Room(_PRISON_S),    null},
             {null, new Room(_ROOM1_NS),     new Room(_SECRET1),     new Room(_ROOM4_ES),    new Room(_W),           new Room(_S),           new Room(_SN),          null},
             {null, new Room(_PASSAGE_NES),  new Room(_NESW2),       new Room(_NESW),        new Room(_ROOM6_ESW),   new Room(_ROOM11_NESW), new Room(_ROOM10_NSW),  null},
             {null, new Room(_ROOM2_NES),    new Room(_ROOM3_NEW),   new Room(_ROOM9_NESW),  new Room(_ROOM8_NW),    new Room(_ROOM7_NS),    new Room(_PASSAGE_NS),  null},
-            {null, new Room(_N),            new Room(_E),           new Room(_ROOM5_NW),    null,                   new Room(_NES),         new Room(_NW),          null},
+            {null, new Room(_N),            new Room(_E),           new Room(_ROOM5_NE),    null,                   new Room(_NES),         new Room(_NW),          null},
             {null, new Room(_PASSAGE_ES),   new Room(_WS),          null,                   null,                   new Room(_ROOM12_NS),   null,                   null},
-            {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_ESW),  new Room(_NWS),         new Room(_VERTICAL),    null},
+            {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_ESW),  new Room(_NWS),         new Room(_PASSAGE_S),   null},
             {null, new Room(_ROOM17_N),     new Room(_N2),          new Room(_ROOM18_N),    new Room(_ROOM2_NS),    new Room(_ROOM15_NE),   new Room(_ROOM16_NW),   null},
             {null, null,                    null,                   null,                   new Room(_PRISON_N),    null,                   null,                   null},
 
@@ -132,9 +128,6 @@ public class RoomManager
 
         Trace.dbg("_WORLD_WIDTH : " + worldWidth);
         Trace.dbg("_WORLD_HEIGHT: " + worldHeight);
-
-        createRoomList();
-        storeEntryPoints();
     }
 
     public void initialise()
@@ -142,6 +135,9 @@ public class RoomManager
         Trace.__FILE_FUNC();
 
         activeRoom = new Room();
+
+        createRoomList();
+        storeEntryPoints();
 
         int startRow    = _DEFAULT_START_ROW;
         int startColumn = _DEFAULT_START_COLUMN;
@@ -157,21 +153,6 @@ public class RoomManager
         }
 
         setRoom(startRow, startColumn, _START_POSITION);
-
-        activeRoom.mysteryChestsAvailable = countRoomMarkers(TileID._MYSTERY_CHEST_TILE, activeRoom);
-    }
-
-    private void setRoom(int row, int column, int position)
-    {
-        if (roomMap[row][column] != null)
-        {
-            activeRoom.set(roomMap[row][column]);
-
-            activeRoom.row = row;
-            activeRoom.column = column;
-        }
-
-        playerStart = position;
     }
 
     @NotNull
@@ -196,6 +177,19 @@ public class RoomManager
         }
 
         return roomPosition;
+    }
+
+    private void setRoom(int row, int column, int position)
+    {
+        if (roomMap[row][column] != null)
+        {
+            activeRoom.set(roomMap[row][column]);
+
+            activeRoom.row = row;
+            activeRoom.column = column;
+        }
+
+        playerStart = position;
     }
 
     public Room[][] getRoomMap()
@@ -262,8 +256,6 @@ public class RoomManager
     {
         roomList = new Array<>();
 
-        roomList.add("--- SELECT ---");
-
         for (int roomRow = 0; roomRow < worldHeight; roomRow++)
         {
             for (int roomColumn = 0; roomColumn < worldWidth; roomColumn++)
@@ -282,23 +274,28 @@ public class RoomManager
 
     private int countRoomMarkers(TileID _marker, Room _room)
     {
-        TmxMapLoader      tmxMapLoader = new TmxMapLoader();
-        TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(_room.roomName));
-        TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
-
         int markerCount = 0;
 
-        for (int row = 0; row < layer.getHeight(); row++)
+        if ((_room != null) && (_room.roomName != null))
         {
-            for (int column = 0; column < layer.getWidth(); column++)
-            {
-                TiledMapTileLayer.Cell cell = layer.getCell(column, row);
+            _room.debug();
 
-                if (cell != null)
+            TmxMapLoader      tmxMapLoader = new TmxMapLoader();
+            TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(_room.roomName));
+            TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
+
+            for (int row = 0; row < layer.getHeight(); row++)
+            {
+                for (int column = 0; column < layer.getWidth(); column++)
                 {
-                    if (_marker.equals(TileID.fromValue(cell.getTile().getId())))
+                    TiledMapTileLayer.Cell cell = layer.getCell(column, row);
+
+                    if (cell != null)
                     {
-                        markerCount++;
+                        if (_marker.equals(TileID.fromValue(cell.getTile().getId())))
+                        {
+                            markerCount++;
+                        }
                     }
                 }
             }
@@ -313,6 +310,8 @@ public class RoomManager
      */
     private void storeEntryPoints()
     {
+        Trace.__FILE_FUNC();
+
         for (int roomRow = 0; roomRow < worldHeight; roomRow++)
         {
             for (int roomColumn = 0; roomColumn < worldWidth; roomColumn++)
@@ -321,9 +320,13 @@ public class RoomManager
 
                 if (room != null)
                 {
+                    Trace.dbg(room.roomName);
+
                     TmxMapLoader      tmxMapLoader = new TmxMapLoader();
                     TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(room.roomName));
                     TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
+
+                    room.mysteryChestsAvailable = 0;
 
                     for (int row = 0; row < layer.getHeight(); row++)
                     {
@@ -364,6 +367,12 @@ public class RoomManager
                                     case _PLAYER_TILE:
                                     {
                                         room.compassPoints[Room._START].set(column, row);
+                                    }
+                                    break;
+
+                                    case _MYSTERY_CHEST_TILE:
+                                    {
+                                        room.mysteryChestsAvailable++;
                                     }
                                     break;
 

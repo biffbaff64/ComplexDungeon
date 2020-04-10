@@ -65,22 +65,6 @@ public class ActionButtonHandler implements Disposable
                 }
             }
         }
-        else if (app.getPlayer().collision.isNextTo(GraphicID.G_VILLAGER) > 0)
-        {
-            if (getActionMode() == Actions._NO_ACTION)
-            {
-                setActionMode(Actions._OFFER_ABXY_A);
-                setFutureActionMode(Actions._TALK_TO_VILLAGER);
-
-                app.getHud().messageManager.addZoomMessage
-                    (
-                        GameAssets._PRESS_FOR_GUIDE_ASSET,
-                        5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_GUIDE).getX()) / 2,
-                        100
-                    );
-            }
-        }
         else if (app.getPlayer().collision.isNextTo(GraphicID.G_MYSTERY_CHEST) > 0)
         {
             if (getActionMode() == Actions._NO_ACTION)

@@ -155,7 +155,7 @@ public class EntityUtils
             case G_POT:
             case G_CRATE:
             case G_BARREL:
-            case G_TORCH:
+            case G_GLOW_EYES:
             case G_SACKS:
 
             // ----------
@@ -330,7 +330,7 @@ public class EntityUtils
             case G_POT:
             case G_CRATE:
             case G_BARREL:
-            case G_TORCH:
+            case G_GLOW_EYES:
             case G_SPIKES:
             case G_TREASURE_CHEST:
             case G_MYSTERY_CHEST:
