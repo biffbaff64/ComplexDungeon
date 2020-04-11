@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
@@ -86,26 +87,28 @@ public class Villager extends GdxSprite
                 {
                     if (app.getPlayer().getSpriteAction() == Actions._STANDING)
                     {
-                        if (!app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
-                        {
-                            app.getHud().messageManager.enable();
-                            app.getHud().messageManager.addSlidePanel(GameAssets._MESSAGE_PANEL_ASSET);
-                            app.getHud().messageManager.getCurrentPanel().set
-                                (
-                                    new SimpleVec2F(280, -400),
-                                    new SimpleVec2F(0, 400),
-                                    new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
-                                    new Speed(0, 40)
-                                );
-                        }
+                        app.mainGameScreen.gameState.set(StateID._STATE_MESSAGE_PANEL);
+
+//                        if (!app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
+//                        {
+//                            app.getHud().messageManager.enable();
+//                            app.getHud().messageManager.addSlidePanel(GameAssets._MESSAGE_PANEL_ASSET);
+//                            app.getHud().messageManager.getCurrentPanel().set
+//                                (
+//                                    new SimpleVec2F(280, -400),
+//                                    new SimpleVec2F(0, 400),
+//                                    new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
+//                                    new Speed(0, 40)
+//                                );
+//                        }
                     }
-                    else
-                    {
-                        if (app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
-                        {
-                            app.getHud().messageManager.closeSlidePanel();
-                        }
-                    }
+//                    else
+//                    {
+//                        if (app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
+//                        {
+//                            app.getHud().messageManager.closeSlidePanel();
+//                        }
+//                    }
                 }
 
                 if (app.getPlayer().topEdge < sprite.getY())

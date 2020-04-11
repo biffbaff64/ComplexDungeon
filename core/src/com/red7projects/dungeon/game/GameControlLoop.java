@@ -21,11 +21,14 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.screens.MainGameScreen;
+import com.red7projects.dungeon.ui.MessagePanel;
 
 import java.util.concurrent.TimeUnit;
 
 public class GameControlLoop extends AbstractControlLoop
 {
+    private MessagePanel messagePanel;
+
     public GameControlLoop(App _app)
     {
         super(_app);
@@ -65,6 +68,12 @@ public class GameControlLoop extends AbstractControlLoop
             case _STATE_GAME:
             {
                 stateGame();
+            }
+            break;
+
+            case _STATE_MESSAGE_PANEL:
+            {
+                messagePanel.update();
             }
             break;
 
@@ -244,6 +253,14 @@ public class GameControlLoop extends AbstractControlLoop
                     if (!AppConfig.gamePaused)
                     {
                         scr().gameState.set(StateID._STATE_GAME);
+                    }
+                }
+                else
+                {
+                    if (scr().gameState.get() == StateID._STATE_MESSAGE_PANEL)
+                    {
+                        messagePanel = new MessagePanel(app);
+                        messagePanel.create();
                     }
                 }
             }

@@ -12,4 +12,13 @@ public class MessagePanel extends SlidePanel
     {
         this.app = _app;
     }
+
+    public void create()
+    {
+    }
+
+    public boolean update()
+    {
+        return false;
+    }
 }
