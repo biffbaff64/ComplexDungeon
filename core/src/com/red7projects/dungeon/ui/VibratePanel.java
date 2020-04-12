@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.game.StateManager;
+import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Movement;
@@ -94,6 +95,12 @@ public class VibratePanel extends BasicPanel implements UserInterfacePanel
     @Override
     public void draw(final App _app)
     {
+    }
+
+    @Override
+    public SimpleVec2 getSize()
+    {
+        return size;
     }
 
     @Override

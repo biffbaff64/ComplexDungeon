@@ -472,28 +472,6 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
-
-//            DebugRenderer.drawText("UP   : " + buttonUp.isPressed, originX + 50, originY + 1130);
-//            DebugRenderer.drawText("DOWN : " + buttonDown.isPressed, originX + 50, originY + 1100);
-//            DebugRenderer.drawText("LEFT : " + buttonLeft.isPressed, originX + 50, originY + 1070);
-//            DebugRenderer.drawText("RIGHT: " + buttonRight.isPressed, originX + 50, originY + 1040);
-//            DebugRenderer.drawText("A    : " + buttonA.isPressed, originX + 50, originY + 1010);
-//            DebugRenderer.drawText("B    : " + buttonB.isPressed, originX + 50, originY + 980);
-//            DebugRenderer.drawText("X    : " + buttonX.isPressed, originX + 50, originY + 950);
-//            DebugRenderer.drawText("Y    : " + buttonY.isPressed, originX + 50, originY + 920);
-//
-//            DebugRenderer.drawText("DIR  : " + app.getPlayer().direction.toString(), originX + 50, originY + 860);
-//            DebugRenderer.drawText("LRDIR: " + app.inputManager.lastRegisteredDirection.name(), originX + 50, originY + 830);
-//            DebugRenderer.drawText("SPEED: " + app.getPlayer().speed.toString(), originX + 50, originY + 800);
-//
-//            DebugRenderer.drawText("_horizontalValue: " + app.inputManager._horizontalValue, originX + 50, originY + 740);
-//            DebugRenderer.drawText("_verticalValue  : " + app.inputManager._verticalValue, originX + 50, originY + 710);
-//
-//            DebugRenderer.drawText("DROID: " + AppConfig.isAndroidApp(), originX + 50, originY + 650);
-//            DebugRenderer.drawText("AOD  : " + AppConfig.isAndroidOnDesktop(), originX + 50, originY + 620);
-//            DebugRenderer.drawText("DSKTP: " + AppConfig.isDesktopApp(), originX + 50, originY + 590);
-//
-//            DebugRenderer.drawText("C.TYPE: " + AppConfig.controlMode.name(), originX + 50, originY + 530);
         }
     }
 
@@ -503,29 +481,32 @@ public class HeadsUpDisplay implements Disposable
         {
             if (showHUDControls)
             {
-                if (app.preferences.isEnabled(Preferences._SHOW_GAME_BUTTONS))
+                if (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL)
                 {
-                    buttonB.draw(app.spriteBatch, camera);
-                    buttonA.draw(app.spriteBatch, camera);
-                    buttonX.draw(app.spriteBatch, camera);
-                    buttonY.draw(app.spriteBatch, camera);
-                }
+                    if (app.preferences.isEnabled(Preferences._SHOW_GAME_BUTTONS))
+                    {
+                        buttonB.draw(app.spriteBatch, camera);
+                        buttonA.draw(app.spriteBatch, camera);
+                        buttonX.draw(app.spriteBatch, camera);
+                        buttonY.draw(app.spriteBatch, camera);
+                    }
 
-                if (app.inputManager.virtualJoystick != null)
-                {
-                    app.inputManager.virtualJoystick.getTouchpad().setPosition
-                        (
-                            originX + displayPos[_JOYSTICK][_X1],
-                            originY + displayPos[_JOYSTICK][_Y]
-                        );
+                    if (app.inputManager.virtualJoystick != null)
+                    {
+                        app.inputManager.virtualJoystick.getTouchpad().setPosition
+                            (
+                                originX + displayPos[_JOYSTICK][_X1],
+                                originY + displayPos[_JOYSTICK][_Y]
+                            );
 
-                    app.inputManager.virtualJoystick.getTouchpad().setBounds
-                        (
-                            originX + displayPos[_JOYSTICK][_X1],
-                            originY + displayPos[_JOYSTICK][_Y],
-                            app.inputManager.virtualJoystick.getTouchpad().getWidth(),
-                            app.inputManager.virtualJoystick.getTouchpad().getHeight()
-                        );
+                        app.inputManager.virtualJoystick.getTouchpad().setBounds
+                            (
+                                originX + displayPos[_JOYSTICK][_X1],
+                                originY + displayPos[_JOYSTICK][_Y],
+                                app.inputManager.virtualJoystick.getTouchpad().getWidth(),
+                                app.inputManager.virtualJoystick.getTouchpad().getHeight()
+                            );
+                    }
                 }
 
                 if (Developer.isDevMode())
@@ -574,7 +555,7 @@ public class HeadsUpDisplay implements Disposable
         buttonPause.isDrawable = true;
     }
 
-    public void hideControls()
+    public void hideControls(boolean canHidePause)
     {
         showHUDControls = false;
 
@@ -591,7 +572,7 @@ public class HeadsUpDisplay implements Disposable
             }
         }
 
-        buttonPause.isDrawable = false;
+        buttonPause.isDrawable = !canHidePause;
     }
 
     public void setStateID(final StateID id)
@@ -708,7 +689,7 @@ public class HeadsUpDisplay implements Disposable
         buttonX.hasSound     = false;
         buttonY.hasSound     = false;
 
-        hideControls();
+        hideControls(true);
 
         AppConfig.gameButtonsReady = true;
     }

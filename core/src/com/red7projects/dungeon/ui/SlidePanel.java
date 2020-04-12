@@ -21,14 +21,15 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
 
 public class SlidePanel extends BasicPanel implements UserInterfacePanel
 {
-    public  Actions      action;
-    private boolean      isInPlace;
+    public  Actions    action;
+    private boolean    isInPlace;
 
     public SlidePanel()
     {
@@ -38,12 +39,14 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
     @Override
     public void initialise(final TextureRegion _region, final String _nameID, final Object... args)
     {
-        this.textureRegion  = _region;
-        this.nameID         = _nameID;
+        this.textureRegion = _region;
+        this.nameID        = _nameID;
 
-        this.isActive       = false;
-        this.isInPlace      = false;
-        this.action         = Actions._NO_ACTION;
+        this.isActive  = false;
+        this.isInPlace = false;
+        this.action    = Actions._NO_ACTION;
+
+        this.size = new SimpleVec2(textureRegion.getRegionWidth(), textureRegion.getRegionHeight());
 
         state.set(StateID._STATE_OPENING);
     }
@@ -109,10 +112,14 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
     }
 
     @Override
-    public void setPauseTime(final int _time) {}
+    public void setPauseTime(final int _time)
+    {
+    }
 
     @Override
-    public void forceZoomOut() {}
+    public void forceZoomOut()
+    {
+    }
 
     private boolean updateReveal()
     {
@@ -157,6 +164,12 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
         }
 
         return distance.isEmpty();
+    }
+
+    @Override
+    public SimpleVec2 getSize()
+    {
+        return size;
     }
 
     @Override

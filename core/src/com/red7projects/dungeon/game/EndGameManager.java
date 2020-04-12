@@ -38,7 +38,7 @@ public class EndGameManager
         // Player is dead, no lives left
         if ((app.getPlayer() != null) && (app.getPlayer().getSpriteAction() == Actions._DEAD))
         {
-            app.getHud().hideControls();
+            app.getHud().hideControls(true);
 
             app.mainGameScreen.getGameState().set(StateID._STATE_LEVEL_RETRY);
 
@@ -57,7 +57,7 @@ public class EndGameManager
                 Trace.__FILE_FUNC_WithDivider("GAME COMPLETED");
                 Trace.divider();
 
-                app.getHud().hideControls();
+                app.getHud().hideControls(true);
 
                 app.mainGameScreen.completedPanel = new GameCompletedPanel(app);
                 app.mainGameScreen.completedPanel.setup();

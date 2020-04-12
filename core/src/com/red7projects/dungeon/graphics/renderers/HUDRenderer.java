@@ -88,6 +88,7 @@ public class HUDRenderer implements GameScreenRenderer
                 case _STATE_LEVEL_FINISHED:
                 case _STATE_LEVEL_RETRY:
                 case _STATE_GAME:
+                case _STATE_MESSAGE_PANEL:
                 case _STATE_DEBUG_HANG:
                 case _STATE_ANNOUNCE_MISSILE:
                 case _STATE_TELEPORTING:

@@ -28,6 +28,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.game.StateManager;
+import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
@@ -55,6 +56,7 @@ public class BasicPanel implements BasicUIPanel, Disposable
 
     public StateManager state;
 
+    SimpleVec2 size;
     TextureRegion textureRegion;
     String        nameID;
 

@@ -73,7 +73,7 @@ public class GameControlLoop extends AbstractControlLoop
 
             case _STATE_MESSAGE_PANEL:
             {
-                messagePanel.update();
+                stateMessagePanel();
             }
             break;
 
@@ -268,6 +268,18 @@ public class GameControlLoop extends AbstractControlLoop
     }
 
     /**
+     * Handles the message panel which appears when the
+     * player speaks to a villager/guide.
+     */
+    private void stateMessagePanel()
+    {
+        app.getHud().update();
+        app.mapUtils.update();
+
+        messagePanel.update();
+    }
+
+    /**
      * Handles the preparation for retrying the current
      * level, after LJM loses a life.
      */
@@ -282,7 +294,7 @@ public class GameControlLoop extends AbstractControlLoop
             {
                 scr().gameState.set(StateID._STATE_GAME_OVER);
 
-                app.getHud().hideControls();
+                app.getHud().hideControls(true);
                 app.getHud().messageManager.enable();
                 app.getHud().messageManager.addZoomMessage(GameAssets._GAMEOVER_MSG_ASSET, 3000);
             }

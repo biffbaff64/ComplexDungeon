@@ -57,6 +57,7 @@ public class GameListener
         {
             case _STATE_PAUSED:
             case _STATE_GAME:
+            case _STATE_MESSAGE_PANEL:
             {
                 updateStacks();
             }

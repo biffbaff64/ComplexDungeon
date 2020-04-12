@@ -18,6 +18,7 @@ package com.red7projects.dungeon.ui;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
+import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
@@ -31,6 +32,8 @@ public interface UserInterfacePanel
     boolean update();
 
     void draw(App _app);
+
+    SimpleVec2 getSize();
 
     SimpleVec2F getPosition();
 

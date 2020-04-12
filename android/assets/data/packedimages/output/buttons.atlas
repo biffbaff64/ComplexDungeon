@@ -20,14 +20,14 @@ arrow_left_blue_pressed
   index: -1
 arrow_right_blue
   rotate: false
-  xy: 1365, 1508
+  xy: 1279, 1365
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_right_blue_pressed
   rotate: false
-  xy: 1279, 1365
+  xy: 1279, 1297
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -237,14 +237,14 @@ button_achievements_pressed
   index: -1
 button_d
   rotate: false
-  xy: 1279, 1297
+  xy: 547, 788
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_d_pressed
   rotate: false
-  xy: 547, 788
+  xy: 547, 720
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -305,6 +305,20 @@ button_no_pressed
   orig: 142, 66
   offset: 0, 0
   index: -1
+button_ok
+  rotate: false
+  xy: 1365, 1557
+  size: 98, 66
+  orig: 98, 66
+  offset: 0, 0
+  index: -1
+button_ok_pressed
+  rotate: false
+  xy: 1365, 1489
+  size: 98, 66
+  orig: 98, 66
+  offset: 0, 0
+  index: -1
 button_open_leaderboard
   rotate: false
   xy: 646, 1408
@@ -321,14 +335,14 @@ button_open_leaderboard_pressed
   index: -1
 button_pause
   rotate: false
-  xy: 547, 720
+  xy: 547, 652
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_pause_pressed
   rotate: false
-  xy: 547, 652
+  xy: 547, 584
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -559,7 +573,7 @@ toggle_off
   index: -1
 toggle_on
   rotate: false
-  xy: 1365, 1576
+  xy: 1367, 1440
   size: 88, 47
   orig: 88, 47
   offset: 0, 0

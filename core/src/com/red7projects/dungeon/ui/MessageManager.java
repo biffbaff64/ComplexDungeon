@@ -174,6 +174,16 @@ public class MessageManager implements Disposable
         return currentPanel;
     }
 
+    public int getCurrentPanelWidth()
+    {
+        return currentPanel.getSize().getX();
+    }
+
+    public int getCurrentPanelHeight()
+    {
+        return currentPanel.getSize().getY();
+    }
+
     public void setPosition(String _nameID, int x, int y)
     {
         if ((currentPanel != null) && doesPanelExist(_nameID))

@@ -27,6 +27,7 @@ import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.camera.Zoom;
 import com.red7projects.dungeon.logging.StopWatch;
+import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
@@ -218,6 +219,12 @@ public class ZoomPanel extends BasicPanel implements UserInterfacePanel
         zoomSpeed = _DEFAULT_SPEED;
 
         setState(StateID._STATE_ZOOM_OUT);
+    }
+
+    @Override
+    public SimpleVec2 getSize()
+    {
+        return size;
     }
 
     @Override

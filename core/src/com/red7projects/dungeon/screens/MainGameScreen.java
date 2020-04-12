@@ -104,6 +104,7 @@ public class MainGameScreen extends AbstractBaseScreen
             case _STATE_SETTINGS_PANEL:
             case _STATE_PAUSED:
             case _STATE_GAME:
+            case _STATE_MESSAGE_PANEL:
             case _STATE_LEVEL_RETRY:
             case _STATE_LEVEL_FINISHED:
             case _STATE_GAME_OVER:
@@ -146,7 +147,7 @@ public class MainGameScreen extends AbstractBaseScreen
     {
         super.update();
 
-        if (super.flowState.get() == StateID._STATE_GAME)
+//        if (super.flowState.get() == StateID._STATE_GAME)
         {
             update();
         }
@@ -156,7 +157,7 @@ public class MainGameScreen extends AbstractBaseScreen
         app.worldModel.worldStep();
     }
 
-    public void draw(final SpriteBatch spriteBatch, final OrthoGameCamera gameCamera)
+    public void draw()
     {
         if (!app.preferences.isEnabled(Preferences._USING_ASHLEY_ECS))
         {
