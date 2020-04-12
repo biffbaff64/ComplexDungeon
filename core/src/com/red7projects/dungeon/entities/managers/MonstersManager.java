@@ -24,7 +24,7 @@ import com.red7projects.dungeon.assets.GfxAsset;
 import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.Bouncer;
-import com.red7projects.dungeon.entities.characters.JellyMonster;
+import com.red7projects.dungeon.entities.characters.deprecated.JellyMonster;
 import com.red7projects.dungeon.entities.characters.StormDemon;
 import com.red7projects.dungeon.entities.characters.deprecated.Monster;
 import com.red7projects.dungeon.game.App;

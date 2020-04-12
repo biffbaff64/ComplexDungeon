@@ -221,6 +221,7 @@ public class GameAssets
     public static final String _PRESS_FOR_TREASURE_ASSET  = "press_for_treasure";
     public static final String _PRESS_FOR_PRISONER_ASSET  = "press_for_prisoner";
     public static final String _STORM_DEMON_WARNING_ASSET = "storm_demon_warning";
+    public static final String _VILLAGER_FACES_ASSET      = "villager_faces";
 
     //
     // Weaponry and Explosions
@@ -278,6 +279,7 @@ public class GameAssets
     public static final int _SACKS_FRAMES                  = 1;
     public static final int _CROSSHAIRS_FRAMES             = 1;
     public static final int _ESCALATOR_FRAMES              = 16;
+    public static final int _VILLAGER_FACES_FRAMES         = 3;
 
     //
     // Fonts and HUD assets
