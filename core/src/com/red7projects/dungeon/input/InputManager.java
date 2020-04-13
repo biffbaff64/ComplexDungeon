@@ -19,6 +19,7 @@ package com.red7projects.dungeon.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector2;
@@ -30,7 +31,7 @@ import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.physics.Movement;
 
 @SuppressWarnings("WeakerAccess")
-public class InputManager implements AbstractInputManager
+public class InputManager
 {
     public Array<GameButton> gameButtons;
     public Vector2           mousePosition;
@@ -54,7 +55,6 @@ public class InputManager implements AbstractInputManager
         setup();
     }
 
-    @Override
     public boolean setup()
     {
         inputMultiplexer = new InputMultiplexer();
@@ -63,12 +63,15 @@ public class InputManager implements AbstractInputManager
         currentRegisteredDirection  = Movement.Dir._STILL;
         lastRegisteredDirection     = Movement.Dir._STILL;
 
-        if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
+        if (Controllers.getControllers().size <= 0)
         {
-            virtualJoystick = new VirtualJoystick(app);
+            if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
+            {
+                virtualJoystick = new VirtualJoystick(app);
 
-            virtualJoystick.create();
-            virtualJoystick.addToStage();
+                virtualJoystick.create();
+                virtualJoystick.addToStage();
+            }
         }
 
         if (AppConfig.isDesktopApp())
@@ -107,7 +110,6 @@ public class InputManager implements AbstractInputManager
         return true;
     }
 
-    @Override
     public float getControllerXPercentage()
     {
         float xPercent = 0.0f;
@@ -142,7 +144,6 @@ public class InputManager implements AbstractInputManager
         return xPercent;
     }
 
-    @Override
     public float getControllerYPercentage()
     {
         float yPercent = 0.0f;

@@ -29,7 +29,7 @@ import com.red7projects.dungeon.input.objects.*;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
-public class GameController implements AbstractInputManager, ControllerListener, InputProcessor
+public class GameController implements ControllerListener, InputProcessor
 {
     public Controller controller;
 
@@ -40,7 +40,6 @@ public class GameController implements AbstractInputManager, ControllerListener,
         this.app = _app;
     }
 
-    @Override
     public boolean setup()
     {
         AppConfig.controllersFitted = false;
@@ -70,18 +69,6 @@ public class GameController implements AbstractInputManager, ControllerListener,
         }
 
         return AppConfig.controllersFitted;
-    }
-
-    @Override
-    public float getControllerXPercentage()
-    {
-        return 0;
-    }
-
-    @Override
-    public float getControllerYPercentage()
-    {
-        return 0;
     }
 
     public void addExternalController()
