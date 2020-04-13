@@ -18,15 +18,14 @@ package com.red7projects.dungeon.config;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.objects.ControllerPos;
 import com.red7projects.dungeon.input.objects.ControllerType;
-import com.red7projects.dungeon.logging.Stats;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Stats;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public abstract class AppConfig
 {

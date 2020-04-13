@@ -19,7 +19,7 @@
 
 package com.red7projects.dungeon.types;
 
-import com.red7projects.dungeon.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.StopWatch;
 
 import java.util.concurrent.TimeUnit;
 

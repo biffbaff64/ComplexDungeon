@@ -19,8 +19,7 @@ package com.red7projects.dungeon.config;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.Sfx;
-import com.red7projects.dungeon.logging.Trace;
-import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 // TODO: 05/01/2019 - Investigate storing preferences & settings on the players Google Drive
 

@@ -14,14 +14,14 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.pooling;
+package com.red7projects.dungeon.utils.pooling;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 
-public class PolygonCollisionObjectPool<T>
+public class CollisionObjectPool<T>
 {
     public interface ObjectPoolFactory<T>
     {
@@ -38,7 +38,7 @@ public class PolygonCollisionObjectPool<T>
     private final ObjectPoolFactory<T> factory;
     private final int                  maxSize;
 
-    public PolygonCollisionObjectPool(ObjectPoolFactory<T> _factory, int _maxSize)
+    public CollisionObjectPool(ObjectPoolFactory<T> _factory, int _maxSize)
     {
         this.factory = _factory;
         this.maxSize = _maxSize;

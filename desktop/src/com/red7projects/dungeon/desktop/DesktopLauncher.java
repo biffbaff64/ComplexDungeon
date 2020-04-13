@@ -6,7 +6,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.red7projects.dungeon.config.Version;
 import com.red7projects.dungeon.game.MainGame;
-import com.red7projects.dungeon.google.PlayServicesDesktop;
+import com.red7projects.dungeon.utils.logging.google.PlayServicesDesktop;
 import com.red7projects.dungeon.graphics.Gfx;
 
 public class DesktopLauncher

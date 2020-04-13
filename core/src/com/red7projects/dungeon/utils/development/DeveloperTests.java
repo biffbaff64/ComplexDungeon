@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.development;
+package com.red7projects.dungeon.utils.development;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

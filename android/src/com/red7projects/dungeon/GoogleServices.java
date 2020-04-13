@@ -25,11 +25,11 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.tasks.Task;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.google.PlayServices;
-import com.red7projects.dungeon.google.RCConstants;
+import com.red7projects.dungeon.utils.logging.google.PlayServices;
+import com.red7projects.dungeon.utils.logging.google.RCConstants;
 
 /**
  * The type Google services.

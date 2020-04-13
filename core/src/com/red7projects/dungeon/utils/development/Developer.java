@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.development;
+package com.red7projects.dungeon.utils.development;
 
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;

@@ -28,7 +28,7 @@ import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 

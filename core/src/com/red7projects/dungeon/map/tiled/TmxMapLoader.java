@@ -31,7 +31,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.XmlReader.Element;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 /**
  * @brief synchronous loader for TMX maps created with the Tiled tool

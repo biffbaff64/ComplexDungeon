@@ -20,7 +20,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.ui.UIPage;
-import com.red7projects.dungeon.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.game.App;
 
 import java.util.concurrent.TimeUnit;

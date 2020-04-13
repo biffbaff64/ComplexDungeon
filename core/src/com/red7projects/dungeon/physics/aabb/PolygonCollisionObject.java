@@ -20,7 +20,7 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 //@formatter:off

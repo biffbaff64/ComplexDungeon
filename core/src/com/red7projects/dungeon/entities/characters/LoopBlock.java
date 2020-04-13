@@ -24,7 +24,7 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.physics.Movement;
 
 public class LoopBlock extends BaseEnemy

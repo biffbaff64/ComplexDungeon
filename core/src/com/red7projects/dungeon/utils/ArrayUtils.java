@@ -17,7 +17,7 @@
  *
  */
 
-package com.red7projects.dungeon.game;
+package com.red7projects.dungeon.utils;
 
 import java.lang.reflect.Array;
 

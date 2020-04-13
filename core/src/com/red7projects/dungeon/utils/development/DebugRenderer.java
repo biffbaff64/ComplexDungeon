@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.development;
+package com.red7projects.dungeon.utils.development;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -29,9 +29,9 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Meters;
-import com.red7projects.dungeon.logging.Stats;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Meters;
+import com.red7projects.dungeon.utils.logging.Stats;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
 import com.red7projects.dungeon.physics.aabb.CollisionRect;

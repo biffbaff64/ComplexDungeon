@@ -27,7 +27,7 @@ import com.red7projects.dungeon.game.StateManager;
 import com.red7projects.dungeon.game.HighScore;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.ui.UIPage;
-import com.red7projects.dungeon.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.assets.GameAssets;

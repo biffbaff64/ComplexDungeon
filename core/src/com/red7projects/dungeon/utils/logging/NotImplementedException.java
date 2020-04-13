@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.logging;
+package com.red7projects.dungeon.utils.logging;
 
 /**
  * <p>Thrown to indicate that a block of code has not been implemented.

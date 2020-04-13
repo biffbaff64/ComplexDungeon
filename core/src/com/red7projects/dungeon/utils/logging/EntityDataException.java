@@ -1,5 +1,5 @@
 /*
- *  Copyright 24/04/2018 Red7Projects.
+ *  Copyright 28/12/2018 Red7Projects.
  *  <p>
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,16 +14,12 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.google;
+package com.red7projects.dungeon.utils.logging;
 
-@SuppressWarnings({"SameReturnValue", "unused"})
-public interface AdsController
+public class EntityDataException extends Exception
 {
-    void showBannerAd();
-
-    void hideBannerAd();
-
-    void showInterstitialAd(Runnable runnable);
-
-    boolean isWifiConnected();
+    public EntityDataException(String message)
+    {
+        super(message);
+    }
 }

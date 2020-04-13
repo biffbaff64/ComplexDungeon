@@ -30,12 +30,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.tests.RoomTests;
+import com.red7projects.dungeon.utils.tests.RoomTests;
 import com.red7projects.dungeon.ui.*;
 
 @SuppressWarnings("WeakerAccess")

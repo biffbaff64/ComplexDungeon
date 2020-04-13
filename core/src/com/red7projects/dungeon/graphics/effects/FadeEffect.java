@@ -20,7 +20,7 @@ package com.red7projects.dungeon.graphics.effects;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
-import com.red7projects.dungeon.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.game.App;
 

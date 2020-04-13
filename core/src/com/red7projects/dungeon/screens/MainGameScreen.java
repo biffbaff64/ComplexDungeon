@@ -16,16 +16,13 @@
 
 package com.red7projects.dungeon.screens;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.*;
-import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.graphics.camera.Shake;
-import com.red7projects.dungeon.logging.StopWatch;
-import com.red7projects.dungeon.logging.Trace;
-import com.red7projects.dungeon.maths.SimpleVec2;
+import com.red7projects.dungeon.utils.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.ui.GameCompletedPanel;
 
 @SuppressWarnings("WeakerAccess")

@@ -22,7 +22,7 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.entities.components.EntityManagerComponent;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.ArrayList;
 

@@ -18,7 +18,7 @@ package com.red7projects.dungeon.assets;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 /**
  * Creates an object describing essential asset data for entities.

@@ -14,28 +14,28 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.google;
+package com.red7projects.dungeon.utils.logging.google;
 
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class DummyAdsController implements AdsController
 {
     @Override
     public void showBannerAd()
     {
-        Trace.__FILE_FUNC();
+        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
     }
 
     @Override
     public void hideBannerAd()
     {
-        Trace.__FILE_FUNC();
+        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
     }
 
     @Override
     public boolean isWifiConnected()
     {
-        Trace.__FILE_FUNC();
+        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
         return false;
     }
@@ -43,7 +43,7 @@ public class DummyAdsController implements AdsController
     @Override
     public void showInterstitialAd(Runnable then)
     {
-        Trace.__FILE_FUNC();
+        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
         if (then == null)
         {

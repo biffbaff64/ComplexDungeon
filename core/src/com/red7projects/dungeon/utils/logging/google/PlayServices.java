@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.google;
+package com.red7projects.dungeon.utils.logging.google;
 
 import com.red7projects.dungeon.game.App;
 

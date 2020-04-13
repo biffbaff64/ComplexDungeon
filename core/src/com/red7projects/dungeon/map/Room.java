@@ -17,7 +17,7 @@
 package com.red7projects.dungeon.map;
 
 import com.red7projects.dungeon.entities.characters.interactive.JailKey;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 
 @SuppressWarnings("WeakerAccess")

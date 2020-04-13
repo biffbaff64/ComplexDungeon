@@ -18,7 +18,7 @@ package com.red7projects.dungeon.entities;
 
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public abstract class EntityStats

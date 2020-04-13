@@ -24,7 +24,7 @@ package com.red7projects.dungeon.graphics.renderers;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.development.DebugRenderer;
+import com.red7projects.dungeon.utils.development.DebugRenderer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;

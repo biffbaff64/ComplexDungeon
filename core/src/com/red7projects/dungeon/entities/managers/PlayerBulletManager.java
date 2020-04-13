@@ -25,7 +25,7 @@ import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.pooling.ObjectPool;
+import com.red7projects.dungeon.utils.pooling.ObjectPool;
 
 public class PlayerBulletManager implements Disposable
 {

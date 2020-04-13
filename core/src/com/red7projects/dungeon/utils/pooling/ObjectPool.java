@@ -17,7 +17,7 @@
  *
  */
 
-package com.red7projects.dungeon.pooling;
+package com.red7projects.dungeon.utils.pooling;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;

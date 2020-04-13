@@ -19,7 +19,7 @@ package com.red7projects.dungeon.entities;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.entities.components.EntityManagerComponent;
 import com.red7projects.dungeon.entities.ecs.ashley.core.Engine;
 import com.red7projects.dungeon.entities.managers.*;
@@ -28,7 +28,7 @@ import com.red7projects.dungeon.entities.systems.RenderSystem;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 
 @SuppressWarnings({"WeakerAccess"})

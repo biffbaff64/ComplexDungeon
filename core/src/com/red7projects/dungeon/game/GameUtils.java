@@ -20,7 +20,7 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.entities.EntityManager;
 import com.red7projects.dungeon.entities.utils.EntityUtils;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.map.MapCreator;
 import com.red7projects.dungeon.map.PathUtils;
 import com.red7projects.dungeon.physics.CollisionUtils;

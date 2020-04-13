@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.development;
+package com.red7projects.dungeon.utils.development;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -31,17 +31,15 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.red7projects.dungeon.game.ArrayUtils;
+import com.red7projects.dungeon.utils.ArrayUtils;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.input.InputManager;
-import com.red7projects.dungeon.input.objects.ControllerType;
-import com.red7projects.dungeon.logging.Stats;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Stats;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.ui.BasicPanel;
 
 import java.util.Locale;
@@ -101,7 +99,7 @@ public class DeveloperPanel extends BasicPanel
 
         this.app = _app;
 
-        if (Developer.isDevMode())
+        if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
         {
             glProfiler = new GLProfiler(Gdx.graphics);
         }
@@ -154,7 +152,7 @@ public class DeveloperPanel extends BasicPanel
 
         previousDisableEnemies = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
 
-        if (Developer.isDevMode())
+        if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
         {
             glProfilerUpdate();
         }
@@ -300,7 +298,7 @@ public class DeveloperPanel extends BasicPanel
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                if (Developer.isDevMode())
+                if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
                 {
                     app.highScoreUtils.resetTable();
 
@@ -313,7 +311,7 @@ public class DeveloperPanel extends BasicPanel
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                if (Developer.isDevMode())
+                if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
                 {
                     Trace.dbg
                         (
@@ -334,7 +332,7 @@ public class DeveloperPanel extends BasicPanel
             @Override
             public void clicked(final InputEvent event, final float x, final float y)
             {
-                if (Developer.isDevMode())
+                if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
                 {
                     app.collisionUtils.debugAll();
                 }
@@ -371,7 +369,7 @@ public class DeveloperPanel extends BasicPanel
 
     private void updatePreferencesOnEntry()
     {
-        if (!Developer.isDevMode())
+        if (!com.red7projects.dungeon.utils.development.Developer.isDevMode())
         {
             app.preferences.prefs.putBoolean(Preferences._MENU_HEAPS, false);
             app.preferences.prefs.flush();
@@ -409,7 +407,7 @@ public class DeveloperPanel extends BasicPanel
 
     private void glProfilerUpdate()
     {
-        if (Developer.isDevMode())
+        if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
         {
             if (buttons[glProfilerRow][glProfilerColumn].isChecked())
             {
@@ -454,7 +452,7 @@ public class DeveloperPanel extends BasicPanel
 
         app.preferences.setPrefsToDefault();
 
-        app.preferences.prefs.putBoolean(Preferences._DEV_MODE, Developer.isDevMode());
+        app.preferences.prefs.putBoolean(Preferences._DEV_MODE, com.red7projects.dungeon.utils.development.Developer.isDevMode());
         app.preferences.prefs.putBoolean(Preferences._GOD_MODE, Developer.isGodMode());
         app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, app.googleServices.isSignedIn());
         app.preferences.prefs.putBoolean(Preferences._ANDROID_ON_DESKTOP, AppConfig.isDesktopApp());

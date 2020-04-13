@@ -1,5 +1,5 @@
 /*
- *  Copyright 10/11/2018 Red7Projects.
+ *  Copyright 24/04/2018 Red7Projects.
  *  <p>
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,25 +14,16 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.google;
+package com.red7projects.dungeon.utils.logging.google;
 
-public enum RCConstants
+@SuppressWarnings({"SameReturnValue", "unused"})
+public interface AdsController
 {
-    RC_SIGN_IN          (9001),
-    RC_UNALLOCATED_2    (9002),
-    RC_ACHIEVEMENT_UI   (9003),
-    RC_LEADERBOARD_UI   (9004),
-    RC_UNALLOCATED_5    (9005),
-    RC_SELECT_PLAYERS   (9006),
-    RC_WAITING_ROOM     (9007),
-    RC_INVITATION_INBOX (9008),
-    RC_SAVED_GAMES_UI   (9009),
-    RC_UNALLOCATED_10   (9010);
+    void showBannerAd();
 
-    public final int value;
+    void hideBannerAd();
 
-    RCConstants(int _value)
-    {
-        value = _value;
-    }
+    void showInterstitialAd(Runnable runnable);
+
+    boolean isWifiConnected();
 }

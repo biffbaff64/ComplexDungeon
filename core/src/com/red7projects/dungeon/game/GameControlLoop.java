@@ -19,7 +19,7 @@ package com.red7projects.dungeon.game;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.ui.MessagePanel;
 
@@ -148,6 +148,7 @@ public class GameControlLoop extends AbstractControlLoop
 
         // All cameras ON
         app.cameraUtils.enableAllCameras();
+        app.baseRenderer.isLerpingEnabled = false;
 
         app.gameUtils.prepareCurrentLevel(scr().firstTime);
 
@@ -231,6 +232,8 @@ public class GameControlLoop extends AbstractControlLoop
         }
         else
         {
+            app.baseRenderer.isLerpingEnabled = true;
+
             app.mapUtils.update();
             app.entityManager.updateSprites();
             app.entityManager.tidySprites();

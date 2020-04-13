@@ -17,7 +17,7 @@
 package com.red7projects.dungeon.entities.hero;
 
 import com.badlogic.gdx.utils.Disposable;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;

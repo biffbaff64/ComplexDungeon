@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.logging;
+package com.red7projects.dungeon.utils.logging;
 
 import com.badlogic.gdx.Gdx;
 
@@ -34,7 +34,7 @@ public class Stats
     {
         if (prefs != null)
         {
-            prefs.putInteger(Meters.fromValue(meter).name(), amount);
+            prefs.putInteger(com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(), amount);
             prefs.flush();
         }
     }
@@ -45,8 +45,8 @@ public class Stats
         {
             prefs.putInteger
                     (
-                            Meters.fromValue(meter).name(),
-                            (prefs.getInteger(Meters.fromValue(meter).name(), 0) + amount)
+                            com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(),
+                            (prefs.getInteger(com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(), 0) + amount)
                     );
 
             prefs.flush();
@@ -59,8 +59,8 @@ public class Stats
         {
             prefs.putInteger
                     (
-                            Meters.fromValue(meter).name(),
-                            (prefs.getInteger(Meters.fromValue(meter).name(), 0) - 1)
+                            com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(),
+                            (prefs.getInteger(com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(), 0) - 1)
                     );
 
             prefs.flush();
@@ -73,8 +73,8 @@ public class Stats
         {
             prefs.putInteger
                     (
-                            Meters.fromValue(meter).name(),
-                            (prefs.getInteger(Meters.fromValue(meter).name(), 0) + 1)
+                            com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(),
+                            (prefs.getInteger(com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(), 0) + 1)
                     );
 
             prefs.flush();
@@ -85,21 +85,21 @@ public class Stats
     {
         if (prefs != null)
         {
-            prefs.putInteger(Meters.fromValue(meter).name(), 0);
+            prefs.putInteger(com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(), 0);
             prefs.flush();
         }
     }
 
     public static int getMeter(int meter)
     {
-        return (prefs == null) ? 0 : prefs.getInteger(Meters.fromValue(meter).name(), 0);
+        return (prefs == null) ? 0 : prefs.getInteger(com.red7projects.dungeon.utils.logging.Meters.fromValue(meter).name(), 0);
     }
 
     public static void resetAllMeters()
     {
         if (prefs != null)
         {
-            int end = Meters._MAX_STATS_METERS.get();
+            int end = com.red7projects.dungeon.utils.logging.Meters._MAX_STATS_METERS.get();
 
             for (int i = 0; i < end; i++)
             {

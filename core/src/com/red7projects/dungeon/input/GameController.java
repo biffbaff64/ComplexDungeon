@@ -24,13 +24,12 @@ import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.objects.ControllerMap;
 import com.red7projects.dungeon.input.objects.Qumox3507Pad;
 import com.red7projects.dungeon.input.objects.USBControllerPad;
 import com.red7projects.dungeon.input.objects.XBox360Pad;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class GameController implements AbstractInputManager, ControllerListener, InputProcessor

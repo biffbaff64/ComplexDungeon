@@ -20,7 +20,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.DirectionValue;

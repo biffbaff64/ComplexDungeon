@@ -28,7 +28,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
@@ -46,6 +46,7 @@ public class BaseRenderer implements Disposable
     public Zoom             gameZoom;
     public Zoom             hudZoom;
     public boolean          isDrawingStage;
+    public boolean          isLerpingEnabled;
 
     private WorldRenderer   worldRenderer;
     private HUDRenderer     hudRenderer;
@@ -67,8 +68,6 @@ public class BaseRenderer implements Disposable
     {
         AppConfig.camerasReady = false;
 
-        Gfx.setPPM(64.0f);  // TODO: 08/12/2019 - ????
-
         backgroundCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Background Cam", app);
         tiledGameCamera     = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Tiled Cam", app);
         spriteGameCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Sprite Cam", app);
@@ -82,14 +81,14 @@ public class BaseRenderer implements Disposable
         backgroundZoom  = new Zoom();
         gameZoom        = new Zoom();
         hudZoom         = new Zoom();
-
         worldRenderer   = new WorldRenderer(app);
         hudRenderer     = new HUDRenderer(app);
 
         worldRenderer.setBackground(GameAssets._GAME_BACKGROUND);
 
-        AppConfig.camerasReady = true;
         isDrawingStage         = false;
+        isLerpingEnabled       = false;
+        AppConfig.camerasReady = true;
     }
 
     /**
@@ -126,13 +125,16 @@ public class BaseRenderer implements Disposable
         app.spriteBatch.enableBlending();
         app.spriteBatch.begin();
 
+        float cameraX = (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2));
+        float cameraY = (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2));
+
         // ----- Draw the Background, if enabled -----
         if (backgroundCamera.isInUse)
         {
             backgroundCamera.setPosition
                 (
-                    (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
-                    (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
+                    cameraX,
+                    cameraY,
                     0,
                     backgroundZoom.getZoomValue(),
                     false
@@ -145,15 +147,14 @@ public class BaseRenderer implements Disposable
         // ----- Draw the TiledMap, if enabled -----
         if (tiledGameCamera.isInUse)
         {
-            tiledGameCamera.lerpTo
-                (
-                    (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
-                    (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
-                    0,
-                    Gfx._LERP_SPEED,
-                    gameZoom.getZoomValue(),
-                    true
-                );
+            if (isLerpingEnabled)
+            {
+                tiledGameCamera.lerpTo(cameraX, cameraY, 0, Gfx._LERP_SPEED, gameZoom.getZoomValue(), true);
+            }
+            else
+            {
+                tiledGameCamera.setPosition(cameraX, cameraY,0, gameZoom.getZoomValue(),true);
+            }
 
             app.mapData.render(tiledGameCamera.camera);
 
@@ -170,15 +171,14 @@ public class BaseRenderer implements Disposable
         {
             if (AppConfig.gameScreenActive)
             {
-                spriteGameCamera.lerpTo
-                    (
-                        (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
-                        (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
-                        0,
-                        Gfx._LERP_SPEED,
-                        gameZoom.getZoomValue(),
-                        true
-                    );
+                if (isLerpingEnabled)
+                {
+                    spriteGameCamera.lerpTo(cameraX, cameraY,0, Gfx._LERP_SPEED, gameZoom.getZoomValue(),true);
+                }
+                else
+                {
+                    spriteGameCamera.setPosition(cameraX, cameraY, 0, gameZoom.getZoomValue(), false);
+                }
             }
             else
             {
@@ -205,15 +205,7 @@ public class BaseRenderer implements Disposable
         // TODO: 14/02/2019 - Update the HUD to use Scene2D.ui stage.
         if (hudGameCamera.isInUse)
         {
-            hudGameCamera.setPosition
-                (
-                    (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2)),
-                    (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2)),
-                    0,
-                    hudZoom.getZoomValue(),
-                    false
-                );
-
+            hudGameCamera.setPosition(cameraX, cameraY,0, hudZoom.getZoomValue(),false);
             hudRenderer.render(app.spriteBatch, hudGameCamera);
         }
 

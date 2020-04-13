@@ -17,7 +17,7 @@
  *
  */
 
-package com.red7projects.dungeon.logging;
+package com.red7projects.dungeon.utils.logging;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;

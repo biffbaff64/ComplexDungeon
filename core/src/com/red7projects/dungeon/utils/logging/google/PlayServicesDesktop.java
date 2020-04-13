@@ -14,11 +14,11 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.google;
+package com.red7projects.dungeon.utils.logging.google;
 
-import com.red7projects.dungeon.logging.Trace;
 import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class PlayServicesDesktop implements PlayServices
 {
@@ -33,7 +33,7 @@ public class PlayServicesDesktop implements PlayServices
     @Override
     public void createApiClient()
     {
-        Trace.__FILE_FUNC();
+        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PlayServicesDesktop implements PlayServices
         {
             if (!app.preferences.prefs.getBoolean(Preferences._SIGN_IN_STATUS))
             {
-                Trace.__FILE_FUNC();
+                com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
                 app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, true);
                 app.preferences.prefs.flush();
@@ -56,7 +56,7 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            Trace.__FILE_FUNC();
+            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
             signIn();
         }
@@ -67,7 +67,7 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            Trace.__FILE_FUNC();
+            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
             app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, false);
             app.preferences.prefs.flush();
@@ -91,7 +91,7 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            Trace.__FILE_FUNC("" + score + ", " + level);
+            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC("" + score + ", " + level);
         }
     }
 
@@ -103,7 +103,7 @@ public class PlayServicesDesktop implements PlayServices
     @Override
     public void showAchievementScreen()
     {
-        Trace.__FILE_FUNC();
+        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
     }
 
     @Override

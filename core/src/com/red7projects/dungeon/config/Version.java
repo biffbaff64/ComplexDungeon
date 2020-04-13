@@ -16,7 +16,7 @@
 
 package com.red7projects.dungeon.config;
 
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.game.App;
 
 /**

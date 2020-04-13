@@ -21,7 +21,7 @@ package com.red7projects.dungeon.map;
 
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;

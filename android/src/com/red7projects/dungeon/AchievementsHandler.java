@@ -21,8 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.red7projects.dungeon.google.RCConstants;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.google.RCConstants;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 class AchievementsHandler implements OnSuccessListener<Intent>
 {

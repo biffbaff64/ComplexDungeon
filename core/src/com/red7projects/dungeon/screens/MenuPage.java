@@ -31,13 +31,13 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.buttons.Switch;
-import com.red7projects.dungeon.logging.StopWatch;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
 

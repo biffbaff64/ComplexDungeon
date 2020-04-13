@@ -17,16 +17,39 @@
  *
  */
 
-package com.red7projects.dungeon.pooling;
+package com.red7projects.dungeon.utils.logging;
 
-public class ObjectMapEntry
+import java.util.concurrent.TimeUnit;
+
+@SuppressWarnings("WeakerAccess")
+public class StopWatch
 {
-    public final String key;
-    public final Class  objectClass;
+    private long starts;
 
-    public ObjectMapEntry(String key, Class objectClass)
+    private StopWatch()
     {
-        this.key = key;
-        this.objectClass = objectClass;
+        reset();
+    }
+
+    public static StopWatch start()
+    {
+        return new StopWatch();
+    }
+
+    public void reset()
+    {
+        starts = System.currentTimeMillis();
+    }
+
+    public long time()
+    {
+        long ends = System.currentTimeMillis();
+
+        return ends - starts;
+    }
+
+    public long time(TimeUnit unit)
+    {
+        return unit.convert(time(), TimeUnit.MILLISECONDS);
     }
 }

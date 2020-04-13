@@ -17,7 +17,7 @@
  *
  */
 
-package com.red7projects.dungeon.logging;
+package com.red7projects.dungeon.utils.logging;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -63,8 +63,8 @@ public class EventTimer
         }
         else
         {
-            Trace.__FILE_FUNC(":Cannot start EventTimer before finishing previous.");
-            Trace.dbg("**EventTimer is FROZEN**");
+            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC(":Cannot start EventTimer before finishing previous.");
+            com.red7projects.dungeon.utils.logging.Trace.dbg("**EventTimer is FROZEN**");
 
             this.isFrozen = true;
         }

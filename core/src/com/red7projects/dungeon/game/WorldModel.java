@@ -23,7 +23,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.development.Developer;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.physics.box2d.BodyBuilder;
 import com.red7projects.dungeon.physics.box2d.Box2DContactListener;

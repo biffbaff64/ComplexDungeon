@@ -1,11 +1,11 @@
-package com.red7projects.dungeon.tests;
+package com.red7projects.dungeon.utils.tests;
 
 import com.red7projects.dungeon.map.tiled.TiledMap;
 import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
 import com.red7projects.dungeon.map.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.map.MapData;
 import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.map.Room;

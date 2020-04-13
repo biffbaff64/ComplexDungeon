@@ -30,7 +30,7 @@ import com.red7projects.dungeon.game.GameListener;
 import com.red7projects.dungeon.game.PointsManager;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.logging.Trace;
+import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.physics.Proximity;
 
 public class TreasureChest extends GdxSprite
