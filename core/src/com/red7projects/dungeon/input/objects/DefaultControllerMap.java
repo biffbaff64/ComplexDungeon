@@ -18,7 +18,7 @@ package com.red7projects.dungeon.input.objects;
 
 import com.badlogic.gdx.controllers.PovDirection;
 
-public class USBControllerPad implements ControlMapData
+public class DefaultControllerMap implements ControlMapData
 {
     public static final float           _MIN_RANGE              = -1.0f;
     public static final float           _MAX_RANGE              = 1.0f;
@@ -32,10 +32,10 @@ public class USBControllerPad implements ControlMapData
     public static final int             _BUTTON_BACK            = 8;
     public static final int             _BUTTON_START           = 9;
 
-    public static final PovDirection _BUTTON_DPAD_UP    = PovDirection.north;
-    public static final PovDirection _BUTTON_DPAD_DOWN  = PovDirection.south;
-    public static final PovDirection _BUTTON_DPAD_RIGHT = PovDirection.east;
-    public static final PovDirection _BUTTON_DPAD_LEFT  = PovDirection.west;
+    public static final PovDirection _BUTTON_DPAD_UP            = PovDirection.north;
+    public static final PovDirection _BUTTON_DPAD_DOWN          = PovDirection.south;
+    public static final PovDirection _BUTTON_DPAD_RIGHT         = PovDirection.east;
+    public static final PovDirection _BUTTON_DPAD_LEFT          = PovDirection.west;
 
     public static final int             _BUTTON_LB              = 4;
     public static final int             _BUTTON_L3              = 8;

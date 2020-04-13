@@ -18,7 +18,7 @@ package com.red7projects.dungeon.input.objects;
 
 import com.badlogic.gdx.controllers.PovDirection;
 
-public class XBox360Pad
+public class XBox360Pad implements ControlMapData
 {
     /*
      * It seems there are different versions of gamepads with different ID Strings.

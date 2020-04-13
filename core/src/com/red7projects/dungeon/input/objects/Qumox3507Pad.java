@@ -18,7 +18,7 @@ package com.red7projects.dungeon.input.objects;
 
 import com.badlogic.gdx.controllers.PovDirection;
 
-public class Qumox3507Pad
+public class Qumox3507Pad implements ControlMapData
 {
     /*
      * It seems there are different versions of gamepads with different ID Strings.

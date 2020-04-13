@@ -281,9 +281,11 @@ public class MainMenuScreen extends AbstractBaseScreen
                         {
                             spriteBatch.draw
                                     (
-                                            background,
-                                            gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
-                                            gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT
+                                        background,
+                                        gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
+                                        gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT,
+                                        Gfx._VIEW_WIDTH,
+                                        Gfx._VIEW_HEIGHT
                                     );
                         }
 
@@ -370,7 +372,7 @@ public class MainMenuScreen extends AbstractBaseScreen
     @Override
     public void loadImages()
     {
-        background = app.assets.loadSingleAsset("data/night_sky.png", Texture.class);
+        background = app.assets.loadSingleAsset("data/full_moon_scene.png", Texture.class);
     }
 
     /**
@@ -385,7 +387,7 @@ public class MainMenuScreen extends AbstractBaseScreen
 
         hideAllPages();
 
-        app.assets.unloadAsset("night_sky.png");
+        app.assets.unloadAsset("data/full_moon_scene.png");
         background = null;
 
         starField.dispose();

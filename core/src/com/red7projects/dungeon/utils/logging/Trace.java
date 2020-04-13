@@ -90,7 +90,7 @@ public class Trace
             {
                 for (Object arg : args)
                 {
-                    sb.append(", ");
+                    sb.append(" ");
                     sb.append(arg);
                 }
             }
@@ -127,7 +127,7 @@ public class Trace
         {
             for (Object object : args)
             {
-                sb.append(", ").append(object);
+                sb.append(" ").append(object);
             }
         }
 
@@ -169,7 +169,7 @@ public class Trace
         {
             for (Object object : args)
             {
-                sb.append(", ").append(object);
+                sb.append(" ").append(object);
             }
         }
 
@@ -191,7 +191,7 @@ public class Trace
         {
             for (Object object : args)
             {
-                sb.append(", ").append(object);
+                sb.append(" ").append(object);
             }
         }
 
@@ -212,7 +212,7 @@ public class Trace
         {
             for (Object object : args)
             {
-                sb.append(", ").append(object);
+                sb.append(" ").append(object);
             }
         }
 
@@ -236,7 +236,7 @@ public class Trace
         {
             for (Object object : args)
             {
-                sb.append(", ").append(object);
+                sb.append(" ").append(object);
             }
         }
 
@@ -260,7 +260,7 @@ public class Trace
         {
             for (Object object : args)
             {
-                sb.append(", ").append(object);
+                sb.append(" ").append(object);
             }
         }
 

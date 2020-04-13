@@ -25,10 +25,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.input.objects.ControllerMap;
-import com.red7projects.dungeon.input.objects.Qumox3507Pad;
-import com.red7projects.dungeon.input.objects.USBControllerPad;
-import com.red7projects.dungeon.input.objects.XBox360Pad;
+import com.red7projects.dungeon.input.objects.*;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
@@ -55,7 +52,7 @@ public class GameController implements AbstractInputManager, ControllerListener,
         {
             if (Controllers.getControllers().size > 0)
             {
-                Trace.__FILE_FUNC("External Controller found but is disabled in Settings");
+                Trace.__FILE_FUNC("Controllers.getControllers().size: " + Controllers.getControllers().size);
 
                 for (Controller _controller : new Array.ArrayIterator<>(Controllers.getControllers()))
                 {
@@ -110,24 +107,48 @@ public class GameController implements AbstractInputManager, ControllerListener,
                     Trace.dbg("Controller added");
                 }
             }
+            else
+            {
+                Trace.dbg("Controllers.getControllers().size: ", Controllers.getControllers().size);
+            }
         }
         catch (NullPointerException npe)
         {
+            Trace.__FILE_FUNC("::Failure");
+
             disableExternalControllers();
+
+            if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
+            {
+                Trace.dbg("::Switched to _VIRTUAL");
+
+                AppConfig.controlMode   = ControllerType._VIRTUAL;
+                AppConfig.controllerPos = ControllerPos._LEFT;
+            }
+            else
+            {
+                Trace.dbg("::Switched to _KEYBOARD");
+
+                AppConfig.controlMode   = ControllerType._KEYBOARD;
+                AppConfig.controllerPos = ControllerPos._HIDDEN;
+            }
         }
     }
 
     public void disableExternalControllers()
     {
-        controller = null;
+        try
+        {
+            controller = null;
 
-        AppConfig.controllersFitted = false;
+            AppConfig.controllersFitted = false;
 
-        //
-        // NOTE: removeProcessor() checks that this processor
-        // exists in the multiplexor first, so there is no
-        // risk of null pointer exceptions etc.
-        app.inputManager.inputMultiplexer.removeProcessor(this);
+            app.inputManager.inputMultiplexer.removeProcessor(this);
+        }
+        catch (NullPointerException npe)
+        {
+            Trace.__FILE_FUNC("WARNING!: " + npe.getMessage());
+        }
     }
 
     @Override
@@ -171,18 +192,24 @@ public class GameController implements AbstractInputManager, ControllerListener,
         {
             UIButtons.controllerRBPressed = true;
 
-            if (app.getHud().buttonA != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonA.press();
+                if (app.getHud().buttonA != null)
+                {
+                    app.getHud().buttonA.press();
+                }
             }
         }
         else if (buttonCode == ControllerMap._BUTTON_START)
         {
             UIButtons.controllerStartPressed = true;
 
-            if (app.getHud().buttonPause != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonPause.press();
+                if (app.getHud().buttonPause != null)
+                {
+                    app.getHud().buttonPause.press();
+                }
             }
         }
         else if (buttonCode == ControllerMap._BUTTON_BACK)
@@ -194,9 +221,12 @@ public class GameController implements AbstractInputManager, ControllerListener,
             UIButtons.controllerLeftFirePressed = true;
             UIButtons.controllerFirePressed     = true;
 
-            if (app.getHud().buttonB != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonB.press();
+                if (app.getHud().buttonB != null)
+                {
+                    app.getHud().buttonB.press();
+                }
             }
         }
         else if (buttonCode == ControllerMap._RIGHT_TRIGGER)
@@ -204,9 +234,12 @@ public class GameController implements AbstractInputManager, ControllerListener,
             UIButtons.controllerRightFirePressed = true;
             UIButtons.controllerFirePressed      = true;
 
-            if (app.getHud().buttonB != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonB.press();
+                if (app.getHud().buttonB != null)
+                {
+                    app.getHud().buttonB.press();
+                }
             }
         }
 
@@ -242,9 +275,12 @@ public class GameController implements AbstractInputManager, ControllerListener,
         {
             UIButtons.controllerRBPressed = false;
 
-            if (app.getHud().buttonA != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonA.release();
+                if (app.getHud().buttonA != null)
+                {
+                    app.getHud().buttonA.release();
+                }
             }
         }
         else if (buttonCode == ControllerMap._BUTTON_START)
@@ -260,9 +296,12 @@ public class GameController implements AbstractInputManager, ControllerListener,
             UIButtons.controllerLeftFirePressed = false;
             UIButtons.controllerFirePressed     = false;
 
-            if (app.getHud().buttonB != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonB.release();
+                if (app.getHud().buttonB != null)
+                {
+                    app.getHud().buttonB.release();
+                }
             }
         }
         else if (buttonCode == ControllerMap._RIGHT_TRIGGER)
@@ -270,9 +309,12 @@ public class GameController implements AbstractInputManager, ControllerListener,
             UIButtons.controllerRightFirePressed = false;
             UIButtons.controllerFirePressed      = false;
 
-            if (app.getHud().buttonB != null)
+            if (AppConfig.hudExists)
             {
-                app.getHud().buttonB.release();
+                if (app.getHud().buttonB != null)
+                {
+                    app.getHud().buttonB.release();
+                }
             }
         }
 
@@ -302,29 +344,36 @@ public class GameController implements AbstractInputManager, ControllerListener,
             if (ControllerMap.isInNegativeRange(value))
             {
                 UIButtons.controllerLeftPressed = true;
-                app.getHud().buttonLeft.press();
 
-                if (app.getHud().buttonLeft != null)
+                if (AppConfig.hudExists)
                 {
-                    app.getHud().buttonLeft.press();
+                    if (app.getHud().buttonLeft != null)
+                    {
+                        app.getHud().buttonLeft.press();
+                    }
                 }
             }
             else if (ControllerMap.isInPositiveRange(value))
             {
                 UIButtons.controllerRightPressed = true;
-                app.getHud().buttonRight.press();
 
-                if (app.getHud().buttonRight != null)
+                if (AppConfig.hudExists)
                 {
-                    app.getHud().buttonRight.press();
+                    if (app.getHud().buttonRight != null)
+                    {
+                        app.getHud().buttonRight.press();
+                    }
                 }
             }
             else
             {
-                if (app.getHud().buttonLeft != null)
+                if (AppConfig.hudExists)
                 {
-                    app.getHud().buttonLeft.release();
-                    app.getHud().buttonRight.release();
+                    if (app.getHud().buttonLeft != null)
+                    {
+                        app.getHud().buttonLeft.release();
+                        app.getHud().buttonRight.release();
+                    }
                 }
 
                 UIButtons.controllerLeftPressed  = false;
@@ -341,26 +390,30 @@ public class GameController implements AbstractInputManager, ControllerListener,
             if (ControllerMap.isInNegativeRange(value))
             {
                 UIButtons.controllerUpPressed = true;
-                app.getHud().buttonUp.press();
 
-                if (app.getHud().buttonUp != null)
+                if (AppConfig.hudExists)
                 {
-                    app.getHud().buttonUp.press();
+                    if (app.getHud().buttonUp != null)
+                    {
+                        app.getHud().buttonUp.press();
+                    }
                 }
             }
             else if (ControllerMap.isInPositiveRange(value))
             {
                 UIButtons.controllerDownPressed = true;
-                app.getHud().buttonDown.press();
 
-                if (app.getHud().buttonDown != null)
+                if (AppConfig.hudExists)
                 {
-                    app.getHud().buttonDown.press();
+                    if (app.getHud().buttonDown != null)
+                    {
+                        app.getHud().buttonDown.press();
+                    }
                 }
             }
             else
             {
-                if (app.getHud() != null)
+                if (AppConfig.hudExists)
                 {
                     if (app.getHud().buttonUp != null)
                     {
@@ -383,7 +436,10 @@ public class GameController implements AbstractInputManager, ControllerListener,
             UIButtons.controllerLeftPressed  = false;
             UIButtons.controllerRightPressed = false;
 
-            app.getHud().releaseDirectionButtons();
+            if (AppConfig.hudExists)
+            {
+                app.getHud().releaseDirectionButtons();
+            }
 
             UIButtons.controllerAxisCode  = -1;
             UIButtons.controllerAxisValue = 0;
@@ -425,94 +481,35 @@ public class GameController implements AbstractInputManager, ControllerListener,
 
     private void createControllerMap()
     {
-        if (controller.getName().contains("xbox") && controller.getName().contains("360"))
-        {
-            ControllerMap._MIN_RANGE          = XBox360Pad._MIN_RANGE;
-            ControllerMap._MAX_RANGE          = XBox360Pad._MAX_RANGE;
-            ControllerMap._DEAD_ZONE          = XBox360Pad._DEAD_ZONE;
-            ControllerMap._AXIS_LEFT_TRIGGER  = XBox360Pad._AXIS_LEFT_TRIGGER;
-            ControllerMap._AXIS_RIGHT_TRIGGER = XBox360Pad._AXIS_RIGHT_TRIGGER;
-            ControllerMap._AXIS_LEFT_X        = XBox360Pad._AXIS_LEFT_X;
-            ControllerMap._AXIS_LEFT_Y        = XBox360Pad._AXIS_LEFT_Y;
-            ControllerMap._AXIS_RIGHT_X       = XBox360Pad._AXIS_RIGHT_X;
-            ControllerMap._AXIS_RIGHT_Y       = XBox360Pad._AXIS_RIGHT_Y;
-            ControllerMap._BUTTON_A           = XBox360Pad._BUTTON_A;
-            ControllerMap._BUTTON_B           = XBox360Pad._BUTTON_B;
-            ControllerMap._BUTTON_X           = XBox360Pad._BUTTON_X;
-            ControllerMap._BUTTON_Y           = XBox360Pad._BUTTON_Y;
-            ControllerMap._BUTTON_START       = XBox360Pad._BUTTON_START;
-            ControllerMap._BUTTON_BACK        = XBox360Pad._BUTTON_BACK;
-            ControllerMap._BUTTON_L3          = XBox360Pad._BUTTON_L3;
-            ControllerMap._BUTTON_R3          = XBox360Pad._BUTTON_R3;
-            ControllerMap._BUTTON_LB          = XBox360Pad._BUTTON_LB;
-            ControllerMap._BUTTON_RB          = XBox360Pad._BUTTON_RB;
-            ControllerMap._BUTTON_DPAD_LEFT   = XBox360Pad._BUTTON_DPAD_LEFT;
-            ControllerMap._BUTTON_DPAD_RIGHT  = XBox360Pad._BUTTON_DPAD_RIGHT;
-            ControllerMap._BUTTON_DPAD_UP     = XBox360Pad._BUTTON_DPAD_UP;
-            ControllerMap._BUTTON_DPAD_DOWN   = XBox360Pad._BUTTON_DPAD_DOWN;
-            ControllerMap._LEFT_TRIGGER       = XBox360Pad._LEFT_TRIGGER;
-            ControllerMap._RIGHT_TRIGGER      = XBox360Pad._RIGHT_TRIGGER;
-        }
-        else if ("Usb GamePad".equals(controller.getName()))
-        {
-            ControllerMap._MIN_RANGE          = USBControllerPad._MIN_RANGE;
-            ControllerMap._MAX_RANGE          = USBControllerPad._MAX_RANGE;
-            ControllerMap._DEAD_ZONE          = USBControllerPad._DEAD_ZONE;
-            ControllerMap._AXIS_LEFT_TRIGGER  = USBControllerPad._AXIS_LEFT_TRIGGER;
-            ControllerMap._AXIS_RIGHT_TRIGGER = USBControllerPad._AXIS_RIGHT_TRIGGER;
-            ControllerMap._AXIS_LEFT_X        = USBControllerPad._AXIS_LEFT_X;
-            ControllerMap._AXIS_LEFT_Y        = USBControllerPad._AXIS_LEFT_Y;
-            ControllerMap._AXIS_RIGHT_X       = USBControllerPad._AXIS_RIGHT_X;
-            ControllerMap._AXIS_RIGHT_Y       = USBControllerPad._AXIS_RIGHT_Y;
-            ControllerMap._BUTTON_A           = USBControllerPad._BUTTON_A;
-            ControllerMap._BUTTON_B           = USBControllerPad._BUTTON_B;
-            ControllerMap._BUTTON_X           = USBControllerPad._BUTTON_X;
-            ControllerMap._BUTTON_Y           = USBControllerPad._BUTTON_Y;
-            ControllerMap._BUTTON_START       = USBControllerPad._BUTTON_START;
-            ControllerMap._BUTTON_BACK        = USBControllerPad._BUTTON_BACK;
-            ControllerMap._BUTTON_L3          = USBControllerPad._BUTTON_L3;
-            ControllerMap._BUTTON_R3          = USBControllerPad._BUTTON_R3;
-            ControllerMap._BUTTON_LB          = USBControllerPad._BUTTON_LB;
-            ControllerMap._BUTTON_RB          = USBControllerPad._BUTTON_RB;
-            ControllerMap._BUTTON_DPAD_LEFT   = USBControllerPad._BUTTON_DPAD_LEFT;
-            ControllerMap._BUTTON_DPAD_RIGHT  = USBControllerPad._BUTTON_DPAD_RIGHT;
-            ControllerMap._BUTTON_DPAD_UP     = USBControllerPad._BUTTON_DPAD_UP;
-            ControllerMap._BUTTON_DPAD_DOWN   = USBControllerPad._BUTTON_DPAD_DOWN;
-            ControllerMap._LEFT_TRIGGER       = USBControllerPad._LEFT_TRIGGER;
-            ControllerMap._RIGHT_TRIGGER      = USBControllerPad._RIGHT_TRIGGER;
-        }
-        else if ("PC/PS3/Android".equals(controller.getName()))
-        {
-            ControllerMap._MIN_RANGE          = Qumox3507Pad._MIN_RANGE;
-            ControllerMap._MAX_RANGE          = Qumox3507Pad._MAX_RANGE;
-            ControllerMap._DEAD_ZONE          = Qumox3507Pad._DEAD_ZONE;
-            ControllerMap._AXIS_LEFT_TRIGGER  = Qumox3507Pad._AXIS_LEFT_TRIGGER;
-            ControllerMap._AXIS_RIGHT_TRIGGER = Qumox3507Pad._AXIS_RIGHT_TRIGGER;
-            ControllerMap._AXIS_LEFT_X        = Qumox3507Pad._AXIS_LEFT_X;
-            ControllerMap._AXIS_LEFT_Y        = Qumox3507Pad._AXIS_LEFT_Y;
-            ControllerMap._AXIS_RIGHT_X       = Qumox3507Pad._AXIS_RIGHT_X;
-            ControllerMap._AXIS_RIGHT_Y       = Qumox3507Pad._AXIS_RIGHT_Y;
-            ControllerMap._BUTTON_A           = Qumox3507Pad._BUTTON_A;
-            ControllerMap._BUTTON_B           = Qumox3507Pad._BUTTON_B;
-            ControllerMap._BUTTON_X           = Qumox3507Pad._BUTTON_X;
-            ControllerMap._BUTTON_Y           = Qumox3507Pad._BUTTON_Y;
-            ControllerMap._BUTTON_START       = Qumox3507Pad._BUTTON_START;
-            ControllerMap._BUTTON_BACK        = Qumox3507Pad._BUTTON_BACK;
-            ControllerMap._BUTTON_L3          = Qumox3507Pad._BUTTON_L3;
-            ControllerMap._BUTTON_R3          = Qumox3507Pad._BUTTON_R3;
-            ControllerMap._BUTTON_LB          = Qumox3507Pad._BUTTON_LB;
-            ControllerMap._BUTTON_RB          = Qumox3507Pad._BUTTON_RB;
-            ControllerMap._BUTTON_DPAD_LEFT   = Qumox3507Pad._BUTTON_DPAD_LEFT;
-            ControllerMap._BUTTON_DPAD_RIGHT  = Qumox3507Pad._BUTTON_DPAD_RIGHT;
-            ControllerMap._BUTTON_DPAD_UP     = Qumox3507Pad._BUTTON_DPAD_UP;
-            ControllerMap._BUTTON_DPAD_DOWN   = Qumox3507Pad._BUTTON_DPAD_DOWN;
-            ControllerMap._LEFT_TRIGGER       = Qumox3507Pad._LEFT_TRIGGER;
-            ControllerMap._RIGHT_TRIGGER      = Qumox3507Pad._RIGHT_TRIGGER;
-        }
-        else
-        {
-            Trace.__FILE_FUNC("ERROR: No Controller or Controller unrecognised!");
-        }
+        Trace.__FILE_FUNC();
+
+        ControllerMap._MIN_RANGE          = DefaultControllerMap._MIN_RANGE;
+        ControllerMap._MAX_RANGE          = DefaultControllerMap._MAX_RANGE;
+        ControllerMap._DEAD_ZONE          = DefaultControllerMap._DEAD_ZONE;
+        ControllerMap._AXIS_LEFT_TRIGGER  = DefaultControllerMap._AXIS_LEFT_TRIGGER;
+        ControllerMap._AXIS_RIGHT_TRIGGER = DefaultControllerMap._AXIS_RIGHT_TRIGGER;
+        ControllerMap._AXIS_LEFT_X        = DefaultControllerMap._AXIS_LEFT_X;
+        ControllerMap._AXIS_LEFT_Y        = DefaultControllerMap._AXIS_LEFT_Y;
+        ControllerMap._AXIS_RIGHT_X       = DefaultControllerMap._AXIS_RIGHT_X;
+        ControllerMap._AXIS_RIGHT_Y       = DefaultControllerMap._AXIS_RIGHT_Y;
+        ControllerMap._BUTTON_A           = DefaultControllerMap._BUTTON_A;
+        ControllerMap._BUTTON_B           = DefaultControllerMap._BUTTON_B;
+        ControllerMap._BUTTON_X           = DefaultControllerMap._BUTTON_X;
+        ControllerMap._BUTTON_Y           = DefaultControllerMap._BUTTON_Y;
+        ControllerMap._BUTTON_START       = DefaultControllerMap._BUTTON_START;
+        ControllerMap._BUTTON_BACK        = DefaultControllerMap._BUTTON_BACK;
+        ControllerMap._BUTTON_L3          = DefaultControllerMap._BUTTON_L3;
+        ControllerMap._BUTTON_R3          = DefaultControllerMap._BUTTON_R3;
+        ControllerMap._BUTTON_LB          = DefaultControllerMap._BUTTON_LB;
+        ControllerMap._BUTTON_RB          = DefaultControllerMap._BUTTON_RB;
+        ControllerMap._BUTTON_DPAD_LEFT   = DefaultControllerMap._BUTTON_DPAD_LEFT;
+        ControllerMap._BUTTON_DPAD_RIGHT  = DefaultControllerMap._BUTTON_DPAD_RIGHT;
+        ControllerMap._BUTTON_DPAD_UP     = DefaultControllerMap._BUTTON_DPAD_UP;
+        ControllerMap._BUTTON_DPAD_DOWN   = DefaultControllerMap._BUTTON_DPAD_DOWN;
+        ControllerMap._LEFT_TRIGGER       = DefaultControllerMap._LEFT_TRIGGER;
+        ControllerMap._RIGHT_TRIGGER      = DefaultControllerMap._RIGHT_TRIGGER;
+
+        Trace.finishedMessage();
     }
 
     @Override

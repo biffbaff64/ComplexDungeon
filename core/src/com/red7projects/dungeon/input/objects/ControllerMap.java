@@ -52,6 +52,10 @@ public abstract class ControllerMap
     public static int _LEFT_TRIGGER;
     public static int _RIGHT_TRIGGER;
 
+    public static void setDataFrom(ControlMapData _mapData)
+    {
+    }
+
     public static boolean isInRange(final float value)
     {
         return ((value >= _MIN_RANGE) && (value <= _MAX_RANGE));

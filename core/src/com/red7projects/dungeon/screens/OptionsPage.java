@@ -35,6 +35,7 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.utils.development.DeveloperTests;
 import com.red7projects.dungeon.utils.tests.RoomTests;
 import com.red7projects.dungeon.ui.*;
 
@@ -61,11 +62,13 @@ public class OptionsPage implements UIPage
     private StatsPanel         statsPanel;
     private PrivacyPolicyPanel privacyPanel;
     private InstructionsPanel  storyPanel;
+    private DeveloperTests     testPanel;
     private ScreenID           activePanel;
 
     private boolean justFinishedStatsPanel;
     private boolean justFinishedPrivacyPanel;
     private boolean justFinishedStoryPanel;
+    private boolean justFinishedTestPanel;
     private boolean setupCompleted;
 
     private final App app;
@@ -78,6 +81,14 @@ public class OptionsPage implements UIPage
     @Override
     public boolean update()
     {
+        if (AppConfig.optionsPageActive)
+        {
+            if (activePanel == ScreenID._TEST_PANEL)
+            {
+                testPanel.updatePanel();
+            }
+        }
+
         if (justFinishedStatsPanel)
         {
             if (statsPanel != null)
@@ -120,6 +131,20 @@ public class OptionsPage implements UIPage
             showActors(true);
         }
 
+        if (justFinishedTestPanel)
+        {
+            if (testPanel != null)
+            {
+                testPanel.clearUp();
+            }
+
+            justFinishedTestPanel = false;
+            testPanel = null;
+            activePanel = ScreenID._SETTINGS_SCREEN;
+
+            showActors(true);
+        }
+
         return false;
     }
 
@@ -130,6 +155,7 @@ public class OptionsPage implements UIPage
             case _STATS_SCREEN:             statsPanel.draw(spriteBatch);      break;
             case _PRIVACY_POLICY_SCREEN:    privacyPanel.draw(spriteBatch);    break;
             case _INSTRUCTIONS_SCREEN:      storyPanel.draw(spriteBatch);      break;
+            case _TEST_PANEL:               testPanel.draw(spriteBatch);       break;
 
             default:
             {
@@ -223,6 +249,7 @@ public class OptionsPage implements UIPage
             skin = null;
             statsPanel = null;
             privacyPanel = null;
+            testPanel = null;
 
             AppConfig.optionsPageActive = false;
         }
@@ -489,6 +516,12 @@ public class OptionsPage implements UIPage
                         }
                         break;
 
+                        case _TEST_PANEL:
+                        {
+                            justFinishedTestPanel = true;
+                        }
+                        break;
+
                         default:
                             break;
                     }
@@ -504,7 +537,19 @@ public class OptionsPage implements UIPage
                 {
                     public void clicked(InputEvent event, float x, float y)
                     {
-                        RoomTests.validateRooms(app);
+                        Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+
+                        if (testPanel == null)
+                        {
+                            showActors(false);
+                            justFinishedTestPanel = false;
+                            activePanel = ScreenID._TEST_PANEL;
+
+                            testPanel = new DeveloperTests(app);
+                            testPanel.setup();
+
+                            buttonExit.setVisible(true);
+                        }
                     }
                 });
             }
