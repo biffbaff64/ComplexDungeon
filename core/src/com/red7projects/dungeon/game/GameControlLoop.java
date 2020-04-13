@@ -232,7 +232,7 @@ public class GameControlLoop extends AbstractControlLoop
         }
         else
         {
-            app.baseRenderer.isLerpingEnabled = true;
+            app.baseRenderer.isLerpingEnabled = (scr().gameState.get() == StateID._STATE_GAME);
 
             app.mapUtils.update();
             app.entityManager.updateSprites();
