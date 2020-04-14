@@ -29,6 +29,7 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class InputManager
@@ -174,11 +175,12 @@ public class InputManager
                 {
                     yPercent = _verticalValue;
 
-                    switch (AppConfig.usedController)
+                    switch (gameController.controller.getName())
                     {
                         case "PC/PS3/Android":
                         case "Controller (Inno GamePad..)":
                         {
+                            Trace.__FILE_LINE__();
                             yPercent *= -1;
                         }
                         break;

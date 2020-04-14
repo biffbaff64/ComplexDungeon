@@ -153,26 +153,6 @@ public class GameController implements ControllerListener
         if (buttonCode == ControllerMap._BUTTON_A)
         {
             UIButtons.controllerAPressed = true;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_B)
-        {
-            UIButtons.controllerBPressed = true;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_X)
-        {
-            UIButtons.controllerXPressed = true;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_Y)
-        {
-            UIButtons.controllerYPressed = true;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_LB)
-        {
-            UIButtons.controllerLBPressed = true;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_RB)
-        {
-            UIButtons.controllerRBPressed = true;
 
             if (AppConfig.hudExists)
             {
@@ -181,6 +161,50 @@ public class GameController implements ControllerListener
                     app.getHud().buttonA.press();
                 }
             }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_B)
+        {
+            UIButtons.controllerBPressed = true;
+
+            if (AppConfig.hudExists)
+            {
+                if (app.getHud().buttonB != null)
+                {
+                    app.getHud().buttonB.press();
+                }
+            }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_X)
+        {
+            UIButtons.controllerXPressed = true;
+
+            if (AppConfig.hudExists)
+            {
+                if (app.getHud().buttonX != null)
+                {
+                    app.getHud().buttonX.press();
+                }
+            }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_Y)
+        {
+            UIButtons.controllerYPressed = true;
+
+            if (AppConfig.hudExists)
+            {
+                if (app.getHud().buttonY != null)
+                {
+                    app.getHud().buttonY.press();
+                }
+            }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_LB)
+        {
+            UIButtons.controllerLBPressed = true;
+        }
+        else if (buttonCode == ControllerMap._BUTTON_RB)
+        {
+            UIButtons.controllerRBPressed = true;
         }
         else if (buttonCode == ControllerMap._BUTTON_START)
         {
@@ -202,27 +226,11 @@ public class GameController implements ControllerListener
         {
             UIButtons.controllerLeftFirePressed = true;
             UIButtons.controllerFirePressed     = true;
-
-            if (AppConfig.hudExists)
-            {
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.press();
-                }
-            }
         }
         else if (buttonCode == ControllerMap._RIGHT_TRIGGER)
         {
             UIButtons.controllerRightFirePressed = true;
             UIButtons.controllerFirePressed      = true;
-
-            if (AppConfig.hudExists)
-            {
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.press();
-                }
-            }
         }
 
         return false;
@@ -236,26 +244,6 @@ public class GameController implements ControllerListener
         if (buttonCode == ControllerMap._BUTTON_A)
         {
             UIButtons.controllerAPressed = false;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_B)
-        {
-            UIButtons.controllerBPressed = false;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_X)
-        {
-            UIButtons.controllerXPressed = false;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_Y)
-        {
-            UIButtons.controllerYPressed = false;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_LB)
-        {
-            UIButtons.controllerLBPressed = false;
-        }
-        else if (buttonCode == ControllerMap._BUTTON_RB)
-        {
-            UIButtons.controllerRBPressed = false;
 
             if (AppConfig.hudExists)
             {
@@ -264,6 +252,50 @@ public class GameController implements ControllerListener
                     app.getHud().buttonA.release();
                 }
             }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_B)
+        {
+            UIButtons.controllerBPressed = false;
+
+            if (AppConfig.hudExists)
+            {
+                if (app.getHud().buttonB != null)
+                {
+                    app.getHud().buttonB.release();
+                }
+            }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_X)
+        {
+            UIButtons.controllerXPressed = false;
+
+            if (AppConfig.hudExists)
+            {
+                if (app.getHud().buttonX != null)
+                {
+                    app.getHud().buttonX.release();
+                }
+            }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_Y)
+        {
+            UIButtons.controllerYPressed = false;
+
+            if (AppConfig.hudExists)
+            {
+                if (app.getHud().buttonY != null)
+                {
+                    app.getHud().buttonY.release();
+                }
+            }
+        }
+        else if (buttonCode == ControllerMap._BUTTON_LB)
+        {
+            UIButtons.controllerLBPressed = false;
+        }
+        else if (buttonCode == ControllerMap._BUTTON_RB)
+        {
+            UIButtons.controllerRBPressed = false;
         }
         else if (buttonCode == ControllerMap._BUTTON_START)
         {
@@ -277,27 +309,11 @@ public class GameController implements ControllerListener
         {
             UIButtons.controllerLeftFirePressed = false;
             UIButtons.controllerFirePressed     = false;
-
-            if (AppConfig.hudExists)
-            {
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.release();
-                }
-            }
         }
         else if (buttonCode == ControllerMap._RIGHT_TRIGGER)
         {
             UIButtons.controllerRightFirePressed = false;
             UIButtons.controllerFirePressed      = false;
-
-            if (AppConfig.hudExists)
-            {
-                if (app.getHud().buttonB != null)
-                {
-                    app.getHud().buttonB.release();
-                }
-            }
         }
 
         return false;
