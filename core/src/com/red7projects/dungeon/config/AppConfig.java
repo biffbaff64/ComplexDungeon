@@ -88,8 +88,8 @@ public abstract class AppConfig
         controllersFitted    = false;
         gameButtonsReady     = false;
 
-        controlMode   = ControllerType._EXTERNAL;
-        controllerPos = ControllerPos._HIDDEN;
+        controlMode   = ControllerType._VIRTUAL;
+        controllerPos = ControllerPos._LEFT;
 
         Stats.setup();
 
@@ -102,9 +102,8 @@ public abstract class AppConfig
         //
         // Allow forced resetting of all preferences and stats meters
         // if that option is selected.
-        // Also makes sure that the reset option is set back to true, as this will
-        // have been cleared.
-        // NB: This only works in Developer mode.
+        // Also makes sure that the reset option is set back to true,
+        // as this will have been cleared.
         if (Developer.isDevMode() && app.preferences.isEnabled(Preferences._FORCE_PREFS_RESET))
         {
             app.preferences.setPrefsToDefault();
@@ -116,19 +115,26 @@ public abstract class AppConfig
         isUsingBOX2DPhysics = app.preferences.isEnabled(Preferences._BOX2D_PHYSICS);
         isUsingAshleyECS    = app.preferences.isEnabled((Preferences._USING_ASHLEY_ECS));
 
-        Trace.divider();
-        Trace.dbg("ANdroid App         : " + isAndroidApp());
-        Trace.dbg("Desktop App         : " + isDesktopApp());
-        Trace.dbg("Android On Desktop? : " + isAndroidOnDesktop());
-        Trace.divider();
-        Trace.dbg("isUsingAshleyECS    : " + isUsingAshleyECS);
-        Trace.dbg("isUsingBOX2DPhysics : " + isUsingBOX2DPhysics);
-        Trace.divider();
-        Trace.dbg("_DESKTOP_WIDTH      : " + Gfx._DESKTOP_WIDTH);
-        Trace.dbg("_DESKTOP_HEIGHT     : " + Gfx._DESKTOP_HEIGHT);
-        Trace.dbg("_VIEW_WIDTH         : " + Gfx._VIEW_WIDTH);
-        Trace.dbg("_VIEW_HEIGHT        : " + Gfx._VIEW_HEIGHT);
-        Trace.divider();
+        if (Developer.isDevMode())
+        {
+            Trace.divider();
+            Trace.dbg("Android App         : " + isAndroidApp());
+            Trace.dbg("Desktop App         : " + isDesktopApp());
+            Trace.dbg("Android On Desktop  : " + isAndroidOnDesktop());
+            Trace.divider();
+            Trace.dbg("isUsingAshleyECS    : " + isUsingAshleyECS);
+            Trace.dbg("isUsingBOX2DPhysics : " + isUsingBOX2DPhysics);
+            Trace.divider();
+            Trace.dbg("_DESKTOP_WIDTH      : " + Gfx._DESKTOP_WIDTH);
+            Trace.dbg("_DESKTOP_HEIGHT     : " + Gfx._DESKTOP_HEIGHT);
+            Trace.dbg("_VIEW_WIDTH         : " + Gfx._VIEW_WIDTH);
+            Trace.dbg("_VIEW_HEIGHT        : " + Gfx._VIEW_HEIGHT);
+            Trace.divider();
+            Trace.dbg("controlMode         : " + controlMode);
+            Trace.dbg("controllerPos       : " + controllerPos);
+            Trace.dbg("controllersFitted   : " + controllersFitted);
+            Trace.divider();
+        }
     }
 
     public static void freshInstallCheck()
@@ -181,7 +187,7 @@ public abstract class AppConfig
     }
 
     /**
-     * @return TRUE if Android build is being
+     * @return TRUE if Android version is being
      *          tested on desktop build
      */
     public static boolean isAndroidOnDesktop()
