@@ -151,6 +151,10 @@ public class GameAssets
     public static final String _GOLD_KEY_ASSET      = "key_held_panel";
     public static final String _SHIELD_ASSET        = "shield";
     public static final String _DOCUMENT_ASSET      = "paper";
+    public static final String _LITTER_ASSET        = "litter";
+    public static final String _BOOKS_ASSET         = "litter";
+    public static final String _RUNES_ASSET         = "litter";
+
 
     //
     // Interactive Items
@@ -280,6 +284,9 @@ public class GameAssets
     public static final int _CROSSHAIRS_FRAMES             = 1;
     public static final int _ESCALATOR_FRAMES              = 16;
     public static final int _VILLAGER_FACES_FRAMES         = 3;
+    public static final int _LITTER_FRAMES                 = 10;
+    public static final int _BOOKS_FRAMES                  = 5;
+    public static final int _RUNES_FRAMES                  = 5;
 
     //
     // Fonts and HUD assets
@@ -321,6 +328,8 @@ public class GameAssets
             new AssetSize(GraphicID.G_DOCUMENT, 122, 128),
             new AssetSize(GraphicID.G_APPLE, 64, 64),
             new AssetSize(GraphicID.G_BOOK, 64, 64),
+            new AssetSize(GraphicID.G_LITTER, 64, 64),
+            new AssetSize(GraphicID.G_RUNE, 64, 64),
             new AssetSize(GraphicID.G_CAKE, 64, 64),
             new AssetSize(GraphicID.G_CHERRIES, 64, 64),
             new AssetSize(GraphicID.G_GRAPES, 64, 64),

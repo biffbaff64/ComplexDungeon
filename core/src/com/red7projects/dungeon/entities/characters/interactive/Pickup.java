@@ -41,14 +41,10 @@ public class Pickup extends GdxSprite
     private static final byte _COIN             = 1;
     private static final byte _GEM              = 2;
     private static final byte _SHIELD           = 3;
-    private static final byte _APPLE            = 4;
+    private static final byte _LITTER           = 4;
     private static final byte _BOOK             = 5;
-    private static final byte _CAKE             = 6;
-    private static final byte _CHERRIES         = 7;
-    private static final byte _GRAPES           = 8;
-    private static final byte _SILVER_ARMOUR    = 9;
-    private static final byte _GOLD_ARMOUR      = 10;
-    private static final byte _ACTIVATOR_COIN   = 11;
+    private static final byte _RUNE             = 6;
+    private static final byte _ACTIVATOR_COIN   = 7;
 
     // TODO: 08/12/2019 - Add pickup items that activate groups of other pickup items when collected.
 
@@ -58,13 +54,9 @@ public class Pickup extends GdxSprite
             1,      // ONE Coin
             1,      // ONE Gem
             25,     // 25 Health points
-            10,     // 10 Health points
+            1,      // ONE Litter
             1,      // ONE Book
-            10,     // 10 Health points
-            10,     // 10 Health points
-            10,     // 10 Health points
-            50,     // 50 Health points
-            100,    // 100 Health points
+            1,      // ONE Rune
             20,     // 20 Coins activated
         };
 
@@ -201,13 +193,9 @@ public class Pickup extends GdxSprite
             }
             break;
 
-            case G_APPLE:
-            case G_CAKE:
-            case G_CHERRIES:
-            case G_GRAPES:
-            case G_SILVER_ARMOUR:
-            case G_GOLD_ARMOUR:
             case G_SHIELD:
+            case G_LITTER:
+            case G_RUNE:
             case G_BOOK:
             default:
             {
@@ -222,12 +210,6 @@ public class Pickup extends GdxSprite
 
         switch (gid)
         {
-            case G_APPLE:
-            case G_CAKE:
-            case G_CHERRIES:
-            case G_GRAPES:
-            case G_SILVER_ARMOUR:
-            case G_GOLD_ARMOUR:
             case G_SHIELD:
             {
                 canCollect = !app.getHud().getHealthBar().isFull();
@@ -240,6 +222,8 @@ public class Pickup extends GdxSprite
             }
             break;
 
+            case G_LITTER:
+            case G_RUNE:
             case G_BOOK:
             default:
             {
@@ -287,6 +271,9 @@ public class Pickup extends GdxSprite
             }
             break;
 
+            case G_LITTER:
+            case G_RUNE:
+            case G_BOOK:
             default:
                 break;
         }

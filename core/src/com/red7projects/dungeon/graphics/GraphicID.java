@@ -30,6 +30,8 @@ public enum GraphicID
     G_GRAPES,
     G_SILVER_ARMOUR,
     G_GOLD_ARMOUR,
+    G_LITTER,
+    G_RUNE,
 
     // ----------------------------
     // Decorations

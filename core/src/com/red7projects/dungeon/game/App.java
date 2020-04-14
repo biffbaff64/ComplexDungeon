@@ -25,7 +25,7 @@ import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.entities.EntityData;
 import com.red7projects.dungeon.entities.EntityManager;
-import com.red7projects.dungeon.entities.utils.EntityUtils;
+import com.red7projects.dungeon.entities.EntityUtils;
 import com.red7projects.dungeon.entities.hero.MainPlayer;
 import com.red7projects.dungeon.utils.logging.google.AdsController;
 import com.red7projects.dungeon.utils.logging.google.PlayServices;

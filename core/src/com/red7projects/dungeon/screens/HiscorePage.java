@@ -68,7 +68,7 @@ public class HiscorePage implements UIPage, Disposable
     private final int _NAME_X             = 1400;
     private final int _TABLE_Y            = 1080;
     private final int _SPACING            = 100;
-    private final int _FNT_SIZE           = 96;
+    private final int _FONT_SIZE          = 96;
     private final int _DISPLAYED_HISCORES = 10;
 
     private Label        titleLabel;
@@ -220,7 +220,9 @@ public class HiscorePage implements UIPage, Disposable
                 (
                     String.format(Locale.UK, "%2d", (i + 1)),
                     _RANK_X, _TABLE_Y - (_SPACING * i),
-                    _FNT_SIZE, Color.WHITE, GameAssets._CENTURY_FONT
+                    _FONT_SIZE,
+                    Color.WHITE,
+                    GameAssets._CENTURY_FONT
                 );
 
             // The player score
@@ -228,14 +230,18 @@ public class HiscorePage implements UIPage, Disposable
                 (
                     String.format(Locale.UK, "%12d", app.highScoreUtils.getHighScoreTable()[i].score),
                     _SCORE_X, _TABLE_Y - (_SPACING * i),
-                    _FNT_SIZE, Color.WHITE, GameAssets._CENTURY_FONT
+                    _FONT_SIZE,
+                    Color.WHITE,
+                    GameAssets._CENTURY_FONT
                 );
 
             nameLabels[i] = scene2DUtils.addLabel
                 (
                     String.format(Locale.UK, "%s", app.highScoreUtils.getHighScoreTable()[i].name),
                     _NAME_X, _TABLE_Y - (_SPACING * i),
-                    _FNT_SIZE, Color.WHITE, GameAssets._CENTURY_FONT
+                    _FONT_SIZE,
+                    Color.WHITE,
+                    GameAssets._CENTURY_FONT
                 );
 
             colorIndex[i] = i;

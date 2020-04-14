@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities.utils;
+package com.red7projects.dungeon.entities;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -149,6 +149,9 @@ public class EntityUtils
             case G_KEY:
             case G_SHIELD:
             case G_DOCUMENT:
+            case G_LITTER:
+            case G_RUNE:
+            case G_BOOK:
 
             // ----------
             case G_ALCOVE_TORCH:
@@ -349,6 +352,9 @@ public class EntityUtils
             case G_KEY:
             case G_SHIELD:
             case G_DOCUMENT:
+            case G_LITTER:
+            case G_RUNE:
+            case G_BOOK:
             {
                 zed = 7;
             }
