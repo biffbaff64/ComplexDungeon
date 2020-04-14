@@ -278,8 +278,6 @@ public class RoomManager
 
         if ((_room != null) && (_room.roomName != null))
         {
-            _room.debug();
-
             TmxMapLoader      tmxMapLoader = new TmxMapLoader();
             TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(_room.roomName));
             TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
@@ -320,8 +318,6 @@ public class RoomManager
 
                 if (room != null)
                 {
-                    Trace.dbg(room.roomName);
-
                     TmxMapLoader      tmxMapLoader = new TmxMapLoader();
                     TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(room.roomName));
                     TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);

@@ -76,16 +76,27 @@ public class InputManager
 
         if (AppConfig.isDesktopApp())
         {
-            gameController = new GameController(app);
-
-            if (!gameController.setup())
+            //
+            // Redefine the mouse cursor as crosshairs
+            // if Mouse Control is required.
+            if (AppConfig.controlMode == ControllerType._MOUSE)
             {
-                gameController = null;
-
                 Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
                 Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
                 Gdx.graphics.setCursor(cursor);
                 pixmap.dispose();
+            }
+
+            //
+            // Initialise external controllers if enabled.
+            if (AppConfig.controlMode == ControllerType._EXTERNAL)
+            {
+                gameController = new GameController(app);
+
+                if (!gameController.setup())
+                {
+                    gameController = null;
+                }
             }
         }
 
@@ -163,9 +174,18 @@ public class InputManager
                 {
                     yPercent = _verticalValue;
 
-                    if ("PC/PS3/Android".equals(AppConfig.usedController))
+                    switch (AppConfig.usedController)
                     {
-                        yPercent *= -1;
+                        case "PC/PS3/Android":
+                        case "Controller (Inno GamePad..)":
+                        {
+                            yPercent *= -1;
+                        }
+                        break;
+
+                        default:
+                            break;
+
                     }
                 }
                 else

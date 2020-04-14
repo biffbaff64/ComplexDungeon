@@ -87,9 +87,18 @@ public abstract class AppConfig
         canDrawButtonBoxes   = false;
         controllersFitted    = false;
         gameButtonsReady     = false;
+        usedController       = "None";
 
-        controlMode   = ControllerType._VIRTUAL;
-        controllerPos = ControllerPos._LEFT;
+        if (isAndroidApp())
+        {
+            controlMode   = ControllerType._VIRTUAL;
+            controllerPos = ControllerPos._LEFT;
+        }
+        else
+        {
+            controlMode   = ControllerType._EXTERNAL;
+            controllerPos = ControllerPos._HIDDEN;
+        }
 
         Stats.setup();
 
@@ -133,6 +142,7 @@ public abstract class AppConfig
             Trace.dbg("controlMode         : " + controlMode);
             Trace.dbg("controllerPos       : " + controllerPos);
             Trace.dbg("controllersFitted   : " + controllersFitted);
+            Trace.dbg("usedController      : " + usedController);
             Trace.divider();
         }
     }
@@ -143,7 +153,7 @@ public abstract class AppConfig
 
         if (!app.preferences.prefs.getBoolean(Preferences._INSTALLED))
         {
-            Trace.dbg("Installing.....");
+            Trace.dbg("FRESH INSTALL.");
 
             app.preferences.setPrefsToDefault();
             app.preferences.enable(Preferences._INSTALLED);

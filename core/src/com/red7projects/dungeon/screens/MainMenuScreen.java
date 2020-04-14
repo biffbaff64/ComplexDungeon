@@ -53,6 +53,8 @@ public class MainMenuScreen extends AbstractBaseScreen
     private OptionsPage       optionsPage;
     private StateManager      gameState;
     private Texture           background;
+    private Texture           overlay1;
+    private Texture           overlay2;
     private StarField         starField;
     private ArrayList<UIPage> panels;
     private int               currentPage;
@@ -290,6 +292,30 @@ public class MainMenuScreen extends AbstractBaseScreen
                         }
 
                         starField.render();
+
+                        if (overlay1 != null)
+                        {
+                            spriteBatch.draw
+                                (
+                                    overlay1,
+                                    gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
+                                    gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT,
+                                    Gfx._VIEW_WIDTH,
+                                    Gfx._VIEW_HEIGHT
+                                );
+                        }
+
+                        if (overlay2 != null)
+                        {
+                            spriteBatch.draw
+                                (
+                                    overlay2,
+                                    gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
+                                    gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT,
+                                    Gfx._VIEW_WIDTH,
+                                    Gfx._VIEW_HEIGHT
+                                );
+                        }
                     }
                     else
                     {
@@ -373,6 +399,8 @@ public class MainMenuScreen extends AbstractBaseScreen
     public void loadImages()
     {
         background = app.assets.loadSingleAsset("data/full_moon_scene.png", Texture.class);
+        overlay1 = app.assets.loadSingleAsset("data/title_overlay1.png", Texture.class);
+        overlay2 = app.assets.loadSingleAsset("data/title_overlay2.png", Texture.class);
     }
 
     /**
@@ -388,7 +416,12 @@ public class MainMenuScreen extends AbstractBaseScreen
         hideAllPages();
 
         app.assets.unloadAsset("data/full_moon_scene.png");
+        app.assets.unloadAsset("data/title_overlay1.png");
+        app.assets.unloadAsset("data/title_overlay2.png");
+
         background = null;
+        overlay1 = null;
+        overlay2 = null;
 
         starField.dispose();
         starField = null;

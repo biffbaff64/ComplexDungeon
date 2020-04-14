@@ -17,6 +17,7 @@
 package com.red7projects.dungeon.input;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.config.AppConfig;
@@ -28,7 +29,7 @@ import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.screens.ScreenID;
 
 @SuppressWarnings("WeakerAccess")
-public class Keyboard implements InputProcessor
+public class Keyboard extends InputAdapter
 {
     public boolean ctrlButtonHeld;
     private final App app;

@@ -17,10 +17,7 @@
 package com.red7projects.dungeon.input;
 
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.controllers.Controller;
-import com.badlogic.gdx.controllers.ControllerListener;
-import com.badlogic.gdx.controllers.Controllers;
-import com.badlogic.gdx.controllers.PovDirection;
+import com.badlogic.gdx.controllers.*;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
@@ -29,7 +26,7 @@ import com.red7projects.dungeon.input.objects.*;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
-public class GameController implements ControllerListener, InputProcessor
+public class GameController implements ControllerListener
 {
     public Controller controller;
 
@@ -87,9 +84,7 @@ public class GameController implements ControllerListener, InputProcessor
 
                     createControllerMap();
 
-                    controller.addListener(this);
-
-                    app.inputManager.inputMultiplexer.addProcessor(this);
+                    Controllers.addListener(this);
 
                     Trace.dbg("Controller added");
                 }
@@ -130,7 +125,7 @@ public class GameController implements ControllerListener, InputProcessor
 
             AppConfig.controllersFitted = false;
 
-            app.inputManager.inputMultiplexer.removeProcessor(this);
+            Controllers.removeListener(this);
         }
         catch (NullPointerException npe)
         {
@@ -497,53 +492,5 @@ public class GameController implements ControllerListener, InputProcessor
         ControllerMap._RIGHT_TRIGGER      = DefaultControllerMap._RIGHT_TRIGGER;
 
         Trace.finishedMessage();
-    }
-
-    @Override
-    public boolean keyDown(final int keycode)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(final int keycode)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(final char character)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(final int screenX, final int screenY, final int pointer, final int button)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(final int screenX, final int screenY, final int pointer, final int button)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(final int screenX, final int screenY, final int pointer)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(final int screenX, final int screenY)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(final int amount)
-    {
-        return false;
     }
 }

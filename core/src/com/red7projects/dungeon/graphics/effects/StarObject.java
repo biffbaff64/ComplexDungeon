@@ -46,8 +46,7 @@ public class StarObject implements Disposable
     private final float _MAXIMUM_STAR_RADIUS    = 16.0f;
 
     //
-    // Note: SimpleVec3F is a simplified Vector3 with
-    //       just constructors, set(), sub() and add().
+    // Note: SimpleVec3F is a simplified Vector3.
     private SimpleVec3F     position;
     private SimpleVec3F     velocity;
     private TextureRegion   region;
