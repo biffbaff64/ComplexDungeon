@@ -16,7 +16,16 @@
 
 package com.red7projects.dungeon.entities.hero;
 
+import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.game.StateID;
+import com.red7projects.dungeon.maths.SimpleVec2F;
+import com.red7projects.dungeon.physics.Direction;
+import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.physics.Speed;
+import com.red7projects.dungeon.ui.SlidePanel;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class XButtonActions
 {
@@ -29,5 +38,20 @@ public class XButtonActions
 
     public void process()
     {
+        if (!app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET))
+        {
+            if (app.getPlayer().getSpriteAction() == Actions._STANDING)
+            {
+                app.mainGameScreen.gameState.set(StateID._STATE_MESSAGE_PANEL);
+            }
+        }
+        else
+        {
+            Trace.__FILE_LINE__();
+
+            ((SlidePanel) app.getHud().messageManager.getCurrentPanel()).activate();
+
+            app.getHud().messageManager.closeSlidePanel();
+        }
     }
 }

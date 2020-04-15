@@ -187,6 +187,7 @@ public class MapCreator
                             case _BARREL_TILE:
                             case _POT_TILE:
                             case _SACKS_TILE:
+                            case _GLOW_EYES_TILE:
                             {
                                 setEntityPlaceable(GraphicID._DECORATION, true);
                             }
@@ -280,6 +281,7 @@ public class MapCreator
         Trace.divider();
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void setEntityPlaceable(GraphicID _gid, boolean _placeable)
     {
         for (EntityManagerComponent component : app.entityData.managerList)

@@ -23,9 +23,6 @@ import com.red7projects.dungeon.utils.logging.StopWatch;
 
 import java.util.concurrent.TimeUnit;
 
-// TODO: 30/07/2018 - Combine ItemF and Item into one class that
-// TODO: 30/07/2018 - copes with floats AND ints
-
 public class ItemF
 {
     protected float     maximum;

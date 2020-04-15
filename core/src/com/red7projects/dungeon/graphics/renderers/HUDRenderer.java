@@ -96,7 +96,7 @@ public class HUDRenderer implements GameScreenRenderer
                 {
                     if (app.getHud() != null)
                     {
-                        app.getHud().render(hudCamera.camera, (AppConfig.controlMode == ControllerType._VIRTUAL));
+                        app.getHud().render(hudCamera.camera, (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true)));
                     }
                 }
                 break;

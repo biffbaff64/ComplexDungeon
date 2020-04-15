@@ -36,6 +36,10 @@ public interface BasicUIPanel
 
     void createButtonListeners();
 
+    void activate();
+
+    void deactivate();
+
     void setXOffset(int _offset);
 
     void setYOffset(int _offset);

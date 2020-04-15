@@ -23,6 +23,7 @@ import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.DirectionMap;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.physics.Movement;
 
 public class ButtonInputHandler implements Disposable
@@ -62,32 +63,28 @@ public class ButtonInputHandler implements Disposable
         if (app.getHud().buttonB.isPressed)
         {
             bButtonActions.process();
-            app.getPlayer().setAction(Actions._CASTING);
         }
 
         //
         // X Button
         if (app.getHud().buttonX.isPressed)
         {
-            if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_A)
-            {
-                xButtonActions.process();
-                app.getHud().buttonX.release();
-            }
+            xButtonActions.process();
+            app.getHud().buttonX.release();
         }
 
         //
         // Y Button
         if (app.getHud().buttonY.isPressed)
         {
-            if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_A)
+            if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_Y)
             {
                 yButtonActions.process();
                 app.getHud().buttonY.release();
             }
         }
 
-        if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
             if (app.inputManager.virtualJoystick != null)
             {
@@ -99,18 +96,14 @@ public class ButtonInputHandler implements Disposable
                 setDirection(app.inputManager.lastRegisteredDirection);
             }
         }
-        else
+
+        if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))
         {
-            if (AppConfig.isDesktopApp())
-            {
-//                if (app.preferences.isEnabled(Preferences._MOUSE_CONTROL))
-//                {
-//                }
-//                else
-//                {
-                    app.inputManager.keyboard.update();
-//                }
-            }
+        }
+
+        if (AppConfig.availableInputs.contains(ControllerType._KEYBOARD, true))
+        {
+            app.inputManager.keyboard.update();
         }
 
         boolean directionButtonPressed = false;

@@ -218,6 +218,10 @@ public abstract class EntityStats
             case G_ESCALATOR_RIGHT:
             case G_ESCALATOR_UP:
             case G_ESCALATOR_DOWN:
+            case G_GLOW_EYES:
+            case G_BOOK:
+            case G_LITTER:
+            case G_RUNE:
             {
             }
             break;

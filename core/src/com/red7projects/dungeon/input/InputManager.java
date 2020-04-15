@@ -80,7 +80,7 @@ public class InputManager
             //
             // Redefine the mouse cursor as crosshairs
             // if Mouse Control is required.
-            if (AppConfig.controlMode == ControllerType._MOUSE)
+            if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))
             {
                 Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
                 Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
@@ -90,7 +90,7 @@ public class InputManager
 
             //
             // Initialise external controllers if enabled.
-            if (AppConfig.controlMode == ControllerType._EXTERNAL)
+            if (AppConfig.availableInputs.contains(ControllerType._EXTERNAL, true))
             {
                 gameController = new GameController(app);
 
@@ -128,7 +128,7 @@ public class InputManager
 
         if (app.getHud() != null)
         {
-            if (AppConfig.controlMode == ControllerType._VIRTUAL)
+            if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
             {
                 if (virtualJoystick != null)
                 {
@@ -137,13 +137,13 @@ public class InputManager
             }
             else
             {
-                if (AppConfig.controlMode == ControllerType._EXTERNAL)
+                if (AppConfig.availableInputs.contains(ControllerType._EXTERNAL, true))
                 {
                     xPercent = _horizontalValue;
                 }
                 else
                 {
-                    if (AppConfig.controlMode == ControllerType._KEYBOARD)
+                    if (AppConfig.availableInputs.contains(ControllerType._KEYBOARD, true))
                     {
                         keyboard.translateXPercent();
 
@@ -162,7 +162,7 @@ public class InputManager
 
         if (app.getHud() != null)
         {
-            if (AppConfig.controlMode == ControllerType._VIRTUAL)
+            if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
             {
                 if (virtualJoystick != null)
                 {
@@ -171,7 +171,7 @@ public class InputManager
             }
             else
             {
-                if (AppConfig.controlMode == ControllerType._EXTERNAL)
+                if (AppConfig.availableInputs.contains(ControllerType._EXTERNAL, true))
                 {
                     yPercent = _verticalValue;
 
@@ -192,7 +192,7 @@ public class InputManager
                 }
                 else
                 {
-                    if (AppConfig.controlMode == ControllerType._KEYBOARD)
+                    if (AppConfig.availableInputs.contains(ControllerType._KEYBOARD, true))
                     {
                         keyboard.translateYPercent();
 

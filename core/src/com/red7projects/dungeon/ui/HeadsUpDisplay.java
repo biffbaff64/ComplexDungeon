@@ -64,40 +64,36 @@ public class HeadsUpDisplay implements Disposable
     private static final int _ACTION      = 4;    // BUTTON_A
     private static final int _PAUSE       = 5;
     private static final int _DEV_OPTIONS = 6;
-    private static final int _HUD_MENU    = 7;
-    private static final int _COINS       = 8;
-    private static final int _GEMS        = 9;
-    private static final int _LIVES       = 10;
-    private static final int _HEALTH      = 11;
-    private static final int _VILLAGERS   = 12;
-    private static final int _HUD_KEY     = 13;
-    private static final int _COMPASS     = 14;
+    private static final int _COINS       = 7;
+    private static final int _GEMS        = 8;
+    private static final int _LIVES       = 9;
+    private static final int _HEALTH      = 10;
+    private static final int _VILLAGERS   = 11;
+    private static final int _COMPASS     = 12;
 
     private static final int[][] displayPos = new int[][]
         {
-            {40, 1640, 40, 240, 240},             // Joystick
+            {  40, 1640,   40,  240,  240},             // Joystick
 
-            {2138, 44, 161, 96, 96},             // X
-            {2256, 44, 273, 96, 96},             // Y
-            {2376, 44, 161, 96, 96},             // Attack
-            {2256, 158, 48, 96, 96},             // Action
+            {2138,   44,  161,   96,   96},             // X
+            {2256,   44,  273,   96,   96},             // Y
+            {2376,   44,  161,   96,   96},             // Attack
+            {2256,  158,   48,   96,   96},             // Action
 
-            {2387, 2387, 1264, 66, 66},             // Pause Button
-            {2486, 2486, 1134, 66, 66},             // Dev Options
-            {2486, 2486, 1134, 66, 66},             // HUD Menu
-
-            //
-            // Y is distance from the TOP of the screen
-            {1455, 1455, 40, 0, 0},             // Coins total
-            {1455, 1455, 150, 0, 0},             // Gems total
-            {1920, 1920, 72, 0, 0},             // Life bar
-            {1920, 1920, 186, 0, 0},             // Health bar
+            {2387, 2387, 1264,   66,   66},             // Pause Button
+            {2486, 2486, 1134,   66,   66},             // Dev Options
 
             //
             // Y is distance from the TOP of the screen
-            {382, 382, 96, 0, 0},             // Villagers
-            {668, 668, 191, 0, 0},             // Hud Key
-            {882, 882, 240, 0, 0},             // Compass
+            { 568,  568,   40,    0,    0},             // Coins total
+            { 568,  568,  150,    0,    0},             // Gems total
+            {1920, 1920,   72,    0,    0},             // Life bar
+            {1920, 1920,  186,    0,    0},             // Health bar
+
+            //
+            // Y is distance from the TOP of the screen
+            { 152,  152,   96,    0,    0},             // Keys
+            {1219, 1219,  240,    0,    0},             // Compass
         };
 
     public Switch         buttonUp;
@@ -110,7 +106,6 @@ public class HeadsUpDisplay implements Disposable
     public GameButton     buttonY;
     public GameButton     buttonPause;
     public GameButton     buttonDevOptions;
-    public GameButton     buttonHUDMenu;
     public MessageManager messageManager;
     public PausePanel     pausePanel;
     public StateID        hudStateID;
@@ -122,7 +117,6 @@ public class HeadsUpDisplay implements Disposable
     private BitmapFont      bigFont;
     private BitmapFont      midFont;
     private BitmapFont      smallFont;
-    private TextureRegion   hudKey;
     private TextureRegion[] compassTexture;
     private DeveloperPanel  developerPanel;
 
@@ -169,8 +163,6 @@ public class HeadsUpDisplay implements Disposable
         livesBar.setHeight(31);
         livesBar.setColor(Color.GREEN);
         livesBar.setScale(4.0f);
-
-        hudKey = app.assets.getObjectsAtlas().findRegion(GameAssets._GOLD_KEY_ASSET);
 
         compassTexture = new TextureRegion[5];
         GfxUtils.splitRegion
@@ -328,6 +320,13 @@ public class HeadsUpDisplay implements Disposable
                 drawControls(camera);
             }
 
+            if (Developer.isDevMode())
+            {
+                buttonDevOptions.draw(app.spriteBatch, camera);
+            }
+
+            buttonPause.draw(app.spriteBatch, camera);
+
             //
             // Draw the Pause panel if activated
             if (hudStateID == StateID._STATE_PAUSED)
@@ -368,20 +367,6 @@ public class HeadsUpDisplay implements Disposable
                 (int) (originX + displayPos[_LIVES][_X1]),
                 (int) (originY + (Gfx._VIEW_HEIGHT - displayPos[_LIVES][_Y]))
             );
-
-        //
-        // Draw the Jailkey panel, if collected.
-        // Jailkeys are hidden in one of the mystery treasure chests
-        // found in each room.
-        if (app.gameProgress.keyCount.getTotal() > 0)
-        {
-            app.spriteBatch.draw
-                (
-                    hudKey,
-                    originX + displayPos[_HUD_KEY][_X1],
-                    originY + (Gfx._VIEW_HEIGHT - displayPos[_HUD_KEY][_Y])
-                );
-        }
 
         hudFont.setColor(Color.YELLOW);
 
@@ -470,6 +455,18 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
+
+            DebugRenderer.drawText("UP   :" + buttonUp.isPressed, originX + 50, originY + 1130);
+            DebugRenderer.drawText("DOWN :" + buttonDown.isPressed, originX + 50, originY + 1100);
+            DebugRenderer.drawText("LEFT :" + buttonLeft.isPressed, originX + 50, originY + 1070);
+            DebugRenderer.drawText("RIGHT:" + buttonRight.isPressed, originX + 50, originY + 1040);
+            DebugRenderer.drawText("A    :" + buttonA.isPressed, originX + 50, originY + 1010);
+            DebugRenderer.drawText("B    :" + buttonB.isPressed, originX + 50, originY + 980);
+            DebugRenderer.drawText("X    :" + buttonX.isPressed, originX + 50, originY + 950);
+            DebugRenderer.drawText("Y    :" + buttonY.isPressed, originX + 50, originY + 920);
+
+            DebugRenderer.drawText("DIR  :" + app.getPlayer().direction.toString(), originX + 50, originY + 860);
+            DebugRenderer.drawText("SPEED:" + app.getPlayer().speed.toString(), originX + 50, originY + 830);
         }
     }
 
@@ -507,14 +504,8 @@ public class HeadsUpDisplay implements Disposable
                     }
                 }
 
-                if (Developer.isDevMode())
-                {
-                    buttonDevOptions.draw(app.spriteBatch, camera);
-                }
             }
         }
-
-        buttonPause.draw(app.spriteBatch, camera);
     }
 
     private void drawMessages()
@@ -550,6 +541,7 @@ public class HeadsUpDisplay implements Disposable
             }
         }
 
+        buttonDevOptions.isDrawable = Developer.isDevMode();
         buttonPause.isDrawable = true;
     }
 
@@ -570,7 +562,8 @@ public class HeadsUpDisplay implements Disposable
             }
         }
 
-        buttonPause.isDrawable = !canHidePause;
+        buttonDevOptions.isDrawable = Developer.isDevMode();
+        buttonPause.isDrawable = true;
     }
 
     public void setStateID(final StateID id)
@@ -687,7 +680,7 @@ public class HeadsUpDisplay implements Disposable
         buttonX.hasSound     = false;
         buttonY.hasSound     = false;
 
-        hideControls(true);
+        hideControls(false);
 
         AppConfig.gameButtonsReady = true;
     }
@@ -699,36 +692,44 @@ public class HeadsUpDisplay implements Disposable
     public void dispose()
     {
         buttonA.dispose();
-        buttonA = null;
-
         buttonB.dispose();
-        buttonB = null;
-
         buttonX.dispose();
-        buttonX = null;
-
         buttonY.dispose();
+
+        buttonA = null;
+        buttonB = null;
+        buttonX = null;
         buttonY = null;
+
+        buttonPause.dispose();
+        buttonPause = null;
 
         if (Developer.isDevMode())
         {
             buttonDevOptions = null;
         }
 
-        messageManager.dispose();
-        messageManager = null;
-
-        pausePanel.dispose();
-        pausePanel = null;
-
-        app.inputManager.virtualJoystick.remove();
+        if (app.inputManager.virtualJoystick != null)
+        {
+            app.inputManager.virtualJoystick.remove();
+        }
 
         app.assets.unloadAsset(GameAssets._HUD_PANEL_ASSET);
 
-        scorePanel = null;
-
+        messageManager.dispose();
+        pausePanel.dispose();
         bigFont.dispose();
         midFont.dispose();
         smallFont.dispose();
+
+        healthBar.dispose();
+        livesBar.dispose();
+
+        healthBar = null;
+        livesBar = null;
+
+        messageManager = null;
+        pausePanel = null;
+        scorePanel = null;
     }
 }

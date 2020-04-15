@@ -21,8 +21,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.utils.logging.Trace;
 
-// TODO: 05/01/2019 - Investigate storing preferences & settings on the players Google Drive
-
 @SuppressWarnings({"WeakerAccess"})
 public class Preferences implements Disposable
 {

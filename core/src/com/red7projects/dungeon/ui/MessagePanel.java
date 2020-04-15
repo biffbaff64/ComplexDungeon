@@ -43,6 +43,6 @@ public class MessagePanel
 
     public boolean update()
     {
-        return false;
+        return app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET);
     }
 }

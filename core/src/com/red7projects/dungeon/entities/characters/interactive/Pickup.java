@@ -46,8 +46,6 @@ public class Pickup extends GdxSprite
     private static final byte _RUNE             = 6;
     private static final byte _ACTIVATOR_COIN   = 7;
 
-    // TODO: 08/12/2019 - Add pickup items that activate groups of other pickup items when collected.
-
     private final byte[] pickupValues =
         {
             1,      // ONE Key

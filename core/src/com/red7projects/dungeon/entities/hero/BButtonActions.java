@@ -16,6 +16,7 @@
 
 package com.red7projects.dungeon.entities.hero;
 
+import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 
 public class BButtonActions
@@ -29,5 +30,6 @@ public class BButtonActions
 
     public void process()
     {
+        app.getPlayer().setAction(Actions._CASTING);
     }
 }

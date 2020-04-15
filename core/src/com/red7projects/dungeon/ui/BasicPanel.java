@@ -108,21 +108,25 @@ public class BasicPanel implements BasicUIPanel, Disposable
         dispose();
     }
 
+    @Override
     public void activate()
     {
         isActive = true;
     }
 
+    @Override
     public void deactivate()
     {
         isActive = false;
     }
 
+    @Override
     public void setXOffset(int _offset)
     {
         xOffset = _offset;
     }
 
+    @Override
     public void setYOffset(int _offset)
     {
         yOffset = _offset;

@@ -643,6 +643,7 @@ public class MainPlayer extends GdxSprite
                 case _NO_ACTION:
                 case _RUNNING:
                 case _FIGHTING:
+                case _CASTING:
                 case _LAST_RITES:
                 case _HURT:
                 case _DYING:

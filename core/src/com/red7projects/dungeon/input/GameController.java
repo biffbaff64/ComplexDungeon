@@ -16,7 +16,6 @@
 
 package com.red7projects.dungeon.input;
 
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.controllers.*;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
@@ -104,15 +103,15 @@ public class GameController implements ControllerListener
             {
                 Trace.dbg("::Switched to _VIRTUAL");
 
-                AppConfig.controlMode   = ControllerType._VIRTUAL;
-                AppConfig.controllerPos = ControllerPos._LEFT;
+                AppConfig.availableInputs.add(ControllerType._VIRTUAL);
+                AppConfig.virtualControllerPos = ControllerPos._LEFT;
             }
             else
             {
                 Trace.dbg("::Switched to _KEYBOARD");
 
-                AppConfig.controlMode   = ControllerType._KEYBOARD;
-                AppConfig.controllerPos = ControllerPos._HIDDEN;
+                AppConfig.availableInputs.add(ControllerType._KEYBOARD);
+                AppConfig.virtualControllerPos = ControllerPos._HIDDEN;
             }
         }
     }

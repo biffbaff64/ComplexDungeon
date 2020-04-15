@@ -18,7 +18,7 @@ package com.red7projects.dungeon.config;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
@@ -57,8 +57,9 @@ public abstract class AppConfig
     public static boolean        controllersFitted;         //
     public static boolean        gameButtonsReady;          // TRUE When all game buttons have been defined
     public static String         usedController;            // The name of the controller being used
-    public static ControllerType controlMode;               // Virtual (on-screen) joystick or external controller
-    public static ControllerPos  controllerPos;             // Virtual (on-screen) joystick position (LEFT or RIGHT)
+    public static ControllerPos  virtualControllerPos;      // Virtual (on-screen) joystick position (LEFT or RIGHT)
+
+    public static Array<ControllerType> availableInputs;
 
     // =================================================================
     //
@@ -90,15 +91,17 @@ public abstract class AppConfig
         gameButtonsReady     = false;
         usedController       = "None";
 
+        availableInputs = new Array<>();
+
         if (isAndroidApp())
         {
-            controlMode   = ControllerType._VIRTUAL;
-            controllerPos = ControllerPos._LEFT;
+            availableInputs.add(ControllerType._VIRTUAL);
+            virtualControllerPos = ControllerPos._LEFT;
         }
         else
         {
-            controlMode   = ControllerType._EXTERNAL;
-            controllerPos = ControllerPos._HIDDEN;
+            availableInputs.add(ControllerType._EXTERNAL);
+            virtualControllerPos = ControllerPos._HIDDEN;
         }
 
         Stats.setup();
@@ -140,8 +143,7 @@ public abstract class AppConfig
             Trace.dbg("_VIEW_WIDTH         : " + Gfx._VIEW_WIDTH);
             Trace.dbg("_VIEW_HEIGHT        : " + Gfx._VIEW_HEIGHT);
             Trace.divider();
-            Trace.dbg("controlMode         : " + controlMode);
-            Trace.dbg("controllerPos       : " + controllerPos);
+            Trace.dbg("controllerPos       : " + virtualControllerPos);
             Trace.dbg("controllersFitted   : " + controllersFitted);
             Trace.dbg("usedController      : " + usedController);
             Trace.divider();
@@ -208,8 +210,10 @@ public abstract class AppConfig
 
     public static void dispose()
     {
+        availableInputs.clear();
+
         usedController = null;
-        controlMode    = null;
-        controllerPos  = null;
+        availableInputs = null;
+        virtualControllerPos = null;
     }
 }

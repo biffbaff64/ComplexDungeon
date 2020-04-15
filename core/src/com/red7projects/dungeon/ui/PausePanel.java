@@ -30,24 +30,24 @@ import com.red7projects.dungeon.input.buttons.GameButton;
 
 public class PausePanel extends BasicPanel implements Disposable
 {
-    public GameButton   buttonMusicVolume;
-    public GameButton   buttonFXVolume;
-    public GameButton   buttonHome;
-    public GameButton   buttonPauseExit;
+    public GameButton buttonMusicVolume;
+    public GameButton buttonFXVolume;
+    public GameButton buttonHome;
+    public GameButton buttonResume;
 
-    private final App       app;
+    private final App app;
 
-    private static final int _EXIT          = 0;
-    private static final int _MUSIC         = 1;
-    private static final int _FX            = 2;
-    private static final int _EXIT_PAUSE    = 3;
+    private static final int _EXIT       = 0;
+    private static final int _EXIT_PAUSE = 1;
+    private static final int _MUSIC      = 2;
+    private static final int _FX         = 3;
 
     private static final int[][] displayPos =
         {
-            {1107, (Gfx._VIEW_HEIGHT - 664), 346,  66},     // Main Menu
-            {1107, (Gfx._VIEW_HEIGHT - 765), 346,  66},     // Music
-            {1107, (Gfx._VIEW_HEIGHT - 866), 346,  66},     // FX
-            {1729, (Gfx._VIEW_HEIGHT - 543), 128, 128},     // Exit Pause
+            {1107, (Gfx._VIEW_HEIGHT - 587), 346, 66},     // Main Menu
+            {1107, (Gfx._VIEW_HEIGHT - 698), 346, 66},     // Exit Pause
+            {1107, (Gfx._VIEW_HEIGHT - 810), 346, 66},     // Music
+            {1107, (Gfx._VIEW_HEIGHT - 918), 346, 66},     // FX
         };
 
     private Texture background;
@@ -99,10 +99,10 @@ public class PausePanel extends BasicPanel implements Disposable
             }
         }
 
-        if (buttonPauseExit.isPressed)
+        if (buttonResume.isPressed)
         {
             app.getHud().buttonPause.press();
-            buttonPauseExit.release();
+            buttonResume.release();
         }
 
         if (buttonHome.isPressed)
@@ -120,7 +120,7 @@ public class PausePanel extends BasicPanel implements Disposable
         buttonMusicVolume.draw(spriteBatch, camera);
         buttonFXVolume.draw(spriteBatch, camera);
         buttonHome.draw(spriteBatch, camera);
-        buttonPauseExit.draw(spriteBatch, camera);
+        buttonResume.draw(spriteBatch, camera);
     }
 
     @Override
@@ -155,10 +155,10 @@ public class PausePanel extends BasicPanel implements Disposable
                 app
             );
 
-        buttonPauseExit = new GameButton
+        buttonResume = new GameButton
             (
-                app.assets.getButtonsAtlas().findRegion("buttonPauseExit"),
-                app.assets.getButtonsAtlas().findRegion("buttonPauseExit_pressed"),
+                app.assets.getButtonsAtlas().findRegion("buttonResumeOn"),
+                app.assets.getButtonsAtlas().findRegion("buttonResumeOff"),
                 displayPos[_EXIT_PAUSE][0], displayPos[_EXIT_PAUSE][1],
                 ButtonID._DEFAULT,
                 app
@@ -167,7 +167,7 @@ public class PausePanel extends BasicPanel implements Disposable
         buttonHome.setSize(displayPos[_EXIT][2], displayPos[_EXIT][3]);
         buttonMusicVolume.setSize(displayPos[_MUSIC][2], displayPos[_MUSIC][3]);
         buttonFXVolume.setSize(displayPos[_FX][2], displayPos[_FX][3]);
-        buttonPauseExit.setSize(displayPos[_EXIT_PAUSE][2], displayPos[_EXIT_PAUSE][3]);
+        buttonResume.setSize(displayPos[_EXIT_PAUSE][2], displayPos[_EXIT_PAUSE][3]);
 
         buttonMusicVolume.pressConditional(Sfx.inst().getMusicVolume() == 0);
         buttonFXVolume.pressConditional(Sfx.inst().getFXVolume() == 0);
@@ -186,7 +186,7 @@ public class PausePanel extends BasicPanel implements Disposable
         app.getHud().getHealthBar().setToMinimum();
 
         buttonHome.release();
-        app.getHud().buttonPause.release();
+        app.getHud().buttonPause.press();
     }
 
     @Override
@@ -198,11 +198,11 @@ public class PausePanel extends BasicPanel implements Disposable
         buttonHome.dispose();
         buttonMusicVolume.dispose();
         buttonFXVolume.dispose();
-        buttonPauseExit.dispose();
+        buttonResume.dispose();
 
-        buttonHome = null;
+        buttonHome        = null;
         buttonMusicVolume = null;
-        buttonFXVolume = null;
-        buttonPauseExit = null;
+        buttonFXVolume    = null;
+        buttonResume      = null;
     }
 }

@@ -21,15 +21,13 @@ package com.red7projects.dungeon.game;
 public abstract class Constants
 {
     public static final int _MAX_LIVES              = 5;
-    public static final int _MAX_KEYS               = 1;
+    public static final int _MAX_KEYS               = 100;
     public static final int _MAX_LEVEL              = 34;
     public static final int _MAX_PROGRESSBAR_LENGTH = 100;
     public static final int _MAX_SCORE              = 999999;
     public static final int _MAX_HISCORES           = 10;
-    public static final int _MAX_PRISONERS          = 99;
-    public static final int _MAX_COINS              = 9999;
-    public static final int _MAX_GEMS               = 9999;
-    public static final int     _MAX_STRENGTH           = 100;
-    public static final int _LEFT  = 0;
-    public static final int _RIGHT = 1;
+    public static final int _MAX_PRISONERS          = 100;
+    public static final int _MAX_COINS              = 999999;
+    public static final int _MAX_GEMS               = 999999;
+    public static final int _MAX_STRENGTH           = 100;
 }

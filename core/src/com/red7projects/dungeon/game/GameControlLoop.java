@@ -279,7 +279,10 @@ public class GameControlLoop extends AbstractControlLoop
         app.getHud().update();
         app.mapUtils.update();
 
-        messagePanel.update();
+        if (!messagePanel.update())
+        {
+            scr().gameState.set(StateID._STATE_GAME);
+        }
     }
 
     /**

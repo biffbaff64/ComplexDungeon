@@ -13,21 +13,21 @@ arrow_left_blue
   index: -1
 arrow_left_blue_pressed
   rotate: false
-  xy: 1971, 1912
+  xy: 1235, 1544
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_right_blue
   rotate: false
-  xy: 1279, 1365
+  xy: 1971, 1912
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_right_blue_pressed
   rotate: false
-  xy: 1279, 1297
+  xy: 1235, 1476
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -69,28 +69,28 @@ btn_google_signout_dark_pressed
   index: -1
 button1p
   rotate: false
-  xy: 214, 27
+  xy: 536, 865
   size: 121, 23
   orig: 121, 23
   offset: 0, 0
   index: -1
 button1p_pressed
   rotate: false
-  xy: 214, 2
+  xy: 536, 840
   size: 121, 23
   orig: 121, 23
   offset: 0, 0
   index: -1
 button2p
   rotate: false
-  xy: 1310, 1625
+  xy: 214, 27
   size: 142, 23
   orig: 142, 23
   offset: 0, 0
   index: -1
 button2p_pressed
   rotate: false
-  xy: 974, 1070
+  xy: 214, 2
   size: 142, 23
   orig: 142, 23
   offset: 0, 0
@@ -179,20 +179,6 @@ buttonOptions_pressed
   orig: 543, 96
   offset: 0, 0
   index: -1
-buttonPauseExit
-  rotate: false
-  xy: 1235, 1482
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
-buttonPauseExit_pressed
-  rotate: false
-  xy: 1022, 1290
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 buttonResumeOff
   rotate: false
   xy: 994, 1814
@@ -223,28 +209,28 @@ buttonStart_pressed
   index: -1
 button_achievements
   rotate: false
-  xy: 818, 1038
+  xy: 1149, 1294
   size: 76, 124
   orig: 76, 124
   offset: 0, 0
   index: -1
 button_achievements_pressed
   rotate: false
-  xy: 896, 1072
+  xy: 818, 1038
   size: 76, 124
   orig: 76, 124
   offset: 0, 0
   index: -1
 button_d
   rotate: false
-  xy: 547, 788
+  xy: 1303, 1541
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_d_pressed
   rotate: false
-  xy: 547, 720
+  xy: 1371, 1541
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -307,14 +293,14 @@ button_no_pressed
   index: -1
 button_ok
   rotate: false
-  xy: 1365, 1557
+  xy: 547, 772
   size: 98, 66
   orig: 98, 66
   offset: 0, 0
   index: -1
 button_ok_pressed
   rotate: false
-  xy: 1365, 1489
+  xy: 547, 704
   size: 98, 66
   orig: 98, 66
   offset: 0, 0
@@ -335,14 +321,14 @@ button_open_leaderboard_pressed
   index: -1
 button_pause
   rotate: false
-  xy: 547, 652
+  xy: 1303, 1473
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_pause_pressed
   rotate: false
-  xy: 547, 584
+  xy: 1371, 1473
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -405,28 +391,28 @@ button_y_pressed
   index: -1
 button_yes
   rotate: false
-  xy: 974, 1095
+  xy: 896, 1130
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 button_yes_pressed
   rotate: false
-  xy: 1488, 1816
+  xy: 896, 1062
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 hud_pause_button
   rotate: false
-  xy: 1022, 1163
+  xy: 1310, 1609
   size: 125, 125
   orig: 125, 125
   offset: 0, 0
   index: -1
 hud_pause_button_pressed
   rotate: false
-  xy: 1152, 1293
+  xy: 1022, 1293
   size: 125, 125
   orig: 125, 125
   offset: 0, 0
@@ -440,7 +426,7 @@ joystick_ball
   index: -1
 new_back_button
   rotate: false
-  xy: 1310, 1650
+  xy: 1022, 1207
   size: 142, 84
   orig: 142, 84
   offset: 0, 0
@@ -468,14 +454,14 @@ new_developer_options_button_pressed
   index: -1
 new_exit_button
   rotate: false
-  xy: 1632, 1816
+  xy: 1040, 1139
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 new_exit_button_pressed
   rotate: false
-  xy: 1776, 1816
+  xy: 1040, 1071
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
@@ -552,35 +538,35 @@ slider_background
   index: -1
 slider_knob
   rotate: false
-  xy: 1235, 1420
+  xy: 1488, 1888
   size: 40, 60
   orig: 40, 60
   offset: 0, 0
   index: -1
 toggle_left
   rotate: false
-  xy: 536, 856
+  xy: 547, 572
   size: 96, 32
   orig: 96, 32
   offset: 0, 0
   index: -1
 toggle_off
   rotate: false
-  xy: 1277, 1433
+  xy: 547, 655
   size: 88, 47
   orig: 88, 47
   offset: 0, 0
   index: -1
 toggle_on
   rotate: false
-  xy: 1367, 1440
+  xy: 547, 606
   size: 88, 47
   orig: 88, 47
   offset: 0, 0
   index: -1
 toggle_right
   rotate: false
-  xy: 1488, 1782
+  xy: 896, 1028
   size: 96, 32
   orig: 96, 32
   offset: 0, 0

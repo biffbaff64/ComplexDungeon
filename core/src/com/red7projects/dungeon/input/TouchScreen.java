@@ -78,9 +78,9 @@ public class TouchScreen
                 returnFlag = true;
             }
 
-            if (app.getHud().pausePanel.buttonPauseExit.contains(screenX, screenY))
+            if (app.getHud().pausePanel.buttonResume.contains(screenX, screenY))
             {
-                app.getHud().pausePanel.buttonPauseExit.press();
+                app.getHud().pausePanel.buttonResume.press();
                 returnFlag = true;
             }
 
@@ -164,9 +164,9 @@ public class TouchScreen
 
         if (AppConfig.gamePaused)
         {
-            if (app.getHud().pausePanel.buttonPauseExit.contains(screenX, screenY))
+            if (app.getHud().pausePanel.buttonResume.contains(screenX, screenY))
             {
-                app.getHud().pausePanel.buttonPauseExit.release();
+                app.getHud().pausePanel.buttonResume.release();
                 returnFlag = true;
             }
 
