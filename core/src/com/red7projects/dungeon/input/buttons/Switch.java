@@ -31,6 +31,11 @@ public class Switch extends BasicButton
         isSwitch = true;
     }
 
+    public Switch(App _app, ButtonID _id)
+    {
+        super(_app, _id);
+    }
+
     public Switch(int _x, int _y, int _width, int _height, App _app)
     {
         super(_app, ButtonID._DEFAULT);

@@ -30,7 +30,7 @@ import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.physics.Movement;
 import org.jetbrains.annotations.NotNull;
 
-public class GameButton extends BasicButton implements Disposable
+public class GameButton extends Switch implements Disposable
 {
     private static final int _INITIAL_ROTATION  = 270;
     private static final int _INITIAL_DISTANCE  = 45;

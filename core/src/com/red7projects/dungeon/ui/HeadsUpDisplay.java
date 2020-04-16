@@ -28,6 +28,7 @@ import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.utils.development.DebugRenderer;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.development.DeveloperPanel;
@@ -122,7 +123,6 @@ public class HeadsUpDisplay implements Disposable
 
     private float   originX;
     private float   originY;
-    private boolean showHUDControls;
     private App     app;
 
     public HeadsUpDisplay(App _app)
@@ -214,7 +214,6 @@ public class HeadsUpDisplay implements Disposable
                 {
                     AppConfig.pause();
                     buttonPause.release();
-                    showHUDControls = false;
                 }
 
                 updateBars();
@@ -245,7 +244,6 @@ public class HeadsUpDisplay implements Disposable
                 {
                     AppConfig.unPause();
                     buttonPause.release();
-                    showHUDControls = true;
                 }
             }
             break;
@@ -310,22 +308,15 @@ public class HeadsUpDisplay implements Disposable
             originX = (camera.position.x - (float) (Gfx._VIEW_WIDTH / 2));
             originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
 
-            drawPanels();
-            drawItems();
-            drawCompass();
-            drawMessages();
-
-            if (_canDrawControls && app.gameProgress.gameSetupDone)
-            {
-                drawControls(camera);
-            }
-
-            if (Developer.isDevMode())
-            {
-                buttonDevOptions.draw(app.spriteBatch, camera);
-            }
-
-            buttonPause.draw(app.spriteBatch, camera);
+//            drawPanels();
+//            drawItems();
+//            drawCompass();
+//            drawMessages();
+//
+//            if (_canDrawControls && app.gameProgress.gameSetupDone)
+//            {
+//                drawControls(camera);
+//            }
 
             //
             // Draw the Pause panel if activated
@@ -472,40 +463,40 @@ public class HeadsUpDisplay implements Disposable
 
     private void drawControls(OrthographicCamera camera)
     {
-        if (!AppConfig.gamePaused)
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            if (showHUDControls)
+            if ( !AppConfig.gamePaused && (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL))
             {
-                if (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL)
+                buttonB.draw(app.spriteBatch, camera);
+                buttonA.draw(app.spriteBatch, camera);
+                buttonX.draw(app.spriteBatch, camera);
+                buttonY.draw(app.spriteBatch, camera);
+
+                if (app.inputManager.virtualJoystick != null)
                 {
-                    if (app.preferences.isEnabled(Preferences._SHOW_GAME_BUTTONS))
-                    {
-                        buttonB.draw(app.spriteBatch, camera);
-                        buttonA.draw(app.spriteBatch, camera);
-                        buttonX.draw(app.spriteBatch, camera);
-                        buttonY.draw(app.spriteBatch, camera);
-                    }
+                    app.inputManager.virtualJoystick.getTouchpad().setPosition
+                        (
+                            originX + displayPos[_JOYSTICK][_X1],
+                            originY + displayPos[_JOYSTICK][_Y]
+                        );
 
-                    if (app.inputManager.virtualJoystick != null)
-                    {
-                        app.inputManager.virtualJoystick.getTouchpad().setPosition
-                            (
-                                originX + displayPos[_JOYSTICK][_X1],
-                                originY + displayPos[_JOYSTICK][_Y]
-                            );
-
-                        app.inputManager.virtualJoystick.getTouchpad().setBounds
-                            (
-                                originX + displayPos[_JOYSTICK][_X1],
-                                originY + displayPos[_JOYSTICK][_Y],
-                                app.inputManager.virtualJoystick.getTouchpad().getWidth(),
-                                app.inputManager.virtualJoystick.getTouchpad().getHeight()
-                            );
-                    }
+                    app.inputManager.virtualJoystick.getTouchpad().setBounds
+                        (
+                            originX + displayPos[_JOYSTICK][_X1],
+                            originY + displayPos[_JOYSTICK][_Y],
+                            app.inputManager.virtualJoystick.getTouchpad().getWidth(),
+                            app.inputManager.virtualJoystick.getTouchpad().getHeight()
+                        );
                 }
-
             }
         }
+
+        if (Developer.isDevMode())
+        {
+            buttonDevOptions.draw(app.spriteBatch, camera);
+        }
+
+        buttonPause.draw(app.spriteBatch, camera);
     }
 
     private void drawMessages()
@@ -526,9 +517,7 @@ public class HeadsUpDisplay implements Disposable
 
     public void showControls()
     {
-        showHUDControls = true;
-
-        if (app.preferences.isEnabled(Preferences._SHOW_GAME_BUTTONS))
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
             buttonB.isDrawable = true;
             buttonA.isDrawable = true;
@@ -541,15 +530,17 @@ public class HeadsUpDisplay implements Disposable
             }
         }
 
-        buttonDevOptions.isDrawable = Developer.isDevMode();
+        if (Developer.isDevMode())
+        {
+            buttonDevOptions.isDrawable = true;
+        }
+
         buttonPause.isDrawable = true;
     }
 
     public void hideControls(boolean canHidePause)
     {
-        showHUDControls = false;
-
-        if (app.preferences.isEnabled(Preferences._SHOW_GAME_BUTTONS))
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
             buttonB.isDrawable = false;
             buttonA.isDrawable = false;
@@ -562,8 +553,12 @@ public class HeadsUpDisplay implements Disposable
             }
         }
 
-        buttonDevOptions.isDrawable = Developer.isDevMode();
-        buttonPause.isDrawable = true;
+        if (Developer.isDevMode())
+        {
+            buttonDevOptions.isDrawable = canHidePause;
+        }
+
+        buttonPause.isDrawable = canHidePause;
     }
 
     public void setStateID(final StateID id)
@@ -605,48 +600,67 @@ public class HeadsUpDisplay implements Disposable
     {
         Trace.__FILE_FUNC();
 
+        TextureAtlas textureAtlas = app.assets.getButtonsAtlas();
+
         buttonUp    = new Switch(app);
         buttonDown  = new Switch(app);
         buttonLeft  = new Switch(app);
         buttonRight = new Switch(app);
 
-        TextureAtlas textureAtlas = app.assets.getButtonsAtlas();
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
+        {
+            buttonB = new GameButton
+                (
+                    (textureAtlas.findRegion("button_fire")),
+                    (textureAtlas.findRegion("button_fire_pressed")),
+                    displayPos[_ATTACK][_X1], displayPos[_ATTACK][_Y],
+                    ButtonID._B,
+                    app
+                );
 
-        buttonB = new GameButton
-            (
-                (textureAtlas.findRegion("button_fire")),
-                (textureAtlas.findRegion("button_fire_pressed")),
-                displayPos[_ATTACK][_X1], displayPos[_ATTACK][_Y],
-                ButtonID._B,
-                app
-            );
+            buttonA = new GameButton
+                (
+                    (textureAtlas.findRegion("button_drop")),
+                    (textureAtlas.findRegion("button_drop_pressed")),
+                    displayPos[_ACTION][_X1], displayPos[_ACTION][_Y],
+                    ButtonID._A,
+                    app
+                );
 
-        buttonA = new GameButton
-            (
-                (textureAtlas.findRegion("button_drop")),
-                (textureAtlas.findRegion("button_drop_pressed")),
-                displayPos[_ACTION][_X1], displayPos[_ACTION][_Y],
-                ButtonID._A,
-                app
-            );
+            buttonX = new GameButton
+                (
+                    (textureAtlas.findRegion("button_x")),
+                    (textureAtlas.findRegion("button_x_pressed")),
+                    displayPos[_BUTTON_X][_X1], displayPos[_BUTTON_X][_Y],
+                    ButtonID._X,
+                    app
+                );
 
-        buttonX = new GameButton
-            (
-                (textureAtlas.findRegion("button_x")),
-                (textureAtlas.findRegion("button_x_pressed")),
-                displayPos[_BUTTON_X][_X1], displayPos[_BUTTON_X][_Y],
-                ButtonID._X,
-                app
-            );
+            buttonY = new GameButton
+                (
+                    (textureAtlas.findRegion("button_y")),
+                    (textureAtlas.findRegion("button_y_pressed")),
+                    displayPos[_BUTTON_Y][_X1], displayPos[_BUTTON_Y][_Y],
+                    ButtonID._Y,
+                    app
+                );
 
-        buttonY = new GameButton
-            (
-                (textureAtlas.findRegion("button_y")),
-                (textureAtlas.findRegion("button_y_pressed")),
-                displayPos[_BUTTON_Y][_X1], displayPos[_BUTTON_Y][_Y],
-                ButtonID._Y,
-                app
-            );
+            buttonUp.hasSound    = false;
+            buttonDown.hasSound  = false;
+            buttonLeft.hasSound  = false;
+            buttonRight.hasSound = false;
+            buttonB.hasSound     = false;
+            buttonA.hasSound     = false;
+            buttonX.hasSound     = false;
+            buttonY.hasSound     = false;
+        }
+        else
+        {
+            buttonA = new Switch(app);
+            buttonB = new Switch(app);
+            buttonX = new Switch(app);
+            buttonY = new Switch(app);
+        }
 
         buttonPause = new GameButton
             (
@@ -671,15 +685,6 @@ public class HeadsUpDisplay implements Disposable
             buttonDevOptions.hasSound = false;
         }
 
-        buttonUp.hasSound    = false;
-        buttonDown.hasSound  = false;
-        buttonLeft.hasSound  = false;
-        buttonRight.hasSound = false;
-        buttonB.hasSound     = false;
-        buttonA.hasSound     = false;
-        buttonX.hasSound     = false;
-        buttonY.hasSound     = false;
-
         hideControls(false);
 
         AppConfig.gameButtonsReady = true;
@@ -691,15 +696,18 @@ public class HeadsUpDisplay implements Disposable
     @Override
     public void dispose()
     {
-        buttonA.dispose();
-        buttonB.dispose();
-        buttonX.dispose();
-        buttonY.dispose();
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
+        {
+            buttonA.dispose();
+            buttonB.dispose();
+            buttonX.dispose();
+            buttonY.dispose();
 
-        buttonA = null;
-        buttonB = null;
-        buttonX = null;
-        buttonY = null;
+            buttonA = null;
+            buttonB = null;
+            buttonX = null;
+            buttonY = null;
+        }
 
         buttonPause.dispose();
         buttonPause = null;
