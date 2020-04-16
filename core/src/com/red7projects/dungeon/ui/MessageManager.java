@@ -72,7 +72,7 @@ public class MessageManager implements Disposable
             currentPanel.set
                 (
                     new SimpleVec2F(currentPanel.getPosition().x, currentPanel.getPosition().y),
-                    new SimpleVec2F(0, currentPanel.getPosition().y),
+                    new SimpleVec2F(0, currentPanel.getSize().getY() + 50),
                     new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN),
                     new Speed(0, 40)
                 );

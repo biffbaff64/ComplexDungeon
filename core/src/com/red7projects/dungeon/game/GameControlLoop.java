@@ -19,6 +19,7 @@ package com.red7projects.dungeon.game;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.ui.SlidePanel;
 import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.ui.MessagePanel;
@@ -278,6 +279,20 @@ public class GameControlLoop extends AbstractControlLoop
     {
         app.getHud().update();
         app.mapUtils.update();
+
+        if (app.getHud().messageManager.getCurrentPanel().getState() == StateID._UPDATE)
+        {
+            if (app.getHud().buttonX.isPressed)
+            {
+                ((SlidePanel) app.getHud().messageManager.getCurrentPanel()).activate();
+
+                app.getHud().messageManager.closeSlidePanel();
+
+                scr().gameState.set(StateID._STATE_GAME);
+
+                app.getHud().buttonX.release();
+            }
+        }
 
         if (!messagePanel.update())
         {

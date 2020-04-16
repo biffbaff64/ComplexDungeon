@@ -35,7 +35,7 @@ public class MessagePanel
                     ),
                 new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + 50),
                 new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
-                new Speed(0, (float) ((app.getHud().messageManager.getCurrentPanelHeight() + 50) / 10))
+                new Speed(0, 40)
             );
 
         app.getHud().hideControls(false);

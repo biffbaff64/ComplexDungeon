@@ -85,14 +85,14 @@ public class HeadsUpDisplay implements Disposable
 
             //
             // Y is distance from the TOP of the screen
-            { 568,  568,   40,    0,    0},             // Coins total
-            { 568,  568,  150,    0,    0},             // Gems total
+            { 758,  758,   40,    0,    0},             // Coins total
+            { 758,  758,  150,    0,    0},             // Gems total
             {1920, 1920,   72,    0,    0},             // Life bar
             {1920, 1920,  186,    0,    0},             // Health bar
 
             //
             // Y is distance from the TOP of the screen
-            { 152,  152,   96,    0,    0},             // Keys
+            { 332,  332,   96,    0,    0},             // Keys
             {1219, 1219,  240,    0,    0},             // Compass
         };
 

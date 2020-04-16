@@ -72,6 +72,7 @@ public class MainPlayer extends GdxSprite
     public boolean isOnPlatform;
     public boolean isOnFloorButton;
     public boolean isPossessed;
+    public boolean canOpenMessagePanel;
 
     private TextureRegion[] abxy;
     private CollisionRect   tileRectangle;
@@ -103,14 +104,15 @@ public class MainPlayer extends GdxSprite
                                     | Gfx.CAT_VILLAGER
                                     | Gfx.CAT_DOOR;
 
-        isMainCharacter = true;
-        isHurting       = false;
-        isShooting      = false;
-        isGrabbing      = false;
-        isCasting       = false;
-        isOnPlatform    = false;
-        isOnFloorButton = false;
-        isPossessed     = false;
+        isMainCharacter     = true;
+        isHurting           = false;
+        isShooting          = false;
+        isGrabbing          = false;
+        isCasting           = false;
+        isOnPlatform        = false;
+        isOnFloorButton     = false;
+        isPossessed         = false;
+        canOpenMessagePanel = false;
 
         buttons       = new ButtonInputHandler(app);
         collision     = new CollisionHandler(app);
@@ -156,12 +158,13 @@ public class MainPlayer extends GdxSprite
         isFlippedY      = false;
         canFlip         = false;
 
-        isHurting       = false;
-        isShooting      = false;
-        isCasting       = false;
-        isGrabbing      = false;
-        localIsDrawable = false;
-        isDrawable      = true;
+        isHurting           = false;
+        isShooting          = false;
+        isCasting           = false;
+        isGrabbing          = false;
+        localIsDrawable     = false;
+        isDrawable          = true;
+        canOpenMessagePanel = true;
 
         sprite.setRotation(0);
         sprite.setPosition(initXY.getX(), initXY.getY());
@@ -301,9 +304,21 @@ public class MainPlayer extends GdxSprite
 
         isOnFloorButton = (collision.isNextTo(GraphicID.G_FLOOR_BUTTON) > 0);
 
+        if (collision.isNextTo(GraphicID.G_VILLAGER) > 0)
+        {
+            if (getSpriteAction() == Actions._STANDING)
+            {
+                if (canOpenMessagePanel)
+                {
+                    buttons.xButtonActions.process();
+                    canOpenMessagePanel = false;
+                }
+            }
+        }
+
+        // TEMP
         if (strength <= 0)
         {
-            // TEMP
             strength = Constants._MAX_STRENGTH;
         }
     }
@@ -634,9 +649,14 @@ public class MainPlayer extends GdxSprite
                 }
                 break;
 
+                case _STANDING:
+                {
+                    canOpenMessagePanel = true;
+                }
+                break;
+
                 case _PAUSED:
                 case _WAITING:
-                case _STANDING:
                 case _TELEPORTING:
                 case _CHANGING_ROOM:
                 case _DEAD:

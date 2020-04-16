@@ -103,14 +103,20 @@ public class GameController implements ControllerListener
             {
                 Trace.dbg("::Switched to _VIRTUAL");
 
-                AppConfig.availableInputs.add(ControllerType._VIRTUAL);
+                if (!AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
+                {
+                    AppConfig.availableInputs.add(ControllerType._VIRTUAL);
+                }
                 AppConfig.virtualControllerPos = ControllerPos._LEFT;
             }
             else
             {
                 Trace.dbg("::Switched to _KEYBOARD");
 
-                AppConfig.availableInputs.add(ControllerType._KEYBOARD);
+                if (!AppConfig.availableInputs.contains(ControllerType._KEYBOARD, true))
+                {
+                    AppConfig.availableInputs.add(ControllerType._KEYBOARD);
+                }
                 AppConfig.virtualControllerPos = ControllerPos._HIDDEN;
             }
         }

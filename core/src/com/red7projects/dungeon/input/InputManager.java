@@ -180,7 +180,6 @@ public class InputManager
                         case "PC/PS3/Android":
                         case "Controller (Inno GamePad..)":
                         {
-                            Trace.__FILE_LINE__();
                             yPercent *= -1;
                         }
                         break;

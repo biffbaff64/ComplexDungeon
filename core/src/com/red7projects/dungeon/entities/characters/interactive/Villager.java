@@ -74,16 +74,6 @@ public class Villager extends GdxSprite
         {
             case _STANDING:
             {
-                canShowMessage = proximity.isVeryClose(this, app.getPlayer());
-
-                if (canShowMessage)
-                {
-                    if (app.getPlayer().getSpriteAction() == Actions._STANDING)
-                    {
-                        app.mainGameScreen.gameState.set(StateID._STATE_MESSAGE_PANEL);
-                    }
-                }
-
                 if (app.getPlayer().topEdge < sprite.getY())
                 {
                     descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(GameAssets._VILLAGER_IDLE_DOWN_ASSET);

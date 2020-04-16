@@ -28,24 +28,24 @@ import com.red7projects.dungeon.physics.Movement;
 
 public class ButtonInputHandler implements Disposable
 {
-    private AButtonActions aButtonActions;
-    private BButtonActions bButtonActions;
-    private XButtonActions xButtonActions;
-    private YButtonActions yButtonActions;
+    AButtonActions aButtonActions;
+    BButtonActions bButtonActions;
+    XButtonActions xButtonActions;
+    YButtonActions yButtonActions;
 
     private final App app;
 
-    ButtonInputHandler(App _app)
+    public ButtonInputHandler(App _app)
     {
         this.app = _app;
 
-        this.aButtonActions = new AButtonActions(app);
-        this.bButtonActions = new BButtonActions(app);
-        this.xButtonActions = new XButtonActions(app);
-        this.yButtonActions = new YButtonActions(app);
+        aButtonActions = new AButtonActions(app);
+        bButtonActions = new BButtonActions(app);
+        xButtonActions = new XButtonActions(app);
+        yButtonActions = new YButtonActions(app);
     }
 
-    void checkButtons()
+    public void checkButtons()
     {
         //
         // A Button
@@ -95,6 +95,11 @@ public class ButtonInputHandler implements Disposable
 
                 setDirection(app.inputManager.lastRegisteredDirection);
             }
+        }
+
+        if (AppConfig.availableInputs.contains(ControllerType._EXTERNAL, true))
+        {
+            setDirection(app.inputManager.lastRegisteredDirection);
         }
 
         if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))

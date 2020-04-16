@@ -96,11 +96,15 @@ public abstract class AppConfig
         if (isAndroidApp())
         {
             availableInputs.add(ControllerType._VIRTUAL);
+
             virtualControllerPos = ControllerPos._LEFT;
         }
         else
         {
             availableInputs.add(ControllerType._EXTERNAL);
+            availableInputs.add(ControllerType._KEYBOARD);
+            availableInputs.add(ControllerType._MOUSE);
+
             virtualControllerPos = ControllerPos._HIDDEN;
         }
 
