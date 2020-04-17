@@ -654,13 +654,6 @@ public class HeadsUpDisplay implements Disposable
             buttonX.hasSound     = false;
             buttonY.hasSound     = false;
         }
-        else
-        {
-            buttonA = new Switch(app);
-            buttonB = new Switch(app);
-            buttonX = new Switch(app);
-            buttonY = new Switch(app);
-        }
 
         buttonPause = new GameButton
             (
