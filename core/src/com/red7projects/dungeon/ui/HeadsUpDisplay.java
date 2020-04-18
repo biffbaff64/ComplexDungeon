@@ -23,6 +23,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
@@ -97,19 +99,27 @@ public class HeadsUpDisplay implements Disposable
             {1219, 1219,  240,    0,    0},             // Compass
         };
 
-    public Switch         buttonUp;
-    public Switch         buttonDown;
-    public Switch         buttonLeft;
-    public Switch         buttonRight;
-    public GameButton     buttonA;
-    public GameButton     buttonB;
-    public GameButton     buttonX;
-    public GameButton     buttonY;
-    public GameButton     buttonPause;
-    public GameButton     buttonDevOptions;
+    public Switch   switchUp;
+    public Switch   switchDown;
+    public Switch   switchLeft;
+    public Switch   switchRight;
+    public Switch   switchA;
+    public Switch   switchB;
+    public Switch   switchX;
+    public Switch   switchY;
+    public Switch   switchPause;
+    public Switch   switchDevOptions;
+
     public MessageManager messageManager;
     public PausePanel     pausePanel;
     public StateID        hudStateID;
+
+    private ImageButton  buttonA;
+    private ImageButton  buttonB;
+    private ImageButton  buttonX;
+    private ImageButton  buttonY;
+    private ImageButton  buttonPause;
+    private ImageButton  buttonDevOptions;
 
     private ProgressBar     healthBar;
     private ProgressBar     livesBar;
@@ -210,10 +220,10 @@ public class HeadsUpDisplay implements Disposable
 
             case _STATE_PANEL_UPDATE:
             {
-                if (buttonPause.isPressed)
+                if (switchPause.isPressed)
                 {
                     AppConfig.pause();
-                    buttonPause.release();
+                    switchPause.release();
                 }
 
                 updateBars();
@@ -240,10 +250,10 @@ public class HeadsUpDisplay implements Disposable
             {
                 pausePanel.update();
 
-                if (buttonPause.isPressed)
+                if (switchPause.isPressed)
                 {
                     AppConfig.unPause();
-                    buttonPause.release();
+                    switchPause.release();
                 }
             }
             break;
@@ -287,14 +297,14 @@ public class HeadsUpDisplay implements Disposable
         if (Developer.isDevMode() && !AppConfig.gamePaused)
         {
             // DevOptions button which activates the Dev Settings panel
-            if ((buttonDevOptions != null) && buttonDevOptions.isPressed && !AppConfig.developerPanelActive)
+            if ((buttonDevOptions != null) && switchDevOptions.isPressed && !AppConfig.developerPanelActive)
             {
                 AppConfig.developerPanelActive = true;
 
                 developerPanel = new DeveloperPanel(app);
                 developerPanel.setup();
 
-                buttonDevOptions.release();
+                switchDevOptions.release();
                 app.mainGameScreen.getGameState().set(StateID._STATE_DEVELOPER_PANEL);
                 hudStateID = StateID._STATE_DEVELOPER_PANEL;
             }
@@ -447,14 +457,14 @@ public class HeadsUpDisplay implements Disposable
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
 
-            DebugRenderer.drawText("UP   :" + buttonUp.isPressed, originX + 50, originY + 1130);
-            DebugRenderer.drawText("DOWN :" + buttonDown.isPressed, originX + 50, originY + 1100);
-            DebugRenderer.drawText("LEFT :" + buttonLeft.isPressed, originX + 50, originY + 1070);
-            DebugRenderer.drawText("RIGHT:" + buttonRight.isPressed, originX + 50, originY + 1040);
-            DebugRenderer.drawText("A    :" + buttonA.isPressed, originX + 50, originY + 1010);
-            DebugRenderer.drawText("B    :" + buttonB.isPressed, originX + 50, originY + 980);
-            DebugRenderer.drawText("X    :" + buttonX.isPressed, originX + 50, originY + 950);
-            DebugRenderer.drawText("Y    :" + buttonY.isPressed, originX + 50, originY + 920);
+            DebugRenderer.drawText("UP   :" + switchUp.isPressed, originX + 50, originY + 1130);
+            DebugRenderer.drawText("DOWN :" + switchDown.isPressed, originX + 50, originY + 1100);
+            DebugRenderer.drawText("LEFT :" + switchLeft.isPressed, originX + 50, originY + 1070);
+            DebugRenderer.drawText("RIGHT:" + switchRight.isPressed, originX + 50, originY + 1040);
+            DebugRenderer.drawText("A    :" + switchA.isPressed, originX + 50, originY + 1010);
+            DebugRenderer.drawText("B    :" + switchB.isPressed, originX + 50, originY + 980);
+            DebugRenderer.drawText("X    :" + switchX.isPressed, originX + 50, originY + 950);
+            DebugRenderer.drawText("Y    :" + switchY.isPressed, originX + 50, originY + 920);
 
             DebugRenderer.drawText("DIR  :" + app.getPlayer().direction.toString(), originX + 50, originY + 860);
             DebugRenderer.drawText("SPEED:" + app.getPlayer().speed.toString(), originX + 50, originY + 830);
@@ -467,11 +477,6 @@ public class HeadsUpDisplay implements Disposable
         {
             if ( !AppConfig.gamePaused && (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL))
             {
-                buttonB.draw(app.spriteBatch, camera);
-                buttonA.draw(app.spriteBatch, camera);
-                buttonX.draw(app.spriteBatch, camera);
-                buttonY.draw(app.spriteBatch, camera);
-
                 if (app.inputManager.virtualJoystick != null)
                 {
                     app.inputManager.virtualJoystick.getTouchpad().setPosition
@@ -490,13 +495,6 @@ public class HeadsUpDisplay implements Disposable
                 }
             }
         }
-
-        if (Developer.isDevMode())
-        {
-            buttonDevOptions.draw(app.spriteBatch, camera);
-        }
-
-        buttonPause.draw(app.spriteBatch, camera);
     }
 
     private void drawMessages()
@@ -519,10 +517,10 @@ public class HeadsUpDisplay implements Disposable
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            buttonB.isDrawable = true;
-            buttonA.isDrawable = true;
-            buttonX.isDrawable = true;
-            buttonY.isDrawable = true;
+            buttonB.setVisible(true);
+            buttonA.setVisible(true);
+            buttonX.setVisible(true);
+            buttonY.setVisible(true);
 
             if (app.inputManager.virtualJoystick != null)
             {
@@ -532,20 +530,20 @@ public class HeadsUpDisplay implements Disposable
 
         if (Developer.isDevMode())
         {
-            buttonDevOptions.isDrawable = true;
+            buttonDevOptions.setVisible(true);
         }
 
-        buttonPause.isDrawable = true;
+        buttonPause.setVisible(true);
     }
 
     public void hideControls(boolean canHidePause)
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            buttonB.isDrawable = false;
-            buttonA.isDrawable = false;
-            buttonX.isDrawable = false;
-            buttonY.isDrawable = false;
+            buttonB.setVisible(false);
+            buttonA.setVisible(false);
+            buttonX.setVisible(false);
+            buttonY.setVisible(false);
 
             if (app.inputManager.virtualJoystick != null)
             {
@@ -555,10 +553,10 @@ public class HeadsUpDisplay implements Disposable
 
         if (Developer.isDevMode())
         {
-            buttonDevOptions.isDrawable = canHidePause;
+            buttonDevOptions.setVisible(canHidePause);
         }
 
-        buttonPause.isDrawable = canHidePause;
+        buttonPause.setVisible(canHidePause);
     }
 
     public void setStateID(final StateID id)
@@ -578,22 +576,10 @@ public class HeadsUpDisplay implements Disposable
 
     public void releaseDirectionButtons()
     {
-        if (buttonUp != null)
-        {
-            buttonUp.release();
-        }
-        if (buttonDown != null)
-        {
-            buttonDown.release();
-        }
-        if (buttonLeft != null)
-        {
-            buttonLeft.release();
-        }
-        if (buttonRight != null)
-        {
-            buttonRight.release();
-        }
+        switchUp.release();
+        switchDown.release();
+        switchLeft.release();
+        switchRight.release();
     }
 
     private void createHUDButtons()
@@ -602,80 +588,63 @@ public class HeadsUpDisplay implements Disposable
 
         TextureAtlas textureAtlas = app.assets.getButtonsAtlas();
 
-        buttonUp    = new Switch(app);
-        buttonDown  = new Switch(app);
-        buttonLeft  = new Switch(app);
-        buttonRight = new Switch(app);
+        switchUp    = new Switch();
+        switchDown  = new Switch();
+        switchLeft  = new Switch();
+        switchRight = new Switch();
+        switchA     = new Switch();
+        switchB     = new Switch();
+        switchX     = new Switch();
+        switchY     = new Switch();
+
+        Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            buttonB = new GameButton
+            buttonA = scene2DUtils.addButton
                 (
-                    (textureAtlas.findRegion("button_fire")),
-                    (textureAtlas.findRegion("button_fire_pressed")),
-                    displayPos[_ATTACK][_X1], displayPos[_ATTACK][_Y],
-                    ButtonID._B,
-                    app
+                    "button_drop",
+                    "button_drop_pressed",
+                    displayPos[_ACTION][_X1], displayPos[_ACTION][_Y]
                 );
 
-            buttonA = new GameButton
+            buttonB = scene2DUtils.addButton
                 (
-                    (textureAtlas.findRegion("button_drop")),
-                    (textureAtlas.findRegion("button_drop_pressed")),
-                    displayPos[_ACTION][_X1], displayPos[_ACTION][_Y],
-                    ButtonID._A,
-                    app
+                    "button_fire",
+                    "button_fire_pressed",
+                    displayPos[_ATTACK][_X1], displayPos[_ATTACK][_Y]
                 );
 
-            buttonX = new GameButton
+            buttonX = scene2DUtils.addButton
                 (
-                    (textureAtlas.findRegion("button_x")),
-                    (textureAtlas.findRegion("button_x_pressed")),
-                    displayPos[_BUTTON_X][_X1], displayPos[_BUTTON_X][_Y],
-                    ButtonID._X,
-                    app
+                    "button_x",
+                    "button_x_pressed",
+                    displayPos[_BUTTON_X][_X1], displayPos[_BUTTON_X][_Y]
                 );
 
-            buttonY = new GameButton
+            buttonY = scene2DUtils.addButton
                 (
-                    (textureAtlas.findRegion("button_y")),
-                    (textureAtlas.findRegion("button_y_pressed")),
-                    displayPos[_BUTTON_Y][_X1], displayPos[_BUTTON_Y][_Y],
-                    ButtonID._Y,
-                    app
+                    "button_y",
+                    "button_y_pressed",
+                    displayPos[_BUTTON_Y][_X1], displayPos[_BUTTON_Y][_Y]
                 );
-
-            buttonUp.hasSound    = false;
-            buttonDown.hasSound  = false;
-            buttonLeft.hasSound  = false;
-            buttonRight.hasSound = false;
-            buttonB.hasSound     = false;
-            buttonA.hasSound     = false;
-            buttonX.hasSound     = false;
-            buttonY.hasSound     = false;
         }
 
-        buttonPause = new GameButton
+        buttonPause = scene2DUtils.addButton
             (
-                (textureAtlas.findRegion("hud_pause_button")),
-                (textureAtlas.findRegion("hud_pause_button_pressed")),
-                displayPos[_PAUSE][_X1], displayPos[_PAUSE][_Y],
-                ButtonID._PAUSE,
-                app
+                "hud_pause_button",
+                "hud_pause_button_pressed",
+                displayPos[_PAUSE][_X1], displayPos[_PAUSE][_Y]
             );
 
         if (Developer.isDevMode())
         {
-            buttonDevOptions = new GameButton
+            buttonDevOptions = scene2DUtils.addButton
                 (
-                    (textureAtlas.findRegion("button_d")),
-                    (textureAtlas.findRegion("button_d_pressed")),
-                    displayPos[_DEV_OPTIONS][_X1], displayPos[_DEV_OPTIONS][_Y],
-                    ButtonID._DEV,
-                    app
+                    "button_d",
+                    "button_d_pressed",
+                    displayPos[_DEV_OPTIONS][_X1], displayPos[_DEV_OPTIONS][_Y]
                 );
-
-            buttonDevOptions.hasSound = false;
         }
 
         hideControls(false);
@@ -691,24 +660,36 @@ public class HeadsUpDisplay implements Disposable
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            buttonA.dispose();
-            buttonB.dispose();
-            buttonX.dispose();
-            buttonY.dispose();
+            buttonA.addAction(Actions.removeActor());
+            buttonB.addAction(Actions.removeActor());
+            buttonX.addAction(Actions.removeActor());
+            buttonY.addAction(Actions.removeActor());
 
             buttonA = null;
             buttonB = null;
             buttonX = null;
             buttonY = null;
-        }
 
-        buttonPause.dispose();
-        buttonPause = null;
+            switchA = null;
+            switchB = null;
+            switchX = null;
+            switchY = null;
+            switchUp = null;
+            switchDown = null;
+            switchLeft = null;
+            switchRight = null;
+            switchPause = null;
+            switchDevOptions = null;
+        }
 
         if (Developer.isDevMode())
         {
+            buttonDevOptions.addAction(Actions.removeActor());
             buttonDevOptions = null;
         }
+
+        buttonPause.addAction(Actions.removeActor());
+        buttonPause = null;
 
         if (app.inputManager.virtualJoystick != null)
         {

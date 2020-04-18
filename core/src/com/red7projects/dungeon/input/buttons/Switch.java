@@ -16,46 +16,32 @@
 
 package com.red7projects.dungeon.input.buttons;
 
-import com.badlogic.gdx.graphics.Color;
-import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.GfxUtils;
-import com.red7projects.dungeon.maths.Box;
-
-public class Switch extends BasicButton
+public class Switch
 {
-    public Switch(App _app)
-    {
-        this( 0, 0, 10, 10, _app);
+    public boolean isPressed;
+    public boolean isActive;
 
-        isSwitch = true;
+    public Switch()
+    {
+        isPressed = false;
+        isActive  = true;
     }
 
-    public Switch(App _app, ButtonID _id)
+    public void press()
     {
-        super(_app, _id);
-    }
-
-    public Switch(int _x, int _y, int _width, int _height, App _app)
-    {
-        super(_app, ButtonID._DEFAULT);
-
-        this.x          = _x;
-        this.y          = _y;
-        this.width      = _width;
-        this.height     = _height;
-        this.buttonRect = new Box(x, y, width, height);
-        this.isPressed  = false;
-        this.isSwitch   = true;
-        this.isActive   = true;
-    }
-
-    @SuppressWarnings("unused")
-    public void draw()
-    {
-        if (AppConfig.canDrawButtonBoxes)
+        if (isActive)
         {
-            GfxUtils.drawRect(x, y, width, height, 2, Color.WHITE);
+            isPressed = true;
         }
+    }
+
+    public void release()
+    {
+        isPressed = false;
+    }
+
+    public void setActive(boolean _state)
+    {
+        isActive = _state;
     }
 }

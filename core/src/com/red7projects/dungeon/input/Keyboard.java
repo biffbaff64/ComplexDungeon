@@ -42,11 +42,11 @@ public class Keyboard extends InputAdapter
 
     public void update()
     {
-        if (app.getHud().buttonUp.isPressed)
+        if (app.getHud().switchUp.isPressed)
         {
             app.getPlayer().direction.setY(Movement._DIRECTION_UP);
         }
-        else if (app.getHud().buttonDown.isPressed)
+        else if (app.getHud().switchDown.isPressed)
         {
             app.getPlayer().direction.setY(Movement._DIRECTION_DOWN);
         }
@@ -55,11 +55,11 @@ public class Keyboard extends InputAdapter
             app.getPlayer().direction.setY(Movement._DIRECTION_STILL);
         }
 
-        if (app.getHud().buttonLeft.isPressed)
+        if (app.getHud().switchLeft.isPressed)
         {
             app.getPlayer().direction.setX(Movement._DIRECTION_LEFT);
         }
-        else if (app.getHud().buttonRight.isPressed)
+        else if (app.getHud().switchRight.isPressed)
         {
             app.getPlayer().direction.setX(Movement._DIRECTION_RIGHT);
         }
@@ -78,7 +78,7 @@ public class Keyboard extends InputAdapter
         {
             if (AppConfig.gameScreenActive)
             {
-                app.getHud().buttonPause.press();
+                app.getHud().switchPause.press();
             }
         }
 
@@ -99,32 +99,32 @@ public class Keyboard extends InputAdapter
 
         if (keycode == UIButtons.defaultValueLeft)
         {
-            app.getHud().buttonLeft.press();
+            app.getHud().switchLeft.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueRight)
         {
-            app.getHud().buttonRight.press();
+            app.getHud().switchRight.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueUp)
         {
-            app.getHud().buttonUp.press();
+            app.getHud().switchUp.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueDown)
         {
-            app.getHud().buttonDown.press();
+            app.getHud().switchDown.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueB)
         {
-            app.getHud().buttonB.press();
+            app.getHud().switchB.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueA)
         {
-            app.getHud().buttonA.press();
+            app.getHud().switchA.press();
             returnFlag = true;
         }
         else
@@ -134,7 +134,7 @@ public class Keyboard extends InputAdapter
                 case Input.Keys.ESCAPE:
                 case Input.Keys.BACK:
                 {
-                    app.getHud().buttonPause.press();
+                    app.getHud().switchPause.press();
 
                     returnFlag = true;
                 }
@@ -200,32 +200,32 @@ public class Keyboard extends InputAdapter
 
         if (keycode == UIButtons.defaultValueLeft)
         {
-            app.getHud().buttonLeft.release();
+            app.getHud().switchLeft.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueRight)
         {
-            app.getHud().buttonRight.release();
+            app.getHud().switchRight.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueUp)
         {
-            app.getHud().buttonUp.release();
+            app.getHud().switchUp.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueDown)
         {
-            app.getHud().buttonDown.release();
+            app.getHud().switchDown.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueB)
         {
-            app.getHud().buttonB.release();
+            app.getHud().switchB.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueA)
         {
-            app.getHud().buttonA.release();
+            app.getHud().switchA.release();
             returnFlag = true;
         }
         else
@@ -235,7 +235,7 @@ public class Keyboard extends InputAdapter
                 case Input.Keys.ESCAPE:
                 case Input.Keys.BACK:
                 {
-                    app.getHud().buttonPause.release();
+                    app.getHud().switchPause.release();
 
                     returnFlag = true;
                 }
@@ -274,7 +274,7 @@ public class Keyboard extends InputAdapter
 
             if (AppConfig.gameScreenActive)
             {
-                app.getHud().buttonPause.release();
+                app.getHud().switchPause.release();
             }
         }
 
@@ -344,49 +344,27 @@ public class Keyboard extends InputAdapter
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer)
     {
-        Vector2 newPoints = new Vector2(screenX, screenY);
-        newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
+//        Vector2 newPoints = new Vector2(screenX, screenY);
+//        newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
+//
+//        int touchX = (int) (newPoints.x - app.mapData.mapPosition.getX());
+//        int touchY = (int) (newPoints.y - app.mapData.mapPosition.getY());
+//
+//        boolean returnFlag = false;
+//
+//        if (app.currentScreenID == ScreenID._GAME_SCREEN)
+//        {
+//            if ((app.getHud().buttonB.pointer == pointer)
+//                && !app.getHud().buttonB.contains(touchX, touchY))
+//            {
+//                app.getHud().buttonB.release();
+//                returnFlag = true;
+//            }
+//        }
+//
+//        return returnFlag;
 
-        int touchX = (int) (newPoints.x - app.mapData.mapPosition.getX());
-        int touchY = (int) (newPoints.y - app.mapData.mapPosition.getY());
-
-        boolean returnFlag = false;
-
-        if (app.currentScreenID == ScreenID._GAME_SCREEN)
-        {
-            if (app.getHud().buttonUp.isPressed)
-            {
-                if ((app.getHud().buttonUp.pointer == pointer)
-                    && !app.getHud().buttonUp.contains(touchX, touchY))
-                {
-                    app.getHud().buttonUp.release();
-                    returnFlag = true;
-                }
-            }
-
-            if ((app.getHud().buttonB.pointer == pointer)
-                && !app.getHud().buttonB.contains(touchX, touchY))
-            {
-                app.getHud().buttonB.release();
-                returnFlag = true;
-            }
-
-            if ((app.getHud().buttonLeft.pointer == pointer)
-                && !app.getHud().buttonLeft.contains(touchX, touchY))
-            {
-                app.getHud().buttonLeft.release();
-                returnFlag = true;
-            }
-
-            if ((app.getHud().buttonRight.pointer == pointer)
-                && !app.getHud().buttonRight.contains(touchX, touchY))
-            {
-                app.getHud().buttonRight.release();
-                returnFlag = true;
-            }
-        }
-
-        return returnFlag;
+        return false;
     }
 
     /**

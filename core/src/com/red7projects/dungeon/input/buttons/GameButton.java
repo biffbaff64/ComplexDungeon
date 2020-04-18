@@ -30,7 +30,7 @@ import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.physics.Movement;
 import org.jetbrains.annotations.NotNull;
 
-public class GameButton extends Switch implements Disposable
+public class GameButton implements GDXButton, Disposable
 {
     private static final int _INITIAL_ROTATION  = 270;
     private static final int _INITIAL_DISTANCE  = 45;
@@ -40,13 +40,18 @@ public class GameButton extends Switch implements Disposable
     public TextureRegion bg;
     public TextureRegion bgPressed;
     public TextureRegion bgDisabled;
+    public Box           buttonRect;
+    public ButtonID      buttonID;
 
-    public boolean forceShowPressed;
     public boolean isRotating;
     public boolean isScaling;
     public boolean isToAndFro;
     public boolean isDrawable;
     public boolean isClockwise;
+    public boolean isPressed;
+    public boolean isActive;
+    public boolean isDisabled;
+    public boolean hasSound;
 
     public float scaleMinimum;
     public float scaleMaximum;
@@ -60,8 +65,14 @@ public class GameButton extends Switch implements Disposable
     public int rotateDir;
     public int rotateDist;
     public int rotateSpeed;
+    public int x;
+    public int y;
+    public int width;
+    public int height;
+    public int pointer;
 
     private int mapIndex;
+    private App app;
 
     /**
      * Define a GameButton
@@ -94,7 +105,7 @@ public class GameButton extends Switch implements Disposable
      */
     public GameButton(int x, int y, ButtonID _id, App _app)
     {
-        super(_app, _id);
+        this(_app, _id);
 
         this.bg               = null;
         this.bgPressed        = null;
@@ -104,7 +115,6 @@ public class GameButton extends Switch implements Disposable
         this.width            = 0;
         this.height           = 0;
         this.isDrawable       = false;
-        this.forceShowPressed = false;
         this.isRotating       = false;
         this.rotation         = _INITIAL_ROTATION;
         this.rotateDir        = _INITIAL_DIRECTION;
@@ -124,6 +134,19 @@ public class GameButton extends Switch implements Disposable
         app.inputManager.gameButtons.add(this);
     }
 
+    public GameButton(App _app, ButtonID _id)
+    {
+        this.app        = _app;
+        this.buttonID   = _id;
+
+        this.isPressed  = false;
+        this.isDisabled = false;
+        this.hasSound   = true;
+        this.isActive   = true;
+
+        this.buttonRect = new Box();
+    }
+
     public void delete()
     {
         app.inputManager.gameButtons.removeIndex(mapIndex);
@@ -133,7 +156,7 @@ public class GameButton extends Switch implements Disposable
     {
         if ((isActive || isDisabled) && isDrawable)
         {
-            TextureRegion textureRegion = (isPressed || forceShowPressed) ? bgPressed : bg;
+            TextureRegion textureRegion = isPressed ? bgPressed : bg;
 
             if (isDisabled)
             {
@@ -225,6 +248,100 @@ public class GameButton extends Switch implements Disposable
 
             buttonTimer = 0;
         }
+    }
+
+    @Override
+    public void setPosition(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+
+        refreshBounds();
+    }
+
+    @Override
+    public boolean contains(int x, int y)
+    {
+        return isActive && buttonRect.contains((float) x, (float) y);
+    }
+
+    @Override
+    public boolean contains(float x, float y)
+    {
+        return isActive && buttonRect.contains(x, y);
+    }
+
+    @Override
+    public void refreshBounds()
+    {
+        buttonRect.set(x, y, width, height);
+    }
+
+    @Override
+    public Box getBounds()
+    {
+        return buttonRect;
+    }
+
+    @Override
+    public void setID(final ButtonID _id)
+    {
+        buttonID = _id;
+    }
+
+    @Override
+    public ButtonID getID()
+    {
+        return buttonID;
+    }
+
+    @Override
+    public void press()
+    {
+        isPressed = true;
+    }
+
+    @Override
+    public void press(int _ptr)
+    {
+        this.press();
+        this.pointer = _ptr;
+    }
+
+    @Override
+    public void pressConditional(boolean condition)
+    {
+        isPressed = condition;
+    }
+
+    @Override
+    public void release()
+    {
+        isPressed = false;
+    }
+
+    @Override
+    public void set()
+    {
+        isPressed = true;
+    }
+
+    @Override
+    public void clear()
+    {
+        isPressed = false;
+    }
+
+    @Override
+    public void toggleActive()
+    {
+        isActive = !isActive;
+    }
+
+    @Override
+    public void togglePressed()
+    {
+        isPressed = !isPressed;
     }
 
     @Override

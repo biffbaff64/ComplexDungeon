@@ -32,25 +32,11 @@ public class TouchScreen
 
     public boolean titleScreenTouchDown(int screenX, int screenY)
     {
-        if (UIButtons.fullScreenButton.contains(screenX, screenY))
-        {
-            UIButtons.fullScreenButton.press();
-
-            return true;
-        }
-
         return false;
     }
 
     public boolean titleScreenTouchUp(int screenX, int screenY)
     {
-        if (UIButtons.fullScreenButton.contains(screenX, screenY))
-        {
-            UIButtons.fullScreenButton.release();
-
-            return true;
-        }
-
         return false;
     }
 
@@ -58,7 +44,7 @@ public class TouchScreen
     {
         boolean returnFlag = false;
 
-        if (app.getHud().buttonPause.contains(screenX, screenY))
+        if (app.getHud().s.contains(screenX, screenY))
         {
             app.getHud().buttonPause.press();
             returnFlag = true;
@@ -93,18 +79,6 @@ public class TouchScreen
         else
         {
             //
-            // Check for sprite selection
-            for (GdxSprite gdxSprite : app.entityData.entityMap)
-            {
-                if (gdxSprite.sprite.getBoundingRectangle().contains(app.inputManager.mouseWorldPosition.x, app.inputManager.mouseWorldPosition.y))
-                {
-                    gdxSprite.isSelected = true;
-
-                    returnFlag = true;
-                }
-            }
-
-            //
             // Debug Console or Developer Options Menu
             if (Developer.isDevMode())
             {
@@ -116,12 +90,6 @@ public class TouchScreen
                         returnFlag = true;
                     }
                 }
-            }
-
-            if (UIButtons.fullScreenButton.contains(screenX, screenY))
-            {
-                UIButtons.fullScreenButton.press();
-                returnFlag = true;
             }
 
             if (app.getHud().buttonB.contains(screenX, screenY))
@@ -190,12 +158,6 @@ public class TouchScreen
                         returnFlag = true;
                     }
                 }
-            }
-
-            if (UIButtons.fullScreenButton.contains(screenX, screenY))
-            {
-                UIButtons.fullScreenButton.release();
-                returnFlag = true;
             }
 
             if (app.getHud().buttonB.contains(screenX, screenY))

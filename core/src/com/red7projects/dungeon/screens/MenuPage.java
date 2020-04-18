@@ -83,11 +83,11 @@ public class MenuPage implements UIPage, Disposable
         addMenu();
         addClickListeners();
 
-        buttonStart    = new Switch(app);
-        buttonOptions  = new Switch(app);
-        buttonExit     = new Switch(app);
-        buttonGoogle   = new Switch(app);
-        buttonSettings = new Switch(app);
+        buttonStart    = new Switch();
+        buttonOptions  = new Switch();
+        buttonExit     = new Switch();
+        buttonGoogle   = new Switch();
+        buttonSettings = new Switch();
 
         buttons = new Array<>();
         buttons.add(buttonStart);

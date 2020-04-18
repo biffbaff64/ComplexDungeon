@@ -72,7 +72,7 @@ public class UIButtons
 
     public static void setup(App app)
     {
-        fullScreenButton = new Switch(0, 0, Gfx._VIEW_WIDTH, Gfx._VIEW_HEIGHT, app);
+        fullScreenButton = new Switch();
 
         controllerAPressed          = false;
         controllerBPressed          = false;
@@ -87,7 +87,7 @@ public class UIButtons
         controllerFirePressed       = false;
 
         controllerButtonCode        = -1;
-        systemBackButton            = new Switch(app);
+        systemBackButton            = new Switch();
     }
 
     public static void releaseAll()

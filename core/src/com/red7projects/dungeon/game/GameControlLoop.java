@@ -282,7 +282,7 @@ public class GameControlLoop extends AbstractControlLoop
 
         if (app.getHud().messageManager.getCurrentPanel().getState() == StateID._UPDATE)
         {
-            if (app.getHud().buttonX.isPressed)
+            if (app.getHud().switchX.isPressed)
             {
                 ((SlidePanel) app.getHud().messageManager.getCurrentPanel()).activate();
 
@@ -290,7 +290,7 @@ public class GameControlLoop extends AbstractControlLoop
 
                 scr().gameState.set(StateID._STATE_GAME);
 
-                app.getHud().buttonX.release();
+                app.getHud().switchX.release();
             }
         }
 
