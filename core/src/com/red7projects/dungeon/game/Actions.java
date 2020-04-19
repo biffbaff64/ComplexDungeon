@@ -86,6 +86,10 @@ public enum Actions
     _TALK_TO_VILLAGER,
     _OPEN_TREASURE_CHEST,
 
+    _ROTATING,
+    _SCALING,
+    _TO_AND_FRO,
+
     _TEST_ACTION1,
     _TEST_ACTION2,
     _TEST_ACTION3,

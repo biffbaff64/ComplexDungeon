@@ -16,32 +16,58 @@
 
 package com.red7projects.dungeon.input.buttons;
 
-public class Switch
+/**
+ * A Simple ON/OFF Switch class
+ */
+public class Switch implements GDXButton
 {
     public boolean isPressed;
-    public boolean isActive;
+    public boolean isDisabled;
+    public int pointer;
 
     public Switch()
     {
-        isPressed = false;
-        isActive  = true;
+        isPressed  = false;
+        isDisabled = false;
     }
 
+    @Override
     public void press()
     {
-        if (isActive)
+        if (!isDisabled)
         {
             isPressed = true;
         }
     }
 
+    @Override
+    public void press(int _ptr)
+    {
+        press();
+        pointer = _ptr;
+    }
+
+    @Override
+    public void pressConditional(boolean condition)
+    {
+        isPressed = condition;
+    }
+
+    @Override
     public void release()
     {
         isPressed = false;
     }
 
-    public void setActive(boolean _state)
+    @Override
+    public void toggleDisabled()
     {
-        isActive = _state;
+        isDisabled = !isDisabled;
+    }
+
+    @Override
+    public void togglePressed()
+    {
+        isPressed = !isPressed;
     }
 }

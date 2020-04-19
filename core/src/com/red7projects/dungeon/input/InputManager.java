@@ -29,7 +29,6 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.physics.Movement;
-import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class InputManager

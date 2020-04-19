@@ -24,12 +24,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.utils.development.DebugRenderer;
 import com.red7projects.dungeon.utils.development.Developer;
@@ -40,8 +40,6 @@ import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GfxUtils;
-import com.red7projects.dungeon.input.buttons.ButtonID;
-import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.buttons.Switch;
 import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.map.Room;
@@ -99,27 +97,20 @@ public class HeadsUpDisplay implements Disposable
             {1219, 1219,  240,    0,    0},             // Compass
         };
 
-    public Switch   switchUp;
-    public Switch   switchDown;
-    public Switch   switchLeft;
-    public Switch   switchRight;
-    public Switch   switchA;
-    public Switch   switchB;
-    public Switch   switchX;
-    public Switch   switchY;
-    public Switch   switchPause;
-    public Switch   switchDevOptions;
-
     public MessageManager messageManager;
     public PausePanel     pausePanel;
     public StateID        hudStateID;
 
-    private ImageButton  buttonA;
-    private ImageButton  buttonB;
-    private ImageButton  buttonX;
-    private ImageButton  buttonY;
-    private ImageButton  buttonPause;
-    private ImageButton  buttonDevOptions;
+    public GameButton buttonUp;
+    public GameButton buttonDown;
+    public GameButton buttonLeft;
+    public GameButton buttonRight;
+    public GameButton buttonA;
+    public GameButton buttonB;
+    public GameButton buttonX;
+    public GameButton buttonY;
+    public GameButton buttonPause;
+    public GameButton buttonDevOptions;
 
     private ProgressBar     healthBar;
     private ProgressBar     livesBar;
@@ -220,10 +211,10 @@ public class HeadsUpDisplay implements Disposable
 
             case _STATE_PANEL_UPDATE:
             {
-                if (switchPause.isPressed)
+                if (buttonPause.isPressed)
                 {
                     AppConfig.pause();
-                    switchPause.release();
+                    buttonPause.release();
                 }
 
                 updateBars();
@@ -250,10 +241,10 @@ public class HeadsUpDisplay implements Disposable
             {
                 pausePanel.update();
 
-                if (switchPause.isPressed)
+                if (buttonPause.isPressed)
                 {
                     AppConfig.unPause();
-                    switchPause.release();
+                    buttonPause.release();
                 }
             }
             break;
@@ -297,14 +288,14 @@ public class HeadsUpDisplay implements Disposable
         if (Developer.isDevMode() && !AppConfig.gamePaused)
         {
             // DevOptions button which activates the Dev Settings panel
-            if ((buttonDevOptions != null) && switchDevOptions.isPressed && !AppConfig.developerPanelActive)
+            if ((buttonDevOptions != null) && buttonDevOptions.isPressed && !AppConfig.developerPanelActive)
             {
                 AppConfig.developerPanelActive = true;
 
                 developerPanel = new DeveloperPanel(app);
                 developerPanel.setup();
 
-                switchDevOptions.release();
+                buttonDevOptions.release();
                 app.mainGameScreen.getGameState().set(StateID._STATE_DEVELOPER_PANEL);
                 hudStateID = StateID._STATE_DEVELOPER_PANEL;
             }
@@ -457,14 +448,14 @@ public class HeadsUpDisplay implements Disposable
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
 
-            DebugRenderer.drawText("UP   :" + switchUp.isPressed, originX + 50, originY + 1130);
-            DebugRenderer.drawText("DOWN :" + switchDown.isPressed, originX + 50, originY + 1100);
-            DebugRenderer.drawText("LEFT :" + switchLeft.isPressed, originX + 50, originY + 1070);
-            DebugRenderer.drawText("RIGHT:" + switchRight.isPressed, originX + 50, originY + 1040);
-            DebugRenderer.drawText("A    :" + switchA.isPressed, originX + 50, originY + 1010);
-            DebugRenderer.drawText("B    :" + switchB.isPressed, originX + 50, originY + 980);
-            DebugRenderer.drawText("X    :" + switchX.isPressed, originX + 50, originY + 950);
-            DebugRenderer.drawText("Y    :" + switchY.isPressed, originX + 50, originY + 920);
+            DebugRenderer.drawText("UP   :" + buttonUp.isPressed, originX + 50, originY + 1130);
+            DebugRenderer.drawText("DOWN :" + buttonDown.isPressed, originX + 50, originY + 1100);
+            DebugRenderer.drawText("LEFT :" + buttonLeft.isPressed, originX + 50, originY + 1070);
+            DebugRenderer.drawText("RIGHT:" + buttonRight.isPressed, originX + 50, originY + 1040);
+            DebugRenderer.drawText("A    :" + buttonA.isPressed, originX + 50, originY + 1010);
+            DebugRenderer.drawText("B    :" + buttonB.isPressed, originX + 50, originY + 980);
+            DebugRenderer.drawText("X    :" + buttonX.isPressed, originX + 50, originY + 950);
+            DebugRenderer.drawText("Y    :" + buttonY.isPressed, originX + 50, originY + 920);
 
             DebugRenderer.drawText("DIR  :" + app.getPlayer().direction.toString(), originX + 50, originY + 860);
             DebugRenderer.drawText("SPEED:" + app.getPlayer().speed.toString(), originX + 50, originY + 830);

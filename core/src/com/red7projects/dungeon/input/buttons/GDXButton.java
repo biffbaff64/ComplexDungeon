@@ -16,24 +16,8 @@
 
 package com.red7projects.dungeon.input.buttons;
 
-import com.red7projects.dungeon.maths.Box;
-
 interface GDXButton
 {
-    void setPosition(int x, int y);
-
-    boolean contains(int x, int y);
-
-    boolean contains(float x, float y);
-
-    Box getBounds();
-
-    void setID(ButtonID _id);
-
-    ButtonID getID();
-
-    void refreshBounds();
-    
     void press();
 
     void press(int pointer);
@@ -42,11 +26,7 @@ interface GDXButton
 
     void release();
 
-    void set();
-
-    void clear();
-
-    void toggleActive();
+    void toggleDisabled();
 
     void togglePressed();
 }
