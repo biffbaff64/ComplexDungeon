@@ -179,7 +179,7 @@ public class MainMenuScreen extends AbstractBaseScreen
             //
             // If currently showing Hiscore or Credits pages, return to menupage
             // if the screen is tapped (or controller start button pressed)
-            if (UIButtons.fullScreenButton.isPressed || UIButtons.controllerFirePressed || UIButtons.controllerStartPressed)
+            if (UIButtons.fullScreenButton.isPressed() || UIButtons.controllerFirePressed || UIButtons.controllerStartPressed)
             {
                 if ((currentPage == _HISCORE_PAGE) || (currentPage == _CREDITS_PAGE))
                 {
@@ -194,7 +194,7 @@ public class MainMenuScreen extends AbstractBaseScreen
 
             //
             // Start button(s) check
-            if ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed)
+            if ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed())
             {
                 Trace.divider('#', 100);
                 Trace.dbg(" ***** START PRESSED ***** ");
@@ -215,7 +215,7 @@ public class MainMenuScreen extends AbstractBaseScreen
                 {
                     //
                     // Check OPTIONS button, open settings page if pressed
-                    if ((menuPage.buttonOptions != null) && menuPage.buttonOptions.isPressed)
+                    if ((menuPage.buttonOptions != null) && menuPage.buttonOptions.isPressed())
                     {
                         changePageTo(_OPTIONS_PAGE);
 
@@ -224,7 +224,7 @@ public class MainMenuScreen extends AbstractBaseScreen
 
                     //
                     // Check EXIT button, open exit panel if pressed
-                    if ((menuPage.buttonExit != null) && menuPage.buttonExit.isPressed)
+                    if ((menuPage.buttonExit != null) && menuPage.buttonExit.isPressed())
                     {
                         panels.get(currentPage).hide();
 
@@ -238,7 +238,7 @@ public class MainMenuScreen extends AbstractBaseScreen
 
                     //
                     // Check GOOGLE SIGN-IN button
-                    if ((menuPage.buttonGoogle != null) && menuPage.buttonGoogle.isPressed)
+                    if ((menuPage.buttonGoogle != null) && menuPage.buttonGoogle.isPressed())
                     {
                         menuPage.buttonGoogle.release();
 

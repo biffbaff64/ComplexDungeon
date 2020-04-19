@@ -73,39 +73,39 @@ public class PausePanel extends BasicPanel implements Disposable
 
     public void update()
     {
-        if (buttonMusicVolume.isPressed && (Sfx.inst().getMusicVolume() > 0))
+        if (buttonMusicVolume.isPressed() && (Sfx.inst().getMusicVolume() > 0))
         {
             Sfx.inst().saveMusicVolume();
             Sfx.inst().setMusicVolume(0);
         }
         else
         {
-            if (!buttonMusicVolume.isPressed && (Sfx.inst().getMusicVolume() == 0))
+            if (!buttonMusicVolume.isPressed() && (Sfx.inst().getMusicVolume() == 0))
             {
                 Sfx.inst().setMusicVolume(Sfx.inst().getMusicVolumeSave());
             }
         }
 
-        if (buttonFXVolume.isPressed && (Sfx.inst().getFXVolume() > 0))
+        if (buttonFXVolume.isPressed() && (Sfx.inst().getFXVolume() > 0))
         {
             Sfx.inst().saveFXVolume();
             Sfx.inst().setFXVolume(0);
         }
         else
         {
-            if (!buttonFXVolume.isPressed && (Sfx.inst().getFXVolume() == 0))
+            if (!buttonFXVolume.isPressed() && (Sfx.inst().getFXVolume() == 0))
             {
                 Sfx.inst().setFXVolume(Sfx.inst().getFXVolumeSave());
             }
         }
 
-        if (buttonResume.isPressed)
+        if (buttonResume.isPressed())
         {
             app.getHud().buttonPause.press();
             buttonResume.release();
         }
 
-        if (buttonHome.isPressed)
+        if (buttonHome.isPressed())
         {
             setQuitToTitle();
 

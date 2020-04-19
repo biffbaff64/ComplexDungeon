@@ -49,7 +49,7 @@ public class ButtonInputHandler implements Disposable
     {
         //
         // A Button
-        if (app.getHud().buttonA.isPressed)
+        if (app.getHud().buttonA.isPressed())
         {
             if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_A)
             {
@@ -60,14 +60,14 @@ public class ButtonInputHandler implements Disposable
 
         //
         // B Button
-        if (app.getHud().buttonB.isPressed)
+        if (app.getHud().buttonB.isPressed())
         {
             bButtonActions.process();
         }
 
         //
         // X Button
-        if (app.getHud().buttonX.isPressed)
+        if (app.getHud().buttonX.isPressed())
         {
             xButtonActions.process();
             app.getHud().buttonX.release();
@@ -75,7 +75,7 @@ public class ButtonInputHandler implements Disposable
 
         //
         // Y Button
-        if (app.getHud().buttonY.isPressed)
+        if (app.getHud().buttonY.isPressed())
         {
             if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_Y)
             {

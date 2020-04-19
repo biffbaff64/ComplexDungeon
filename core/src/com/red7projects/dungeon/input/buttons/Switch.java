@@ -21,22 +21,27 @@ package com.red7projects.dungeon.input.buttons;
  */
 public class Switch implements GDXButton
 {
-    public boolean isPressed;
-    public boolean isDisabled;
-    public int pointer;
+    private boolean _isPressed;
+    private boolean _isDisabled;
+    private int     _pointer;
 
     public Switch()
     {
-        isPressed  = false;
-        isDisabled = false;
+        _isPressed  = false;
+        _isDisabled = false;
+    }
+
+    @Override
+    public void update()
+    {
     }
 
     @Override
     public void press()
     {
-        if (!isDisabled)
+        if (!_isDisabled)
         {
-            isPressed = true;
+            _isPressed = true;
         }
     }
 
@@ -44,30 +49,59 @@ public class Switch implements GDXButton
     public void press(int _ptr)
     {
         press();
-        pointer = _ptr;
+        _pointer = _ptr;
     }
 
     @Override
     public void pressConditional(boolean condition)
     {
-        isPressed = condition;
+        _isPressed = condition;
     }
 
     @Override
     public void release()
     {
-        isPressed = false;
+        _isPressed = false;
+    }
+
+    @Override
+    public boolean isPressed()
+    {
+        return _isPressed;
+    }
+
+    @Override
+    public boolean isDisabled()
+    {
+        return _isDisabled;
+    }
+
+    @Override
+    public void setDisabled(boolean _state)
+    {
+        _isDisabled = _state;
+    }
+
+    @Override
+    public void setVisible(boolean _state)
+    {
+    }
+
+    @Override
+    public boolean isVisible()
+    {
+        return false;
     }
 
     @Override
     public void toggleDisabled()
     {
-        isDisabled = !isDisabled;
+        _isDisabled = !_isDisabled;
     }
 
     @Override
     public void togglePressed()
     {
-        isPressed = !isPressed;
+        _isPressed = !_isPressed;
     }
 }

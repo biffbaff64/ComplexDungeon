@@ -28,8 +28,13 @@ import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.physics.Movement;
 import org.jetbrains.annotations.NotNull;
 
-public class GameButton implements GDXButton, Disposable
+public class AnimatedButton implements GDXButton, Disposable
 {
+    private static final int _INITIAL_ROTATION  = 270;
+    private static final int _INITIAL_DISTANCE  = 45;
+    private static final int _ROTATE_SPEED      = 1;
+    private static final int _INITIAL_DIRECTION = Movement._DIRECTION_RIGHT;
+
     public TextureRegion bg;
     public TextureRegion bgPressed;
     public TextureRegion bgDisabled;
@@ -37,18 +42,33 @@ public class GameButton implements GDXButton, Disposable
     public ButtonID      buttonID;      // TODO: 19/04/2020 - Is this still needed?
     public Actions       buttonAction;
 
+    public boolean _isDrawable;
+    public boolean _isPressed;
+    public boolean _isDisabled;
+
+    public boolean isRotating;
+    public boolean isScaling;
+    public boolean isToAndFro;
+    public boolean isClockwise;
     public boolean hasSound;
+
+    public float scaleMinimum;
+    public float scaleMaximum;
     public float scale;
+    public float buttonTimer;
     public float alpha;
+    public float scaleSpeed;
+
+    public int direction;
+    public int rotation;
+    public int rotateDir;
+    public int rotateDist;
+    public int rotateSpeed;
     public int x;
     public int y;
     public int width;
     public int height;
     public int pointer;
-
-    private boolean _isDrawable;
-    private boolean _isPressed;
-    private boolean _isDisabled;
 
     private       int mapIndex;
     private final App app;
@@ -62,7 +82,7 @@ public class GameButton implements GDXButton, Disposable
      * @param y                    - Y Display co-ordinate
      * @param _app                 - Instance of the game
      */
-    public GameButton(TextureRegion textureRegion, TextureRegion textureRegionPressed, int x, int y, ButtonID _id, App _app)
+    public AnimatedButton(TextureRegion textureRegion, TextureRegion textureRegionPressed, int x, int y, ButtonID _id, App _app)
     {
         this(x, y, _id, _app);
 
@@ -82,7 +102,7 @@ public class GameButton implements GDXButton, Disposable
      * @param y    - Y Display co-ordinate
      * @param _app - Instance of the game
      */
-    public GameButton(int x, int y, ButtonID _id, App _app)
+    public AnimatedButton(int x, int y, ButtonID _id, App _app)
     {
         this(_app, _id);
 
@@ -92,9 +112,20 @@ public class GameButton implements GDXButton, Disposable
         this.x            = x;
         this.y            = y;
         this.width        = 0;
-        this.height       = 0;
-        this._isDrawable  = false;
-        this.scale        = 1.0f;
+        this.height      = 0;
+        this._isDrawable = false;
+        this.isRotating  = false;
+        this.rotation     = _INITIAL_ROTATION;
+        this.rotateDir    = _INITIAL_DIRECTION;
+        this.rotateDist   = _INITIAL_DISTANCE;
+        this.rotateSpeed  = 1;
+        this.isScaling    = false;
+        this.scaleMaximum = 1.3f;
+        this.scaleMinimum = 0.7f;
+        this.scale        = 0.95f;
+        this.direction    = Movement._DIRECTION_STILL;
+        this.buttonTimer  = 0;
+        this.isToAndFro   = false;
         this.pointer      = 0;
 
         mapIndex = app.inputManager.gameButtons.size;
@@ -102,7 +133,7 @@ public class GameButton implements GDXButton, Disposable
         app.inputManager.gameButtons.add(this);
     }
 
-    public GameButton(App _app, ButtonID _id)
+    public AnimatedButton(App _app, ButtonID _id)
     {
         this.app      = _app;
         this.buttonID = _id;
@@ -115,9 +146,61 @@ public class GameButton implements GDXButton, Disposable
         this.buttonRect = new Box();
     }
 
-    @Override
+    /**
+     * Updates any button animations.
+     */
     public void update()
     {
+        buttonTimer += Gdx.graphics.getDeltaTime();
+
+        if (buttonTimer >= 0.04f)
+        {
+            if (isScaling)
+            {
+                if (direction == Movement._DIRECTION_UP)
+                {
+                    if ((scale += (scaleSpeed * direction)) > scaleMaximum)
+                    {
+                        scale = scaleMaximum;
+                        direction *= -1;
+                    }
+                }
+                else if (direction == Movement._DIRECTION_DOWN)
+                {
+                    if ((scale += (scaleSpeed * direction)) < scaleMinimum)
+                    {
+                        scale = scaleMinimum;
+                        direction *= -1;
+                    }
+                }
+                else
+                {
+                    direction = Movement._DIRECTION_DOWN;
+                }
+            }
+
+            if (isRotating)
+            {
+                isClockwise = true;
+
+                rotation = (rotation + rotateSpeed) % 360;
+            }
+            else if (isToAndFro)
+            {
+                if (rotateDist <= 0)
+                {
+                    rotateDist = (_INITIAL_DISTANCE * 2);
+                    rotateDir *= -1;
+                }
+                else
+                {
+                    rotation = (rotation + (_ROTATE_SPEED * rotateDir)) % 360;
+                    rotateDist -= _ROTATE_SPEED;
+                }
+            }
+
+            buttonTimer = 0;
+        }
     }
 
     public boolean contains(int x, int y)
@@ -284,6 +367,9 @@ public class GameButton implements GDXButton, Disposable
         return "x: " + x
                 + ", y: " + y
                 + ", w: " + width
-                + ", h: " + height;
+                + ", h: " + height
+                + ", rotating: " + isRotating
+                + ", scaling: " + isScaling
+                + ", to and fro: " + isToAndFro;
     }
 }

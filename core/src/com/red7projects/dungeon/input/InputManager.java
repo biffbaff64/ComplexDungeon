@@ -26,6 +26,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.physics.Movement;
@@ -33,7 +34,7 @@ import com.red7projects.dungeon.physics.Movement;
 @SuppressWarnings("WeakerAccess")
 public class InputManager
 {
-    public Array<GameButton> gameButtons;
+    public Array<GDXButton>  gameButtons;
     public Vector2           mousePosition;
     public Vector2           mouseWorldPosition;
     public Keyboard          keyboard;

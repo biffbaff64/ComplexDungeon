@@ -86,7 +86,7 @@ public class GameCompletedPanel implements Disposable
         }
         else
         {
-            if (UIButtons.fullScreenButton.isPressed || (stopWatch.time(TimeUnit.SECONDS) >= 30))
+            if (UIButtons.fullScreenButton.isPressed() || (stopWatch.time(TimeUnit.SECONDS) >= 30))
             {
                 zoomPanel.setState(StateID._STATE_ZOOM_OUT);
             }

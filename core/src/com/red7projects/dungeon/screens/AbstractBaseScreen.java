@@ -27,6 +27,7 @@ import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.game.StateManager;
 import com.red7projects.dungeon.graphics.effects.FadeEffect;
 import com.red7projects.dungeon.input.UIButtons;
+import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;
 
 @SuppressWarnings({"WeakerAccess"})
@@ -64,7 +65,9 @@ public abstract class AbstractBaseScreen extends ScreenAdapter implements Dispos
                 app.gameListener.update();
             }
 
-            for (GameButton button : app.inputManager.gameButtons)
+            //
+            // Update any buttons that are animating/Scaling etc
+            for (GDXButton button : app.inputManager.gameButtons)
             {
                 button.update();
             }

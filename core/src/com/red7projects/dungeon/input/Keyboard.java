@@ -42,11 +42,11 @@ public class Keyboard extends InputAdapter
 
     public void update()
     {
-        if (app.getHud().switchUp.isPressed)
+        if (app.getHud().buttonUp.isPressed())
         {
             app.getPlayer().direction.setY(Movement._DIRECTION_UP);
         }
-        else if (app.getHud().switchDown.isPressed)
+        else if (app.getHud().buttonDown.isPressed())
         {
             app.getPlayer().direction.setY(Movement._DIRECTION_DOWN);
         }
@@ -55,11 +55,11 @@ public class Keyboard extends InputAdapter
             app.getPlayer().direction.setY(Movement._DIRECTION_STILL);
         }
 
-        if (app.getHud().switchLeft.isPressed)
+        if (app.getHud().buttonLeft.isPressed())
         {
             app.getPlayer().direction.setX(Movement._DIRECTION_LEFT);
         }
-        else if (app.getHud().switchRight.isPressed)
+        else if (app.getHud().buttonRight.isPressed())
         {
             app.getPlayer().direction.setX(Movement._DIRECTION_RIGHT);
         }
@@ -78,7 +78,7 @@ public class Keyboard extends InputAdapter
         {
             if (AppConfig.gameScreenActive)
             {
-                app.getHud().switchPause.press();
+                app.getHud().buttonPause.press();
             }
         }
 
@@ -99,32 +99,32 @@ public class Keyboard extends InputAdapter
 
         if (keycode == UIButtons.defaultValueLeft)
         {
-            app.getHud().switchLeft.press();
+            app.getHud().buttonLeft.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueRight)
         {
-            app.getHud().switchRight.press();
+            app.getHud().buttonRight.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueUp)
         {
-            app.getHud().switchUp.press();
+            app.getHud().buttonUp.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueDown)
         {
-            app.getHud().switchDown.press();
+            app.getHud().buttonDown.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueB)
         {
-            app.getHud().switchB.press();
+            app.getHud().buttonB.press();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueA)
         {
-            app.getHud().switchA.press();
+            app.getHud().buttonA.press();
             returnFlag = true;
         }
         else
@@ -134,7 +134,7 @@ public class Keyboard extends InputAdapter
                 case Input.Keys.ESCAPE:
                 case Input.Keys.BACK:
                 {
-                    app.getHud().switchPause.press();
+                    app.getHud().buttonPause.press();
 
                     returnFlag = true;
                 }
@@ -200,32 +200,32 @@ public class Keyboard extends InputAdapter
 
         if (keycode == UIButtons.defaultValueLeft)
         {
-            app.getHud().switchLeft.release();
+            app.getHud().buttonLeft.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueRight)
         {
-            app.getHud().switchRight.release();
+            app.getHud().buttonRight.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueUp)
         {
-            app.getHud().switchUp.release();
+            app.getHud().buttonUp.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueDown)
         {
-            app.getHud().switchDown.release();
+            app.getHud().buttonDown.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueB)
         {
-            app.getHud().switchB.release();
+            app.getHud().buttonB.release();
             returnFlag = true;
         }
         else if (keycode == UIButtons.defaultValueA)
         {
-            app.getHud().switchA.release();
+            app.getHud().buttonA.release();
             returnFlag = true;
         }
         else
@@ -235,7 +235,7 @@ public class Keyboard extends InputAdapter
                 case Input.Keys.ESCAPE:
                 case Input.Keys.BACK:
                 {
-                    app.getHud().switchPause.release();
+                    app.getHud().buttonPause.release();
 
                     returnFlag = true;
                 }
@@ -274,7 +274,7 @@ public class Keyboard extends InputAdapter
 
             if (AppConfig.gameScreenActive)
             {
-                app.getHud().switchPause.release();
+                app.getHud().buttonPause.release();
             }
         }
 

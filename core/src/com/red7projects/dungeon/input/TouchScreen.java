@@ -17,6 +17,8 @@
 package com.red7projects.dungeon.input;
 
 import com.red7projects.dungeon.config.AppConfig;
+import com.red7projects.dungeon.input.buttons.GameButton;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
@@ -44,7 +46,7 @@ public class TouchScreen
     {
         boolean returnFlag = false;
 
-        if (app.getHud().s.contains(screenX, screenY))
+        if (app.getHud().buttonPause.contains(screenX, screenY))
         {
             app.getHud().buttonPause.press();
             returnFlag = true;
@@ -92,28 +94,31 @@ public class TouchScreen
                 }
             }
 
-            if (app.getHud().buttonB.contains(screenX, screenY))
+            if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
             {
-                app.getHud().buttonB.press(pointer);
-                returnFlag = true;
-            }
+                if (((GameButton) app.getHud().buttonA).contains(screenX, screenY))
+                {
+                    app.getHud().buttonA.press(pointer);
+                    returnFlag = true;
+                }
 
-            if (app.getHud().buttonA.contains(screenX, screenY))
-            {
-                app.getHud().buttonA.press(pointer);
-                returnFlag = true;
-            }
+                if (((GameButton) app.getHud().buttonB).contains(screenX, screenY))
+                {
+                    app.getHud().buttonB.press(pointer);
+                    returnFlag = true;
+                }
 
-            if (app.getHud().buttonX.contains(screenX, screenY))
-            {
-                app.getHud().buttonX.press(pointer);
-                returnFlag = true;
-            }
+                if (((GameButton) app.getHud().buttonX).contains(screenX, screenY))
+                {
+                    app.getHud().buttonX.press(pointer);
+                    returnFlag = true;
+                }
 
-            if (app.getHud().buttonY.contains(screenX, screenY))
-            {
-                app.getHud().buttonY.press(pointer);
-                returnFlag = true;
+                if (((GameButton) app.getHud().buttonY).contains(screenX, screenY))
+                {
+                    app.getHud().buttonY.press(pointer);
+                    returnFlag = true;
+                }
             }
         }
 
@@ -160,28 +165,31 @@ public class TouchScreen
                 }
             }
 
-            if (app.getHud().buttonB.contains(screenX, screenY))
+            if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
             {
-                app.getHud().buttonB.release();
-                returnFlag = true;
-            }
+                if (((GameButton) app.getHud().buttonB).contains(screenX, screenY))
+                {
+                    app.getHud().buttonB.release();
+                    returnFlag = true;
+                }
 
-            if (app.getHud().buttonA.contains(screenX, screenY))
-            {
-                app.getHud().buttonA.release();
-                returnFlag = true;
-            }
+                if (((GameButton) app.getHud().buttonA).contains(screenX, screenY))
+                {
+                    app.getHud().buttonA.release();
+                    returnFlag = true;
+                }
 
-            if (app.getHud().buttonX.contains(screenX, screenY))
-            {
-                app.getHud().buttonX.release();
-                returnFlag = true;
-            }
+                if (((GameButton) app.getHud().buttonX).contains(screenX, screenY))
+                {
+                    app.getHud().buttonX.release();
+                    returnFlag = true;
+                }
 
-            if (app.getHud().buttonY.contains(screenX, screenY))
-            {
-                app.getHud().buttonY.release();
-                returnFlag = true;
+                if (((GameButton) app.getHud().buttonY).contains(screenX, screenY))
+                {
+                    app.getHud().buttonY.release();
+                    returnFlag = true;
+                }
             }
         }
 

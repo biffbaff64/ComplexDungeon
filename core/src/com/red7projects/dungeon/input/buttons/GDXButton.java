@@ -16,13 +16,25 @@
 
 package com.red7projects.dungeon.input.buttons;
 
-interface GDXButton
+public abstract interface GDXButton
 {
+    void update();
+
     void press();
 
     void press(int pointer);
 
     void pressConditional(boolean condition);
+
+    boolean isPressed();
+
+    boolean isDisabled();
+
+    void setDisabled(boolean _state);
+
+    boolean isVisible();
+
+    void setVisible(boolean _state);
 
     void release();
 
