@@ -70,18 +70,6 @@ public class DebugRenderer implements Disposable
         {
             drawSpriteCollisionBoxes();
         }
-
-        if (app.preferences.isEnabled(Preferences._LJM_VIEW_WINDOW))
-        {
-            drawRect
-                (
-                    app.getPlayer().viewBox.x,
-                    app.getPlayer().viewBox.y,
-                    app.getPlayer().viewBox.width,
-                    app.getPlayer().viewBox.height,
-                    4
-                );
-        }
     }
 
     private static void drawSpriteActions()

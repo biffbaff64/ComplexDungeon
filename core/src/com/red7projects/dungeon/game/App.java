@@ -131,18 +131,7 @@ public abstract class App extends com.badlogic.gdx.Game
      */
     public int getLevel()
     {
-        int level;
-
-        if (Developer.isDevMode() && preferences.prefs.getBoolean(Preferences._TEST_LEVEL))
-        {
-            level = 1;
-        }
-        else
-        {
-            level =  gameProgress.playerLevel;
-        }
-
-        return level;
+        return gameProgress.playerLevel;
     }
 
     public HeadsUpDisplay getHud()

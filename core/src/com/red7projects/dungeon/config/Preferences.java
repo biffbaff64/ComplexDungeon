@@ -29,28 +29,25 @@ public class Preferences implements Disposable
     public static final boolean _PREF_FALSE_DEFAULT = false;
     public static final boolean _PREF_TRUE_DEFAULT  = true;
 
+    public static final String _DEFAULT_ON  = "default on";
+    public static final String _DEFAULT_OFF = "default off";
+
     //
     // Development options
     public static final String _DEV_MODE            = "dev mode";           // Enables/Disables DEV Mode
     public static final String _GOD_MODE            = "god mode";           //
-    public static final String _FORCE_PREFS_RESET   = "force prefs reset";  // Forces reset of ALL app.preferences.on game start
     public static final String _ANDROID_ON_DESKTOP  = "android on desktop"; // Enables emulation of Android build on desktop
     public static final String _USING_ASHLEY_ECS    = "ashley ecs";         // Enables use of Ashley Entity Component System
 
     public static final String _DISABLE_ENEMIES     = "disable enemies";    // Disables all enemy entities
-    public static final String _PROGRESS_BARS       = "progress bars";      // Enables/Disables progress bars on HUD
-    public static final String _ANIM_TILES          = "animating tiles";    // Enables/Disables animating game tiles
     public static final String _SCROLL_DEMO         = "scroll demo";        // Enables Game Scroll Demo mode
-    public static final String _TEST_LEVEL          = "test level";         //
 
     public static final String _SPRITE_BOXES        = "sprite boxes";       // Shows sprite AABB Boxes
     public static final String _TILE_BOXES          = "tile boxes";         // Shows game tile AABB Boxes
     public static final String _BUTTON_BOXES        = "button boxes";       // Shows GameButton bounding boxes
     public static final String _SHOW_FPS            = "show fps";           // Shows current FPS on-screen
     public static final String _SHOW_DEBUG          = "show debug";         // Enables on-screen debug printing
-    public static final String _SHOW_TRACE          = "game trace";         // Enables Trace output to Logcat
     public static final String _SPAWNPOINTS         = "spawn points";       // Shows spawn point tiles from game map
-    public static final String _MAP_WINDOW          = "map window";         // Shows the map window outline
     public static final String _MENU_HEAPS          = "menu heaps";         // Show Heap Sizes on Menu Page if true
     public static final String _DISABLE_MENU_SCREEN = "disable menu";       //
 
@@ -76,18 +73,8 @@ public class Preferences implements Disposable
     public static final String _BOX2D_PHYSICS       = "using box2d";        //
 
     //
-    // Default controller is On-Screen Virtual Joystick. This can be turned off
-    // and a wireless/connected Android compatible controller used instead
-    public static final String _ON_SCREEN_CONTROLLER    = "joystick state";    // On Screen Joystick and button controls
-    public static final String _EXTERNAL_CONTROLLER     = "game controllers";  // External Game Controller devices
-    public static final String _KEYBOARD_CONTROL        = "keyboard control";  // Keyboard control only
-    public static final String _MOUSE_CONTROL           = "mouse control";     // Keyboard control only
-    public static final String _SHOW_GAME_BUTTONS       = "show game buttons"; // Enables/Disables showing of on-screen buttons and joystick
-
-    //
     // The Hero...
     public static final String _PLAYER                  = "player";
-    public static final String _LJM_VIEW_WINDOW         = "view window";
 
     //
     // Other Main characters
@@ -98,8 +85,6 @@ public class Preferences implements Disposable
     // Interactives
     public static final String _TELEPORTER              = "teleporter";
     public static final String _PICKUPS                 = "pickups";
-    public static final String _FLOATING_PLATFORM       = "floating platform";
-    public static final String _DOORS                   = "doors";
     public static final String _MYSTERY_CHEST           = "mystery chest";
 
     //
@@ -115,10 +100,8 @@ public class Preferences implements Disposable
 
     //
     // Stationary Entities
-    public static final String _LASER_DOOR              = "laser door";
     public static final String _FLAME_THROWER           = "flame thrower";
     public static final String _TURRETS                 = "turrets";
-    public static final String _DECORATIONS             = "decorations";
 
     public com.badlogic.gdx.Preferences prefs;
 
@@ -140,14 +123,6 @@ public class Preferences implements Disposable
             Trace.__FILE_FUNC();
             Trace.dbg(e.getMessage());
         }
-
-        //
-        // Usually used in development, but may be
-        // used in release mode possibly...
-        if (prefs.getBoolean(_FORCE_PREFS_RESET))
-        {
-            setPrefsToDefault();
-        }
     }
 
     public void setPrefsToDefault()
@@ -156,13 +131,10 @@ public class Preferences implements Disposable
 
         prefs.putBoolean(_DEV_MODE,             _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_GOD_MODE,             _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_FORCE_PREFS_RESET,    _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_ANDROID_ON_DESKTOP,   _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_USING_ASHLEY_ECS,     _PREF_FALSE_DEFAULT);
 
         prefs.putBoolean(_DISABLE_ENEMIES,      _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_PROGRESS_BARS,        _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_ANIM_TILES,           _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_SCROLL_DEMO,          _PREF_FALSE_DEFAULT);
 
         prefs.putBoolean(_SPRITE_BOXES,         _PREF_FALSE_DEFAULT);
@@ -170,9 +142,7 @@ public class Preferences implements Disposable
         prefs.putBoolean(_BUTTON_BOXES,         _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_SHOW_FPS,             _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_SHOW_DEBUG,           _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SHOW_TRACE,           _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_SPAWNPOINTS,          _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_MAP_WINDOW,           _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_MENU_HEAPS,           _PREF_FALSE_DEFAULT);
 
         prefs.putBoolean(_CULL_SPRITES,         _PREF_TRUE_DEFAULT);
@@ -193,24 +163,15 @@ public class Preferences implements Disposable
         prefs.putBoolean(_CHALLENGES,           _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_SIGN_IN_STATUS,       _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_KEYBOARD_CONTROL,     _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_ON_SCREEN_CONTROLLER, _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_EXTERNAL_CONTROLLER,  _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_MOUSE_CONTROL,        _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SHOW_GAME_BUTTONS,    _PREF_FALSE_DEFAULT);
-
         //----------- Achievements -----------
 
         // ---------- Development Flags ----------
-        prefs.putBoolean(_TEST_LEVEL,           _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_LJM_VIEW_WINDOW,      _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_DISABLE_MENU_SCREEN,  _PREF_FALSE_DEFAULT);
 
         // ---------- Entities (including player) ----------
         prefs.putBoolean(_PLAYER,               _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_PRISONER,             _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_VILLAGER,             _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_LASER_DOOR,           _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_FLAME_THROWER,        _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_STORM_DEMON,          _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_JELLY_MONSTER,        _PREF_TRUE_DEFAULT);
@@ -226,8 +187,6 @@ public class Preferences implements Disposable
         prefs.putBoolean(_MYSTERY_CHEST,        _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_TELEPORTER,           _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_PICKUPS,              _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_FLOATING_PLATFORM,    _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_DOORS,                _PREF_TRUE_DEFAULT);
 
         prefs.flush();
     }

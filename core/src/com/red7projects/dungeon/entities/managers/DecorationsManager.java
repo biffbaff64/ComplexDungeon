@@ -68,8 +68,7 @@ public class DecorationsManager extends GenericEntityManager
     {
         for (EntityDef entityDef : Entities.entityList)
         {
-            if (app.preferences.isEnabled(Preferences._DECORATIONS)
-                && entityDef.type.equals(GraphicID._DECORATION))
+            if (entityDef.type.equals(GraphicID._DECORATION))
             {
                 graphicID = entityDef.graphicID;
 

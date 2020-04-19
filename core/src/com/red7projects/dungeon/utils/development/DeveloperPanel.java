@@ -525,13 +525,13 @@ public class DeveloperPanel extends BasicPanel
                 {
                     new DMEntry("Invincible", Preferences._GOD_MODE, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Force Prefs Reset", Preferences._FORCE_PREFS_RESET, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Bouncer", Preferences._BOUNCER, true),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Game Trace Output", Preferences._SHOW_TRACE, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Soldiers", Preferences._SOLDIER, true),
                 },
                 {
@@ -543,7 +543,7 @@ public class DeveloperPanel extends BasicPanel
                 {
                     new DMEntry("Achievements", Preferences._ACHIEVEMENTS, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Show Game Buttons", Preferences._SHOW_GAME_BUTTONS, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Spike Ball", Preferences._SPIKE_BALL, true),
                 },
                 {
@@ -556,7 +556,7 @@ public class DeveloperPanel extends BasicPanel
                     new DMEntry("Player", Preferences._PLAYER, false),
                     new DMEntry("", "", false),
                     new DMEntry("Sprite Boxes", Preferences._SPRITE_BOXES, false),
-                    new DMEntry("Jelly Monster", Preferences._JELLY_MONSTER, true),
+                    new DMEntry("Storm Demon", Preferences._STORM_DEMON, true),
                 },
                 {
                     new DMEntry("", "", false),
@@ -573,19 +573,19 @@ public class DeveloperPanel extends BasicPanel
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Map Window", Preferences._MAP_WINDOW, false),
-                    new DMEntry("Decorations", Preferences._DECORATIONS, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("LJM View Window", Preferences._LJM_VIEW_WINDOW, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Villagers", Preferences._VILLAGER, false),
                 },
                 {
                     new DMEntry("Box2D Physics", Preferences._BOX2D_PHYSICS, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Anim Tiles", Preferences._ANIM_TILES, false),
+                    new DMEntry("", "", false),
                     new DMEntry("Pickups", Preferences._PICKUPS, false),
                 },
                 {
@@ -598,31 +598,31 @@ public class DeveloperPanel extends BasicPanel
                     new DMEntry("Use Ashley ECS", Preferences._USING_ASHLEY_ECS, false),
                     new DMEntry("", "", false),
                     new DMEntry("Demo Scroll", Preferences._SCROLL_DEMO, false),
-                    new DMEntry("Floating Platform", Preferences._FLOATING_PLATFORM, false),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("Shader Program", Preferences._SHADER_PROGRAM, false),
                     new DMEntry("", "", false),
                     new DMEntry("Cull Sprites", Preferences._CULL_SPRITES, false),
-                    new DMEntry("Laser Doors", Preferences._LASER_DOOR, false),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("GLProfiler", Preferences._GL_PROFILER, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Progress Bars", Preferences._PROGRESS_BARS, false),
-                    new DMEntry("Doors", Preferences._DOORS, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("Android on Desktop", Preferences._ANDROID_ON_DESKTOP, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Storm Demon", Preferences._STORM_DEMON, true),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Disable Menu Screen", Preferences._DISABLE_MENU_SCREEN, false),
-                    new DMEntry("Beetles", Preferences._BEETLE, true),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),

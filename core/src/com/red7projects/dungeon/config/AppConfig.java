@@ -116,19 +116,6 @@ public abstract class AppConfig
         // Set Debug Mode from the _DEV_MODE Environment variable.
         Developer.setMode(_app);
 
-        //
-        // Allow forced resetting of all preferences and stats meters
-        // if that option is selected.
-        // Also makes sure that the reset option is set back to true,
-        // as this will have been cleared.
-        if (Developer.isDevMode() && app.preferences.isEnabled(Preferences._FORCE_PREFS_RESET))
-        {
-            app.preferences.setPrefsToDefault();
-            Stats.resetAllMeters();
-
-            app.preferences.enable(Preferences._FORCE_PREFS_RESET);
-        }
-
         isUsingBOX2DPhysics = app.preferences.isEnabled(Preferences._BOX2D_PHYSICS);
         isUsingAshleyECS    = app.preferences.isEnabled((Preferences._USING_ASHLEY_ECS));
 
@@ -163,6 +150,7 @@ public abstract class AppConfig
             Trace.dbg("FRESH INSTALL.");
 
             app.preferences.setPrefsToDefault();
+            Stats.resetAllMeters();
             app.preferences.enable(Preferences._INSTALLED);
         }
     }

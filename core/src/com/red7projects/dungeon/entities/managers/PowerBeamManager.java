@@ -33,20 +33,20 @@ public class PowerBeamManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_LASER_BEAM_HORIZONTAL,
-                    Preferences._LASER_DOOR,
+                    Preferences._DEFAULT_ON,
                     GameAssets._LASER_BEAM_HORIZONTAL_ASSET
                 ),
             new GfxAsset
                 (
                     GraphicID.G_LASER_BEAM_VERTICAL,
-                    Preferences._LASER_DOOR,
+                    Preferences._DEFAULT_ON,
                     GameAssets._LASER_BEAM_VERTICAL_ASSET
                 ),
         };
 
     public PowerBeamManager(App _app)
     {
-        super(GraphicID.G_LASER_BEAM, Preferences._LASER_DOOR, _app);
+        super(GraphicID.G_LASER_BEAM, Preferences._DEFAULT_ON, _app);
     }
 
     @Override

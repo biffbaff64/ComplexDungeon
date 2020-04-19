@@ -311,15 +311,22 @@ public class HeadsUpDisplay implements Disposable
             originX = (camera.position.x - (float) (Gfx._VIEW_WIDTH / 2));
             originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
 
-//            drawPanels();
-//            drawItems();
-//            drawCompass();
-//            drawMessages();
-//
-//            if (_canDrawControls && app.gameProgress.gameSetupDone)
-//            {
-//                drawControls(camera);
-//            }
+            drawPanels();
+            drawItems();
+            drawCompass();
+            drawMessages();
+
+            if (_canDrawControls && app.gameProgress.gameSetupDone)
+            {
+                drawControls(camera);
+            }
+
+            buttonPause.draw(app.spriteBatch, camera);
+
+            if (Developer.isDevMode())
+            {
+                buttonDevOptions.draw(app.spriteBatch, camera);
+            }
 
             //
             // Draw the Pause panel if activated
@@ -449,18 +456,6 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
-
-            DebugRenderer.drawText("UP   :" + buttonUp.isPressed(), originX + 50, originY + 1130);
-            DebugRenderer.drawText("DOWN :" + buttonDown.isPressed(), originX + 50, originY + 1100);
-            DebugRenderer.drawText("LEFT :" + buttonLeft.isPressed(), originX + 50, originY + 1070);
-            DebugRenderer.drawText("RIGHT:" + buttonRight.isPressed(), originX + 50, originY + 1040);
-            DebugRenderer.drawText("A    :" + buttonA.isPressed(), originX + 50, originY + 1010);
-            DebugRenderer.drawText("B    :" + buttonB.isPressed(), originX + 50, originY + 980);
-            DebugRenderer.drawText("X    :" + buttonX.isPressed(), originX + 50, originY + 950);
-            DebugRenderer.drawText("Y    :" + buttonY.isPressed(), originX + 50, originY + 920);
-
-            DebugRenderer.drawText("DIR  :" + app.getPlayer().direction.toString(), originX + 50, originY + 860);
-            DebugRenderer.drawText("SPEED:" + app.getPlayer().speed.toString(), originX + 50, originY + 830);
         }
     }
 
@@ -579,14 +574,10 @@ public class HeadsUpDisplay implements Disposable
     {
         Trace.__FILE_FUNC();
 
-        TextureAtlas textureAtlas = app.assets.getButtonsAtlas();
-
         buttonUp    = new Switch();
         buttonDown  = new Switch();
         buttonLeft  = new Switch();
         buttonRight = new Switch();
-
-        Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
@@ -694,7 +685,7 @@ public class HeadsUpDisplay implements Disposable
             buttonDevOptions = null;
         }
 
-        ((GameButton) buttonPause).dispose();
+        buttonPause.dispose();
         buttonPause = null;
 
         if (app.inputManager.virtualJoystick != null)

@@ -158,10 +158,7 @@ public class BaseRenderer implements Disposable
 
             app.mapData.render(tiledGameCamera.camera);
 
-            if (app.preferences.isEnabled(Preferences._ANIM_TILES))
-            {
-                AnimatedTiledMapTile.updateAnimationBaseTime();
-            }
+            AnimatedTiledMapTile.updateAnimationBaseTime();
 
             developmentRendering();
         }

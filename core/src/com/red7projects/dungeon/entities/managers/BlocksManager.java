@@ -78,7 +78,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_FLOATING_PLATFORM,
-                    Preferences._FLOATING_PLATFORM,
+                    Preferences._DEFAULT_ON,
                     GameAssets._FLOATING_PLATFORM_ASSET,
                     GameAssets._FLOATING_PLATFORM_FRAMES
                 ),

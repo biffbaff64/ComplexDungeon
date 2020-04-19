@@ -81,13 +81,10 @@ public class InteractiveManager extends GenericEntityManager
 
                     if (graphicID == GraphicID.G_DOOR)
                     {
-                        if (app.preferences.isEnabled(Preferences._DOORS))
-                        {
-                            Door door = new Door(graphicID, app);
+                        Door door = new Door(graphicID, app);
 
-                            door.initialise(entityDescriptor);
-                            app.entityData.addEntity(door);
-                        }
+                        door.initialise(entityDescriptor);
+                        app.entityData.addEntity(door);
                     }
                     else
                     {
