@@ -51,7 +51,6 @@ public class MenuPage implements UIPage, Disposable
 {
     public Switch buttonStart;
     public Switch buttonOptions;
-    public Switch buttonSettings;
     public Switch buttonGoogle;
     public Switch buttonExit;
 
@@ -66,7 +65,6 @@ public class MenuPage implements UIPage, Disposable
 
     private ImageButton imageButton1Player;
     private ImageButton imageButtonOptions;
-    private ImageButton imageButtonSettings;
     private ImageButton imageButtonExit;
     private ImageButton imageButtonGoogle;
 
@@ -87,12 +85,10 @@ public class MenuPage implements UIPage, Disposable
         buttonOptions  = new Switch();
         buttonExit     = new Switch();
         buttonGoogle   = new Switch();
-        buttonSettings = new Switch();
 
         buttons = new Array<>();
         buttons.add(buttonStart);
         buttons.add(buttonOptions);
-        buttons.add(buttonSettings);
         buttons.add(buttonExit);
         buttons.add(buttonGoogle);
 
@@ -172,12 +168,10 @@ public class MenuPage implements UIPage, Disposable
 
         imageButton1Player  = scene2DUtils.addButton("buttonStart", "buttonStart_pressed", 924, (Gfx._VIEW_HEIGHT - 899));
         imageButtonOptions  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1050, (Gfx._VIEW_HEIGHT - 1063));
-        imageButtonSettings = scene2DUtils.addButton("button_settings", "button_settings_pressed", 50, (Gfx._VIEW_HEIGHT - 200));
         imageButtonExit     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._VIEW_HEIGHT - 1218));
 
         imageButton1Player.setZIndex(1);
         imageButtonOptions.setZIndex(1);
-        imageButtonSettings.setZIndex(1);
         imageButtonExit.setZIndex(1);
 
         if (Developer.isDevMode() && app.preferences.prefs.getBoolean(Preferences._MENU_HEAPS))
@@ -256,16 +250,6 @@ public class MenuPage implements UIPage, Disposable
             }
         });
 
-        imageButtonSettings.addListener(new ClickListener()
-        {
-            public void clicked(InputEvent event, float x, float y)
-            {
-                Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
-
-                buttonSettings.press();
-            }
-        });
-
         imageButtonExit.addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
@@ -339,7 +323,6 @@ public class MenuPage implements UIPage, Disposable
     {
         imageButton1Player.setVisible(_visible);
         imageButtonOptions.setVisible(_visible);
-        imageButtonSettings.setVisible(_visible);
         imageButtonExit.setVisible(_visible);
 
         if (decoration != null)
@@ -371,12 +354,10 @@ public class MenuPage implements UIPage, Disposable
     {
         imageButton1Player.addAction(Actions.removeActor());
         imageButtonOptions.addAction(Actions.removeActor());
-        imageButtonSettings.addAction(Actions.removeActor());
         imageButtonExit.addAction(Actions.removeActor());
 
         imageButton1Player  = null;
         imageButtonOptions  = null;
-        imageButtonSettings = null;
         imageButtonExit     = null;
 
         if (Developer.isDevMode() && app.preferences.prefs.getBoolean(Preferences._MENU_HEAPS))

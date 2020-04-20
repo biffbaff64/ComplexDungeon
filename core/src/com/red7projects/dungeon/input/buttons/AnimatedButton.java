@@ -35,17 +35,6 @@ public class AnimatedButton implements GDXButton, Disposable
     private static final int _ROTATE_SPEED      = 1;
     private static final int _INITIAL_DIRECTION = Movement._DIRECTION_RIGHT;
 
-    public TextureRegion bg;
-    public TextureRegion bgPressed;
-    public TextureRegion bgDisabled;
-    public Box           buttonRect;
-    public ButtonID      buttonID;      // TODO: 19/04/2020 - Is this still needed?
-    public Actions       buttonAction;
-
-    public boolean _isDrawable;
-    public boolean _isPressed;
-    public boolean _isDisabled;
-
     public boolean isRotating;
     public boolean isScaling;
     public boolean isToAndFro;
@@ -64,11 +53,21 @@ public class AnimatedButton implements GDXButton, Disposable
     public int rotateDir;
     public int rotateDist;
     public int rotateSpeed;
+
+    public TextureRegion bg;
+    public TextureRegion bgPressed;
+    public TextureRegion bgDisabled;
+    public Box           buttonRect;
+    public Actions       buttonAction;
+
+    public boolean _isDrawable;
+    public boolean _isPressed;
+    public boolean _isDisabled;
+
     public int x;
     public int y;
     public int width;
     public int height;
-    public int pointer;
 
     private       int mapIndex;
     private final App app;
@@ -82,9 +81,9 @@ public class AnimatedButton implements GDXButton, Disposable
      * @param y                    - Y Display co-ordinate
      * @param _app                 - Instance of the game
      */
-    public AnimatedButton(TextureRegion textureRegion, TextureRegion textureRegionPressed, int x, int y, ButtonID _id, App _app)
+    public AnimatedButton(TextureRegion textureRegion, TextureRegion textureRegionPressed, int x, int y, App _app)
     {
-        this(x, y, _id, _app);
+        this(x, y, _app);
 
         this.bg         = textureRegion;
         this.bgPressed  = textureRegionPressed;
@@ -102,9 +101,9 @@ public class AnimatedButton implements GDXButton, Disposable
      * @param y    - Y Display co-ordinate
      * @param _app - Instance of the game
      */
-    public AnimatedButton(int x, int y, ButtonID _id, App _app)
+    public AnimatedButton(int x, int y, App _app)
     {
-        this(_app, _id);
+        this(_app);
 
         this.bg           = null;
         this.bgPressed    = null;
@@ -112,9 +111,9 @@ public class AnimatedButton implements GDXButton, Disposable
         this.x            = x;
         this.y            = y;
         this.width        = 0;
-        this.height      = 0;
-        this._isDrawable = false;
-        this.isRotating  = false;
+        this.height       = 0;
+        this._isDrawable  = false;
+        this.isRotating   = false;
         this.rotation     = _INITIAL_ROTATION;
         this.rotateDir    = _INITIAL_DIRECTION;
         this.rotateDist   = _INITIAL_DISTANCE;
@@ -126,22 +125,19 @@ public class AnimatedButton implements GDXButton, Disposable
         this.direction    = Movement._DIRECTION_STILL;
         this.buttonTimer  = 0;
         this.isToAndFro   = false;
-        this.pointer      = 0;
 
         mapIndex = app.inputManager.gameButtons.size;
 
         app.inputManager.gameButtons.add(this);
     }
 
-    public AnimatedButton(App _app, ButtonID _id)
+    public AnimatedButton(App _app)
     {
-        this.app      = _app;
-        this.buttonID = _id;
-
-        this._isPressed  = false;
-        this._isDisabled = false;
-        this.hasSound    = true;
-        this.buttonAction = Actions._NO_ACTION;
+        this.app            = _app;
+        this._isPressed     = false;
+        this._isDisabled    = false;
+        this.hasSound       = true;
+        this.buttonAction   = Actions._NO_ACTION;
 
         this.buttonRect = new Box();
     }
@@ -270,16 +266,6 @@ public class AnimatedButton implements GDXButton, Disposable
         return buttonRect;
     }
 
-    public void setID(final ButtonID _id)
-    {
-        buttonID = _id;
-    }
-
-    public ButtonID getID()
-    {
-        return buttonID;
-    }
-
     @Override
     public void setDisabled(boolean _disabled)
     {
@@ -296,19 +282,6 @@ public class AnimatedButton implements GDXButton, Disposable
     public void press()
     {
         _isPressed = true;
-    }
-
-    @Override
-    public void press(int _ptr)
-    {
-        this.press();
-        this.pointer = _ptr;
-    }
-
-    @Override
-    public void pressConditional(boolean condition)
-    {
-        _isPressed = condition;
     }
 
     @Override

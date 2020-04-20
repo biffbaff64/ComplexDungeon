@@ -62,11 +62,11 @@ public enum TileID
     // Row 4
     _STORM_DEMON_TILE(31),
     _BOUNCER_TILE(32),
-    _JELLY_MONSTER_TILE(33),
+    _U33_TILE(33),
     _U34_TILE(34),
     _FIRE_BALL_TILE(35),
     _SCORPION_TILE(36),
-    _BEETLE_TILE(37),
+    _U37_TILE(37),
     _SPECIAL_COIN_TILE(38),
     _HIDDEN_COIN_TILE(39),
     _TURRET_TILE(40),

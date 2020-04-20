@@ -197,14 +197,10 @@ public class GameAssets
     //
     // Mobile Enemies
     public static final String _STORM_DEMON_ASSET          = "storm_demon";
-    public static final String _RED_MINE_ASSET             = "red_mine";
     public static final String _BOUNCER_ASSET              = "bouncer";
-    public static final String _JELLY_MONSTER_ASSET        = "jelly_monster";
-    public static final String _LAVA_BALL_ASSET            = "lava_ball";
     public static final String _FIRE_BALL_ASSET            = "fireball";
     public static final String _MINI_FIRE_BALL_ASSET       = "mini_fireball";
     public static final String _SCORPION_ASSET             = "scorpìon_walk";
-    public static final String _GREEN_BEETLE_ASSET         = "green_beetle";
     public static final String _SPIKE_BALL_1_ASSET         = "round2";
     public static final String _SPIKE_BALL_2_ASSET         = "round2";
     public static final String _SPIKE_BALL_3_ASSET         = "round2";
@@ -380,7 +376,6 @@ public class GameAssets
             // Mobile enemies
             new AssetSize(GraphicID.G_STORM_DEMON, 192, 192),
             new AssetSize(GraphicID.G_BOUNCER, 96, 96),
-            new AssetSize(GraphicID.G_JELLY_MONSTER, 108, 102),
             new AssetSize(GraphicID.G_SPIKE_BALL, 128, 128),
             new AssetSize(GraphicID.G_SPIKE_BLOCK_HORIZONTAL, 147, 256),
             new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL, 256, 147),
@@ -390,7 +385,6 @@ public class GameAssets
             new AssetSize(GraphicID.G_ENEMY_FIREBALL, 64, 64),
             new AssetSize(GraphicID.G_MINI_FIRE_BALL, 64, 64),
             new AssetSize(GraphicID.G_SCORPION, 136, 123),
-            new AssetSize(GraphicID.G_BEETLE, 76, 64),
         };
 
     private GameAssets() {}

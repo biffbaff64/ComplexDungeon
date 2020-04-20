@@ -63,7 +63,6 @@ public class EntityManager implements Disposable
         app.entityData.managerList.add(new InteractiveManager(app));
         app.entityData.managerList.add(new DecorationsManager(app));
         // ----------
-        app.entityData.managerList.add(new BeetleManager(app));
         app.entityData.managerList.add(new SoldierManager(app));
         app.entityData.managerList.add(new MonstersManager(app));
         // ----------

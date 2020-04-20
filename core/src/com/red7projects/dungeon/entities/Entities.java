@@ -84,8 +84,6 @@ public abstract class Entities
             new EntityDef("", GraphicID.G_STORM_DEMON, TileID._STORM_DEMON_TILE, GameAssets._STORM_DEMON_ASSET, GameAssets._STORM_DEMON_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_BOUNCER, TileID._BOUNCER_TILE, GameAssets._BOUNCER_ASSET, GameAssets._BOUNCER_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_SCORPION, TileID._SCORPION_TILE, GameAssets._SCORPION_ASSET, GameAssets._SCORPION_FRAMES, GraphicID._ENEMY),
-            new EntityDef("", GraphicID.G_BEETLE, TileID._BEETLE_TILE, GameAssets._GREEN_BEETLE_ASSET, GameAssets._GREEN_BEETLE_FRAMES, GraphicID._ENEMY),
-            new EntityDef("", GraphicID.G_JELLY_MONSTER, TileID._JELLY_MONSTER_TILE, GameAssets._JELLY_MONSTER_ASSET, GameAssets._JELLY_MONSTER_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_SOLDIER, TileID._SOLDIER_TILE, GameAssets._SOLDIER_IDLE_DOWN_ASSET, GameAssets._SOLDIER_IDLE_FRAMES, GraphicID._ENEMY),
             new EntityDef("Spike Ball", GraphicID.G_SPIKE_BALL, TileID._SPIKE_BALL_TILE, GameAssets._SPIKE_BALL_1_ASSET, GameAssets._SPIKE_BALL_FRAMES, GraphicID._ENEMY),
             new EntityDef("Spike Block", GraphicID.G_SPIKE_BLOCK_HORIZONTAL, TileID._SPIKE_BLOCK_RIGHT_TILE, GameAssets._SPIKE_BLOCK_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),

@@ -55,6 +55,16 @@ public final class Version
     static final String clientID_debug = "833586899901-l6m9mn1ss8ferq1g7cogv8ir9uf4a56h.apps.googleusercontent.com";
     static final String sha1_debug     = "B8:34:70:6F:59:3A:5F:49:DA:C1:58:75:D1:AC:E8:FA:2B:99:E9:68";
 
+    //
+    // Google Base64-encoded RSA public key
+    static final String googleRsaPublicKey =
+                    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlilVuIVfxXYWaMTZzPC5yyFs42lcO" +
+                    "m4ZlKSfe69XtJNcQLUo+mw1jubmBrpuLkSAYUb8FncNO1ujWhtZu/z0ofy5Lu8Z3ztnme91T9" +
+                    "o0ODjL/+3F/tBwB6+qi2XQkWxd0ZN/jRSq4ZecFURU29nKDkIEXdqTgpie+W917MeNAjuWDIp" +
+                    "wd1Z2lHYqLAODYKK2ZtSB5AU9k28Q4hxIjq1ZgUdZf7Dw1kwDq2LmD+g2PmT3Z7tzIvmSCDPU" +
+                    "grk7kh+73E0o2a3AZGHTNKx+3HEbfRutz1NF07sviQM+H4bIX01G34xD9E59JiUG54f/cZmMUg" +
+                    "W4OG8DYnY2pWK/fuDxdwIDAQAB";
+
     // ------------------------------------------------------
 
     public static void appDetails(App app)

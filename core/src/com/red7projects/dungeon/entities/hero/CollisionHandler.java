@@ -88,7 +88,6 @@ public class CollisionHandler implements CollisionListener, Disposable
             case G_STORM_DEMON:
             case G_BOUNCER:
             case G_DOUBLE_SPIKE_BLOCK:
-            case G_JELLY_MONSTER:
             case G_ENEMY_BULLET:
             case G_FLAME_THROWER:
             case G_FLAME_THROWER_VERTICAL:
@@ -199,7 +198,6 @@ public class CollisionHandler implements CollisionListener, Disposable
             case G_LOOP_BLOCK_VERTICAL:
             case G_LASER_BEAM:
             case G_SPIKE_BALL:
-            case G_JELLY_MONSTER:
             case G_STORM_DEMON:
             case G_BOUNCER:
             case G_DOUBLE_SPIKE_BLOCK:

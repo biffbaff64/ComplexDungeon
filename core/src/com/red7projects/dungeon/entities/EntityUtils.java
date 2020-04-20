@@ -189,10 +189,8 @@ public class EntityUtils
 
             // ----------
             case G_STORM_DEMON:
-            case G_JELLY_MONSTER:
             case G_SPIKE_BALL:
             case G_SCORPION:
-            case G_BEETLE:
             case G_BOUNCER:
             case G_SOLDIER:
             case G_SPIKE_BLOCK_HORIZONTAL:
@@ -235,10 +233,8 @@ public class EntityUtils
         switch (gid)
         {
             case G_STORM_DEMON:
-            case G_JELLY_MONSTER:
             case G_BOUNCER:
             case G_SCORPION:
-            case G_BEETLE:
             case G_SOLDIER:
             // ----------------
             case G_PLAYER:
@@ -265,11 +261,9 @@ public class EntityUtils
         switch (gid)
         {
             case G_STORM_DEMON:
-            case G_JELLY_MONSTER:
             case G_BOUNCER:
             case G_SPIKE_BALL:
             case G_SCORPION:
-            case G_BEETLE:
             case G_SPIKE_BLOCK_HORIZONTAL:
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
@@ -372,11 +366,9 @@ public class EntityUtils
             }
             break;
 
-            case G_JELLY_MONSTER:
             case G_SOLDIER:
             case G_SPIKE_BALL:
             case G_SCORPION:
-            case G_BEETLE:
             {
                 zed = 4;
             }

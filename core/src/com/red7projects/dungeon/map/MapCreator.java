@@ -193,12 +193,6 @@ public class MapCreator
                             }
                             break;
 
-                            case _BEETLE_TILE:
-                            {
-                                setEntityPlaceable(GraphicID.G_BEETLE, true);
-                            }
-                            break;
-
                             case _VILLAGER_TILE:
                             {
                                 setEntityPlaceable(GraphicID.G_VILLAGER, true);
@@ -219,7 +213,6 @@ public class MapCreator
 
                             case _STORM_DEMON_TILE:
                             case _SCORPION_TILE:
-                            case _JELLY_MONSTER_TILE:
                             case _BOUNCER_TILE:
                             {
                                 setEntityPlaceable(GraphicID._MONSTER, true);

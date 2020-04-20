@@ -1,19 +1,19 @@
 android {
-//     signingConfigs {
-//        releaseconfig {
-//            storeFile file('C:/Users/Richard/Google Drive/Development/Keystore//android.jks')
-//            keyAlias 'dungeonRelease'
-//            keyPassword 'fhwxmy/9'
-//            storePassword 'qkwuud@3'
-//        }
-//
-//        debugconfig {
-//            storeFile file('C:/Users/Richard/Google Drive/Development/Keystore//android.jks')
-//            keyAlias 'dungeonDebug'
-//            keyPassword 'dfg67hj'
-//            storePassword 'qkwuud@3'
-//        }
-//    }
+     signingConfigs {
+        releaseconfig {
+            storeFile file('C:/Development/Issued_Software/Keystore/android.jks')
+            keyAlias 'dungeonRelease'
+            keyPassword 'c646510'
+            storePassword 'felix1964'
+        }
+
+        debugconfig {
+            storeFile file('C:/Development/Issued_Software/Keystore/android.jks')
+            keyAlias 'dungeonDebug'
+            keyPassword 'dfg67hj'
+            storePassword 'felix1964'
+        }
+    }
 
     buildToolsVersion "28.0.3"
     compileSdkVersion 28
@@ -41,12 +41,12 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-//            signingConfig signingConfigs.releaseconfig
+            signingConfig signingConfigs.releaseconfig
         }
 
         debug {
             minifyEnabled false
-//            signingConfig signingConfigs.debugconfig
+            signingConfig signingConfigs.debugconfig
         }
     }
     compileOptions {
@@ -141,8 +141,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-games:18.0.1'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-games:19.0.0'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:multidex:1.0.3'
 }

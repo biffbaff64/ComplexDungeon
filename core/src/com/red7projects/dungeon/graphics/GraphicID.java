@@ -91,10 +91,8 @@ public enum GraphicID
     G_SCORPION,
     G_ENEMY_BULLET,
     G_ENEMY_FIREBALL,
-    G_BEETLE,
     G_SOLDIER,
     G_SOLDIER_FIGHT,
-    G_JELLY_MONSTER,
 
     // ----------------------------
     G_LASER,

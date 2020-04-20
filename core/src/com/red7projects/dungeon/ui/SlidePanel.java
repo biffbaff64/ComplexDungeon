@@ -149,8 +149,6 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
 
     private boolean move()
     {
-        Trace.__FILE_FUNC(distance.toString() + "   :   " + speed.toString());
-
         if (distance.x > 0)
         {
             setPosition((int) (this.position.x + (speed.getX() * direction.getX())), this.position.y);

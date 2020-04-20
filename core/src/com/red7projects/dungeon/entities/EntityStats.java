@@ -25,9 +25,7 @@ public abstract class EntityStats
 {
     public static int maxStormDemons;
     public static int maxBouncers;
-    public static int maxJellyMonsters;
     public static int maxScorpions;
-    public static int maxBeetles;
     public static int maxSoldiers;
 
     public static int minStormDemons;
@@ -35,9 +33,7 @@ public abstract class EntityStats
 
     public static int numStormDemons;
     public static int numBouncers;
-    public static int numJellyMonsters;
     public static int numScorpions;
-    public static int numBeetles;
     public static int numSoldiers;
 
     private static int coinsCount;
@@ -77,9 +73,7 @@ public abstract class EntityStats
     {
         maxStormDemons      = 0;
         maxBouncers         = 0;
-        maxJellyMonsters    = 0;
         maxScorpions        = 0;
-        maxBeetles          = 0;
         maxSoldiers         = 0;
     }
 
@@ -155,21 +149,9 @@ public abstract class EntityStats
             }
             break;
 
-            case G_JELLY_MONSTER:
-            {
-                numJellyMonsters++;
-            }
-            break;
-
             case G_BOUNCER:
             {
                 numBouncers++;
-            }
-            break;
-
-            case G_BEETLE:
-            {
-                numBeetles++;
             }
             break;
 
@@ -258,9 +240,7 @@ public abstract class EntityStats
         Trace.divider();
         Trace.dbg("numBlueMines       : ", numStormDemons);
         Trace.dbg("numBouncers        : ", numBouncers);
-        Trace.dbg("numJellyMonsters   : ", numJellyMonsters);
         Trace.dbg("numScorpions       : ", numScorpions);
-        Trace.dbg("numBeetles         : ", numBeetles);
         Trace.dbg("numSoldiers        : ", numSoldiers);
         Trace.divider();
     }

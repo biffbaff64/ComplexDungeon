@@ -14,15 +14,15 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities.characters.deprecated;
+package com.red7projects.dungeon.entities.characters;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
-import com.red7projects.dungeon.entities.objects.GdxSprite;
+import com.red7projects.dungeon.entities.systems.EnemyAttackSystem;
 import com.red7projects.dungeon.entities.systems.TargettingSystem;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -31,15 +31,17 @@ import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 
-public class Beetle extends BaseEnemy
+import java.util.concurrent.TimeUnit;
+
+public class Scorpion extends BaseEnemy
 {
     private       TargettingSystem targettingSystem;
-    private       GdxSprite        targetSprite;
+    private       boolean          canShoot;
     private final App              app;
 
-    public Beetle(final GraphicID _graphicID, final App _app)
+    public Scorpion(final GraphicID _gid, final App _app)
     {
-        super(_graphicID, _app);
+        super(_gid, _app);
 
         this.app = _app;
     }
@@ -51,7 +53,6 @@ public class Beetle extends BaseEnemy
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
         collisionObject.collidesWith = Gfx.CAT_PLAYER
-            | Gfx.CAT_VILLAGER
             | Gfx.CAT_WALL
             | Gfx.CAT_DOOR
             | Gfx.CAT_ENEMY
@@ -60,48 +61,30 @@ public class Beetle extends BaseEnemy
 
         animation.setFrameDuration(entityDescriptor._ANIM_RATE);
 
-        destination       = new Vector2();
-        targetSprite      = app.entityUtils.getRandomSprite(this);
-        stopWatch         = StopWatch.start();
-        invisibilityTimer = StopWatch.start();
-        restingTime       = (2 + MathUtils.random(3)) * 1000;
+        destination = new Vector2();
 
-        float scale;
-        int   random = MathUtils.random(100);
-
-        float speedTemp;
-
-        if (random > 98)
+        if (app.getPlayer() != null)
         {
-            scale     = 0.5f;
-            strength  = 1;
-            speedTemp = 0.5f;
-        }
-        else if (random > 80)
-        {
-            scale     = 0.75f;
-            strength  = 2;
-            speedTemp = 0.75f;
-        }
-        else
-        {
-            scale     = 1.0f;
-            strength  = 3;
-            speedTemp = 1.0f;
+            destination = new Vector2(app.getPlayer().sprite.getX(), app.getPlayer().sprite.getY());
         }
 
-        targettingSystem                 = new TargettingSystem(app);
-        targettingSystem.speedX          = speedTemp;
-        targettingSystem.speedY          = speedTemp;
-        targettingSystem.rotationAllowed = true;
+        targettingSystem    = new TargettingSystem(app);
+        attackSystem        = new EnemyAttackSystem(this, app);
+        stopWatch           = StopWatch.start();
+        invisibilityTimer   = StopWatch.start();
+        restingTime         = (2 + MathUtils.random(3)) * 1000;
 
-        sprite.setScale(scale);
+        sprite.setScale(1.5f);
+
+        canShoot = false;
+        float speedTemp = 1.0f;
+
+        targettingSystem.speedX = speedTemp;
+        targettingSystem.speedY = speedTemp;
 
         setCollisionListener();
 
         initSpawning();
-
-        localIsDrawable = true;
     }
 
     @Override
@@ -117,17 +100,39 @@ public class Beetle extends BaseEnemy
 
             case _STANDING:
             {
-                targettingSystem.update(this, targetSprite);
+                targettingSystem.update(this, app.getPlayer());
 
-                setAction(Actions._RUNNING);
+                if (targettingSystem.isAdjustingTarget
+                    || Intersector.overlaps(app.getPlayer().viewBox.getRectangle(), collisionObject.rectangle))
+                {
+                    setAction(Actions._RUNNING);
+                }
             }
             break;
 
             case _RUNNING:
             {
-                targettingSystem.update(this, targetSprite);
+                if (!Intersector.overlaps(app.getPlayer().viewBox.getRectangle(), collisionObject.rectangle))
+                {
+                    setAction(Actions._STANDING);
+                }
+                else
+                {
+                    targettingSystem.update(this, app.getPlayer());
 
-                sprite.translate(speed.getX(), speed.getY());
+                    sprite.translate(speed.getX(), speed.getY());
+
+                    if (canShoot
+                        && (collisionObject.action != Actions._COLLIDING)
+                        && (stopWatch.time(TimeUnit.MILLISECONDS) > restingTime)
+                        && (MathUtils.random(100) < 30))
+                    {
+                        attackSystem.shoot();
+
+                        isShooting = true;
+                        stopWatch.reset();
+                    }
+                }
             }
             break;
 
@@ -150,27 +155,6 @@ public class Beetle extends BaseEnemy
         updateCommon();
     }
 
-    @Override
-    public void draw(SpriteBatch spriteBatch)
-    {
-        if (localIsDrawable)
-        {
-            super.draw(spriteBatch);
-        }
-
-        if ((altAnim != null)
-            && ((getSpriteAction() == Actions._SPAWNING)
-            || (getSpriteAction() == Actions._TELEPORTING)))
-        {
-            spriteBatch.draw
-                (
-                    app.entityUtils.getKeyFrame(altAnim, elapsedAltAnimTime, false),
-                    this.sprite.getX(),
-                    this.sprite.getY()
-                );
-        }
-    }
-
     /**
      * onPositiveCollision() and onNegativeCollision are
      * called BEFORE the main update method.
@@ -184,12 +168,15 @@ public class Beetle extends BaseEnemy
             @Override
             public void onPositiveCollision(final GraphicID spriteHittingGid)
             {
-                invisibilityTimer.reset();
+                if (!targettingSystem.isAdjustingTarget)
+                {
+                    targettingSystem.isAdjustingTarget = true;
+                    invisibilityTimer.reset();
+                    targettingSystem.setAdjustedTarget(collisionObject.parentSprite);
 
-                targetSprite = app.entityUtils.getRandomSprite(collisionObject.parentSprite);
-
-                collisionObject.action = Actions._INVISIBLE;
-                setAction(Actions._RUNNING);
+                    collisionObject.action = Actions._INVISIBLE;
+                    setAction(Actions._RUNNING);
+                }
             }
 
             @Override
