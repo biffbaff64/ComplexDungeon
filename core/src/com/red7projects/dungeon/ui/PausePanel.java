@@ -168,9 +168,6 @@ public class PausePanel extends BasicPanel implements Disposable
         buttonMusicVolume.setSize(displayPos[_MUSIC][2], displayPos[_MUSIC][3]);
         buttonFXVolume.setSize(displayPos[_FX][2], displayPos[_FX][3]);
         buttonResume.setSize(displayPos[_EXIT_PAUSE][2], displayPos[_EXIT_PAUSE][3]);
-
-        buttonMusicVolume.pressConditional(Sfx.inst().getMusicVolume() == 0);
-        buttonFXVolume.pressConditional(Sfx.inst().getFXVolume() == 0);
     }
 
     private void setQuitToTitle()

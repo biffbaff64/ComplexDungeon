@@ -34,17 +34,15 @@ public class GameButton implements GDXButton, Disposable
     public TextureRegion bgPressed;
     public TextureRegion bgDisabled;
     public Box           buttonRect;
-    public ButtonID      buttonID;      // TODO: 19/04/2020 - Is this still needed?
     public Actions       buttonAction;
 
     public boolean hasSound;
-    public float scale;
-    public float alpha;
-    public int x;
-    public int y;
-    public int width;
-    public int height;
-    public int pointer;
+    public float   scale;
+    public float   alpha;
+    public int     x;
+    public int     y;
+    public int     width;
+    public int     height;
 
     private boolean _isDrawable;
     private boolean _isPressed;
@@ -64,12 +62,12 @@ public class GameButton implements GDXButton, Disposable
      */
     public GameButton(TextureRegion textureRegion, TextureRegion textureRegionPressed, int x, int y, ButtonID _id, App _app)
     {
-        this(x, y, _id, _app);
+        this(x, y, _app);
 
-        this.bg         = textureRegion;
-        this.bgPressed  = textureRegionPressed;
-        this.width      = textureRegion.getRegionWidth();
-        this.height     = textureRegion.getRegionHeight();
+        this.bg          = textureRegion;
+        this.bgPressed   = textureRegionPressed;
+        this.width       = textureRegion.getRegionWidth();
+        this.height      = textureRegion.getRegionHeight();
         this.alpha       = 1.0f;
         this._isDrawable = true;
         this.buttonRect  = new Box(this.x, this.y, this.width, this.height);
@@ -82,34 +80,31 @@ public class GameButton implements GDXButton, Disposable
      * @param y    - Y Display co-ordinate
      * @param _app - Instance of the game
      */
-    public GameButton(int x, int y, ButtonID _id, App _app)
+    public GameButton(int x, int y, App _app)
     {
-        this(_app, _id);
+        this(_app);
 
-        this.bg           = null;
-        this.bgPressed    = null;
-        this.bgDisabled   = null;
-        this.x            = x;
-        this.y            = y;
-        this.width        = 0;
-        this.height       = 0;
-        this._isDrawable  = false;
-        this.scale        = 1.0f;
-        this.pointer      = 0;
+        this.bg          = null;
+        this.bgPressed   = null;
+        this.bgDisabled  = null;
+        this.x           = x;
+        this.y           = y;
+        this.width       = 0;
+        this.height      = 0;
+        this._isDrawable = false;
+        this.scale       = 1.0f;
 
         mapIndex = app.inputManager.gameButtons.size;
 
         app.inputManager.gameButtons.add(this);
     }
 
-    public GameButton(App _app, ButtonID _id)
+    public GameButton(App _app)
     {
-        this.app      = _app;
-        this.buttonID = _id;
-
-        this._isPressed  = false;
-        this._isDisabled = false;
-        this.hasSound    = true;
+        this.app          = _app;
+        this._isPressed   = false;
+        this._isDisabled  = false;
+        this.hasSound     = true;
         this.buttonAction = Actions._NO_ACTION;
 
         this.buttonRect = new Box();
@@ -142,13 +137,13 @@ public class GameButton implements GDXButton, Disposable
             }
 
             spriteBatch.draw
-                (
-                    textureRegion,
-                    (camera.position.x + (float) (x - (Gfx._VIEW_WIDTH / 2))),
-                    (camera.position.y + (float) (y - (Gfx._VIEW_HEIGHT / 2))),
-                    width,
-                    height
-                );
+                    (
+                            textureRegion,
+                            (camera.position.x + (float) (x - (Gfx._VIEW_WIDTH / 2))),
+                            (camera.position.y + (float) (y - (Gfx._VIEW_HEIGHT / 2))),
+                            width,
+                            height
+                    );
         }
     }
 
@@ -187,16 +182,6 @@ public class GameButton implements GDXButton, Disposable
         return buttonRect;
     }
 
-    public void setID(final ButtonID _id)
-    {
-        buttonID = _id;
-    }
-
-    public ButtonID getID()
-    {
-        return buttonID;
-    }
-
     @Override
     public void setDisabled(boolean _disabled)
     {
@@ -213,19 +198,6 @@ public class GameButton implements GDXButton, Disposable
     public void press()
     {
         _isPressed = true;
-    }
-
-    @Override
-    public void press(int _ptr)
-    {
-        this.press();
-        this.pointer = _ptr;
-    }
-
-    @Override
-    public void pressConditional(boolean condition)
-    {
-        _isPressed = condition;
     }
 
     @Override

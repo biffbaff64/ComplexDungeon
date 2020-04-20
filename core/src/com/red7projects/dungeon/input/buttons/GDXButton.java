@@ -22,10 +22,6 @@ public abstract interface GDXButton
 
     void press();
 
-    void press(int pointer);
-
-    void pressConditional(boolean condition);
-
     boolean isPressed();
 
     boolean isDisabled();

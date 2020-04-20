@@ -46,19 +46,6 @@ public class Switch implements GDXButton
     }
 
     @Override
-    public void press(int _ptr)
-    {
-        press();
-        _pointer = _ptr;
-    }
-
-    @Override
-    public void pressConditional(boolean condition)
-    {
-        _isPressed = condition;
-    }
-
-    @Override
     public void release()
     {
         _isPressed = false;

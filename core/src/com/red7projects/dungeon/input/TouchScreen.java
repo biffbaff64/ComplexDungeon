@@ -98,25 +98,25 @@ public class TouchScreen
             {
                 if (((GameButton) app.getHud().buttonA).contains(screenX, screenY))
                 {
-                    app.getHud().buttonA.press(pointer);
+                    app.getHud().buttonA.press();
                     returnFlag = true;
                 }
 
                 if (((GameButton) app.getHud().buttonB).contains(screenX, screenY))
                 {
-                    app.getHud().buttonB.press(pointer);
+                    app.getHud().buttonB.press();
                     returnFlag = true;
                 }
 
                 if (((GameButton) app.getHud().buttonX).contains(screenX, screenY))
                 {
-                    app.getHud().buttonX.press(pointer);
+                    app.getHud().buttonX.press();
                     returnFlag = true;
                 }
 
                 if (((GameButton) app.getHud().buttonY).contains(screenX, screenY))
                 {
-                    app.getHud().buttonY.press(pointer);
+                    app.getHud().buttonY.press();
                     returnFlag = true;
                 }
             }
