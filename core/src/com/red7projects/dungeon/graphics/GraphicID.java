@@ -47,6 +47,7 @@ public enum GraphicID
     G_DOOR,
     G_OPEN_DOOR,
     G_LOCKED_DOOR,
+    G_LASER_BEAM,
     G_FLOOR_BUTTON,
     G_LEVER_SWITCH,
     G_TREASURE_CHEST,
@@ -96,7 +97,6 @@ public enum GraphicID
 
     // ----------------------------
     G_LASER,
-    G_LASER_BEAM,
     G_LASER_BEAM_VERTICAL,
     G_LASER_BEAM_HORIZONTAL,
     G_FLAME_THROWER,

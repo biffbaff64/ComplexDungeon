@@ -25,6 +25,7 @@ import com.red7projects.dungeon.entities.characters.Turret;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class TurretManager extends GenericEntityManager
 {
@@ -46,6 +47,8 @@ public class TurretManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled(Preferences._TURRETS))
         {
             graphicID = GraphicID.G_TURRET;

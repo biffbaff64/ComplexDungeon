@@ -70,12 +70,12 @@ public abstract class Entities
 
             // Interactive, but not handled by InteractiveManager
             new EntityDef("Floating Platform", GraphicID.G_FLOATING_PLATFORM, TileID._FLOATING_PLATFORM_TILE, GameAssets._FLOATING_PLATFORM_ASSET, GameAssets._FLOATING_PLATFORM_FRAMES, GraphicID._PLATFORM),
+            new EntityDef("Laser", GraphicID.G_LASER_BEAM, TileID._LASER_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
+            new EntityDef("Laser Horizontal", GraphicID.G_LASER_BEAM_HORIZONTAL, TileID._LASER_HORIZONTAL_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
+            new EntityDef("Laser Vertical", GraphicID.G_LASER_BEAM_VERTICAL, TileID._LASER_VERTICAL_TILE, GameAssets._LASER_BEAM_VERTICAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
 //            G_TALK_BOX,
 
             // Stationary Enemies
-            new EntityDef("Laser", GraphicID.G_LASER_BEAM, TileID._LASER_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
-            new EntityDef("", GraphicID.G_LASER_BEAM_HORIZONTAL, TileID._LASER_HORIZONTAL_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
-            new EntityDef("", GraphicID.G_LASER_BEAM_VERTICAL, TileID._LASER_VERTICAL_TILE, GameAssets._LASER_BEAM_VERTICAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
             new EntityDef("Flame Thrower", GraphicID.G_FLAME_THROWER, TileID._FLAME_THROWER_TILE, GameAssets._FLAME_THROW_ASSET, GameAssets._FLAME_THROW_FRAMES, GraphicID._ENEMY),
             new EntityDef("Flame Thrower Vertical", GraphicID.G_FLAME_THROWER_VERTICAL, TileID._FLAME_THROWER_TILE, GameAssets._FLAME_THROW_VERTICAL_ASSET, GameAssets._FLAME_THROW_FRAMES, GraphicID._ENEMY),
             new EntityDef("", GraphicID.G_TURRET, TileID._TURRET_TILE, GameAssets._TURRET_ASSET, GameAssets._TURRET_FRAMES, GraphicID._ENEMY),

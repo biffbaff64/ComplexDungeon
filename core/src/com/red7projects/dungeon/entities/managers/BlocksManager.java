@@ -30,6 +30,7 @@ import com.red7projects.dungeon.entities.characters.SpikeBlock;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class BlocksManager extends GenericEntityManager
 {
@@ -92,6 +93,8 @@ public class BlocksManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         for (GfxAsset gfxAsset : blockTypes)
         {
             graphicID = gfxAsset.graphicID;

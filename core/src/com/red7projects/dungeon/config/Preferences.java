@@ -19,6 +19,7 @@ package com.red7projects.dungeon.config;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.Sfx;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings({"WeakerAccess"})
@@ -36,7 +37,6 @@ public class Preferences implements Disposable
     // Development options
     public static final String _DEV_MODE            = "dev mode";           // Enables/Disables DEV Mode
     public static final String _GOD_MODE            = "god mode";           //
-    public static final String _ANDROID_ON_DESKTOP  = "android on desktop"; // Enables emulation of Android build on desktop
     public static final String _USING_ASHLEY_ECS    = "ashley ecs";         // Enables use of Ashley Entity Component System
 
     public static final String _DISABLE_ENEMIES     = "disable enemies";    // Disables all enemy entities
@@ -129,9 +129,11 @@ public class Preferences implements Disposable
     {
         Trace.__FILE_FUNC();
 
-        prefs.putBoolean(_DEV_MODE,             _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_DEFAULT_ON,           _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_DEFAULT_OFF,          _PREF_FALSE_DEFAULT);
+
+        prefs.putBoolean(_DEV_MODE,             Developer.isDevMode());
         prefs.putBoolean(_GOD_MODE,             _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_ANDROID_ON_DESKTOP,   _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_USING_ASHLEY_ECS,     _PREF_FALSE_DEFAULT);
 
         prefs.putBoolean(_DISABLE_ENEMIES,      _PREF_FALSE_DEFAULT);

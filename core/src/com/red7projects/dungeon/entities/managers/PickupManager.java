@@ -29,6 +29,7 @@ import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public class PickupManager extends GenericEntityManager
@@ -59,6 +60,8 @@ public class PickupManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled(Preferences._PICKUPS))
         {
             for (EntityDef entityDef : Entities.entityList)

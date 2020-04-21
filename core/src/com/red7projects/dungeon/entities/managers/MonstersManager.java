@@ -31,6 +31,7 @@ import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
 import com.red7projects.dungeon.maths.SimpleVec2;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public class MonstersManager extends GenericEntityManager
@@ -103,6 +104,8 @@ public class MonstersManager extends GenericEntityManager
 
     private void createScorpions(GfxAsset gfxAsset)
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
@@ -133,6 +136,8 @@ public class MonstersManager extends GenericEntityManager
 
     private void createStormDemons(GfxAsset gfxAsset)
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
@@ -164,6 +169,8 @@ public class MonstersManager extends GenericEntityManager
 
     private void createBouncers(GfxAsset gfxAsset)
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;

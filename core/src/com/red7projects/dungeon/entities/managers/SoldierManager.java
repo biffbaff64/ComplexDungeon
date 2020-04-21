@@ -25,6 +25,7 @@ import com.red7projects.dungeon.entities.characters.Soldier;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class SoldierManager extends GenericEntityManager
 {
@@ -48,6 +49,8 @@ public class SoldierManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled(Preferences._SOLDIER))
         {
             graphicID = GraphicID.G_SOLDIER;

@@ -165,6 +165,7 @@ public class EntityUtils
             case G_DOOR:
             case G_LOCKED_DOOR:
             case G_OPEN_DOOR:
+            case G_LASER_BEAM:
 
             // ----------
             case G_FLOOR_BUTTON:
@@ -182,7 +183,6 @@ public class EntityUtils
             case G_ESCALATOR_DOWN:
 
             // ----------
-            case G_LASER_BEAM:
             case G_LASER_BEAM_VERTICAL:
             case G_LASER_BEAM_HORIZONTAL:
             case G_FLAME_THROWER:

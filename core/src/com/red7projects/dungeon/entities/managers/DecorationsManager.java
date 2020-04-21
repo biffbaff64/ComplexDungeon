@@ -28,6 +28,7 @@ import com.red7projects.dungeon.entities.objects.EntityDef;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.maths.SimpleVec2;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public class DecorationsManager extends GenericEntityManager
@@ -66,6 +67,8 @@ public class DecorationsManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         for (EntityDef entityDef : Entities.entityList)
         {
             if (entityDef.type.equals(GraphicID._DECORATION))

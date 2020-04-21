@@ -452,10 +452,9 @@ public class DeveloperPanel extends BasicPanel
 
         app.preferences.setPrefsToDefault();
 
-        app.preferences.prefs.putBoolean(Preferences._DEV_MODE, com.red7projects.dungeon.utils.development.Developer.isDevMode());
+        app.preferences.prefs.putBoolean(Preferences._DEV_MODE, Developer.isDevMode());
         app.preferences.prefs.putBoolean(Preferences._GOD_MODE, Developer.isGodMode());
         app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, app.googleServices.isSignedIn());
-        app.preferences.prefs.putBoolean(Preferences._ANDROID_ON_DESKTOP, AppConfig.isDesktopApp());
 
         app.preferences.prefs.flush();
 
@@ -495,13 +494,6 @@ public class DeveloperPanel extends BasicPanel
                     {
                         glProfilerColumn = column;
                         glProfilerRow = row;
-                    }
-                    break;
-
-                    case Preferences._ANDROID_ON_DESKTOP:
-                    {
-                        androidOnDesktopColumn = column;
-                        androidOnDesktopRow = row;
                     }
                     break;
 
@@ -574,12 +566,6 @@ public class DeveloperPanel extends BasicPanel
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                },
-                {
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                     new DMEntry("Villagers", Preferences._VILLAGER, false),
                 },
                 {
@@ -608,12 +594,6 @@ public class DeveloperPanel extends BasicPanel
                 },
                 {
                     new DMEntry("GLProfiler", Preferences._GL_PROFILER, false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                },
-                {
-                    new DMEntry("Android on Desktop", Preferences._ANDROID_ON_DESKTOP, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),

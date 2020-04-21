@@ -26,6 +26,7 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
 import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public class FlamesManager extends GenericEntityManager
@@ -48,6 +49,8 @@ public class FlamesManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         if (app.preferences.isEnabled((Preferences._FLAME_THROWER)))
         {
             graphicID = GraphicID.G_FLAME_THROWER;

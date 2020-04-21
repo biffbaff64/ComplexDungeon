@@ -30,6 +30,7 @@ import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class InputManager
@@ -64,54 +65,51 @@ public class InputManager
         currentRegisteredDirection  = Movement.Dir._STILL;
         lastRegisteredDirection     = Movement.Dir._STILL;
 
-        if (Controllers.getControllers().size <= 0)
+        //
+        // Initialise virtual controllers if enabled.
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
-            {
-                virtualJoystick = new VirtualJoystick(app);
+            Trace.dbg("Initialising _VIRTUAL Controller Type");
 
-                virtualJoystick.create();
-                virtualJoystick.addToStage();
+            virtualJoystick = new VirtualJoystick(app);
+            virtualJoystick.create();
+            virtualJoystick.addToStage();
+        }
+
+        //
+        // Redefine the mouse cursor as crosshairs
+        // if Mouse Control is required.
+        if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))
+        {
+            Trace.dbg("Initialising _MOUSE Controller Type");
+
+            Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
+            Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
+            Gdx.graphics.setCursor(cursor);
+            pixmap.dispose();
+        }
+
+        //
+        // Initialise external controllers if enabled.
+        if (AppConfig.availableInputs.contains(ControllerType._EXTERNAL, true))
+        {
+            Trace.dbg("Initialising _EXTERNAL Controller Type");
+
+            gameController = new GameController(app);
+
+            if (!gameController.setup())
+            {
+                gameController = null;
             }
         }
 
-        if (AppConfig.isDesktopApp())
-        {
-            //
-            // Redefine the mouse cursor as crosshairs
-            // if Mouse Control is required.
-            if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))
-            {
-                Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
-                Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
-                Gdx.graphics.setCursor(cursor);
-                pixmap.dispose();
-            }
+        mousePosition       = new Vector2();
+        mouseWorldPosition  = new Vector2();
+        keyboard            = new Keyboard(app);
+        touchScreen         = new TouchScreen(app);
+        gameButtons         = new Array<>();
 
-            //
-            // Initialise external controllers if enabled.
-            if (AppConfig.availableInputs.contains(ControllerType._EXTERNAL, true))
-            {
-                gameController = new GameController(app);
-
-                if (!gameController.setup())
-                {
-                    gameController = null;
-                }
-            }
-        }
-
-        if (AppConfig.isDesktopApp() || AppConfig.isAndroidOnDesktop())
-        {
-            mousePosition      = new Vector2();
-            mouseWorldPosition = new Vector2();
-            keyboard           = new Keyboard(app);
-
-            inputMultiplexer.addProcessor(keyboard);
-        }
-
-        touchScreen = new TouchScreen(app);
-        gameButtons = new Array<>();
+        inputMultiplexer.addProcessor(keyboard);
 
         UIButtons.setup(app);
 

@@ -19,7 +19,6 @@ package com.red7projects.dungeon.entities.managers;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.entities.Entities;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.*;
@@ -34,6 +33,7 @@ import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
 import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.maths.SimpleVec2;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class InteractiveManager extends GenericEntityManager
 {
@@ -55,6 +55,8 @@ public class InteractiveManager extends GenericEntityManager
     @Override
     public void create()
     {
+        Trace.__FILE_FUNC();
+
         for (EntityDef entityDef : Entities.entityList)
         {
             if (entityDef.type.equals(GraphicID._INTERACTIVE))

@@ -21,7 +21,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.StringBuilder;
@@ -51,39 +50,39 @@ import java.util.Locale;
 
 public class HeadsUpDisplay implements Disposable
 {
-    private static final int _X1     = 0;
-    private static final int _X2     = 1;
-    private static final int _Y      = 2;
-    private static final int _WIDTH  = 3;
-    private static final int _HEIGHT = 4;
-    private static final int _X_DIR  = 3;
-    private static final int _Y_DIR  = 4;
+    private static final int _X1            = 0;
+    private static final int _X2            = 1;
+    private static final int _Y             = 2;
+    private static final int _WIDTH         = 3;
+    private static final int _HEIGHT        = 4;
+    private static final int _X_DIR         = 3;
+    private static final int _Y_DIR         = 4;
 
-    private static final int _JOYSTICK    = 0;
-    private static final int _BUTTON_X    = 1;
-    private static final int _BUTTON_Y    = 2;
-    private static final int _ATTACK      = 3;    // BUTTON_B
-    private static final int _ACTION      = 4;    // BUTTON_A
-    private static final int _PAUSE       = 5;
-    private static final int _DEV_OPTIONS = 6;
-    private static final int _COINS       = 7;
-    private static final int _GEMS        = 8;
-    private static final int _LIVES       = 9;
-    private static final int _HEALTH      = 10;
-    private static final int _VILLAGERS   = 11;
-    private static final int _COMPASS     = 12;
+    private static final int _JOYSTICK      = 0;
+    private static final int _BUTTON_X      = 1;
+    private static final int _BUTTON_Y      = 2;
+    private static final int _BUTTON_B      = 3;
+    private static final int _BUTTON_A      = 4;
+    private static final int _PAUSE         = 5;
+    private static final int _DEV_OPTIONS   = 6;
+    private static final int _COINS         = 7;
+    private static final int _GEMS          = 8;
+    private static final int _LIVES         = 9;
+    private static final int _HEALTH        = 10;
+    private static final int _VILLAGERS     = 11;
+    private static final int _COMPASS       = 12;
 
     private static final int[][] displayPos = new int[][]
         {
-            {  40, 1640,   40,  240,  240},             // Joystick
+            {  80, 1640,  100,  240,  240},             // Joystick
 
             {2138,   44,  161,   96,   96},             // X
             {2256,   44,  273,   96,   96},             // Y
-            {2376,   44,  161,   96,   96},             // Attack
-            {2256,  158,   48,   96,   96},             // Action
+            {2376,   44,  161,   96,   96},             // B (Attack)
+            {2256,  158,   48,   96,   96},             // A (Action)
 
             {2387, 2387, 1264,   66,   66},             // Pause Button
-            {2486, 2486, 1134,   66,   66},             // Dev Options
+            {  40,   40,  100,   66,   66},             // Dev Options
 
             //
             // Y is distance from the TOP of the screen
@@ -312,9 +311,9 @@ public class HeadsUpDisplay implements Disposable
             originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
 
             drawPanels();
-            drawItems();
-            drawCompass();
-            drawMessages();
+//            drawItems();
+//            drawCompass();
+//            drawMessages();
 
             if (_canDrawControls && app.gameProgress.gameSetupDone)
             {
@@ -481,6 +480,11 @@ public class HeadsUpDisplay implements Disposable
                             app.inputManager.virtualJoystick.getTouchpad().getHeight()
                         );
                 }
+
+                ((GameButton) buttonA).draw(app.spriteBatch, camera);
+                ((GameButton) buttonB).draw(app.spriteBatch, camera);
+                ((GameButton) buttonX).draw(app.spriteBatch, camera);
+                ((GameButton) buttonY).draw(app.spriteBatch, camera);
             }
         }
     }
@@ -585,7 +589,7 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_drop"),
                     app.assets.getButtonsAtlas().findRegion("button_drop_pressed"),
-                    displayPos[_ACTION][_X1], displayPos[_ACTION][_Y],
+                    displayPos[_BUTTON_A][_X1], displayPos[_BUTTON_A][_Y],
                     ButtonID._A,
                     app
                 );
@@ -594,7 +598,7 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_fire"),
                     app.assets.getButtonsAtlas().findRegion("button_fire_pressed"),
-                    displayPos[_ATTACK][_X1], displayPos[_ATTACK][_Y],
+                    displayPos[_BUTTON_B][_X1], displayPos[_BUTTON_B][_Y],
                     ButtonID._B,
                     app
                 );

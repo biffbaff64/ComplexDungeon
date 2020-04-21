@@ -116,6 +116,13 @@ public abstract class AppConfig
         // Set Debug Mode from the _DEV_MODE Environment variable.
         Developer.setMode(_app);
 
+        if (Developer.isDevMode())
+        {
+            availableInputs.clear();
+            availableInputs.add(ControllerType._VIRTUAL);
+            virtualControllerPos = ControllerPos._LEFT;
+        }
+
         isUsingBOX2DPhysics = app.preferences.isEnabled(Preferences._BOX2D_PHYSICS);
         isUsingAshleyECS    = app.preferences.isEnabled((Preferences._USING_ASHLEY_ECS));
 
@@ -124,7 +131,9 @@ public abstract class AppConfig
             Trace.divider();
             Trace.dbg("Android App         : " + isAndroidApp());
             Trace.dbg("Desktop App         : " + isDesktopApp());
-            Trace.dbg("Android On Desktop  : " + isAndroidOnDesktop());
+            Trace.divider();
+            Trace.dbg("isDevMode()         : " + Developer.isDevMode());
+            Trace.dbg("isGodMode()         : " + Developer.isGodMode());
             Trace.divider();
             Trace.dbg("isUsingAshleyECS    : " + isUsingAshleyECS);
             Trace.dbg("isUsingBOX2DPhysics : " + isUsingBOX2DPhysics);
@@ -134,6 +143,10 @@ public abstract class AppConfig
             Trace.dbg("_VIEW_WIDTH         : " + Gfx._VIEW_WIDTH);
             Trace.dbg("_VIEW_HEIGHT        : " + Gfx._VIEW_HEIGHT);
             Trace.divider();
+            Trace.dbg("_VIRTUAL?           : " + availableInputs.contains(ControllerType._VIRTUAL, true));
+            Trace.dbg("_EXTERNAL?          : " + availableInputs.contains(ControllerType._EXTERNAL, true));
+            Trace.dbg("_KEYBOARD?          : " + availableInputs.contains(ControllerType._KEYBOARD, true));
+            Trace.dbg("_MOUSE?             : " + availableInputs.contains(ControllerType._MOUSE, true));
             Trace.dbg("controllerPos       : " + virtualControllerPos);
             Trace.dbg("controllersFitted   : " + controllersFitted);
             Trace.dbg("usedController      : " + usedController);
@@ -197,7 +210,7 @@ public abstract class AppConfig
      */
     public static boolean isAndroidOnDesktop()
     {
-        return app.preferences.isEnabled(Preferences._ANDROID_ON_DESKTOP);
+        return false;
     }
 
     public static void dispose()
