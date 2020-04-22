@@ -4,24 +4,30 @@ import com.badlogic.gdx.utils.StringBuilder;
 
 public class GameOption
 {
-    public String prefName;
-    public String value;
-    public String defaultValue;
+    public String  prefName;
+    public boolean state;
+    public boolean defaultState;
 
     public GameOption()
     {
-        prefName = "";
-        value = "";
-        defaultValue = "";
+        this.prefName     = "";
+        this.state        = false;
+        this.defaultState = false;
+    }
+
+    public GameOption(String _name, boolean _value, boolean _default)
+    {
+        this.prefName     = _name;
+        this.state        = _value;
+        this.defaultState = _default;
     }
 
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.append(prefName);
-        sb.append(" : ").append(value);
-        sb.append(" : ").append(defaultValue);
+        StringBuilder sb = new StringBuilder(prefName);
+        sb.append(" : ").append(state);
+        sb.append(" : ").append(defaultState);
 
         return sb.toString();
     }

@@ -53,7 +53,7 @@ public class Preferences implements Disposable
 
     public static final String _CULL_SPRITES        = "cull sprites";       // Enables Sprite Culling when off screen
     public static final String _SHADER_PROGRAM      = "shader program";     // Enables/Disables global shader program
-    public static final String _USING_BOX2D         = "using box2d";        // Enables Box2D Physics
+    public static final String _BOX2D_PHYSICS       = "using box2d";        // Enables Box2D Physics
     public static final String _B2D_RENDERER        = "b2d renderer";       // Enables/Disables the Box2D Debug Renderer
     public static final String _GL_PROFILER         = "gl profiler";        // Enables/Disables the LibGdx OpenGL Profiler
 
@@ -70,14 +70,10 @@ public class Preferences implements Disposable
     public static final String _ACHIEVEMENTS        = "achievements";       // Enables In-Game Achievements
     public static final String _CHALLENGES          = "challenges";         // Enables In-Game challenges
     public static final String _SIGN_IN_STATUS      = "sign in status";     // Google Services sign in status
-    public static final String _BOX2D_PHYSICS       = "using box2d";        //
 
     //
-    // The Hero...
+    // Main characters
     public static final String _PLAYER                  = "player";
-
-    //
-    // Other Main characters
     public static final String _PRISONER                = "prisoner";
     public static final String _VILLAGER                = "villager";
 
@@ -91,11 +87,9 @@ public class Preferences implements Disposable
     // Moving Entities
     public static final String _STORM_DEMON             = "storm demon";
     public static final String _BOUNCER                 = "bouncer";
-    public static final String _JELLY_MONSTER           = "jelly monster";
     public static final String _SPIKE_BALL              = "spike ball";
     public static final String _SPIKE_BLOCK             = "spike block";
     public static final String _SCORPION                = "scorpion";
-    public static final String _BEETLE                  = "beetle";
     public static final String _SOLDIER                 = "soldier";
 
     //
@@ -149,7 +143,6 @@ public class Preferences implements Disposable
 
         prefs.putBoolean(_CULL_SPRITES,         _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_SHADER_PROGRAM,       _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_USING_BOX2D,          _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_B2D_RENDERER,         _PREF_FALSE_DEFAULT);
         prefs.putBoolean(_GL_PROFILER,          _PREF_FALSE_DEFAULT);
 
@@ -176,12 +169,10 @@ public class Preferences implements Disposable
         prefs.putBoolean(_VILLAGER,             _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_FLAME_THROWER,        _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_STORM_DEMON,          _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_JELLY_MONSTER,        _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_BOUNCER,              _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_SPIKE_BALL,           _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_SPIKE_BLOCK,          _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_SCORPION,             _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_BEETLE,               _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_SOLDIER,              _PREF_TRUE_DEFAULT);
         prefs.putBoolean(_TURRETS,              _PREF_TRUE_DEFAULT);
 

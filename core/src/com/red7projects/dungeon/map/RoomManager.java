@@ -96,16 +96,16 @@ public class RoomManager
             // -----------------------------------------
             {null, null, null, null, null, null, null, null},
             // -----------------------------------------
-
-            {null, new Room(_S2),           null,                   null,                   null,                   null,                   new Room(_PRISON_S),    null},
-            {null, new Room(_ROOM1_NS),     new Room(_SECRET1),     new Room(_ROOM4_ES),    new Room(_W),           new Room(_S),           new Room(_SN),          null},
-            {null, new Room(_PASSAGE_NES),  new Room(_NESW2),       new Room(_NESW),        new Room(_ROOM6_ESW),   new Room(_ROOM11_NESW), new Room(_ROOM10_NSW),  null},
-            {null, new Room(_ROOM2_NES),    new Room(_ROOM3_NEW),   new Room(_ROOM9_NESW),  new Room(_ROOM8_NW),    new Room(_ROOM7_NS),    new Room(_PASSAGE_NS),  null},
-            {null, new Room(_N),            new Room(_E),           new Room(_ROOM5_NE),    null,                   new Room(_NES),         new Room(_NW),          null},
-            {null, new Room(_PASSAGE_ES),   new Room(_WS),          null,                   null,                   new Room(_ROOM12_NS),   null,                   null},
-            {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_ESW),  new Room(_NWS),         new Room(_PASSAGE_S),   null},
-            {null, new Room(_ROOM17_N),     new Room(_N2),          new Room(_ROOM18_N),    new Room(_ROOM2_NS),    new Room(_ROOM15_NE),   new Room(_ROOM16_NW),   null},
-            {null, null,                    null,                   null,                   new Room(_PRISON_N),    null,                   null,                   null},
+            // 0   1                        2                       3                       4                       5                       6                       7
+            {null, new Room(_S2),           null,                   null,                   null,                   null,                   new Room(_PRISON_S),    null},  // 1
+            {null, new Room(_ROOM1_NS),     new Room(_SECRET1),     new Room(_ROOM4_ES),    new Room(_W),           new Room(_S),           new Room(_SN),          null},  // 2
+            {null, new Room(_PASSAGE_NES),  new Room(_NESW2),       new Room(_NESW),        new Room(_ROOM6_ESW),   new Room(_ROOM11_NESW), new Room(_ROOM10_NSW),  null},  // 3
+            {null, new Room(_ROOM2_NES),    new Room(_ROOM3_NEW),   new Room(_ROOM9_NESW),  new Room(_ROOM8_NW),    new Room(_ROOM7_NS),    new Room(_PASSAGE_NS),  null},  // 4
+            {null, new Room(_N),            new Room(_E),           new Room(_ROOM5_NE),    null,                   new Room(_NES),         new Room(_NW),          null},  // 5
+            {null, new Room(_PASSAGE_ES),   new Room(_WS),          null,                   null,                   new Room(_ROOM12_NS),   null,                   null},  // 6
+            {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_ESW),  new Room(_NWS),         new Room(_PASSAGE_S),   null},  // 7
+            {null, new Room(_ROOM17_N),     new Room(_N2),          new Room(_ROOM18_N),    new Room(_ROOM2_NS),    new Room(_ROOM15_NE),   new Room(_ROOM16_NW),   null},  // 8
+            {null, null,                    null,                   null,                   new Room(_PRISON_N),    null,                   null,                   null},  // 9
 
             // -----------------------------------------
             // DO NOT CHANGE THIS LINE
@@ -136,41 +136,32 @@ public class RoomManager
 
         activeRoom = new Room();
 
-        createRoomList();
+        SimpleVec2 roomPos = createRoomList();
         storeEntryPoints();
 
-        int startRow    = _DEFAULT_START_ROW;
-        int startColumn = _DEFAULT_START_COLUMN;
+        int startRow    = (roomPos == null) ? _DEFAULT_START_ROW : roomPos.getX();
+        int startColumn = (roomPos == null) ? _DEFAULT_START_COLUMN : roomPos.getY();
 
-        roomIndex = roomList.indexOf(_START_ROOM, false);
-
-        if (roomIndex > 0)
-        {
-            SimpleVec2 roomPos = findRoom(roomList.get(roomIndex).toLowerCase());
-
-            startRow    = roomPos.getX();
-            startColumn = roomPos.getY();
-        }
+        Trace.dbg("startRow   : ", startRow);
+        Trace.dbg("startColumn: ", startColumn);
+        Trace.dbg("roomIndex  : ", roomIndex);
 
         setRoom(startRow, startColumn, _START_POSITION);
     }
 
-    @NotNull
     private SimpleVec2 findRoom(String roomName)
     {
-        SimpleVec2 roomPosition = new SimpleVec2(1, 1);
-        boolean isFound = false;
+        SimpleVec2 roomPosition = null;
 
-        for (int row = 0; row < worldHeight && !isFound; row++)
+        for (int row = 0; row < worldHeight && (roomPosition == null); row++)
         {
-            for (int column = 0; column < worldWidth && !isFound; column++)
+            for (int column = 0; column < worldWidth && (roomPosition == null); column++)
             {
                 if (roomMap[row][column] != null)
                 {
                     if (roomName.equals(roomMap[row][column].roomName))
                     {
-                        roomPosition.set(row, column);
-                        isFound = true;
+                        roomPosition = new SimpleVec2(row, column);
                     }
                 }
             }
@@ -252,8 +243,9 @@ public class RoomManager
         return _MAPS_PATH + roomName;
     }
 
-    private void createRoomList()
+    private SimpleVec2 createRoomList()
     {
+        SimpleVec2 startRoomPos = null;
         roomList = new Array<>();
 
         for (int roomRow = 0; roomRow < worldHeight; roomRow++)
@@ -265,11 +257,18 @@ public class RoomManager
                 if (room != null)
                 {
                     roomList.add(room.roomName.toUpperCase());
+
+                    if (room.roomName.equals(_START_ROOM))
+                    {
+                        startRoomPos = new SimpleVec2(roomRow, roomColumn);
+                    }
                 }
             }
         }
 
         roomList.sort();
+
+        return startRoomPos;
     }
 
     private int countRoomMarkers(TileID _marker, Room _room)

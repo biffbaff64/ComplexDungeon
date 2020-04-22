@@ -17,6 +17,7 @@
 package com.red7projects.dungeon.game;
 
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.IntArray;
 import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.types.Item;
 
@@ -24,6 +25,16 @@ import com.red7projects.dungeon.types.Item;
 //@formatter:off
 public class GameProgress implements Disposable
 {
+    public static final int _LIGHTNING  = 0;
+    public static final int _FIRE       = 1;
+    public static final int _WIND       = 2;
+    public static final int _SUN        = 3;
+    public static final int _ICE        = 4;
+    public static final int _NATURE     = 5;
+    public static final int _WATER      = 6;
+    public static final int _EARTH      = 7;
+    public static final int _MAX_RUNES  = 8;
+
     public boolean      isRestarting;           // Player has lost a life. Switch player, or start next life
     public boolean      levelCompleted;         // True if level finished and next level needed.
     public boolean      gameCompleted;          // True if all levels finished.
@@ -33,7 +44,8 @@ public class GameProgress implements Disposable
     public boolean      cloudDemonInView;       //
 
     public int          playerLevel;            //
-    public int          mysteryChestsAvailable; // The number of UNOPENED mystery chests in the current room.
+
+    public boolean[] runes;
 
     public Item score;
     public Item lives;
@@ -64,6 +76,11 @@ public class GameProgress implements Disposable
 
         createData();
         toMinimum();
+
+        for (int i=0; i<_MAX_RUNES; i++)
+        {
+            runes[i] = false;
+        }
     }
 
     /**
@@ -87,6 +104,8 @@ public class GameProgress implements Disposable
 
         playerLifeOver = false;
         playerLevel = 1;
+
+        runes = new boolean[_MAX_RUNES];
     }
 
     public void closeLastGame()

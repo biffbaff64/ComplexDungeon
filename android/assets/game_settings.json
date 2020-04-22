@@ -1,307 +1,196 @@
 [
 {
-	"prefName": "music enabled",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "dev mode"
 },
 {
-	"prefName": "sound enabled",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "fx volume",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "music volume",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "play services",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "achievements",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "challenges",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "sign in status",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "using box2d",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "god mode"
 },
 {
 	"prefName": "ashley ecs",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "shader program",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "disable enemies"
 },
 {
-	"prefName": "b2d renderer",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "scroll demo"
 },
 {
-	"prefName": "gl profiler",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "sprite boxes"
 },
 {
-	"prefName": "installed",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "tile boxes"
 },
 {
-	"prefName": "show hints",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "button boxes"
 },
 {
-	"prefName": "vibrations",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "show fps"
 },
 {
-	"prefName": "joystick state",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "show debug"
 },
 {
-	"prefName": "game controllers",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "game trace"
 },
 {
-	"prefName": "controller pos",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "spawn points"
+},
+{
+	"prefName": "menu heaps"
+},
+{
+	"prefName": "disable menu"
 },
 {
 	"prefName": "cull sprites",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "progress bars",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "shader program",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "animating tiles",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "using box2d",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "show game buttons",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "b2d renderer",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "dev mode",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "gl profiler",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "god mode",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "installed",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "force prefs reset",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "show hints",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "android on desktop",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "vibrations",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "disable enemies",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "music enabled",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "scroll demo",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "sound enabled",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "test level",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "fx volume",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "sprite boxes",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "music volume",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "tile boxes",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "play services",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "button boxes",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "achievements",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "show fps",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "challenges",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "show debug",
-	"value": "false",
-	"defaultValue": "false"
-},
-{
-	"prefName": "game trace",
-	"value": "false",
-	"defaultValue": "false"
-},
-{
-	"prefName": "spawn points",
-	"value": "false",
-	"defaultValue": "false"
-},
-{
-	"prefName": "map window",
-	"value": "false",
-	"defaultValue": "false"
-},
-{
-	"prefName": "menu heaps",
-	"value": "false",
-	"defaultValue": "false"
-},
-{
-	"prefName": "disable menu",
-	"value": "false",
-	"defaultValue": "false"
-},
-{
-	"prefName": "view window",
-	"value": "false",
-	"defaultValue": "false"
+	"prefName": "sign in status",
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "player",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "prisoner",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "villager",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "pickups",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "floating platform",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "doors",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "mystery chest",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "teleporter",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "soldier",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "pickups",
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "blue mine",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "mystery chest",
+	"state": true,
+	"defaultState": true
+},
+{
+	"prefName": "storm demon",
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "bouncer",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "lava ball",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "fire ball",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "red mine",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "spike ball",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "spike block",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "scorpion",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
 },
 {
-	"prefName": "beetle",
-	"value": "true",
-	"defaultValue": "true"
-},
-{
-	"prefName": "laser door",
-	"value": "true",
-	"defaultValue": "true"
+	"prefName": "soldier",
+	"state": true,
+	"defaultState": true
 },
 {
 	"prefName": "flame thrower",
-	"value": "true",
-	"defaultValue": "true"
+	"state": true,
+	"defaultState": true
+},
+{
+	"prefName": "turrets",
+	"state": true,
+	"defaultState": true
 }
 ]

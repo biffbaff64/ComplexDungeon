@@ -26,80 +26,63 @@ import com.red7projects.dungeon.utils.logging.Trace;
 //@formatter:off
 public class Settings
 {
-    private static final String[][] preferencesList =
+    private static final GameOption[] preferencesList =
         {
-            // Configuration Options
-            {"music enabled",       "true", "true"},
-            {"sound enabled",       "true", "true"},
-            {"fx volume",           "true", "true"},
-            {"music volume",        "true", "true"},
-            {"play services",       "true", "true"},
-            {"achievements",        "true", "true"},
-            {"challenges",          "true", "true"},
-            {"sign in status",      "true", "true"},
-            {"using box2d",         "true", "true"},
-            {"ashley ecs",          "true", "true"},
-            {"shader program",      "true", "true"},
-            {"b2d renderer",        "true", "true"},
-            {"gl profiler",         "true", "true"},
-            {"installed",           "true", "true"},
-            {"show hints",          "true", "true"},
-            {"vibrations",          "true", "true"},
-            {"joystick state",      "true", "true"},
-            {"game controllers",    "true", "true"},
-            {"controller pos",      "true", "true"},
-            {"cull sprites",        "true", "true"},
-            {"progress bars",       "true", "true"},
-            {"animating tiles",     "true", "true"},
-            {"show game buttons",   "true", "true"},
-
             // Development Configuration Options
-            {"dev mode",            "false", "false"},
-            {"god mode",            "false", "false"},
-            {"force prefs reset",   "false", "false"},
-            {"android on desktop",  "false", "false"},
-            {"disable enemies",     "false", "false"},
-            {"scroll demo",         "false", "false"},
-            {"test level",          "false", "false"},
-            {"sprite boxes",        "false", "false"},
-            {"tile boxes",          "false", "false"},
-            {"button boxes",        "false", "false"},
-            {"show fps",            "false", "false"},
-            {"show debug",          "false", "false"},
-            {"game trace",          "false", "false"},
-            {"spawn points",        "false", "false"},
-            {"map window",          "false", "false"},
-            {"menu heaps",          "false", "false"},
-            {"disable menu",        "false", "false"},
-            {"view window",         "false", "false"},
+            new GameOption("dev mode",            false, false),
+            new GameOption("god mode",            false, false),
+            new GameOption("ashley ecs",          true,  true),
+            new GameOption("disable enemies",     false, false),
+            new GameOption("scroll demo",         false, false),
+            new GameOption("sprite boxes",        false, false),
+            new GameOption("tile boxes",          false, false),
+            new GameOption("button boxes",        false, false),
+            new GameOption("show fps",            false, false),
+            new GameOption("show debug",          false, false),
+            new GameOption("game trace",          false, false),
+            new GameOption("spawn points",        false, false),
+            new GameOption("menu heaps",          false, false),
+            new GameOption("disable menu",        false, false),
+            new GameOption("cull sprites",        true,  true),
+            new GameOption("shader program",      true,  true),
+            new GameOption("using box2d",         true,  true),
+            new GameOption("b2d renderer",        true,  true),
+            new GameOption("gl profiler",         true,  true),
+
+            // Configuration Options
+            new GameOption("installed",           true,  true),
+            new GameOption("show hints",          true,  true),
+            new GameOption("vibrations",          true,  true),
+            new GameOption("music enabled",       true,  true),
+            new GameOption("sound enabled",       true,  true),
+            new GameOption("fx volume",           true,  true),
+            new GameOption("music volume",        true,  true),
+            new GameOption("play services",       true,  true),
+            new GameOption("achievements",        true,  true),
+            new GameOption("challenges",          true,  true),
+            new GameOption("sign in status",      true,  true),
 
             // Main characters
-            {"player",              "true", "true"},
-            {"prisoner",            "true", "true"},
-            {"villager",            "true", "true"},
+            new GameOption("player",              true,  true),
+            new GameOption("prisoner",            true,  true),
+            new GameOption("villager",            true,  true),
 
             // Interactive Items and Decorations
-            {"pickups",             "true", "true"},
-            {"floating platform",   "true", "true"},
-            {"doors",               "true", "true"},
-            {"mystery chest",       "true", "true"},
-            {"teleporter",          "true", "true"},
+            new GameOption("teleporter",          true,  true),
+            new GameOption("pickups",             true,  true),
+            new GameOption("mystery chest",       true,  true),
 
             // Mobile enemies
-            {"soldier",             "true", "true"},
-            {"blue mine",           "true", "true"},
-            {"bouncer",             "true", "true"},
-            {"lava ball",           "true", "true"},
-            {"fire ball",           "true", "true"},
-            {"red mine",            "true", "true"},
-            {"spike ball",          "true", "true"},
-            {"spike block",         "true", "true"},
-            {"scorpion",            "true", "true"},
-            {"beetle",              "true", "true"},
+            new GameOption("storm demon",         true,  true),
+            new GameOption("bouncer",             true,  true),
+            new GameOption("spike ball",          true,  true),
+            new GameOption("spike block",         true,  true),
+            new GameOption("scorpion",            true,  true),
+            new GameOption("soldier",             true,  true),
 
             // Static enemies
-            {"laser door",          "true", "true"},
-            {"flame thrower",       "true", "true"},
+            new GameOption("flame thrower",       true,  true),
+            new GameOption("turrets",             true,  true),
         };
 
     private static final String _SETTINGS_FILENAME = "game_settings.json";
@@ -114,6 +97,22 @@ public class Settings
         json.setOutputType(JsonWriter.OutputType.json);
 
         load();
+    }
+
+    public static void setOption(String _prefname, boolean _state, boolean _write)
+    {
+        for (final GameOption option : options)
+        {
+            if (_prefname.equals(option.prefName))
+            {
+                option.state = _state;
+            }
+        }
+
+        if (_write)
+        {
+            write();
+        }
     }
 
     public static void load()
@@ -133,14 +132,24 @@ public class Settings
         handle.writeString(json.prettyPrint(json.toJson(options)), false);
     }
 
-    public static void prepareSettingsJsonFile()
+    public static void resetToDefaults()
     {
         for (int i=0; i<preferencesList.length; i++)
         {
+            options[i].state = options[i].defaultState;
+        }
+    }
+
+    public static void prepareSettingsJsonFile()
+    {
+        Trace.__FILE_FUNC();
+
+        for (int i=0; i<preferencesList.length; i++)
+        {
             options[i]              = new GameOption();
-            options[i].prefName     = preferencesList[i][0];
-            options[i].value        = preferencesList[i][1];
-            options[i].defaultValue = preferencesList[i][2];
+            options[i].prefName     = preferencesList[i].prefName;
+            options[i].state        = preferencesList[i].state;
+            options[i].defaultState = preferencesList[i].defaultState;
         }
 
         write();

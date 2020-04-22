@@ -9,8 +9,6 @@ import com.red7projects.dungeon.utils.logging.Trace;
 // @formatter:off
 public class MainGame extends App
 {
-//	private SplashScreen splashScreen;
-
 	/**
 	 * Instantiates a new Main game.
 	 */
@@ -28,11 +26,6 @@ public class MainGame extends App
 	public void create()
 	{
 		//
-		// Create Splash screen here
-//		splashScreen = new SplashScreen(this);
-//		splashScreen.initialise();
-
-		//
 		// Initialise all essential objects required before
         // the main screen is initialised.
         //
@@ -41,32 +34,6 @@ public class MainGame extends App
 		startup.close();
 
 		Trace.divider();
-	}
-
-    /**
-     * Render the currently active screen.
-     */
-	@Override
-	public void render()
-	{
-//		if (AppConfig.isShowingSplashScreen)
-//		{
-//			splashScreen.draw();
-//			splashScreen.update();
-//
-//			if (!AppConfig.isShowingSplashScreen)
-//			{
-//				splashScreen.dispose();
-//
-//				startup = new Startup(this);
-//				startup.startApp();
-//				startup.close();
-//			}
-//		}
-//		else
-//		{
-			super.render();
-//		}
 	}
 
 	/**

@@ -27,6 +27,7 @@ import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.game.GameProgress;
 import com.red7projects.dungeon.input.buttons.ButtonID;
 import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;
@@ -55,8 +56,6 @@ public class HeadsUpDisplay implements Disposable
     private static final int _Y             = 2;
     private static final int _WIDTH         = 3;
     private static final int _HEIGHT        = 4;
-    private static final int _X_DIR         = 3;
-    private static final int _Y_DIR         = 4;
 
     private static final int _JOYSTICK      = 0;
     private static final int _BUTTON_X      = 1;
@@ -71,6 +70,15 @@ public class HeadsUpDisplay implements Disposable
     private static final int _HEALTH        = 10;
     private static final int _VILLAGERS     = 11;
     private static final int _COMPASS       = 12;
+    private static final int _RUNES_INDEX   = 13;
+    private static final int _LIGHTNING     = 13;
+    private static final int _FIRE          = 14;
+    private static final int _WIND          = 15;
+    private static final int _SUN           = 16;
+    private static final int _ICE           = 17;
+    private static final int _NATURE        = 18;
+    private static final int _WATER         = 19;
+    private static final int _EARTH         = 20;
 
     private static final int[][] displayPos = new int[][]
         {
@@ -86,15 +94,26 @@ public class HeadsUpDisplay implements Disposable
 
             //
             // Y is distance from the TOP of the screen
-            { 758,  758,   40,    0,    0},             // Coins total
-            { 758,  758,  150,    0,    0},             // Gems total
-            {1920, 1920,   72,    0,    0},             // Life bar
-            {1920, 1920,  186,    0,    0},             // Health bar
+            {1906,  758,   40,    0,    0},             // Coins total
+            {1906,  758,  121,    0,    0},             // Gems total
+            { 888,  888,   80,    0,    0},             // Life bar
+            { 888,  888,  154,    0,    0},             // Health bar
 
             //
             // Y is distance from the TOP of the screen
-            { 332,  332,   96,    0,    0},             // Keys
+            { 406,  406,   90,    0,    0},             // Villagers
             {1219, 1219,  240,    0,    0},             // Compass
+
+            //
+            // Runes
+            { 772,  772,   76,   96,   96},             // Lightning - Zeus
+            { 904,  904,   76,   96,   96},             // Fire      - Hephaestus
+            {1036, 1036,   76,   96,   96},             // Wind      - Aeolus
+            {1164, 1164,   76,   96,   96},             // Sun       - Helios
+            {1298, 1298,   76,   96,   96},             // Ice       - Boreas
+            {1430, 1430,   76,   96,   96},             // Nature    - Demeter
+            {1562, 1562,   76,   96,   96},             // Water     - Oceanus
+            {1695, 1695,   76,   96,   96},             // Earth     - Gaia
         };
 
     public MessageManager messageManager;
@@ -121,6 +140,8 @@ public class HeadsUpDisplay implements Disposable
     private BitmapFont      midFont;
     private BitmapFont      smallFont;
     private TextureRegion[] compassTexture;
+    private TextureRegion[] runesTexture;
+    private TextureRegion[] greyRunesTexture;
     private DeveloperPanel  developerPanel;
 
     private float   originX;
@@ -155,16 +176,16 @@ public class HeadsUpDisplay implements Disposable
         //
         // The player strength for the current life
         healthBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        healthBar.setHeight(31);
+        healthBar.setHeight(25);
         healthBar.setColor(Color.GREEN);
-        healthBar.setScale(4.0f);
+        healthBar.setScale(8.0f);
 
         //
         // The number of lives the player has
         livesBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        livesBar.setHeight(31);
+        livesBar.setHeight(25);
         livesBar.setColor(Color.GREEN);
-        livesBar.setScale(4.0f);
+        livesBar.setScale(8.0f);
 
         compassTexture = new TextureRegion[5];
         GfxUtils.splitRegion
@@ -172,6 +193,24 @@ public class HeadsUpDisplay implements Disposable
                 app.assets.getObjectsAtlas().findRegion("compass"),
                 5,
                 compassTexture,
+                app
+            );
+
+        runesTexture = new TextureRegion[GameAssets._RUNES_FRAMES];
+        GfxUtils.splitRegion
+            (
+                app.assets.getAnimationsAtlas().findRegion(GameAssets._RUNES_ASSET),
+                GameAssets._RUNES_FRAMES,
+                runesTexture,
+                app
+            );
+
+        greyRunesTexture = new TextureRegion[GameAssets._RUNES_FRAMES];
+        GfxUtils.splitRegion
+            (
+                app.assets.getAnimationsAtlas().findRegion(GameAssets._GREY_RUNES_ASSET),
+                GameAssets._RUNES_FRAMES,
+                greyRunesTexture,
                 app
             );
 
@@ -311,9 +350,10 @@ public class HeadsUpDisplay implements Disposable
             originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
 
             drawPanels();
-//            drawItems();
+            drawItems();
+            drawRunes();
 //            drawCompass();
-//            drawMessages();
+            drawMessages();
 
             if (_canDrawControls && app.gameProgress.gameSetupDone)
             {
@@ -368,7 +408,7 @@ public class HeadsUpDisplay implements Disposable
                 (int) (originY + (Gfx._VIEW_HEIGHT - displayPos[_LIVES][_Y]))
             );
 
-        hudFont.setColor(Color.YELLOW);
+        hudFont.setColor(Color.ROYAL);
 
         hudFont.draw
             (
@@ -393,6 +433,32 @@ public class HeadsUpDisplay implements Disposable
                 originX + displayPos[_VILLAGERS][_X1],
                 originY + (Gfx._VIEW_HEIGHT - displayPos[_VILLAGERS][_Y])
             );
+    }
+
+    private void drawRunes()
+    {
+        TextureRegion textureRegion;
+
+        for (int i=0; i<GameAssets._RUNES_FRAMES; i++)
+        {
+            if (app.gameProgress.runes[i])
+            {
+                textureRegion = runesTexture[i];
+            }
+            else
+            {
+                textureRegion = greyRunesTexture[i];
+            }
+
+            app.spriteBatch.draw
+                (
+                    textureRegion,
+                    originX + displayPos[_RUNES_INDEX + i][_X1],
+                    originY + displayPos[_RUNES_INDEX + i][_Y],
+                    textureRegion.getRegionWidth() * 1.5f,
+                    textureRegion.getRegionHeight() * 1.5f
+                );
+        }
     }
 
     private void drawCompass()

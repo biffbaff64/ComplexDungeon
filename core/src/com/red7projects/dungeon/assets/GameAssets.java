@@ -141,6 +141,9 @@ public class GameAssets
     public static final String _RED_GEMS_ASSET      = "gems_red";
     public static final String _COIN_ASSET          = "coin";
     public static final String _KEY_ASSET           = "keys";
+    public static final String _SHIELD_ASSET        = "shield";
+    public static final String _RUNES_ASSET         = "runes";
+    public static final String _GREY_RUNES_ASSET    = "grey_runes";
     public static final String _APPLE_ASSET         = "apple";
     public static final String _BOOK_ASSET          = "book";
     public static final String _CAKE_ASSET          = "cake";
@@ -149,11 +152,9 @@ public class GameAssets
     public static final String _SILVER_ARMOUR_ASSET = "silver_armour";
     public static final String _GOLD_ARMOUR_ASSET   = "gold_armour";
     public static final String _GOLD_KEY_ASSET      = "key_held_panel";
-    public static final String _SHIELD_ASSET        = "shield";
     public static final String _DOCUMENT_ASSET      = "paper";
     public static final String _LITTER_ASSET        = "litter";
-    public static final String _BOOKS_ASSET         = "litter";
-    public static final String _RUNES_ASSET         = "litter";
+    public static final String _BOOKS_ASSET         = "books";
 
 
     //
@@ -282,7 +283,7 @@ public class GameAssets
     public static final int _VILLAGER_FACES_FRAMES         = 3;
     public static final int _LITTER_FRAMES                 = 10;
     public static final int _BOOKS_FRAMES                  = 5;
-    public static final int _RUNES_FRAMES                  = 5;
+    public static final int _RUNES_FRAMES                  = 8;
 
     //
     // Fonts and HUD assets
