@@ -519,6 +519,7 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : ").append(app.getRoomSystem().getActiveRoomName());
             sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
             sb.append(" : POS:  ").append(app.getPlayer().getPosition().toString());
+            sb.append(" : localIsDrawable:  ").append(app.getPlayer().localIsDrawable);
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
         }

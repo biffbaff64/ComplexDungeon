@@ -151,12 +151,12 @@ public class MainPlayer extends GdxSprite
         maxMoveSpeed.set(_PLAYER_X_SPEED, _PLAYER_Y_SPEED);
         strength = Constants._MAX_STRENGTH;
 
-        isMovingX       = false;
-        isMovingY       = false;
-        isRotating      = false;
-        isFlippedX      = false;
-        isFlippedY      = false;
-        canFlip         = false;
+        isMovingX   = false;
+        isMovingY   = false;
+        isRotating  = false;
+        isFlippedX  = false;
+        isFlippedY  = false;
+        canFlip     = false;
 
         isHurting           = false;
         isShooting          = false;
@@ -170,15 +170,7 @@ public class MainPlayer extends GdxSprite
         sprite.setPosition(initXY.getX(), initXY.getY());
         collisionObject.clearCollision();
 
-        if (!app.gameProgress.isLevelCompleted() && app.gameProgress.isRestarting)
-        {
-            setAction(Actions._SPAWNING);
-        }
-        else
-        {
-            setAction(Actions._STANDING);
-            localIsDrawable = true;
-        }
+        setAction(Actions._SPAWNING);
     }
 
     @Override
@@ -626,6 +618,8 @@ public class MainPlayer extends GdxSprite
     @Override
     public void setAction(Actions newAction)
     {
+        Trace.__FILE_FUNC(newAction.name());
+
         if (getSpriteAction() != newAction)
         {
             previousAction = getSpriteAction();
