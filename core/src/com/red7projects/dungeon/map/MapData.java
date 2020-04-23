@@ -25,19 +25,19 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.red7projects.dungeon.map.tiled.TiledMap;
-import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
-import com.red7projects.dungeon.map.tiled.TmxMapLoader;
-import com.red7projects.dungeon.map.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.map.tiled.TiledMap;
+import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
+import com.red7projects.dungeon.map.tiled.TmxMapLoader;
+import com.red7projects.dungeon.map.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class MapData implements Disposable

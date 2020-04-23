@@ -16,13 +16,13 @@
 
 package com.red7projects.dungeon.map;
 
+import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.map.tiled.TiledMap;
 import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
 import com.red7projects.dungeon.map.tiled.TmxMapLoader;
-import com.badlogic.gdx.utils.Array;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
+import com.red7projects.dungeon.utils.logging.Trace;
 import org.jetbrains.annotations.NotNull;
 
 //@formatter:off

@@ -26,24 +26,23 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.game.GameProgress;
-import com.red7projects.dungeon.input.buttons.ButtonID;
-import com.red7projects.dungeon.input.buttons.GDXButton;
-import com.red7projects.dungeon.input.buttons.GameButton;
-import com.red7projects.dungeon.input.objects.ControllerType;
-import com.red7projects.dungeon.utils.development.DebugRenderer;
-import com.red7projects.dungeon.utils.development.Developer;
-import com.red7projects.dungeon.utils.development.DeveloperPanel;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Constants;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GfxUtils;
+import com.red7projects.dungeon.input.buttons.ButtonID;
+import com.red7projects.dungeon.input.buttons.GDXButton;
+import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.buttons.Switch;
-import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.map.Room;
+import com.red7projects.dungeon.utils.development.DebugRenderer;
+import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.development.DeveloperPanel;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.Locale;
 
@@ -221,7 +220,7 @@ public class HeadsUpDisplay implements Disposable
         midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 30);
         smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
 
-        AppConfig.canDrawButtonBoxes = app.preferences.isEnabled(Preferences._BUTTON_BOXES);
+        AppConfig.canDrawButtonBoxes = Settings.isEnabled(Settings._BUTTON_BOXES);
         AppConfig.hudExists          = true;
 
         hudStateID = StateID._STATE_PANEL_START;
@@ -519,6 +518,7 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
             sb.append(" : ").append(app.getRoomSystem().getActiveRoomName());
             sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
+            sb.append(" : POS:  ").append(app.getPlayer().getPosition().toString());
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
         }

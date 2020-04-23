@@ -20,9 +20,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Disposable;
+import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.maths.SimpleVec3F;
-import com.red7projects.dungeon.game.App;
 
 /**
  * A 3D Star object

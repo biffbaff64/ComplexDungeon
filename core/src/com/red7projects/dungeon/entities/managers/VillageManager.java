@@ -18,11 +18,11 @@ package com.red7projects.dungeon.entities.managers;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Array;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.interactive.Villager;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
 import com.red7projects.dungeon.utils.logging.Trace;
@@ -49,7 +49,7 @@ public class VillageManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.preferences.isEnabled(Preferences._VILLAGER))
+        if (Settings.isEnabled(Settings._VILLAGER))
         {
             graphicID = GraphicID.G_VILLAGER;
 

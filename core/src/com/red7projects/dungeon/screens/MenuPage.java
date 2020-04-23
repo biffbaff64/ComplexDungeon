@@ -30,16 +30,16 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.buttons.Switch;
-import com.red7projects.dungeon.utils.logging.StopWatch;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
+import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.logging.StopWatch;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -174,7 +174,7 @@ public class MenuPage implements UIPage, Disposable
         imageButtonOptions.setZIndex(1);
         imageButtonExit.setZIndex(1);
 
-        if (Developer.isDevMode() && app.preferences.prefs.getBoolean(Preferences._MENU_HEAPS))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
         {
             Trace.dbg("Adding Heap Usage debug...");
 
@@ -335,7 +335,7 @@ public class MenuPage implements UIPage, Disposable
             imageButtonGoogle.setVisible(_visible);
         }
 
-        if (Developer.isDevMode() && app.preferences.prefs.getBoolean(Preferences._MENU_HEAPS))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
         {
             if (javaHeapLabel != null)
             {
@@ -360,7 +360,7 @@ public class MenuPage implements UIPage, Disposable
         imageButtonOptions  = null;
         imageButtonExit     = null;
 
-        if (Developer.isDevMode() && app.preferences.prefs.getBoolean(Preferences._MENU_HEAPS))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
         {
             if (javaHeapLabel != null)
             {
@@ -396,7 +396,7 @@ public class MenuPage implements UIPage, Disposable
 
     private void menuPageDebug()
     {
-        if (Developer.isDevMode() && app.preferences.prefs.getBoolean(Preferences._MENU_HEAPS))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
         {
             if (javaHeapLabel != null)
             {

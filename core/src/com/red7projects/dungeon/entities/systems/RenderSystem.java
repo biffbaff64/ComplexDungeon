@@ -16,7 +16,7 @@
 
 package com.red7projects.dungeon.entities.systems;
 
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
@@ -71,7 +71,7 @@ public class RenderSystem
      */
     private boolean isInViewWindow(GdxSprite sprObj)
     {
-        if (app.preferences.isEnabled(Preferences._CULL_SPRITES))
+        if (Settings.isEnabled(Settings._CULL_SPRITES))
         {
             return app.mapData.viewportBox.overlaps(sprObj.sprite.getBoundingRectangle());
         }

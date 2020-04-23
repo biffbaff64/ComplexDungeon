@@ -23,8 +23,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.types.ItemF;
+import com.red7projects.dungeon.utils.logging.StopWatch;
 
 import java.util.concurrent.TimeUnit;
 

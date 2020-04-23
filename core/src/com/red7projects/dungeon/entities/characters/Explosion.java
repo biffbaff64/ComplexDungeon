@@ -19,11 +19,11 @@ package com.red7projects.dungeon.entities.characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.red7projects.dungeon.entities.hero.MainPlayer;
-import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
+import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 

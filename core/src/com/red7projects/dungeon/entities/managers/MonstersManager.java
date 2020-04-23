@@ -21,7 +21,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.assets.GfxAsset;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.Bouncer;
 import com.red7projects.dungeon.entities.characters.Scorpion;
@@ -41,7 +41,7 @@ public class MonstersManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_STORM_DEMON,
-                    Preferences._STORM_DEMON,
+                    Settings._STORM_DEMON,
                     GameAssets._STORM_DEMON_ASSET,
                     GameAssets._STORM_DEMON_FRAMES
                 ),
@@ -49,7 +49,7 @@ public class MonstersManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_BOUNCER,
-                    Preferences._BOUNCER,
+                    Settings._BOUNCER,
                     GameAssets._BOUNCER_ASSET,
                     GameAssets._BOUNCER_FRAMES,
                     Animation.PlayMode.LOOP
@@ -58,7 +58,7 @@ public class MonstersManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_SCORPION,
-                    Preferences._SCORPION,
+                    Settings._SCORPION,
                     GameAssets._SCORPION_ASSET,
                     GameAssets._SCORPION_FRAMES,
                     Animation.PlayMode.LOOP
@@ -106,7 +106,7 @@ public class MonstersManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.preferences.isEnabled(gfxAsset.preference))
+        if (Settings.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
 
@@ -138,7 +138,7 @@ public class MonstersManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.preferences.isEnabled(gfxAsset.preference))
+        if (Settings.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
 
@@ -171,7 +171,7 @@ public class MonstersManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.preferences.isEnabled(gfxAsset.preference))
+        if (Settings.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
 

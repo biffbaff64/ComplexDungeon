@@ -18,7 +18,6 @@ package com.red7projects.dungeon.ui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.red7projects.dungeon.game.StateID;
-import com.red7projects.dungeon.maths.SimpleVec2;
 
 public interface BasicUIPanel
 {

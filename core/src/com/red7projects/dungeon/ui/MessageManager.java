@@ -20,11 +20,11 @@ import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.Speed;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class MessageManager implements Disposable
 {

@@ -22,8 +22,8 @@ package com.red7projects.dungeon.physics.aabb;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
-import org.jetbrains.annotations.NotNull;
 import com.red7projects.dungeon.graphics.GraphicID;
+import org.jetbrains.annotations.NotNull;
 
 public class CollisionRect extends Rectangle
 {

@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.StringBuilder;
 public class GameOption
 {
     public String  prefName;
-    public boolean state;
-    public boolean defaultState;
+    public Object state;
+    public Object defaultState;
 
     public GameOption()
     {
@@ -15,7 +15,7 @@ public class GameOption
         this.defaultState = false;
     }
 
-    public GameOption(String _name, boolean _value, boolean _default)
+    public GameOption(String _name, Object _value, Object _default)
     {
         this.prefName     = _name;
         this.state        = _value;

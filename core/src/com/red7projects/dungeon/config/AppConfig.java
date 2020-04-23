@@ -19,12 +19,12 @@ package com.red7projects.dungeon.config;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Array;
-import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.objects.ControllerPos;
 import com.red7projects.dungeon.input.objects.ControllerType;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.Stats;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -110,8 +110,6 @@ public abstract class AppConfig
 
         Stats.setup();
 
-        app.preferences.setup(_PREFS_FILE_NAME);
-
         //
         // Set Debug Mode from the _DEV_MODE Environment variable.
         Developer.setMode(_app);
@@ -123,8 +121,8 @@ public abstract class AppConfig
             virtualControllerPos = ControllerPos._LEFT;
         }
 
-        isUsingBOX2DPhysics = app.preferences.isEnabled(Preferences._BOX2D_PHYSICS);
-        isUsingAshleyECS    = app.preferences.isEnabled((Preferences._USING_ASHLEY_ECS));
+        isUsingBOX2DPhysics = Settings.isEnabled(Settings._BOX2D_PHYSICS);
+        isUsingAshleyECS    = Settings.isEnabled(Settings._USING_ASHLEY_ECS);
 
         if (Developer.isDevMode())
         {
@@ -158,13 +156,13 @@ public abstract class AppConfig
     {
         Trace.__FILE_FUNC();
 
-        if (!app.preferences.prefs.getBoolean(Preferences._INSTALLED))
+        if (!Settings.isEnabled(Settings._INSTALLED))
         {
             Trace.dbg("FRESH INSTALL.");
 
-            app.preferences.setPrefsToDefault();
+            Settings.resetToDefaults();
             Stats.resetAllMeters();
-            app.preferences.enable(Preferences._INSTALLED);
+            Settings.putBoolean(Settings._INSTALLED, true);
         }
     }
 

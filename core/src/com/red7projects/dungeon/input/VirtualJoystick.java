@@ -20,7 +20,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.physics.Movement;
 
@@ -62,14 +61,16 @@ public class VirtualJoystick
         touchpad = new Touchpad(1, touchpadStyle);
         touchpad.setBounds(PAD_X, PAD_Y, PAD_WIDTH, PAD_HEIGHT);
         touchpad.setResetOnTouchUp(true);
-
-//        app.inputManager.currentRegisteredDirection = evaluateJoypadDirection();
-//        app.inputManager.lastRegisteredDirection = app.inputManager.currentRegisteredDirection;
     }
 
     public void addToStage()
     {
         app.stage.addActor(touchpad);
+    }
+
+    public void leaveStage()
+    {
+        app.stage.addAction(Actions.removeActor());
     }
 
     public void update()

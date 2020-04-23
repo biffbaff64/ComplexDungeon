@@ -21,7 +21,7 @@ import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.entities.Entities;
 import com.red7projects.dungeon.entities.EntityStats;
-import com.red7projects.dungeon.entities.characters.*;
+import com.red7projects.dungeon.entities.characters.Decoration;
 import com.red7projects.dungeon.entities.characters.interactive.Door;
 import com.red7projects.dungeon.entities.characters.interactive.Escalator;
 import com.red7projects.dungeon.entities.characters.interactive.FloorSwitch;

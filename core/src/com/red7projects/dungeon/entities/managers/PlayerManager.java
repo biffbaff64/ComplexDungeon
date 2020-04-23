@@ -18,8 +18,6 @@ package com.red7projects.dungeon.entities.managers;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.entities.hero.MainPlayer;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.game.App;
@@ -40,25 +38,14 @@ public class PlayerManager
         app.entityManager._playerIndex = 0;
         app.entityManager._playerReady = false;
 
-        //
-        // Player is always enabled on Android builds,
-        // but can be disabled on Desktop builds for debug purposes.
-        if (AppConfig.isAndroidApp() || app.preferences.isEnabled(Preferences._PLAYER))
-        {
-            MainPlayer mainPlayer = new MainPlayer(app);
-            mainPlayer.initialise(entityDescriptor);
+        MainPlayer mainPlayer = new MainPlayer(app);
+        mainPlayer.initialise(entityDescriptor);
 
-            app.entityData.addEntity(mainPlayer);
-            app.entityManager.updateIndexes();
-            app.entityManager._playerReady  = true;
+        app.entityData.addEntity(mainPlayer);
+        app.entityManager.updateIndexes();
+        app.entityManager._playerReady  = true;
 
-            mainPlayer.addCollisionListener(mainPlayer.collision);
-        }
-        else
-        {
-            app.entityManager._playerIndex  = 0;
-            app.entityManager._playerReady  = false;
-        }
+        mainPlayer.addCollisionListener(mainPlayer.collision);
     }
 
     /**

@@ -21,19 +21,18 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.red7projects.dungeon.assets.Assets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityData;
 import com.red7projects.dungeon.entities.EntityManager;
 import com.red7projects.dungeon.entities.EntityUtils;
 import com.red7projects.dungeon.entities.hero.MainPlayer;
-import com.red7projects.dungeon.utils.logging.google.AdsController;
-import com.red7projects.dungeon.utils.logging.google.PlayServices;
 import com.red7projects.dungeon.graphics.CameraUtils;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
 import com.red7projects.dungeon.input.InputManager;
-import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.map.*;
+import com.red7projects.dungeon.map.MapData;
+import com.red7projects.dungeon.map.MapUtils;
+import com.red7projects.dungeon.map.PathUtils;
+import com.red7projects.dungeon.map.RoomManager;
 import com.red7projects.dungeon.physics.CollisionUtils;
 import com.red7projects.dungeon.physics.box2d.BodyBuilder;
 import com.red7projects.dungeon.physics.box2d.Box2DContactListener;
@@ -42,6 +41,10 @@ import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.screens.MainMenuScreen;
 import com.red7projects.dungeon.screens.ScreenID;
 import com.red7projects.dungeon.ui.HeadsUpDisplay;
+import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.utils.logging.google.AdsController;
+import com.red7projects.dungeon.utils.logging.google.PlayServices;
 
 @SuppressWarnings({"WeakerAccess"})
 //@formatter:off
@@ -58,7 +61,6 @@ public abstract class App extends com.badlogic.gdx.Game
     public BaseRenderer   baseRenderer;
     public GameListener   gameListener;
     public WorldModel     worldModel;
-    public Preferences    preferences;
     public CameraUtils    cameraUtils;
     public MapUtils       mapUtils;
     public MainMenuScreen mainMenuScreen;
@@ -112,7 +114,7 @@ public abstract class App extends com.badlogic.gdx.Game
     {
         int lives;
 
-        if (Developer.isDevMode() && preferences.prefs.getBoolean(Preferences._GOD_MODE))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._GOD_MODE))
         {
             lives = Constants._MAX_LIVES;
         }

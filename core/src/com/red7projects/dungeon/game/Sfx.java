@@ -23,7 +23,7 @@ package com.red7projects.dungeon.game;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
@@ -222,7 +222,7 @@ public class Sfx
         {
             if (getMusicVolume() > 0)
             {
-                if (app.preferences.isEnabled(Preferences._MUSIC_ENABLED) && (music != null) && !music[musicNumber].isPlaying())
+                if (Settings.isEnabled(Settings._MUSIC_ENABLED) && (music != null) && !music[musicNumber].isPlaying())
                 {
                     music[musicNumber].setLooping(looping);
                     music[musicNumber].setVolume(getUsableVolume(volume));
@@ -238,7 +238,7 @@ public class Sfx
     {
         long id = 0;
 
-        if (app.preferences.isEnabled(Preferences._SOUNDS_ENABLED) && soundsLoaded)
+        if (Settings.isEnabled(Settings._SOUNDS_ENABLED) && soundsLoaded)
         {
             if (getFXVolume() > 0)
             {
@@ -270,24 +270,22 @@ public class Sfx
             music[currentTune].setVolume(getUsableVolume(volume));
         }
 
-        app.preferences.prefs.putInteger(Preferences._MUSIC_VOLUME, volume);
-        app.preferences.prefs.flush();
+        Settings.putInt(Settings._MUSIC_VOLUME, volume);
     }
 
     public void setFXVolume(int volume)
     {
-        app.preferences.prefs.putInteger(Preferences._FX_VOLUME, volume);
-        app.preferences.prefs.flush();
+        Settings.putInt(Settings._FX_VOLUME, volume);
     }
 
     public int getMusicVolume()
     {
-        return app.preferences.prefs.getInteger(Preferences._MUSIC_VOLUME);
+        return Settings.getInt(Settings._MUSIC_VOLUME);
     }
 
     public int getFXVolume()
     {
-        return app.preferences.prefs.getInteger(Preferences._FX_VOLUME);
+        return Settings.getInt(Settings._FX_VOLUME);
     }
 
     public float getUsableFxVolume()

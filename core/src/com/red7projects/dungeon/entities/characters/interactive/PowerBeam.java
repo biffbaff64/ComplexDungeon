@@ -20,17 +20,17 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.red7projects.dungeon.entities.objects.Linker;
-import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
+import com.red7projects.dungeon.entities.objects.Linker;
 import com.red7projects.dungeon.game.Actions;
-import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.maths.SimpleVec2F;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class PowerBeam extends GdxSprite implements Linker
 {

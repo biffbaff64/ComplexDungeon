@@ -18,12 +18,12 @@ package com.red7projects.dungeon.entities.managers;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Array;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.assets.GfxAsset;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.characters.interactive.PowerBeam;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.assets.GfxAsset;
 import com.red7projects.dungeon.map.MarkerTile;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -34,20 +34,20 @@ public class PowerBeamManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_LASER_BEAM_HORIZONTAL,
-                    Preferences._DEFAULT_ON,
+                    Settings._DEFAULT_ON,
                     GameAssets._LASER_BEAM_HORIZONTAL_ASSET
                 ),
             new GfxAsset
                 (
                     GraphicID.G_LASER_BEAM_VERTICAL,
-                    Preferences._DEFAULT_ON,
+                    Settings._DEFAULT_ON,
                     GameAssets._LASER_BEAM_VERTICAL_ASSET
                 ),
         };
 
     public PowerBeamManager(App _app)
     {
-        super(GraphicID.G_LASER_BEAM, Preferences._DEFAULT_ON, _app);
+        super(GraphicID.G_LASER_BEAM, Settings._DEFAULT_ON, _app);
     }
 
     @Override

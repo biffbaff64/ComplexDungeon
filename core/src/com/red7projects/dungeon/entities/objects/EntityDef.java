@@ -16,8 +16,8 @@
 
 package com.red7projects.dungeon.entities.objects;
 
-import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.graphics.GraphicID;
+import com.red7projects.dungeon.map.TileID;
 
 public class EntityDef
 {

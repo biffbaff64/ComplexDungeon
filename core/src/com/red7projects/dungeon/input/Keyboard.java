@@ -18,15 +18,14 @@ package com.red7projects.dungeon.input;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.DirectionValue;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.screens.ScreenID;
+import com.red7projects.dungeon.utils.development.Developer;
 
 @SuppressWarnings("WeakerAccess")
 public class Keyboard extends InputAdapter

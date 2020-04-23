@@ -31,16 +31,16 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import com.red7projects.dungeon.utils.ArrayUtils;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.ui.BasicPanel;
+import com.red7projects.dungeon.utils.ArrayUtils;
 import com.red7projects.dungeon.utils.logging.Stats;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.ui.BasicPanel;
 
 import java.util.Locale;
 
@@ -194,7 +194,7 @@ public class DeveloperPanel extends BasicPanel
     private void createButtons(Skin _skin)
     {
         exitButton          = new TextButton("Back", _skin);
-        buttonResetPrefs    = new TextButton("Reset Preferences To Default", _skin);
+        buttonResetPrefs    = new TextButton("Reset Settings To Default", _skin);
         buttonResetHiScores = new TextButton("Reset HiScore Table", _skin);
         buttonResetStats    = new TextButton("Reset Stats Meters", _skin);
         buttonGLProfiler    = new TextButton("GLProfiler Dump", _skin);
@@ -245,11 +245,21 @@ public class DeveloperPanel extends BasicPanel
 
                 buttons[row][column] = new CheckBox("", _skin);
                 buttons[row][column].setHeight(label[column].getHeight());
+
                 CheckBox.CheckBoxStyle style = buttons[row][column].getStyle();
                 style.checkboxOn = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("toggle_on"));
                 style.checkboxOff = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("toggle_off"));
+
                 buttons[row][column].setStyle(style);
-                buttons[row][column].setChecked(app.preferences.isEnabled(devMenu[row][column].prefName));
+
+                if ("".equals(devMenu[row][column].string))
+                {
+                    buttons[row][column].setChecked(false);
+                }
+                else
+                {
+                    buttons[row][column].setChecked(Settings.isEnabled(devMenu[row][column].prefName));
+                }
             }
 
             createCheckBoxListener(row);
@@ -371,8 +381,7 @@ public class DeveloperPanel extends BasicPanel
     {
         if (!com.red7projects.dungeon.utils.development.Developer.isDevMode())
         {
-            app.preferences.prefs.putBoolean(Preferences._MENU_HEAPS, false);
-            app.preferences.prefs.flush();
+            Settings.putBoolean(Settings._MENU_HEAPS, false);
         }
 
         updatePreferences();
@@ -389,20 +398,20 @@ public class DeveloperPanel extends BasicPanel
         {
             for (int column = 0; column < _TABLE_COLUMNS; column++)
             {
-                app.preferences.prefs.putBoolean(devMenu[row][column].prefName, buttons[row][column].isChecked());
+                Settings.putBoolean(devMenu[row][column].prefName, buttons[row][column].isChecked());
             }
         }
 
         glProfilerUpdate();
 
-        app.preferences.prefs.flush();
+        Settings.write();
 
         previousDisableEnemies = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
     }
 
     private void updatePreferencesOnExit()
     {
-        AppConfig.canDrawButtonBoxes = app.preferences.isEnabled(Preferences._BUTTON_BOXES);
+        AppConfig.canDrawButtonBoxes = Settings.isEnabled(Settings._BUTTON_BOXES);
     }
 
     private void glProfilerUpdate()
@@ -450,19 +459,19 @@ public class DeveloperPanel extends BasicPanel
     {
         okToResetPrefs = true;
 
-        app.preferences.setPrefsToDefault();
+        Settings.resetToDefaults();
 
-        app.preferences.prefs.putBoolean(Preferences._DEV_MODE, Developer.isDevMode());
-        app.preferences.prefs.putBoolean(Preferences._GOD_MODE, Developer.isGodMode());
-        app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, app.googleServices.isSignedIn());
+        Settings.putBoolean(Settings._DEV_MODE, Developer.isDevMode());
+        Settings.putBoolean(Settings._GOD_MODE, Developer.isGodMode());
+        Settings.putBoolean(Settings._SIGN_IN_STATUS, app.googleServices.isSignedIn());
 
-        app.preferences.prefs.flush();
+        Settings.write();
 
         for (int row = 0; row < devMenu.length; row++)
         {
             for (int column = 0; column < _TABLE_COLUMNS; column++)
             {
-                boolean isChecked = app.preferences.isEnabled(devMenu[row][column].prefName);
+                boolean isChecked = Settings.isEnabled(devMenu[row][column].prefName);
 
                 buttons[row][column].setChecked(isChecked);
             }
@@ -483,14 +492,14 @@ public class DeveloperPanel extends BasicPanel
 
                 switch (prefName)
                 {
-                    case Preferences._DISABLE_ENEMIES:
+                    case Settings._DISABLE_ENEMIES:
                     {
                         disableEnemiesColumn = column;
                         disableEnemiesRow    = row;
                     }
                     break;
 
-                    case Preferences._GL_PROFILER:
+                    case Settings._GL_PROFILER:
                     {
                         glProfilerColumn = column;
                         glProfilerRow = row;
@@ -509,111 +518,111 @@ public class DeveloperPanel extends BasicPanel
         DMEntry[][] devMenuDefaults =
             {
                 {
-                    new DMEntry("Dev. mode", Preferences._DEV_MODE, false),
+                    new DMEntry("Dev. mode", Settings._DEV_MODE, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Turrets", Preferences._TURRETS, true),
+                    new DMEntry("Turrets", Settings._TURRETS, true),
                 },
                 {
-                    new DMEntry("Invincible", Preferences._GOD_MODE, false),
+                    new DMEntry("Invincible", Settings._GOD_MODE, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Bouncer", Preferences._BOUNCER, true),
-                },
-                {
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Soldiers", Preferences._SOLDIER, true),
-                },
-                {
-                    new DMEntry("Google Sign In", Preferences._PLAY_SERVICES, false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Mystery Chest", Preferences._MYSTERY_CHEST, false),
-                },
-                {
-                    new DMEntry("Achievements", Preferences._ACHIEVEMENTS, false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Spike Ball", Preferences._SPIKE_BALL, true),
-                },
-                {
-                    new DMEntry("Challenges", Preferences._CHALLENGES, false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Button Outlines", Preferences._BUTTON_BOXES, false),
-                    new DMEntry("Spike Block", Preferences._SPIKE_BLOCK, true),
-                },
-                {
-                    new DMEntry("Player", Preferences._PLAYER, false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Sprite Boxes", Preferences._SPRITE_BOXES, false),
-                    new DMEntry("Storm Demon", Preferences._STORM_DEMON, true),
-                },
-                {
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Tile Boxes", Preferences._TILE_BOXES, false),
-                    new DMEntry("Scorpion", Preferences._SCORPION, true),
-                },
-                {
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("Marker Tiles", Preferences._SPAWNPOINTS, false),
-                    new DMEntry("Flame Thrower", Preferences._FLAME_THROWER, true),
+                    new DMEntry("Bouncer", Settings._BOUNCER, true),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Villagers", Preferences._VILLAGER, false),
+                    new DMEntry("Soldiers", Settings._SOLDIER, true),
                 },
                 {
-                    new DMEntry("Box2D Physics", Preferences._BOX2D_PHYSICS, false),
+                    new DMEntry("Google Sign In", Settings._PLAY_SERVICES, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Pickups", Preferences._PICKUPS, false),
+                    new DMEntry("Mystery Chest", Settings._MYSTERY_CHEST, false),
                 },
                 {
-                    new DMEntry("B2D Renderer", Preferences._B2D_RENDERER, false),
+                    new DMEntry("Achievements", Settings._ACHIEVEMENTS, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Prisoners", Preferences._PRISONER, false),
+                    new DMEntry("Spike Ball", Settings._SPIKE_BALL, true),
                 },
                 {
-                    new DMEntry("Use Ashley ECS", Preferences._USING_ASHLEY_ECS, false),
+                    new DMEntry("Challenges", Settings._CHALLENGES, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Demo Scroll", Preferences._SCROLL_DEMO, false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Button Outlines", Settings._BUTTON_BOXES, false),
+                    new DMEntry("Spike Block", Settings._SPIKE_BLOCK, true),
                 },
                 {
-                    new DMEntry("Shader Program", Preferences._SHADER_PROGRAM, false),
+                    new DMEntry("Player", Settings._PLAYER, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Cull Sprites", Preferences._CULL_SPRITES, false),
-                    new DMEntry("", "", false),
-                },
-                {
-                    new DMEntry("GLProfiler", Preferences._GL_PROFILER, false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Sprite Boxes", Settings._SPRITE_BOXES, false),
+                    new DMEntry("Storm Demon", Settings._STORM_DEMON, true),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Disable Menu Screen", Preferences._DISABLE_MENU_SCREEN, false),
+                    new DMEntry("Tile Boxes", Settings._TILE_BOXES, false),
+                    new DMEntry("Scorpion", Settings._SCORPION, true),
+                },
+                {
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Marker Tiles", Settings._SPAWNPOINTS, false),
+                    new DMEntry("Flame Thrower", Settings._FLAME_THROWER, true),
+                },
+                {
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Villagers", Settings._VILLAGER, false),
+                },
+                {
+                    new DMEntry("Box2D Physics", Settings._BOX2D_PHYSICS, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Pickups", Settings._PICKUPS, false),
+                },
+                {
+                    new DMEntry("B2D Renderer", Settings._B2D_RENDERER, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Prisoners", Settings._PRISONER, false),
+                },
+                {
+                    new DMEntry("Use Ashley ECS", Settings._USING_ASHLEY_ECS, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Demo Scroll", Settings._SCROLL_DEMO, false),
+                    new DMEntry("", "", false),
+                },
+                {
+                    new DMEntry("Shader Program", Settings._SHADER_PROGRAM, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Cull Sprites", Settings._CULL_SPRITES, false),
+                    new DMEntry("", "", false),
+                },
+                {
+                    new DMEntry("GLProfiler", Settings._GL_PROFILER, false),
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Disable Enemies", Preferences._DISABLE_ENEMIES, false),
+                    new DMEntry("Disable Menu Screen", Settings._DISABLE_MENU_SCREEN, false),
                     new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Menu Page Heaps", Preferences._MENU_HEAPS, false),
+                    new DMEntry("Disable Enemies", Settings._DISABLE_ENEMIES, false),
+                    new DMEntry("", "", false),
+                },
+                {
+                    new DMEntry("", "", false),
+                    new DMEntry("", "", false),
+                    new DMEntry("Menu Page Heaps", Settings._MENU_HEAPS, false),
                     new DMEntry("", "", false),
                 },
             };
@@ -633,7 +642,7 @@ public class DeveloperPanel extends BasicPanel
             {
                 if (!dmEntry.string.isEmpty())
                 {
-                    Trace.dbg(dmEntry.string + ": " + app.preferences.prefs.getBoolean(dmEntry.prefName));
+                    Trace.dbg(dmEntry.string + ": " + Settings.isEnabled(dmEntry.prefName));
                 }
             }
         }

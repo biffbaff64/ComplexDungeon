@@ -19,10 +19,10 @@ package com.red7projects.dungeon.game;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.ui.SlidePanel;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.ui.MessagePanel;
+import com.red7projects.dungeon.ui.SlidePanel;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.concurrent.TimeUnit;
 

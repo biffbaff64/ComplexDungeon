@@ -23,18 +23,18 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.utils.logging.Meters;
-import com.red7projects.dungeon.utils.logging.Stats;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
 import com.red7projects.dungeon.physics.aabb.CollisionRect;
+import com.red7projects.dungeon.utils.logging.Meters;
+import com.red7projects.dungeon.utils.logging.Stats;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.Locale;
 
@@ -61,12 +61,12 @@ public class DebugRenderer implements Disposable
 
     public static void drawBoxes()
     {
-        if (app.preferences.isEnabled(Preferences._TILE_BOXES))
+        if (Settings.isEnabled(Settings._TILE_BOXES))
         {
             drawTileLayerBoxes();
         }
 
-        if (app.preferences.isEnabled(Preferences._SPRITE_BOXES))
+        if (Settings.isEnabled(Settings._SPRITE_BOXES))
         {
             drawSpriteCollisionBoxes();
         }

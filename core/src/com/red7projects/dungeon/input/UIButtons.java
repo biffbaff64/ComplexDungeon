@@ -18,10 +18,7 @@ package com.red7projects.dungeon.input;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.controllers.PovDirection;
-import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.buttons.Switch;
 
 // TODO: 12/12/2019 - This class confuses me, WHY do i have this?

@@ -20,7 +20,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
@@ -114,7 +114,7 @@ public class Prisoner extends GdxSprite
 
     private void addHelpMeMessage()
     {
-        if (app.preferences.isEnabled(Preferences._SHOW_HINTS))
+        if (Settings.isEnabled(Settings._SHOW_HINTS))
         {
             TextureRegion region = app.assets.getTextAtlas().findRegion(GameAssets._HELP_ME_ASSET);
 

@@ -16,7 +16,6 @@
 
 package com.red7projects.dungeon.input.buttons;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -25,7 +24,6 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.maths.Box;
-import com.red7projects.dungeon.physics.Movement;
 import org.jetbrains.annotations.NotNull;
 
 public class GameButton implements GDXButton, Disposable

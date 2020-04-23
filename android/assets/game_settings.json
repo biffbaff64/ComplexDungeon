@@ -1,5 +1,27 @@
 [
 {
+	"prefName": "default on",
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
+},
+{
+	"prefName": "default off",
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
+},
+{
 	"prefName": "dev mode"
 },
 {
@@ -7,8 +29,14 @@
 },
 {
 	"prefName": "ashley ecs",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "disable enemies"
@@ -32,165 +60,346 @@
 	"prefName": "show debug"
 },
 {
-	"prefName": "game trace"
-},
-{
 	"prefName": "spawn points"
 },
 {
 	"prefName": "menu heaps"
 },
 {
-	"prefName": "disable menu"
+	"prefName": "disable menu",
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "cull sprites",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "shader program",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "using box2d",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "b2d renderer",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "gl profiler",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "installed",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "show hints",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "vibrations",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "music enabled",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "sound enabled",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "fx volume",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Integer",
+		"value": 0
+	},
+	"defaultState": {
+		"class": "java.lang.Integer",
+		"value": 6
+	}
 },
 {
 	"prefName": "music volume",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Integer",
+		"value": 0
+	},
+	"defaultState": {
+		"class": "java.lang.Integer",
+		"value": 4
+	}
 },
 {
 	"prefName": "play services",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "achievements",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "challenges",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "sign in status",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "player",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "prisoner",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "villager",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "teleporter",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "pickups",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "mystery chest",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "storm demon",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "bouncer",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "spike ball",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "spike block",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "scorpion",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "soldier",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "flame thrower",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 },
 {
 	"prefName": "turrets",
-	"state": true,
-	"defaultState": true
+	"state": {
+		"class": "java.lang.Boolean",
+		"value": true
+	},
+	"defaultState": {
+		"class": "java.lang.Boolean",
+		"value": true
+	}
 }
 ]

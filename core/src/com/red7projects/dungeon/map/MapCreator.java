@@ -24,8 +24,6 @@ package com.red7projects.dungeon.map;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
-import com.red7projects.dungeon.map.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
@@ -35,7 +33,8 @@ import com.red7projects.dungeon.entities.objects.EntityDef;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
+import com.red7projects.dungeon.map.tiled.objects.TiledMapTileMapObject;
 import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
@@ -44,6 +43,7 @@ import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
 import com.red7projects.dungeon.physics.aabb.PolygonCollisionObject;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public class MapCreator

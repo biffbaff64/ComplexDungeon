@@ -16,11 +16,11 @@
 
 package com.red7projects.dungeon.entities.systems;
 
-import com.red7projects.dungeon.entities.characters.EnemyBullet;
-import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.entities.characters.EnemyBullet;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
+import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 

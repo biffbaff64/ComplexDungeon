@@ -18,11 +18,11 @@ package com.red7projects.dungeon.entities.objects;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("NonConstantFieldWithUpperCaseName")
 //@formatter:off

@@ -20,7 +20,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.entities.Entities;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.Decoration;

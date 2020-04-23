@@ -17,7 +17,6 @@
 package com.red7projects.dungeon.entities.hero;
 
 import com.badlogic.gdx.utils.Disposable;
-import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -25,6 +24,7 @@ import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
+import com.red7projects.dungeon.utils.development.Developer;
 
 @SuppressWarnings("WeakerAccess")
 public class CollisionHandler implements CollisionListener, Disposable

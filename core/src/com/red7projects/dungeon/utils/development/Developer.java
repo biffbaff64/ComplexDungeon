@@ -17,7 +17,7 @@
 package com.red7projects.dungeon.utils.development;
 
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 
 public abstract class Developer
@@ -47,6 +47,6 @@ public abstract class Developer
 
     public static boolean isGodMode()
     {
-        return app.preferences.prefs.getBoolean(Preferences._GOD_MODE);
+        return Settings.isEnabled(Settings._GOD_MODE);
     }
 }

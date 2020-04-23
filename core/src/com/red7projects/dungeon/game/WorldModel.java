@@ -22,12 +22,12 @@ import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.physics.box2d.BodyBuilder;
 import com.red7projects.dungeon.physics.box2d.Box2DContactListener;
 import com.red7projects.dungeon.physics.box2d.Box2DEntityHelper;
+import com.red7projects.dungeon.utils.development.Developer;
 
 @SuppressWarnings("WeakerAccess")
 //@formatter:off
@@ -41,10 +41,6 @@ public class WorldModel
     public WorldModel(App _app)
     {
         this.app = _app;
-
-        // TODO: 16/02/2020 - ?????
-        app.preferences.disable(Preferences._B2D_RENDERER);
-        app.preferences.disable(Preferences._BOX2D_PHYSICS);
 
         Box2D.init();
 
@@ -78,7 +74,7 @@ public class WorldModel
 
     public void setDebugMatrix()
     {
-        if (Developer.isDevMode() && app.preferences.isEnabled(Preferences._B2D_RENDERER))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._B2D_RENDERER))
         {
             debugMatrix = app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
         }
@@ -89,7 +85,7 @@ public class WorldModel
         if ((b2dr != null)
             && (app.box2DWorld != null)
             && (debugMatrix != null)
-            && app.preferences.isEnabled(Preferences._B2D_RENDERER))
+            && Settings.isEnabled(Settings._B2D_RENDERER))
         {
             b2dr.render(app.box2DWorld, debugMatrix);
         }

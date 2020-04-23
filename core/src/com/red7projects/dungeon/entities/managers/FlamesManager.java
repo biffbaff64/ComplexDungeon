@@ -19,7 +19,7 @@ package com.red7projects.dungeon.entities.managers;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.FlameThrower;
 import com.red7projects.dungeon.game.App;
@@ -33,7 +33,7 @@ public class FlamesManager extends GenericEntityManager
 {
     public FlamesManager(final App _app)
     {
-        super(GraphicID.G_FLAME_THROWER, Preferences._FLAME_THROWER, _app);
+        super(GraphicID.G_FLAME_THROWER, Settings._FLAME_THROWER, _app);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class FlamesManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.preferences.isEnabled((Preferences._FLAME_THROWER)))
+        if (Settings.isEnabled((Settings._FLAME_THROWER)))
         {
             graphicID = GraphicID.G_FLAME_THROWER;
 

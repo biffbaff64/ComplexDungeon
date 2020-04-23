@@ -31,7 +31,6 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Constants;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.map.MarkerTile;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.maths.SimpleVec3F;
@@ -40,6 +39,7 @@ import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.physics.aabb.AABB;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
 import com.red7projects.dungeon.types.XYSetF;
+import com.red7projects.dungeon.utils.logging.StopWatch;
 
 public class GdxSprite implements GameSprite, Linker, Disposable
 {

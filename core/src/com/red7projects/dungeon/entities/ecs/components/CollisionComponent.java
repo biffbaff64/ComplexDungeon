@@ -1,8 +1,8 @@
 package com.red7projects.dungeon.entities.ecs.components;
 
-import com.red7projects.dungeon.entities.ecs.ashley.core.Component;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.red7projects.dungeon.entities.ecs.ashley.core.Component;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.physics.aabb.AABB;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;

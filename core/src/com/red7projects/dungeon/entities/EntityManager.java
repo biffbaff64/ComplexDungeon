@@ -18,8 +18,7 @@ package com.red7projects.dungeon.entities;
 
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.components.EntityManagerComponent;
 import com.red7projects.dungeon.entities.ecs.ashley.core.Engine;
 import com.red7projects.dungeon.entities.managers.*;
@@ -28,8 +27,9 @@ import com.red7projects.dungeon.entities.systems.RenderSystem;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.physics.aabb.AABBData;
+import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings({"WeakerAccess"})
 //@formatter:off
@@ -128,7 +128,7 @@ public class EntityManager implements Disposable
             // Main Player, updated after all other entities.
             // Updated last to allow for possible reacting to
             // other entities actions.
-            if (!app.preferences.isEnabled(Preferences._SCROLL_DEMO))
+            if (!Settings.isEnabled(Settings._SCROLL_DEMO))
             {
                 if (_playerReady
                     && app.getPlayer().isUpdatable

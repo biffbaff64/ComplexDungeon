@@ -21,12 +21,12 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.assets.GfxAsset;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityStats;
-import com.red7projects.dungeon.entities.characters.interactive.FloatingPlatform;
 import com.red7projects.dungeon.entities.characters.LoopBlock;
 import com.red7projects.dungeon.entities.characters.SpikeBall;
 import com.red7projects.dungeon.entities.characters.SpikeBlock;
+import com.red7projects.dungeon.entities.characters.interactive.FloatingPlatform;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;
@@ -39,7 +39,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_SPIKE_BALL,
-                    Preferences._SPIKE_BALL,
+                    Settings._SPIKE_BALL,
                     GameAssets._SPIKE_BALL_1_ASSET,
                     GameAssets._SPIKE_BALL_FRAMES
                 ),
@@ -47,7 +47,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_SPIKE_BLOCK_HORIZONTAL,
-                    Preferences._SPIKE_BLOCK,
+                    Settings._SPIKE_BLOCK,
                     GameAssets._SPIKE_BLOCK_ASSET,
                     GameAssets._SPIKE_BLOCK_HORIZONTAL_FRAMES
                 ),
@@ -55,7 +55,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_SPIKE_BLOCK_VERTICAL,
-                    Preferences._SPIKE_BLOCK,
+                    Settings._SPIKE_BLOCK,
                     GameAssets._SPIKE_BLOCK_VERTICAL_ASSET,
                     GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES
                 ),
@@ -63,7 +63,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_LOOP_BLOCK_HORIZONTAL,
-                    Preferences._SPIKE_BLOCK,
+                    Settings._SPIKE_BLOCK,
                     GameAssets._LOOP_BLOCK_ASSET,
                     GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES
                 ),
@@ -71,7 +71,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_LOOP_BLOCK_VERTICAL,
-                    Preferences._SPIKE_BLOCK,
+                    Settings._SPIKE_BLOCK,
                     GameAssets._LOOP_BLOCK_ASSET,
                     GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES
                 ),
@@ -79,7 +79,7 @@ public class BlocksManager extends GenericEntityManager
             new GfxAsset
                 (
                     GraphicID.G_FLOATING_PLATFORM,
-                    Preferences._DEFAULT_ON,
+                    Settings._DEFAULT_ON,
                     GameAssets._FLOATING_PLATFORM_ASSET,
                     GameAssets._FLOATING_PLATFORM_FRAMES
                 ),
@@ -102,7 +102,7 @@ public class BlocksManager extends GenericEntityManager
             Array<MarkerTile> tiles = app.mapUtils.findMultiTiles(graphicID);
 
             if (app.entityUtils.canUpdate(graphicID)
-                && app.preferences.isEnabled(gfxAsset.preference)
+                && Settings.isEnabled(gfxAsset.preference)
                 && (tiles.size > 0))
             {
                 for (MarkerTile tile : tiles)

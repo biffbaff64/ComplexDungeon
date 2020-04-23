@@ -23,18 +23,18 @@ package com.red7projects.dungeon.graphics.renderers;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.red7projects.dungeon.map.tiled.tiles.AnimatedTiledMapTile;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.graphics.camera.Zoom;
+import com.red7projects.dungeon.map.tiled.tiles.AnimatedTiledMapTile;
 import com.red7projects.dungeon.screens.ScreenID;
+import com.red7projects.dungeon.utils.development.Developer;
 
 public class BaseRenderer implements Disposable
 {
@@ -106,7 +106,7 @@ public class BaseRenderer implements Disposable
         {
             if ((app.getPlayer() != null)
                 && app.mainGameScreen.getGameState().after(StateID._STATE_SETUP)
-                && !app.preferences.isEnabled(Preferences._SCROLL_DEMO))
+                && !Settings.isEnabled(Settings._SCROLL_DEMO))
             {
                 app.mapUtils.positionAt
                     (
@@ -189,7 +189,7 @@ public class BaseRenderer implements Disposable
                     );
             }
 
-            if (!app.preferences.isEnabled(Preferences._USING_ASHLEY_ECS))
+            if (!Settings.isEnabled(Settings._USING_ASHLEY_ECS))
             {
                 if (!AppConfig.developerPanelActive)
                 {
@@ -215,7 +215,7 @@ public class BaseRenderer implements Disposable
             app.stage.draw();
         }
 
-        if (app.preferences.isEnabled(Preferences._BOX2D_PHYSICS))
+        if (Settings.isEnabled(Settings._BOX2D_PHYSICS))
         {
             app.worldModel.drawDebugMatrix();
         }
@@ -225,7 +225,7 @@ public class BaseRenderer implements Disposable
     {
         if (Developer.isDevMode())
         {
-            if (app.preferences.isEnabled(Preferences._SPAWNPOINTS))
+            if (Settings.isEnabled(Settings._SPAWNPOINTS))
             {
                 app.mapData.mapRenderer.renderTileLayer(app.mapData.markerTilesLayer);
             }

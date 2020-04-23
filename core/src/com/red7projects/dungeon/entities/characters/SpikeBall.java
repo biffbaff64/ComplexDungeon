@@ -18,15 +18,15 @@ package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.game.Actions;
+import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
+import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.physics.Movement;
 
 import java.util.concurrent.TimeUnit;
 

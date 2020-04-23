@@ -88,15 +88,15 @@ public class GoogleServices implements PlayServices
         {
             Trace.__FILE_FUNC("GPGS: signInResult: PASS:");
 
-            app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, true);
-            app.preferences.prefs.flush();
+            Settings.putBoolean(Settings._SIGN_IN_STATUS, true);
+            Settings.flush();
         }
         else
         {
             Trace.__FILE_FUNC("GPGS: signInResult: FAIL:");
 
-            app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, false);
-            app.preferences.prefs.flush();
+            Settings.putBoolean(Settings._SIGN_IN_STATUS, false);
+            Settings.flush();
         }
 
         Trace.__FILE_FUNC("GPGS: " + GoogleSignIn.hasPermissions(GoogleSignIn.getLastSignedInAccount(androidLauncher), Games.SCOPE_GAMES_LITE));
@@ -136,8 +136,8 @@ public class GoogleServices implements PlayServices
                         {
                             Trace.__FILE_FUNC("GPGS: signInResult: PASS:");
 
-                            app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, true);
-                            app.preferences.prefs.flush();
+                            Settings.putBoolean(Settings._SIGN_IN_STATUS, true);
+                            Settings.flush();
                         });
             }
         }
@@ -166,7 +166,7 @@ public class GoogleServices implements PlayServices
     @Override
     public boolean isEnabled()
     {
-        return app.preferences.prefs.getBoolean(Preferences._PLAY_SERVICES);
+        return Settings.getBoolean(Settings._PLAY_SERVICES);
     }
 
     void onActivityResult(int requestCode, Intent data)

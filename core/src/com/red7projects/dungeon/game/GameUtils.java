@@ -20,12 +20,12 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.entities.EntityManager;
 import com.red7projects.dungeon.entities.EntityUtils;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.map.MapCreator;
 import com.red7projects.dungeon.map.PathUtils;
 import com.red7projects.dungeon.physics.CollisionUtils;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.ui.HeadsUpDisplay;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class GameUtils
@@ -95,6 +95,7 @@ public class GameUtils
     {
         Trace.__FILE_FUNC_WithDivider();
         Trace.dbg("Game Level: " + app.getLevel());
+        Trace.divider();
         Trace.dbg("firstTime: " + firstTime);
         Trace.dbg("isRestarting: " + app.gameProgress.isRestarting);
         Trace.dbg("levelCompleted: " + app.gameProgress.levelCompleted);

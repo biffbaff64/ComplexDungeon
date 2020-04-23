@@ -21,7 +21,6 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.ui.SlidePanel;
-import com.red7projects.dungeon.utils.logging.Trace;
 
 public class XButtonActions
 {

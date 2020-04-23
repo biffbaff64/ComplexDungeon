@@ -17,11 +17,11 @@
 package com.red7projects.dungeon.entities.managers;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.red7projects.dungeon.entities.characters.Explosion;
-import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.entities.characters.Explosion;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
+import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 

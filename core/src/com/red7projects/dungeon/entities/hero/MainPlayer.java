@@ -21,7 +21,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.managers.PlayerBulletManager;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
@@ -31,15 +31,15 @@ import com.red7projects.dungeon.game.Constants;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.utils.logging.Meters;
-import com.red7projects.dungeon.utils.logging.Stats;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.map.Room;
 import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.physics.DirectionAnim;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.physics.aabb.CollisionRect;
+import com.red7projects.dungeon.utils.logging.Meters;
+import com.red7projects.dungeon.utils.logging.Stats;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.concurrent.TimeUnit;
 
@@ -541,7 +541,7 @@ public class MainPlayer extends GdxSprite
         viewBox.width  = (int) _VIEWBOX_WIDTH;
         viewBox.height = (int) _VIEWBOX_HEIGHT;
 
-        if (app.preferences.isEnabled((Preferences._SPAWNPOINTS)))
+        if (Settings.isEnabled((Settings._SPAWNPOINTS)))
         {
             tileRectangle.x      = (((collisionObject.rectangle.x + (frameWidth / 2)) / Gfx.getTileWidth()));
             tileRectangle.y      = ((collisionObject.rectangle.y - Gfx.getTileHeight()) / Gfx.getTileHeight());
@@ -558,11 +558,13 @@ public class MainPlayer extends GdxSprite
     {
         if (localIsDrawable)
         {
+            Trace.__FILE_LINE__();
             super.draw(spriteBatch);
         }
 
         if (getSpriteAction() == Actions._SPAWNING)
         {
+            Trace.__FILE_LINE__();
             spriteBatch.draw
                 (
                     app.entityUtils.getKeyFrame(altAnim, elapsedAltAnimTime, false),
@@ -689,7 +691,7 @@ public class MainPlayer extends GdxSprite
     @SuppressWarnings("unused")
     public void hurt(GraphicID spriteHittingGid)
     {
-        if (!app.preferences.prefs.getBoolean(Preferences._GOD_MODE))
+        if (!Settings.getBoolean(Settings._GOD_MODE))
         {
             if (!isHurting && (getSpriteAction() != Actions._HURT))
             {
@@ -703,7 +705,7 @@ public class MainPlayer extends GdxSprite
 
     public void kill()
     {
-        if (!app.preferences.prefs.getBoolean(Preferences._GOD_MODE))
+        if (!Settings.getBoolean(Settings._GOD_MODE))
         {
             strength = 0;
         }

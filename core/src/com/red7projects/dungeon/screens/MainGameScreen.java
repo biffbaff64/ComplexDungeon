@@ -17,13 +17,13 @@
 package com.red7projects.dungeon.screens;
 
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.*;
 import com.red7projects.dungeon.graphics.camera.Shake;
+import com.red7projects.dungeon.ui.GameCompletedPanel;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.ui.GameCompletedPanel;
 
 @SuppressWarnings("WeakerAccess")
 //@formatter:off
@@ -71,7 +71,6 @@ public class MainGameScreen extends AbstractBaseScreen
             Trace.__FILE_FUNC("NEW GAME:");
             Trace.__FILE_FUNC("_DEVMODE: " + Developer.isDevMode());
             Trace.__FILE_FUNC("_GODMODE: " + Developer.isGodMode());
-            Trace.__FILE_FUNC("prefs : " + app.preferences.prefs);
             Trace.divider();
 
             endGameManager  = new EndGameManager(app);
@@ -84,7 +83,9 @@ public class MainGameScreen extends AbstractBaseScreen
             gameState.set(StateID._STATE_SETUP);
         }
 
-        Shake.setAllowed(app.preferences.isEnabled(Preferences._VIBRATIONS));
+        app.inputManager.virtualJoystick.show();
+
+        Shake.setAllowed(Settings.isEnabled(Settings._VIBRATIONS));
     }
 
     /**
@@ -156,7 +157,7 @@ public class MainGameScreen extends AbstractBaseScreen
 
     public void draw()
     {
-        if (!app.preferences.isEnabled(Preferences._USING_ASHLEY_ECS))
+        if (!Settings.isEnabled(Settings._USING_ASHLEY_ECS))
         {
             app.entityManager.drawSprites();
         }

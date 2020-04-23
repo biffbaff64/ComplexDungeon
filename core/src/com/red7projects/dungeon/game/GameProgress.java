@@ -17,9 +17,8 @@
 package com.red7projects.dungeon.game;
 
 import com.badlogic.gdx.utils.Disposable;
-import com.badlogic.gdx.utils.IntArray;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.types.Item;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 //@formatter:off

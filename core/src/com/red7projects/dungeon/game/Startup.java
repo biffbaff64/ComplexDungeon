@@ -21,21 +21,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.red7projects.dungeon.assets.AssetLoader;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
 import com.red7projects.dungeon.config.Settings;
-import com.red7projects.dungeon.utils.development.DebugRenderer;
-import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.entities.EntityData;
 import com.red7projects.dungeon.graphics.CameraUtils;
 import com.red7projects.dungeon.graphics.camera.Shake;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
 import com.red7projects.dungeon.input.InputManager;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.map.MapData;
 import com.red7projects.dungeon.map.MapUtils;
 import com.red7projects.dungeon.map.RoomManager;
 import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.screens.MainMenuScreen;
+import com.red7projects.dungeon.utils.development.DebugRenderer;
+import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 //@formatter:off
 public class Startup
@@ -58,7 +57,6 @@ public class Startup
 
         Settings.initialise();
 
-        app.preferences = new Preferences();
         app.assets      = new AssetLoader();
         app.spriteBatch = new SpriteBatch();
 
@@ -96,7 +94,7 @@ public class Startup
 
     public void close()
     {
-        if (Developer.isDevMode() && app.preferences.isEnabled(Preferences._DISABLE_MENU_SCREEN))
+        if (Developer.isDevMode() && Settings.isEnabled(Settings._DISABLE_MENU_SCREEN))
         {
             app.setScreen(app.mainGameScreen);
         }

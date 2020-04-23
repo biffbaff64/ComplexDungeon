@@ -21,16 +21,19 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.graphics.FontUtils;
+import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.utils.logging.Meters;
 import com.red7projects.dungeon.utils.logging.Stats;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.graphics.FontUtils;
-import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.graphics.Gfx;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class StatsPanel extends BasicPanel

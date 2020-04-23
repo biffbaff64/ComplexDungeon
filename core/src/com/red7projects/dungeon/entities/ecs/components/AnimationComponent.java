@@ -1,8 +1,8 @@
 package com.red7projects.dungeon.entities.ecs.components;
 
-import com.red7projects.dungeon.entities.ecs.ashley.core.Component;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.red7projects.dungeon.entities.ecs.ashley.core.Component;
 
 public class AnimationComponent implements Component
 {

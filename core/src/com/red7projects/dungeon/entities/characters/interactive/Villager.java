@@ -17,16 +17,15 @@
 package com.red7projects.dungeon.entities.characters.interactive;
 
 import com.badlogic.gdx.Gdx;
-import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.game.StateID;
-import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
-import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.physics.Proximity;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class Villager extends GdxSprite
 {

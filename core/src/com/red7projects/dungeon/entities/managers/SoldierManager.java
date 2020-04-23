@@ -19,7 +19,7 @@ package com.red7projects.dungeon.entities.managers;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityStats;
 import com.red7projects.dungeon.entities.characters.Soldier;
 import com.red7projects.dungeon.game.App;
@@ -51,7 +51,7 @@ public class SoldierManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.preferences.isEnabled(Preferences._SOLDIER))
+        if (Settings.isEnabled(Settings._SOLDIER))
         {
             graphicID = GraphicID.G_SOLDIER;
 

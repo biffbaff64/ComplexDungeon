@@ -16,7 +16,7 @@
 
 package com.red7projects.dungeon.utils.logging.google;
 
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -41,12 +41,11 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            if (!app.preferences.prefs.getBoolean(Preferences._SIGN_IN_STATUS))
+            if (!Settings.isEnabled(Settings._SIGN_IN_STATUS))
             {
                 com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
-                app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, true);
-                app.preferences.prefs.flush();
+                Settings.putBoolean(Settings._SIGN_IN_STATUS, true);
             }
         }
     }
@@ -69,21 +68,20 @@ public class PlayServicesDesktop implements PlayServices
         {
             com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
-            app.preferences.prefs.putBoolean(Preferences._SIGN_IN_STATUS, false);
-            app.preferences.prefs.flush();
+            Settings.putBoolean(Settings._SIGN_IN_STATUS, false);
         }
     }
 
     @Override
     public boolean isSignedIn()
     {
-        return app.preferences.prefs.getBoolean(Preferences._SIGN_IN_STATUS);
+        return Settings.isEnabled(Settings._SIGN_IN_STATUS);
     }
 
     @Override
     public boolean isEnabled()
     {
-        return app.preferences.prefs.getBoolean(Preferences._PLAY_SERVICES);
+        return Settings.isEnabled(Settings._PLAY_SERVICES);
     }
 
     @Override

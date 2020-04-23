@@ -17,8 +17,8 @@
 package com.red7projects.dungeon.map;
 
 import com.red7projects.dungeon.entities.characters.interactive.JailKey;
-import com.red7projects.dungeon.utils.logging.Trace;
 import com.red7projects.dungeon.maths.SimpleVec2F;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")
 public class Room

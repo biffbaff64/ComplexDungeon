@@ -17,11 +17,10 @@
 package com.red7projects.dungeon.input;
 
 import com.red7projects.dungeon.config.AppConfig;
+import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.utils.development.Developer;
-import com.red7projects.dungeon.entities.objects.GdxSprite;
-import com.red7projects.dungeon.game.App;
 
 public class TouchScreen
 {

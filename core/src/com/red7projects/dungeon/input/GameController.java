@@ -16,12 +16,18 @@
 
 package com.red7projects.dungeon.input;
 
-import com.badlogic.gdx.controllers.*;
+import com.badlogic.gdx.controllers.Controller;
+import com.badlogic.gdx.controllers.ControllerListener;
+import com.badlogic.gdx.controllers.Controllers;
+import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.input.objects.*;
+import com.red7projects.dungeon.input.objects.ControllerMap;
+import com.red7projects.dungeon.input.objects.ControllerPos;
+import com.red7projects.dungeon.input.objects.ControllerType;
+import com.red7projects.dungeon.input.objects.DefaultControllerMap;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 @SuppressWarnings("WeakerAccess")

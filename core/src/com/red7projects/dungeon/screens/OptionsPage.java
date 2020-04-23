@@ -29,15 +29,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Preferences;
-import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.utils.development.DeveloperTests;
-import com.red7projects.dungeon.utils.tests.RoomTests;
 import com.red7projects.dungeon.ui.*;
+import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.development.DeveloperTests;
 
 @SuppressWarnings("WeakerAccess")
 public class OptionsPage implements UIPage
@@ -334,25 +333,13 @@ public class OptionsPage implements UIPage
 
     private void updateSettings()
     {
-        app.preferences.prefs.putBoolean(Preferences._MUSIC_ENABLED, (Sfx.inst().getMusicVolume() != Sfx.inst()._SILENT));
-        app.preferences.prefs.putBoolean(Preferences._SOUNDS_ENABLED, (Sfx.inst().getFXVolume() != Sfx.inst()._SILENT));
+        Settings.putBoolean(Settings._MUSIC_ENABLED, (Sfx.inst().getMusicVolume() != Sfx.inst()._SILENT));
+        Settings.putBoolean(Settings._SOUNDS_ENABLED, (Sfx.inst().getFXVolume() != Sfx.inst()._SILENT));
 
         Sfx.inst().setMusicVolume((int) musicSlider.getValue());
         Sfx.inst().setFXVolume((int) fxSlider.getValue());
 
-//        app.preferences.prefs.putBoolean(Preferences._ON_SCREEN_CONTROLLER, (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop()));
-//        app.preferences.prefs.putBoolean(Preferences._SHOW_GAME_BUTTONS, (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop()));
-//        app.preferences.prefs.putBoolean(Preferences._EXTERNAL_CONTROLLER, AppConfig.isDesktopApp());
-
-        app.preferences.prefs.flush();
-
-//        if (app.preferences.isEnabled(Preferences._EXTERNAL_CONTROLLER))
-//        {
-//            if (!AppConfig.controllersFitted && (app.inputManager.getGameController() != null))
-//            {
-//                app.inputManager.getGameController().setup();
-//            }
-//        }
+        Settings.write();
     }
 
     private void updateSettingsOnEntry()
