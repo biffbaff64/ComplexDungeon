@@ -32,7 +32,7 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
-import com.red7projects.dungeon.graphics.FontUtils;
+import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.ui.*;
 import com.red7projects.dungeon.utils.development.Developer;

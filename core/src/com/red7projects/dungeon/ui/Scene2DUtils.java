@@ -23,7 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.FontUtils;
+import com.red7projects.dungeon.utils.FontUtils;
 
 // TODO: 28/10/2019 - Merge with UIUtils
 

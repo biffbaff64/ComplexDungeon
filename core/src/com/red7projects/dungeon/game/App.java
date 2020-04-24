@@ -26,7 +26,7 @@ import com.red7projects.dungeon.entities.EntityData;
 import com.red7projects.dungeon.entities.EntityManager;
 import com.red7projects.dungeon.entities.EntityUtils;
 import com.red7projects.dungeon.entities.hero.MainPlayer;
-import com.red7projects.dungeon.graphics.CameraUtils;
+import com.red7projects.dungeon.graphics.camera.CameraUtils;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
 import com.red7projects.dungeon.input.InputManager;
 import com.red7projects.dungeon.map.MapData;

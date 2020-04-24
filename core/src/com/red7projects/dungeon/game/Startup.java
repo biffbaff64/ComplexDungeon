@@ -23,7 +23,7 @@ import com.red7projects.dungeon.assets.AssetLoader;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityData;
-import com.red7projects.dungeon.graphics.CameraUtils;
+import com.red7projects.dungeon.graphics.camera.CameraUtils;
 import com.red7projects.dungeon.graphics.camera.Shake;
 import com.red7projects.dungeon.graphics.renderers.BaseRenderer;
 import com.red7projects.dungeon.input.InputManager;

@@ -29,7 +29,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.FontUtils;
+import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.utils.logging.Meters;
 import com.red7projects.dungeon.utils.logging.Stats;

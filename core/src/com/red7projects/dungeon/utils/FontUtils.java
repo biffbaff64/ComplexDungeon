@@ -19,7 +19,7 @@
  *
  */
 
-package com.red7projects.dungeon.graphics;
+package com.red7projects.dungeon.utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

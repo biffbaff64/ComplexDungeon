@@ -27,7 +27,7 @@ import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.FontUtils;
+import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;

@@ -17,9 +17,10 @@
  *
  */
 
-package com.red7projects.dungeon.graphics;
+package com.red7projects.dungeon.graphics.camera;
 
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.graphics.Gfx;
 
 public class CameraUtils
 {
