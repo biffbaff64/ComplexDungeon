@@ -47,6 +47,6 @@ public abstract class Developer
 
     public static boolean isGodMode()
     {
-        return Settings.isEnabled(Settings._GOD_MODE);
+        return app.settings.isEnabled(Settings._GOD_MODE);
     }
 }

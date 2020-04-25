@@ -114,7 +114,7 @@ public class Prisoner extends GdxSprite
 
     private void addHelpMeMessage()
     {
-        if (Settings.isEnabled(Settings._SHOW_HINTS))
+        if (app.settings.isEnabled(Settings._SHOW_HINTS))
         {
             TextureRegion region = app.assets.getTextAtlas().findRegion(GameAssets._HELP_ME_ASSET);
 

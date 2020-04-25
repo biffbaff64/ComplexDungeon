@@ -61,12 +61,12 @@ public class DebugRenderer implements Disposable
 
     public static void drawBoxes()
     {
-        if (Settings.isEnabled(Settings._TILE_BOXES))
+        if (app.settings.isEnabled(Settings._TILE_BOXES))
         {
             drawTileLayerBoxes();
         }
 
-        if (Settings.isEnabled(Settings._SPRITE_BOXES))
+        if (app.settings.isEnabled(Settings._SPRITE_BOXES))
         {
             drawSpriteCollisionBoxes();
         }

@@ -55,7 +55,8 @@ public class Startup
         Trace.openLogfile(AppConfig._DEBUG_LOG_FILE);
         Trace.__FILE_FUNC_WithDivider();
 
-        Settings.initialise();
+        app.settings = new Settings();
+        app.settings.initialise();
 
         app.assets      = new AssetLoader();
         app.spriteBatch = new SpriteBatch();
@@ -94,7 +95,7 @@ public class Startup
 
     public void close()
     {
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._DISABLE_MENU_SCREEN))
+        if (Developer.isDevMode() && app.settings.isEnabled(Settings._DISABLE_MENU_SCREEN))
         {
             app.setScreen(app.mainGameScreen);
         }

@@ -106,7 +106,7 @@ public class BaseRenderer implements Disposable
         {
             if ((app.getPlayer() != null)
                 && app.mainGameScreen.getGameState().after(StateID._STATE_SETUP)
-                && !Settings.isEnabled(Settings._SCROLL_DEMO))
+                && !app.settings.isEnabled(Settings._SCROLL_DEMO))
             {
                 app.mapUtils.positionAt
                     (
@@ -189,7 +189,7 @@ public class BaseRenderer implements Disposable
                     );
             }
 
-            if (!Settings.isEnabled(Settings._USING_ASHLEY_ECS))
+            if (!app.settings.isEnabled(Settings._USING_ASHLEY_ECS))
             {
                 if (!AppConfig.developerPanelActive)
                 {
@@ -215,7 +215,7 @@ public class BaseRenderer implements Disposable
             app.stage.draw();
         }
 
-        if (Settings.isEnabled(Settings._BOX2D_PHYSICS))
+        if (app.settings.isEnabled(Settings._BOX2D_PHYSICS))
         {
             app.worldModel.drawDebugMatrix();
         }
@@ -225,7 +225,7 @@ public class BaseRenderer implements Disposable
     {
         if (Developer.isDevMode())
         {
-            if (Settings.isEnabled(Settings._SPAWNPOINTS))
+            if (app.settings.isEnabled(Settings._SPAWNPOINTS))
             {
                 app.mapData.mapRenderer.renderTileLayer(app.mapData.markerTilesLayer);
             }

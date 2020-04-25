@@ -83,18 +83,18 @@ public class HeadsUpDisplay implements Disposable
         {
             {  80, 1640,  100,  240,  240},             // Joystick
 
-            {2138,   44,  161,   96,   96},             // X
-            {2256,   44,  273,   96,   96},             // Y
-            {2376,   44,  161,   96,   96},             // B (Attack)
-            {2256,  158,   48,   96,   96},             // A (Action)
+            {2138,   44,  171,   96,   96},             // X
+            {2256,   44,  283,   96,   96},             // Y
+            {2376,   44,  171,   96,   96},             // B (Attack)
+            {2256,  158,   58,   96,   96},             // A (Action)
 
-            {2387, 2387, 1264,   66,   66},             // Pause Button
-            {  40,   40,  100,   66,   66},             // Dev Options
+            {2358, 2358, 1261,   66,   66},             // Pause Button
+            {2442, 2442, 1151,   66,   66},             // Dev Options
 
             //
             // Y is distance from the TOP of the screen
-            {1906,  758,   40,    0,    0},             // Coins total
-            {1906,  758,  121,    0,    0},             // Gems total
+            {1920, 1920,   40,    0,    0},             // Coins total
+            {1920, 1920,  121,    0,    0},             // Gems total
             { 888,  888,   80,    0,    0},             // Life bar
             { 888,  888,  154,    0,    0},             // Health bar
 
@@ -220,7 +220,7 @@ public class HeadsUpDisplay implements Disposable
         midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 30);
         smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
 
-        AppConfig.canDrawButtonBoxes = Settings.isEnabled(Settings._BUTTON_BOXES);
+        AppConfig.canDrawButtonBoxes = app.settings.isEnabled(Settings._BUTTON_BOXES);
         AppConfig.hudExists          = true;
 
         hudStateID = StateID._STATE_PANEL_START;
@@ -519,7 +519,6 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : ").append(app.getRoomSystem().getActiveRoomName());
             sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
             sb.append(" : POS:  ").append(app.getPlayer().getPosition().toString());
-            sb.append(" : localIsDrawable:  ").append(app.getPlayer().localIsDrawable);
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
         }

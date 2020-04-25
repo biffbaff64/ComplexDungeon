@@ -121,8 +121,8 @@ public abstract class AppConfig
             virtualControllerPos = ControllerPos._LEFT;
         }
 
-        isUsingBOX2DPhysics = Settings.isEnabled(Settings._BOX2D_PHYSICS);
-        isUsingAshleyECS    = Settings.isEnabled(Settings._USING_ASHLEY_ECS);
+        isUsingBOX2DPhysics = app.settings.isEnabled(Settings._BOX2D_PHYSICS);
+        isUsingAshleyECS    = app.settings.isEnabled(Settings._USING_ASHLEY_ECS);
 
         if (Developer.isDevMode())
         {
@@ -156,13 +156,13 @@ public abstract class AppConfig
     {
         Trace.__FILE_FUNC();
 
-        if (!Settings.isEnabled(Settings._INSTALLED))
+        if (!app.settings.isEnabled(Settings._INSTALLED))
         {
             Trace.dbg("FRESH INSTALL.");
 
-            Settings.resetToDefaults();
+            app.settings.resetToDefaults();
             Stats.resetAllMeters();
-            Settings.putBoolean(Settings._INSTALLED, true);
+            app.settings.enable(Settings._INSTALLED);
         }
     }
 

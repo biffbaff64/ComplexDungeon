@@ -174,7 +174,7 @@ public class MenuPage implements UIPage, Disposable
         imageButtonOptions.setZIndex(1);
         imageButtonExit.setZIndex(1);
 
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
+        if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
             Trace.dbg("Adding Heap Usage debug...");
 
@@ -335,7 +335,7 @@ public class MenuPage implements UIPage, Disposable
             imageButtonGoogle.setVisible(_visible);
         }
 
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
+        if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
             if (javaHeapLabel != null)
             {
@@ -360,7 +360,7 @@ public class MenuPage implements UIPage, Disposable
         imageButtonOptions  = null;
         imageButtonExit     = null;
 
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
+        if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
             if (javaHeapLabel != null)
             {
@@ -396,7 +396,7 @@ public class MenuPage implements UIPage, Disposable
 
     private void menuPageDebug()
     {
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._MENU_HEAPS))
+        if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
             if (javaHeapLabel != null)
             {

@@ -333,13 +333,13 @@ public class OptionsPage implements UIPage
 
     private void updateSettings()
     {
-        Settings.putBoolean(Settings._MUSIC_ENABLED, (Sfx.inst().getMusicVolume() != Sfx.inst()._SILENT));
-        Settings.putBoolean(Settings._SOUNDS_ENABLED, (Sfx.inst().getFXVolume() != Sfx.inst()._SILENT));
+        app.settings.prefs.putBoolean(Settings._MUSIC_ENABLED, (Sfx.inst().getMusicVolume() != Sfx._SILENT));
+        app.settings.prefs.putBoolean(Settings._SOUNDS_ENABLED, (Sfx.inst().getFXVolume() != Sfx._SILENT));
 
         Sfx.inst().setMusicVolume((int) musicSlider.getValue());
         Sfx.inst().setFXVolume((int) fxSlider.getValue());
 
-        Settings.write();
+        app.settings.prefs.flush();
     }
 
     private void updateSettingsOnEntry()

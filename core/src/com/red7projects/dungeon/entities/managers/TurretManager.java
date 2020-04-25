@@ -49,7 +49,7 @@ public class TurretManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(Settings._TURRETS))
+        if (app.settings.isEnabled(Settings._TURRETS))
         {
             graphicID = GraphicID.G_TURRET;
 

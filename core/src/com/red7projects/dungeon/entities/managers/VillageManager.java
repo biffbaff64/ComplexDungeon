@@ -49,7 +49,7 @@ public class VillageManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(Settings._VILLAGER))
+        if (app.settings.isEnabled(Settings._VILLAGER))
         {
             graphicID = GraphicID.G_VILLAGER;
 

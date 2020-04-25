@@ -263,6 +263,8 @@ public class GameControlLoop extends AbstractControlLoop
                 {
                     if (scr().gameState.get() == StateID._STATE_MESSAGE_PANEL)
                     {
+                        app.getHud().hideControls(false);
+
                         messagePanel = new MessagePanel(app);
                         messagePanel.create();
                     }
@@ -291,12 +293,15 @@ public class GameControlLoop extends AbstractControlLoop
                 scr().gameState.set(StateID._STATE_GAME);
 
                 app.getHud().buttonX.release();
+                app.getHud().showControls();
             }
         }
 
         if (!messagePanel.update())
         {
             scr().gameState.set(StateID._STATE_GAME);
+
+            app.getHud().showControls();
         }
     }
 

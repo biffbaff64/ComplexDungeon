@@ -258,7 +258,7 @@ public class DeveloperPanel extends BasicPanel
                 }
                 else
                 {
-                    buttons[row][column].setChecked(Settings.isEnabled(devMenu[row][column].prefName));
+                    buttons[row][column].setChecked(app.settings.isEnabled(devMenu[row][column].prefName));
                 }
             }
 
@@ -381,7 +381,7 @@ public class DeveloperPanel extends BasicPanel
     {
         if (!com.red7projects.dungeon.utils.development.Developer.isDevMode())
         {
-            Settings.putBoolean(Settings._MENU_HEAPS, false);
+            app.settings.disable(Settings._MENU_HEAPS);
         }
 
         updatePreferences();
@@ -398,20 +398,20 @@ public class DeveloperPanel extends BasicPanel
         {
             for (int column = 0; column < _TABLE_COLUMNS; column++)
             {
-                Settings.putBoolean(devMenu[row][column].prefName, buttons[row][column].isChecked());
+                app.settings.prefs.putBoolean(devMenu[row][column].prefName, buttons[row][column].isChecked());
             }
         }
 
         glProfilerUpdate();
 
-        Settings.write();
+        app.settings.prefs.flush();
 
         previousDisableEnemies = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
     }
 
     private void updatePreferencesOnExit()
     {
-        AppConfig.canDrawButtonBoxes = Settings.isEnabled(Settings._BUTTON_BOXES);
+        AppConfig.canDrawButtonBoxes = app.settings.isEnabled(Settings._BUTTON_BOXES);
     }
 
     private void glProfilerUpdate()
@@ -459,19 +459,19 @@ public class DeveloperPanel extends BasicPanel
     {
         okToResetPrefs = true;
 
-        Settings.resetToDefaults();
+        app.settings.resetToDefaults();
 
-        Settings.putBoolean(Settings._DEV_MODE, Developer.isDevMode());
-        Settings.putBoolean(Settings._GOD_MODE, Developer.isGodMode());
-        Settings.putBoolean(Settings._SIGN_IN_STATUS, app.googleServices.isSignedIn());
+        app.settings.prefs.putBoolean(Settings._DEV_MODE, Developer.isDevMode());
+        app.settings.prefs.putBoolean(Settings._GOD_MODE, Developer.isGodMode());
+        app.settings.prefs.putBoolean(Settings._SIGN_IN_STATUS, app.googleServices.isSignedIn());
 
-        Settings.write();
+        app.settings.prefs.flush();
 
         for (int row = 0; row < devMenu.length; row++)
         {
             for (int column = 0; column < _TABLE_COLUMNS; column++)
             {
-                boolean isChecked = Settings.isEnabled(devMenu[row][column].prefName);
+                boolean isChecked = app.settings.isEnabled(devMenu[row][column].prefName);
 
                 buttons[row][column].setChecked(isChecked);
             }
@@ -642,7 +642,7 @@ public class DeveloperPanel extends BasicPanel
             {
                 if (!dmEntry.string.isEmpty())
                 {
-                    Trace.dbg(dmEntry.string + ": " + Settings.isEnabled(dmEntry.prefName));
+                    Trace.dbg(dmEntry.string + ": " + app.settings.isEnabled(dmEntry.prefName));
                 }
             }
         }

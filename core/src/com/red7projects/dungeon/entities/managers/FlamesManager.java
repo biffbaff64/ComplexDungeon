@@ -51,7 +51,7 @@ public class FlamesManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled((Settings._FLAME_THROWER)))
+        if (app.settings.isEnabled((Settings._FLAME_THROWER)))
         {
             graphicID = GraphicID.G_FLAME_THROWER;
 

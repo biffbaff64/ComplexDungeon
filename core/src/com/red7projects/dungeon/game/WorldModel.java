@@ -74,7 +74,7 @@ public class WorldModel
 
     public void setDebugMatrix()
     {
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._B2D_RENDERER))
+        if (Developer.isDevMode() && app.settings.isEnabled(Settings._B2D_RENDERER))
         {
             debugMatrix = app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
         }
@@ -85,7 +85,7 @@ public class WorldModel
         if ((b2dr != null)
             && (app.box2DWorld != null)
             && (debugMatrix != null)
-            && Settings.isEnabled(Settings._B2D_RENDERER))
+            && app.settings.isEnabled(Settings._B2D_RENDERER))
         {
             b2dr.render(app.box2DWorld, debugMatrix);
         }

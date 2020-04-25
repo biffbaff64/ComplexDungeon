@@ -106,7 +106,7 @@ public class MonstersManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(gfxAsset.preference))
+        if (app.settings.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
 
@@ -138,7 +138,7 @@ public class MonstersManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(gfxAsset.preference))
+        if (app.settings.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
 
@@ -171,7 +171,7 @@ public class MonstersManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(gfxAsset.preference))
+        if (app.settings.isEnabled(gfxAsset.preference))
         {
             graphicID = gfxAsset.graphicID;
 

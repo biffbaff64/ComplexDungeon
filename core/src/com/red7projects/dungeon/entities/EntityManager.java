@@ -128,7 +128,7 @@ public class EntityManager implements Disposable
             // Main Player, updated after all other entities.
             // Updated last to allow for possible reacting to
             // other entities actions.
-            if (!Settings.isEnabled(Settings._SCROLL_DEMO))
+            if (!app.settings.isEnabled(Settings._SCROLL_DEMO))
             {
                 if (_playerReady
                     && app.getPlayer().isUpdatable

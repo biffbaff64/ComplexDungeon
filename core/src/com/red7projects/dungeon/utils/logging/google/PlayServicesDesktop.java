@@ -41,11 +41,11 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            if (!Settings.isEnabled(Settings._SIGN_IN_STATUS))
+            if (!app.settings.isEnabled(Settings._SIGN_IN_STATUS))
             {
                 com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
-                Settings.putBoolean(Settings._SIGN_IN_STATUS, true);
+                app.settings.enable(Settings._SIGN_IN_STATUS);
             }
         }
     }
@@ -68,20 +68,20 @@ public class PlayServicesDesktop implements PlayServices
         {
             com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
 
-            Settings.putBoolean(Settings._SIGN_IN_STATUS, false);
+            app.settings.disable(Settings._SIGN_IN_STATUS);
         }
     }
 
     @Override
     public boolean isSignedIn()
     {
-        return Settings.isEnabled(Settings._SIGN_IN_STATUS);
+        return app.settings.isEnabled(Settings._SIGN_IN_STATUS);
     }
 
     @Override
     public boolean isEnabled()
     {
-        return Settings.isEnabled(Settings._PLAY_SERVICES);
+        return app.settings.isEnabled(Settings._PLAY_SERVICES);
     }
 
     @Override

@@ -71,7 +71,7 @@ public class RenderSystem
      */
     private boolean isInViewWindow(GdxSprite sprObj)
     {
-        if (Settings.isEnabled(Settings._CULL_SPRITES))
+        if (app.settings.isEnabled(Settings._CULL_SPRITES))
         {
             return app.mapData.viewportBox.overlaps(sprObj.sprite.getBoundingRectangle());
         }

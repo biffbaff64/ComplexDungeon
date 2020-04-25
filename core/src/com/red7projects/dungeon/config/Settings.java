@@ -17,18 +17,19 @@
 package com.red7projects.dungeon.config;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonWriter;
+import com.badlogic.gdx.Preferences;
 import com.red7projects.dungeon.game.Sfx;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.Trace;
 
-@SuppressWarnings({"WeakerAccess", "BooleanMethodIsAlwaysInverted"})
 //@formatter:off
 public class Settings
 {
     //
     // Defaults
+    public static final boolean _PREF_FALSE_DEFAULT = false;
+    public static final boolean _PREF_TRUE_DEFAULT  = true;
+
     public static final String _DEFAULT_ON  = "default on";
     public static final String _DEFAULT_OFF = "default off";
 
@@ -93,188 +94,107 @@ public class Settings
     public static final String _FLAME_THROWER       = "flame thrower";
     public static final String _TURRETS             = "turrets";
 
-    private static final GameOption[] optionsList =
-        {
-            // Defaults
-            new GameOption(_DEFAULT_ON,             true, true),
-            new GameOption(_DEFAULT_OFF,            true, true),
+    public Preferences prefs;
 
-            // Development Configuration Options
-            new GameOption(_DEV_MODE,              false, false),
-            new GameOption(_GOD_MODE,              false, false),
-            new GameOption(_USING_ASHLEY_ECS,      true,  true),
-            new GameOption(_DISABLE_ENEMIES,       false, false),
-            new GameOption(_SCROLL_DEMO,           false, false),
-            new GameOption(_SPRITE_BOXES,          false, false),
-            new GameOption(_TILE_BOXES,            false, false),
-            new GameOption(_BUTTON_BOXES,          false, false),
-            new GameOption(_SHOW_FPS,              false, false),
-            new GameOption(_SHOW_DEBUG,            false, false),
-            new GameOption(_SPAWNPOINTS,           false, false),
-            new GameOption(_MENU_HEAPS,            false, false),
-            new GameOption(_DISABLE_MENU_SCREEN,   false, false),
-            new GameOption(_CULL_SPRITES,          true,  true),
-            new GameOption(_SHADER_PROGRAM,        true,  true),
-            new GameOption(_BOX2D_PHYSICS,         true,  true),
-            new GameOption(_B2D_RENDERER,          true,  true),
-            new GameOption(_GL_PROFILER,           true,  true),
-
-            // Configuration Options
-            new GameOption(_INSTALLED,             true,  true),
-            new GameOption(_SHOW_HINTS,            true,  true),
-            new GameOption(_VIBRATIONS,            true,  true),
-            new GameOption(_MUSIC_ENABLED,         true,  true),
-            new GameOption(_SOUNDS_ENABLED,        true,  true),
-            new GameOption(_FX_VOLUME,             0,  Sfx.inst()._DEFAULT_FX_VOLUME),
-            new GameOption(_MUSIC_VOLUME,          0,  Sfx.inst()._DEFAULT_MUSIC_VOLUME),
-            new GameOption(_PLAY_SERVICES,         true,  true),
-            new GameOption(_ACHIEVEMENTS,          true,  true),
-            new GameOption(_CHALLENGES,            true,  true),
-            new GameOption(_SIGN_IN_STATUS,        true,  true),
-
-            // Main characters
-            new GameOption(_PLAYER,              true,  true),
-            new GameOption(_PRISONER,            true,  true),
-            new GameOption(_VILLAGER,            true,  true),
-
-            // Interactive Items and Decorations
-            new GameOption(_TELEPORTER,          true,  true),
-            new GameOption(_PICKUPS,             true,  true),
-            new GameOption(_MYSTERY_CHEST,       true,  true),
-
-            // Mobile enemies
-            new GameOption(_STORM_DEMON,         true,  true),
-            new GameOption(_BOUNCER,             true,  true),
-            new GameOption(_SPIKE_BALL,          true,  true),
-            new GameOption(_SPIKE_BLOCK,         true,  true),
-            new GameOption(_SCORPION,            true,  true),
-            new GameOption(_SOLDIER,             true,  true),
-
-            // Static enemies
-            new GameOption(_FLAME_THROWER,       true,  true),
-            new GameOption(_TURRETS,             true,  true),
-        };
-
-    private static final String _SETTINGS_FILENAME = "game_settings.json";
-
-    private static GameOption[] options;
-    private static Json         json;
-
-    public static void initialise()
+    public Settings()
     {
-        options = new GameOption[optionsList.length];
-        json    = new Json();
-        json.setOutputType(JsonWriter.OutputType.json);
-
-        load();
+        Trace.__FILE_FUNC();
     }
 
-    public static boolean isEnabled(String _prefName)
-    {
-        return (boolean) getOption(_prefName);
-    }
-
-    public static boolean getBoolean(String _prefName)
-    {
-        return (boolean) getOption(_prefName);
-    }
-
-    public static int getInt(String _prefName)
-    {
-        return (int) getOption(_prefName);
-    }
-
-    public static float getFloat(String _prefName)
-    {
-        return (float) getOption(_prefName);
-    }
-
-    public static void putBoolean(String _prefName, boolean _state)
-    {
-        setOption(_prefName, _state);
-    }
-
-    public static void putInt(String _prefName, int _value)
-    {
-        setOption(_prefName, _value);
-    }
-
-    public static void putFloat(String _prefName, float _value)
-    {
-        setOption(_prefName, _value);
-    }
-
-    private static Object getOption(String _prefName)
-    {
-        Object state = 0;
-
-        for (final GameOption option : options)
-        {
-            if (_prefName.equals(option.prefName))
-            {
-                state = option.state;
-            }
-        }
-
-        return state;
-    }
-
-    private static void setOption(String _prefName, Object _state)
-    {
-        for (final GameOption option : options)
-        {
-            if (_prefName.equals(option.prefName))
-            {
-                option.state = _state;
-            }
-        }
-    }
-
-    public static void load()
-    {
-        if (!Gdx.files.local(_SETTINGS_FILENAME).exists())
-        {
-            prepareSettingsJsonFile();
-        }
-
-        options = json.fromJson(GameOption[].class, Gdx.files.local(_SETTINGS_FILENAME));
-    }
-
-    public static void write()
-    {
-        FileHandle handle = Gdx.files.local(_SETTINGS_FILENAME);
-
-        handle.writeString(json.prettyPrint(json.toJson(options)), false);
-    }
-
-    public static void resetToDefaults()
-    {
-        for (int i = 0; i< optionsList.length; i++)
-        {
-            options[i].state = options[i].defaultState;
-        }
-    }
-
-    public static void prepareSettingsJsonFile()
+    public void initialise()
     {
         Trace.__FILE_FUNC();
 
-        for (int i = 0; i< optionsList.length; i++)
+        try
         {
-            options[i]              = new GameOption();
-            options[i].prefName     = optionsList[i].prefName;
-            options[i].state        = optionsList[i].state;
-            options[i].defaultState = optionsList[i].defaultState;
+            prefs = Gdx.app.getPreferences(AppConfig._PREFS_FILE_NAME);
         }
-
-        write();
+        catch (Exception e)
+        {
+            Trace.__FILE_FUNC();
+            Trace.dbg(e.getMessage());
+        }
     }
 
-    private static void debug()
+    public boolean isEnabled(final String preference)
     {
-        for (GameOption option : options)
-        {
-            Trace.dbg(option.toString());
-        }
+        return prefs.getBoolean(preference);
+    }
+
+    public void enable(final String preference)
+    {
+        prefs.putBoolean(preference, true);
+        prefs.flush();
+    }
+
+    public void disable(final String preference)
+    {
+        prefs.putBoolean(preference, false);
+        prefs.flush();
+    }
+
+    public void resetToDefaults()
+    {
+        Trace.__FILE_FUNC();
+
+        prefs.putBoolean(_DEFAULT_ON,           _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_DEFAULT_OFF,          _PREF_FALSE_DEFAULT);
+
+        prefs.putBoolean(_DEV_MODE,             Developer.isDevMode());
+        prefs.putBoolean(_GOD_MODE,             _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_USING_ASHLEY_ECS,     _PREF_FALSE_DEFAULT);
+
+        prefs.putBoolean(_DISABLE_ENEMIES,      _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SCROLL_DEMO,          _PREF_FALSE_DEFAULT);
+
+        prefs.putBoolean(_SPRITE_BOXES,         _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_TILE_BOXES,           _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_BUTTON_BOXES,         _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SHOW_FPS,             _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SHOW_DEBUG,           _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SPAWNPOINTS,          _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_MENU_HEAPS,           _PREF_FALSE_DEFAULT);
+
+        prefs.putBoolean(_CULL_SPRITES,         _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_SHADER_PROGRAM,       _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_B2D_RENDERER,         _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_GL_PROFILER,          _PREF_FALSE_DEFAULT);
+
+        prefs.putBoolean(_INSTALLED,            _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SHOW_HINTS,           _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_VIBRATIONS,           _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_MUSIC_ENABLED,        _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_SOUNDS_ENABLED,       _PREF_TRUE_DEFAULT);
+        prefs.putInteger(_FX_VOLUME,            Sfx._DEFAULT_FX_VOLUME);
+        prefs.putInteger(_MUSIC_VOLUME,         Sfx._DEFAULT_MUSIC_VOLUME);
+        prefs.putBoolean(_PLAY_SERVICES,        _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_ACHIEVEMENTS,         _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_CHALLENGES,           _PREF_FALSE_DEFAULT);
+        prefs.putBoolean(_SIGN_IN_STATUS,       _PREF_FALSE_DEFAULT);
+
+        //----------- Achievements -----------
+
+        // ---------- Development Flags ----------
+        prefs.putBoolean(_DISABLE_MENU_SCREEN,  _PREF_FALSE_DEFAULT);
+
+        // ---------- Entities (including player) ----------
+        prefs.putBoolean(_PLAYER,               _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_PRISONER,             _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_VILLAGER,             _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_FLAME_THROWER,        _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_STORM_DEMON,          _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_BOUNCER,              _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_SPIKE_BALL,           _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_SPIKE_BLOCK,          _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_SCORPION,             _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_SOLDIER,              _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_TURRETS,              _PREF_TRUE_DEFAULT);
+
+        // ----------
+        prefs.putBoolean(_MYSTERY_CHEST,        _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_TELEPORTER,           _PREF_TRUE_DEFAULT);
+        prefs.putBoolean(_PICKUPS,              _PREF_TRUE_DEFAULT);
+
+        prefs.flush();
     }
 }

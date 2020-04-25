@@ -49,7 +49,7 @@ public class PrisonManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(Settings._PRISONER))
+        if (app.settings.isEnabled(Settings._PRISONER))
         {
             graphicID = GraphicID.G_PRISONER;
 

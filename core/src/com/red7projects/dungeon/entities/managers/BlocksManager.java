@@ -102,7 +102,7 @@ public class BlocksManager extends GenericEntityManager
             Array<MarkerTile> tiles = app.mapUtils.findMultiTiles(graphicID);
 
             if (app.entityUtils.canUpdate(graphicID)
-                && Settings.isEnabled(gfxAsset.preference)
+                && app.settings.isEnabled(gfxAsset.preference)
                 && (tiles.size > 0))
             {
                 for (MarkerTile tile : tiles)

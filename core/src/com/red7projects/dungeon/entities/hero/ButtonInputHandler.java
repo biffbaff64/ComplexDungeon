@@ -61,6 +61,7 @@ public class ButtonInputHandler implements Disposable
         if (app.getHud().buttonB.isPressed())
         {
             bButtonActions.process();
+            app.getHud().buttonB.release();
         }
 
         //

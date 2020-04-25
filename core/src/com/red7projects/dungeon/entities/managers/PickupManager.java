@@ -62,7 +62,7 @@ public class PickupManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(Settings._PICKUPS))
+        if (app.settings.isEnabled(Settings._PICKUPS))
         {
             for (EntityDef entityDef : Entities.entityList)
             {

@@ -21,7 +21,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.game.StateID;
@@ -128,7 +127,7 @@ public abstract class AbstractBaseScreen extends ScreenAdapter implements Dispos
     @Override
     public void pause()
     {
-        Settings.write();
+        app.settings.prefs.flush();
     }
 
     @Override

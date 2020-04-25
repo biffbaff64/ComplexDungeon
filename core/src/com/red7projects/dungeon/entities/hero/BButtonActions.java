@@ -30,6 +30,6 @@ public class BButtonActions
 
     public void process()
     {
-        app.getPlayer().setAction(Actions._CASTING);
+        app.getPlayer().setAction(Actions._FIGHTING);
     }
 }

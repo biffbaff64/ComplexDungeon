@@ -431,6 +431,8 @@ public class MainPlayer extends GdxSprite
 
             case _CASTING:
             {
+                Trace.__FILE_LINE__();
+
                 EntityDescriptor descriptor = new EntityDescriptor();
 
                 descriptor._FRAMES   = GameAssets._PLAYER_CAST_FRAMES;
@@ -456,6 +458,8 @@ public class MainPlayer extends GdxSprite
 
             case _FIGHTING:
             {
+                Trace.__FILE_LINE__();
+
                 EntityDescriptor descriptor = new EntityDescriptor();
 
                 descriptor._FRAMES   = GameAssets._PLAYER_FIGHT_FRAMES;
@@ -533,7 +537,7 @@ public class MainPlayer extends GdxSprite
         viewBox.width  = (int) _VIEWBOX_WIDTH;
         viewBox.height = (int) _VIEWBOX_HEIGHT;
 
-        if (Settings.isEnabled((Settings._SPAWNPOINTS)))
+        if (app.settings.isEnabled((Settings._SPAWNPOINTS)))
         {
             tileRectangle.x      = (((collisionObject.rectangle.x + (frameWidth / 2)) / Gfx.getTileWidth()));
             tileRectangle.y      = ((collisionObject.rectangle.y - Gfx.getTileHeight()) / Gfx.getTileHeight());
@@ -550,13 +554,11 @@ public class MainPlayer extends GdxSprite
     {
         if (localIsDrawable)
         {
-            Trace.__FILE_LINE__();
             super.draw(spriteBatch);
         }
 
         if (getSpriteAction() == Actions._SPAWNING)
         {
-            Trace.__FILE_LINE__();
             spriteBatch.draw
                 (
                     app.entityUtils.getKeyFrame(altAnim, elapsedAltAnimTime, false),
@@ -618,8 +620,6 @@ public class MainPlayer extends GdxSprite
     @Override
     public void setAction(Actions newAction)
     {
-        Trace.__FILE_FUNC(newAction.name());
-
         if (getSpriteAction() != newAction)
         {
             previousAction = getSpriteAction();
@@ -685,7 +685,7 @@ public class MainPlayer extends GdxSprite
     @SuppressWarnings("unused")
     public void hurt(GraphicID spriteHittingGid)
     {
-        if (!Settings.getBoolean(Settings._GOD_MODE))
+        if (!app.settings.isEnabled(Settings._GOD_MODE))
         {
             if (!isHurting && (getSpriteAction() != Actions._HURT))
             {
@@ -699,7 +699,7 @@ public class MainPlayer extends GdxSprite
 
     public void kill()
     {
-        if (!Settings.getBoolean(Settings._GOD_MODE))
+        if (!app.settings.isEnabled(Settings._GOD_MODE))
         {
             strength = 0;
         }

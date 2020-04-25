@@ -68,8 +68,8 @@ public abstract class App extends com.badlogic.gdx.Game
     public GameProgress   gameProgress;
     public AdsController  adsController;
     public PlayServices   googleServices;
-
-    public InputManager    inputManager;
+    public Settings       settings;
+    public InputManager   inputManager;
 
     //
     // Globals to be made available when MainGameScreen is active.
@@ -114,7 +114,7 @@ public abstract class App extends com.badlogic.gdx.Game
     {
         int lives;
 
-        if (Developer.isDevMode() && Settings.isEnabled(Settings._GOD_MODE))
+        if (Developer.isDevMode() && settings.isEnabled(Settings._GOD_MODE))
         {
             lives = Constants._MAX_LIVES;
         }

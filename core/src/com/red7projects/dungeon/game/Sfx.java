@@ -29,43 +29,41 @@ import com.red7projects.dungeon.utils.logging.Trace;
 @SuppressWarnings("WeakerAccess")
 public class Sfx
 {
-   	public final int _SILENT                 = 0;
-    public final int _MIN_VOLUME             = 0;
-   	public final int _MAX_VOLUME             = 10;
-   	public final int _VOLUME_INCREMENT       = 1;
-   	public final int _VOLUME_MULTIPLIER      = 10;
-   	public final int _DEFAULT_MUSIC_VOLUME   = 4;
-   	public final int _DEFAULT_FX_VOLUME      = 6;
+   	public static final int _SILENT                 = 0;
+    public static final int _MIN_VOLUME             = 0;
+   	public static final int _MAX_VOLUME             = 10;
+   	public static final int _VOLUME_INCREMENT       = 1;
+   	public static final int _VOLUME_MULTIPLIER      = 10;
+   	public static final int _DEFAULT_MUSIC_VOLUME   = 4;
+   	public static final int _DEFAULT_FX_VOLUME      = 6;
 
-   	public final int SFX_LASER             = 0;
-	public final int SFX_PLAZMA            = 1;
-	public final int SFX_EXPLOSION_1       = 2;
-	public final int SFX_EXPLOSION_2       = 3;
-	public final int SFX_EXPLOSION_3       = 4;
-	public final int SFX_EXPLOSION_4       = 5;
-	public final int SFX_EXPLOSION_5       = 6;
-	public final int SFX_THRUST            = 7;
-	public final int SFX_PICKUP            = 8;
-	public final int SFX_TELEPORT          = 9;
-	public final int SFX_EXTRA_LIFE        = 10;
-	public final int SFX_LAUNCH_WARNING    = 11;
-    public final int SFX_TEST_SOUND        = 12;
-    public final int SFX_BEEP              = 13;
-	public final int MAX_SOUND             = 14;
+   	public static final int SFX_LASER             = 0;
+	public static final int SFX_PLAZMA            = 1;
+	public static final int SFX_EXPLOSION_1       = 2;
+	public static final int SFX_EXPLOSION_2       = 3;
+	public static final int SFX_EXPLOSION_3       = 4;
+	public static final int SFX_EXPLOSION_4       = 5;
+	public static final int SFX_EXPLOSION_5       = 6;
+	public static final int SFX_THRUST            = 7;
+	public static final int SFX_PICKUP            = 8;
+	public static final int SFX_TELEPORT          = 9;
+	public static final int SFX_EXTRA_LIFE        = 10;
+	public static final int SFX_LAUNCH_WARNING    = 11;
+    public static final int SFX_TEST_SOUND        = 12;
+    public static final int SFX_BEEP              = 13;
+	public static final int MAX_SOUND             = 14;
 
-	public final int MUSIC_TITLE   = 0;
-	public final int MUSIC_HISCORE = 1;
-	public final int MUSIC_GAME    = 2;
-	public final int MAX_TUNES     = 3;
+	public static final int MUSIC_TITLE   = 0;
+	public static final int MUSIC_HISCORE = 1;
+	public static final int MUSIC_GAME    = 2;
+	public static final int MAX_TUNES     = 3;
 
     public Sound[] sounds;
     public Music[] music;
 
     private int currentTune;
-
     private int musicVolumeSave;
     private int fxVolumeSave;
-
     private App     app;
     private boolean soundsLoaded;
     private boolean isTunePaused;
@@ -222,7 +220,7 @@ public class Sfx
         {
             if (getMusicVolume() > 0)
             {
-                if (Settings.isEnabled(Settings._MUSIC_ENABLED) && (music != null) && !music[musicNumber].isPlaying())
+                if (app.settings.isEnabled(Settings._MUSIC_ENABLED) && (music != null) && !music[musicNumber].isPlaying())
                 {
                     music[musicNumber].setLooping(looping);
                     music[musicNumber].setVolume(getUsableVolume(volume));
@@ -238,7 +236,7 @@ public class Sfx
     {
         long id = 0;
 
-        if (Settings.isEnabled(Settings._SOUNDS_ENABLED) && soundsLoaded)
+        if (app.settings.isEnabled(Settings._SOUNDS_ENABLED) && soundsLoaded)
         {
             if (getFXVolume() > 0)
             {
@@ -270,22 +268,24 @@ public class Sfx
             music[currentTune].setVolume(getUsableVolume(volume));
         }
 
-        Settings.putInt(Settings._MUSIC_VOLUME, volume);
+        app.settings.prefs.putInteger(Settings._MUSIC_VOLUME, volume);
+        app.settings.prefs.flush();
     }
 
     public void setFXVolume(int volume)
     {
-        Settings.putInt(Settings._FX_VOLUME, volume);
+        app.settings.prefs.putInteger(Settings._FX_VOLUME, volume);
+        app.settings.prefs.flush();
     }
 
     public int getMusicVolume()
     {
-        return Settings.getInt(Settings._MUSIC_VOLUME);
+        return app.settings.prefs.getInteger(Settings._MUSIC_VOLUME);
     }
 
     public int getFXVolume()
     {
-        return Settings.getInt(Settings._FX_VOLUME);
+        return app.settings.prefs.getInteger(Settings._FX_VOLUME);
     }
 
     public float getUsableFxVolume()

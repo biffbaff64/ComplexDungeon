@@ -85,7 +85,7 @@ public class MainGameScreen extends AbstractBaseScreen
 
         app.inputManager.virtualJoystick.show();
 
-        Shake.setAllowed(Settings.isEnabled(Settings._VIBRATIONS));
+        Shake.setAllowed(app.settings.isEnabled(Settings._VIBRATIONS));
     }
 
     /**
@@ -157,7 +157,7 @@ public class MainGameScreen extends AbstractBaseScreen
 
     public void draw()
     {
-        if (!Settings.isEnabled(Settings._USING_ASHLEY_ECS))
+        if (!app.settings.isEnabled(Settings._USING_ASHLEY_ECS))
         {
             app.entityManager.drawSprites();
         }

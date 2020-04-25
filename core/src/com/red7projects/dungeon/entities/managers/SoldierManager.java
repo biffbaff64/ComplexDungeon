@@ -51,7 +51,7 @@ public class SoldierManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (Settings.isEnabled(Settings._SOLDIER))
+        if (app.settings.isEnabled(Settings._SOLDIER))
         {
             graphicID = GraphicID.G_SOLDIER;
 
