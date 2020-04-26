@@ -181,13 +181,11 @@ public class BlocksManager extends GenericEntityManager
 
     private GfxAsset checkAssetName(GfxAsset gfxAsset)
     {
-        GfxAsset modifiedAsset = new GfxAsset(gfxAsset);
-
         if (gfxAsset.graphicID == GraphicID.G_SPIKE_BALL)
         {
-            modifiedAsset.asset = spikeBallAssets[MathUtils.random(spikeBallAssets.length - 1)];
+            gfxAsset.asset = spikeBallAssets[MathUtils.random(spikeBallAssets.length - 1)];
         }
 
-        return modifiedAsset;
+        return gfxAsset;
     }
 }

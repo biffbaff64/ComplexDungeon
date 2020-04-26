@@ -29,6 +29,7 @@ import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.graphics.effects.StarField;
 import com.red7projects.dungeon.input.UIButtons;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.ui.ExitPanel;
 import com.red7projects.dungeon.ui.UIPage;
 import com.red7projects.dungeon.utils.logging.Trace;
@@ -71,7 +72,10 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         Trace.__FILE_FUNC();
 
-        app.inputManager.virtualJoystick.hide();
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
+        {
+            app.inputManager.virtualJoystick.hide();
+        }
 
         optionsPage = new OptionsPage(app);
         menuPage    = new MenuPage(app);

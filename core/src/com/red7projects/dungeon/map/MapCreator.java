@@ -392,6 +392,16 @@ public class MapCreator
                         }
                         break;
 
+                        case "Loop Block":
+                        case "Loop Block Vertical":
+                        {
+                            hasDirection = true;
+
+                            setEntityPlaceable(GraphicID._BLOCKS, true);
+                        }
+                        break;
+
+
                         default:
                         {
                             Trace.__FILE_FUNC("Unknown Object name: " + object.getName());

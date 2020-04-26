@@ -62,6 +62,7 @@ public class Startup
         app.spriteBatch = new SpriteBatch();
 
         AppConfig.setup(app);
+        AppConfig.freshInstallCheck();
 
         app.googleServices.setup(app);
         app.googleServices.createApiClient();
@@ -83,7 +84,6 @@ public class Startup
         Sfx.inst().setup(app);
         DebugRenderer.setup(app);
 
-        AppConfig.freshInstallCheck();
         Shake.setAllowed(false);
 
         //

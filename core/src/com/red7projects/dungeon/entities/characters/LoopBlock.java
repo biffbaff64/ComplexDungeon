@@ -43,6 +43,8 @@ public class LoopBlock extends BaseEnemy
     @Override
     public void initialise(final EntityDescriptor entityDescriptor)
     {
+        entityDescriptor.debug();
+
         super.initialise(entityDescriptor);
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
@@ -50,7 +52,7 @@ public class LoopBlock extends BaseEnemy
 
         setCollisionListener();
 
-        setAction(Actions._RUNNING);
+        setAction(Actions._STANDING);
 
         direction.set(entityDescriptor._DIR);
 
@@ -84,8 +86,9 @@ public class LoopBlock extends BaseEnemy
             speed.setY(0);
         }
 
+        isAnimating     = true;
         localIsDrawable = true;
-        isDrawable = true;
+        isDrawable      = true;
     }
 
     @Override
@@ -152,7 +155,7 @@ public class LoopBlock extends BaseEnemy
             @Override
             public void onPositiveCollision(final GraphicID spriteHittingGid)
             {
-                if ((spriteHittingGid == GraphicID.G_PLAYER) && (getSpriteAction() == Actions._MOVING_OUT))
+                if (spriteHittingGid == GraphicID.G_PLAYER)
                 {
                     app.getPlayer().sprite.translate
                         (

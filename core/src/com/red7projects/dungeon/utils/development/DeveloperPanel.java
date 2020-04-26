@@ -70,7 +70,7 @@ public class DeveloperPanel extends BasicPanel
         }
     }
 
-    private static final int _TABLE_COLUMNS = 4;
+    private static final int _TABLE_COLUMNS = 3;
 
     private DMEntry[][]             devMenu;
     private Texture                 foreground;
@@ -99,7 +99,7 @@ public class DeveloperPanel extends BasicPanel
 
         this.app = _app;
 
-        if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
+        if (Developer.isDevMode())
         {
             glProfiler = new GLProfiler(Gdx.graphics);
         }
@@ -152,7 +152,7 @@ public class DeveloperPanel extends BasicPanel
 
         previousDisableEnemies = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
 
-        if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
+        if (Developer.isDevMode())
         {
             glProfilerUpdate();
         }
@@ -308,7 +308,7 @@ public class DeveloperPanel extends BasicPanel
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
+                if (Developer.isDevMode())
                 {
                     app.highScoreUtils.resetTable();
 
@@ -321,7 +321,7 @@ public class DeveloperPanel extends BasicPanel
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
+                if (Developer.isDevMode())
                 {
                     Trace.dbg
                         (
@@ -342,7 +342,7 @@ public class DeveloperPanel extends BasicPanel
             @Override
             public void clicked(final InputEvent event, final float x, final float y)
             {
-                if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
+                if (Developer.isDevMode())
                 {
                     app.collisionUtils.debugAll();
                 }
@@ -379,7 +379,9 @@ public class DeveloperPanel extends BasicPanel
 
     private void updatePreferencesOnEntry()
     {
-        if (!com.red7projects.dungeon.utils.development.Developer.isDevMode())
+        Trace.__FILE_FUNC();
+
+        if (!Developer.isDevMode())
         {
             app.settings.disable(Settings._MENU_HEAPS);
         }
@@ -402,9 +404,9 @@ public class DeveloperPanel extends BasicPanel
             }
         }
 
-        glProfilerUpdate();
-
         app.settings.prefs.flush();
+
+        glProfilerUpdate();
 
         previousDisableEnemies = buttons[disableEnemiesRow][disableEnemiesColumn].isChecked();
     }
@@ -416,7 +418,7 @@ public class DeveloperPanel extends BasicPanel
 
     private void glProfilerUpdate()
     {
-        if (com.red7projects.dungeon.utils.development.Developer.isDevMode())
+        if (Developer.isDevMode())
         {
             if (buttons[glProfilerRow][glProfilerColumn].isChecked())
             {
@@ -513,24 +515,21 @@ public class DeveloperPanel extends BasicPanel
         }
     }
 
-    private void loadDevMenu()
+    public void loadDevMenu()
     {
         DMEntry[][] devMenuDefaults =
             {
                 {
                     new DMEntry("Dev. mode", Settings._DEV_MODE, false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                     new DMEntry("Turrets", Settings._TURRETS, true),
                 },
                 {
                     new DMEntry("Invincible", Settings._GOD_MODE, false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                     new DMEntry("Bouncer", Settings._BOUNCER, true),
                 },
                 {
-                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Soldiers", Settings._SOLDIER, true),
@@ -539,34 +538,28 @@ public class DeveloperPanel extends BasicPanel
                     new DMEntry("Google Sign In", Settings._PLAY_SERVICES, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Mystery Chest", Settings._MYSTERY_CHEST, false),
                 },
                 {
                     new DMEntry("Achievements", Settings._ACHIEVEMENTS, false),
-                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Spike Ball", Settings._SPIKE_BALL, true),
                 },
                 {
                     new DMEntry("Challenges", Settings._CHALLENGES, false),
-                    new DMEntry("", "", false),
                     new DMEntry("Button Outlines", Settings._BUTTON_BOXES, false),
                     new DMEntry("Spike Block", Settings._SPIKE_BLOCK, true),
                 },
                 {
                     new DMEntry("Player", Settings._PLAYER, false),
-                    new DMEntry("", "", false),
                     new DMEntry("Sprite Boxes", Settings._SPRITE_BOXES, false),
                     new DMEntry("Storm Demon", Settings._STORM_DEMON, true),
                 },
                 {
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                     new DMEntry("Tile Boxes", Settings._TILE_BOXES, false),
                     new DMEntry("Scorpion", Settings._SCORPION, true),
                 },
                 {
-                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Marker Tiles", Settings._SPAWNPOINTS, false),
                     new DMEntry("Flame Thrower", Settings._FLAME_THROWER, true),
@@ -575,52 +568,43 @@ public class DeveloperPanel extends BasicPanel
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("Villagers", Settings._VILLAGER, false),
                 },
                 {
                     new DMEntry("Box2D Physics", Settings._BOX2D_PHYSICS, false),
-                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Pickups", Settings._PICKUPS, false),
                 },
                 {
                     new DMEntry("B2D Renderer", Settings._B2D_RENDERER, false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                     new DMEntry("Prisoners", Settings._PRISONER, false),
                 },
                 {
                     new DMEntry("Use Ashley ECS", Settings._USING_ASHLEY_ECS, false),
-                    new DMEntry("", "", false),
                     new DMEntry("Demo Scroll", Settings._SCROLL_DEMO, false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Mystery Chest", Settings._MYSTERY_CHEST, false),
                 },
                 {
                     new DMEntry("Shader Program", Settings._SHADER_PROGRAM, false),
-                    new DMEntry("", "", false),
                     new DMEntry("Cull Sprites", Settings._CULL_SPRITES, false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Villagers", Settings._VILLAGER, false),
                 },
                 {
                     new DMEntry("GLProfiler", Settings._GL_PROFILER, false),
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                 },
                 {
-                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Disable Menu Screen", Settings._DISABLE_MENU_SCREEN, false),
                     new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
                     new DMEntry("Disable Enemies", Settings._DISABLE_ENEMIES, false),
                     new DMEntry("", "", false),
                 },
                 {
-                    new DMEntry("", "", false),
                     new DMEntry("", "", false),
                     new DMEntry("Menu Page Heaps", Settings._MENU_HEAPS, false),
                     new DMEntry("", "", false),
@@ -680,6 +664,8 @@ public class DeveloperPanel extends BasicPanel
         Trace.__FILE_FUNC();
 
         updatePreferencesOnExit();
+
+        debugReport();
 
         AppConfig.developerPanelActive = false;
         AppConfig.gamePaused           = false;

@@ -517,8 +517,6 @@ public class HeadsUpDisplay implements Disposable
             sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
             sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
             sb.append(" : ").append(app.getRoomSystem().getActiveRoomName());
-            sb.append(" : PLYR: ").append(app.getPlayer().getSpriteAction().name());
-            sb.append(" : POS:  ").append(app.getPlayer().getPosition().toString());
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
         }

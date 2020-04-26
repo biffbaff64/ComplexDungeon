@@ -118,83 +118,92 @@ public class Settings
 
     public boolean isEnabled(final String preference)
     {
-        return prefs.getBoolean(preference);
+        return (prefs != null) && prefs.getBoolean(preference);
     }
 
     public void enable(final String preference)
     {
-        prefs.putBoolean(preference, true);
-        prefs.flush();
+        if (prefs != null)
+        {
+            prefs.putBoolean(preference, true);
+            prefs.flush();
+        }
     }
 
     public void disable(final String preference)
     {
-        prefs.putBoolean(preference, false);
-        prefs.flush();
+        if (prefs != null)
+        {
+            prefs.putBoolean(preference, false);
+            prefs.flush();
+        }
     }
 
     public void resetToDefaults()
     {
-        Trace.__FILE_FUNC();
+        if (prefs != null)
+        {
+            Trace.__FILE_FUNC();
 
-        prefs.putBoolean(_DEFAULT_ON,           _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_DEFAULT_OFF,          _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_DEFAULT_ON, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_DEFAULT_OFF, _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_DEV_MODE,             Developer.isDevMode());
-        prefs.putBoolean(_GOD_MODE,             _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_USING_ASHLEY_ECS,     _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_DEV_MODE, Developer.isDevMode());
+            prefs.putBoolean(_GOD_MODE, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_USING_ASHLEY_ECS, _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_DISABLE_ENEMIES,      _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SCROLL_DEMO,          _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_DISABLE_ENEMIES, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SCROLL_DEMO, _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_SPRITE_BOXES,         _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_TILE_BOXES,           _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_BUTTON_BOXES,         _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SHOW_FPS,             _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SHOW_DEBUG,           _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SPAWNPOINTS,          _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_MENU_HEAPS,           _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SPRITE_BOXES, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_TILE_BOXES, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_BUTTON_BOXES, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SHOW_FPS, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SHOW_DEBUG, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SPAWNPOINTS, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_MENU_HEAPS, _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_CULL_SPRITES,         _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_SHADER_PROGRAM,       _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_B2D_RENDERER,         _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_GL_PROFILER,          _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_CULL_SPRITES, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_SHADER_PROGRAM, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_B2D_RENDERER, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_GL_PROFILER, _PREF_FALSE_DEFAULT);
 
-        prefs.putBoolean(_INSTALLED,            _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SHOW_HINTS,           _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_VIBRATIONS,           _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_MUSIC_ENABLED,        _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_SOUNDS_ENABLED,       _PREF_TRUE_DEFAULT);
-        prefs.putInteger(_FX_VOLUME,            Sfx._DEFAULT_FX_VOLUME);
-        prefs.putInteger(_MUSIC_VOLUME,         Sfx._DEFAULT_MUSIC_VOLUME);
-        prefs.putBoolean(_PLAY_SERVICES,        _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_ACHIEVEMENTS,         _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_CHALLENGES,           _PREF_FALSE_DEFAULT);
-        prefs.putBoolean(_SIGN_IN_STATUS,       _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_INSTALLED, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SHOW_HINTS, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_VIBRATIONS, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_MUSIC_ENABLED, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_SOUNDS_ENABLED, _PREF_TRUE_DEFAULT);
+            prefs.putInteger(_FX_VOLUME, Sfx._DEFAULT_FX_VOLUME);
+            prefs.putInteger(_MUSIC_VOLUME, Sfx._DEFAULT_MUSIC_VOLUME);
+            prefs.putBoolean(_PLAY_SERVICES, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_ACHIEVEMENTS, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_CHALLENGES, _PREF_FALSE_DEFAULT);
+            prefs.putBoolean(_SIGN_IN_STATUS, _PREF_FALSE_DEFAULT);
 
-        //----------- Achievements -----------
+            //----------- Achievements -----------
 
-        // ---------- Development Flags ----------
-        prefs.putBoolean(_DISABLE_MENU_SCREEN,  _PREF_FALSE_DEFAULT);
+            // ---------- Development Flags ----------
+            prefs.putBoolean(_DISABLE_MENU_SCREEN, _PREF_FALSE_DEFAULT);
 
-        // ---------- Entities (including player) ----------
-        prefs.putBoolean(_PLAYER,               _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_PRISONER,             _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_VILLAGER,             _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_FLAME_THROWER,        _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_STORM_DEMON,          _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_BOUNCER,              _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_SPIKE_BALL,           _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_SPIKE_BLOCK,          _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_SCORPION,             _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_SOLDIER,              _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_TURRETS,              _PREF_TRUE_DEFAULT);
+            // ---------- Entities (including player) ----------
+            prefs.putBoolean(_PLAYER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_PRISONER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_VILLAGER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_FLAME_THROWER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_STORM_DEMON, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_BOUNCER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_SPIKE_BALL, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_SPIKE_BLOCK, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_SCORPION, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_SOLDIER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_TURRETS, _PREF_TRUE_DEFAULT);
 
-        // ----------
-        prefs.putBoolean(_MYSTERY_CHEST,        _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_TELEPORTER,           _PREF_TRUE_DEFAULT);
-        prefs.putBoolean(_PICKUPS,              _PREF_TRUE_DEFAULT);
+            // ----------
+            prefs.putBoolean(_MYSTERY_CHEST, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_TELEPORTER, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_PICKUPS, _PREF_TRUE_DEFAULT);
 
-        prefs.flush();
+            prefs.flush();
+        }
     }
 }

@@ -20,8 +20,10 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.*;
 import com.red7projects.dungeon.graphics.camera.Shake;
+import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.ui.GameCompletedPanel;
 import com.red7projects.dungeon.utils.development.Developer;
+import com.red7projects.dungeon.utils.development.DeveloperPanel;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -83,9 +85,16 @@ public class MainGameScreen extends AbstractBaseScreen
             gameState.set(StateID._STATE_SETUP);
         }
 
-        app.inputManager.virtualJoystick.show();
+        if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
+        {
+            app.inputManager.virtualJoystick.show();
+        }
 
         Shake.setAllowed(app.settings.isEnabled(Settings._VIBRATIONS));
+
+        DeveloperPanel developerPanel = new DeveloperPanel(app);
+        developerPanel.loadDevMenu();
+        developerPanel.debugReport();
     }
 
     /**
