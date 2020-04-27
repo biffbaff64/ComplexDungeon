@@ -339,7 +339,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_BARREL, 90, 152),
             new AssetSize(GraphicID.G_GLOW_EYES, 71, 64),
             new AssetSize(GraphicID.G_ALCOVE_TORCH, 64, 192),
-            new AssetSize(GraphicID.G_SACKS, 124, 170),
+            new AssetSize(GraphicID.G_SACKS, 124, 172),
 
             // Interactive items
             new AssetSize(GraphicID.G_FLOOR_BUTTON, 64, 64),

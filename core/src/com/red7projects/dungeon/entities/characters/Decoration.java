@@ -25,6 +25,7 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 /**
  * Class for objects such as:-
@@ -95,12 +96,6 @@ public class Decoration extends GdxSprite implements CollisionListener
             elapsedAnimTime += Gdx.graphics.getDeltaTime();
             sprite.setRegion(app.entityUtils.getKeyFrame(animation, elapsedAnimTime, true));
         }
-    }
-
-    @Override
-    public void draw(final SpriteBatch spriteBatch)
-    {
-        super.draw(spriteBatch);
     }
 
     /**

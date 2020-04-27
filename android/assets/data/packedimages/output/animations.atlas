@@ -229,7 +229,7 @@ abxy
   index: -1
 arrows
   rotate: false
-  xy: 1940, 4
+  xy: 1964, 1171
   size: 82, 82
   orig: 82, 82
   offset: 0, 0
@@ -290,13 +290,6 @@ fireball
   orig: 230, 1380
   offset: 0, 0
   index: -1
-floating_plank
-  rotate: false
-  xy: 1838, 1125
-  size: 128, 128
-  orig: 128, 128
-  offset: 0, 0
-  index: -1
 gems
   rotate: false
   xy: 1586, 1615
@@ -351,6 +344,13 @@ paper
   xy: 1298, 88
   size: 732, 128
   orig: 732, 128
+  offset: 0, 0
+  index: -1
+sacks
+  rotate: false
+  xy: 1838, 1081
+  size: 124, 172
+  orig: 124, 172
   offset: 0, 0
   index: -1
 scorpion_sting
@@ -480,7 +480,7 @@ barrel4
   index: -1
 bouncer
   rotate: false
-  xy: 1883, 548
+  xy: 1544, 14
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
@@ -515,7 +515,7 @@ chest2
   index: -1
 crate
   rotate: false
-  xy: 1802, 264
+  xy: 1883, 654
   size: 98, 120
   orig: 98, 120
   offset: 0, 0
@@ -604,30 +604,37 @@ fight_up_right
   orig: 574, 120
   offset: 0, 0
   index: -1
-floor_button
+floating_plank
   rotate: false
-  xy: 1400, 46
-  size: 128, 64
-  orig: 128, 64
+  xy: 1658, 646
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
-floor_button_locked
+floor_button
   rotate: false
   xy: 1798, 776
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
+floor_button_locked
+  rotate: false
+  xy: 1642, 46
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
 gold_key
   rotate: false
-  xy: 1883, 450
+  xy: 1883, 556
   size: 96, 96
   orig: 96, 96
   offset: 0, 0
   index: -1
 huge_key
   rotate: false
-  xy: 1658, 276
+  xy: 1400, 2
   size: 142, 108
   orig: 142, 108
   offset: 0, 0
@@ -669,7 +676,7 @@ pot3
   index: -1
 pot4
   rotate: false
-  xy: 1883, 646
+  xy: 1788, 256
   size: 93, 128
   orig: 93, 128
   offset: 0, 0
@@ -732,7 +739,7 @@ prisoner_stand_up_right
   index: -1
 round2
   rotate: false
-  xy: 1658, 646
+  xy: 1658, 516
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
@@ -760,14 +767,14 @@ torch
   index: -1
 turret
   rotate: false
-  xy: 1658, 516
+  xy: 1658, 386
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 turret_base
   rotate: false
-  xy: 1658, 386
+  xy: 1658, 256
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
