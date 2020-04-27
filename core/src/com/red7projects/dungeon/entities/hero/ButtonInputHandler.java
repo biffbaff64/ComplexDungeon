@@ -101,10 +101,6 @@ public class ButtonInputHandler implements Disposable
             setDirection(app.inputManager.lastRegisteredDirection);
         }
 
-        if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))
-        {
-        }
-
         if (AppConfig.availableInputs.contains(ControllerType._KEYBOARD, true))
         {
             app.inputManager.keyboard.update();

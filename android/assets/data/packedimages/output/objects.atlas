@@ -1,243 +1,257 @@
 
 objects.png
-size: 2048,1024
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 bar
   rotate: false
-  xy: 2004, 978
+  xy: 802, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar9
   rotate: false
-  xy: 1284, 576
+  xy: 2006, 2012
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar9patch
   rotate: false
-  xy: 412, 6
+  xy: 1774, 1681
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar_green
   rotate: false
-  xy: 1284, 548
+  xy: 1808, 1687
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_green9
   rotate: false
-  xy: 1312, 548
+  xy: 1947, 1827
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_grey
   rotate: false
-  xy: 1340, 548
+  xy: 836, 361
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_orange
   rotate: false
-  xy: 836, 278
+  xy: 870, 395
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_orange9
   rotate: false
-  xy: 446, 12
+  xy: 1531, 812
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_red
   rotate: false
-  xy: 1969, 548
+  xy: 392, 22
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_red9
   rotate: false
-  xy: 1440, 283
+  xy: 426, 56
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_yellow
   rotate: false
-  xy: 1068, 90
+  xy: 458, 88
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_yellow9
   rotate: false
-  xy: 1102, 124
+  xy: 492, 122
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 compass
   rotate: false
-  xy: 2, 306
+  xy: 2, 536
   size: 1000, 240
   orig: 1000, 240
   offset: 0, 0
   index: -1
 complete_star
   rotate: false
-  xy: 1573, 358
+  xy: 392, 84
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 completed_panel
   rotate: false
-  xy: 2, 40
+  xy: 2, 270
   size: 832, 264
   orig: 832, 264
   offset: 0, 0
   index: -1
 dialog_background
   rotate: false
-  xy: 1406, 424
+  xy: 2, 2
   size: 388, 184
   orig: 388, 184
   offset: 0, 0
   index: -1
 divider
   rotate: false
-  xy: 1068, 152
+  xy: 1284, 798
   size: 211, 40
   orig: 211, 40
   offset: 0, 0
   index: -1
 key_held_panel
   rotate: false
-  xy: 1796, 436
+  xy: 1774, 1715
   size: 171, 172
   orig: 171, 172
   offset: 0, 0
   index: -1
 loadbar_background
   rotate: false
-  xy: 2, 2
+  xy: 392, 150
   size: 408, 36
   orig: 408, 36
   offset: 0, 0
   index: -1
 menu_glow_blue01
   rotate: false
-  xy: 836, 194
+  xy: 2, 188
   size: 1024, 80
   orig: 1024, 80
   offset: 0, 0
   index: -1
 menu_glow_green01
   rotate: false
-  xy: 2, 548
+  xy: 2, 778
   size: 1280, 60
   orig: 1280, 60
   offset: 0, 0
   index: -1
-message_panel
+message_panel1
   rotate: false
-  xy: 2, 610
-  size: 2000, 400
-  orig: 2000, 400
+  xy: 2, 1644
+  size: 1770, 400
+  orig: 1770, 400
+  offset: 0, 0
+  index: -1
+message_panel2
+  rotate: false
+  xy: 2, 1242
+  size: 1770, 400
+  orig: 1770, 400
+  offset: 0, 0
+  index: -1
+message_panel3
+  rotate: false
+  xy: 2, 840
+  size: 1770, 400
+  orig: 1770, 400
   offset: 0, 0
   index: -1
 red7logo
   rotate: false
-  xy: 836, 37
+  xy: 1774, 1889
   size: 230, 155
   orig: 230, 155
   offset: 0, 0
   index: -1
 red7logo_large
   rotate: false
-  xy: 1004, 276
+  xy: 1004, 506
   size: 400, 270
   orig: 400, 270
   offset: 0, 0
   index: -1
 red7logo_small
   rotate: false
-  xy: 1406, 311
+  xy: 836, 423
   size: 165, 111
   orig: 165, 111
   offset: 0, 0
   index: -1
 smallbar9
   rotate: false
-  xy: 1315, 176
+  xy: 1284, 780
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 solid_black32x32
   rotate: false
-  xy: 1969, 576
+  xy: 1947, 1855
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_blue32x32
   rotate: false
-  xy: 1406, 277
+  xy: 836, 389
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_clear32x32
   rotate: false
-  xy: 1068, 118
+  xy: 1497, 806
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_green32x32
   rotate: false
-  xy: 1281, 160
+  xy: 392, 50
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_lime32x32
   rotate: false
-  xy: 1573, 324
+  xy: 458, 116
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_red32x32
   rotate: false
-  xy: 1639, 390
+  xy: 836, 154
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_white32x32
   rotate: false
-  xy: 2004, 944
+  xy: 2006, 1978
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_yellow32x32
   rotate: false
-  xy: 1318, 576
+  xy: 1774, 1647
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

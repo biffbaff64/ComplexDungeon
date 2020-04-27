@@ -100,7 +100,7 @@ public class HeadsUpDisplay implements Disposable
 
             //
             // Y is distance from the TOP of the screen
-            { 406,  406,   90,    0,    0},             // Villagers
+            { 490,  490,   90,    0,    0},             // Villagers
             {1219, 1219,  240,    0,    0},             // Compass
 
             //

@@ -1,7 +1,6 @@
 package com.red7projects.dungeon.ui;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.maths.SimpleVec2F;
@@ -12,6 +11,13 @@ import com.red7projects.dungeon.utils.logging.Trace;
 
 public class MessagePanel
 {
+    private final String[] panels =
+        {
+            "message_panel1",
+            "message_panel2",
+            "message_panel3"
+        };
+
     private TextureRegion villagerHead;
     private App app;
 
@@ -25,7 +31,7 @@ public class MessagePanel
         Trace.__FILE_FUNC();
 
         app.getHud().messageManager.enable();
-        app.getHud().messageManager.addSlidePanel(GameAssets._MESSAGE_PANEL_ASSET);
+        app.getHud().messageManager.addSlidePanel(panels[1]);
         app.getHud().messageManager.getCurrentPanel().set
             (
                 new SimpleVec2F
@@ -43,6 +49,6 @@ public class MessagePanel
 
     public boolean update()
     {
-        return app.getHud().messageManager.doesPanelExist(GameAssets._MESSAGE_PANEL_ASSET);
+        return app.getHud().messageManager.doesPanelExist(panels[1]);
     }
 }

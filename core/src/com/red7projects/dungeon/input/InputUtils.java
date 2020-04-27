@@ -17,7 +17,9 @@
 package com.red7projects.dungeon.input;
 
 import com.badlogic.gdx.math.Vector2;
+import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.input.objects.ControllerType;
 
 public class InputUtils
 {
@@ -34,5 +36,10 @@ public class InputUtils
         Vector2 vector2 = new Vector2(xPerc, yPerc);
 
         return vector2.rotate90(-1);
+    }
+
+    public static boolean isInputAvailable(ControllerType _inputType)
+    {
+        return AppConfig.availableInputs.contains(_inputType, true);
     }
 }

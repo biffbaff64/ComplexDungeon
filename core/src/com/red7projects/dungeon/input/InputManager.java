@@ -19,8 +19,6 @@ package com.red7projects.dungeon.input;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.Cursor;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.config.AppConfig;
@@ -72,19 +70,6 @@ public class InputManager
             virtualJoystick = new VirtualJoystick(app);
             virtualJoystick.create();
             virtualJoystick.addToStage();
-        }
-
-        //
-        // Redefine the mouse cursor as crosshairs
-        // if Mouse Control is required.
-        if (AppConfig.availableInputs.contains(ControllerType._MOUSE, true))
-        {
-            Trace.dbg("Initialising _MOUSE Controller Type");
-
-            Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
-            Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
-            Gdx.graphics.setCursor(cursor);
-            pixmap.dispose();
         }
 
         //

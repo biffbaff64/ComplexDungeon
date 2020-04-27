@@ -43,8 +43,6 @@ public class LoopBlock extends BaseEnemy
     @Override
     public void initialise(final EntityDescriptor entityDescriptor)
     {
-        entityDescriptor.debug();
-
         super.initialise(entityDescriptor);
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;

@@ -103,7 +103,6 @@ public abstract class AppConfig
         {
             availableInputs.add(ControllerType._EXTERNAL);
             availableInputs.add(ControllerType._KEYBOARD);
-            availableInputs.add(ControllerType._MOUSE);
 
             virtualControllerPos = ControllerPos._HIDDEN;
         }
@@ -144,7 +143,6 @@ public abstract class AppConfig
             Trace.dbg("_VIRTUAL?           : " + availableInputs.contains(ControllerType._VIRTUAL, true));
             Trace.dbg("_EXTERNAL?          : " + availableInputs.contains(ControllerType._EXTERNAL, true));
             Trace.dbg("_KEYBOARD?          : " + availableInputs.contains(ControllerType._KEYBOARD, true));
-            Trace.dbg("_MOUSE?             : " + availableInputs.contains(ControllerType._MOUSE, true));
             Trace.dbg("controllerPos       : " + virtualControllerPos);
             Trace.dbg("controllersFitted   : " + controllersFitted);
             Trace.dbg("usedController      : " + usedController);
