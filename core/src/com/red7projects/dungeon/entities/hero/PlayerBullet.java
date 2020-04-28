@@ -27,6 +27,7 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
+import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 import org.jetbrains.annotations.Contract;
@@ -66,11 +67,21 @@ public class PlayerBullet extends GdxSprite
 
         parent = entityDescriptor._PARENT;
 
+        direction.set(parent.lookingAt);
+
         float x = parent.sprite.getX();
         float y = parent.sprite.getY();
 
+        if (direction.getX() == Movement._DIRECTION_LEFT)
+        {
+            x -= frameWidth;
+        }
+        else if (direction.getX() == Movement._DIRECTION_RIGHT)
+        {
+            x += parent.frameWidth;
+        }
+
         sprite.setPosition(x, y);
-        direction.set(parent.lookingAt);
 
         initXY.set(sprite.getX(), sprite.getY());
 

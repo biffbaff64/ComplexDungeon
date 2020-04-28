@@ -267,13 +267,18 @@ public class MainPlayer extends GdxSprite
             }
             break;
 
-            case _CASTING:
             case _FIGHTING:
             {
                 if (animation.isAnimationFinished(elapsedAnimTime))
                 {
-                    bulletManager.createBullet(app.getPlayer(), app);
                     setAction(Actions._STANDING);
+                }
+                else
+                {
+                    if (animation.getKeyFrameIndex(elapsedAnimTime) == GameAssets._PLAYER_FIGHT_FRAMES / 2)
+                    {
+                        bulletManager.createBullet(app.getPlayer(), app);
+                    }
                 }
             }
             break;
@@ -348,20 +353,6 @@ public class MainPlayer extends GdxSprite
 
         final DirectionAnim[] fightAnims =
             {
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP, GameAssets._FIGHT_UP_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN, GameAssets._FIGHT_DOWN_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL, GameAssets._FIGHT_LEFT_ASSET),
-
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP, GameAssets._FIGHT_UP_RIGHT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN, GameAssets._FIGHT_DOWN_RIGHT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._FIGHT_RIGHT_ASSET),
-
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP, GameAssets._FIGHT_UP_ASSET),
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._FIGHT_DOWN_ASSET),
-            };
-
-        final DirectionAnim[] castAnims =
-            {
                 new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP, GameAssets._CAST_UP_LEFT_ASSET),
                 new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_LEFT_ASSET),
                 new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL, GameAssets._CAST_LEFT_ASSET),
@@ -429,37 +420,8 @@ public class MainPlayer extends GdxSprite
             }
             break;
 
-            case _CASTING:
-            {
-                Trace.__FILE_LINE__();
-
-                EntityDescriptor descriptor = new EntityDescriptor();
-
-                descriptor._FRAMES   = GameAssets._PLAYER_CAST_FRAMES;
-                descriptor._PLAYMODE = Animation.PlayMode.LOOP;
-                descriptor._SIZE     = GameAssets.getAssetSize(GraphicID.G_PLAYER_CAST);
-
-                String asset = castAnims[0].animation;
-
-                for (DirectionAnim directionAnim : castAnims)
-                {
-                    if ((lookingAt.getX() == directionAnim.dirX)
-                        && (lookingAt.getY() == directionAnim.dirY))
-                    {
-                        asset = directionAnim.animation;
-                    }
-                }
-
-                descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(asset);
-
-                setAnimation(descriptor, 0.5f);
-            }
-            break;
-
             case _FIGHTING:
             {
-                Trace.__FILE_LINE__();
-
                 EntityDescriptor descriptor = new EntityDescriptor();
 
                 descriptor._FRAMES   = GameAssets._PLAYER_FIGHT_FRAMES;
@@ -478,6 +440,8 @@ public class MainPlayer extends GdxSprite
                 }
 
                 descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(asset);
+
+                descriptor.debug();
 
                 setAnimation(descriptor, 0.5f);
             }
@@ -659,7 +623,6 @@ public class MainPlayer extends GdxSprite
                 case _NO_ACTION:
                 case _RUNNING:
                 case _FIGHTING:
-                case _CASTING:
                 case _LAST_RITES:
                 case _HURT:
                 case _DYING:

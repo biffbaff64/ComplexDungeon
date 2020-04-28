@@ -27,7 +27,6 @@ public enum Actions
     _RUNNING,
     _JUMPING,
     _FIGHTING,
-    _CASTING,
     _FALLING,
     _FLYING,
     _TELEPORTING,

@@ -45,15 +45,6 @@ public class GameAssets
     public static final String _IDLE_UP_RIGHT_ASSET   = "stand_up_right";
     public static final String _IDLE_DOWN_RIGHT_ASSET = "stand_down_right";
 
-    public static final String _FIGHT_UP_ASSET         = "fight_up";
-    public static final String _FIGHT_DOWN_ASSET       = "fight_down";
-    public static final String _FIGHT_LEFT_ASSET       = "fight_left";
-    public static final String _FIGHT_RIGHT_ASSET      = "fight_right";
-    public static final String _FIGHT_UP_LEFT_ASSET    = "fight_up_left";
-    public static final String _FIGHT_DOWN_LEFT_ASSET  = "fight_down_left";
-    public static final String _FIGHT_UP_RIGHT_ASSET   = "fight_up_right";
-    public static final String _FIGHT_DOWN_RIGHT_ASSET = "fight_down_right";
-
     public static final String _CAST_UP_ASSET         = "cast_up";
     public static final String _CAST_DOWN_ASSET       = "cast_down";
     public static final String _CAST_LEFT_ASSET       = "cast_left";
@@ -68,8 +59,7 @@ public class GameAssets
 
     public static final int _PLAYER_STAND_FRAMES = 7;
     public static final int _PLAYER_RUN_FRAMES   = 10;
-    public static final int _PLAYER_FIGHT_FRAMES = 7;
-    public static final int _PLAYER_CAST_FRAMES  = 6;
+    public static final int _PLAYER_FIGHT_FRAMES = 6;
     public static final int _PLAYER_DYING_FRAMES = 1;
     public static final int _PLAYER_SPAWN_FRAMES = 20;
     public static final int _PLAYER_APPEAR_FRAME = 13;
@@ -217,12 +207,10 @@ public class GameAssets
     public static final String _KEY_COLLECTED_MSG_ASSET   = "key_collected";
     public static final String _GAMEOVER_MSG_ASSET        = "gameover";
     public static final String _KEY_NEEDED_MSG_ASSET      = "key_needed";
-    public static final String _KEY_HINT_MSG_ASSET        = "key_hint";
     public static final String _GETREADY_MSG_ASSET        = "getready";
     public static final String _PRESS_FOR_TREASURE_ASSET  = "press_for_treasure";
     public static final String _PRESS_FOR_PRISONER_ASSET  = "press_for_prisoner";
     public static final String _STORM_DEMON_WARNING_ASSET = "storm_demon_warning";
-    public static final String _VILLAGER_FACES_ASSET      = "villager_faces";
 
     //
     // Weaponry and Explosions
@@ -242,12 +230,6 @@ public class GameAssets
     public static final int _GEMS_FRAMES                   = 6;
     public static final int _KEY_FRAMES                    = 5;
     public static final int _SHIELD_FRAMES                 = 1;
-    public static final int _APPLE_FRAMES                  = 1;
-    public static final int _BOOK_FRAMES                   = 1;
-    public static final int _CAKE_FRAMES                   = 1;
-    public static final int _CHERRIES_FRAMES               = 1;
-    public static final int _GRAPES_FRAMES                 = 1;
-    public static final int _ARMOUR_FRAMES                 = 1;
     public static final int _ALCOVE_TORCH_FRAMES           = 4;
     public static final int _POT_FRAMES                    = 1;
     public static final int _CRATE_FRAMES                  = 1;
@@ -260,27 +242,19 @@ public class GameAssets
     public static final int _MYSTERY_CHEST_FRAMES          = 2;
     public static final int _STORM_DEMON_FRAMES            = 7;
     public static final int _BOUNCER_FRAMES                = 1;
-    public static final int _JELLY_MONSTER_FRAMES          = 8;
-    public static final int _MINI_FIRE_BALL_FRAMES         = 6;
     public static final int _FLAME_THROW_FRAMES            = 4;
     public static final int _SPIKE_BALL_FRAMES             = 1;
     public static final int _SPIKE_BLOCK_HORIZONTAL_FRAMES = 10;
     public static final int _SPIKE_BLOCK_VERTICAL_FRAMES   = 10;
     public static final int _TELEPORTER_FRAMES             = 8;
-    public static final int _HELP_ME_FRAMES                = 1;
     public static final int _PHASER_BULLET_FRAMES          = 1;
     public static final int _FIREBALL_BULLET_FRAMES        = 1;
-    public static final int _DOCUMENT_FRAMES               = 6;
     public static final int _SCORPION_FRAMES               = 15;
-    public static final int _GREEN_BEETLE_FRAMES           = 5;
-    public static final int _QUESTION_MARK_FRAMES          = 1;
     public static final int _FLOATING_PLATFORM_FRAMES      = 1;
     public static final int _TURRET_FRAMES                 = 1;
-    public static final int _PRESS_BUTTON_MESSAGES_FRAMES  = 3;
     public static final int _SACKS_FRAMES                  = 1;
     public static final int _CROSSHAIRS_FRAMES             = 1;
     public static final int _ESCALATOR_FRAMES              = 16;
-    public static final int _VILLAGER_FACES_FRAMES         = 3;
     public static final int _LITTER_FRAMES                 = 10;
     public static final int _BOOKS_FRAMES                  = 5;
     public static final int _RUNES_FRAMES                  = 8;
@@ -302,7 +276,6 @@ public class GameAssets
         {
             new AssetSize(GraphicID.G_PLAYER, 82, 120),
             new AssetSize(GraphicID.G_PLAYER_FIGHT, 82, 120),
-            new AssetSize(GraphicID.G_PLAYER_CAST, 82, 120),
             new AssetSize(GraphicID.G_ARROW, 82, 82),
             new AssetSize(GraphicID.G_PRISONER, 128, 128),
             new AssetSize(GraphicID.G_VILLAGER, 128, 128),
