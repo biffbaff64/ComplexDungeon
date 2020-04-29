@@ -32,6 +32,7 @@ import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.Room;
+import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.maths.Box;
 import com.red7projects.dungeon.physics.DirectionAnim;
 import com.red7projects.dungeon.physics.Movement;
@@ -181,6 +182,32 @@ public class MainPlayer extends GdxSprite
             sprite.setPosition(app.mapData.checkPoint.getX(), app.mapData.checkPoint.getY());
 
             setAction(Actions._SPAWNING);
+        }
+        else
+        {
+            TileID tileID = app.collisionUtils.getMarkerTileOn
+                        ((int) getPosition().x / Gfx.getTileWidth(),
+                            (int) getPosition().y / Gfx.getTileHeight());
+
+            if (tileID == TileID._ESCALATOR_LEFT_TILE)
+            {
+                sprite.translateX(_PLAYER_X_SPEED * Movement._DIRECTION_LEFT);
+            }
+
+            if (tileID == TileID._ESCALATOR_RIGHT_TILE)
+            {
+                sprite.translateX(_PLAYER_X_SPEED * Movement._DIRECTION_RIGHT);
+            }
+
+            if (tileID == TileID._ESCALATOR_UP_TILE)
+            {
+                sprite.translateY(_PLAYER_Y_SPEED * Movement._DIRECTION_UP);
+            }
+
+            if (tileID == TileID._ESCALATOR_DOWN_TILE)
+            {
+                sprite.translateY(_PLAYER_Y_SPEED * Movement._DIRECTION_DOWN);
+            }
         }
 
         super.preUpdate();
