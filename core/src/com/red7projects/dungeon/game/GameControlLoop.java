@@ -21,14 +21,13 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.ui.MessagePanel;
-import com.red7projects.dungeon.ui.SlidePanel;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.concurrent.TimeUnit;
 
 public class GameControlLoop extends AbstractControlLoop
 {
-    private MessagePanel messagePanel;
+    public MessagePanel messagePanel;
 
     public GameControlLoop(App _app)
     {
@@ -282,24 +281,23 @@ public class GameControlLoop extends AbstractControlLoop
         app.getHud().update();
         app.mapUtils.update();
 
-        if (app.getHud().messageManager.getCurrentPanel().getState() == StateID._UPDATE)
-        {
-            if (app.getHud().buttonX.isPressed())
-            {
-                ((SlidePanel) app.getHud().messageManager.getCurrentPanel()).activate();
-
-                app.getHud().messageManager.closeSlidePanel();
-
-                scr().gameState.set(StateID._STATE_GAME);
-
-                app.getHud().buttonX.release();
-                app.getHud().showControls();
-            }
-        }
+//        if (app.getHud().messageManager.getCurrentPanel().getState() == StateID._UPDATE)
+//        {
+//            if (app.getHud().buttonX.isPressed())
+//            {
+//                ((SlidePanel) app.getHud().messageManager.getCurrentPanel()).activate();
+//
+//                app.getHud().messageManager.closeSlidePanel();
+//                app.getHud().buttonX.release();
+//            }
+//        }
 
         if (!messagePanel.update())
         {
             scr().gameState.set(StateID._STATE_GAME);
+
+            messagePanel.dispose();
+            messagePanel = null;
 
             app.getHud().showControls();
         }

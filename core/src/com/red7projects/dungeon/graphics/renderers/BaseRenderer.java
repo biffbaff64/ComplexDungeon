@@ -73,10 +73,10 @@ public class BaseRenderer implements Disposable
         spriteGameCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Sprite Cam", app);
         hudGameCamera       = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Hud Cam", app);
 
-        backgroundCamera.setZoomDefault(Gfx._DEFAULT_SCALE);
+        backgroundCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         tiledGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         spriteGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
-        hudGameCamera.setZoomDefault(Gfx._DEFAULT_SCALE);
+        hudGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
 
         backgroundZoom  = new Zoom();
         gameZoom        = new Zoom();
@@ -199,7 +199,6 @@ public class BaseRenderer implements Disposable
         }
 
         // ----- Draw the HUD and any related objects, if enabled -----
-        // TODO: 14/02/2019 - Update the HUD to use Scene2D.ui stage.
         if (hudGameCamera.isInUse)
         {
             hudGameCamera.setPosition(cameraX, cameraY,0, hudZoom.getZoomValue(),false);

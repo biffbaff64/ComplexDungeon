@@ -441,8 +441,6 @@ public class MainPlayer extends GdxSprite
 
                 descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(asset);
 
-                descriptor.debug();
-
                 setAnimation(descriptor, 0.5f);
             }
             break;

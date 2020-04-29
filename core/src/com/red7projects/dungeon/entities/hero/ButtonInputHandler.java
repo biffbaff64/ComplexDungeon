@@ -49,11 +49,8 @@ public class ButtonInputHandler implements Disposable
         // A Button
         if (app.getHud().buttonA.isPressed())
         {
-            if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_A)
-            {
-                aButtonActions.process();
-                app.getHud().buttonA.release();
-            }
+            aButtonActions.process();
+            app.getHud().buttonA.release();
         }
 
         //
@@ -76,11 +73,8 @@ public class ButtonInputHandler implements Disposable
         // Y Button
         if (app.getHud().buttonY.isPressed())
         {
-            if (app.getPlayer().actionButton.getActionMode() == Actions._OFFER_ABXY_Y)
-            {
-                yButtonActions.process();
-                app.getHud().buttonY.release();
-            }
+            yButtonActions.process();
+            app.getHud().buttonY.release();
         }
 
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))

@@ -145,6 +145,7 @@ public class GameAssets
     public static final String _DOCUMENT_ASSET      = "paper";
     public static final String _LITTER_ASSET        = "litter";
     public static final String _BOOKS_ASSET         = "books";
+    public static final String _GREY_BOOKS_ASSET    = "books_grey";
 
 
     //
@@ -256,7 +257,7 @@ public class GameAssets
     public static final int _CROSSHAIRS_FRAMES             = 1;
     public static final int _ESCALATOR_FRAMES              = 16;
     public static final int _LITTER_FRAMES                 = 10;
-    public static final int _BOOKS_FRAMES                  = 5;
+    public static final int _BOOKS_FRAMES                  = 8;
     public static final int _RUNES_FRAMES                  = 8;
 
     //

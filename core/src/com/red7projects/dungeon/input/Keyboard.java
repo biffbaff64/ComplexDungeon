@@ -31,12 +31,14 @@ import com.red7projects.dungeon.utils.development.Developer;
 public class Keyboard extends InputAdapter
 {
     public boolean ctrlButtonHeld;
+    public boolean shiftButtonHeld;
     private final App app;
 
     public Keyboard(App _app)
     {
         this.app = _app;
         ctrlButtonHeld = false;
+        shiftButtonHeld = false;
     }
 
     public void update()
@@ -172,6 +174,14 @@ public class Keyboard extends InputAdapter
                 }
                 break;
 
+                case Input.Keys.SHIFT_LEFT:
+                case Input.Keys.SHIFT_RIGHT:
+                {
+                    shiftButtonHeld = true;
+                    returnFlag = true;
+                }
+                break;
+
                 case Input.Keys.CONTROL_LEFT:
                 case Input.Keys.CONTROL_RIGHT:
                 {
@@ -236,6 +246,14 @@ public class Keyboard extends InputAdapter
                 {
                     app.getHud().buttonPause.release();
 
+                    returnFlag = true;
+                }
+                break;
+
+                case Input.Keys.SHIFT_LEFT:
+                case Input.Keys.SHIFT_RIGHT:
+                {
+                    shiftButtonHeld = false;
                     returnFlag = true;
                 }
                 break;
@@ -409,15 +427,29 @@ public class Keyboard extends InputAdapter
     {
         if (AppConfig.gameScreenActive)
         {
-            if (Developer.isDevMode() && ctrlButtonHeld)
+            if (Developer.isDevMode())
             {
-                if (amount < 0)
+                if (ctrlButtonHeld)
                 {
-                    app.baseRenderer.gameZoom.out(0.10f);
+                    if (amount < 0)
+                    {
+                        app.baseRenderer.gameZoom.out(0.10f);
+                    }
+                    else if (amount > 0)
+                    {
+                        app.baseRenderer.gameZoom.in(0.10f);
+                    }
                 }
-                else if (amount > 0)
+                else if (shiftButtonHeld)
                 {
-                    app.baseRenderer.gameZoom.in(0.10f);
+                    if (amount < 0)
+                    {
+                        app.baseRenderer.hudZoom.out(0.10f);
+                    }
+                    else if (amount > 0)
+                    {
+                        app.baseRenderer.hudZoom.in(0.10f);
+                    }
                 }
             }
         }

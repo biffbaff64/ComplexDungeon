@@ -6,21 +6,21 @@ filter: Nearest,Nearest
 repeat: none
 arrow_left_blue
   rotate: false
-  xy: 780, 1377
+  xy: 1971, 1972
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_left_blue_pressed
   rotate: false
-  xy: 1971, 1972
+  xy: 1909, 1740
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 arrow_right_blue
   rotate: false
-  xy: 780, 1309
+  xy: 1724, 1554
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -221,16 +221,30 @@ button_achievements_pressed
   orig: 76, 124
   offset: 0, 0
   index: -1
+button_arrow_left
+  rotate: false
+  xy: 646, 1154
+  size: 89, 106
+  orig: 89, 106
+  offset: 0, 0
+  index: -1
+button_arrow_right
+  rotate: false
+  xy: 585, 438
+  size: 89, 106
+  orig: 89, 106
+  offset: 0, 0
+  index: -1
 button_d
   rotate: false
-  xy: 585, 478
+  xy: 1792, 1554
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
   index: -1
 button_d_pressed
   rotate: false
-  xy: 585, 410
+  xy: 672, 1086
   size: 66, 66
   orig: 66, 66
   offset: 0, 0
@@ -286,7 +300,7 @@ button_no
   index: -1
 button_no_pressed
   rotate: false
-  xy: 1765, 1740
+  xy: 780, 1243
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
@@ -328,35 +342,35 @@ button_x
   index: -1
 button_x_pressed
   rotate: false
-  xy: 672, 1042
+  xy: 547, 748
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_y
   rotate: false
-  xy: 672, 908
+  xy: 547, 614
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_y_pressed
   rotate: false
-  xy: 547, 748
+  xy: 1590, 1544
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 button_yes
   rotate: false
-  xy: 1871, 1808
+  xy: 1002, 1478
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 button_yes_pressed
   rotate: false
-  xy: 1734, 1622
+  xy: 1765, 1740
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
@@ -391,21 +405,21 @@ hud_shop_button_pressed
   index: -1
 joystick_ball
   rotate: false
-  xy: 547, 614
+  xy: 780, 1311
   size: 132, 132
   orig: 132, 132
   offset: 0, 0
   index: -1
 new_back_button
   rotate: false
-  xy: 646, 1176
+  xy: 737, 1157
   size: 142, 84
   orig: 142, 84
   offset: 0, 0
   index: -1
 new_back_button_pressed
   rotate: false
-  xy: 1590, 1592
+  xy: 858, 1460
   size: 142, 84
   orig: 142, 84
   offset: 0, 0
@@ -426,14 +440,14 @@ new_developer_options_button_pressed
   index: -1
 new_exit_button
   rotate: false
-  xy: 1734, 1554
+  xy: 1871, 1808
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
   index: -1
 new_exit_button_pressed
   rotate: false
-  xy: 1590, 1524
+  xy: 1724, 1622
   size: 142, 66
   orig: 142, 66
   offset: 0, 0
@@ -517,7 +531,7 @@ toggle_off
   index: -1
 toggle_on
   rotate: false
-  xy: 1909, 1759
+  xy: 585, 389
   size: 88, 47
   orig: 88, 47
   offset: 0, 0

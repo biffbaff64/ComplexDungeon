@@ -17,6 +17,7 @@
 package com.red7projects.dungeon.game;
 
 import com.badlogic.gdx.utils.Disposable;
+import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.types.Item;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -32,7 +33,6 @@ public class GameProgress implements Disposable
     public static final int _NATURE     = 5;
     public static final int _WATER      = 6;
     public static final int _EARTH      = 7;
-    public static final int _MAX_RUNES  = 8;
 
     public boolean      isRestarting;           // Player has lost a life. Switch player, or start next life
     public boolean      levelCompleted;         // True if level finished and next level needed.
@@ -45,6 +45,7 @@ public class GameProgress implements Disposable
     public int          playerLevel;            //
 
     public boolean[] runes;
+    public boolean[] books;
 
     public Item score;
     public Item lives;
@@ -76,9 +77,14 @@ public class GameProgress implements Disposable
         createData();
         toMinimum();
 
-        for (int i=0; i<_MAX_RUNES; i++)
+        for (int i = 0; i< GameAssets._RUNES_FRAMES; i++)
         {
             runes[i] = false;
+        }
+
+        for (int i = 0; i< GameAssets._BOOKS_FRAMES; i++)
+        {
+            books[i] = false;
         }
     }
 
@@ -104,7 +110,8 @@ public class GameProgress implements Disposable
         playerLifeOver = false;
         playerLevel = 1;
 
-        runes = new boolean[_MAX_RUNES];
+        runes = new boolean[GameAssets._RUNES_FRAMES];
+        books = new boolean[GameAssets._BOOKS_FRAMES];
     }
 
     public void closeLastGame()

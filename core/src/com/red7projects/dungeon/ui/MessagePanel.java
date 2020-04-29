@@ -1,13 +1,12 @@
 package com.red7projects.dungeon.ui;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.Speed;
-import com.red7projects.dungeon.utils.logging.Trace;
 
 public class MessagePanel
 {
@@ -18,7 +17,7 @@ public class MessagePanel
             "message_panel3"
         };
 
-    private TextureRegion villagerHead;
+    private int panelIndex;
     private App app;
 
     public MessagePanel(App _app)
@@ -28,8 +27,6 @@ public class MessagePanel
 
     public void create()
     {
-        Trace.__FILE_FUNC();
-
         app.getHud().messageManager.enable();
         app.getHud().messageManager.addSlidePanel(panels[1]);
         app.getHud().messageManager.getCurrentPanel().set
@@ -45,10 +42,37 @@ public class MessagePanel
             );
 
         app.getHud().hideControls(false);
+
+        panelIndex = 1;
     }
 
     public boolean update()
     {
-        return app.getHud().messageManager.doesPanelExist(panels[1]);
+        boolean isStillUpdating = isPanelActive();
+
+        if (isStillUpdating)
+        {
+            if (app.getHud().messageManager.getCurrentPanel().getState() == StateID._UPDATE)
+            {
+                if (app.getHud().buttonX.isPressed())
+                {
+                    ((SlidePanel) app.getHud().messageManager.getCurrentPanel()).activate();
+
+                    app.getHud().messageManager.closeSlidePanel();
+                    app.getHud().buttonX.release();
+                }
+            }
+        }
+
+        return isStillUpdating;
+    }
+
+    public boolean isPanelActive()
+    {
+        return app.getHud().messageManager.doesPanelExist(panels[panelIndex]);
+    }
+
+    public void dispose()
+    {
     }
 }

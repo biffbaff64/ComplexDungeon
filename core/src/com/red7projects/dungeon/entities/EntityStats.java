@@ -204,6 +204,7 @@ public abstract class EntityStats
             case G_BOOK:
             case G_LITTER:
             case G_RUNE:
+            case G_SACKS:
             {
             }
             break;

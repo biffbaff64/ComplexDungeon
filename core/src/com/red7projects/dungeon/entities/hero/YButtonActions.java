@@ -17,6 +17,7 @@
 package com.red7projects.dungeon.entities.hero;
 
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.game.StateID;
 
 public class YButtonActions
 {
@@ -29,5 +30,9 @@ public class YButtonActions
 
     public void process()
     {
+        if (app.mainGameScreen.gameState.get().equals(StateID._STATE_GAME))
+        {
+            app.getHud().setObjectivesPanelIndex((app.getHud().getObjectivesPanelIndex() + 1) % 2);
+        }
     }
 }
