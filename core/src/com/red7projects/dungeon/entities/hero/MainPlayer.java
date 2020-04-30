@@ -185,7 +185,7 @@ public class MainPlayer extends GdxSprite
         }
         else
         {
-            TileID tileID = app.collisionUtils.getMarkerTileOn
+            TileID tileID = app.collisionUtils.getTileAtPosition
                         ((int) getPosition().x / Gfx.getTileWidth(),
                             (int) getPosition().y / Gfx.getTileHeight());
 

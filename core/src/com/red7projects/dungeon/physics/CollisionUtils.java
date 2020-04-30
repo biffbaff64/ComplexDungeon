@@ -68,7 +68,8 @@ public class CollisionUtils implements Disposable
     }
 
     /**
-     * Tidy ALL currently active collision objects.
+     * Tidy ALL currently active collision objects by removing any _DEAD
+     * objects from the object list.
      */
     public void tidy()
     {
@@ -106,10 +107,13 @@ public class CollisionUtils implements Disposable
     }
 
     /**
-     * @param entity the entity
-     * @param target the target
+     * Checks to see if the two specified {@link GdxSprite} objects are collidable.
+     * The test is designed to see if 'entity' can collide with 'target'.
      *
-     * @return the boolean
+     * @param entity The first object.
+     * @param target The second object.
+     *
+     * @return TRUE if collidable, else FALSE.
      */
     public boolean canCollide(GdxSprite entity, GdxSprite target)
     {
@@ -118,26 +122,20 @@ public class CollisionUtils implements Disposable
             && (entity.collisionObject.index != target.collisionObject.index);
     }
 
-    /**
-     * @param theEntityMask
-     * @param theContactMask
-     *
-     * @return
-     */
     public boolean filter(short theEntityMask, short theContactMask)
     {
         return (((theEntityMask & theContactMask) != 0) && ((theContactMask & theEntityMask) != 0));
     }
 
     /**
-     * Gets marker tile on.
+     * Gets the {@link TileID} at the specified world coordinates.
      *
-     * @param x the x
-     * @param y the y
+     * @param x the x coordinate.
+     * @param y the y coordinate.
      *
-     * @return the marker tile on
+     * @return the tile ID.
      */
-    public TileID getMarkerTileOn(int x, int y)
+    public TileID getTileAtPosition(int x, int y)
     {
         TileID tileID = TileID._UNKNOWN;
 
@@ -151,82 +149,21 @@ public class CollisionUtils implements Disposable
         return tileID;
     }
 
-    /**
-     *
-     *
-     * @param spriteObj the sprite obj
-     *
-     * @return
-     */
-    public int tileBelowX(GdxSprite spriteObj)
-    {
-        return (int) ((spriteObj.getCollisionRectangle().getX() + (Gfx.getTileWidth() / 2)) / Gfx.getTileWidth());
-    }
-
-    /**
-     *
-     *
-     * @param spriteObj the sprite obj
-     *
-     * @return
-     */
-    public int tileBelowY(GdxSprite spriteObj)
-    {
-        int y;
-
-        y = (int) ((spriteObj.sprite.getY() - (spriteObj.sprite.getY() % Gfx.getTileHeight())) / Gfx.getTileHeight());
-
-        if ((spriteObj.sprite.getY() % Gfx.getTileHeight()) == 0)
-        {
-            y--;
-        }
-
-        return y;
-    }
-
-    /**
-     * Gets box hitting top.
-     *
-     * @param spriteObject the sprite object
-     *
-     * @return the box hitting top
-     */
     public CollisionObject getBoxHittingTop(GdxSprite spriteObject)
     {
         return AABBData.boxes().get(spriteObject.collisionObject.boxHittingTop);
     }
 
-    /**
-     * Gets box hitting bottom.
-     *
-     * @param spriteObject the sprite object
-     *
-     * @return the box hitting bottom
-     */
     public CollisionObject getBoxHittingBottom(GdxSprite spriteObject)
     {
         return AABBData.boxes().get(spriteObject.collisionObject.boxHittingBottom);
     }
 
-    /**
-     * Gets box hitting left.
-     *
-     * @param spriteObject the sprite object
-     *
-     * @return the box hitting left
-     */
     public CollisionObject getBoxHittingLeft(GdxSprite spriteObject)
     {
         return AABBData.boxes().get(spriteObject.collisionObject.boxHittingLeft);
     }
 
-    /**
-     * Gets box hitting right.
-     *
-     * @param spriteObject the sprite object
-     *
-     * @return the box hitting right
-     */
     public CollisionObject getBoxHittingRight(GdxSprite spriteObject)
     {
         return AABBData.boxes().get(spriteObject.collisionObject.boxHittingRight);

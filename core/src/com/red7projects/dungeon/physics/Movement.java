@@ -19,7 +19,6 @@
 
 package com.red7projects.dungeon.physics;
 
-//@formatter:off
 public abstract class Movement
 {
     public static final int _HORIZONTAL         = 1;
