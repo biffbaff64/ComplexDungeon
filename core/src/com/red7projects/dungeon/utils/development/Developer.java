@@ -23,6 +23,7 @@ import com.red7projects.dungeon.game.App;
 public abstract class Developer
 {
     private static boolean _DEVMODE = false;
+    private static boolean _LAPTOP = false;
     private static App app;
 
     public static void setMode(App _app)
@@ -32,11 +33,13 @@ public abstract class Developer
         if (AppConfig.isDesktopApp())
         {
             _DEVMODE = "TRUE".equals(System.getenv("_DEV_MODE").toUpperCase());
+            _LAPTOP = "LAPTOP".equals(System.getenv("_MACHINE").toUpperCase());
         }
 
         if (AppConfig.isAndroidApp())
         {
             _DEVMODE = false;
+            _LAPTOP = false;
         }
     }
 
@@ -48,5 +51,10 @@ public abstract class Developer
     public static boolean isGodMode()
     {
         return app.settings.isEnabled(Settings._GOD_MODE);
+    }
+
+    public static boolean isLaptop()
+    {
+        return _LAPTOP;
     }
 }

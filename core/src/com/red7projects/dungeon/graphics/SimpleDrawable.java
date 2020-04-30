@@ -40,7 +40,7 @@ public class SimpleDrawable
         this.image      = _image;
         this.position   = new SimpleVec2F(_x, _y);
         this.width      = _image.getRegionWidth();
-        this.height     = image.getRegionHeight();
+        this.height     = _image.getRegionHeight();
     }
 
     public void draw(SpriteBatch spriteBatch)

@@ -113,12 +113,12 @@ public abstract class AppConfig
         // Set Debug Mode from the _DEV_MODE Environment variable.
         Developer.setMode(_app);
 
-//        if (Developer.isDevMode())
-//        {
-//            availableInputs.clear();
-//            availableInputs.add(ControllerType._VIRTUAL);
-//            virtualControllerPos = ControllerPos._LEFT;
-//        }
+        if (Developer.isDevMode() && Developer.isLaptop())
+        {
+            availableInputs.clear();
+            availableInputs.add(ControllerType._VIRTUAL);
+            virtualControllerPos = ControllerPos._LEFT;
+        }
 
         isUsingBOX2DPhysics = app.settings.isEnabled(Settings._BOX2D_PHYSICS);
         isUsingAshleyECS    = app.settings.isEnabled(Settings._USING_ASHLEY_ECS);
