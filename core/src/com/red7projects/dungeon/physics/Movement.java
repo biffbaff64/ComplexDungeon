@@ -44,7 +44,7 @@ public abstract class Movement
         _UP_LEFT,
         _UP_RIGHT,
         _DOWN_LEFT,
-        _DOWN_RIGHT
+        _DOWN_RIGHT,
     }
 
     private static final String[][] aliases =

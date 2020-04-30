@@ -206,7 +206,7 @@ public class MapData implements Disposable
 
         previousMapPosition.set(mapPosition.getX(), mapPosition.getY());
 
-        mapBox.set(0, 0, (Gfx.mapWidth - Gfx._VIEW_WIDTH), (Gfx.mapHeight - Gfx._VIEW_HEIGHT));
+        mapBox.set(0, 0, Gfx.mapWidth, Gfx.mapHeight);
     }
 
     /**

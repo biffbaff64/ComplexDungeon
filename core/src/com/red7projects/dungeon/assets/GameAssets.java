@@ -79,14 +79,10 @@ public class GameAssets
 
     //
     // Villager assets
-    public static final String _VILLAGER_IDLE_UP_ASSET         = "villager_stand_up";
-    public static final String _VILLAGER_IDLE_DOWN_ASSET       = "villager_stand_down";
-    public static final String _VILLAGER_IDLE_LEFT_ASSET       = "villager_stand_left";
-    public static final String _VILLAGER_IDLE_RIGHT_ASSET      = "villager_stand_right";
-    public static final String _VILLAGER_IDLE_UP_LEFT_ASSET    = "villager_stand_left";
-    public static final String _VILLAGER_IDLE_UP_RIGHT_ASSET   = "villager_stand_right";
-    public static final String _VILLAGER_IDLE_DOWN_LEFT_ASSET  = "villager_stand_left";
-    public static final String _VILLAGER_IDLE_DOWN_RIGHT_ASSET = "villager_stand_right";
+    public static final String _VILLAGER_IDLE_UP_ASSET         = "villager1_stand_up";
+    public static final String _VILLAGER_IDLE_DOWN_ASSET       = "villager1_stand_down";
+    public static final String _VILLAGER_IDLE_LEFT_ASSET       = "villager1_stand_left";
+    public static final String _VILLAGER_IDLE_RIGHT_ASSET      = "villager1_stand_right";
 
     public static final int _VILLAGER_IDLE_FRAMES = 8;
 

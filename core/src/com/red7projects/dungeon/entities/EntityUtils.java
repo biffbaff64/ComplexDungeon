@@ -84,6 +84,34 @@ public class EntityUtils
         return randomSprite;
     }
 
+    /**
+     * Finds the nearest sprite of type _gid to the player.
+     *
+     * @param _gid
+     * @return
+     */
+    public GdxSprite findNearest(GraphicID _gid)
+    {
+        GdxSprite distantSprite = findFirstOf(_gid);
+        float distance = app.getPlayer().getPosition().dst(distantSprite.getPosition());
+
+        for (GdxSprite sprite : app.entityData.entityMap)
+        {
+            if (sprite.gid == _gid)
+            {
+                float tempDistance = app.getPlayer().getPosition().dst(sprite.getPosition());
+
+                if (Math.abs(tempDistance) < Math.abs(distance))
+                {
+                    distance      = tempDistance;
+                    distantSprite = sprite;
+                }
+            }
+        }
+
+        return distantSprite;
+    }
+
     public GdxSprite getDistantSprite(GdxSprite gdxSprite)
     {
         GdxSprite distantSprite = app.getPlayer();

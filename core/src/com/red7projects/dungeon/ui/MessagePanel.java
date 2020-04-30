@@ -1,8 +1,10 @@
 package com.red7projects.dungeon.ui;
 
+import com.red7projects.dungeon.entities.characters.interactive.Villager;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Movement;
@@ -12,8 +14,8 @@ public class MessagePanel
 {
     private final String[] panels =
         {
-            "message_panel1",
             "message_panel2",
+            "message_panel1",
             "message_panel3"
         };
 
@@ -28,7 +30,7 @@ public class MessagePanel
     public void create()
     {
         app.getHud().messageManager.enable();
-        app.getHud().messageManager.addSlidePanel(panels[1]);
+        app.getHud().messageManager.addSlidePanel(panels[((Villager) app.entityUtils.findNearest(GraphicID.G_VILLAGER)).villagerType]);
         app.getHud().messageManager.getCurrentPanel().set
             (
                 new SimpleVec2F
@@ -36,7 +38,7 @@ public class MessagePanel
                         (float) (Gfx._VIEW_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2,
                         -app.getHud().messageManager.getCurrentPanelHeight()
                     ),
-                new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + 50),
+                new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + (Gfx.getTileHeight() * 2)),
                 new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
                 new Speed(0, 40)
             );

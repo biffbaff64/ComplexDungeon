@@ -17,22 +17,45 @@
 package com.red7projects.dungeon.entities.characters.interactive;
 
 import com.badlogic.gdx.Gdx;
-import com.red7projects.dungeon.assets.GameAssets;
+import com.badlogic.gdx.math.MathUtils;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.physics.Proximity;
+import com.red7projects.dungeon.maths.Point;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 public class Villager extends GdxSprite
 {
-    private       EntityDescriptor descriptor;
-    private       Proximity        proximity;
-    private       boolean          canShowMessage;
-    private final App              app;
+    private final String[][] villagers =
+        {
+            {   // Red Cap with feather
+                "villager1_stand_up",
+                "villager1_stand_down",
+                "villager1_stand_left",
+                "villager1_stand_right",
+            },
+            {   // Dark Cap with feather
+                "villager2_stand_up",
+                "villager2_stand_down",
+                "villager2_stand_left",
+                "villager2_stand_right",
+            },
+            {   // No Cap
+                "villager3_stand_up",
+                "villager3_stand_down",
+                "villager3_stand_left",
+                "villager3_stand_right",
+            },
+        };
+
+    private static final int _VILLAGER_TYPES = 3;
+
+    public  int              villagerType;
+    private EntityDescriptor descriptor;
+    private App              app;
 
     public Villager(final GraphicID _gid, final App _app)
     {
@@ -46,9 +69,11 @@ public class Villager extends GdxSprite
     {
         descriptor = new EntityDescriptor(entityDescriptor);
 
-        create(entityDescriptor);
+        villagerType = MathUtils.random(_VILLAGER_TYPES - 1);
 
-        proximity = new Proximity();
+        descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][1]);
+
+        create(entityDescriptor);
 
         collisionObject.bodyCategory = Gfx.CAT_VILLAGER;
         collisionObject.collidesWith = Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_PLAYER;
@@ -57,13 +82,11 @@ public class Villager extends GdxSprite
 
         sprite.setScale
             (
-                app.getPlayer().sprite.getScaleX() + 0.1f,
-                app.getPlayer().sprite.getScaleY() + 0.1f
+                app.getPlayer().sprite.getScaleX() + 0.5f,
+                app.getPlayer().sprite.getScaleY() + 0.5f
             );
 
         canFlip = false;
-
-        canShowMessage = false;
     }
 
     @Override
@@ -75,13 +98,13 @@ public class Villager extends GdxSprite
             {
                 if (app.getPlayer().topEdge < sprite.getY())
                 {
-                    descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(GameAssets._VILLAGER_IDLE_DOWN_ASSET);
+                    descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._DOWN.value]);
 
                     setAnimation(descriptor, 1.0f);
                 }
                 else if (app.getPlayer().topEdge > (sprite.getY() + frameHeight))
                 {
-                    descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(GameAssets._VILLAGER_IDLE_UP_ASSET);
+                    descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._UP.value]);
 
                     setAnimation(descriptor, 1.0f);
                 }
@@ -89,13 +112,13 @@ public class Villager extends GdxSprite
                 {
                     if (app.getPlayer().sprite.getX() < sprite.getX())
                     {
-                        descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(GameAssets._VILLAGER_IDLE_LEFT_ASSET);
+                        descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._LEFT.value]);
 
                         setAnimation(descriptor, 1.0f);
                     }
                     else
                     {
-                        descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(GameAssets._VILLAGER_IDLE_RIGHT_ASSET);
+                        descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._RIGHT.value]);
 
                         setAnimation(descriptor, 1.0f);
                     }

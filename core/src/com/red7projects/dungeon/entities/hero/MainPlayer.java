@@ -34,6 +34,7 @@ import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.Room;
 import com.red7projects.dungeon.map.TileID;
 import com.red7projects.dungeon.maths.Box;
+import com.red7projects.dungeon.maths.Point;
 import com.red7projects.dungeon.physics.DirectionAnim;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.Speed;
@@ -186,8 +187,8 @@ public class MainPlayer extends GdxSprite
         else
         {
             TileID tileID = app.collisionUtils.getTileAtPosition
-                        ((int) getPosition().x / Gfx.getTileWidth(),
-                            (int) getPosition().y / Gfx.getTileHeight());
+                        (collision.getBottomPoint(Point._CENTRE).getX() / Gfx.getTileWidth(),
+                            collision.getBottomPoint(Point._CENTRE).getY() / Gfx.getTileHeight());
 
             if (tileID == TileID._ESCALATOR_LEFT_TILE)
             {
@@ -338,6 +339,11 @@ public class MainPlayer extends GdxSprite
                     canOpenMessagePanel = false;
                 }
             }
+        }
+
+        if (!app.mapData.mapBox.contains(getPosition().x, getPosition().y))
+        {
+            setAction(Actions._DEAD);
         }
 
         // TEMP

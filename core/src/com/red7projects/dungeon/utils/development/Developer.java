@@ -33,7 +33,7 @@ public abstract class Developer
         if (AppConfig.isDesktopApp())
         {
             _DEVMODE = "TRUE".equals(System.getenv("_DEV_MODE").toUpperCase());
-            _LAPTOP = "LAPTOP".equals(System.getenv("_MACHINE").toUpperCase());
+            _LAPTOP = Boolean.parseBoolean(System.getenv("_MACHINE"));
         }
 
         if (AppConfig.isAndroidApp())

@@ -21,6 +21,8 @@ import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
+import com.red7projects.dungeon.maths.Point;
+import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
@@ -238,6 +240,48 @@ public class CollisionHandler implements CollisionListener, Disposable
         {
             app.getPlayer().sprite.translateX(4 * Movement._DIRECTION_LEFT);
         }
+    }
+
+    public SimpleVec2 getBottomPoint(Point _point)
+    {
+        SimpleVec2 simpleVec2;
+        SimpleVec2 currentPos = new SimpleVec2
+            (
+                (int) app.getPlayer().getCollisionRectangle().x,
+                (int) app.getPlayer().getCollisionRectangle().y
+            );
+
+        switch (_point)
+        {
+            case _LEFT:
+            {
+                simpleVec2 = new SimpleVec2((int) currentPos.getX(), (int) currentPos.getY());
+            }
+            break;
+
+            case _RIGHT:
+            {
+                simpleVec2 = new SimpleVec2
+                    (
+                        (int) (currentPos.getX() + app.getPlayer().collisionObject.rectangle.width),
+                        (int) currentPos.getY()
+                    );
+            }
+            break;
+
+            case _CENTRE:
+            default:
+            {
+                simpleVec2 = new SimpleVec2
+                    (
+                        (int) (currentPos.getX() + (app.getPlayer().collisionObject.rectangle.width / 2)),
+                        (int) currentPos.getY()
+                    );
+            }
+            break;
+        }
+
+        return simpleVec2;
     }
 
     @Override
