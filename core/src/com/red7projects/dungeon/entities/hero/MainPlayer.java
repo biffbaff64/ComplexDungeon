@@ -341,11 +341,6 @@ public class MainPlayer extends GdxSprite
             }
         }
 
-        if (!app.mapData.mapBox.contains(getPosition().x, getPosition().y))
-        {
-            setAction(Actions._DEAD);
-        }
-
         // TEMP
         if (strength <= 0)
         {
@@ -805,7 +800,6 @@ public class MainPlayer extends GdxSprite
         postMove();
     }
 
-    // TODO: 24/10/2019 - This method could be neater
     private void handleRoomExit()
     {
         int roomStart = Room._UNDEFINED;
@@ -813,22 +807,30 @@ public class MainPlayer extends GdxSprite
         if ((app.getPlayer().direction.getY() == Movement._DIRECTION_UP)
             && (app.getPlayer().sprite.getY() + app.getPlayer().frameHeight) > (Gfx.getMapHeight() - 180))
         {
+            app.getRoomSystem().moveUp();
+            direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_UP);
             roomStart = Room._S;
         }
         else if ((app.getPlayer().direction.getY() == Movement._DIRECTION_DOWN)
             && (app.getPlayer().sprite.getY() < 0))
         {
+            app.getRoomSystem().moveDown();
+            direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN);
             roomStart = Room._N;
         }
 
         if ((app.getPlayer().direction.getX() == Movement._DIRECTION_LEFT)
             && (app.getPlayer().sprite.getX() < 0))
         {
+            app.getRoomSystem().moveLeft();
+            direction.set(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL);
             roomStart = Room._E;
         }
         else if ((app.getPlayer().direction.getX() == Movement._DIRECTION_RIGHT)
             && (app.getPlayer().sprite.getX() + app.getPlayer().frameWidth) > Gfx.getMapWidth())
         {
+            app.getRoomSystem().moveRight();
+            direction.set(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL);
             roomStart = Room._W;
         }
 
@@ -836,31 +838,9 @@ public class MainPlayer extends GdxSprite
         {
             app.getRoomSystem().playerStart = roomStart;
             app.gameProgress.levelCompleted = true;
+            lookingAt.set(direction);
 
             setAction(Actions._CHANGING_ROOM);
-
-            if (roomStart == Room._N)
-            {
-                app.getRoomSystem().moveDown();
-                direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN);
-            }
-            else if (roomStart == Room._S)
-            {
-                app.getRoomSystem().moveUp();
-                direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_UP);
-            }
-            else if (roomStart == Room._E)
-            {
-                app.getRoomSystem().moveLeft();
-                direction.set(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL);
-            }
-            else // if (roomStart == Room._W)
-            {
-                app.getRoomSystem().moveRight();
-                direction.set(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL);
-            }
-
-            lookingAt.set(direction);
         }
     }
 

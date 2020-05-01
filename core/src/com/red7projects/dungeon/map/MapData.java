@@ -72,7 +72,6 @@ public class MapData implements Disposable
     public SimpleVec2  mapPosition;
     public SimpleVec2  previousMapPosition;
     public SimpleVec2F checkPoint;
-    public Rectangle   mapBox;
     public Rectangle   viewportBox;
     public Rectangle   innerViewportBox;
     public Rectangle   extendedViewportBox;
@@ -98,7 +97,6 @@ public class MapData implements Disposable
         previousMapPosition = new SimpleVec2();
         checkPoint          = new SimpleVec2F();
         tmxMapLoader        = new TmxMapLoader();
-        mapBox              = new Rectangle();
         viewportBox         = new Rectangle();
         innerViewportBox    = new Rectangle();
         extendedViewportBox = new Rectangle();
@@ -205,8 +203,6 @@ public class MapData implements Disposable
         minScrollY = 0;
 
         previousMapPosition.set(mapPosition.getX(), mapPosition.getY());
-
-        mapBox.set(0, 0, Gfx.mapWidth, Gfx.mapHeight);
     }
 
     /**
@@ -250,6 +246,5 @@ public class MapData implements Disposable
         previousMapPosition = null;
         checkPoint          = null;
         tmxMapLoader        = null;
-        mapBox              = null;
     }
 }
