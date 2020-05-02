@@ -41,8 +41,8 @@ public class BaseRenderer implements Disposable
     public OrthoGameCamera  hudGameCamera;
     public OrthoGameCamera  spriteGameCamera;
     public OrthoGameCamera  tiledGameCamera;
-    public OrthoGameCamera  backgroundCamera;
-    public Zoom             backgroundZoom;
+//    public OrthoGameCamera  backgroundCamera;
+//    public Zoom             backgroundZoom;
     public Zoom             gameZoom;
     public Zoom             hudZoom;
     public boolean          isDrawingStage;
@@ -68,17 +68,17 @@ public class BaseRenderer implements Disposable
     {
         AppConfig.camerasReady = false;
 
-        backgroundCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Background Cam", app);
+//        backgroundCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Background Cam", app);
         tiledGameCamera     = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Tiled Cam", app);
         spriteGameCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Sprite Cam", app);
         hudGameCamera       = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Hud Cam", app);
 
-        backgroundCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
+//        backgroundCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         tiledGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         spriteGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         hudGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
 
-        backgroundZoom  = new Zoom();
+//        backgroundZoom  = new Zoom();
         gameZoom        = new Zoom();
         hudZoom         = new Zoom();
         worldRenderer   = new WorldRenderer(app);
@@ -129,20 +129,20 @@ public class BaseRenderer implements Disposable
         float cameraY = (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2));
 
         // ----- Draw the Background, if enabled -----
-        if (backgroundCamera.isInUse)
-        {
-            backgroundCamera.setPosition
-                (
-                    cameraX,
-                    cameraY,
-                    0,
-                    backgroundZoom.getZoomValue(),
-                    false
-                );
-
-            worldRenderer.moveBackgroundWindow();
-            worldRenderer.renderBackground(app.spriteBatch, backgroundCamera);
-        }
+//        if (backgroundCamera.isInUse)
+//        {
+//            backgroundCamera.setPosition
+//                (
+//                    cameraX,
+//                    cameraY,
+//                    0,
+//                    backgroundZoom.getZoomValue(),
+//                    false
+//                );
+//
+//            worldRenderer.moveBackgroundWindow();
+//            worldRenderer.renderBackground(app.spriteBatch, backgroundCamera);
+//        }
 
         // ----- Draw the TiledMap, if enabled -----
         if (tiledGameCamera.isInUse)
@@ -234,12 +234,12 @@ public class BaseRenderer implements Disposable
     @Override
     public void dispose()
     {
-        backgroundCamera.dispose();
+//        backgroundCamera.dispose();
         tiledGameCamera.dispose();
         spriteGameCamera.dispose();
         hudGameCamera.dispose();
 
-        backgroundZoom = null;
+//        backgroundZoom = null;
         gameZoom = null;
         hudZoom = null;
 

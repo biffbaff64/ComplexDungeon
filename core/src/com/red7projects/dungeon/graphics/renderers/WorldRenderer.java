@@ -127,31 +127,31 @@ public class WorldRenderer implements GameScreenRenderer
             );
     }
 
-    public void moveBackgroundWindow()
-    {
-        app.baseRenderer.backgroundZoom.stop();
-
-        bgDistance -= _SPEED;
-
-        if (bgDirection.getY() == Movement._DIRECTION_UP)
-        {
-            app.baseRenderer.backgroundZoom.out(_SPEED);
-
-            if (bgDistance <= 0)
-            {
-                bgDistance = _SPEED * 200;
-                bgDirection.toggleY();
-            }
-        }
-        else
-        {
-            app.baseRenderer.backgroundZoom.in(_SPEED);
-
-            if (bgDistance <= 0)
-            {
-                bgDistance = _SPEED * 200;
-                bgDirection.toggleY();
-            }
-        }
-    }
+//    public void moveBackgroundWindow()
+//    {
+//        app.baseRenderer.backgroundZoom.stop();
+//
+//        bgDistance -= _SPEED;
+//
+//        if (bgDirection.getY() == Movement._DIRECTION_UP)
+//        {
+//            app.baseRenderer.backgroundZoom.out(_SPEED);
+//
+//            if (bgDistance <= 0)
+//            {
+//                bgDistance = _SPEED * 200;
+//                bgDirection.toggleY();
+//            }
+//        }
+//        else
+//        {
+//            app.baseRenderer.backgroundZoom.in(_SPEED);
+//
+//            if (bgDistance <= 0)
+//            {
+//                bgDistance = _SPEED * 200;
+//                bgDirection.toggleY();
+//            }
+//        }
+//    }
 }

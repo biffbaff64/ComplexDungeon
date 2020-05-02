@@ -37,6 +37,7 @@ import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.buttons.Switch;
 import com.red7projects.dungeon.input.objects.ControllerType;
+import com.red7projects.dungeon.map.Room;
 import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.utils.development.DebugRenderer;
 import com.red7projects.dungeon.utils.development.Developer;
@@ -71,24 +72,25 @@ public class HeadsUpDisplay implements Disposable
     private static final int _HEALTH        = 10;
     private static final int _VILLAGERS     = 11;
     private static final int _COLLECT_PANEL = 12;
-    private static final int _RUNES_INDEX   = 13;
-    private static final int _LIGHTNING     = 13;
-    private static final int _FIRE          = 14;
-    private static final int _WIND          = 15;
-    private static final int _SUN           = 16;
-    private static final int _ICE           = 17;
-    private static final int _NATURE        = 18;
-    private static final int _WATER         = 19;
-    private static final int _EARTH         = 20;
-    private static final int _BOOKS_INDEX   = 21;
-    private static final int _BOOK1         = 21;
-    private static final int _BOOK2         = 22;
-    private static final int _BOOK3         = 23;
-    private static final int _BOOK4         = 24;
-    private static final int _BOOK5         = 25;
-    private static final int _BOOK6         = 26;
-    private static final int _BOOK7         = 27;
-    private static final int _BOOK8         = 28;
+    private static final int _COMPASS       = 13;
+    private static final int _RUNES_INDEX   = 14;
+    private static final int _LIGHTNING     = 14;
+    private static final int _FIRE          = 15;
+    private static final int _WIND          = 16;
+    private static final int _SUN           = 17;
+    private static final int _ICE           = 18;
+    private static final int _NATURE        = 19;
+    private static final int _WATER         = 20;
+    private static final int _EARTH         = 21;
+    private static final int _BOOKS_INDEX   = 22;
+    private static final int _BOOK1         = 22;
+    private static final int _BOOK2         = 23;
+    private static final int _BOOK3         = 24;
+    private static final int _BOOK4         = 25;
+    private static final int _BOOK5         = 26;
+    private static final int _BOOK6         = 27;
+    private static final int _BOOK7         = 28;
+    private static final int _BOOK8         = 29;
 
     private static final int[][] displayPos = new int[][]
         {
@@ -113,6 +115,7 @@ public class HeadsUpDisplay implements Disposable
             // Y is distance from the TOP of the screen
             { 490,  490,   90,    0,    0},             // Villagers
             { 749,  749,   34,    0,    0},             // Collection Panel
+            {2348, 2348,  190,    0,    0},             // Compass
 
             //
             // Runes
@@ -150,7 +153,7 @@ public class HeadsUpDisplay implements Disposable
     public GDXButton buttonX;
     public GDXButton buttonY;
 
-    public GameButton buttonPause;
+    public Switch buttonPause;
     public GameButton buttonDevOptions;
 
     private ProgressBar     healthBar;
@@ -161,6 +164,7 @@ public class HeadsUpDisplay implements Disposable
     private BitmapFont      midFont;
     private BitmapFont      smallFont;
     private TextureRegion[] objectivesPanel;
+    private TextureRegion[] compassTexture;
     private TextureRegion[] runesTexture;
     private TextureRegion[] greyRunesTexture;
     private TextureRegion[] booksTexture;
@@ -207,6 +211,15 @@ public class HeadsUpDisplay implements Disposable
         livesBar.setHeight(25);
         livesBar.setColor(Color.GREEN);
         livesBar.setScale(8.0f);
+
+        compassTexture = new TextureRegion[5];
+        GfxUtils.splitRegion
+            (
+                app.assets.getObjectsAtlas().findRegion("compass"),
+                5,
+                compassTexture,
+                app
+            );
 
         runesTexture = new TextureRegion[GameAssets._RUNES_FRAMES];
         GfxUtils.splitRegion
@@ -373,14 +386,13 @@ public class HeadsUpDisplay implements Disposable
 
             drawPanels();
             drawItems();
+            drawCompass();
             drawMessages();
 
             if (_canDrawControls && app.gameProgress.gameSetupDone)
             {
                 drawControls(camera);
             }
-
-            buttonPause.draw(app.spriteBatch, camera);
 
             if (Developer.isDevMode())
             {
@@ -468,6 +480,49 @@ public class HeadsUpDisplay implements Disposable
             );
     }
 
+    private void drawCompass()
+    {
+        if (!app.getRoomSystem().activeRoom.compassPoints[Room._N].isEmpty())
+        {
+            app.spriteBatch.draw
+                (
+                    compassTexture[Room._N + 1],
+                    originX + displayPos[_COMPASS][_X1],
+                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                );
+        }
+
+        if (!app.getRoomSystem().activeRoom.compassPoints[Room._E].isEmpty())
+        {
+            app.spriteBatch.draw
+                (
+                    compassTexture[Room._E + 1],
+                    originX + displayPos[_COMPASS][_X1],
+                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                );
+        }
+
+        if (!app.getRoomSystem().activeRoom.compassPoints[Room._S].isEmpty())
+        {
+            app.spriteBatch.draw
+                (
+                    compassTexture[Room._S + 1],
+                    originX + displayPos[_COMPASS][_X1],
+                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                );
+        }
+
+        if (!app.getRoomSystem().activeRoom.compassPoints[Room._W].isEmpty())
+        {
+            app.spriteBatch.draw
+                (
+                    compassTexture[Room._W + 1],
+                    originX + displayPos[_COMPASS][_X1],
+                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                );
+        }
+    }
+
     private void drawRunes()
     {
         if (objectivesPanelIndex == _RUNES_PANEL)
@@ -539,14 +594,13 @@ public class HeadsUpDisplay implements Disposable
 
             sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
             sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
-            sb.append(" : HUD ZOOM: ").append(app.baseRenderer.hudGameCamera.camera.zoom);
 
-            DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
+            DebugRenderer.drawText(sb.toString(), originX + 100, originY + 100);
 
             sb.clear();
             sb.append(app.getRoomSystem().getActiveRoomName().toUpperCase());
 
-            DebugRenderer.drawText(sb.toString(), originX + 1868, originY + 50);
+            DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
         }
     }
 
@@ -616,8 +670,6 @@ public class HeadsUpDisplay implements Disposable
         {
             buttonDevOptions.setVisible(true);
         }
-
-        buttonPause.setVisible(true);
     }
 
     public void hideControls(boolean canHidePause)
@@ -639,8 +691,6 @@ public class HeadsUpDisplay implements Disposable
         {
             buttonDevOptions.setVisible(true);
         }
-
-        buttonPause.setVisible(true);
     }
 
     public int getObjectivesPanelIndex()
@@ -731,14 +781,7 @@ public class HeadsUpDisplay implements Disposable
             buttonY = new Switch();
         }
 
-        buttonPause = new GameButton
-            (
-                app.assets.getButtonsAtlas().findRegion("hud_pause_button"),
-                app.assets.getButtonsAtlas().findRegion("hud_pause_button_pressed"),
-                displayPos[_PAUSE][_X1], displayPos[_PAUSE][_Y],
-                ButtonID._PAUSE,
-                app
-            );
+        buttonPause = new Switch();
 
         if (Developer.isDevMode())
         {
@@ -791,7 +834,6 @@ public class HeadsUpDisplay implements Disposable
             buttonDevOptions = null;
         }
 
-        buttonPause.dispose();
         buttonPause = null;
 
         if (app.inputManager.virtualJoystick != null)
