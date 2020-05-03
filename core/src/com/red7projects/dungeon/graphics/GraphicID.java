@@ -41,6 +41,7 @@ public enum GraphicID
     G_GLOW_EYES,
     G_ALCOVE_TORCH,
     G_SACKS,
+    G_PLANT_POT,
 
     // ----------------------------
     // Interactive items

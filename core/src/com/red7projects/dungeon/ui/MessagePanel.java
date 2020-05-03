@@ -29,23 +29,26 @@ public class MessagePanel
 
     public void create()
     {
-        app.getHud().messageManager.enable();
-        app.getHud().messageManager.addSlidePanel(panels[((Villager) app.entityUtils.findNearest(GraphicID.G_VILLAGER)).villagerType]);
-        app.getHud().messageManager.getCurrentPanel().set
-            (
-                new SimpleVec2F
-                    (
-                        (float) (Gfx._VIEW_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2,
-                        -app.getHud().messageManager.getCurrentPanelHeight()
-                    ),
-                new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + (Gfx.getTileHeight() * 2)),
-                new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
-                new Speed(0, 40)
-            );
+        panelIndex = ((Villager) app.entityUtils.findNearest(GraphicID.G_VILLAGER)).villagerType;
 
-        app.getHud().hideControls(false);
+        if (!app.getHud().messageManager.doesPanelExist(panels[panelIndex]))
+        {
+            app.getHud().messageManager.enable();
+            app.getHud().messageManager.addSlidePanel(panels[panelIndex]);
+            app.getHud().messageManager.getCurrentPanel().set
+                (
+                    new SimpleVec2F
+                        (
+                            (float) (Gfx._VIEW_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2,
+                            -app.getHud().messageManager.getCurrentPanelHeight()
+                        ),
+                    new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + (Gfx.getTileHeight() * 2)),
+                    new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
+                    new Speed(0, 40)
+                );
 
-        panelIndex = 1;
+            app.getHud().hideControls(false);
+        }
     }
 
     public boolean update()

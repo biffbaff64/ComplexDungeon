@@ -188,6 +188,7 @@ public class EntityUtils
             case G_BARREL:
             case G_GLOW_EYES:
             case G_SACKS:
+            case G_PLANT_POT:
 
             // ----------
             case G_DOOR:
@@ -361,6 +362,7 @@ public class EntityUtils
             case G_MYSTERY_CHEST:
             case G_TURRET:
             case G_SACKS:
+            case G_PLANT_POT:
             {
                 zed = 8;
             }

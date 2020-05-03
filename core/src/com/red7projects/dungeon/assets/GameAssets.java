@@ -175,6 +175,7 @@ public class GameAssets
     public static final String _BARREL_3_ASSET     = "barrel3";
     public static final String _BARREL_4_ASSET     = "barrel4";
     public static final String _SACKS_ASSET        = "sacks";
+    public static final String _PLANT_POT_ASSET    = "plant_pot";
 
     //
     // Static Enemies
@@ -255,6 +256,7 @@ public class GameAssets
     public static final int _LITTER_FRAMES                 = 10;
     public static final int _BOOKS_FRAMES                  = 8;
     public static final int _RUNES_FRAMES                  = 8;
+    public static final int _PLANT_POT_FRAMES              = 1;
 
     //
     // Fonts and HUD assets
@@ -310,6 +312,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_GLOW_EYES, 71, 64),
             new AssetSize(GraphicID.G_ALCOVE_TORCH, 64, 192),
             new AssetSize(GraphicID.G_SACKS, 124, 172),
+            new AssetSize(GraphicID.G_PLANT_POT, 64, 146),
 
             // Interactive items
             new AssetSize(GraphicID.G_FLOOR_BUTTON, 64, 64),

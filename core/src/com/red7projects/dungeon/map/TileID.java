@@ -63,7 +63,7 @@ public enum TileID
     _STORM_DEMON_TILE(31),
     _BOUNCER_TILE(32),
     _U33_TILE(33),
-    _U34_TILE(34),
+    _PLANT_POT_TILE(34),
     _FIRE_BALL_TILE(35),
     _SCORPION_TILE(36),
     _U37_TILE(37),

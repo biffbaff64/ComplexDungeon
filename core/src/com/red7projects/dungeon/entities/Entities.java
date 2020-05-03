@@ -55,6 +55,7 @@ public abstract class Entities
             new EntityDef("", GraphicID.G_CRATE, TileID._CRATE_TILE, GameAssets._CRATE_ASSET, GameAssets._CRATE_FRAMES, GraphicID._DECORATION),
             new EntityDef("", GraphicID.G_BARREL, TileID._BARREL_TILE, GameAssets._BARREL_1_ASSET, GameAssets._BARREL_FRAMES, GraphicID._DECORATION),
             new EntityDef("", GraphicID.G_SACKS, TileID._SACKS_TILE, GameAssets._SACKS_ASSET, GameAssets._SACKS_FRAMES, GraphicID._DECORATION),
+            new EntityDef("", GraphicID.G_PLANT_POT, TileID._PLANT_POT_TILE, GameAssets._PLANT_POT_ASSET, GameAssets._PLANT_POT_FRAMES, GraphicID._DECORATION),
 
             // Interactive, But NOT Pickups
             new EntityDef("Treasure Chest", GraphicID.G_TREASURE_CHEST, TileID._CHEST_TILE, GameAssets._TREASURE_CHEST_ASSET, GameAssets._TREASURE_CHEST_FRAMES, GraphicID._INTERACTIVE),
