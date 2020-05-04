@@ -105,7 +105,7 @@ public class GameController implements ControllerListener
 
             disableExternalControllers();
 
-            if (AppConfig.isAndroidApp() || AppConfig.isAndroidOnDesktop())
+            if (AppConfig.isAndroidApp())
             {
                 Trace.dbg("::Switched to _VIRTUAL");
 

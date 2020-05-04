@@ -113,6 +113,8 @@ public class Settings
         {
             Trace.__FILE_FUNC();
             Trace.dbg(e.getMessage());
+
+            prefs = null;
         }
     }
 

@@ -33,7 +33,7 @@ import com.red7projects.dungeon.physics.Movement;
 
 @SuppressWarnings("WeakerAccess")
 //@formatter:off
-public class BaseEnemy extends GdxSprite implements IBaseEnemy
+public class BaseEnemy extends GdxSprite
 {
     public SquareF           movementBounds;
     public AbilityComponent  abilityComponent;
@@ -98,7 +98,6 @@ public class BaseEnemy extends GdxSprite implements IBaseEnemy
         }
     }
 
-    @Override
     public void checkMovementBounds()
     {
         if (movementBounds != null)
@@ -163,12 +162,10 @@ public class BaseEnemy extends GdxSprite implements IBaseEnemy
         }
     }
 
-    @Override
     public void onMovementBoundsTurn(int edgeSide)
     {
     }
 
-    @Override
     public void setHorizontalMovementBounds()
     {
         if (direction.getX() == Movement._DIRECTION_LEFT)
@@ -203,7 +200,6 @@ public class BaseEnemy extends GdxSprite implements IBaseEnemy
         isVertical = false;
     }
 
-    @Override
     public void setVerticalMovementBounds()
     {
         if (direction.getY() == Movement._DIRECTION_UP)
@@ -275,6 +271,9 @@ public class BaseEnemy extends GdxSprite implements IBaseEnemy
         }
         else
         {
+            //
+            // Spawning animation has finished, so enable drawing
+            // of the main sprite.
             localIsDrawable = (altAnim.getKeyFrameIndex(elapsedAltAnimTime) >= 12);
         }
     }

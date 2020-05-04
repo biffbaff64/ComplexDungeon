@@ -269,8 +269,7 @@ public class HeadsUpDisplay implements Disposable
         midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 30);
         smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
 
-        AppConfig.canDrawButtonBoxes = app.settings.isEnabled(Settings._BUTTON_BOXES);
-        AppConfig.hudExists          = true;
+        AppConfig.hudExists = true;
 
         hudStateID = StateID._STATE_PANEL_START;
     }

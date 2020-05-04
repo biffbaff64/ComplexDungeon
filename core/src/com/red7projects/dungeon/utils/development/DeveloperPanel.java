@@ -413,7 +413,6 @@ public class DeveloperPanel extends BasicPanel
 
     private void updatePreferencesOnExit()
     {
-        AppConfig.canDrawButtonBoxes = app.settings.isEnabled(Settings._BUTTON_BOXES);
     }
 
     private void glProfilerUpdate()

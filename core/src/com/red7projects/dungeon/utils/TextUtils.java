@@ -5,12 +5,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.game.App;
 
-public class TextRenderer
+public class TextUtils
 {
     private BitmapFont font;
     private App        app;
 
-    public TextRenderer(App _app)
+    public TextUtils(App _app)
     {
         this.app = _app;
     }

@@ -36,28 +36,27 @@ public abstract class AppConfig
     public static final String _PREFS_FILE_NAME = "com.red7projects.dungeon.preferences";
     public static final String _DEBUG_LOG_FILE  = "debuglogfile.txt";
 
-    public static boolean        isShowingSplashScreen;
     public static boolean        quitToMainMenu;            // Game over, back to menu screen
     public static boolean        forceQuitToMenu;           // Quit to main menu, forced via pause mode for example.
     public static boolean        gamePaused;                // TRUE / FALSE Game Paused flag
-    public static boolean        isPoweringUp;              //
-    public static boolean        camerasReady;              //
-    public static boolean        shutDownActive;            //
-    public static boolean        isUsingBOX2DPhysics;       //
-    public static boolean        isUsingAshleyECS;          //
+    public static boolean        camerasReady;              // TRUE when all cameras have been created.
+    public static boolean        shutDownActive;            // TRUE if game is currently processing EXIT request.
+    public static boolean        isUsingBOX2DPhysics;       // ...
+    public static boolean        isUsingAshleyECS;          // ...
     public static boolean        entitiesExist;             // Set true when all entities have been created
     public static boolean        hudExists;                 // Set true when HUD has finished setup
+    public static boolean        controllersFitted;         // TRUE if external controllers are fitted/connected.
+    public static boolean        gameButtonsReady;          // TRUE When all game buttons have been defined
+    public static String         usedController;            // The name of the controller being used
+    public static ControllerPos  virtualControllerPos;      // Virtual (on-screen) joystick position (LEFT or RIGHT)
+
+    public static boolean        isShowingSplashScreen;     //
     public static boolean        menuScreenActive;          //
     public static boolean        gameScreenActive;          //
     public static boolean        finalScreenActive;         //
     public static boolean        optionsPageActive;         //
     public static boolean        developerPanelActive;      //
     public static boolean        debugConsoleActive;        //
-    public static boolean        canDrawButtonBoxes;        //
-    public static boolean        controllersFitted;         //
-    public static boolean        gameButtonsReady;          // TRUE When all game buttons have been defined
-    public static String         usedController;            // The name of the controller being used
-    public static ControllerPos  virtualControllerPos;      // Virtual (on-screen) joystick position (LEFT or RIGHT)
 
     public static Array<ControllerType> availableInputs;
 
@@ -72,7 +71,6 @@ public abstract class AppConfig
 
         app = _app;
 
-        isPoweringUp         = true;
         quitToMainMenu       = false;
         forceQuitToMenu      = false;
         gamePaused           = false;
@@ -86,14 +84,18 @@ public abstract class AppConfig
         optionsPageActive    = false;
         developerPanelActive = false;
         debugConsoleActive   = false;
-        canDrawButtonBoxes   = false;
         controllersFitted    = false;
         gameButtonsReady     = false;
         usedController       = "None";
 
+        //
+        // Set _DEVMODE from the _DEV_MODE Environment variable.
+        // Set _LAPTOP from the _MACHINE Environment variable.
+        Developer.setMode(_app);
+
         availableInputs = new Array<>();
 
-        if (isAndroidApp())
+        if (isAndroidApp() || (Developer.isDevMode() && Developer.isLaptop()))
         {
             availableInputs.add(ControllerType._VIRTUAL);
 
@@ -108,17 +110,6 @@ public abstract class AppConfig
         }
 
         Stats.setup();
-
-        //
-        // Set Debug Mode from the _DEV_MODE Environment variable.
-        Developer.setMode(_app);
-
-        if (Developer.isDevMode() && Developer.isLaptop())
-        {
-            availableInputs.clear();
-            availableInputs.add(ControllerType._VIRTUAL);
-            virtualControllerPos = ControllerPos._LEFT;
-        }
 
         isUsingBOX2DPhysics = app.settings.isEnabled(Settings._BOX2D_PHYSICS);
         isUsingAshleyECS    = app.settings.isEnabled(Settings._USING_ASHLEY_ECS);
@@ -158,8 +149,12 @@ public abstract class AppConfig
         {
             Trace.dbg("FRESH INSTALL.");
 
+            Trace.dbg("Initialising all App settings to default values.");
             app.settings.resetToDefaults();
+
+            Trace.dbg("Setting all Statistical logging meters to zero.");
             Stats.resetAllMeters();
+
             app.settings.enable(Settings._INSTALLED);
         }
     }
@@ -198,15 +193,6 @@ public abstract class AppConfig
     public static boolean isAndroidApp()
     {
         return (Gdx.app.getType() == Application.ApplicationType.Android);
-    }
-
-    /**
-     * @return TRUE if Android version is being
-     *          tested on desktop build
-     */
-    public static boolean isAndroidOnDesktop()
-    {
-        return false;
     }
 
     public static void dispose()

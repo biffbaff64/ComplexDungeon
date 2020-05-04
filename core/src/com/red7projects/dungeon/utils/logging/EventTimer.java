@@ -19,6 +19,8 @@
 
 package com.red7projects.dungeon.utils.logging;
 
+import com.badlogic.gdx.utils.Array;
+
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -32,7 +34,7 @@ public class EventTimer
     private long events;
 
     private       double   averageDuration;
-    private final double[] eventsStore; // TODO: 28/02/2020 - Refactor for Array<>()
+    private final double[] eventsStore;
     private       String   averageDurationString;
 
     private boolean hasStarted;
@@ -63,8 +65,8 @@ public class EventTimer
         }
         else
         {
-            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC(":Cannot start EventTimer before finishing previous.");
-            com.red7projects.dungeon.utils.logging.Trace.dbg("**EventTimer is FROZEN**");
+            Trace.__FILE_FUNC(":Cannot start EventTimer before finishing previous.");
+            Trace.dbg("**EventTimer is FROZEN**");
 
             this.isFrozen = true;
         }

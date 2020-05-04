@@ -89,8 +89,6 @@ public class MainMenuScreen extends AbstractBaseScreen
 
         app.googleServices.signInSilently();
 
-        AppConfig.isPoweringUp = false;
-
         app.mapData.mapPosition.set(0, 0);
     }
 
