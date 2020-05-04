@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="125" height="117" tilewidth="64" tileheight="64" infinite="0" nextlayerid="68" nextobjectid="900">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="125" height="117" tilewidth="64" tileheight="64" infinite="0" nextlayerid="68" nextobjectid="903">
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
@@ -197,8 +197,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,120,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,142,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,248,185,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,270,207,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -369,7 +369,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="14" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="14" name="collision">
   <object id="446" name="Wall" type="Collision" x="0" y="5056" width="1664" height="2432"/>
   <object id="480" name="Wall" type="Collision" x="0" y="3136" width="256" height="1472"/>
   <object id="481" name="Wall" type="Collision" x="0" y="4608" width="960" height="448"/>
@@ -423,26 +423,31 @@
   <object id="771" name="Wall" type="Collision" x="0" y="576" width="704" height="2560"/>
   <object id="773" name="Wall" type="Collision" x="1664" y="5376" width="1408" height="2112"/>
   <object id="774" name="Wall" type="Collision" x="3072" y="5376" width="128" height="256"/>
-  <object id="782" name="Laser" gid="6" x="6208" y="6208" width="64" height="64">
-   <properties>
-    <property name="connection" type="int" value="3"/>
-    <property name="direction" value="horizontal"/>
-    <property name="height" type="int" value="1"/>
-    <property name="width" type="int" value="4"/>
-   </properties>
-  </object>
-  <object id="784" name="Floor Button" gid="19" x="6528" y="6144" width="64" height="64">
-   <properties>
-    <property name="connection" type="int" value="3"/>
-   </properties>
-  </object>
   <object id="790" name="Wall" type="Collision" x="2176" y="5184" width="192" height="192"/>
   <object id="793" name="Wall" type="Collision" x="2560" y="384" width="128" height="448"/>
   <object id="794" name="Wall" type="Collision" x="2560" y="832" width="768" height="192"/>
   <object id="795" name="Wall" type="Collision" x="5440" y="4480" width="576" height="192"/>
-  <object id="895" name="Auto Floor" x="2496" y="1984" width="192" height="640"/>
-  <object id="897" name="Auto Floor" x="3648" y="2944" width="128" height="192"/>
   <object id="898" name="Wall" type="Collision" x="6912" y="2176" width="128" height="896"/>
   <object id="899" name="Wall" type="Collision" x="1216" y="1664" width="128" height="384"/>
+  <object id="901" gid="18" x="2176" y="3136" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="xdistance" type="int" value="0"/>
+    <property name="xspeed" type="int" value="0"/>
+    <property name="ydirection" value="up"/>
+    <property name="ydistance" type="int" value="10"/>
+    <property name="yspeed" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="902" gid="18" x="2752" y="3136" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="xdistance" type="int" value="0"/>
+    <property name="xspeed" type="int" value="0"/>
+    <property name="ydirection" value="up"/>
+    <property name="ydistance" type="int" value="10"/>
+    <property name="yspeed" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

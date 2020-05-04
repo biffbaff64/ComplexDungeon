@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="156" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="71" nextobjectid="1028">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="156" height="80" tilewidth="64" tileheight="64" infinite="0" nextlayerid="71" nextobjectid="1037">
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
@@ -258,7 +258,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="42" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="42" name="collision">
   <object id="845" name="Wall" type="Collision" x="8576" y="0" width="1408" height="2304"/>
   <object id="850" name="Wall" type="Collision" x="5952" y="0" width="2624" height="448"/>
   <object id="872" name="Wall" type="Collision" x="1856" y="3520" width="2304" height="1600"/>
@@ -312,5 +312,35 @@
   <object id="1021" name="Wall" type="Collision" x="8384" y="1600" width="192" height="704"/>
   <object id="1022" name="Wall" type="Collision" x="8384" y="448" width="192" height="896"/>
   <object id="1023" name="Wall" type="Collision" x="4736" y="4672" width="960" height="448"/>
+  <object id="1028" name="Loop Block Vertical" gid="24" x="5696" y="1472" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="1029" name="Loop Block Vertical" gid="24" x="5696" y="2560" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="1030" name="Loop Block Vertical" gid="24" x="5696" y="3648" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="1031" name="Loop Block Vertical" gid="24" x="5696" y="4736" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="1035" name="Loop Block Vertical" gid="24" x="5696" y="384" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

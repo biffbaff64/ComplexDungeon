@@ -44,29 +44,27 @@ public class OptionsPage implements UIPage
     private ImageButton buttonExit;
     private ImageButton buttonStats;
     private ImageButton buttonPrivacy;
-    private ImageButton buttonStoryLine;
     private ImageButton buttonKeySettings;
     private ImageButton buttonTests;
 
     private CheckBox  musicCheckBox;
-    private CheckBox  fxCheckBox;
     private TextField musicLabel;
-    private TextField fxLabel;
     private Slider    musicSlider;
+    private CheckBox  fxCheckBox;
+    private TextField fxLabel;
     private Slider    fxSlider;
+
     private Texture   background;
     private Texture   foreground;
     private Skin      skin;
 
     private StatsPanel         statsPanel;
     private PrivacyPolicyPanel privacyPanel;
-    private InstructionsPanel  storyPanel;
     private DeveloperTests     testPanel;
     private ScreenID           activePanel;
 
     private boolean justFinishedStatsPanel;
     private boolean justFinishedPrivacyPanel;
-    private boolean justFinishedStoryPanel;
     private boolean justFinishedTestPanel;
     private boolean setupCompleted;
 
@@ -116,20 +114,6 @@ public class OptionsPage implements UIPage
             showActors(true);
         }
 
-        if (justFinishedStoryPanel)
-        {
-            if (storyPanel != null)
-            {
-                storyPanel.dispose();
-            }
-
-            justFinishedStoryPanel = false;
-            storyPanel = null;
-            activePanel = ScreenID._SETTINGS_SCREEN;
-
-            showActors(true);
-        }
-
         if (justFinishedTestPanel)
         {
             if (testPanel != null)
@@ -153,7 +137,6 @@ public class OptionsPage implements UIPage
         {
             case _STATS_SCREEN:             statsPanel.draw(spriteBatch);      break;
             case _PRIVACY_POLICY_SCREEN:    privacyPanel.draw(spriteBatch);    break;
-            case _INSTRUCTIONS_SCREEN:      storyPanel.draw(spriteBatch);      break;
             case _TEST_PANEL:               testPanel.draw(spriteBatch);       break;
 
             default:
@@ -209,11 +192,9 @@ public class OptionsPage implements UIPage
             buttonExit.addAction(Actions.removeActor());
             buttonStats.addAction(Actions.removeActor());
             buttonPrivacy.addAction(Actions.removeActor());
-            buttonStoryLine.addAction(Actions.removeActor());
             buttonExit = null;
             buttonStats = null;
             buttonPrivacy = null;
-            buttonStoryLine = null;
 
             musicLabel.addAction(Actions.removeActor());
             musicSlider.addAction(Actions.removeActor());
@@ -293,12 +274,10 @@ public class OptionsPage implements UIPage
         // ----------
         buttonStats = scene2DUtils.addButton("new_stats_button", "new_stats_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1000));
         buttonPrivacy = scene2DUtils.addButton("new_privacy_policy_button", "new_privacy_policy_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1150));
-        buttonStoryLine = scene2DUtils.addButton("new_objectives_button", "new_objectives_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1300));
         buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, (Gfx._VIEW_HEIGHT - 160));
 
         buttonStats.setSize(420, 128);
         buttonPrivacy.setSize(420, 128);
-        buttonStoryLine.setSize(420, 128);
         buttonExit.setSize(256, 128);
 
         // ----------
@@ -363,7 +342,6 @@ public class OptionsPage implements UIPage
         buttonExit.setVisible(_visibilty);
         buttonStats.setVisible(_visibilty);
         buttonPrivacy.setVisible(_visibilty);
-        buttonStoryLine.setVisible(_visibilty);
 
         if (Developer.isDevMode())
         {
@@ -387,7 +365,7 @@ public class OptionsPage implements UIPage
             {
                 public void clicked(InputEvent event, float x, float y)
                 {
-                    Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                    Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                     if (statsPanel == null)
                     {
@@ -412,7 +390,7 @@ public class OptionsPage implements UIPage
             {
                 public void clicked(InputEvent event, float x, float y)
                 {
-                    Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                    Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                     if (privacyPanel == null)
                     {
@@ -431,38 +409,13 @@ public class OptionsPage implements UIPage
             });
         }
 
-        if (buttonStoryLine != null)
-        {
-            buttonStoryLine.addListener(new ClickListener()
-              {
-                  public void clicked(InputEvent event, float x, float y)
-                  {
-                      Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
-
-                      if (storyPanel == null)
-                      {
-                          showActors(false);
-                          justFinishedStoryPanel = false;
-                          activePanel = ScreenID._INSTRUCTIONS_SCREEN;
-
-                          storyPanel = new InstructionsPanel(app);
-                          storyPanel.xOffset = 0;
-                          storyPanel.yOffset = 0;
-                          storyPanel.open();
-
-                          buttonExit.setVisible(true);
-                      }
-                  }
-              });
-        }
-
         if (buttonKeySettings != null)
         {
             buttonKeySettings.addListener(new ClickListener()
             {
                 public void clicked(InputEvent event, float x, float y)
                 {
-                    Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                    Sfx.inst().startSound(Sfx.SFX_BEEP);
                 }
             });
         }
@@ -473,7 +426,7 @@ public class OptionsPage implements UIPage
             {
                 public void clicked(InputEvent event, float x, float y)
                 {
-                    Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                    Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                     updateSettings();
 
@@ -488,12 +441,6 @@ public class OptionsPage implements UIPage
                         case _STATS_SCREEN:
                         {
                             justFinishedStatsPanel = true;
-                        }
-                        break;
-
-                        case _INSTRUCTIONS_SCREEN:
-                        {
-                            justFinishedStoryPanel = true;
                         }
                         break;
 
@@ -524,7 +471,7 @@ public class OptionsPage implements UIPage
                 {
                     public void clicked(InputEvent event, float x, float y)
                     {
-                        Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                        Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                         if (testPanel == null)
                         {
@@ -559,7 +506,7 @@ public class OptionsPage implements UIPage
                 {
                     if (setupCompleted)
                     {
-                        Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                        Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                         if (musicCheckBox.isChecked() && (musicSlider.getValue() == 0))
                         {
@@ -569,7 +516,7 @@ public class OptionsPage implements UIPage
                         else if (!musicCheckBox.isChecked() && (musicSlider.getValue() > 0))
                         {
                             musicSlider.setValue(0);
-                            Sfx.inst().setMusicVolume(Sfx.inst()._SILENT);
+                            Sfx.inst().setMusicVolume(Sfx._SILENT);
                         }
                     }
                 }
@@ -589,7 +536,7 @@ public class OptionsPage implements UIPage
                 {
                     if (setupCompleted)
                     {
-                        Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                        Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                         if (fxCheckBox.isChecked() && (fxSlider.getValue() == 0))
                         {
@@ -599,7 +546,7 @@ public class OptionsPage implements UIPage
                         else if (!fxCheckBox.isChecked() && (fxSlider.getValue() > 0))
                         {
                             fxSlider.setValue(0);
-                            Sfx.inst().setFXVolume(Sfx.inst()._SILENT);
+                            Sfx.inst().setFXVolume(Sfx._SILENT);
                         }
                     }
                 }
@@ -641,8 +588,8 @@ public class OptionsPage implements UIPage
                         fxLabel.setText("" + ((int) fxSlider.getValue() * 10) + "%");
                         Sfx.inst().setFXVolume((int) fxSlider.getValue());
 
-                        long id = Sfx.inst().startSound(Sfx.inst().SFX_TEST_SOUND);
-                        Sfx.inst().sounds[Sfx.inst().SFX_TEST_SOUND].setVolume(id, Sfx.inst().getUsableFxVolume());
+                        long id = Sfx.inst().startSound(Sfx.SFX_TEST_SOUND);
+                        Sfx.inst().sounds[Sfx.SFX_TEST_SOUND].setVolume(id, Sfx.inst().getUsableFxVolume());
 
                         fxCheckBox.setChecked(fxSlider.getValue() > 0);
 

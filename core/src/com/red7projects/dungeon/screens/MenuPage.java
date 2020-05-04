@@ -34,6 +34,7 @@ import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.input.UIButtons;
 import com.red7projects.dungeon.input.buttons.Switch;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
@@ -44,7 +45,6 @@ import com.red7projects.dungeon.utils.logging.Trace;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("WeakerAccess")
 public class MenuPage implements UIPage, Disposable
@@ -60,6 +60,7 @@ public class MenuPage implements UIPage, Disposable
     private       StopWatch     stopWatch;
     private final App           app;
     private       Image         decoration;
+    private       Image         buttonBar;
     private       Label         javaHeapLabel;
     private       Label         nativeHeapLabel;
 
@@ -68,6 +69,9 @@ public class MenuPage implements UIPage, Disposable
     private ImageButton imageButtonExit;
     private ImageButton imageButtonGoogle;
 
+    private float buttonBarDelay;
+    private int[] buttonBarYPos;
+    private int buttonBarIndex;
     private int menuIndex;
     private int menuLoop;
 
@@ -93,11 +97,18 @@ public class MenuPage implements UIPage, Disposable
         buttons.add(buttonGoogle);
 
         this.stopWatch = StopWatch.start();
+
+        buttonBarYPos = new int[3];
+        buttonBarYPos[0] = (int) imageButton1Player.getY();
+        buttonBarYPos[1] = (int) imageButtonOptions.getY();
+        buttonBarYPos[2] = (int) imageButtonExit.getY();
     }
 
     @Override
     public void reset()
     {
+        buttonBarDelay = 0;
+        buttonBarIndex = 0;
         menuIndex = 0;
         menuLoop  = 0;
     }
@@ -108,9 +119,7 @@ public class MenuPage implements UIPage, Disposable
         showItems(true);
 
         stopWatch.reset();
-
-        menuIndex = 0;
-        menuLoop  = 0;
+        reset();
     }
 
     @Override
@@ -122,28 +131,30 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public boolean update()
     {
-        boolean menuClosed = false;
-
-        if (menuLoop >= 5)
+        if ((buttonBarDelay += Gdx.graphics.getDeltaTime()) >= 0.10f)
         {
-            menuClosed = true;
-        }
-        else
-        {
-            if (stopWatch.time(TimeUnit.MILLISECONDS) >= 1000)
+            if (UIButtons.controllerUpPressed)
             {
-                stopWatch.reset();
-
-                if (menuIndex == 0)
+                if (--buttonBarIndex < 0)
                 {
-                    menuLoop++;
+                    buttonBarIndex = 2;
+                }
+            }
+            else if (UIButtons.controllerDownPressed)
+            {
+                if (++buttonBarIndex > 2)
+                {
+                    buttonBarIndex = 0;
                 }
             }
 
-            updateGoogleButton();
+            buttonBar.setY(buttonBarYPos[buttonBarIndex]);
+            buttonBarDelay = 0;
         }
 
-        return menuClosed;
+        updateGoogleButton();
+
+        return false;
     }
 
     @Override
@@ -186,6 +197,11 @@ public class MenuPage implements UIPage, Disposable
             javaHeapLabel.setZIndex(1);
             nativeHeapLabel.setZIndex(1);
         }
+
+        buttonBar = scene2DUtils.makeObjectsImage("menu_glow_green01");
+        buttonBar.setPosition(640, imageButton1Player.getY());
+        buttonBar.setZIndex(0);
+        app.stage.addActor(buttonBar);
 
         addDateSpecificItems(scene2DUtils);
     }
@@ -234,7 +250,7 @@ public class MenuPage implements UIPage, Disposable
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonStart.press();
             }
@@ -244,7 +260,7 @@ public class MenuPage implements UIPage, Disposable
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonOptions.press();
             }
@@ -254,7 +270,7 @@ public class MenuPage implements UIPage, Disposable
         {
             public void clicked(InputEvent event, float x, float y)
             {
-                Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonExit.press();
             }
@@ -306,7 +322,7 @@ public class MenuPage implements UIPage, Disposable
             {
                 public void clicked(InputEvent event, float x, float y)
                 {
-                    Sfx.inst().startSound(Sfx.inst().SFX_BEEP);
+                    Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                     buttonGoogle.press();
                 }
@@ -321,6 +337,8 @@ public class MenuPage implements UIPage, Disposable
      */
     private void showItems(boolean _visible)
     {
+        buttonBar.setVisible(_visible);
+
         imageButton1Player.setVisible(_visible);
         imageButtonOptions.setVisible(_visible);
         imageButtonExit.setVisible(_visible);
@@ -374,6 +392,9 @@ public class MenuPage implements UIPage, Disposable
                 nativeHeapLabel = null;
             }
         }
+
+        buttonBar.addAction(Actions.removeActor());
+        buttonBar = null;
 
         if (decoration != null)
         {

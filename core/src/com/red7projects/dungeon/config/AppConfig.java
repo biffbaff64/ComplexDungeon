@@ -18,6 +18,8 @@ package com.red7projects.dungeon.config;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Cursor;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
@@ -107,6 +109,11 @@ public abstract class AppConfig
             availableInputs.add(ControllerType._KEYBOARD);
 
             virtualControllerPos = ControllerPos._HIDDEN;
+
+            Pixmap pixmap = new Pixmap(Gdx.files.internal("data/crosshairs.png"));
+            Cursor cursor = Gdx.graphics.newCursor(pixmap, (pixmap.getWidth() / 2), (pixmap.getHeight() / 2));
+            Gdx.graphics.setCursor(cursor);
+            pixmap.dispose();
         }
 
         Stats.setup();

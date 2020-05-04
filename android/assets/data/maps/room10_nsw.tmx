@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="147" height="126" tilewidth="64" tileheight="64" infinite="0" nextlayerid="51" nextobjectid="782">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="147" height="126" tilewidth="64" tileheight="64" infinite="0" nextlayerid="51" nextobjectid="783">
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
@@ -396,7 +396,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="14" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="14" name="collision">
   <object id="639" name="Wall" type="Collision" x="9152" y="6464" width="256" height="576"/>
   <object id="640" name="Wall" type="Collision" x="8768" y="0" width="640" height="6464"/>
   <object id="643" name="Wall" type="Collision" x="8576" y="7040" width="832" height="1024"/>
@@ -514,5 +514,16 @@
   <object id="776" name="Wall" type="Collision" x="7936" y="6208" width="128" height="1152"/>
   <object id="780" name="Wall" type="Collision" x="4928" y="7360" width="3140.12" height="704"/>
   <object id="781" name="Wall" type="Collision" x="4672" y="7552" width="256" height="512"/>
+  <object id="782" name="Spike Ball" gid="16" x="4736" y="7488" width="64" height="64">
+   <properties>
+    <property name="count" type="int" value="1"/>
+    <property name="xdirection" value="still"/>
+    <property name="xdistance" type="int" value="0"/>
+    <property name="xspeed" type="float" value="2"/>
+    <property name="ydirection" value="up"/>
+    <property name="ydistance" type="int" value="10"/>
+    <property name="yspeed" type="float" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

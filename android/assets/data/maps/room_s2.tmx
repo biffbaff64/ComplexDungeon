@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="150" height="105" tilewidth="64" tileheight="64" infinite="0" nextlayerid="61" nextobjectid="900">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="150" height="105" tilewidth="64" tileheight="64" infinite="0" nextlayerid="61" nextobjectid="901">
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
@@ -394,5 +394,15 @@
   <object id="895" name="Wall" type="Collision" x="6784" y="4096" width="512" height="832"/>
   <object id="896" name="Wall" type="Collision" x="7296" y="4096" width="320" height="640"/>
   <object id="897" name="Wall" type="Collision" x="7616" y="4096" width="1984" height="448"/>
+  <object id="900" gid="18" x="5120" y="2048" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="xdistance" type="int" value="0"/>
+    <property name="xspeed" type="int" value="0"/>
+    <property name="ydirection" value="up"/>
+    <property name="ydistance" type="int" value="27"/>
+    <property name="yspeed" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

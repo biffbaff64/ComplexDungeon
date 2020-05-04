@@ -303,7 +303,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="90" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="90" name="collision">
   <object id="569" name="Wall" type="Collision" x="1920" y="1536" width="1216" height="832"/>
   <object id="570" name="Wall" type="Collision" x="2176" y="3520" width="256" height="960"/>
   <object id="571" name="Wall" type="Collision" x="0" y="0" width="1152" height="2688"/>
@@ -355,10 +355,7 @@
   </object>
   <object id="694" name="Wall" type="Collision" x="3584" y="5120" width="512" height="960"/>
   <object id="695" name="Wall" type="Collision" x="3072" y="5376" width="512" height="704"/>
-  <object id="776" name="Auto Floor" x="2112" y="3328" width="1536" height="64"/>
-  <object id="777" name="Auto Floor" x="2176" y="4608" width="128" height="64"/>
   <object id="778" name="Wall" type="Collision" x="4096" y="3328" width="1024" height="512"/>
   <object id="779" name="Wall" type="Collision" x="4224" y="2752" width="896" height="576"/>
-  <object id="780" name="Auto Floor" x="3584" y="2880" width="576" height="64"/>
  </objectgroup>
 </map>

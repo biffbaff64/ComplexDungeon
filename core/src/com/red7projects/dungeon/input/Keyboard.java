@@ -397,18 +397,15 @@ public class Keyboard extends InputAdapter
     @Override
     public boolean mouseMoved(int screenX, int screenY)
     {
-        if (AppConfig.gameScreenActive)
-        {
-            Vector2 newPoints = new Vector2(screenX, screenY);
-            newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
+        Vector2 newPoints = new Vector2(screenX, screenY);
+        newPoints = app.baseRenderer.hudGameCamera.viewport.unproject(newPoints);
 
-            app.inputManager.mouseWorldPosition.set(newPoints.x, newPoints.y);
+        app.inputManager.mouseWorldPosition.set(newPoints.x, newPoints.y);
 
-            int touchX = (int) (newPoints.x - app.mapData.mapPosition.getX());
-            int touchY = (int) (newPoints.y - app.mapData.mapPosition.getY());
+        int touchX = (int) (newPoints.x - app.mapData.mapPosition.getX());
+        int touchY = (int) (newPoints.y - app.mapData.mapPosition.getY());
 
-            app.inputManager.mousePosition.set(touchX, touchY);
-        }
+        app.inputManager.mousePosition.set(touchX, touchY);
 
         return false;
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="155" height="118" tilewidth="64" tileheight="64" infinite="0" nextlayerid="48" nextobjectid="673">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="155" height="118" tilewidth="64" tileheight="64" infinite="0" nextlayerid="48" nextobjectid="699">
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
@@ -372,12 +372,12 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="14" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="14" name="collision">
   <object id="445" name="Wall" type="Collision" x="2816" y="6016" width="1408" height="1536"/>
   <object id="446" name="Wall" type="Collision" x="3648" y="5568" width="576" height="448"/>
   <object id="468" name="Wall" type="Collision" x="0" y="4032" width="640" height="896"/>
   <object id="470" name="Wall" type="Collision" x="0" y="4928" width="1856" height="640"/>
-  <object id="479" name="Wall" type="Collision" x="8768" y="832" width="1152" height="1344"/>
+  <object id="479" name="Wall" type="Collision" x="8768" y="832" width="256" height="1344"/>
   <object id="480" name="Wall" type="Collision" x="5120" y="4672" width="128" height="256"/>
   <object id="481" name="Wall" type="Collision" x="3648" y="4928" width="1792" height="640"/>
   <object id="489" name="Wall" type="Collision" x="5824" y="6976" width="256" height="128"/>
@@ -391,10 +391,10 @@
   <object id="518" name="Wall" type="Collision" x="3584" y="3456" width="896" height="576"/>
   <object id="519" name="Wall" type="Collision" x="8128" y="5696" width="896" height="256"/>
   <object id="520" name="Wall" type="Collision" x="8896" y="5952" width="128" height="1152"/>
-  <object id="521" name="Wall" type="Collision" x="4224" y="7104" width="5056" height="448"/>
+  <object id="521" name="Wall" type="Collision" x="4224" y="7104" width="4800" height="448"/>
   <object id="550" name="Wall" type="Collision" x="0" y="3776" width="2880" height="256"/>
   <object id="551" name="Wall" type="Collision" x="7680" y="3712" width="448" height="448"/>
-  <object id="562" name="Wall" type="Collision" x="8384" y="0" width="1536" height="832"/>
+  <object id="562" name="Wall" type="Collision" x="8384" y="0" width="640" height="832"/>
   <object id="563" name="Wall" type="Collision" x="8320" y="1920" width="448" height="256"/>
   <object id="583" name="Wall" type="Collision" x="4480" y="3648" width="768" height="256"/>
   <object id="589" name="Wall" type="Collision" x="4480" y="512" width="128" height="1472"/>
@@ -452,5 +452,78 @@
   <object id="659" name="Wall" type="Collision" x="7616" y="1728" width="192" height="448"/>
   <object id="662" name="Wall" type="Collision" x="3392" y="3776" width="192" height="256"/>
   <object id="672" name="Wall" type="Collision" x="6592" y="0" width="1280" height="832"/>
+  <object id="674" name="Wall" type="Collision" x="9280" y="0" width="640" height="2176"/>
+  <object id="675" gid="24" x="9024" y="64" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="676" gid="24" x="9024" y="640" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="677" gid="24" x="9024" y="1280" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="678" gid="24" x="9024" y="2560" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="679" gid="24" x="9024" y="3200" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="680" gid="24" x="9024" y="3840" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="681" gid="24" x="9024" y="4480" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="682" gid="24" x="9024" y="5120" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="683" gid="24" x="9024" y="5760" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="684" gid="24" x="9024" y="6400" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="685" gid="24" x="9024" y="7040" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
+  <object id="698" gid="24" x="9024" y="1920" width="64" height="64">
+   <properties>
+    <property name="xdirection" value="still"/>
+    <property name="ydirection" value="down"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

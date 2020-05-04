@@ -399,6 +399,11 @@ public class MainMenuScreen extends AbstractBaseScreen
         return gameState;
     }
 
+    public MenuPage getMenuPage()
+    {
+        return menuPage;
+    }
+
     @Override
     public void loadImages()
     {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="220" height="125" tilewidth="64" tileheight="64" infinite="0" nextlayerid="55" nextobjectid="1130">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="left-up" compressionlevel="0" width="220" height="125" tilewidth="64" tileheight="64" infinite="0" nextlayerid="55" nextobjectid="1131">
  <tileset firstgid="1" name="marker_tiles" tilewidth="64" tileheight="64" tilecount="100" columns="10">
   <image source="marker_tiles.png" width="640" height="640"/>
  </tileset>
@@ -393,7 +393,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="14" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="14" name="collision">
   <object id="590" name="Spike Block" gid="17" x="12224" y="1856" width="64" height="64">
    <properties>
     <property name="xdirection" value="left"/>
@@ -455,7 +455,7 @@
     <property name="yspeed" type="float" value="0"/>
    </properties>
   </object>
-  <object id="643" name="Wall" type="Collision" x="320" y="5760" width="1664" height="128"/>
+  <object id="643" name="Wall" type="Collision" x="320" y="5760" width="1280" height="128"/>
   <object id="646" name="Wall" type="Collision" x="2496" y="4352" width="448" height="448"/>
   <object id="647" name="Wall" type="Collision" x="2304" y="4608" width="192" height="192"/>
   <object id="648" name="Wall" type="Collision" x="0" y="5888" width="2432" height="2112"/>
@@ -582,5 +582,6 @@
   <object id="1127" name="Wall" type="Collision" x="9280" y="4672" width="128" height="256"/>
   <object id="1128" name="Wall" type="Collision" x="9152" y="4928" width="256" height="320"/>
   <object id="1129" name="Wall" type="Collision" x="8320" y="5056" width="128" height="192"/>
+  <object id="1130" name="Wall" type="Collision" x="1856" y="5760" width="128" height="128"/>
  </objectgroup>
 </map>
