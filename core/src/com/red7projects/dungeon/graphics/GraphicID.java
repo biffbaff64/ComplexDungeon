@@ -95,6 +95,7 @@ public enum GraphicID
     G_ENEMY_FIREBALL,
     G_SOLDIER,
     G_SOLDIER_FIGHT,
+    G_BIG_BLOCK,
 
     // ----------------------------
     G_LASER,

@@ -84,7 +84,7 @@ public class RoomManager
 
     private static final int    _DEFAULT_START_ROW      = 1;
     private static final int    _DEFAULT_START_COLUMN   = 1;
-    private static final String _START_ROOM             = _S2;
+    private static final String _START_ROOM             = _ROOM13_ESW;
     private static final int    _START_POSITION         = Room._START;
 
     private int worldWidth;

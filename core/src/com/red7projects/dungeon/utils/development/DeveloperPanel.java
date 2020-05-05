@@ -536,7 +536,7 @@ public class DeveloperPanel extends BasicPanel
                 {
                     new DMEntry("Google Sign In", Settings._PLAY_SERVICES, false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Flame Thrower", Settings._FLAME_THROWER, true),
                 },
                 {
                     new DMEntry("Achievements", Settings._ACHIEVEMENTS, false),
@@ -551,27 +551,27 @@ public class DeveloperPanel extends BasicPanel
                 {
                     new DMEntry("Player", Settings._PLAYER, false),
                     new DMEntry("Sprite Boxes", Settings._SPRITE_BOXES, false),
-                    new DMEntry("Storm Demon", Settings._STORM_DEMON, true),
+                    new DMEntry("Big Block", Settings._BIG_BLOCK, true),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("Tile Boxes", Settings._TILE_BOXES, false),
-                    new DMEntry("Scorpion", Settings._SCORPION, true),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("Marker Tiles", Settings._SPAWNPOINTS, false),
-                    new DMEntry("Flame Thrower", Settings._FLAME_THROWER, true),
+                    new DMEntry("Storm Demon", Settings._STORM_DEMON, true),
                 },
                 {
                     new DMEntry("", "", false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Scorpion", Settings._SCORPION, true),
                 },
                 {
                     new DMEntry("Box2D Physics", Settings._BOX2D_PHYSICS, false),
                     new DMEntry("", "", false),
-                    new DMEntry("Pickups", Settings._PICKUPS, false),
+                    new DMEntry("", "", false),
                 },
                 {
                     new DMEntry("B2D Renderer", Settings._B2D_RENDERER, false),
@@ -591,7 +591,7 @@ public class DeveloperPanel extends BasicPanel
                 {
                     new DMEntry("GLProfiler", Settings._GL_PROFILER, false),
                     new DMEntry("", "", false),
-                    new DMEntry("", "", false),
+                    new DMEntry("Pickups", Settings._PICKUPS, false),
                 },
                 {
                     new DMEntry("", "", false),

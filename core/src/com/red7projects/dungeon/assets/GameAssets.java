@@ -196,6 +196,7 @@ public class GameAssets
     public static final String _SPIKE_BLOCK_ASSET          = "spinning_spikes";
     public static final String _SPIKE_BLOCK_VERTICAL_ASSET = "spinning_spikes_vertical";
     public static final String _LOOP_BLOCK_ASSET           = "spinning_spikes_vertical";
+    public static final String _BIG_BLOCK_ASSET            = "big_block";
 
     //
     // In-Game Messaging
@@ -257,6 +258,7 @@ public class GameAssets
     public static final int _BOOKS_FRAMES                  = 8;
     public static final int _RUNES_FRAMES                  = 8;
     public static final int _PLANT_POT_FRAMES              = 1;
+    public static final int _BIG_BLOCK_FRAMES              = 1;
 
     //
     // Fonts and HUD assets
@@ -355,6 +357,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL, 256, 147),
             new AssetSize(GraphicID.G_LOOP_BLOCK_HORIZONTAL, 147, 256),
             new AssetSize(GraphicID.G_LOOP_BLOCK_VERTICAL, 256, 147),
+            new AssetSize(GraphicID.G_BIG_BLOCK, 256, 640),
             new AssetSize(GraphicID.G_ENEMY_BULLET, 32, 18),
             new AssetSize(GraphicID.G_ENEMY_FIREBALL, 64, 64),
             new AssetSize(GraphicID.G_MINI_FIRE_BALL, 64, 64),

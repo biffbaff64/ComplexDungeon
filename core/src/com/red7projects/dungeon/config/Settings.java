@@ -86,6 +86,7 @@ public class Settings
     public static final String _BOUNCER             = "bouncer";
     public static final String _SPIKE_BALL          = "spike ball";
     public static final String _SPIKE_BLOCK         = "spike block";
+    public static final String _BIG_BLOCK           = "big block";
     public static final String _SCORPION            = "scorpion";
     public static final String _SOLDIER             = "soldier";
 
@@ -196,6 +197,7 @@ public class Settings
             prefs.putBoolean(_BOUNCER, _PREF_TRUE_DEFAULT);
             prefs.putBoolean(_SPIKE_BALL, _PREF_TRUE_DEFAULT);
             prefs.putBoolean(_SPIKE_BLOCK, _PREF_TRUE_DEFAULT);
+            prefs.putBoolean(_BIG_BLOCK, _PREF_TRUE_DEFAULT);
             prefs.putBoolean(_SCORPION, _PREF_TRUE_DEFAULT);
             prefs.putBoolean(_SOLDIER, _PREF_TRUE_DEFAULT);
             prefs.putBoolean(_TURRETS, _PREF_TRUE_DEFAULT);

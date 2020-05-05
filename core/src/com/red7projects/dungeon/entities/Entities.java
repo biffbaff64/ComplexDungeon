@@ -91,6 +91,7 @@ public abstract class Entities
             new EntityDef("Spike Block Vertical", GraphicID.G_SPIKE_BLOCK_VERTICAL, TileID._SPIKE_BLOCK_UP_TILE, GameAssets._SPIKE_BLOCK_VERTICAL_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
             new EntityDef("Loop Block", GraphicID.G_LOOP_BLOCK_HORIZONTAL, TileID._LOOP_BLOCK_HORIZONTAL_TILE, GameAssets._SPIKE_BLOCK_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
             new EntityDef("Loop Block Vertical", GraphicID.G_LOOP_BLOCK_VERTICAL, TileID._LOOP_BLOCK_VERTICAL_TILE, GameAssets._SPIKE_BLOCK_VERTICAL_ASSET, GameAssets._SPIKE_BLOCK_VERTICAL_FRAMES, GraphicID._ENEMY),
+            new EntityDef("Big Block", GraphicID.G_BIG_BLOCK, TileID._BIG_BLOCK_TILE, GameAssets._BIG_BLOCK_ASSET, GameAssets._BIG_BLOCK_FRAMES, GraphicID._ENEMY),
 
             // Miscellaneous Enemy Related
             new EntityDef("", GraphicID.G_ENEMY_BULLET, TileID._DEFAULT_TILE, GameAssets._PHASER_BULLET_ASSET, GameAssets._PHASER_BULLET_FRAMES, GraphicID._ENEMY),

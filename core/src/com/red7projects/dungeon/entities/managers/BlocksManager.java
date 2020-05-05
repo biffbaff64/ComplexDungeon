@@ -23,6 +23,7 @@ import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.assets.GfxAsset;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.EntityStats;
+import com.red7projects.dungeon.entities.characters.BigBlock;
 import com.red7projects.dungeon.entities.characters.LoopBlock;
 import com.red7projects.dungeon.entities.characters.SpikeBall;
 import com.red7projects.dungeon.entities.characters.SpikeBlock;
@@ -83,6 +84,14 @@ public class BlocksManager extends GenericEntityManager
                     GameAssets._FLOATING_PLATFORM_ASSET,
                     GameAssets._FLOATING_PLATFORM_FRAMES
                 ),
+
+            new GfxAsset
+                (
+                    GraphicID.G_BIG_BLOCK,
+                    Settings._BIG_BLOCK,
+                    GameAssets._BIG_BLOCK_ASSET,
+                    GameAssets._BIG_BLOCK_FRAMES
+                ),
         };
 
     public BlocksManager(final App _app)
@@ -101,10 +110,14 @@ public class BlocksManager extends GenericEntityManager
 
             Array<MarkerTile> tiles = app.mapUtils.findMultiTiles(graphicID);
 
+            gfxAsset.debug();
+
             if (app.entityUtils.canUpdate(graphicID)
                 && app.settings.isEnabled(gfxAsset.preference)
                 && (tiles.size > 0))
             {
+                Trace.__FILE_FUNC(gfxAsset.graphicID);
+
                 for (MarkerTile tile : tiles)
                 {
                     create
@@ -159,6 +172,15 @@ public class BlocksManager extends GenericEntityManager
                             platform.initialise(entityDescriptor);
 
                             app.entityData.addEntity(platform);
+                        }
+                        break;
+
+                        case G_BIG_BLOCK:
+                        {
+                            BigBlock bigBlock = new BigBlock(graphicID, app);
+                            bigBlock.initialise(entityDescriptor);
+
+                            app.entityData.addEntity(bigBlock);
                         }
                         break;
 

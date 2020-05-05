@@ -371,6 +371,7 @@ public class MapCreator
                         }
                         break;
 
+                        case "Big Block":
                         case "Floating Platform":
                         {
                             hasDirection = true;
