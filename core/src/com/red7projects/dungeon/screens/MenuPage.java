@@ -72,8 +72,6 @@ public class MenuPage implements UIPage, Disposable
     private float buttonBarDelay;
     private int[] buttonBarYPos;
     private int buttonBarIndex;
-    private int menuIndex;
-    private int menuLoop;
 
     MenuPage(App _app)
     {
@@ -109,8 +107,6 @@ public class MenuPage implements UIPage, Disposable
     {
         buttonBarDelay = 0;
         buttonBarIndex = 0;
-        menuIndex = 0;
-        menuLoop  = 0;
     }
 
     @Override

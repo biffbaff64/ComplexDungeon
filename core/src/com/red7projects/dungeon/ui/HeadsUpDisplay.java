@@ -26,7 +26,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Constants;
 import com.red7projects.dungeon.game.StateID;
@@ -106,16 +105,16 @@ public class HeadsUpDisplay implements Disposable
 
             //
             // Y is distance from the TOP of the screen
-            {1920, 1920,   40,    0,    0},             // Coins total
-            {1920, 1920,  121,    0,    0},             // Gems total
-            { 888,  888,   80,    0,    0},             // Life bar
-            { 888,  888,  154,    0,    0},             // Health bar
+            {1920, 1920,   57,    0,    0},             // Coins total
+            {1920, 1920,  141,    0,    0},             // Gems total
+            { 864,  864,   95,    0,    0},             // Life bar
+            { 864,  864,  179,    0,    0},             // Health bar
 
             //
             // Y is distance from the TOP of the screen
             { 490,  490,   90,    0,    0},             // Villagers
             { 749,  749,   34,    0,    0},             // Collection Panel
-            {2348, 2348,  190,    0,    0},             // Compass
+            {2347, 2347,  185,    0,    0},             // Compass
 
             //
             // Runes
@@ -201,16 +200,16 @@ public class HeadsUpDisplay implements Disposable
         //
         // The player strength for the current life
         healthBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        healthBar.setHeight(25);
+        healthBar.setHeight(38);
         healthBar.setColor(Color.GREEN);
-        healthBar.setScale(8.0f);
+        healthBar.setScale(6.0f);
 
         //
         // The number of lives the player has
         livesBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        livesBar.setHeight(25);
+        livesBar.setHeight(38);
         livesBar.setColor(Color.GREEN);
-        livesBar.setScale(8.0f);
+        livesBar.setScale(6.0f);
 
         compassTexture = new TextureRegion[5];
         GfxUtils.splitRegion
@@ -384,7 +383,7 @@ public class HeadsUpDisplay implements Disposable
             originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
 
             drawPanels();
-            drawItems();
+//            drawItems();
             drawCompass();
             drawMessages();
 
