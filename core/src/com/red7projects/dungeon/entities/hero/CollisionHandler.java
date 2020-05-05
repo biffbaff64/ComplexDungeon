@@ -84,6 +84,7 @@ public class CollisionHandler implements CollisionListener, Disposable
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
             case G_LOOP_BLOCK_VERTICAL:
+            case G_BIG_BLOCK:
             case G_LASER_BEAM_HORIZONTAL:
             case G_LASER_BEAM_VERTICAL:
             case G_SPIKE_BALL:
@@ -198,6 +199,7 @@ public class CollisionHandler implements CollisionListener, Disposable
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
             case G_LOOP_BLOCK_VERTICAL:
+            case G_BIG_BLOCK:
             case G_LASER_BEAM:
             case G_SPIKE_BALL:
             case G_STORM_DEMON:
