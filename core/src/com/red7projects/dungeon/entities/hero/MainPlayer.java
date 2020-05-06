@@ -39,6 +39,7 @@ import com.red7projects.dungeon.physics.DirectionAnim;
 import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.physics.aabb.CollisionRect;
+import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.Meters;
 import com.red7projects.dungeon.utils.logging.Stats;
 import com.red7projects.dungeon.utils.logging.Trace;
@@ -393,6 +394,20 @@ public class MainPlayer extends GdxSprite
                 new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_ASSET),
             };
 
+        final DirectionAnim[] dyingAnims =
+            {
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP,     GameAssets._DYING_UP_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN,   GameAssets._DYING_DOWN_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL,  GameAssets._DYING_LEFT_ASSET),
+
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP,    GameAssets._DYING_UP_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN,  GameAssets._DYING_DOWN_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._DYING_RIGHT_ASSET),
+
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP,    GameAssets._DYING_UP_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN,  GameAssets._DYING_DOWN_ASSET),
+            };
+
         switch (getSpriteAction())
         {
             case _RUNNING:
@@ -483,17 +498,26 @@ public class MainPlayer extends GdxSprite
             case _LAST_RITES:
             case _DYING:
             {
-                setAnimation
-                    (
-                        new EntityDescriptor
-                            (
-                                app.assets.getAnimationsAtlas().findRegion(GameAssets._DYING_ASSET),
-                                GameAssets._PLAYER_DYING_FRAMES,
-                                Animation.PlayMode.LOOP,
-                                GameAssets.getAssetSize(GraphicID.G_PLAYER)
-                            ),
-                        1.0f
-                    );
+                EntityDescriptor descriptor = new EntityDescriptor();
+
+                descriptor._FRAMES   = GameAssets._PLAYER_DYING_FRAMES;
+                descriptor._PLAYMODE = Animation.PlayMode.NORMAL;
+                descriptor._SIZE     = GameAssets.getAssetSize(GraphicID.G_PLAYER_FIGHT);
+
+                String asset = dyingAnims[0].animation;
+
+                for (DirectionAnim directionAnim : dyingAnims)
+                {
+                    if ((lookingAt.getX() == directionAnim.dirX)
+                        && (lookingAt.getY() == directionAnim.dirY))
+                    {
+                        asset = directionAnim.animation;
+                    }
+                }
+
+                descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(asset);
+
+                setAnimation(descriptor, 0.5f);
             }
             break;
 
@@ -688,10 +712,6 @@ public class MainPlayer extends GdxSprite
 
     public void kill()
     {
-        if (!app.settings.isEnabled(Settings._GOD_MODE))
-        {
-            strength = 0;
-        }
     }
 
     public void handleDying()
@@ -702,7 +722,10 @@ public class MainPlayer extends GdxSprite
         }
         else
         {
-            app.gameProgress.lives.subtract(1);
+            if (!Developer.isGodMode())
+            {
+                app.gameProgress.lives.subtract(1);
+            }
         }
 
         // Restart if this player has more lives left...
@@ -710,9 +733,7 @@ public class MainPlayer extends GdxSprite
         {
             setAction(Actions._RESETTING);
             isDrawable = false;
-
             app.gameProgress.isRestarting = true;
-
             app.mapData.checkPoint.set(sprite.getX(), sprite.getY());
         }
         else

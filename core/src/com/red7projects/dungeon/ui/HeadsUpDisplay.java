@@ -383,7 +383,7 @@ public class HeadsUpDisplay implements Disposable
             originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
 
             drawPanels();
-//            drawItems();
+            drawItems();
             drawCompass();
             drawMessages();
 

@@ -54,7 +54,6 @@ public class OptionsPage implements UIPage
     private TextField fxLabel;
     private Slider    fxSlider;
 
-    private Texture   background;
     private Texture   foreground;
     private Skin      skin;
 
@@ -141,11 +140,6 @@ public class OptionsPage implements UIPage
 
             default:
             {
-                if (background != null)
-                {
-                    spriteBatch.draw(background, 0, 0);
-                }
-
                 if (foreground != null)
                 {
                     spriteBatch.draw(foreground, 0, 0);
@@ -164,7 +158,6 @@ public class OptionsPage implements UIPage
     {
         setupCompleted = false;
 
-        background = app.assets.loadSingleAsset("data/night_sky.png", Texture.class);
         foreground = app.assets.loadSingleAsset("data/options_foreground.png", Texture.class);
 
         skin = new Skin(Gdx.files.internal("data/uiskin.json"));
@@ -222,9 +215,8 @@ public class OptionsPage implements UIPage
             }
             buttonTests = null;
 
-            app.assets.unloadAsset("data/settings_screen_template.png");
+            app.assets.unloadAsset("data/options_foreground.png");
 
-            background = null;
             foreground = null;
             skin = null;
             statsPanel = null;

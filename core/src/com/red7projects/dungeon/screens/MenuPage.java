@@ -21,6 +21,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -30,6 +31,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.red7projects.dungeon.assets.GameAssets;
+import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
@@ -54,7 +56,6 @@ public class MenuPage implements UIPage, Disposable
     public Switch buttonGoogle;
     public Switch buttonExit;
 
-    private       Texture       background;
     private       Texture       foreground;
     private       Array<Switch> buttons;
     private       StopWatch     stopWatch;
@@ -78,7 +79,6 @@ public class MenuPage implements UIPage, Disposable
         this.app = _app;
 
         foreground = app.assets.loadSingleAsset("data/title_background.png", Texture.class);
-        background = app.assets.loadSingleAsset("data/night_sky.png", Texture.class);
 
         addMenu();
         addClickListeners();
@@ -156,11 +156,6 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public void draw(SpriteBatch spriteBatch)
     {
-        if (background != null)
-        {
-            spriteBatch.draw(background, 0, 0);
-        }
-
         if (foreground != null)
         {
             spriteBatch.draw(foreground, 0, 0);
@@ -177,9 +172,9 @@ public class MenuPage implements UIPage, Disposable
         imageButtonOptions  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1050, (Gfx._VIEW_HEIGHT - 1063));
         imageButtonExit     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._VIEW_HEIGHT - 1218));
 
-        imageButton1Player.setZIndex(1);
-        imageButtonOptions.setZIndex(1);
-        imageButtonExit.setZIndex(1);
+        imageButton1Player.setZIndex(2);
+        imageButtonOptions.setZIndex(2);
+        imageButtonExit.setZIndex(2);
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
@@ -190,13 +185,14 @@ public class MenuPage implements UIPage, Disposable
 
             app.stage.addActor(javaHeapLabel);
             app.stage.addActor(nativeHeapLabel);
-            javaHeapLabel.setZIndex(1);
-            nativeHeapLabel.setZIndex(1);
+            javaHeapLabel.setZIndex(2);
+            nativeHeapLabel.setZIndex(2);
         }
 
         buttonBar = scene2DUtils.makeObjectsImage("menu_glow_green01");
         buttonBar.setPosition(640, imageButton1Player.getY());
-        buttonBar.setZIndex(0);
+        buttonBar.setZIndex(1);
+        buttonBar.setTouchable(Touchable.disabled);
         app.stage.addActor(buttonBar);
 
         addDateSpecificItems(scene2DUtils);
@@ -249,6 +245,8 @@ public class MenuPage implements UIPage, Disposable
                 Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonStart.press();
+
+                Trace.__FILE_FUNC("_START");
             }
         });
 
@@ -280,15 +278,18 @@ public class MenuPage implements UIPage, Disposable
      */
     private void updateGoogleButton()
     {
-        if ((imageButtonGoogle == null) && !app.googleServices.isSignedIn())
+        if (AppConfig.isAndroidApp())
         {
-            createGoogleButton();
-        }
+            if ((imageButtonGoogle == null) && !app.googleServices.isSignedIn())
+            {
+                createGoogleButton();
+            }
 
-        if ((imageButtonGoogle != null) && app.googleServices.isSignedIn())
-        {
-            imageButtonGoogle.addAction(Actions.removeActor());
-            imageButtonGoogle = null;
+            if ((imageButtonGoogle != null) && app.googleServices.isSignedIn())
+            {
+                imageButtonGoogle.addAction(Actions.removeActor());
+                imageButtonGoogle = null;
+            }
         }
     }
 
@@ -300,29 +301,32 @@ public class MenuPage implements UIPage, Disposable
      */
     private void createGoogleButton()
     {
-        if (app.googleServices.isEnabled() && !app.googleServices.isSignedIn())
+        if (AppConfig.isAndroidApp())
         {
-            Scene2DUtils scene2DUtils = new Scene2DUtils(app);
+            if (app.googleServices.isEnabled() && !app.googleServices.isSignedIn())
+            {
+                Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
-            imageButtonGoogle = scene2DUtils.addButton
+                imageButtonGoogle = scene2DUtils.addButton
                     (
-                            "btn_google_signin_dark",
-                            "btn_google_signin_dark_pressed",
-                            1040,
-                            30
+                        "btn_google_signin_dark",
+                        "btn_google_signin_dark_pressed",
+                        1040,
+                        30
                     );
 
-            imageButtonGoogle.setZIndex(1);
+                imageButtonGoogle.setZIndex(1);
 
-            imageButtonGoogle.addListener(new ClickListener()
-            {
-                public void clicked(InputEvent event, float x, float y)
+                imageButtonGoogle.addListener(new ClickListener()
                 {
-                    Sfx.inst().startSound(Sfx.SFX_BEEP);
+                    public void clicked(InputEvent event, float x, float y)
+                    {
+                        Sfx.inst().startSound(Sfx.SFX_BEEP);
 
-                    buttonGoogle.press();
-                }
-            });
+                        buttonGoogle.press();
+                    }
+                });
+            }
         }
     }
 

@@ -117,7 +117,7 @@ public class MainMenuScreen extends AbstractBaseScreen
 
     private StateManager update(final StateManager state)
     {
-        if (!Sfx.inst().isTunePlaying(Sfx.inst().MUSIC_TITLE))
+        if (!Sfx.inst().isTunePlaying(Sfx.MUSIC_TITLE))
         {
             Sfx.inst().playTitleTune(true);
         }
@@ -175,7 +175,8 @@ public class MainMenuScreen extends AbstractBaseScreen
 
                 default:
                 {
-                    // TODO: 09/01/2019 - Add error handling here for illegal panel
+                    Trace.__FILE_FUNC();
+                    Trace.dbg("Unsupported UI Page: " + currentPage);
                 }
                 break;
             }
@@ -183,7 +184,10 @@ public class MainMenuScreen extends AbstractBaseScreen
             //
             // If currently showing Hiscore or Credits pages, return to menupage
             // if the screen is tapped (or controller start button pressed)
-            if (UIButtons.fullScreenButton.isPressed() || UIButtons.controllerFirePressed || UIButtons.controllerStartPressed)
+            if (UIButtons.fullScreenButton.isPressed()
+                || UIButtons.controllerFirePressed
+                || UIButtons.controllerStartPressed
+                || ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed()))
             {
                 if ((currentPage == _HISCORE_PAGE) || (currentPage == _CREDITS_PAGE))
                 {
@@ -192,25 +196,28 @@ public class MainMenuScreen extends AbstractBaseScreen
                     UIButtons.controllerFirePressed  = false;
                     UIButtons.controllerStartPressed = false;
                 }
+                else
+                {
+                    //
+                    // Start button(s) check
+                    if ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed())
+                    {
+                        Trace.divider('#', 100);
+                        Trace.dbg(" ***** START PRESSED ***** ");
+                        Trace.divider('#', 100);
+
+                        Sfx.inst().playTitleTune(false);
+
+                        menuPage.buttonStart.release();
+
+                        app.mainGameScreen.reset();
+                        app.mainGameScreen.firstTime = true;
+                        app.setScreen(app.mainGameScreen);
+                    }
+
+                }
 
                 UIButtons.fullScreenButton.release();
-            }
-
-            //
-            // Start button(s) check
-            if ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed())
-            {
-                Trace.divider('#', 100);
-                Trace.dbg(" ***** START PRESSED ***** ");
-                Trace.divider('#', 100);
-
-                Sfx.inst().playTitleTune(false);
-
-                menuPage.buttonStart.release();
-
-                app.mainGameScreen.reset();
-                app.mainGameScreen.firstTime = true;
-                app.setScreen(app.mainGameScreen);
             }
             else
             {
@@ -240,15 +247,18 @@ public class MainMenuScreen extends AbstractBaseScreen
                         menuPage.buttonExit.release();
                     }
 
-                    //
-                    // Check GOOGLE SIGN-IN button
-                    if ((menuPage.buttonGoogle != null) && menuPage.buttonGoogle.isPressed())
+                    if (AppConfig.isAndroidApp())
                     {
-                        menuPage.buttonGoogle.release();
-
-                        if (!app.googleServices.isSignedIn())
+                        //
+                        // Check GOOGLE SIGN-IN button
+                        if ((menuPage.buttonGoogle != null) && menuPage.buttonGoogle.isPressed())
                         {
-                            app.googleServices.signIn();
+                            menuPage.buttonGoogle.release();
+
+                            if (!app.googleServices.isSignedIn())
+                            {
+                                app.googleServices.signIn();
+                            }
                         }
                     }
                 }

@@ -226,7 +226,8 @@ public class EntityUtils
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
             case G_LOOP_BLOCK_VERTICAL:
-            case G_BIG_BLOCK:
+            case G_BIG_BLOCK_VERTICAL:
+            case G_BIG_BLOCK_HORIZONTAL:
             case G_ENEMY_BULLET:
 
             // ----------
@@ -304,7 +305,8 @@ public class EntityUtils
             case G_ENEMY_BULLET:
             case G_FLAME_THROWER:
             case G_TURRET:
-            case G_BIG_BLOCK:
+            case G_BIG_BLOCK_VERTICAL:
+            case G_BIG_BLOCK_HORIZONTAL:
             case G_SOLDIER:
             case G_FLAME_THROWER_VERTICAL:
             {
@@ -412,7 +414,8 @@ public class EntityUtils
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
             case G_LOOP_BLOCK_VERTICAL:
-            case G_BIG_BLOCK:
+            case G_BIG_BLOCK_VERTICAL:
+            case G_BIG_BLOCK_HORIZONTAL:
             {
                 zed = 3;
             }

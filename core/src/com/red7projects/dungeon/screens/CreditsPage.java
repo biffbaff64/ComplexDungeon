@@ -27,7 +27,6 @@ import java.util.concurrent.TimeUnit;
 
 public class CreditsPage implements UIPage, Disposable
 {
-    private Texture   background;
     private Texture   foreground;
     private StopWatch stopWatch;
     private App       app;
@@ -36,7 +35,6 @@ public class CreditsPage implements UIPage, Disposable
     {
         this.app = _app;
 
-        background = app.assets.loadSingleAsset("data/night_sky.png", Texture.class);
         foreground = app.assets.loadSingleAsset("data/credits_foreground.png", Texture.class);
 
         this.stopWatch = StopWatch.start();
@@ -72,11 +70,6 @@ public class CreditsPage implements UIPage, Disposable
     @Override
     public void draw(SpriteBatch spriteBatch)
     {
-        if (background != null)
-        {
-            spriteBatch.draw(background, 0, 0);
-        }
-
         if (foreground != null)
         {
             spriteBatch.draw(foreground, 0, 0);
@@ -87,11 +80,9 @@ public class CreditsPage implements UIPage, Disposable
     public void dispose()
     {
         app.assets.unloadAsset("data/credits_foreground.png");
-        app.assets.unloadAsset("data/night_sky.png");
 
         stopWatch  = null;
         foreground = null;
-        background = null;
         app        = null;
     }
 }

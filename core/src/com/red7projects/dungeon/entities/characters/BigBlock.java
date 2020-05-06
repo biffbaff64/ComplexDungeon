@@ -17,7 +17,10 @@
 package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
@@ -33,8 +36,9 @@ import java.util.concurrent.TimeUnit;
 
 public class BigBlock extends BaseEnemy
 {
-    private static final float _SPEED = 1.0f;
+    private static final float _SPEED = 4.0f;
 
+    private TextureRegion coverImage;
     private final App     app;
 
     public BigBlock(final GraphicID _gid, final App _app)
@@ -69,26 +73,30 @@ public class BigBlock extends BaseEnemy
 
         if (direction.getX() == Movement._DIRECTION_LEFT)
         {
-            speed.setX(1);
+            speed.setX(_SPEED);
             isFlippedX = true;
             setHorizontalMovementBounds();
+
+            coverImage = app.assets.getObjectsAtlas().findRegion(GameAssets._BLOCK_COVER_LEFT);
         }
         else if (direction.getX() == Movement._DIRECTION_RIGHT)
         {
-            speed.setX(1);
+            speed.setX(_SPEED);
             isFlippedX = false;
             setHorizontalMovementBounds();
+
+            coverImage = app.assets.getObjectsAtlas().findRegion(GameAssets._BLOCK_COVER_RIGHT);
         }
 
         if (direction.getY() == Movement._DIRECTION_UP)
         {
-            speed.setY(1);
+            speed.setY(_SPEED);
             isFlippedY = false;
             setVerticalMovementBounds();
         }
         else if (direction.getY() == Movement._DIRECTION_DOWN)
         {
-            speed.setY(1);
+            speed.setY(_SPEED);
             isFlippedY = true;
             setVerticalMovementBounds();
         }
@@ -148,16 +156,19 @@ public class BigBlock extends BaseEnemy
     @Override
     public void onMovementBoundsTurn(int edgeSide)
     {
-        if (getSpriteAction() == Actions._MOVING_IN)
-        {
-            setAction(Actions._STANDING);
-        }
-        else
-        {
-            setAction(Actions._MOVING_IN);
-        }
-
+        setAction(Actions._STANDING);
         stopWatch.reset();
+    }
+
+    @Override
+    public void draw(final SpriteBatch spriteBatch)
+    {
+        super.draw(spriteBatch);
+
+        if (coverImage != null)
+        {
+            spriteBatch.draw(coverImage, initXY.getX(), initXY.getY());
+        }
     }
 
     private void setCollisionListener()

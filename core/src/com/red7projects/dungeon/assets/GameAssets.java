@@ -45,6 +45,15 @@ public class GameAssets
     public static final String _IDLE_UP_RIGHT_ASSET   = "stand_up_right";
     public static final String _IDLE_DOWN_RIGHT_ASSET = "stand_down_right";
 
+    public static final String _DYING_UP_ASSET         = "stand_up";
+    public static final String _DYING_DOWN_ASSET       = "stand_down";
+    public static final String _DYING_LEFT_ASSET       = "stand_left";
+    public static final String _DYING_RIGHT_ASSET      = "stand_right";
+    public static final String _DYING_UP_LEFT_ASSET    = "stand_up_left";
+    public static final String _DYING_DOWN_LEFT_ASSET  = "stand_down_left";
+    public static final String _DYING_UP_RIGHT_ASSET   = "stand_up_right";
+    public static final String _DYING_DOWN_RIGHT_ASSET = "stand_down_right";
+
     public static final String _CAST_UP_ASSET         = "cast_up";
     public static final String _CAST_DOWN_ASSET       = "cast_down";
     public static final String _CAST_LEFT_ASSET       = "cast_left";
@@ -60,7 +69,7 @@ public class GameAssets
     public static final int _PLAYER_STAND_FRAMES = 7;
     public static final int _PLAYER_RUN_FRAMES   = 10;
     public static final int _PLAYER_FIGHT_FRAMES = 6;
-    public static final int _PLAYER_DYING_FRAMES = 1;
+    public static final int _PLAYER_DYING_FRAMES = 6;
     public static final int _PLAYER_SPAWN_FRAMES = 20;
     public static final int _PLAYER_APPEAR_FRAME = 13;
 
@@ -197,6 +206,9 @@ public class GameAssets
     public static final String _SPIKE_BLOCK_VERTICAL_ASSET = "spinning_spikes_vertical";
     public static final String _LOOP_BLOCK_ASSET           = "spinning_spikes_vertical";
     public static final String _BIG_BLOCK_ASSET            = "big_block";
+    public static final String _BIG_BLOCK_HORIZ_ASSET      = "big_block_horizontal";
+    public static final String _BLOCK_COVER_LEFT           = "big_block_cover_left";
+    public static final String _BLOCK_COVER_RIGHT          = "big_block_cover_right";
 
     //
     // In-Game Messaging
@@ -357,7 +369,8 @@ public class GameAssets
             new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL, 256, 147),
             new AssetSize(GraphicID.G_LOOP_BLOCK_HORIZONTAL, 147, 256),
             new AssetSize(GraphicID.G_LOOP_BLOCK_VERTICAL, 256, 147),
-            new AssetSize(GraphicID.G_BIG_BLOCK, 256, 640),
+            new AssetSize(GraphicID.G_BIG_BLOCK_HORIZONTAL, 640, 384),
+            new AssetSize(GraphicID.G_BIG_BLOCK_VERTICAL, 256, 640),
             new AssetSize(GraphicID.G_ENEMY_BULLET, 32, 18),
             new AssetSize(GraphicID.G_ENEMY_FIREBALL, 64, 64),
             new AssetSize(GraphicID.G_MINI_FIRE_BALL, 64, 64),

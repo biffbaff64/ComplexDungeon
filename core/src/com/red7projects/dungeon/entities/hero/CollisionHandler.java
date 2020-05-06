@@ -84,7 +84,8 @@ public class CollisionHandler implements CollisionListener, Disposable
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
             case G_LOOP_BLOCK_VERTICAL:
-            case G_BIG_BLOCK:
+            case G_BIG_BLOCK_VERTICAL:
+            case G_BIG_BLOCK_HORIZONTAL:
             case G_LASER_BEAM_HORIZONTAL:
             case G_LASER_BEAM_VERTICAL:
             case G_SPIKE_BALL:
@@ -99,11 +100,7 @@ public class CollisionHandler implements CollisionListener, Disposable
                 if ((app.getPlayer().getSpriteAction() != Actions._HURT)
                     && (app.getPlayer().getSpriteAction() != Actions._DYING))
                 {
-                    if (!Developer.isGodMode())
-                    {
-                        app.getPlayer().hurt(spriteHittingGid);
-                    }
-
+                    app.getPlayer().hurt(spriteHittingGid);
                     rebound();
                 }
 
@@ -199,7 +196,8 @@ public class CollisionHandler implements CollisionListener, Disposable
             case G_SPIKE_BLOCK_VERTICAL:
             case G_LOOP_BLOCK_HORIZONTAL:
             case G_LOOP_BLOCK_VERTICAL:
-            case G_BIG_BLOCK:
+            case G_BIG_BLOCK_VERTICAL:
+            case G_BIG_BLOCK_HORIZONTAL:
             case G_LASER_BEAM:
             case G_SPIKE_BALL:
             case G_STORM_DEMON:

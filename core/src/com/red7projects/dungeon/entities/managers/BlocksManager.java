@@ -87,7 +87,15 @@ public class BlocksManager extends GenericEntityManager
 
             new GfxAsset
                 (
-                    GraphicID.G_BIG_BLOCK,
+                    GraphicID.G_BIG_BLOCK_HORIZONTAL,
+                    Settings._BIG_BLOCK,
+                    GameAssets._BIG_BLOCK_HORIZ_ASSET,
+                    GameAssets._BIG_BLOCK_FRAMES
+                ),
+
+            new GfxAsset
+                (
+                    GraphicID.G_BIG_BLOCK_VERTICAL,
                     Settings._BIG_BLOCK,
                     GameAssets._BIG_BLOCK_ASSET,
                     GameAssets._BIG_BLOCK_FRAMES
@@ -175,7 +183,8 @@ public class BlocksManager extends GenericEntityManager
                         }
                         break;
 
-                        case G_BIG_BLOCK:
+                        case G_BIG_BLOCK_VERTICAL:
+                        case G_BIG_BLOCK_HORIZONTAL:
                         {
                             BigBlock bigBlock = new BigBlock(graphicID, app);
                             bigBlock.initialise(entityDescriptor);
