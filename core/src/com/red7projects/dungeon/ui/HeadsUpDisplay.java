@@ -105,16 +105,16 @@ public class HeadsUpDisplay implements Disposable
 
             //
             // Y is distance from the TOP of the screen
-            {1920, 1920,   57,    0,    0},             // Coins total
-            {1920, 1920,  141,    0,    0},             // Gems total
-            { 864,  864,   95,    0,    0},             // Life bar
-            { 864,  864,  179,    0,    0},             // Health bar
+            {1980, 1980,   57,    0,    0},             // Coins total
+            {1980, 1980,  141,    0,    0},             // Gems total
+            { 150,  150,   95,    0,    0},             // Life bar
+            { 150,  150,  179,    0,    0},             // Health bar
 
             //
             // Y is distance from the TOP of the screen
-            { 490,  490,   90,    0,    0},             // Villagers
+            {1680, 1680,  107,    0,    0},             // Villagers
             { 749,  749,   34,    0,    0},             // Collection Panel
-            {2347, 2347,  185,    0,    0},             // Compass
+            {2345, 2345,  203,    0,    0},             // Compass
 
             //
             // Runes
@@ -451,7 +451,7 @@ public class HeadsUpDisplay implements Disposable
                 (int) (originY + (Gfx._VIEW_HEIGHT - displayPos[_LIVES][_Y]))
             );
 
-        hudFont.setColor(Color.ROYAL);
+        hudFont.setColor(Color.WHITE);
 
         hudFont.draw
             (
