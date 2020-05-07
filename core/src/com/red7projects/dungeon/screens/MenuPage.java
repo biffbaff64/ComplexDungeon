@@ -35,6 +35,8 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
+import com.red7projects.dungeon.game.StateID;
+import com.red7projects.dungeon.game.StateManager;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.UIButtons;
 import com.red7projects.dungeon.input.buttons.Switch;
@@ -47,6 +49,7 @@ import com.red7projects.dungeon.utils.logging.Trace;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("WeakerAccess")
 public class MenuPage implements UIPage, Disposable
@@ -70,9 +73,14 @@ public class MenuPage implements UIPage, Disposable
     private ImageButton imageButtonExit;
     private ImageButton imageButtonGoogle;
 
+    private StateManager menuState;
+
     private float buttonBarDelay;
     private int[] buttonBarYPos;
     private int buttonBarIndex;
+    private int timerDelay;
+    private boolean flashState;
+    private float flashInterval;
 
     MenuPage(App _app)
     {
@@ -94,7 +102,7 @@ public class MenuPage implements UIPage, Disposable
         buttons.add(buttonExit);
         buttons.add(buttonGoogle);
 
-        this.stopWatch = StopWatch.start();
+        menuState = new StateManager();
 
         buttonBarYPos = new int[3];
         buttonBarYPos[0] = (int) imageButton1Player.getY();
@@ -107,6 +115,8 @@ public class MenuPage implements UIPage, Disposable
     {
         buttonBarDelay = 0;
         buttonBarIndex = 0;
+
+        menuState.set(StateID._STATE_MENU_UPDATE);
     }
 
     @Override
@@ -114,7 +124,6 @@ public class MenuPage implements UIPage, Disposable
     {
         showItems(true);
 
-        stopWatch.reset();
         reset();
     }
 
@@ -127,28 +136,46 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public boolean update()
     {
-        if ((buttonBarDelay += Gdx.graphics.getDeltaTime()) >= 0.10f)
+        if (menuState.get().equals(StateID._STATE_FLASHING))
         {
-            if (UIButtons.controllerUpPressed)
+            if (stopWatch.time(TimeUnit.MILLISECONDS) < timerDelay)
             {
-                if (--buttonBarIndex < 0)
+                if ((flashInterval += Gdx.graphics.getDeltaTime()) >= 0.10f);
                 {
-                    buttonBarIndex = 2;
+                    flashState = !flashState;
+                    flashInterval = 0;
                 }
             }
-            else if (UIButtons.controllerDownPressed)
+            else
             {
-                if (++buttonBarIndex > 2)
-                {
-                    buttonBarIndex = 0;
-                }
+                menuState.set(StateID._STATE_MENU_UPDATE);
             }
-
-            buttonBar.setY(buttonBarYPos[buttonBarIndex]);
-            buttonBarDelay = 0;
         }
+        else if (menuState.get().equals(StateID._STATE_MENU_UPDATE))
+        {
+            if ((buttonBarDelay += Gdx.graphics.getDeltaTime()) >= 0.10f)
+            {
+                if (UIButtons.controllerUpPressed)
+                {
+                    if (--buttonBarIndex < 0)
+                    {
+                        buttonBarIndex = 2;
+                    }
+                }
+                else if (UIButtons.controllerDownPressed)
+                {
+                    if (++buttonBarIndex > 2)
+                    {
+                        buttonBarIndex = 0;
+                    }
+                }
 
-        updateGoogleButton();
+                buttonBar.setY(buttonBarYPos[buttonBarIndex]);
+                buttonBarDelay = 0;
+            }
+
+            updateGoogleButton();
+        }
 
         return false;
     }
@@ -161,7 +188,7 @@ public class MenuPage implements UIPage, Disposable
             spriteBatch.draw(foreground, 0, 0);
         }
 
-        menuPageDebug();
+        showMenuPageDebug();
     }
 
     private void addMenu()
@@ -213,27 +240,6 @@ public class MenuPage implements UIPage, Disposable
                 app.stage.addActor(decoration);
             }
         }
-        else
-        {
-            if (calendar.get(Calendar.MONTH) == Calendar.DECEMBER)
-            {
-                switch (calendar.get(Calendar.DAY_OF_MONTH))
-                {
-                    case 24:
-                    case 25:
-                    case 26:
-                    {
-                        decoration = scene2DUtils.makeObjectsImage("xmas_tree");
-                        decoration.setPosition((Gfx._VIEW_WIDTH - 200), 40);
-                        app.stage.addActor(decoration);
-                    }
-                    break;
-
-                    default:
-                        break;
-                }
-            }
-        }
     }
 
     private void addClickListeners()
@@ -245,8 +251,9 @@ public class MenuPage implements UIPage, Disposable
                 Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonStart.press();
+                buttonBar.setVisible(false);
 
-                Trace.__FILE_FUNC("_START");
+                setFlashing(imageButton1Player);
             }
         });
 
@@ -257,6 +264,9 @@ public class MenuPage implements UIPage, Disposable
                 Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonOptions.press();
+                buttonBar.setVisible(false);
+
+                setFlashing(imageButtonOptions);
             }
         });
 
@@ -267,8 +277,20 @@ public class MenuPage implements UIPage, Disposable
                 Sfx.inst().startSound(Sfx.SFX_BEEP);
 
                 buttonExit.press();
+                buttonBar.setVisible(false);
+
+                setFlashing(imageButtonExit);
             }
         });
+    }
+
+    private void setFlashing(ImageButton button)
+    {
+        menuState.set(StateID._STATE_FLASHING);
+        stopWatch = StopWatch.start();
+        timerDelay = 2000;
+        flashState = true;
+        flashInterval = 0;
     }
 
     /**
@@ -415,7 +437,7 @@ public class MenuPage implements UIPage, Disposable
         }
     }
 
-    private void menuPageDebug()
+    private void showMenuPageDebug()
     {
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
