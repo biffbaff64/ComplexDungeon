@@ -21,14 +21,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.ui.UIPage;
-import com.red7projects.dungeon.utils.logging.StopWatch;
-
-import java.util.concurrent.TimeUnit;
 
 public class CreditsPage implements UIPage, Disposable
 {
     private Texture   foreground;
-    private StopWatch stopWatch;
     private App       app;
 
     CreditsPage(App _app)
@@ -36,19 +32,12 @@ public class CreditsPage implements UIPage, Disposable
         this.app = _app;
 
         foreground = app.assets.loadSingleAsset("data/credits_foreground.png", Texture.class);
-
-        this.stopWatch = StopWatch.start();
     }
 
     @Override
     public boolean update()
     {
-        if (stopWatch == null)
-        {
-            return false;
-        }
-
-        return (stopWatch.time(TimeUnit.MILLISECONDS) >= 5000);
+        return false;
     }
 
     @Override
@@ -59,7 +48,6 @@ public class CreditsPage implements UIPage, Disposable
     @Override
     public void show()
     {
-        stopWatch.reset();
     }
 
     @Override
@@ -81,7 +69,6 @@ public class CreditsPage implements UIPage, Disposable
     {
         app.assets.unloadAsset("data/credits_foreground.png");
 
-        stopWatch  = null;
         foreground = null;
         app        = null;
     }

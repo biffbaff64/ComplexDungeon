@@ -19,6 +19,9 @@ package com.red7projects.dungeon.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Version;
 import com.red7projects.dungeon.game.App;
@@ -31,6 +34,7 @@ import com.red7projects.dungeon.graphics.effects.StarField;
 import com.red7projects.dungeon.input.UIButtons;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.ui.ExitPanel;
+import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -49,6 +53,7 @@ public class MainMenuScreen extends AbstractBaseScreen
     private static final int _OPTIONS_PAGE   = 3;
     private static final int _EXIT_PAGE      = 4;
 
+    private ImageButton       buttonExit;
     private ExitPanel         exitPanel;
     private MenuPage          menuPage;
     private OptionsPage       optionsPage;
@@ -77,8 +82,13 @@ public class MainMenuScreen extends AbstractBaseScreen
             app.inputManager.virtualJoystick.hide();
         }
 
-        optionsPage = new OptionsPage(app);
+        Scene2DUtils scene2DUtils = new Scene2DUtils(app);
+        buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, (Gfx._VIEW_HEIGHT - 160));
+        buttonExit.setVisible(false);
+        buttonExit.setTouchable(Touchable.disabled);
+
         menuPage    = new MenuPage(app);
+        optionsPage = new OptionsPage(app);
         panels      = new ArrayList<>();
         starField   = new StarField(app);
 
@@ -124,35 +134,19 @@ public class MainMenuScreen extends AbstractBaseScreen
 
         if (state.get() == StateID._STATE_TITLE_SCREEN)
         {
+            panels.get(currentPage).update();
+
             switch (currentPage)
             {
                 case _MENU_PAGE:
-                case _HISCORE_PAGE:
                 case _CREDITS_PAGE:
-                {
-                    if (panels.get(currentPage).update())
-                    {
-                        panels.get(currentPage).reset();
-
-                        changePageTo((currentPage + 1) % _NUM_MAIN_PAGES);
-                    }
-                }
-                break;
-
+                case _HISCORE_PAGE:
                 case _OPTIONS_PAGE:
-                {
-                    optionsPage.update();
-
-                    if (!AppConfig.optionsPageActive)
-                    {
-                        changePageTo(_MENU_PAGE);
-                    }
-                }
                 break;
 
                 case _EXIT_PAGE:
                 {
-                    int option = exitPanel.update();
+                    int option = exitPanel.getExitOption();
 
                     if (option == ExitPanel._YES_PRESSED)
                     {
@@ -187,9 +181,10 @@ public class MainMenuScreen extends AbstractBaseScreen
             if (UIButtons.fullScreenButton.isPressed()
                 || UIButtons.controllerFirePressed
                 || UIButtons.controllerStartPressed
+                || buttonExit.isPressed()
                 || ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed()))
             {
-                if ((currentPage == _HISCORE_PAGE) || (currentPage == _CREDITS_PAGE))
+                if (currentPage != _MENU_PAGE)
                 {
                     changePageTo(_MENU_PAGE);
 
@@ -198,66 +193,90 @@ public class MainMenuScreen extends AbstractBaseScreen
                 }
                 else
                 {
-                    //
-                    // Start button(s) check
-                    if ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed())
+                    if (menuPage.menuState.get().equals(StateID._STATE_MENU_UPDATE))
                     {
-                        Trace.divider('#', 100);
-                        Trace.dbg(" ***** START PRESSED ***** ");
-                        Trace.divider('#', 100);
+                        //
+                        // Start button(s) check
+                        if ((menuPage.buttonStart != null) && menuPage.buttonStart.isPressed())
+                        {
+                            Trace.divider('#', 100);
+                            Trace.dbg(" ***** START PRESSED ***** ");
+                            Trace.divider('#', 100);
 
-                        Sfx.inst().playTitleTune(false);
+                            Sfx.inst().playTitleTune(false);
 
-                        menuPage.buttonStart.release();
+                            menuPage.buttonStart.release();
 
-                        app.mainGameScreen.reset();
-                        app.mainGameScreen.firstTime = true;
-                        app.setScreen(app.mainGameScreen);
+                            app.mainGameScreen.reset();
+                            app.mainGameScreen.firstTime = true;
+                            app.setScreen(app.mainGameScreen);
+                        }
+
                     }
 
+                    UIButtons.fullScreenButton.release();
                 }
-
-                UIButtons.fullScreenButton.release();
             }
             else
             {
-                // If we're still on the title screen...
-                if (state.get() == StateID._STATE_TITLE_SCREEN)
+                if (menuPage.menuState.get().equals(StateID._STATE_MENU_UPDATE))
                 {
-                    //
-                    // Check OPTIONS button, open settings page if pressed
-                    if ((menuPage.buttonOptions != null) && menuPage.buttonOptions.isPressed())
-                    {
-                        changePageTo(_OPTIONS_PAGE);
-
-                        menuPage.buttonOptions.release();
-                    }
-
-                    //
-                    // Check EXIT button, open exit panel if pressed
-                    if ((menuPage.buttonExit != null) && menuPage.buttonExit.isPressed())
-                    {
-                        panels.get(currentPage).hide();
-
-                        exitPanel = new ExitPanel(app);
-                        exitPanel.open();
-
-                        currentPage = _EXIT_PAGE;
-
-                        menuPage.buttonExit.release();
-                    }
-
-                    if (AppConfig.isAndroidApp())
+                    // If we're still on the title screen...
+                    if (state.get() == StateID._STATE_TITLE_SCREEN)
                     {
                         //
-                        // Check GOOGLE SIGN-IN button
-                        if ((menuPage.buttonGoogle != null) && menuPage.buttonGoogle.isPressed())
+                        // Check HISCORES button, open hiscores page if pressed
+                        if ((menuPage.buttonHiscores != null) && menuPage.buttonHiscores.isPressed())
                         {
-                            menuPage.buttonGoogle.release();
+                            changePageTo(_HISCORE_PAGE);
 
-                            if (!app.googleServices.isSignedIn())
+                            menuPage.buttonHiscores.release();
+                        }
+
+                        //
+                        // Check OPTIONS button, open settings page if pressed
+                        if ((menuPage.buttonOptions != null) && menuPage.buttonOptions.isPressed())
+                        {
+                            changePageTo(_OPTIONS_PAGE);
+
+                            menuPage.buttonOptions.release();
+                        }
+
+                        //
+                        // Check CREDITS button, open credits page if pressed
+                        if ((menuPage.buttonCredits != null) && menuPage.buttonCredits.isPressed())
+                        {
+                            changePageTo(_CREDITS_PAGE);
+
+                            menuPage.buttonCredits.release();
+                        }
+
+                        //
+                        // Check EXIT button, open exit panel if pressed
+                        if ((menuPage.buttonExit != null) && menuPage.buttonExit.isPressed())
+                        {
+                            panels.get(currentPage).hide();
+
+                            exitPanel = new ExitPanel(app);
+                            exitPanel.open();
+
+                            currentPage = _EXIT_PAGE;
+
+                            menuPage.buttonExit.release();
+                        }
+
+                        if (AppConfig.isAndroidApp())
+                        {
+                            //
+                            // Check GOOGLE SIGN-IN button
+                            if ((menuPage.buttonGoogle != null) && menuPage.buttonGoogle.isPressed())
                             {
-                                app.googleServices.signIn();
+                                menuPage.buttonGoogle.release();
+
+                                if (!app.googleServices.isSignedIn())
+                                {
+                                    app.googleServices.signIn();
+                                }
                             }
                         }
                     }
@@ -409,11 +428,6 @@ public class MainMenuScreen extends AbstractBaseScreen
         return gameState;
     }
 
-    public MenuPage getMenuPage()
-    {
-        return menuPage;
-    }
-
     @Override
     public void loadImages()
     {
@@ -437,6 +451,9 @@ public class MainMenuScreen extends AbstractBaseScreen
         app.assets.unloadAsset("data/full_moon_scene.png");
         app.assets.unloadAsset("data/title_overlay1.png");
         app.assets.unloadAsset("data/title_overlay2.png");
+
+        buttonExit.addAction(Actions.removeActor());
+        buttonExit = null;
 
         background = null;
         overlay1 = null;
@@ -480,6 +497,9 @@ public class MainMenuScreen extends AbstractBaseScreen
         if (panels.get(_nextPage) != null)
         {
             panels.get(currentPage).show();
+
+            buttonExit.setVisible(currentPage != _MENU_PAGE);
+            buttonExit.setTouchable((currentPage == _MENU_PAGE) ? Touchable.disabled : Touchable.enabled);
         }
     }
 }

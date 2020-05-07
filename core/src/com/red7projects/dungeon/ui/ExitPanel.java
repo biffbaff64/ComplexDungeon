@@ -155,6 +155,11 @@ public class ExitPanel implements Disposable
         });
     }
 
+    public int getExitOption()
+    {
+        return action;
+    }
+
     @Override
     public void dispose()
     {

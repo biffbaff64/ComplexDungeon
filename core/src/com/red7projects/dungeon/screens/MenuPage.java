@@ -49,31 +49,36 @@ import com.red7projects.dungeon.utils.logging.Trace;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("WeakerAccess")
 public class MenuPage implements UIPage, Disposable
 {
     public Switch buttonStart;
+    public Switch buttonHiscores;
     public Switch buttonOptions;
-    public Switch buttonGoogle;
+    public Switch buttonCredits;
     public Switch buttonExit;
+    public Switch buttonGoogle;
 
-    private       Texture       foreground;
-    private       Array<Switch> buttons;
-    private       StopWatch     stopWatch;
-    private final App           app;
-    private       Image         decoration;
-    private       Image         buttonBar;
-    private       Label         javaHeapLabel;
-    private       Label         nativeHeapLabel;
+    private Texture         foreground;
+    private Array<Switch>   buttons;
+    private StopWatch       stopWatch;
+    public  StateManager    menuState;
+    private App             app;
+    private Image           decoration;
+    private Image           buttonBar;
+    private Label           javaHeapLabel;
+    private Label           nativeHeapLabel;
 
-    private ImageButton imageButton1Player;
-    private ImageButton imageButtonOptions;
-    private ImageButton imageButtonExit;
-    private ImageButton imageButtonGoogle;
+    private static int _START       = 0;
+    private static int _HISCORES    = 1;
+    private static int _OPTIONS     = 2;
+    private static int _CREDITS     = 3;
+    private static int _EXIT        = 4;
+    private static int _GOOGLE      = 5;
+    private static int _NUM_BUTTONS = 6;
 
-    private StateManager menuState;
+    private ImageButton[] imageButtons;
 
     private float buttonBarDelay;
     private int[] buttonBarYPos;
@@ -81,6 +86,7 @@ public class MenuPage implements UIPage, Disposable
     private int timerDelay;
     private boolean flashState;
     private float flashInterval;
+    private int flashIndex;
 
     MenuPage(App _app)
     {
@@ -92,22 +98,28 @@ public class MenuPage implements UIPage, Disposable
         addClickListeners();
 
         buttonStart    = new Switch();
+        buttonHiscores = new Switch();
         buttonOptions  = new Switch();
+        buttonCredits  = new Switch();
         buttonExit     = new Switch();
         buttonGoogle   = new Switch();
 
         buttons = new Array<>();
         buttons.add(buttonStart);
+        buttons.add(buttonHiscores);
         buttons.add(buttonOptions);
+        buttons.add(buttonCredits);
         buttons.add(buttonExit);
         buttons.add(buttonGoogle);
 
         menuState = new StateManager();
 
-        buttonBarYPos = new int[3];
-        buttonBarYPos[0] = (int) imageButton1Player.getY();
-        buttonBarYPos[1] = (int) imageButtonOptions.getY();
-        buttonBarYPos[2] = (int) imageButtonExit.getY();
+        buttonBarYPos = new int[_NUM_BUTTONS];
+        buttonBarYPos[0] = (int) imageButtons[_START].getY();
+        buttonBarYPos[1] = (int) imageButtons[_HISCORES].getY();
+        buttonBarYPos[2] = (int) imageButtons[_OPTIONS].getY();
+        buttonBarYPos[3] = (int) imageButtons[_CREDITS].getY();
+        buttonBarYPos[4] = (int) imageButtons[_EXIT].getY();
     }
 
     @Override
@@ -136,22 +148,7 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public boolean update()
     {
-        if (menuState.get().equals(StateID._STATE_FLASHING))
-        {
-            if (stopWatch.time(TimeUnit.MILLISECONDS) < timerDelay)
-            {
-                if ((flashInterval += Gdx.graphics.getDeltaTime()) >= 0.10f);
-                {
-                    flashState = !flashState;
-                    flashInterval = 0;
-                }
-            }
-            else
-            {
-                menuState.set(StateID._STATE_MENU_UPDATE);
-            }
-        }
-        else if (menuState.get().equals(StateID._STATE_MENU_UPDATE))
+        if (menuState.get().equals(StateID._STATE_MENU_UPDATE))
         {
             if ((buttonBarDelay += Gdx.graphics.getDeltaTime()) >= 0.10f)
             {
@@ -195,13 +192,19 @@ public class MenuPage implements UIPage, Disposable
     {
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
-        imageButton1Player  = scene2DUtils.addButton("buttonStart", "buttonStart_pressed", 924, (Gfx._VIEW_HEIGHT - 899));
-        imageButtonOptions  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1050, (Gfx._VIEW_HEIGHT - 1063));
-        imageButtonExit     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._VIEW_HEIGHT - 1218));
+        imageButtons = new ImageButton[_NUM_BUTTONS];
 
-        imageButton1Player.setZIndex(2);
-        imageButtonOptions.setZIndex(2);
-        imageButtonExit.setZIndex(2);
+        imageButtons[_START]    = scene2DUtils.addButton("buttonStart", "buttonStart_pressed", 980, (Gfx._VIEW_HEIGHT - 720));
+        imageButtons[_HISCORES] = scene2DUtils.addButton("buttonHiscores", "buttonHiscores_pressed", 1050, (Gfx._VIEW_HEIGHT - 840));
+        imageButtons[_OPTIONS]  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1060, (Gfx._VIEW_HEIGHT - 960));
+        imageButtons[_CREDITS]  = scene2DUtils.addButton("buttonCredits", "buttonCredits_pressed", 1070, (Gfx._VIEW_HEIGHT - 1080));
+        imageButtons[_EXIT]     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._VIEW_HEIGHT - 1200));
+
+        imageButtons[_START].setZIndex(2);
+        imageButtons[_HISCORES].setZIndex(2);
+        imageButtons[_OPTIONS].setZIndex(2);
+        imageButtons[_CREDITS].setZIndex(2);
+        imageButtons[_EXIT].setZIndex(2);
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
@@ -216,8 +219,8 @@ public class MenuPage implements UIPage, Disposable
             nativeHeapLabel.setZIndex(2);
         }
 
-        buttonBar = scene2DUtils.makeObjectsImage("menu_glow_green01");
-        buttonBar.setPosition(640, imageButton1Player.getY());
+        buttonBar = scene2DUtils.makeObjectsImage("menu_arrows_green");
+        buttonBar.setPosition(640, imageButtons[_START].getY());
         buttonBar.setZIndex(1);
         buttonBar.setTouchable(Touchable.disabled);
         app.stage.addActor(buttonBar);
@@ -244,7 +247,7 @@ public class MenuPage implements UIPage, Disposable
 
     private void addClickListeners()
     {
-        imageButton1Player.addListener(new ClickListener()
+        imageButtons[_START].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -253,11 +256,24 @@ public class MenuPage implements UIPage, Disposable
                 buttonStart.press();
                 buttonBar.setVisible(false);
 
-                setFlashing(imageButton1Player);
+                setFlashing(_START);
             }
         });
 
-        imageButtonOptions.addListener(new ClickListener()
+        imageButtons[_HISCORES].addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+                Sfx.inst().startSound(Sfx.SFX_BEEP);
+
+                buttonHiscores.press();
+                buttonBar.setVisible(false);
+
+                setFlashing(_HISCORES);
+            }
+        });
+
+        imageButtons[_OPTIONS].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -266,11 +282,24 @@ public class MenuPage implements UIPage, Disposable
                 buttonOptions.press();
                 buttonBar.setVisible(false);
 
-                setFlashing(imageButtonOptions);
+                setFlashing(_OPTIONS);
             }
         });
 
-        imageButtonExit.addListener(new ClickListener()
+        imageButtons[_CREDITS].addListener(new ClickListener()
+        {
+            public void clicked(InputEvent event, float x, float y)
+            {
+                Sfx.inst().startSound(Sfx.SFX_BEEP);
+
+                buttonCredits.press();
+                buttonBar.setVisible(false);
+
+                setFlashing(_CREDITS);
+            }
+        });
+
+        imageButtons[_EXIT].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -279,18 +308,19 @@ public class MenuPage implements UIPage, Disposable
                 buttonExit.press();
                 buttonBar.setVisible(false);
 
-                setFlashing(imageButtonExit);
+                setFlashing(_EXIT);
             }
         });
     }
 
-    private void setFlashing(ImageButton button)
+    private void setFlashing(int button)
     {
-        menuState.set(StateID._STATE_FLASHING);
-        stopWatch = StopWatch.start();
-        timerDelay = 2000;
-        flashState = true;
-        flashInterval = 0;
+//        menuState.set(StateID._STATE_FLASHING);
+//        stopWatch = StopWatch.start();
+//        timerDelay = 5000;
+//        flashState = true;
+//        flashInterval = 0;
+//        flashIndex = button;
     }
 
     /**
@@ -302,15 +332,15 @@ public class MenuPage implements UIPage, Disposable
     {
         if (AppConfig.isAndroidApp())
         {
-            if ((imageButtonGoogle == null) && !app.googleServices.isSignedIn())
+            if ((imageButtons[_GOOGLE] == null) && !app.googleServices.isSignedIn())
             {
                 createGoogleButton();
             }
 
-            if ((imageButtonGoogle != null) && app.googleServices.isSignedIn())
+            if ((imageButtons[_GOOGLE] != null) && app.googleServices.isSignedIn())
             {
-                imageButtonGoogle.addAction(Actions.removeActor());
-                imageButtonGoogle = null;
+                imageButtons[_GOOGLE].addAction(Actions.removeActor());
+                imageButtons[_GOOGLE] = null;
             }
         }
     }
@@ -329,7 +359,7 @@ public class MenuPage implements UIPage, Disposable
             {
                 Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
-                imageButtonGoogle = scene2DUtils.addButton
+                imageButtons[_GOOGLE] = scene2DUtils.addButton
                     (
                         "btn_google_signin_dark",
                         "btn_google_signin_dark_pressed",
@@ -337,9 +367,9 @@ public class MenuPage implements UIPage, Disposable
                         30
                     );
 
-                imageButtonGoogle.setZIndex(1);
+                imageButtons[_GOOGLE].setZIndex(1);
 
-                imageButtonGoogle.addListener(new ClickListener()
+                imageButtons[_GOOGLE].addListener(new ClickListener()
                 {
                     public void clicked(InputEvent event, float x, float y)
                     {
@@ -361,18 +391,20 @@ public class MenuPage implements UIPage, Disposable
     {
         buttonBar.setVisible(_visible);
 
-        imageButton1Player.setVisible(_visible);
-        imageButtonOptions.setVisible(_visible);
-        imageButtonExit.setVisible(_visible);
+        imageButtons[_START].setVisible(_visible);
+        imageButtons[_HISCORES].setVisible(_visible);
+        imageButtons[_OPTIONS].setVisible(_visible);
+        imageButtons[_CREDITS].setVisible(_visible);
+        imageButtons[_EXIT].setVisible(_visible);
 
         if (decoration != null)
         {
             decoration.setVisible(_visible);
         }
 
-        if (imageButtonGoogle != null)
+        if (imageButtons[_GOOGLE] != null)
         {
-            imageButtonGoogle.setVisible(_visible);
+            imageButtons[_GOOGLE].setVisible(_visible);
         }
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
@@ -392,13 +424,17 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public void dispose()
     {
-        imageButton1Player.addAction(Actions.removeActor());
-        imageButtonOptions.addAction(Actions.removeActor());
-        imageButtonExit.addAction(Actions.removeActor());
+        imageButtons[_START].addAction(Actions.removeActor());
+        imageButtons[_HISCORES].addAction(Actions.removeActor());
+        imageButtons[_OPTIONS].addAction(Actions.removeActor());
+        imageButtons[_CREDITS].addAction(Actions.removeActor());
+        imageButtons[_EXIT].addAction(Actions.removeActor());
 
-        imageButton1Player  = null;
-        imageButtonOptions  = null;
-        imageButtonExit     = null;
+        imageButtons[_START] = null;
+        imageButtons[_HISCORES] = null;
+        imageButtons[_OPTIONS] = null;
+        imageButtons[_CREDITS] = null;
+        imageButtons[_EXIT] = null;
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {

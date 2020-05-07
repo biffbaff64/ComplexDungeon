@@ -41,7 +41,6 @@ import com.red7projects.dungeon.utils.development.DeveloperTests;
 @SuppressWarnings("WeakerAccess")
 public class OptionsPage implements UIPage
 {
-    private ImageButton buttonExit;
     private ImageButton buttonStats;
     private ImageButton buttonPrivacy;
     private ImageButton buttonKeySettings;
@@ -182,10 +181,8 @@ public class OptionsPage implements UIPage
     {
         if (AppConfig.optionsPageActive)
         {
-            buttonExit.addAction(Actions.removeActor());
             buttonStats.addAction(Actions.removeActor());
             buttonPrivacy.addAction(Actions.removeActor());
-            buttonExit = null;
             buttonStats = null;
             buttonPrivacy = null;
 
@@ -266,11 +263,9 @@ public class OptionsPage implements UIPage
         // ----------
         buttonStats = scene2DUtils.addButton("new_stats_button", "new_stats_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1000));
         buttonPrivacy = scene2DUtils.addButton("new_privacy_policy_button", "new_privacy_policy_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1150));
-        buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, (Gfx._VIEW_HEIGHT - 160));
 
         buttonStats.setSize(420, 128);
         buttonPrivacy.setSize(420, 128);
-        buttonExit.setSize(256, 128);
 
         // ----------
         if (AppConfig.isDesktopApp())
@@ -331,7 +326,6 @@ public class OptionsPage implements UIPage
             buttonKeySettings.setVisible(_visibilty);
         }
 
-        buttonExit.setVisible(_visibilty);
         buttonStats.setVisible(_visibilty);
         buttonPrivacy.setVisible(_visibilty);
 
@@ -369,8 +363,6 @@ public class OptionsPage implements UIPage
                         statsPanel.setXOffset(0);
                         statsPanel.setYOffset(0);
                         statsPanel.open();
-
-                        buttonExit.setVisible(true);
                     }
                 }
             });
@@ -394,8 +386,6 @@ public class OptionsPage implements UIPage
                         privacyPanel.xOffset = 0;
                         privacyPanel.yOffset = 0;
                         privacyPanel.open();
-
-                        buttonExit.setVisible(true);
                     }
                 }
             });
@@ -408,49 +398,6 @@ public class OptionsPage implements UIPage
                 public void clicked(InputEvent event, float x, float y)
                 {
                     Sfx.inst().startSound(Sfx.SFX_BEEP);
-                }
-            });
-        }
-
-        if (buttonExit != null)
-        {
-            buttonExit.addListener(new ClickListener()
-            {
-                public void clicked(InputEvent event, float x, float y)
-                {
-                    Sfx.inst().startSound(Sfx.SFX_BEEP);
-
-                    updateSettings();
-
-                    switch (activePanel)
-                    {
-                        case _SETTINGS_SCREEN:
-                        {
-                            hide();
-                        }
-                        break;
-
-                        case _STATS_SCREEN:
-                        {
-                            justFinishedStatsPanel = true;
-                        }
-                        break;
-
-                        case _PRIVACY_POLICY_SCREEN:
-                        {
-                            justFinishedPrivacyPanel = true;
-                        }
-                        break;
-
-                        case _TEST_PANEL:
-                        {
-                            justFinishedTestPanel = true;
-                        }
-                        break;
-
-                        default:
-                            break;
-                    }
                 }
             });
         }
@@ -473,8 +420,6 @@ public class OptionsPage implements UIPage
 
                             testPanel = new DeveloperTests(app);
                             testPanel.setup();
-
-                            buttonExit.setVisible(true);
                         }
                     }
                 });

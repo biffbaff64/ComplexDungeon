@@ -6,281 +6,294 @@ filter: Nearest,Nearest
 repeat: none
 bar
   rotate: false
-  xy: 412, 6
+  xy: 2006, 1997
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar9
   rotate: false
-  xy: 1028, 243
+  xy: 2006, 1963
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar9patch
   rotate: false
-  xy: 2006, 2013
+  xy: 2006, 1929
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar_green
   rotate: false
-  xy: 1065, 713
+  xy: 2015, 1733
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_green9
   rotate: false
-  xy: 446, 12
+  xy: 2015, 1705
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_grey
   rotate: false
-  xy: 1028, 215
+  xy: 1947, 1710
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_orange
   rotate: false
-  xy: 2006, 1985
+  xy: 1975, 1699
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_orange9
   rotate: false
-  xy: 1774, 1654
+  xy: 1947, 1682
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_red
   rotate: false
-  xy: 1808, 1688
+  xy: 2003, 1677
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_red9
   rotate: false
-  xy: 1947, 1828
+  xy: 1975, 1671
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_yellow
   rotate: false
-  xy: 803, 54
+  xy: 2003, 1649
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_yellow9
   rotate: false
-  xy: 936, 133
+  xy: 1941, 1654
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 big_block_cover_left
   rotate: false
-  xy: 1284, 711
+  xy: 1284, 2
   size: 640, 128
   orig: 640, 128
   offset: 0, 0
   index: -1
 big_block_cover_right
   rotate: false
-  xy: 1065, 315
+  xy: 2, 149
   size: 640, 128
   orig: 640, 128
   offset: 0, 0
   index: -1
 books_panel
   rotate: false
-  xy: 2, 509
+  xy: 2, 593
   size: 1061, 230
   orig: 1061, 230
   offset: 0, 0
   index: -1
 compass
   rotate: false
-  xy: 2, 40
+  xy: 1065, 404
   size: 765, 153
   orig: 765, 153
   offset: 0, 0
   index: -1
 complete_star
   rotate: false
-  xy: 1707, 379
+  xy: 1981, 1761
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 completed_panel
   rotate: false
-  xy: 1065, 445
+  xy: 1065, 559
   size: 832, 264
   orig: 832, 264
   offset: 0, 0
   index: -1
 dialog_background
   rotate: false
-  xy: 1467, 129
+  xy: 1467, 218
   size: 388, 184
   orig: 388, 184
   offset: 0, 0
   index: -1
 divider
   rotate: false
-  xy: 1467, 87
+  xy: 1774, 1545
   size: 211, 40
   orig: 211, 40
   offset: 0, 0
   index: -1
 key_held_panel
   rotate: false
-  xy: 1774, 1716
+  xy: 1774, 1700
   size: 171, 172
   orig: 171, 172
   offset: 0, 0
   index: -1
 loadbar_background
   rotate: false
-  xy: 2, 2
+  xy: 1467, 180
   size: 408, 36
   orig: 408, 36
   offset: 0, 0
   index: -1
-menu_glow_blue01
+menu_arrows_green
   rotate: false
-  xy: 2, 195
-  size: 1024, 80
-  orig: 1024, 80
-  offset: 0, 0
-  index: -1
-menu_glow_green01
-  rotate: false
-  xy: 2, 741
+  xy: 2, 32
   size: 1280, 98
   orig: 1280, 98
   offset: 0, 0
   index: -1
+menu_glow_blue01
+  rotate: false
+  xy: 2, 279
+  size: 1024, 80
+  orig: 1024, 80
+  offset: 0, 0
+  index: -1
 message_panel1
   rotate: false
-  xy: 2, 1645
+  xy: 2, 1629
   size: 1770, 400
   orig: 1770, 400
   offset: 0, 0
   index: -1
 message_panel2
   rotate: false
-  xy: 2, 1243
+  xy: 2, 1227
   size: 1770, 400
   orig: 1770, 400
   offset: 0, 0
   index: -1
 message_panel3
   rotate: false
-  xy: 2, 841
+  xy: 2, 825
   size: 1770, 400
   orig: 1770, 400
   offset: 0, 0
   index: -1
 red7logo
   rotate: false
-  xy: 1774, 1890
+  xy: 1774, 1874
   size: 230, 155
   orig: 230, 155
   offset: 0, 0
   index: -1
 red7logo_large
   rotate: false
-  xy: 1065, 43
+  xy: 1065, 132
   size: 400, 270
   orig: 400, 270
   offset: 0, 0
   index: -1
 red7logo_small
   rotate: false
-  xy: 769, 82
+  xy: 1774, 1587
   size: 165, 111
   orig: 165, 111
   offset: 0, 0
   index: -1
 runes_panel
   rotate: false
-  xy: 2, 277
+  xy: 2, 361
   size: 1061, 230
   orig: 1061, 230
   offset: 0, 0
   index: -1
 smallbar9
   rotate: false
-  xy: 1899, 693
+  xy: 1981, 1856
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 solid_black32x32
   rotate: false
-  xy: 1774, 1682
+  xy: 2006, 1895
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_blue32x32
   rotate: false
-  xy: 1947, 1856
+  xy: 2006, 1861
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_clear32x32
   rotate: false
-  xy: 769, 48
+  xy: 1947, 1840
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_green32x32
   rotate: false
-  xy: 936, 161
+  xy: 1999, 1827
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_lime32x32
   rotate: false
-  xy: 1467, 53
+  xy: 1947, 1806
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_red32x32
   rotate: false
-  xy: 1680, 95
+  xy: 1947, 1772
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_white32x32
   rotate: false
-  xy: 1707, 345
+  xy: 1947, 1738
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_yellow32x32
   rotate: false
-  xy: 1773, 411
+  xy: 1981, 1727
   size: 32, 32
   orig: 32, 32
+  offset: 0, 0
+  index: -1
+
+objects2.png
+size: 2048,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu_glow_green01
+  rotate: false
+  xy: 2, 2
+  size: 1280, 98
+  orig: 1280, 98
   offset: 0, 0
   index: -1
