@@ -57,6 +57,7 @@ public class HeadsUpDisplay implements Disposable
 
     private static final int _RUNES_PANEL   = 0;
     private static final int _BOOKS_PANEL   = 1;
+    private static final int _POTIONS_PANEL = 2;
 
     private static final int _JOYSTICK      = 0;
     private static final int _BUTTON_X      = 1;
@@ -90,6 +91,15 @@ public class HeadsUpDisplay implements Disposable
     private static final int _BOOK6         = 27;
     private static final int _BOOK7         = 28;
     private static final int _BOOK8         = 29;
+    private static final int _POTIONS_INDEX = 30;
+    private static final int _POTION1       = 30;
+    private static final int _POTION2       = 31;
+    private static final int _POTION3       = 32;
+    private static final int _POTION4       = 33;
+    private static final int _POTION5       = 34;
+    private static final int _POTION6       = 35;
+    private static final int _POTION7       = 36;
+    private static final int _POTION8       = 37;
 
     private static final int[][] displayPos = new int[][]
         {
@@ -168,6 +178,8 @@ public class HeadsUpDisplay implements Disposable
     private TextureRegion[] greyRunesTexture;
     private TextureRegion[] booksTexture;
     private TextureRegion[] greyBooksTexture;
+    private TextureRegion[] potionsTexture;
+    private TextureRegion[] greyPotionsTexture;
     private DeveloperPanel  developerPanel;
 
     private int     objectivesPanelIndex;
@@ -256,9 +268,28 @@ public class HeadsUpDisplay implements Disposable
                 app
             );
 
-        objectivesPanel = new TextureRegion[2];
+        potionsTexture = new TextureRegion[GameAssets._POTIONS_FRAMES];
+        GfxUtils.splitRegion
+            (
+                app.assets.getAnimationsAtlas().findRegion(GameAssets._POTIONS_ASSET),
+                GameAssets._POTIONS_FRAMES,
+                potionsTexture,
+                app
+            );
+
+        greyPotionsTexture = new TextureRegion[GameAssets._POTIONS_FRAMES];
+        GfxUtils.splitRegion
+            (
+                app.assets.getAnimationsAtlas().findRegion(GameAssets._GREY_POTIONS_ASSET),
+                GameAssets._POTIONS_FRAMES,
+                greyPotionsTexture,
+                app
+            );
+
+        objectivesPanel = new TextureRegion[3];
         objectivesPanel[0] = app.assets.getObjectsAtlas().findRegion("runes_panel");
         objectivesPanel[1]   = app.assets.getObjectsAtlas().findRegion("books_panel");
+        objectivesPanel[2]   = app.assets.getObjectsAtlas().findRegion("potions_panel");
         objectivesPanelIndex = 0;
 
         FontUtils fontUtils = new FontUtils();
@@ -572,6 +603,35 @@ public class HeadsUpDisplay implements Disposable
                         textureRegion,
                         originX + displayPos[_BOOKS_INDEX + i][_X1],
                         originY + displayPos[_BOOKS_INDEX + i][_Y],
+                        textureRegion.getRegionWidth() * 1.5f,
+                        textureRegion.getRegionHeight() * 1.5f
+                    );
+            }
+        }
+    }
+
+    private void drawPotions()
+    {
+        if (objectivesPanelIndex == _POTIONS_PANEL)
+        {
+            TextureRegion textureRegion;
+
+            for (int i = 0; i < GameAssets._POTIONS_FRAMES; i++)
+            {
+                if (app.gameProgress.books[i])
+                {
+                    textureRegion = potionsTexture[i];
+                }
+                else
+                {
+                    textureRegion = greyPotionsTexture[i];
+                }
+
+                app.spriteBatch.draw
+                    (
+                        textureRegion,
+                        originX + displayPos[_POTIONS_INDEX + i][_X1],
+                        originY + displayPos[_POTIONS_INDEX + i][_Y],
                         textureRegion.getRegionWidth() * 1.5f,
                         textureRegion.getRegionHeight() * 1.5f
                     );

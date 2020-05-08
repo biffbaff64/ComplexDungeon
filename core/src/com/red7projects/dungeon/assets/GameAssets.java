@@ -63,15 +63,7 @@ public class GameAssets
     public static final String _CAST_UP_RIGHT_ASSET   = "cast_up_right";
     public static final String _CAST_DOWN_RIGHT_ASSET = "cast_down_right";
 
-    public static final String _DYING_ASSET        = "ljm_death";
     public static final String _PLAYER_SPAWN_ASSET = "player_appear";
-
-    public static final int _PLAYER_STAND_FRAMES = 7;
-    public static final int _PLAYER_RUN_FRAMES   = 10;
-    public static final int _PLAYER_FIGHT_FRAMES = 6;
-    public static final int _PLAYER_DYING_FRAMES = 6;
-    public static final int _PLAYER_SPAWN_FRAMES = 20;
-    public static final int _PLAYER_APPEAR_FRAME = 13;
 
     //
     // Prisoner assets
@@ -84,16 +76,12 @@ public class GameAssets
     public static final String _PRISONER_IDLE_DOWN_LEFT_ASSET  = "prisoner_stand_down_left";
     public static final String _PRISONER_IDLE_DOWN_RIGHT_ASSET = "prisoner_stand_down_right";
 
-    public static final int _PRISONER_IDLE_FRAMES = 7;
-
     //
     // Villager assets
     public static final String _VILLAGER_IDLE_UP_ASSET         = "villager1_stand_up";
     public static final String _VILLAGER_IDLE_DOWN_ASSET       = "villager1_stand_down";
     public static final String _VILLAGER_IDLE_LEFT_ASSET       = "villager1_stand_left";
     public static final String _VILLAGER_IDLE_RIGHT_ASSET      = "villager1_stand_right";
-
-    public static final int _VILLAGER_IDLE_FRAMES = 8;
 
     //
     // Soldier assets
@@ -124,10 +112,6 @@ public class GameAssets
     public static final String _SOLDIER_IDLE_DOWN_LEFT_ASSET  = "soldier_stand_down";
     public static final String _SOLDIER_IDLE_DOWN_RIGHT_ASSET = "soldier_stand_down";
 
-    public static final int _SOLDIER_IDLE_FRAMES  = 7;
-    public static final int _SOLDIER_RUN_FRAMES   = 10;
-    public static final int _SOLDIER_FIGHT_FRAMES = 6;
-
     //
     // Pickups
     public static final String _BLUE_GEMS_ASSET     = "gems_blue";
@@ -139,18 +123,11 @@ public class GameAssets
     public static final String _SHIELD_ASSET        = "shield";
     public static final String _RUNES_ASSET         = "runes";
     public static final String _GREY_RUNES_ASSET    = "grey_runes";
-    public static final String _APPLE_ASSET         = "apple";
-    public static final String _BOOK_ASSET          = "book";
-    public static final String _CAKE_ASSET          = "cake";
-    public static final String _CHERRIES_ASSET      = "cherries";
-    public static final String _GRAPES_ASSET        = "grapes";
-    public static final String _SILVER_ARMOUR_ASSET = "silver_armour";
-    public static final String _GOLD_ARMOUR_ASSET   = "gold_armour";
-    public static final String _GOLD_KEY_ASSET      = "key_held_panel";
-    public static final String _DOCUMENT_ASSET      = "paper";
-    public static final String _LITTER_ASSET        = "litter";
     public static final String _BOOKS_ASSET         = "books";
     public static final String _GREY_BOOKS_ASSET    = "books_grey";
+    public static final String _POTIONS_ASSET       = "potions";
+    public static final String _GREY_POTIONS_ASSET  = "potions_grey";
+    public static final String _LITTER_ASSET        = "litter";
 
 
     //
@@ -233,6 +210,21 @@ public class GameAssets
 
     //
     // Frame counts for animations
+    public static final int _PLAYER_STAND_FRAMES            = 7;
+    public static final int _PLAYER_RUN_FRAMES              = 10;
+    public static final int _PLAYER_FIGHT_FRAMES            = 6;
+    public static final int _PLAYER_DYING_FRAMES            = 6;
+    public static final int _PLAYER_SPAWN_FRAMES            = 20;
+    public static final int _PLAYER_APPEAR_FRAME            = 13;
+
+    public static final int _PRISONER_IDLE_FRAMES           = 7;
+
+    public static final int _VILLAGER_IDLE_FRAMES           = 8;
+
+    public static final int _SOLDIER_IDLE_FRAMES            = 7;
+    public static final int _SOLDIER_RUN_FRAMES             = 10;
+    public static final int _SOLDIER_FIGHT_FRAMES           = 6;
+
     public static final int _LASER_BEAM_FRAMES             = 1;
     public static final int _EXPLOSION64_FRAMES            = 12;
     public static final int _LASER_FRAMES                  = 1;
@@ -269,6 +261,7 @@ public class GameAssets
     public static final int _LITTER_FRAMES                 = 10;
     public static final int _BOOKS_FRAMES                  = 8;
     public static final int _RUNES_FRAMES                  = 8;
+    public static final int _POTIONS_FRAMES                = 8;
     public static final int _PLANT_POT_FRAMES              = 1;
     public static final int _BIG_BLOCK_FRAMES              = 1;
 
@@ -287,94 +280,94 @@ public class GameAssets
 
     private static final AssetSize[] assetSizes =
         {
-            new AssetSize(GraphicID.G_PLAYER, 82, 120),
-            new AssetSize(GraphicID.G_PLAYER_FIGHT, 82, 120),
-            new AssetSize(GraphicID.G_ARROW, 82, 82),
-            new AssetSize(GraphicID.G_PRISONER, 128, 128),
-            new AssetSize(GraphicID.G_VILLAGER, 128, 128),
-            new AssetSize(GraphicID.G_SOLDIER, 148, 148),
-            new AssetSize(GraphicID.G_SOLDIER_FIGHT, 228, 228),
+            new AssetSize(GraphicID.G_PLAYER,                   82, 120),
+            new AssetSize(GraphicID.G_PLAYER_FIGHT,             82, 120),
+            new AssetSize(GraphicID.G_ARROW,                    82, 82),
+            new AssetSize(GraphicID.G_PRISONER,                 128, 128),
+            new AssetSize(GraphicID.G_VILLAGER,                 128, 128),
+            new AssetSize(GraphicID.G_SOLDIER,                  148, 148),
+            new AssetSize(GraphicID.G_SOLDIER_FIGHT,            228, 228),
 
-            new AssetSize(GraphicID.G_EXPLOSION12, 64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION32, 64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION64, 64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION128, 64, 64),
-            new AssetSize(GraphicID.G_EXPLOSION256, 64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION12,              64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION32,              64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION64,              64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION128,             64, 64),
+            new AssetSize(GraphicID.G_EXPLOSION256,             64, 64),
 
             // Pickup Items
-            new AssetSize(GraphicID.G_ARROW, 64, 64),
-            new AssetSize(GraphicID.G_GEM, 76, 64),
-            new AssetSize(GraphicID.G_COIN, 64, 64),
-            new AssetSize(GraphicID.G_SHIELD, 64, 78),
-            new AssetSize(GraphicID.G_KEY, 64, 64),
-            new AssetSize(GraphicID.G_HUD_KEY, 96, 96),
-            new AssetSize(GraphicID.G_DOCUMENT, 122, 128),
-            new AssetSize(GraphicID.G_APPLE, 64, 64),
-            new AssetSize(GraphicID.G_BOOK, 64, 64),
-            new AssetSize(GraphicID.G_LITTER, 64, 64),
-            new AssetSize(GraphicID.G_RUNE, 64, 64),
-            new AssetSize(GraphicID.G_CAKE, 64, 64),
-            new AssetSize(GraphicID.G_CHERRIES, 64, 64),
-            new AssetSize(GraphicID.G_GRAPES, 64, 64),
-            new AssetSize(GraphicID.G_SILVER_ARMOUR, 64, 64),
-            new AssetSize(GraphicID.G_GOLD_ARMOUR, 64, 64),
+            new AssetSize(GraphicID.G_ARROW,                    64, 64),
+            new AssetSize(GraphicID.G_GEM,                      76, 64),
+            new AssetSize(GraphicID.G_COIN,                     64, 64),
+            new AssetSize(GraphicID.G_SHIELD,                   64, 78),
+            new AssetSize(GraphicID.G_KEY,                      64, 64),
+            new AssetSize(GraphicID.G_HUD_KEY,                  96, 96),
+            new AssetSize(GraphicID.G_DOCUMENT,                 122, 128),
+            new AssetSize(GraphicID.G_APPLE,                    64, 64),
+            new AssetSize(GraphicID.G_BOOK,                     64, 64),
+            new AssetSize(GraphicID.G_LITTER,                   64, 64),
+            new AssetSize(GraphicID.G_RUNE,                     64, 64),
+            new AssetSize(GraphicID.G_CAKE,                     64, 64),
+            new AssetSize(GraphicID.G_CHERRIES,                 64, 64),
+            new AssetSize(GraphicID.G_GRAPES,                   64, 64),
+            new AssetSize(GraphicID.G_SILVER_ARMOUR,            64, 64),
+            new AssetSize(GraphicID.G_GOLD_ARMOUR,              64, 64),
 
             // Decorations
-            new AssetSize(GraphicID.G_POT, 93, 128),
-            new AssetSize(GraphicID.G_CRATE, 98, 120),
-            new AssetSize(GraphicID.G_BARREL, 90, 152),
-            new AssetSize(GraphicID.G_GLOW_EYES, 71, 64),
-            new AssetSize(GraphicID.G_ALCOVE_TORCH, 64, 192),
-            new AssetSize(GraphicID.G_SACKS, 124, 172),
-            new AssetSize(GraphicID.G_PLANT_POT, 64, 146),
+            new AssetSize(GraphicID.G_POT,                      93, 128),
+            new AssetSize(GraphicID.G_CRATE,                    98, 120),
+            new AssetSize(GraphicID.G_BARREL,                   90, 152),
+            new AssetSize(GraphicID.G_GLOW_EYES,                71, 64),
+            new AssetSize(GraphicID.G_ALCOVE_TORCH,             64, 192),
+            new AssetSize(GraphicID.G_SACKS,                    124, 172),
+            new AssetSize(GraphicID.G_PLANT_POT,                64, 146),
 
             // Interactive items
-            new AssetSize(GraphicID.G_FLOOR_BUTTON, 64, 64),
-            new AssetSize(GraphicID.G_LEVER_SWITCH, 82, 79),
-            new AssetSize(GraphicID.G_TREASURE_CHEST, 142, 142),
-            new AssetSize(GraphicID.G_MYSTERY_CHEST, 128, 142),
-            new AssetSize(GraphicID.G_DOOR, 512, 384),
-            new AssetSize(GraphicID.G_LOCKED_DOOR, 512, 384),
-            new AssetSize(GraphicID.G_TELEPORTER, 64, 64),
-            new AssetSize(GraphicID.G_HELP_BUBBLE, 192, 96),
-            new AssetSize(GraphicID.G_QUESTION_MARK, 128, 80),
-            new AssetSize(GraphicID.G_EXCLAMATION_MARK, 30, 48),
-            new AssetSize(GraphicID.G_FLOATING_PLATFORM, 128, 128),
-            new AssetSize(GraphicID.G_CROSSHAIRS, 64, 64),
-            new AssetSize(GraphicID.G_ESCALATOR, 64, 64),
-            new AssetSize(GraphicID.G_ESCALATOR_LEFT, 64, 64),
-            new AssetSize(GraphicID.G_ESCALATOR_RIGHT, 64, 64),
-            new AssetSize(GraphicID.G_ESCALATOR_UP, 64, 64),
-            new AssetSize(GraphicID.G_ESCALATOR_DOWN, 64, 64),
+            new AssetSize(GraphicID.G_FLOOR_BUTTON,             64, 64),
+            new AssetSize(GraphicID.G_LEVER_SWITCH,             82, 79),
+            new AssetSize(GraphicID.G_TREASURE_CHEST,           142, 142),
+            new AssetSize(GraphicID.G_MYSTERY_CHEST,            128, 142),
+            new AssetSize(GraphicID.G_DOOR,                     512, 384),
+            new AssetSize(GraphicID.G_LOCKED_DOOR,              512, 384),
+            new AssetSize(GraphicID.G_TELEPORTER,               64, 64),
+            new AssetSize(GraphicID.G_HELP_BUBBLE,              192, 96),
+            new AssetSize(GraphicID.G_QUESTION_MARK,            128, 80),
+            new AssetSize(GraphicID.G_EXCLAMATION_MARK,         30, 48),
+            new AssetSize(GraphicID.G_FLOATING_PLATFORM,        128, 128),
+            new AssetSize(GraphicID.G_CROSSHAIRS,               64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR,                64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_LEFT,           64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_RIGHT,          64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_UP,             64, 64),
+            new AssetSize(GraphicID.G_ESCALATOR_DOWN,           64, 64),
 
             // Messages
-            new AssetSize(GraphicID._PRESS_FOR_TREASURE, 1024, 114),
-            new AssetSize(GraphicID._PRESS_FOR_PRISONER, 1024, 114),
-            new AssetSize(GraphicID._PRESS_FOR_GUIDE, 1024, 59),
-            new AssetSize(GraphicID._STORM_DEMON_WARNING, 1660, 50),
-            new AssetSize(GraphicID._KEY_NEEDED, 1024, 114),
+            new AssetSize(GraphicID._PRESS_FOR_TREASURE,        1024, 114),
+            new AssetSize(GraphicID._PRESS_FOR_PRISONER,        1024, 114),
+            new AssetSize(GraphicID._PRESS_FOR_GUIDE,           1024, 59),
+            new AssetSize(GraphicID._STORM_DEMON_WARNING,       1660, 50),
+            new AssetSize(GraphicID._KEY_NEEDED,                1024, 114),
 
             // Stationary enemies
-            new AssetSize(GraphicID.G_LASER_BEAM_VERTICAL, 64, 64),
-            new AssetSize(GraphicID.G_LASER_BEAM_HORIZONTAL, 64, 64),
-            new AssetSize(GraphicID.G_FLAME_THROWER, 636, 334),
-            new AssetSize(GraphicID.G_FLAME_THROWER_VERTICAL, 334, 636),
-            new AssetSize(GraphicID.G_TURRET, 128, 128),
+            new AssetSize(GraphicID.G_LASER_BEAM_VERTICAL,      64, 64),
+            new AssetSize(GraphicID.G_LASER_BEAM_HORIZONTAL,    64, 64),
+            new AssetSize(GraphicID.G_FLAME_THROWER,            636, 334),
+            new AssetSize(GraphicID.G_FLAME_THROWER_VERTICAL,   334, 636),
+            new AssetSize(GraphicID.G_TURRET,                   128, 128),
 
             // Mobile enemies
-            new AssetSize(GraphicID.G_STORM_DEMON, 192, 192),
-            new AssetSize(GraphicID.G_BOUNCER, 96, 96),
-            new AssetSize(GraphicID.G_SPIKE_BALL, 128, 128),
-            new AssetSize(GraphicID.G_SPIKE_BLOCK_HORIZONTAL, 147, 256),
-            new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL, 256, 147),
-            new AssetSize(GraphicID.G_LOOP_BLOCK_HORIZONTAL, 147, 256),
-            new AssetSize(GraphicID.G_LOOP_BLOCK_VERTICAL, 256, 147),
-            new AssetSize(GraphicID.G_BIG_BLOCK_HORIZONTAL, 640, 384),
-            new AssetSize(GraphicID.G_BIG_BLOCK_VERTICAL, 256, 640),
-            new AssetSize(GraphicID.G_ENEMY_BULLET, 32, 18),
-            new AssetSize(GraphicID.G_ENEMY_FIREBALL, 64, 64),
-            new AssetSize(GraphicID.G_MINI_FIRE_BALL, 64, 64),
-            new AssetSize(GraphicID.G_SCORPION, 136, 123),
+            new AssetSize(GraphicID.G_STORM_DEMON,              192, 192),
+            new AssetSize(GraphicID.G_BOUNCER,                  96, 96),
+            new AssetSize(GraphicID.G_SPIKE_BALL,               128, 128),
+            new AssetSize(GraphicID.G_SPIKE_BLOCK_HORIZONTAL,   147, 256),
+            new AssetSize(GraphicID.G_SPIKE_BLOCK_VERTICAL,     256, 147),
+            new AssetSize(GraphicID.G_LOOP_BLOCK_HORIZONTAL,    147, 256),
+            new AssetSize(GraphicID.G_LOOP_BLOCK_VERTICAL,      256, 147),
+            new AssetSize(GraphicID.G_BIG_BLOCK_HORIZONTAL,     640, 384),
+            new AssetSize(GraphicID.G_BIG_BLOCK_VERTICAL,       256, 640),
+            new AssetSize(GraphicID.G_ENEMY_BULLET,             32, 18),
+            new AssetSize(GraphicID.G_ENEMY_FIREBALL,           64, 64),
+            new AssetSize(GraphicID.G_MINI_FIRE_BALL,           64, 64),
+            new AssetSize(GraphicID.G_SCORPION,                 136, 123),
         };
 
     private GameAssets() {}

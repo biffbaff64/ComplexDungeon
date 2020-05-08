@@ -21,6 +21,8 @@ import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.types.Item;
 import com.red7projects.dungeon.utils.logging.Trace;
 
+import java.util.Arrays;
+
 @SuppressWarnings("WeakerAccess")
 //@formatter:off
 public class GameProgress implements Disposable
@@ -46,6 +48,7 @@ public class GameProgress implements Disposable
 
     public boolean[] runes;
     public boolean[] books;
+    public boolean[] potions;
 
     public Item score;
     public Item lives;
@@ -76,16 +79,6 @@ public class GameProgress implements Disposable
 
         createData();
         toMinimum();
-
-        for (int i = 0; i< GameAssets._RUNES_FRAMES; i++)
-        {
-            runes[i] = false;
-        }
-
-        for (int i = 0; i< GameAssets._BOOKS_FRAMES; i++)
-        {
-            books[i] = false;
-        }
     }
 
     /**
@@ -110,8 +103,13 @@ public class GameProgress implements Disposable
         playerLifeOver = false;
         playerLevel = 1;
 
-        runes = new boolean[GameAssets._RUNES_FRAMES];
-        books = new boolean[GameAssets._BOOKS_FRAMES];
+        runes   = new boolean[GameAssets._RUNES_FRAMES];
+        books   = new boolean[GameAssets._BOOKS_FRAMES];
+        potions = new boolean[GameAssets._POTIONS_FRAMES];
+
+        Arrays.fill(runes, false);
+        Arrays.fill(books, false);
+        Arrays.fill(potions, false);
     }
 
     public void closeLastGame()
@@ -127,6 +125,10 @@ public class GameProgress implements Disposable
         coinCount.setToMinimum();
         keyCount.setToMinimum();
         rescuedVillagers.setToMinimum();
+
+        Arrays.fill(runes, false);
+        Arrays.fill(books, false);
+        Arrays.fill(potions, false);
 
         playerLifeOver = false;
         playerLevel = 1;
