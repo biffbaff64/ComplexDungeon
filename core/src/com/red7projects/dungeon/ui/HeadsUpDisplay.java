@@ -122,7 +122,7 @@ public class HeadsUpDisplay implements Disposable
 
             //
             // Y is distance from the TOP of the screen
-            {1680, 1680,  107,    0,    0},             // Villagers
+            {1670, 1670,  107,    0,    0},             // Villagers
             { 749,  749,   34,    0,    0},             // Collection Panel
             {2345, 2345,  203,    0,    0},             // Compass
 
@@ -147,6 +147,17 @@ public class HeadsUpDisplay implements Disposable
             {1430, 1430,   76,   96,   96},             // Book 6
             {1562, 1562,   76,   96,   96},             // Book 7
             {1695, 1695,   76,   96,   96},             // Book 8
+
+            //
+            // Potions
+            { 772,  772,   76,   96,   96},             // Potion 1
+            { 904,  904,   76,   96,   96},             // Potion 2
+            {1036, 1036,   76,   96,   96},             // Potion 3
+            {1164, 1164,   76,   96,   96},             // Potion 4
+            {1298, 1298,   76,   96,   96},             // Potion 5
+            {1430, 1430,   76,   96,   96},             // Potion 6
+            {1562, 1562,   76,   96,   96},             // Potion 7
+            {1695, 1695,   76,   96,   96},             // Potion 8
         };
 
     public MessageManager messageManager;
@@ -462,6 +473,7 @@ public class HeadsUpDisplay implements Disposable
 
             drawRunes();
             drawBooks();
+            drawPotions();
         }
     }
 

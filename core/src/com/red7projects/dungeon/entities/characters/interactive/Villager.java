@@ -96,13 +96,13 @@ public class Villager extends GdxSprite
         {
             case _STANDING:
             {
-                if (app.getPlayer().topEdge < sprite.getY())
+                if (app.getPlayer().topEdge < (sprite.getY() - frameHeight))
                 {
                     descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._DOWN.value]);
 
                     setAnimation(descriptor, 1.0f);
                 }
-                else if (app.getPlayer().topEdge > (sprite.getY() + frameHeight))
+                else if (app.getPlayer().topEdge > (sprite.getY() + frameHeight + frameHeight))
                 {
                     descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._UP.value]);
 
@@ -110,7 +110,7 @@ public class Villager extends GdxSprite
                 }
                 else
                 {
-                    if (app.getPlayer().sprite.getX() < sprite.getX())
+                    if (app.getPlayer().sprite.getX() < (sprite.getX() - frameWidth))
                     {
                         descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._LEFT.value]);
 

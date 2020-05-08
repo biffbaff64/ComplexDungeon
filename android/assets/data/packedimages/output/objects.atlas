@@ -90,14 +90,7 @@ bar_yellow9
   index: -1
 big_block_cover_left
   rotate: false
-  xy: 1284, 2
-  size: 640, 128
-  orig: 640, 128
-  offset: 0, 0
-  index: -1
-big_block_cover_right
-  rotate: false
-  xy: 2, 149
+  xy: 1065, 2
   size: 640, 128
   orig: 640, 128
   offset: 0, 0
@@ -153,21 +146,14 @@ key_held_panel
   index: -1
 loadbar_background
   rotate: false
-  xy: 1467, 180
+  xy: 2, 9
   size: 408, 36
   orig: 408, 36
   offset: 0, 0
   index: -1
-menu_arrows_green
-  rotate: false
-  xy: 2, 32
-  size: 1280, 98
-  orig: 1280, 98
-  offset: 0, 0
-  index: -1
 menu_glow_blue01
   rotate: false
-  xy: 2, 279
+  xy: 2, 47
   size: 1024, 80
   orig: 1024, 80
   offset: 0, 0
@@ -193,6 +179,13 @@ message_panel3
   orig: 1770, 400
   offset: 0, 0
   index: -1
+potions_panel
+  rotate: false
+  xy: 2, 361
+  size: 1061, 230
+  orig: 1061, 230
+  offset: 0, 0
+  index: -1
 red7logo
   rotate: false
   xy: 1774, 1874
@@ -216,7 +209,7 @@ red7logo_small
   index: -1
 runes_panel
   rotate: false
-  xy: 2, 361
+  xy: 2, 129
   size: 1061, 230
   orig: 1061, 230
   offset: 0, 0
@@ -286,13 +279,34 @@ solid_yellow32x32
   index: -1
 
 objects2.png
-size: 2048,128
+size: 2048,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-menu_glow_green01
+big_block_cover_bottom
   rotate: false
   xy: 2, 2
+  size: 384, 128
+  orig: 384, 128
+  offset: 0, 0
+  index: -1
+big_block_cover_right
+  rotate: false
+  xy: 1284, 202
+  size: 640, 128
+  orig: 640, 128
+  offset: 0, 0
+  index: -1
+menu_arrows_green
+  rotate: false
+  xy: 2, 232
+  size: 1280, 98
+  orig: 1280, 98
+  offset: 0, 0
+  index: -1
+menu_glow_green01
+  rotate: false
+  xy: 2, 132
   size: 1280, 98
   orig: 1280, 98
   offset: 0, 0

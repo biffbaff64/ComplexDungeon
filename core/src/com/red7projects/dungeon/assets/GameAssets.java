@@ -129,7 +129,6 @@ public class GameAssets
     public static final String _GREY_POTIONS_ASSET  = "potions_grey";
     public static final String _LITTER_ASSET        = "litter";
 
-
     //
     // Interactive Items
     public static final String _FLOATING_PLATFORM_ASSET     = "floating_plank";
@@ -186,6 +185,7 @@ public class GameAssets
     public static final String _BIG_BLOCK_HORIZ_ASSET      = "big_block_horizontal";
     public static final String _BLOCK_COVER_LEFT           = "big_block_cover_left";
     public static final String _BLOCK_COVER_RIGHT          = "big_block_cover_right";
+    public static final String _BLOCK_COVER_BOTTOM         = "big_block_cover_bottom";
 
     //
     // In-Game Messaging

@@ -41,7 +41,7 @@ books
   index: -1
 bullet1
   rotate: false
-  xy: 1924, 1846
+  xy: 2010, 1114
   size: 32, 18
   orig: 32, 18
   offset: 0, 0
@@ -51,6 +51,13 @@ bullet2
   xy: 1978, 1184
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+bullet3
+  rotate: false
+  xy: 1924, 1832
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 cake
