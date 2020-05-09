@@ -68,7 +68,12 @@ public class Scorpion extends BaseEnemy
             destination = new Vector2(app.getPlayer().sprite.getX(), app.getPlayer().sprite.getY());
         }
 
-        targettingSystem    = new TargettingSystem(app);
+        targettingSystem                    = new TargettingSystem(app);
+        targettingSystem.rotationAllowed    = true;
+        targettingSystem.checkMoveAllowed   = false;
+        targettingSystem.speedX             = 3.0f;
+        targettingSystem.speedY             = 3.0f;
+
         attackSystem        = new EnemyAttackSystem(this, app);
         stopWatch           = StopWatch.start();
         invisibilityTimer   = StopWatch.start();
