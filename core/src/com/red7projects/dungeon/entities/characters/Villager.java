@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities.characters.interactive;
+package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
@@ -116,7 +116,7 @@ public class Villager extends GdxSprite
 
                         setAnimation(descriptor, 1.0f);
                     }
-                    else
+                    else if (app.getPlayer().sprite.getX() > (sprite.getX() + frameWidth + frameWidth))
                     {
                         descriptor._ASSET = app.assets.getAnimationsAtlas().findRegion(villagers[villagerType][Point._RIGHT.value]);
 

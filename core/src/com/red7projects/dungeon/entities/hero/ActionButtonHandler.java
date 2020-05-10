@@ -17,10 +17,8 @@
 package com.red7projects.dungeon.entities.hero;
 
 import com.badlogic.gdx.utils.Disposable;
-import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 
 @SuppressWarnings({"WeakerAccess", "FieldCanBeLocal"})
@@ -54,15 +52,15 @@ public class ActionButtonHandler implements Disposable
                     setActionMode(Actions._OFFER_ABXY_A);
                     setFutureActionMode(Actions._PRESS_FLOOR_SWITCH);
                     app.getPlayer().setLink(app.getPlayer().collisionObject.contactSprite.spriteNumber);
-
-                    app.getHud().messageManager.addZoomMessage
-                        (
-                            GameAssets._PRESS_FOR_PRISONER_ASSET,
-                            5000,
-                            (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_PRISONER).getX()) / 2,
-                            100
-                        );
                 }
+            }
+        }
+        else if (app.getPlayer().collision.isNextTo(GraphicID.G_VILLAGER) > 0)
+        {
+            if (getActionMode() == Actions._NO_ACTION)
+            {
+                setActionMode(Actions._OFFER_ABXY_X);
+                setFutureActionMode(Actions._TALK_TO_VILLAGER);
             }
         }
         else if (app.getPlayer().collision.isNextTo(GraphicID.G_MYSTERY_CHEST) > 0)
@@ -71,14 +69,6 @@ public class ActionButtonHandler implements Disposable
             {
                 setActionMode(Actions._OFFER_ABXY_A);
                 setFutureActionMode(Actions._OPEN_MYSTERY_BOX);
-
-                app.getHud().messageManager.addZoomMessage
-                    (
-                        GameAssets._PRESS_FOR_TREASURE_ASSET,
-                        5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_TREASURE).getX()) / 2,
-                        100
-                    );
             }
         }
         else if ((app.getPlayer().collision.isNextTo(GraphicID.G_TREASURE_CHEST) > 0)
@@ -89,14 +79,6 @@ public class ActionButtonHandler implements Disposable
             {
                 setActionMode(Actions._OFFER_ABXY_A);
                 setFutureActionMode(Actions._OPEN_TREASURE_CHEST);
-
-                app.getHud().messageManager.addZoomMessage
-                    (
-                        GameAssets._PRESS_FOR_TREASURE_ASSET,
-                        5000,
-                        (Gfx._VIEW_WIDTH - GameAssets.getAssetSize(GraphicID._PRESS_FOR_TREASURE).getX()) / 2,
-                        100
-                    );
             }
         }
         else

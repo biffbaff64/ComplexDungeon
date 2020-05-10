@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities.characters.interactive;
+package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
@@ -23,14 +23,12 @@ import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.physics.Movement;
-import com.red7projects.dungeon.utils.logging.Trace;
 
-public class MessageBubble extends GdxSprite
+public class Escalator extends GdxSprite
 {
     private final App app;
 
-    public MessageBubble(final GraphicID _gid, final App _app)
+    public Escalator(final GraphicID _gid, final App _app)
     {
         super(_gid, _app);
 
@@ -43,38 +41,14 @@ public class MessageBubble extends GdxSprite
         create(entityDescriptor);
 
         collisionObject.bodyCategory = Gfx.CAT_INTERACTIVE;
-        collisionObject.collidesWith = Gfx.CAT_NOTHING;
+        collisionObject.collidesWith = Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_PLAYER;
 
-        direction.set(Movement._DIRECTION_STILL, Movement._DIRECTION_UP);
-        distance.set(0, entityDescriptor._DIST.y / 2);
-        distanceReset.set(0, entityDescriptor._DIST.y);
-        speed.set(0, 0.4f);
-
-        setAction(Actions._STANDING);
+        setAction(Actions._RUNNING);
     }
 
     @Override
     public void update(final int spriteNum)
     {
-        if (getSpriteAction() == Actions._STANDING)
-        {
-            if (distance.isEmpty())
-            {
-                direction.toggleY();
-                distance.set(distanceReset);
-            }
-
-            sprite.translateX(speed.getX() * direction.getX());
-            sprite.translateY(speed.getY() * direction.getY());
-
-            distance.subX(speed.getX());
-            distance.subY(speed.getY());
-        }
-        else
-        {
-            Trace.__FILE_FUNC("Unsupported spriteAction: " + getSpriteAction());
-        }
-
         animate();
 
         updateCommon();
@@ -85,8 +59,8 @@ public class MessageBubble extends GdxSprite
     {
         if (isAnimating)
         {
-            sprite.setRegion(app.entityUtils.getKeyFrame(animation, elapsedAnimTime, true));
             elapsedAnimTime += Gdx.graphics.getDeltaTime();
+            sprite.setRegion(app.entityUtils.getKeyFrame(animation, elapsedAnimTime, true));
         }
     }
 }

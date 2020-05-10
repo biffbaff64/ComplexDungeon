@@ -21,7 +21,7 @@ import com.badlogic.gdx.utils.Array;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.assets.GfxAsset;
 import com.red7projects.dungeon.config.Settings;
-import com.red7projects.dungeon.entities.characters.interactive.PowerBeam;
+import com.red7projects.dungeon.entities.characters.PowerBeam;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;

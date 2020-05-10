@@ -18,15 +18,13 @@ package com.red7projects.dungeon.entities.hero;
 
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
+import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.maths.Point;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.physics.Movement;
-import com.red7projects.dungeon.physics.aabb.AABBData;
-import com.red7projects.dungeon.physics.aabb.CollisionObject;
-import com.red7projects.dungeon.utils.development.Developer;
 
 @SuppressWarnings("WeakerAccess")
 public class CollisionHandler implements CollisionListener, Disposable
@@ -141,13 +139,13 @@ public class CollisionHandler implements CollisionListener, Disposable
     {
         int nextTo = 0;
 
-        for (CollisionObject object : AABBData.boxes())
+        for (GdxSprite sprite : app.entityData.entityMap)
         {
-            if (object.gid == graphicID)
+            if (sprite.gid == graphicID)
             {
-                if (object.rectangle.overlaps(app.getPlayer().sprite.getBoundingRectangle()))
+                if (sprite.sprite.getBoundingRectangle().overlaps(app.getPlayer().sprite.getBoundingRectangle()))
                 {
-                    nextTo = object.index;
+                    nextTo = sprite.spriteNumber;
                 }
             }
         }
@@ -223,20 +221,24 @@ public class CollisionHandler implements CollisionListener, Disposable
 
     private void rebound()
     {
-        if (app.getPlayer().collisionObject.hasContactUp() && !app.getPlayer().collisionObject.hasContactDown())
+        if (app.getPlayer().collisionObject.hasContactUp()
+            && !app.getPlayer().collisionObject.hasContactDown())
         {
             app.getPlayer().sprite.translateY(4 * Movement._DIRECTION_DOWN);
         }
-        else if (app.getPlayer().collisionObject.hasContactDown() && !app.getPlayer().collisionObject.hasContactUp())
+        else if (app.getPlayer().collisionObject.hasContactDown()
+            && !app.getPlayer().collisionObject.hasContactUp())
         {
             app.getPlayer().sprite.translateY(4 * Movement._DIRECTION_UP);
         }
 
-        if (app.getPlayer().collisionObject.hasContactLeft() && !app.getPlayer().collisionObject.hasContactRight())
+        if (app.getPlayer().collisionObject.hasContactLeft()
+            && !app.getPlayer().collisionObject.hasContactRight())
         {
             app.getPlayer().sprite.translateX(4 * Movement._DIRECTION_RIGHT);
         }
-        else if (app.getPlayer().collisionObject.hasContactRight() && !app.getPlayer().collisionObject.hasContactLeft())
+        else if (app.getPlayer().collisionObject.hasContactRight()
+            && !app.getPlayer().collisionObject.hasContactLeft())
         {
             app.getPlayer().sprite.translateX(4 * Movement._DIRECTION_LEFT);
         }

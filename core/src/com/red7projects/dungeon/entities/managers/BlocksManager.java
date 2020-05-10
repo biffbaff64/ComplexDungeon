@@ -27,7 +27,7 @@ import com.red7projects.dungeon.entities.characters.BigBlock;
 import com.red7projects.dungeon.entities.characters.LoopBlock;
 import com.red7projects.dungeon.entities.characters.SpikeBall;
 import com.red7projects.dungeon.entities.characters.SpikeBlock;
-import com.red7projects.dungeon.entities.characters.interactive.FloatingPlatform;
+import com.red7projects.dungeon.entities.characters.FloatingPlatform;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.MarkerTile;

@@ -67,6 +67,7 @@ public class ButtonInputHandler implements Disposable
         {
             xButtonActions.process();
             app.getHud().buttonX.release();
+            app.getPlayer().canOpenMessagePanel = false;
         }
 
         //

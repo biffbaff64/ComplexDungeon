@@ -16,8 +16,8 @@
 
 package com.red7projects.dungeon.entities.hero;
 
-import com.red7projects.dungeon.entities.characters.interactive.FloorSwitch;
-import com.red7projects.dungeon.entities.characters.interactive.TreasureChest;
+import com.red7projects.dungeon.entities.characters.FloorSwitch;
+import com.red7projects.dungeon.entities.characters.TreasureChest;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.GraphicID;

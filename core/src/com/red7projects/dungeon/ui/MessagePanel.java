@@ -1,6 +1,6 @@
 package com.red7projects.dungeon.ui;
 
-import com.red7projects.dungeon.entities.characters.interactive.Villager;
+import com.red7projects.dungeon.entities.characters.Villager;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;

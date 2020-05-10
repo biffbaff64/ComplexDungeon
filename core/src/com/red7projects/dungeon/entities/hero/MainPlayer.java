@@ -75,6 +75,7 @@ public class MainPlayer extends GdxSprite
     public boolean isOnPlatform;
     public boolean isOnFloorButton;
     public boolean isPossessed;
+    public boolean canOfferButton;
     public boolean canOpenMessagePanel;
 
     private TextureRegion[] abxy;
@@ -115,15 +116,16 @@ public class MainPlayer extends GdxSprite
         isOnPlatform        = false;
         isOnFloorButton     = false;
         isPossessed         = false;
+        canOfferButton      = false;
         canOpenMessagePanel = false;
 
-        buttons       = new ButtonInputHandler(app);
-        collision     = new CollisionHandler(app);
-        actionButton  = new ActionButtonHandler(app);
-        bulletManager = new PlayerBulletManager(app);
-        tileRectangle = new CollisionRect(gid);
-        viewBox       = new Box();
-        maxMoveSpeed  = new Speed();
+        buttons             = new ButtonInputHandler(app);
+        collision           = new CollisionHandler(app);
+        actionButton        = new ActionButtonHandler(app);
+        bulletManager       = new PlayerBulletManager(app);
+        tileRectangle       = new CollisionRect(gid);
+        viewBox             = new Box();
+        maxMoveSpeed        = new Speed();
 
         final TextureRegion abxyTexture = app.assets.getAnimationsAtlas().findRegion(GameAssets._ABXY_ASSET);
         abxy = new TextureRegion[4];
@@ -154,13 +156,12 @@ public class MainPlayer extends GdxSprite
         maxMoveSpeed.set(_PLAYER_X_SPEED, _PLAYER_Y_SPEED);
         strength = Constants._MAX_STRENGTH;
 
-        isMovingX   = false;
-        isMovingY   = false;
-        isRotating  = false;
-        isFlippedX  = false;
-        isFlippedY  = false;
-        canFlip     = false;
-
+        isMovingX           = false;
+        isMovingY           = false;
+        isRotating          = false;
+        isFlippedX          = false;
+        isFlippedY          = false;
+        canFlip             = false;
         isHurting           = false;
         isShooting          = false;
         isCasting           = false;
@@ -330,17 +331,17 @@ public class MainPlayer extends GdxSprite
 
         isOnFloorButton = (collision.isNextTo(GraphicID.G_FLOOR_BUTTON) > 0);
 
-        if (collision.isNextTo(GraphicID.G_VILLAGER) > 0)
-        {
-            if (getSpriteAction() == Actions._STANDING)
-            {
-                if (canOpenMessagePanel)
-                {
-                    buttons.xButtonActions.process();
-                    canOpenMessagePanel = false;
-                }
-            }
-        }
+//        if (collision.isNextTo(GraphicID.G_VILLAGER) > 0)
+//        {
+//            if (getSpriteAction() == Actions._STANDING)
+//            {
+//                if (canOpenMessagePanel)
+//                {
+//                    buttons.xButtonActions.process();
+//                    canOpenMessagePanel = false;
+//                }
+//            }
+//        }
 
         // TEMP
         if (strength <= 0)
@@ -595,7 +596,7 @@ public class MainPlayer extends GdxSprite
             {
                 spriteBatch.draw
                     (
-                        abxy[0],
+                        abxy[1],
                         this.sprite.getX() + (this.frameWidth / 3),
                         this.sprite.getY() + this.frameHeight
                     );
@@ -604,7 +605,7 @@ public class MainPlayer extends GdxSprite
             {
                 spriteBatch.draw
                     (
-                        abxy[0],
+                        abxy[2],
                         this.sprite.getX() + (this.frameWidth / 3),
                         this.sprite.getY() + this.frameHeight
                     );
@@ -613,7 +614,7 @@ public class MainPlayer extends GdxSprite
             {
                 spriteBatch.draw
                     (
-                        abxy[0],
+                        abxy[3],
                         this.sprite.getX() + (this.frameWidth / 3),
                         this.sprite.getY() + this.frameHeight
                     );

@@ -118,6 +118,7 @@ public class RoomManager
     public Array<String>    roomList;
     public int              playerStart;
     public Room             activeRoom;
+    public boolean          taskOffered;
 
     public RoomManager()
     {

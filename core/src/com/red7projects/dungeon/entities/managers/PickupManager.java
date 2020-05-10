@@ -23,7 +23,7 @@ import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.entities.Entities;
 import com.red7projects.dungeon.entities.EntityStats;
-import com.red7projects.dungeon.entities.characters.interactive.Pickup;
+import com.red7projects.dungeon.entities.characters.Pickup;
 import com.red7projects.dungeon.entities.objects.EntityDef;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;

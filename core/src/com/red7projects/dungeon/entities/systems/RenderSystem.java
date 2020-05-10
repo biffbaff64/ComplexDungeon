@@ -73,7 +73,7 @@ public class RenderSystem
     {
         if (app.settings.isEnabled(Settings._CULL_SPRITES))
         {
-            return app.mapData.viewportBox.overlaps(sprObj.sprite.getBoundingRectangle());
+            return app.mapData.extendedViewportBox.overlaps(sprObj.sprite.getBoundingRectangle());
         }
 
         return true;

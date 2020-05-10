@@ -14,94 +14,66 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities.characters.interactive;
+package com.red7projects.dungeon.entities.characters;
 
-import com.red7projects.dungeon.entities.objects.BaseEnemy;
+import com.badlogic.gdx.Gdx;
 import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
+import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.physics.Movement;
-import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 
-import java.util.concurrent.TimeUnit;
-
-public class FloatingPlatform extends BaseEnemy
+public class FloorSwitch extends GdxSprite
 {
-    public FloatingPlatform(final GraphicID _gid, final App _app)
+    private App app;
+
+    public FloorSwitch(final GraphicID _gid, final App _app)
     {
         super(_gid, _app);
+
+        this.app = _app;
     }
 
     @Override
     public void initialise(final EntityDescriptor entityDescriptor)
     {
-        final EntityDescriptor descriptor = new EntityDescriptor(entityDescriptor);
+        create(entityDescriptor);
 
-        super.initialise(descriptor);
-
-        collisionObject.bodyCategory = Gfx.CAT_PLATFORM;
+        collisionObject.bodyCategory = Gfx.CAT_INTERACTIVE;
         collisionObject.collidesWith = Gfx.CAT_PLAYER;
 
-        setCollisionListener();
-
-        direction.set(descriptor._DIR);
-        distance.set
-            (
-                descriptor._DIST.x * Gfx.getTileWidth(),
-                descriptor._DIST.y * Gfx.getTileHeight()
-            );
-        distanceReset.set(distance);
+        animation.setFrameDuration(entityDescriptor._ANIM_RATE);
+        isAnimating = false;
 
         setAction(Actions._STANDING);
-        localIsDrawable = true;
-        stopWatch = StopWatch.start();
-        restingTime = 2000;
-
-        if (descriptor._DIR.getX() != Movement._DIRECTION_STILL)
-        {
-            setHorizontalMovementBounds();
-
-            speed.set(6.0f, 0);
-        }
-        else if (descriptor._DIR.getY() != Movement._DIRECTION_STILL)
-        {
-            setVerticalMovementBounds();
-
-            speed.set(0, 6.0f);
-        }
+        setCollisionListener();
     }
 
     @Override
-    public void update(int spriteNum)
+    public void update(final int spriteNum)
     {
         switch (getSpriteAction())
         {
             case _STANDING:
+            case _CLOSED:
             {
-                setAction(Actions._RUNNING);
+                if (gid == GraphicID.G_FLOOR_BUTTON)
+                {
+                    isAnimating = !app.gameProgress.keyCount.isEmpty();
+                }
             }
             break;
 
             case _RUNNING:
             {
-                checkMovementBounds();
-
-                sprite.translate(speed.getX() * direction.getX(), speed.getY() * direction.getY());
-
-                distance.subXMinZero(speed.getX());
-                distance.subYMinZero(speed.getY());
-            }
-            break;
-
-            case _PAUSED:
-            {
-                if (stopWatch.time(TimeUnit.MILLISECONDS) > restingTime)
+                if (app.entityData.entityMap.get(getLink()) instanceof PowerBeam)
                 {
-                    setAction(Actions._RUNNING);
+                    app.entityData.entityMap.get(getLink()).setAction(Actions._HIDING);
+                    this.setAction(Actions._CLOSED);
+                    isAnimating = false;
                 }
             }
             break;
@@ -119,10 +91,25 @@ public class FloatingPlatform extends BaseEnemy
     }
 
     @Override
-    public void onMovementBoundsTurn(int edgeSide)
+    public void animate()
     {
-        setAction(Actions._PAUSED);
-        stopWatch.reset();
+        if (isAnimating)
+        {
+            elapsedAnimTime += Gdx.graphics.getDeltaTime();
+            sprite.setRegion(app.entityUtils.getKeyFrame(animation, elapsedAnimTime, false));
+        }
+    }
+
+    @Override
+    public void updateCollisionBox()
+    {
+        collisionObject.rectangle.x = sprite.getX() - 8;
+        collisionObject.rectangle.y = sprite.getY() - 8;
+        collisionObject.rectangle.width = frameWidth + 16;
+        collisionObject.rectangle.height = frameHeight + 16;
+
+        rightEdge = collisionObject.rectangle.x + collisionObject.rectangle.width;
+        topEdge = collisionObject.rectangle.y + collisionObject.rectangle.height;
     }
 
     private void setCollisionListener()
