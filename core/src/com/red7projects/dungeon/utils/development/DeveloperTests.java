@@ -27,10 +27,10 @@ import com.red7projects.dungeon.input.UIButtons;
 public class DeveloperTests
 {
     private TextureRegion title;
-    StringBuilder controllerName;
-    StringBuilder buttonPress;
-    StringBuilder axisCode;
-    StringBuilder povPress;
+    private StringBuilder controllerName;
+    private StringBuilder buttonPress;
+    private StringBuilder axisCode;
+    private StringBuilder povPress;
     private final App app;
 
     public DeveloperTests(App _app)

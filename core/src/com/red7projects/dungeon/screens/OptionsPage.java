@@ -264,9 +264,6 @@ public class OptionsPage implements UIPage
         buttonStats = scene2DUtils.addButton("new_stats_button", "new_stats_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1000));
         buttonPrivacy = scene2DUtils.addButton("new_privacy_policy_button", "new_privacy_policy_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1150));
 
-        buttonStats.setSize(420, 128);
-        buttonPrivacy.setSize(420, 128);
-
         // ----------
         if (AppConfig.isDesktopApp())
         {
@@ -277,8 +274,6 @@ public class OptionsPage implements UIPage
                     700,
                     (Gfx._VIEW_HEIGHT - 840)
                 );
-
-            buttonKeySettings.setSize(420, 128);
         }
 
         if (Developer.isDevMode())
@@ -287,11 +282,9 @@ public class OptionsPage implements UIPage
                 (
                     "new_test_access_button",
                     "new_test_access_button_pressed",
-                    1000,
-                    (Gfx._VIEW_HEIGHT - 840)
+                    2145,
+                    (Gfx._VIEW_HEIGHT - 130)
                 );
-
-            buttonTests.setSize(420, 128);
         }
 
         showActors(true);
