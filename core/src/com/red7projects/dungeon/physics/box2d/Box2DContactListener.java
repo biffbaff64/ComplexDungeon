@@ -27,8 +27,6 @@ public class Box2DContactListener implements ContactListener
     public Box2DContactListener(App app)
     {
         super();
-
-        app.box2DWorld.setContactListener(this);
     }
 
     /**

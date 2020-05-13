@@ -108,7 +108,6 @@ public class MainPlayer extends GdxSprite
                                     | Gfx.CAT_VILLAGER
                                     | Gfx.CAT_DOOR;
 
-        isMainCharacter     = true;
         isHurting           = false;
         isShooting          = false;
         isGrabbing          = false;

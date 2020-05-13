@@ -21,7 +21,6 @@ import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.entities.components.EntityManagerComponent;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
-import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.ArrayList;
@@ -31,11 +30,8 @@ public class EntityData implements Disposable
     public Array<GdxSprite>                  entityMap;
     public ArrayList<EntityManagerComponent> managerList;
 
-    private App app;
-
-    public EntityData(App _app)
+    public EntityData()
     {
-        this.app = _app;
     }
 
     public void createData()
@@ -76,20 +72,6 @@ public class EntityData implements Disposable
         return managerList.size() - 1;
     }
 
-    public void setEntity(GdxSprite spriteObject, int index)
-    {
-        if (spriteObject != null)
-        {
-            entityMap.set(index, spriteObject);
-
-            AppConfig.entitiesExist = true;
-        }
-        else
-        {
-            Trace.__FILE_FUNC("***** Attempt to set NULL Object into position " + index + ", EntityMap current size: " + entityMap.size);
-        }
-    }
-
     public void addEntity(GdxSprite spriteObject)
     {
         if (spriteObject != null)
@@ -107,16 +89,6 @@ public class EntityData implements Disposable
     public void removeEntity(int index)
     {
         entityMap.removeIndex(index);
-    }
-
-    public void debugManagerList()
-    {
-        Trace.__FILE_FUNC();
-
-        for (final EntityManagerComponent component : app.entityData.managerList)
-        {
-            Trace.dbg(component.getGID().name() + " : canPlace: " + component.isPlaceable());
-        }
     }
 
     @Override

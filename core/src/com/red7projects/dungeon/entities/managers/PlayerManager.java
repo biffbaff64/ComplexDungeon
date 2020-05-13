@@ -26,7 +26,7 @@ import com.red7projects.dungeon.graphics.GraphicID;
 public class PlayerManager
 {
     private EntityDescriptor entityDescriptor;
-    private App app;
+    private App              app;
 
     public PlayerManager(final App _app)
     {
@@ -43,7 +43,7 @@ public class PlayerManager
 
         app.entityData.addEntity(mainPlayer);
         app.entityManager.updateIndexes();
-        app.entityManager._playerReady  = true;
+        app.entityManager._playerReady = true;
 
         mainPlayer.addCollisionListener(mainPlayer.collision);
     }
@@ -53,17 +53,14 @@ public class PlayerManager
      */
     public void setSpawnPoint()
     {
-        entityDescriptor                    = new EntityDescriptor();
-        entityDescriptor._ASSET             = app.assets.getAnimationsAtlas().findRegion(GameAssets._IDLE_DOWN_ASSET);
-        entityDescriptor._FRAMES            = GameAssets._PLAYER_STAND_FRAMES;
-        entityDescriptor._PLAYMODE          = Animation.PlayMode.LOOP;
-        entityDescriptor._X                 = (int) app.getRoomSystem().getStartPosition().x;
-        entityDescriptor._Y                 = (int) app.getRoomSystem().getStartPosition().y;
-        entityDescriptor._Z                 = app.entityUtils.getInitialZPosition(GraphicID.G_PLAYER);
-        entityDescriptor._INDEX             = app.entityData.entityMap.size;
-        entityDescriptor._ENEMY             = app.entityUtils.setEnemyStatus(GraphicID.G_PLAYER);
-        entityDescriptor._UPDATEABLE        = app.entityUtils.canUpdate(GraphicID.G_PLAYER);
-        entityDescriptor._SIZE              = GameAssets.getAssetSize(GraphicID.G_PLAYER);
-        entityDescriptor._MAIN_CHARACTER    = true;
+        entityDescriptor           = new EntityDescriptor();
+        entityDescriptor._ASSET    = app.assets.getAnimationsAtlas().findRegion(GameAssets._IDLE_DOWN_ASSET);
+        entityDescriptor._FRAMES   = GameAssets._PLAYER_STAND_FRAMES;
+        entityDescriptor._PLAYMODE = Animation.PlayMode.LOOP;
+        entityDescriptor._X        = (int) app.getRoomSystem().getStartPosition().x;
+        entityDescriptor._Y        = (int) app.getRoomSystem().getStartPosition().y;
+        entityDescriptor._Z        = app.entityUtils.getInitialZPosition(GraphicID.G_PLAYER);
+        entityDescriptor._INDEX    = app.entityData.entityMap.size;
+        entityDescriptor._SIZE     = GameAssets.getAssetSize(GraphicID.G_PLAYER);
     }
 }

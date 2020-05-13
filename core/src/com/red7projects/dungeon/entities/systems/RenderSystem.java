@@ -50,7 +50,7 @@ public class RenderSystem
                     {
                         if (entity.zPosition == z)
                         {
-                            if (isInViewWindow(entity) && entity.isUpdatable && entity.isDrawable)
+                            if (isInViewWindow(entity) && entity.isDrawable)
                             {
                                 entity.draw(app.spriteBatch);
                             }

@@ -40,14 +40,6 @@ public abstract class Entities
             new EntityDef("", GraphicID.G_HIDDEN_COIN, TileID._HIDDEN_COIN_TILE, GameAssets._COIN_ASSET, GameAssets._COIN_FRAMES, GraphicID._PICKUP),
             new EntityDef("", GraphicID.G_SHIELD, TileID._SHIELD_TILE, GameAssets._SHIELD_ASSET, GameAssets._SHIELD_FRAMES, GraphicID._PICKUP),
             new EntityDef("", GraphicID.G_KEY, TileID._KEY_TILE, GameAssets._KEY_ASSET, GameAssets._KEY_FRAMES, GraphicID._PICKUP),
-//            G_HUD_KEY,
-//            G_APPLE,
-//            G_BOOK,
-//            G_CAKE,
-//            G_CHERRIES,
-//            G_GRAPES,
-//            G_SILVER_ARMOUR,
-//            G_GOLD_ARMOUR,
 
             // Decorations
             new EntityDef("", GraphicID.G_ALCOVE_TORCH, TileID._TORCH2_TILE, GameAssets._ALCOVE_TORCH_ASSET, GameAssets._ALCOVE_TORCH_FRAMES, GraphicID._DECORATION),
@@ -74,7 +66,6 @@ public abstract class Entities
             new EntityDef("Laser", GraphicID.G_LASER_BEAM, TileID._LASER_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
             new EntityDef("Laser Horizontal", GraphicID.G_LASER_BEAM_HORIZONTAL, TileID._LASER_HORIZONTAL_TILE, GameAssets._LASER_BEAM_HORIZONTAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
             new EntityDef("Laser Vertical", GraphicID.G_LASER_BEAM_VERTICAL, TileID._LASER_VERTICAL_TILE, GameAssets._LASER_BEAM_VERTICAL_ASSET, GameAssets._LASER_BEAM_FRAMES, GraphicID._ENEMY),
-//            G_TALK_BOX,
 
             // Stationary Enemies
             new EntityDef("Flame Thrower", GraphicID.G_FLAME_THROWER, TileID._FLAME_THROWER_TILE, GameAssets._FLAME_THROW_ASSET, GameAssets._FLAME_THROW_FRAMES, GraphicID._ENEMY),
@@ -96,11 +87,6 @@ public abstract class Entities
 
             // Miscellaneous Enemy Related
             new EntityDef("", GraphicID.G_ENEMY_BULLET, TileID._DEFAULT_TILE, GameAssets._PHASER_BULLET_ASSET, GameAssets._PHASER_BULLET_FRAMES, GraphicID._ENEMY),
-//            G_EXPLOSION12,
-//            G_EXPLOSION32,
-//            G_EXPLOSION64,
-//            G_EXPLOSION128,
-//            G_EXPLOSION256,
         };
 
     public static int getEntityDefIndex(GraphicID _gid)

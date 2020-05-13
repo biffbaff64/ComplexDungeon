@@ -54,20 +54,20 @@ public class EntityManager implements Disposable
         Trace.__FILE_FUNC();
 
         // ----------
-        app.entityData.managerList.add(new VillageManager(app));
-        app.entityData.managerList.add(new PrisonManager(app));
+//        app.entityData.managerList.add(new VillageManager(app));
+//        app.entityData.managerList.add(new PrisonManager(app));
         // ----------
-        app.entityData.managerList.add(new PickupManager(app));
-        app.entityData.managerList.add(new InteractiveManager(app));
-        app.entityData.managerList.add(new DecorationsManager(app));
+//        app.entityData.managerList.add(new PickupManager(app));
+//        app.entityData.managerList.add(new InteractiveManager(app));
+//        app.entityData.managerList.add(new DecorationsManager(app));
         // ----------
-        app.entityData.managerList.add(new SoldierManager(app));
-        app.entityData.managerList.add(new MonstersManager(app));
+//        app.entityData.managerList.add(new SoldierManager(app));
+//        app.entityData.managerList.add(new MonstersManager(app));
         // ----------
-        app.entityData.managerList.add(new BlocksManager(app));
-        app.entityData.managerList.add(new FlamesManager(app));
-        app.entityData.managerList.add(new PowerBeamManager(app));
-        app.entityData.managerList.add(new TurretManager(app));
+//        app.entityData.managerList.add(new BlocksManager(app));
+//        app.entityData.managerList.add(new FlamesManager(app));
+//        app.entityData.managerList.add(new PowerBeamManager(app));
+//        app.entityData.managerList.add(new TurretManager(app));
         // ----------
     }
 
@@ -112,7 +112,6 @@ public class EntityManager implements Disposable
                 entity = app.entityData.entityMap.get(i);
 
                 if ((entity != null)
-                    && entity.isUpdatable
                     && (entity.getSpriteAction() != Actions._DEAD)
                     && (entity.gid != GraphicID.G_PLAYER))
                 {
@@ -129,7 +128,6 @@ public class EntityManager implements Disposable
             if (!app.settings.isEnabled(Settings._SCROLL_DEMO))
             {
                 if (_playerReady
-                    && app.getPlayer().isUpdatable
                     && (app.getPlayer().getSpriteAction() != Actions._DEAD))
                 {
                     app.getPlayer().preUpdate();

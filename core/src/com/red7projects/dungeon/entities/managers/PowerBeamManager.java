@@ -55,36 +55,33 @@ public class PowerBeamManager extends GenericEntityManager
     {
         Trace.__FILE_FUNC();
 
-        if (app.entityUtils.canUpdate(GraphicID.G_LASER_BEAM))
+        for (GfxAsset gfxAsset : beamTypes)
         {
-            for (GfxAsset gfxAsset : beamTypes)
+            graphicID = gfxAsset.graphicID;
+
+            Array<MarkerTile> tiles = app.mapUtils.findMultiTiles(graphicID);
+
+            for (MarkerTile tile : tiles)
             {
-                graphicID = gfxAsset.graphicID;
+                super.create
+                    (
+                        gfxAsset.asset,
+                        GameAssets._LASER_BEAM_FRAMES,
+                        Animation.PlayMode.NORMAL,
+                        tile._X,
+                        tile._Y
+                    );
 
-                Array<MarkerTile> tiles = app.mapUtils.findMultiTiles(graphicID);
+                entityDescriptor._LINK = tile._LINK;
 
-                for (MarkerTile tile : tiles)
-                {
-                    super.create
-                        (
-                            gfxAsset.asset,
-                            GameAssets._LASER_BEAM_FRAMES,
-                            Animation.PlayMode.NORMAL,
-                            tile._X,
-                            tile._Y
-                        );
+                PowerBeam powerBeam = new PowerBeam(graphicID, app);
+                powerBeam.setBeamSize(tile._BOX);
+                powerBeam.setLink(tile._LINK);
+                powerBeam.initialise(entityDescriptor);
 
-                    entityDescriptor._LINK = tile._LINK;
+                app.entityData.addEntity(powerBeam);
 
-                    PowerBeam powerBeam = new PowerBeam(graphicID, app);
-                    powerBeam.setBeamSize(tile._BOX);
-                    powerBeam.setLink(tile._LINK);
-                    powerBeam.initialise(entityDescriptor);
-
-                    app.entityData.addEntity(powerBeam);
-
-                    activeCount++;
-                }
+                activeCount++;
             }
         }
     }

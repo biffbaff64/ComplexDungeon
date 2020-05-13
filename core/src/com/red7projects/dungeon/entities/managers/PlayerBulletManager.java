@@ -63,16 +63,14 @@ public class PlayerBulletManager implements Disposable
             (
                 0,
                 0,
-                app.entityUtils.getInitialZPosition(GraphicID.G_ARROW),
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._ARROW_ASSET),
-                GameAssets._ARROW_FRAMES,
+                app.entityUtils.getInitialZPosition(GraphicID.G_SMALL_BULLET),
+                app.assets.getAnimationsAtlas().findRegion(GameAssets._SMALL_BULLET_ASSET),
+                GameAssets._SMALL_BULLET_FRAMES,
                 Animation.PlayMode.LOOP
             );
 
-        entityDescriptor._INDEX         = app.entityData.entityMap.size;
-        entityDescriptor._ENEMY         = app.entityUtils.setEnemyStatus(GraphicID.G_ARROW);
-        entityDescriptor._UPDATEABLE    = app.entityUtils.canUpdate(GraphicID.G_ARROW);
-        entityDescriptor._PARENT        = parent;
+        entityDescriptor._INDEX     = app.entityData.entityMap.size;
+        entityDescriptor._PARENT    = parent;
 
         PlayerBullet bullet = bulletPool.newObject();
         bullet.initialise(entityDescriptor);

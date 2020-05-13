@@ -202,11 +202,12 @@ public class GameAssets
 
     //
     // Weaponry and Explosions
-    public static final String _EXPLOSION64_ASSET     = "explosion64";
-    public static final String _LASER_ASSET           = "player_laser";
-    public static final String _ARROW_ASSET           = "arrows";
-    public static final String _PHASER_BULLET_ASSET   = "bullet1";
-    public static final String _FIREBALL_BULLET_ASSET = "bullet2";
+    public static final String _EXPLOSION64_ASSET       = "explosion64";
+    public static final String _LASER_ASSET             = "player_laser";
+    public static final String _ARROW_ASSET             = "arrows";
+    public static final String _PHASER_BULLET_ASSET     = "bullet1";
+    public static final String _FIREBALL_BULLET_ASSET   = "bullet2";
+    public static final String _SMALL_BULLET_ASSET      = "bullet3";
 
     //
     // Frame counts for animations
@@ -252,6 +253,7 @@ public class GameAssets
     public static final int _TELEPORTER_FRAMES             = 8;
     public static final int _PHASER_BULLET_FRAMES          = 1;
     public static final int _FIREBALL_BULLET_FRAMES        = 1;
+    public static final int _SMALL_BULLET_FRAMES           = 1;
     public static final int _SCORPION_FRAMES               = 15;
     public static final int _FLOATING_PLATFORM_FRAMES      = 1;
     public static final int _TURRET_FRAMES                 = 1;
@@ -283,6 +285,7 @@ public class GameAssets
             new AssetSize(GraphicID.G_PLAYER,                   82, 120),
             new AssetSize(GraphicID.G_PLAYER_FIGHT,             82, 120),
             new AssetSize(GraphicID.G_ARROW,                    82, 82),
+            new AssetSize(GraphicID.G_SMALL_BULLET,             32, 32),
             new AssetSize(GraphicID.G_PRISONER,                 128, 128),
             new AssetSize(GraphicID.G_VILLAGER,                 128, 128),
             new AssetSize(GraphicID.G_SOLDIER,                  148, 148),
@@ -295,7 +298,6 @@ public class GameAssets
             new AssetSize(GraphicID.G_EXPLOSION256,             64, 64),
 
             // Pickup Items
-            new AssetSize(GraphicID.G_ARROW,                    64, 64),
             new AssetSize(GraphicID.G_GEM,                      76, 64),
             new AssetSize(GraphicID.G_COIN,                     64, 64),
             new AssetSize(GraphicID.G_SHIELD,                   64, 78),

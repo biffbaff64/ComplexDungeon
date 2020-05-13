@@ -148,7 +148,8 @@ public class GameControlLoop extends AbstractControlLoop
 
         // All cameras ON
         app.cameraUtils.enableAllCameras();
-        app.baseRenderer.isLerpingEnabled = false;
+        app.baseRenderer.tiledGameCamera.isLerpingEnabled = false;
+        app.baseRenderer.spriteGameCamera.isLerpingEnabled = false;
 
         app.gameUtils.prepareCurrentLevel(scr().firstTime);
 
@@ -232,7 +233,10 @@ public class GameControlLoop extends AbstractControlLoop
         }
         else
         {
-            app.baseRenderer.isLerpingEnabled = (scr().gameState.get() == StateID._STATE_GAME);
+//            boolean isLerpingEnabled = (scr().gameState.get() == StateID._STATE_GAME);
+
+//            app.baseRenderer.tiledGameCamera.isLerpingEnabled = isLerpingEnabled;
+//            app.baseRenderer.spriteGameCamera.isLerpingEnabled = isLerpingEnabled;
 
             app.mapUtils.update();
             app.entityManager.updateSprites();

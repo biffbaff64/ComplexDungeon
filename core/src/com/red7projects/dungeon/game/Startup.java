@@ -19,6 +19,7 @@ package com.red7projects.dungeon.game;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.red7projects.dungeon.assets.AssetLoader;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
@@ -64,13 +65,21 @@ public class Startup
         AppConfig.setup(app);
         AppConfig.freshInstallCheck();
 
-        app.googleServices.setup(app);
-        app.googleServices.createApiClient();
+        if (AppConfig.isAndroidApp())
+        {
+            app.googleServices.setup(app);
+            app.googleServices.createApiClient();
+        }
 
         app.cameraUtils    = new CameraUtils(app);
         app.baseRenderer   = new BaseRenderer(app);
         app.worldModel     = new WorldModel(app);
-        app.entityData     = new EntityData(app);
+
+        //
+        // This needs setting here as InputManager needs access to it.
+        app.stage = new Stage(app.baseRenderer.hudGameCamera.viewport, app.spriteBatch);
+
+        app.entityData     = new EntityData();
         app.inputManager   = new InputManager(app);
         app.mapData        = new MapData(app);
         app.mapUtils       = new MapUtils(app);
@@ -83,7 +92,6 @@ public class Startup
 
         Sfx.inst().setup(app);
         DebugRenderer.setup(app);
-
         Shake.setAllowed(false);
 
         //

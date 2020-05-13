@@ -17,7 +17,6 @@
 package com.red7projects.dungeon.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.red7projects.dungeon.assets.Assets;
 import com.red7projects.dungeon.config.AppConfig;
@@ -53,7 +52,6 @@ public abstract class App extends com.badlogic.gdx.Game
     // =======================================================
     // Global access references
     //
-    public World          box2DWorld;
     public Stage          stage;
     public SpriteBatch    spriteBatch;
     public Assets         assets;
@@ -78,9 +76,6 @@ public abstract class App extends com.badlogic.gdx.Game
     public RoomManager          roomManager;
 
     // TODO: 28/02/2019 - Try and remove the need for as many of these as possible
-    public Box2DContactListener box2DContactListener;
-    public Box2DEntityHelper    box2DEntityHelper;
-    public BodyBuilder          bodyBuilder;
     public MapData              mapData;
     public CollisionUtils       collisionUtils;
     public PathUtils            pathUtils;

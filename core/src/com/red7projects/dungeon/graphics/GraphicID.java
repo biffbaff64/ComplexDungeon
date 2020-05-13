@@ -19,6 +19,7 @@ public enum GraphicID
     G_SPECIAL_COIN,
     G_HIDDEN_COIN,
     G_ARROW,
+    G_SMALL_BULLET,
     G_GEM,
     G_SHIELD,
     G_KEY,

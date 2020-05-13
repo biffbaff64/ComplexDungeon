@@ -55,7 +55,6 @@ public class EnemyAttackSystem
         descriptor._PARENT = parent;
         descriptor._X = (int) (parent.sprite.getX() / Gfx.getTileWidth());
         descriptor._Y = (int) (parent.sprite.getY() / Gfx.getTileHeight());
-        descriptor._UPDATEABLE = app.entityUtils.canUpdate(GraphicID.G_ENEMY_BULLET);
         descriptor._INDEX = app.entityData.entityMap.size;
 
         EnemyBullet enemyBullet = new EnemyBullet(GraphicID.G_ENEMY_BULLET, app);

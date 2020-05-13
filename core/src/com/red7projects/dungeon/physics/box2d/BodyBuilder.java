@@ -57,7 +57,7 @@ public class BodyBuilder
                 (entity.sprite.getY() + (entity.frameHeight / 2)) / Gfx._PPM
             );
 
-        entity.b2dBody = app.box2DWorld.createBody(entity.bodyDef);
+        entity.b2dBody = app.worldModel.box2DWorld.createBody(entity.bodyDef);
 
         CircleShape shape = new CircleShape();
         shape.setRadius((entity.frameWidth / 2) / Gfx._PPM);
@@ -87,7 +87,7 @@ public class BodyBuilder
                 (entity.sprite.getY() + (entity.frameHeight / 2)) / Gfx._PPM
             );
 
-        entity.b2dBody = app.box2DWorld.createBody(entity.bodyDef);
+        entity.b2dBody = app.worldModel.box2DWorld.createBody(entity.bodyDef);
 
         PolygonShape shape = new PolygonShape();
         shape.setAsBox
@@ -134,7 +134,7 @@ public class BodyBuilder
                 (entity.sprite.getY() + (entity.frameHeight / 2)) / Gfx._PPM
             );
 
-        entity.b2dBody = app.box2DWorld.createBody(entity.bodyDef);
+        entity.b2dBody = app.worldModel.box2DWorld.createBody(entity.bodyDef);
 
         PolygonShape shape = new PolygonShape();
         shape.setAsBox
@@ -172,7 +172,7 @@ public class BodyBuilder
      */
     public Body createStaticBody(CollisionObject collisionObject)
     {
-        return createStaticBody(collisionObject, 1.0f, 0.1f);
+        return createStaticBody(collisionObject,1f,1f,0.15f);
     }
 
     /**
@@ -189,7 +189,7 @@ public class BodyBuilder
      *
      * @return The newly created Body.
      */
-    public Body createStaticBody(CollisionObject collisionObject, float density, float restitution)
+    public Body createStaticBody(CollisionObject collisionObject, float density, float friction, float restitution)
     {
         BodyDef bodyDef = createStaticBodyDef(collisionObject.rectangle);
 
@@ -205,11 +205,12 @@ public class BodyBuilder
         FixtureDef fixtureDef           = new FixtureDef();
         fixtureDef.shape                = shape;
         fixtureDef.density              = density;
+        fixtureDef.friction             = friction;
         fixtureDef.restitution          = restitution;
         fixtureDef.filter.maskBits      = collisionObject.collidesWith;
         fixtureDef.filter.categoryBits  = collisionObject.bodyCategory;
 
-        Body body = app.box2DWorld.createBody(bodyDef);
+        Body body = app.worldModel.box2DWorld.createBody(bodyDef);
         body.setUserData(new BodyIdentity(collisionObject, collisionObject.gid, collisionObject.type));
         body.createFixture(fixtureDef);
 

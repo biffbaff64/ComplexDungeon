@@ -120,12 +120,9 @@ public class BlocksManager extends GenericEntityManager
 
             gfxAsset.debug();
 
-            if (app.entityUtils.canUpdate(graphicID)
-                && app.settings.isEnabled(gfxAsset.preference)
+            if (app.settings.isEnabled(gfxAsset.preference)
                 && (tiles.size > 0))
             {
-                Trace.__FILE_FUNC(gfxAsset.graphicID);
-
                 for (MarkerTile tile : tiles)
                 {
                     create
@@ -203,15 +200,15 @@ public class BlocksManager extends GenericEntityManager
         }
     }
 
-    private static final String[] spikeBallAssets =
-        {
-            GameAssets._SPIKE_BALL_1_ASSET,
-            GameAssets._SPIKE_BALL_2_ASSET,
-            GameAssets._SPIKE_BALL_3_ASSET,
-        };
-
     private GfxAsset checkAssetName(GfxAsset gfxAsset)
     {
+        final String[] spikeBallAssets =
+            {
+                GameAssets._SPIKE_BALL_1_ASSET,
+                GameAssets._SPIKE_BALL_2_ASSET,
+                GameAssets._SPIKE_BALL_3_ASSET,
+            };
+
         if (gfxAsset.graphicID == GraphicID.G_SPIKE_BALL)
         {
             gfxAsset.asset = spikeBallAssets[MathUtils.random(spikeBallAssets.length - 1)];

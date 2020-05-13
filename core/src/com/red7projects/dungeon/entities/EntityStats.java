@@ -36,37 +36,10 @@ public abstract class EntityStats
     public static int numScorpions;
     public static int numSoldiers;
 
-    private static int coinsCount;
-    private static int gemsCount;
-    private static int keysCount;
-    private static int sheildsCount;
-    private static int treasureChestsCount;
-    private static int spikeBallCount;
-    private static int spikeBlockCount;
-    private static int loopBlockCount;
-    private static int crateCount;
-    private static int barrelCount;
-    private static int potCount;
-    private static int prisonerCount;
-    private static int villagerCount;
-
     public static void initialise()
     {
         minStormDemons      = 0;
         minBouncers         = 0;
-        coinsCount          = 0;
-        gemsCount           = 0;
-        keysCount           = 0;
-        sheildsCount        = 0;
-        treasureChestsCount = 0;
-        spikeBallCount      = 0;
-        spikeBlockCount     = 0;
-        loopBlockCount      = 0;
-        crateCount          = 0;
-        barrelCount         = 0;
-        potCount            = 0;
-        prisonerCount       = 0;
-        villagerCount       = 0;
     }
 
     public static void clearMaxCounts()
@@ -81,68 +54,6 @@ public abstract class EntityStats
     {
         switch (graphicID)
         {
-            case G_COIN:
-            {
-                coinsCount++;
-            }
-            break;
-
-            case G_GEM:
-            {
-                gemsCount++;
-            }
-            break;
-
-            case G_KEY:
-            {
-                keysCount++;
-            }
-            break;
-
-            case G_SHIELD:
-            {
-                sheildsCount++;
-            }
-            break;
-
-            case G_TREASURE_CHEST:
-            {
-                treasureChestsCount++;
-            }
-            break;
-
-            case G_SPIKE_BALL:
-            {
-                spikeBallCount++;
-            }
-            break;
-
-            case G_SPIKE_BLOCK_VERTICAL:
-            case G_SPIKE_BLOCK_HORIZONTAL:
-            {
-                spikeBlockCount++;
-            }
-            break;
-
-            case G_LOOP_BLOCK_HORIZONTAL:
-            case G_LOOP_BLOCK_VERTICAL:
-            {
-                loopBlockCount++;
-            }
-            break;
-
-            case G_PRISONER:
-            {
-                prisonerCount++;
-            }
-            break;
-
-            case G_VILLAGER:
-            {
-                villagerCount++;
-            }
-            break;
-
             case G_STORM_DEMON:
             {
                 numStormDemons++;
@@ -161,30 +72,27 @@ public abstract class EntityStats
             }
             break;
 
-            case G_POT:
-            {
-                potCount++;
-            }
-            break;
-
-            case G_CRATE:
-            {
-                crateCount++;
-            }
-            break;
-
-            case G_BARREL:
-            {
-                barrelCount++;
-            }
-            break;
-
             case G_SOLDIER:
             {
                 numSoldiers++;
             }
             break;
 
+            case G_COIN:
+            case G_GEM:
+            case G_KEY:
+            case G_SHIELD:
+            case G_TREASURE_CHEST:
+            case G_SPIKE_BALL:
+            case G_SPIKE_BLOCK_VERTICAL:
+            case G_SPIKE_BLOCK_HORIZONTAL:
+            case G_LOOP_BLOCK_HORIZONTAL:
+            case G_LOOP_BLOCK_VERTICAL:
+            case G_PRISONER:
+            case G_VILLAGER:
+            case G_POT:
+            case G_CRATE:
+            case G_BARREL:
             case G_ALCOVE_TORCH:
             case G_FLAME_THROWER:
             case G_DOOR:
@@ -215,34 +123,5 @@ public abstract class EntityStats
             }
             break;
         }
-    }
-
-    static void report(App _app)
-    {
-        Trace.__FILE_FUNC_WithDivider();
-        Trace.dbg("Entity Map Size    : ", _app.entityData.entityMap.size);
-        Trace.divider();
-        Trace.dbg("prisonerCount      : ", prisonerCount);
-        Trace.dbg("villagerCount      : ", villagerCount);
-        Trace.divider();
-        Trace.dbg("coinsCount         : ", coinsCount);
-        Trace.dbg("gemsCount          : ", gemsCount);
-        Trace.dbg("keysCount          : ", keysCount);
-        Trace.dbg("sheildsCount       : ", sheildsCount);
-        Trace.dbg("treasureChestsCount: ", treasureChestsCount);
-        Trace.divider();
-        Trace.dbg("crateCount         : ", crateCount);
-        Trace.dbg("barrelCount        : ", barrelCount);
-        Trace.dbg("potCount           : ", potCount);
-        Trace.divider();
-        Trace.dbg("spikeBallCount     : ", spikeBallCount);
-        Trace.dbg("spikeBlockCount    : ", spikeBlockCount);
-        Trace.dbg("loopBlockCount     : ", loopBlockCount);
-        Trace.divider();
-        Trace.dbg("numBlueMines       : ", numStormDemons);
-        Trace.dbg("numBouncers        : ", numBouncers);
-        Trace.dbg("numScorpions       : ", numScorpions);
-        Trace.dbg("numSoldiers        : ", numSoldiers);
-        Trace.divider();
     }
 }

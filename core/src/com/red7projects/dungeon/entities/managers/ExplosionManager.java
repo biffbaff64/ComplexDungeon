@@ -71,8 +71,6 @@ public class ExplosionManager
             );
 
         entityDescriptor._INDEX         = _app.entityData.entityMap.size;
-        entityDescriptor._ENEMY         = _app.entityUtils.setEnemyStatus(_gid);
-        entityDescriptor._UPDATEABLE    = _app.entityUtils.canUpdate(_gid);
         entityDescriptor._PARENT        = _parent;
         entityDescriptor._SIZE          = GameAssets.getAssetSize(_gid);
 

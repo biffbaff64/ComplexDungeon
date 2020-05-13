@@ -18,10 +18,10 @@ package com.red7projects.dungeon.game;
 
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.physics.box2d.BodyBuilder;
@@ -33,8 +33,12 @@ import com.red7projects.dungeon.utils.development.Developer;
 //@formatter:off
 public class WorldModel
 {
-    public Box2DDebugRenderer b2dr;
-    public Matrix4            debugMatrix;
+    public World                box2DWorld;
+    public Box2DDebugRenderer   b2dr;
+    public Box2DContactListener box2DContactListener;
+    public Box2DEntityHelper    box2DEntityHelper;
+    public BodyBuilder          bodyBuilder;
+    public Matrix4              debugMatrix;
 
     private final App app;
 
@@ -42,9 +46,7 @@ public class WorldModel
     {
         this.app = _app;
 
-        Box2D.init();
-
-        app.box2DWorld = new World
+        box2DWorld = new World
             (
                 new Vector2
                     (
@@ -64,10 +66,11 @@ public class WorldModel
                 false
             );
 
-        app.box2DEntityHelper      = new Box2DEntityHelper();
-        app.bodyBuilder            = new BodyBuilder(app);
-        app.box2DContactListener   = new Box2DContactListener(app);
-        app.stage                  = new Stage(app.baseRenderer.hudGameCamera.viewport, app.spriteBatch);
+        box2DEntityHelper    = new Box2DEntityHelper();
+        bodyBuilder          = new BodyBuilder(app);
+        box2DContactListener = new Box2DContactListener(app);
+
+        box2DWorld.setContactListener(box2DContactListener);
 
         setDebugMatrix();
     }
@@ -83,17 +86,18 @@ public class WorldModel
     public void drawDebugMatrix()
     {
         if ((b2dr != null)
-            && (app.box2DWorld != null)
+            && (box2DWorld != null)
             && (debugMatrix != null)
-            && app.settings.isEnabled(Settings._B2D_RENDERER))
+            && Developer.isDevMode()
+            && AppConfig.isUsingBOX2DPhysics)
         {
-            b2dr.render(app.box2DWorld, debugMatrix);
+            b2dr.render(box2DWorld, debugMatrix);
         }
     }
 
     public void worldStep()
     {
-        app.box2DWorld.step
+        box2DWorld.step
             (
                 Gfx._STEP_TIME,
                 Gfx._VELOCITY_ITERATIONS,

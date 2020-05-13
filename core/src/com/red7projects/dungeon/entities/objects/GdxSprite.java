@@ -51,7 +51,6 @@ public class GdxSprite implements GameSprite, Linker, Disposable
     //
     public SimpleVec2F initXY;                     // The entity's start map coordinates
     public int         spriteNumber;
-    public boolean     isMainCharacter;
     public float       frameWidth;
     public float       frameHeight;
     public float       rotateSpeed;
@@ -98,7 +97,6 @@ public class GdxSprite implements GameSprite, Linker, Disposable
     // -----------------------------------------------
     // public flags
     //
-    public boolean isUpdatable;
     public boolean isDrawable;
     public boolean isRotating;
     public boolean isFlippedX;
@@ -106,7 +104,6 @@ public class GdxSprite implements GameSprite, Linker, Disposable
     public boolean isShooting;
     public boolean isAnimating;
     public boolean isCarrying;
-    public boolean isEnemy;
     public boolean isLinked;
     public boolean canFlip;
     public boolean isSelected;
@@ -117,9 +114,6 @@ public class GdxSprite implements GameSprite, Linker, Disposable
     //
     protected       boolean preUpdateCommonDone;
     protected final App     app;
-
-    // TODO: 26/10/2019 - This entire class needs rewriting as I am
-    //                  - sure that it can be made much more efficient.
 
     public GdxSprite(App _app)
     {
@@ -176,11 +170,8 @@ public class GdxSprite implements GameSprite, Linker, Disposable
 
         createCollisionObject();
 
-        isMainCharacter = entityDescriptor._MAIN_CHARACTER;
-        isEnemy         = entityDescriptor._ENEMY;
-        isUpdatable     = entityDescriptor._UPDATEABLE;
-        isLinked        = (entityDescriptor._LINK > 0);
-        link            = entityDescriptor._LINK;
+        isLinked    = (entityDescriptor._LINK > 0);
+        link        = entityDescriptor._LINK;
     }
 
     /**
@@ -218,9 +209,7 @@ public class GdxSprite implements GameSprite, Linker, Disposable
      * @param spriteNum index into the entity map
      */
     @Override
-    public void update(final int spriteNum)
-    {
-    }
+    public void update(final int spriteNum) {}
 
     /**
      * Common updates needed for all entities
@@ -240,22 +229,16 @@ public class GdxSprite implements GameSprite, Linker, Disposable
     }
 
     @Override
-    public void postUpdate(final int spriteNum)
-    {
-    }
+    public void postUpdate(final int spriteNum) {}
 
     @Override
-    public void postMove()
-    {
-    }
+    public void postMove() {}
 
     /**
      * Update the current animation
      */
     @Override
-    public void animate()
-    {
-    }
+    public void animate() {}
 
     @Override
     public void draw(final SpriteBatch spriteBatch)
@@ -459,9 +442,7 @@ public class GdxSprite implements GameSprite, Linker, Disposable
     }
 
     @Override
-    public void action()
-    {
-    }
+    public void action() {}
 
     /**
      * Clear all resources

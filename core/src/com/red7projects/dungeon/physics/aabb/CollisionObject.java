@@ -17,6 +17,7 @@
 package com.red7projects.dungeon.physics.aabb;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
@@ -56,6 +57,7 @@ public class CollisionObject implements Disposable
     public int index;                       // This objects position in the collision object arraylist
 
     public BodyDef bodyDef;
+    public Body    b2dBody;
     public short   contactMask;
     public short   bodyCategory;
     public short   collidesWith;

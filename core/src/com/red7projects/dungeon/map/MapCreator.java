@@ -234,20 +234,17 @@ public class MapCreator
                                 break;
                         }
 
-                        if (app.entityUtils.canUpdate(graphicID))
-                        {
-                            MarkerTile markerTile = new MarkerTile
-                                (
-                                    xOffset,
-                                    yOffset,
-                                    tileID,
-                                    graphicID,
-                                    placementTiles.size,
-                                    ""
-                                );
+                        MarkerTile markerTile = new MarkerTile
+                            (
+                                xOffset,
+                                yOffset,
+                                tileID,
+                                graphicID,
+                                placementTiles.size,
+                                ""
+                            );
 
-                            placementTiles.add(markerTile);
-                        }
+                        placementTiles.add(markerTile);
                     }
                     else
                     {
@@ -411,7 +408,7 @@ public class MapCreator
                         break;
                     }
 
-                    if ((graphicID != GraphicID.G_NO_ID) && app.entityUtils.canUpdate(graphicID))
+                    if (graphicID != GraphicID.G_NO_ID)
                     {
                         MarkerTile markerTile = new MarkerTile();
 
@@ -553,8 +550,9 @@ public class MapCreator
                         collisionObject.type         = GraphicID._OBSTACLE;
                         collisionObject.bodyCategory = bodyCategory;
                         collisionObject.collidesWith = collidesWith;
+                        collisionObject.b2dBody      = app.worldModel.bodyBuilder.createStaticBody(collisionObject);
 
-                        collisionObject.addObjectToList();
+//                        collisionObject.addObjectToList();
                     }
                 }
             }

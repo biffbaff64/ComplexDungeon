@@ -75,23 +75,17 @@ public class GenericEntityManager implements EntityManagerComponent, Disposable
     @Override
     public void create(final String _asset, final int _frames, final Animation.PlayMode _mode, final int x, final int y)
     {
-        if (app.entityUtils.canUpdate(graphicID))
-        {
-            entityDescriptor = new EntityDescriptor
-                (
-                    x,
-                    y,
-                    app.entityUtils.getInitialZPosition(graphicID),
-                    app.assets.getAnimationsAtlas().findRegion(_asset),
-                    _frames,
-                    _mode
-                );
+        entityDescriptor = new EntityDescriptor
+            (
+                x,
+                y,
+                app.entityUtils.getInitialZPosition(graphicID),
+                app.assets.getAnimationsAtlas().findRegion(_asset),
+                _frames,
+                _mode
+            );
 
-            entityDescriptor._INDEX             = app.entityData.entityMap.size;
-            entityDescriptor._ENEMY             = app.entityUtils.setEnemyStatus(graphicID);
-            entityDescriptor._UPDATEABLE        = app.entityUtils.canUpdate(graphicID);
-            entityDescriptor._MAIN_CHARACTER    = app.entityUtils.isMainCharacter(graphicID);
-        }
+        entityDescriptor._INDEX = app.entityData.entityMap.size;
     }
 
     @Override

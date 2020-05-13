@@ -31,6 +31,7 @@ public class OrthoGameCamera implements GameCamera, Disposable
     public OrthographicCamera camera;
     public String             name;
     public boolean            isInUse;
+    public boolean            isLerpingEnabled;
 
     private       float   defaultZoom;
     private       Vector3 lerpVector;
@@ -38,9 +39,10 @@ public class OrthoGameCamera implements GameCamera, Disposable
 
     public OrthoGameCamera(float _sceneWidth, float _sceneHeight, String _name, App _app)
     {
-        this.name    = _name;
-        this.app     = _app;
-        this.isInUse = false;
+        this.name             = _name;
+        this.app              = _app;
+        this.isInUse          = false;
+        this.isLerpingEnabled = false;
 
         lerpVector = new Vector3();
 
@@ -104,7 +106,7 @@ public class OrthoGameCamera implements GameCamera, Disposable
     @Override
     public void lerpTo(float _x, float _y, float _z, float _speed)
     {
-        if (isInUse)
+        if (isInUse && isLerpingEnabled)
         {
             lerpVector.set(_x, _y, _z);
 
@@ -118,7 +120,7 @@ public class OrthoGameCamera implements GameCamera, Disposable
     @Override
     public void lerpTo(float _x, float _y, float _z, float _speed, float _zoom, boolean _shake)
     {
-        if (isInUse)
+        if (isInUse && isLerpingEnabled)
         {
             lerpVector.set(_x, _y, _z);
 

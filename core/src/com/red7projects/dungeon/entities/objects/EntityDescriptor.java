@@ -36,9 +36,6 @@ public class EntityDescriptor
     public int                _FRAMES;            // Number of frames in the asset above.
     public Animation.PlayMode _PLAYMODE;          // Animation playmode for the asset frames above.
     public float              _ANIM_RATE;         // Animation speed
-    public boolean            _ENEMY;             // TRUE if this entity is an enemy entity.
-    public boolean            _MAIN_CHARACTER;    // TRUE if this entity is one of the MAIN characters.
-    public boolean            _UPDATEABLE;        // Initial setting for isUpdateable flag.
     public GdxSprite          _PARENT;            // Parent or Linked GDXSprite (if applicable).
     public SimpleVec2         _SIZE;              // Width and Height.
     public int                _LINK;              // Linked GDXSprite (if applicable).
@@ -58,9 +55,6 @@ public class EntityDescriptor
         _FRAMES         = 0;
         _PLAYMODE       = Animation.PlayMode.NORMAL;
         _ANIM_RATE      = 1.0f / 6f;
-        _ENEMY          = false;
-        _UPDATEABLE     = false;
-        _MAIN_CHARACTER = false;
         _PARENT         = null;
         _SIZE           = null;
         _LINK           = 0;
@@ -79,9 +73,6 @@ public class EntityDescriptor
         _FRAMES         = descriptor._FRAMES;
         _PLAYMODE       = descriptor._PLAYMODE;
         _ANIM_RATE      = descriptor._ANIM_RATE;
-        _ENEMY          = descriptor._ENEMY;
-        _UPDATEABLE     = descriptor._UPDATEABLE;
-        _MAIN_CHARACTER = descriptor._MAIN_CHARACTER;
         _PARENT         = descriptor._PARENT;
         _SIZE           = descriptor._SIZE;
         _LINK           = descriptor._LINK;
@@ -132,9 +123,6 @@ public class EntityDescriptor
         Trace.dbg("_FRAMES         : " + _FRAMES);
         Trace.dbg("_PLAYMODE       : " + _PLAYMODE);
         Trace.dbg("_ANIM_RATE      : " + _ANIM_RATE);
-        Trace.dbg("_ENEMY          : " + _ENEMY);
-        Trace.dbg("_UPDATEABLE     : " + _UPDATEABLE);
-        Trace.dbg("_MAIN_CHARACTER : " + _MAIN_CHARACTER);
         Trace.dbg("_PARENT         : " + _PARENT);
         Trace.dbg("_SIZE           : " + _SIZE);
         Trace.dbg("_LINK           : " + _LINK);

@@ -193,9 +193,6 @@ public class TreasureChest extends GdxSprite
 
 
             descriptor._INDEX = app.entityData.entityMap.size;
-            descriptor._ENEMY = app.entityUtils.setEnemyStatus(GraphicID.G_COIN);
-            descriptor._UPDATEABLE = app.entityUtils.canUpdate(GraphicID.G_COIN);
-            descriptor._MAIN_CHARACTER = app.entityUtils.isMainCharacter(GraphicID.G_COIN);
             descriptor._SIZE = GameAssets.getAssetSize(GraphicID.G_COIN);
 
             Pickup pickup = new Pickup(GraphicID.G_COIN, app, true);
