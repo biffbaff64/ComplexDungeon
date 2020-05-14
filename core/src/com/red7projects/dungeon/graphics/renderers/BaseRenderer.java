@@ -33,10 +33,8 @@ import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.graphics.camera.Zoom;
 import com.red7projects.dungeon.map.tiled.tiles.AnimatedTiledMapTile;
-import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.maths.SimpleVec3F;
 import com.red7projects.dungeon.screens.ScreenID;
-import com.red7projects.dungeon.utils.development.Developer;
 
 public class BaseRenderer implements Disposable
 {
@@ -199,10 +197,7 @@ public class BaseRenderer implements Disposable
             app.stage.draw();
         }
 
-        if (AppConfig.isUsingBOX2DPhysics)
-        {
-            app.worldModel.drawDebugMatrix();
-        }
+        app.worldModel.drawDebugMatrix();
     }
 
     @Override

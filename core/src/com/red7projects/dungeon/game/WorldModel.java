@@ -20,9 +20,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.red7projects.dungeon.config.AppConfig;
-import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.physics.box2d.BodyBuilder;
 import com.red7projects.dungeon.physics.box2d.Box2DContactListener;
@@ -77,7 +75,7 @@ public class WorldModel
 
     public void setDebugMatrix()
     {
-        if (Developer.isDevMode() && app.settings.isEnabled(Settings._B2D_RENDERER))
+        if (Developer.isDevMode())
         {
             debugMatrix = app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
         }
@@ -88,8 +86,7 @@ public class WorldModel
         if ((b2dr != null)
             && (box2DWorld != null)
             && (debugMatrix != null)
-            && Developer.isDevMode()
-            && AppConfig.isUsingBOX2DPhysics)
+            && Developer.isDevMode())
         {
             b2dr.render(box2DWorld, debugMatrix);
         }
@@ -97,11 +94,9 @@ public class WorldModel
 
     public void worldStep()
     {
-        box2DWorld.step
-            (
-                Gfx._STEP_TIME,
-                Gfx._VELOCITY_ITERATIONS,
-                Gfx._POSITION_ITERATIONS
-            );
+        if (AppConfig.isUsingBOX2DPhysics)
+        {
+            box2DWorld.step(Gfx._STEP_TIME, Gfx._VELOCITY_ITERATIONS, Gfx._POSITION_ITERATIONS);
+        }
     }
 }

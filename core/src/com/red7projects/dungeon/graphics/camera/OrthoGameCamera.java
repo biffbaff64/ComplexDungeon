@@ -24,7 +24,6 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.maths.SimpleVec3F;
 
 public class OrthoGameCamera implements GameCamera, Disposable
@@ -36,7 +35,7 @@ public class OrthoGameCamera implements GameCamera, Disposable
     public boolean            isLerpingEnabled;
 
     private       float   defaultZoom;
-    private       Vector3 lerpVector;
+    public        Vector3 lerpVector;
     private final App     app;
 
     public OrthoGameCamera(float _sceneWidth, float _sceneHeight, String _name, App _app)
