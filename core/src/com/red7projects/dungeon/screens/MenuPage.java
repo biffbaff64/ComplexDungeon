@@ -88,7 +88,7 @@ public class MenuPage implements UIPage, Disposable
     private float flashInterval;
     private int flashIndex;
 
-    MenuPage(App _app)
+    public MenuPage(App _app)
     {
         this.app = _app;
 

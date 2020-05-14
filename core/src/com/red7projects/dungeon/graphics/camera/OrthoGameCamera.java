@@ -24,6 +24,8 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.maths.SimpleVec2F;
+import com.red7projects.dungeon.maths.SimpleVec3F;
 
 public class OrthoGameCamera implements GameCamera, Disposable
 {
@@ -54,13 +56,13 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
-    public void setPosition(float _x, float _y, float _z)
+    public void setPosition(SimpleVec3F _position)
     {
         if (isInUse)
         {
-            camera.position.x = _x;
-            camera.position.y = _y;
-            camera.position.z = _z;
+            camera.position.x = _position.x;
+            camera.position.y = _position.y;
+            camera.position.z = _position.z;
             camera.update();
 
             app.spriteBatch.setProjectionMatrix(camera.combined);
@@ -68,13 +70,13 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
-    public void setPosition(float _x, float _y, float _z, float _zoom)
+    public void setPosition(SimpleVec3F _position, float _zoom)
     {
         if (isInUse)
         {
-            camera.position.x = _x;
-            camera.position.y = _y;
-            camera.position.z = _z;
+            camera.position.x = _position.x;
+            camera.position.y = _position.y;
+            camera.position.z = _position.z;
             camera.zoom += _zoom;
             camera.update();
 
@@ -83,13 +85,13 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
-    public void setPosition(float _x, float _y, float _z, float _zoom, boolean _shake)
+    public void setPosition(SimpleVec3F _position, float _zoom, boolean _shake)
     {
         if (isInUse)
         {
-            camera.position.x = _x;
-            camera.position.y = _y;
-            camera.position.z = _z;
+            camera.position.x = _position.x;
+            camera.position.y = _position.y;
+            camera.position.z = _position.z;
             camera.zoom += _zoom;
 
             if (_shake)
@@ -104,11 +106,11 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
-    public void lerpTo(float _x, float _y, float _z, float _speed)
+    public void lerpTo(SimpleVec3F _position, float _speed)
     {
         if (isInUse && isLerpingEnabled)
         {
-            lerpVector.set(_x, _y, _z);
+            lerpVector.set(_position.x, _position.y, _position.z);
 
             camera.position.lerp(lerpVector, _speed);
             camera.update();
@@ -118,11 +120,11 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
-    public void lerpTo(float _x, float _y, float _z, float _speed, float _zoom, boolean _shake)
+    public void lerpTo(SimpleVec3F _position, float _speed, float _zoom, boolean _shake)
     {
         if (isInUse && isLerpingEnabled)
         {
-            lerpVector.set(_x, _y, _z);
+            lerpVector.set(_position.x, _position.y, _position.z);
 
             camera.position.lerp(lerpVector, _speed);
 
