@@ -66,9 +66,13 @@ public class BaseRenderer implements Disposable
     {
         AppConfig.camerasReady = false;
 
-        tiledGameCamera  = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Tiled Cam", app);
-        spriteGameCamera = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Sprite Cam", app);
-        hudGameCamera    = new OrthoGameCamera(Gfx._SCENE_WIDTH, Gfx._SCENE_HEIGHT, "Hud Cam", app);
+        tiledGameCamera  = new OrthoGameCamera(Gfx._GAME_SCENE_WIDTH, Gfx._GAME_SCENE_HEIGHT, "Tiled Cam", app);
+        spriteGameCamera = new OrthoGameCamera(Gfx._GAME_SCENE_WIDTH, Gfx._GAME_SCENE_HEIGHT, "Sprite Cam", app);
+        hudGameCamera    = new OrthoGameCamera(Gfx._HUD_SCENE_WIDTH, Gfx._HUD_SCENE_HEIGHT, "Hud Cam", app);
+
+        tiledGameCamera.setStretchViewport();
+        spriteGameCamera.setStretchViewport();
+        hudGameCamera.setFitViewport();
 
         tiledGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         spriteGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
@@ -116,15 +120,18 @@ public class BaseRenderer implements Disposable
         }
 
         app.spriteBatch.enableBlending();
-        app.spriteBatch.begin();
-
-        cameraPos.x = (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2));
-        cameraPos.y = (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2));
-        cameraPos.z = 0;
 
         // ----- Draw the TiledMap, if enabled -----
         if (tiledGameCamera.isInUse)
         {
+            tiledGameCamera.viewport.apply();
+            app.spriteBatch.setProjectionMatrix(tiledGameCamera.camera.combined);
+            app.spriteBatch.begin();
+
+            cameraPos.x = (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2));
+            cameraPos.y = (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2));
+            cameraPos.z = 0;
+
             if (tiledGameCamera.isLerpingEnabled)
             {
                 tiledGameCamera.lerpTo(cameraPos, Gfx._LERP_SPEED, gameZoom.getZoomValue(), true);
@@ -141,11 +148,17 @@ public class BaseRenderer implements Disposable
             //
             // Deleted but, for future reference, the
             // MarkerTile layer was drawn here...
+
+            app.spriteBatch.end();
         }
 
         // ----- Draw the game sprites, if enabled -----
         if (spriteGameCamera.isInUse)
         {
+            spriteGameCamera.viewport.apply();
+            app.spriteBatch.setProjectionMatrix(spriteGameCamera.camera.combined);
+            app.spriteBatch.begin();
+
             if (AppConfig.gameScreenActive)
             {
                 if (spriteGameCamera.isLerpingEnabled)
@@ -173,20 +186,26 @@ public class BaseRenderer implements Disposable
                     worldRenderer.render(app.spriteBatch, spriteGameCamera);
                 }
             }
+
+            app.spriteBatch.end();
         }
 
         // ----- Draw the HUD and any related objects, if enabled -----
         if (hudGameCamera.isInUse)
         {
-            cameraPos.x = (float) (app.mapData.mapPosition.getX() + (Gfx._VIEW_WIDTH / 2));
-            cameraPos.y = (float) (app.mapData.mapPosition.getY() + (Gfx._VIEW_HEIGHT / 2));
+            hudGameCamera.viewport.apply();
+            app.spriteBatch.setProjectionMatrix(hudGameCamera.camera.combined);
+            app.spriteBatch.begin();
+
+            cameraPos.x = (float) (app.mapData.mapPosition.getX() + (Gfx._HUD_WIDTH / 2));
+            cameraPos.y = (float) (app.mapData.mapPosition.getY() + (Gfx._HUD_HEIGHT / 2));
             cameraPos.z = 0;
 
             hudGameCamera.setPosition(cameraPos, hudZoom.getZoomValue(), false);
             hudRenderer.render(app.spriteBatch, hudGameCamera);
-        }
 
-        app.spriteBatch.end();
+            app.spriteBatch.end();
+        }
 
         // ----- Draw the Stage, if enabled -----
         if (isDrawingStage)

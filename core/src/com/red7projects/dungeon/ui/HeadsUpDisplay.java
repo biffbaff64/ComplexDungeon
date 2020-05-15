@@ -421,8 +421,8 @@ public class HeadsUpDisplay implements Disposable
     {
         if (AppConfig.hudExists)
         {
-            originX = (camera.position.x - (float) (Gfx._VIEW_WIDTH / 2));
-            originY = (camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
+            originX = (camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
+            originY = (camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
 
             drawPanels();
             drawItems();
@@ -459,7 +459,7 @@ public class HeadsUpDisplay implements Disposable
             (
                 scorePanel,
                 originX,
-                originY + (Gfx._VIEW_HEIGHT - GameAssets.hudPanelHeight)
+                originY + (Gfx._HUD_HEIGHT - GameAssets.hudPanelHeight)
             );
 
         if (app.mainGameScreen.gameControlLoop.messagePanel == null)
@@ -485,13 +485,13 @@ public class HeadsUpDisplay implements Disposable
         healthBar.draw
             (
                 (int) (originX + displayPos[_HEALTH][_X1]),
-                (int) (originY + (Gfx._VIEW_HEIGHT - displayPos[_HEALTH][_Y]))
+                (int) (originY + (Gfx._HUD_HEIGHT - displayPos[_HEALTH][_Y]))
             );
 
         livesBar.draw
             (
                 (int) (originX + displayPos[_LIVES][_X1]),
-                (int) (originY + (Gfx._VIEW_HEIGHT - displayPos[_LIVES][_Y]))
+                (int) (originY + (Gfx._HUD_HEIGHT - displayPos[_LIVES][_Y]))
             );
 
         hudFont.setColor(Color.WHITE);
@@ -501,7 +501,7 @@ public class HeadsUpDisplay implements Disposable
                 app.spriteBatch,
                 String.format(Locale.UK, "%d", app.gameProgress.coinCount.getTotal()),
                 originX + displayPos[_COINS][_X1],
-                originY + (Gfx._VIEW_HEIGHT - displayPos[_COINS][_Y])
+                originY + (Gfx._HUD_HEIGHT - displayPos[_COINS][_Y])
             );
 
         hudFont.draw
@@ -509,7 +509,7 @@ public class HeadsUpDisplay implements Disposable
                 app.spriteBatch,
                 String.format(Locale.UK, "%d", app.gameProgress.gemCount.getTotal()),
                 originX + displayPos[_GEMS][_X1],
-                originY + (Gfx._VIEW_HEIGHT - displayPos[_GEMS][_Y])
+                originY + (Gfx._HUD_HEIGHT - displayPos[_GEMS][_Y])
             );
 
         hudFont.draw
@@ -517,7 +517,7 @@ public class HeadsUpDisplay implements Disposable
                 app.spriteBatch,
                 String.format(Locale.UK, "%3d", app.gameProgress.rescuedVillagers.getTotal()),
                 originX + displayPos[_VILLAGERS][_X1],
-                originY + (Gfx._VIEW_HEIGHT - displayPos[_VILLAGERS][_Y])
+                originY + (Gfx._HUD_HEIGHT - displayPos[_VILLAGERS][_Y])
             );
     }
 
@@ -529,7 +529,7 @@ public class HeadsUpDisplay implements Disposable
                 (
                     compassTexture[Room._N + 1],
                     originX + displayPos[_COMPASS][_X1],
-                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                    originY + (Gfx._HUD_HEIGHT - displayPos[_COMPASS][_Y])
                 );
         }
 
@@ -539,7 +539,7 @@ public class HeadsUpDisplay implements Disposable
                 (
                     compassTexture[Room._E + 1],
                     originX + displayPos[_COMPASS][_X1],
-                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                    originY + (Gfx._HUD_HEIGHT - displayPos[_COMPASS][_Y])
                 );
         }
 
@@ -549,7 +549,7 @@ public class HeadsUpDisplay implements Disposable
                 (
                     compassTexture[Room._S + 1],
                     originX + displayPos[_COMPASS][_X1],
-                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                    originY + (Gfx._HUD_HEIGHT - displayPos[_COMPASS][_Y])
                 );
         }
 
@@ -559,7 +559,7 @@ public class HeadsUpDisplay implements Disposable
                 (
                     compassTexture[Room._W + 1],
                     originX + displayPos[_COMPASS][_X1],
-                    originY + (Gfx._VIEW_HEIGHT - displayPos[_COMPASS][_Y])
+                    originY + (Gfx._HUD_HEIGHT - displayPos[_COMPASS][_Y])
                 );
         }
     }

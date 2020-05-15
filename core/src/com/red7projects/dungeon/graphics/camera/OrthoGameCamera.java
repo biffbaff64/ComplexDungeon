@@ -20,6 +20,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.red7projects.dungeon.game.App;
@@ -49,8 +51,23 @@ public class OrthoGameCamera implements GameCamera, Disposable
 
         camera = new OrthographicCamera(_sceneWidth, _sceneHeight);
         camera.position.set(_sceneWidth / 2, _sceneHeight / 2, 0);
+    }
 
-        viewport = new StretchViewport(_sceneWidth * Gfx._PPM, _sceneHeight * Gfx._PPM, camera);
+    public void setStretchViewport()
+    {
+        viewport = new StretchViewport(camera.viewportWidth * Gfx._PPM, camera.viewportHeight * Gfx._PPM, camera);
+        viewport.apply();
+    }
+
+    public void setScreenViewport()
+    {
+        viewport = new ScreenViewport(camera);
+        viewport.apply();
+    }
+
+    public void setFitViewport()
+    {
+        viewport = new FitViewport(camera.viewportWidth * Gfx._PPM, camera.viewportHeight * Gfx._PPM, camera);
         viewport.apply();
     }
 
@@ -62,6 +79,7 @@ public class OrthoGameCamera implements GameCamera, Disposable
             camera.position.x = _position.x;
             camera.position.y = _position.y;
             camera.position.z = _position.z;
+
             camera.update();
         }
     }
@@ -75,6 +93,7 @@ public class OrthoGameCamera implements GameCamera, Disposable
             camera.position.y = _position.y;
             camera.position.z = _position.z;
             camera.zoom += _zoom;
+
             camera.update();
         }
     }
@@ -95,8 +114,6 @@ public class OrthoGameCamera implements GameCamera, Disposable
             }
 
             camera.update();
-
-            app.spriteBatch.setProjectionMatrix(camera.combined);
         }
     }
 

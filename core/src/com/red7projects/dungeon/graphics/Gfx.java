@@ -54,8 +54,10 @@ public class Gfx
     public static       float _PPM_RATIO       = (1.0f / _PPM);
     public static final int   _MAXIMUM_Z_DEPTH = 20;
 
-    public static final int   _VIEW_WIDTH       = 2560;                 // This is the resolution that full screen
-    public static final int   _VIEW_HEIGHT      = 1440;                 // images should be defined as
+    public static final int   _HUD_WIDTH        = 2560;
+    public static final int   _HUD_HEIGHT       = 1440;
+    public static final int   _VIEW_WIDTH       = 3200;
+    public static final int   _VIEW_HEIGHT      = 1800;
     public static final int   _VIEW_HALF_WIDTH  = (_VIEW_WIDTH / 2);
     public static final int   _VIEW_HALF_HEIGHT = (_VIEW_HEIGHT / 2);
     public static final int   _DESKTOP_WIDTH    = 1280;
@@ -63,8 +65,11 @@ public class Gfx
     public static final float _DEFAULT_ZOOM     = 1.0f;
     public static final float _DEFAULT_SCALE    = 1.0f;
     public static final float _LERP_SPEED       = 0.075f;
-    public static       float _SCENE_WIDTH      = (_VIEW_WIDTH / _PPM);
-    public static       float _SCENE_HEIGHT     = (_VIEW_HEIGHT / _PPM);
+
+    public static       float _HUD_SCENE_WIDTH   = (_HUD_WIDTH / _PPM);
+    public static       float _HUD_SCENE_HEIGHT  = (_HUD_HEIGHT / _PPM);
+    public static       float _GAME_SCENE_WIDTH  = (_VIEW_WIDTH / _PPM);
+    public static       float _GAME_SCENE_HEIGHT = (_VIEW_HEIGHT / _PPM);
 
     //
     // The desired Frame Rate
@@ -91,9 +96,9 @@ public class Gfx
             if (newPPM != _PPM)
             {
                 _PPM          = newPPM;
-                _PPM_RATIO    = (1.0f / _PPM);
-                _SCENE_WIDTH  = (_VIEW_WIDTH / _PPM);
-                _SCENE_HEIGHT = (_VIEW_HEIGHT / _PPM);
+                _PPM_RATIO        = (1.0f / _PPM);
+                _GAME_SCENE_WIDTH  = (_VIEW_WIDTH / _PPM);
+                _GAME_SCENE_HEIGHT = (_VIEW_HEIGHT / _PPM);
             }
         }
     }
