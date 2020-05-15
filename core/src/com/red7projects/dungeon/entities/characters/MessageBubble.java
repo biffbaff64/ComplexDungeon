@@ -56,24 +56,17 @@ public class MessageBubble extends GdxSprite
     @Override
     public void update(final int spriteNum)
     {
-        if (getSpriteAction() == Actions._STANDING)
+        if (distance.isEmpty())
         {
-            if (distance.isEmpty())
-            {
-                direction.toggleY();
-                distance.set(distanceReset);
-            }
-
-            sprite.translateX(speed.getX() * direction.getX());
-            sprite.translateY(speed.getY() * direction.getY());
-
-            distance.subX(speed.getX());
-            distance.subY(speed.getY());
+            direction.toggleY();
+            distance.set(distanceReset);
         }
-        else
-        {
-            Trace.__FILE_FUNC("Unsupported spriteAction: " + getSpriteAction());
-        }
+
+        sprite.translateX(speed.getX() * direction.getX());
+        sprite.translateY(speed.getY() * direction.getY());
+
+        distance.subX(speed.getX());
+        distance.subY(speed.getY());
 
         animate();
 

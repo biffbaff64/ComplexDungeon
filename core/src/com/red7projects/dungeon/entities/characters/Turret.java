@@ -56,8 +56,6 @@ public class Turret extends BaseEnemy
         attackSystem = new EnemyAttackSystem(this, app);
 
         setAction(Actions._STANDING);
-
-        addCollisionListener(new GenericCollisionListener(this, app));
     }
 
     @Override

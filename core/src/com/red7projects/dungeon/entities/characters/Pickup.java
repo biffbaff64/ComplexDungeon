@@ -103,8 +103,6 @@ public class Pickup extends GdxSprite
         setAction(Actions._STANDING);
         setScale();
 
-        addCollisionListener(new EmptyCollisionListener());
-
         if (canAutoCollect)
         {
             autoCollectTimer = StopWatch.start();

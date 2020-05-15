@@ -52,48 +52,40 @@ public class WorldModel
                             false
                     );
 
-            b2dr = new Box2DDebugRenderer
+            if (Developer.isDevMode())
+            {
+                b2dr = new Box2DDebugRenderer
                     (
-                            true,
-                            true,
-                            false,
-                            true,
-                            false,
-                            true
+                        true,
+                        true,
+                        true,
+                        true,
+                        false,
+                        true
                     );
+
+                debugMatrix = _app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
+            }
 
             box2DEntityHelper    = new Box2DEntityHelper();
             bodyBuilder          = new BodyBuilder(_app);
             box2DContactListener = new Box2DContactListener(_app);
 
             box2DWorld.setContactListener(box2DContactListener);
-
-            setDebugMatrix(_app);
-        }
-    }
-
-    public void setDebugMatrix(App _app)
-    {
-        if (AppConfig.isUsingBOX2DPhysics)
-        {
-            debugMatrix = _app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
         }
     }
 
     public void drawDebugMatrix()
     {
-        if (AppConfig.isUsingBOX2DPhysics)
+        if (b2dr != null)
         {
-            if ((b2dr != null) && Developer.isDevMode())
-            {
-                b2dr.render(box2DWorld, debugMatrix);
-            }
+            b2dr.render(box2DWorld, debugMatrix);
         }
     }
 
     public void worldStep()
     {
-        if (AppConfig.isUsingBOX2DPhysics)
+        if (box2DWorld != null)
         {
             box2DWorld.step(Gfx._STEP_TIME, Gfx._VELOCITY_ITERATIONS, Gfx._POSITION_ITERATIONS);
         }

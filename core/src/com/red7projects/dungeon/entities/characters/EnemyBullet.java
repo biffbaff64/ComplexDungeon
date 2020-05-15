@@ -61,8 +61,6 @@ public class EnemyBullet extends GdxSprite
         collisionObject.bodyCategory = Gfx.CAT_ENEMY_WEAPON;
         collisionObject.collidesWith = Gfx.CAT_PLAYER | Gfx.CAT_DOOR | Gfx.CAT_WALL;
 
-        setCollisionListener();
-
         parent      = entityDescriptor._PARENT;
         stopWatch   = StopWatch.start();
         restingTime = 2000;
@@ -181,28 +179,6 @@ public class EnemyBullet extends GdxSprite
         float yMove = (_SPEED_Y * vector2.y);
 
         speed.set(xMove, yMove);
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-                setAction(Actions._HURT);
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }
 

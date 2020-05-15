@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.entities.characters;
+package com.red7projects.dungeon.entities.objects;
 
 public class JailKey
 {

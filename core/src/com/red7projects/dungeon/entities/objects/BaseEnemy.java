@@ -24,6 +24,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.entities.components.AbilityComponent;
 import com.red7projects.dungeon.entities.systems.EnemyAttackSystem;
+import com.red7projects.dungeon.entities.systems.TargettingSystem;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
@@ -65,6 +66,8 @@ public class BaseEnemy extends GdxSprite
         justBegunStanding = false;
         justTurnedAroundX = false;
         justTurnedAroundY = false;
+
+        setCollisionListener();
     }
 
     @Override
@@ -96,6 +99,37 @@ public class BaseEnemy extends GdxSprite
                     sprite.getY()
                 );
         }
+    }
+
+    public void setCollisionListener()
+    {
+        addCollisionListener(new CollisionListener()
+        {
+            @Override
+            public void onPositiveCollision(final GraphicID spriteHittingGid)
+            {
+                positiveCollisionResponse(spriteHittingGid);
+            }
+
+            @Override
+            public void onNegativeCollision()
+            {
+                negativeCollisionResponse();
+            }
+
+            @Override
+            public void dispose()
+            {
+            }
+        });
+    }
+
+    public void positiveCollisionResponse(final GraphicID spriteHittingGid)
+    {
+    }
+
+    public void negativeCollisionResponse()
+    {
     }
 
     public void checkMovementBounds()

@@ -20,7 +20,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.red7projects.dungeon.assets.GameAssets;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
@@ -94,8 +93,6 @@ public class Door extends GdxSprite
         rightBox.bodyCategory = Gfx.CAT_WALL;
         rightBox.collidesWith = collisionObject.collidesWith;
         rightBox.addObjectToList();
-
-        setCollisionListener();
     }
 
     @Override
@@ -228,26 +225,5 @@ public class Door extends GdxSprite
 
         this.isLocked   = setLocked;
         this.gid        = isLocked ? GraphicID.G_LOCKED_DOOR : GraphicID.G_DOOR;
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

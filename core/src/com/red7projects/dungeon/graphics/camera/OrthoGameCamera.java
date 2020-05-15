@@ -63,8 +63,6 @@ public class OrthoGameCamera implements GameCamera, Disposable
             camera.position.y = _position.y;
             camera.position.z = _position.z;
             camera.update();
-
-            app.spriteBatch.setProjectionMatrix(camera.combined);
         }
     }
 
@@ -78,8 +76,6 @@ public class OrthoGameCamera implements GameCamera, Disposable
             camera.position.z = _position.z;
             camera.zoom += _zoom;
             camera.update();
-
-            app.spriteBatch.setProjectionMatrix(camera.combined);
         }
     }
 
@@ -105,6 +101,25 @@ public class OrthoGameCamera implements GameCamera, Disposable
     }
 
     @Override
+    public void updatePosition()
+    {
+        if (isInUse)
+        {
+            Vector3 position = camera.position;
+
+            // a = current camera position
+            // b = target
+            // a = (b - a) * lerp
+
+            position.x = camera.position.x + (app.getPlayer().getPosition().x - camera.position.x) * 0.1f;
+            position.y = camera.position.y + (app.getPlayer().getPosition().y - camera.position.y) * 0.1f;
+
+            camera.position.set(position);
+            camera.update();
+        }
+    }
+
+    @Override
     public void lerpTo(SimpleVec3F _position, float _speed)
     {
         if (isInUse && isLerpingEnabled)
@@ -113,8 +128,6 @@ public class OrthoGameCamera implements GameCamera, Disposable
 
             camera.position.lerp(lerpVector, _speed);
             camera.update();
-
-            app.spriteBatch.setProjectionMatrix(camera.combined);
         }
     }
 
@@ -126,7 +139,6 @@ public class OrthoGameCamera implements GameCamera, Disposable
             lerpVector.set(_position.x, _position.y, _position.z);
 
             camera.position.lerp(lerpVector, _speed);
-
             camera.zoom += _zoom;
 
             if (_shake)
@@ -135,8 +147,6 @@ public class OrthoGameCamera implements GameCamera, Disposable
             }
 
             camera.update();
-
-            app.spriteBatch.setProjectionMatrix(camera.combined);
         }
     }
 

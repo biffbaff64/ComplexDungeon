@@ -46,8 +46,6 @@ public class FloatingPlatform extends BaseEnemy
         collisionObject.bodyCategory = Gfx.CAT_PLATFORM;
         collisionObject.collidesWith = Gfx.CAT_PLAYER;
 
-        setCollisionListener();
-
         direction.set(descriptor._DIR);
         distance.set
             (
@@ -123,26 +121,5 @@ public class FloatingPlatform extends BaseEnemy
     {
         setAction(Actions._PAUSED);
         stopWatch.reset();
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

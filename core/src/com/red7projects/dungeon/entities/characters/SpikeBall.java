@@ -18,7 +18,6 @@ package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -44,8 +43,6 @@ public class SpikeBall extends BaseEnemy
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
         collisionObject.collidesWith = Gfx.CAT_PLAYER | Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_WEAPON | Gfx.CAT_DECORATION;
-
-        setCollisionListener();
 
         isRotating = true;
         rotateSpeed = 6.0f;
@@ -114,26 +111,5 @@ public class SpikeBall extends BaseEnemy
         animate();
 
         updateCommon();
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

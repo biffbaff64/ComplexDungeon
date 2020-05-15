@@ -49,11 +49,11 @@ public class InfoBox extends GdxSprite
 
         collisionObject.bodyCategory = Gfx.CAT_NOTHING;
         collisionObject.collidesWith = Gfx.CAT_NOTHING;
+        collisionObject.action = Actions._INACTIVE;
 
         setAction(Actions._STANDING);
         elapsedAnimTime = 0;
         isDrawable = true;
-        collisionObject.action = Actions._INACTIVE;
 
         distance.set(0, 4);
         distanceReset.set(distance.getX(), distance.getY() * 2);

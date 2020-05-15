@@ -50,10 +50,6 @@ public class Prisoner extends GdxSprite
         collisionObject.bodyCategory = Gfx.CAT_INTERACTIVE;
         collisionObject.collidesWith = Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_FIXED_ENEMY;
 
-        setAction(Actions._STANDING);
-
-        addHelpMeMessage();
-
         sprite.setScale
             (
                 app.getPlayer().sprite.getScaleX(),
@@ -61,6 +57,10 @@ public class Prisoner extends GdxSprite
             );
 
         canFlip = false;
+
+        setAction(Actions._STANDING);
+
+        addHelpMeMessage();
     }
 
     @Override
@@ -114,17 +114,14 @@ public class Prisoner extends GdxSprite
 
     private void addHelpMeMessage()
     {
-        if (app.settings.isEnabled(Settings._SHOW_HINTS))
-        {
-            TextureRegion region = app.assets.getTextAtlas().findRegion(GameAssets._HELP_ME_ASSET);
+        TextureRegion region = app.assets.getTextAtlas().findRegion(GameAssets._HELP_ME_ASSET);
 
-            helpMessage = new SimpleDrawable
-                (
-                    region,
-                    this.sprite.getX() - region.getRegionWidth(),
-                    this.sprite.getY() + this.frameHeight + 8
-                );
-        }
+        helpMessage = new SimpleDrawable
+            (
+                region,
+                this.sprite.getX() - region.getRegionWidth(),
+                this.sprite.getY() + this.frameHeight + 8
+            );
     }
 
     @Override

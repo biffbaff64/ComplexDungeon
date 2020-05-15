@@ -42,8 +42,6 @@ public class Escalator extends GdxSprite
 
         collisionObject.bodyCategory = Gfx.CAT_INTERACTIVE;
         collisionObject.collidesWith = Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_PLAYER;
-
-        setAction(Actions._RUNNING);
     }
 
     @Override

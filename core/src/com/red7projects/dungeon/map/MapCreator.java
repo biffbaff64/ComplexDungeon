@@ -550,6 +550,8 @@ public class MapCreator
                         collisionObject.type         = GraphicID._OBSTACLE;
                         collisionObject.bodyCategory = bodyCategory;
                         collisionObject.collidesWith = collidesWith;
+//                        collisionObject.b2dBody      = app.worldModel.bodyBuilder.createStaticBody(collisionObject);
+
                         collisionObject.addObjectToList();
                     }
                 }

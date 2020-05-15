@@ -72,8 +72,8 @@ public class Startup
         }
 
         app.cameraUtils    = new CameraUtils(app);
-        app.baseRenderer   = new BaseRenderer(app);
         app.worldModel     = new WorldModel(app);
+        app.baseRenderer   = new BaseRenderer(app);
 
         //
         // This needs setting here as InputManager needs access to it.

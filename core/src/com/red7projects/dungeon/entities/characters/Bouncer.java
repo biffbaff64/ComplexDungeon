@@ -19,7 +19,6 @@ package com.red7projects.dungeon.entities.characters;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -74,7 +73,6 @@ public class Bouncer extends BaseEnemy
         stopWatch       = StopWatch.start();
         originalColor   = sprite.getColor();
 
-        setCollisionListener();
         initSpawning();
     }
 
@@ -158,50 +156,28 @@ public class Bouncer extends BaseEnemy
         updateCommon();
     }
 
-    /**
-     * onPositiveCollision() and onNegativeCollision are
-     * called BEFORE the main update method.
-     * Collision related responses can be set here and handled
-     * in the update() method.
-     */
-    private void setCollisionListener()
+    @Override
+    public void positiveCollisionResponse(final GraphicID spriteHittingGid)
     {
-        addCollisionListener(new CollisionListener()
+        if ((collisionObject.hasContactLeft() && (direction.getX() == Movement._DIRECTION_LEFT))
+            || (collisionObject.hasContactRight() && (direction.getX() == Movement._DIRECTION_RIGHT)))
         {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-                if ((collisionObject.hasContactLeft() && (direction.getX() == Movement._DIRECTION_LEFT))
-                    || (collisionObject.hasContactRight() && (direction.getX() == Movement._DIRECTION_RIGHT)))
-                {
-                    direction.toggleX();
-                    stunnedTimer.reset();
-                    sprite.setColor(Color.LIGHT_GRAY);
-                    setAction(Actions._STUNNED);
-                    setSpeed();
-                }
+            direction.toggleX();
+            stunnedTimer.reset();
+            sprite.setColor(Color.LIGHT_GRAY);
+            setAction(Actions._STUNNED);
+            setSpeed();
+        }
 
-                if ((collisionObject.hasContactUp() && (direction.getY() == Movement._DIRECTION_UP))
-                    || (collisionObject.hasContactDown() && (direction.getY() == Movement._DIRECTION_DOWN)))
-                {
-                    direction.toggleY();
-                    stunnedTimer.reset();
-                    sprite.setColor(Color.LIGHT_GRAY);
-                    setAction(Actions._STUNNED);
-                    setSpeed();
-                }
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
+        if ((collisionObject.hasContactUp() && (direction.getY() == Movement._DIRECTION_UP))
+            || (collisionObject.hasContactDown() && (direction.getY() == Movement._DIRECTION_DOWN)))
+        {
+            direction.toggleY();
+            stunnedTimer.reset();
+            sprite.setColor(Color.LIGHT_GRAY);
+            setAction(Actions._STUNNED);
+            setSpeed();
+        }
     }
 
     private void setSpeed()

@@ -63,24 +63,6 @@ public class TreasureChest extends GdxSprite
         animation.setPlayMode(Animation.PlayMode.NORMAL);
 
         setAction(Actions._STANDING);
-
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 
     @Override

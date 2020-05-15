@@ -20,7 +20,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -55,8 +54,6 @@ public class SpikeBlock extends BaseEnemy
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
         collisionObject.collidesWith = Gfx.CAT_PLAYER | Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_WEAPON;
-
-        setCollisionListener();
 
         setAction(Actions._STANDING);
         localIsDrawable = true;
@@ -176,26 +173,5 @@ public class SpikeBlock extends BaseEnemy
         }
 
         stopWatch.reset();
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

@@ -18,7 +18,6 @@ package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.Gdx;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -47,8 +46,6 @@ public class LoopBlock extends BaseEnemy
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
         collisionObject.collidesWith = Gfx.CAT_PLAYER | Gfx.CAT_MOBILE_ENEMY | Gfx.CAT_WEAPON;
-
-        setCollisionListener();
 
         setAction(Actions._STANDING);
 
@@ -144,34 +141,5 @@ public class LoopBlock extends BaseEnemy
             elapsedAnimTime += Gdx.graphics.getDeltaTime();
             sprite.setRegion(app.entityUtils.getKeyFrame(animation, elapsedAnimTime, true));
         }
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-                if (spriteHittingGid == GraphicID.G_PLAYER)
-                {
-                    app.getPlayer().sprite.translate
-                        (
-                            speed.getX() * direction.getX(),
-                            speed.getY() * direction.getY()
-                        );
-                }
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

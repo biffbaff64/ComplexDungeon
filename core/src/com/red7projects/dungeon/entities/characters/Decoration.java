@@ -17,15 +17,11 @@
 package com.red7projects.dungeon.entities.characters;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
-import com.red7projects.dungeon.physics.Movement;
-import com.red7projects.dungeon.utils.logging.Trace;
 
 /**
  * Class for objects such as:-
@@ -33,7 +29,7 @@ import com.red7projects.dungeon.utils.logging.Trace;
  * -   Vases
  * -   background fires
  */
-public class Decoration extends GdxSprite implements CollisionListener
+public class Decoration extends GdxSprite
 {
     private       boolean isMoveable;
     private final App     app;
@@ -67,8 +63,6 @@ public class Decoration extends GdxSprite implements CollisionListener
         }
 
         isMoveable = ((gid == GraphicID.G_BARREL) || (gid == GraphicID.G_CRATE) || (gid == GraphicID.G_POT));
-
-        addCollisionListener(this);
     }
 
     @Override
@@ -111,71 +105,71 @@ public class Decoration extends GdxSprite implements CollisionListener
         }
     }
 
-    @Override
-    public void onPositiveCollision(GraphicID spriteHittingGid)
-    {
-        if (spriteHittingGid == GraphicID.G_PLAYER)
-        {
-            if (distance.isEmpty())
-            {
-                distance.set(Gfx.getTileWidth() / 2f, Gfx.getTileHeight() / 2f);
-                speed.set(4.0f, 4.0f);
-
-                setBounceDirection(spriteHittingGid);
-            }
-        }
-        else
-        {
-            if (this.isMoveable)
-            {
-                distance.set(4.0f, 4.0f);
-                speed.set(4.0f, 4.0f);
-
-                setBounceDirection(spriteHittingGid);
-            }
-        }
-    }
-
-    private void setBounceDirection(GraphicID _gidHitting)
-    {
-        if (collisionObject.idTop == _gidHitting)
-        {
-            direction.setY(Movement._DIRECTION_DOWN);
-        }
-        else if (collisionObject.idBottom == _gidHitting)
-        {
-            direction.setY(Movement._DIRECTION_UP);
-        }
-        else
-        {
-            direction.setY(Movement._DIRECTION_STILL);
-            distance.setY(0);
-            speed.setY(0);
-        }
-
-        if (collisionObject.idLeft == _gidHitting)
-        {
-            direction.setX(Movement._DIRECTION_RIGHT);
-        }
-        else if (collisionObject.idRight == _gidHitting)
-        {
-            direction.setX(Movement._DIRECTION_LEFT);
-        }
-        else
-        {
-            direction.setX(Movement._DIRECTION_STILL);
-            distance.setX(0);
-            speed.setX(0);
-        }
-    }
-
-    @Override
-    public void onNegativeCollision()
-    {
-        if (distance.isEmpty())
-        {
-            direction.standStill();
-            speed.setEmpty();
-        }
-    }
+//    @Override
+//    public void onPositiveCollision(GraphicID spriteHittingGid)
+//    {
+//        if (spriteHittingGid == GraphicID.G_PLAYER)
+//        {
+//            if (distance.isEmpty())
+//            {
+//                distance.set(Gfx.getTileWidth() / 2f, Gfx.getTileHeight() / 2f);
+//                speed.set(4.0f, 4.0f);
+//
+//                setBounceDirection(spriteHittingGid);
+//            }
+//        }
+//        else
+//        {
+//            if (this.isMoveable)
+//            {
+//                distance.set(4.0f, 4.0f);
+//                speed.set(4.0f, 4.0f);
+//
+//                setBounceDirection(spriteHittingGid);
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void onNegativeCollision()
+//    {
+//        if (distance.isEmpty())
+//        {
+//            direction.standStill();
+//            speed.setEmpty();
+//        }
+//    }
+//
+//    private void setBounceDirection(GraphicID _gidHitting)
+//    {
+//        if (collisionObject.idTop == _gidHitting)
+//        {
+//            direction.setY(Movement._DIRECTION_DOWN);
+//        }
+//        else if (collisionObject.idBottom == _gidHitting)
+//        {
+//            direction.setY(Movement._DIRECTION_UP);
+//        }
+//        else
+//        {
+//            direction.setY(Movement._DIRECTION_STILL);
+//            distance.setY(0);
+//            speed.setY(0);
+//        }
+//
+//        if (collisionObject.idLeft == _gidHitting)
+//        {
+//            direction.setX(Movement._DIRECTION_RIGHT);
+//        }
+//        else if (collisionObject.idRight == _gidHitting)
+//        {
+//            direction.setX(Movement._DIRECTION_LEFT);
+//        }
+//        else
+//        {
+//            direction.setX(Movement._DIRECTION_STILL);
+//            distance.setX(0);
+//            speed.setX(0);
+//        }
+//    }
 }

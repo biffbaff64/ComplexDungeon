@@ -101,8 +101,6 @@ public class PowerBeam extends GdxSprite implements Linker
 
         sprite.setPosition(pos.x, pos.y);
 
-        setCollisionListener();
-
         colourIndex = MathUtils.random(colourList.length - 1);
 
         image9 = new NinePatch(entityDescriptor._ASSET, 1, 1, 1, 1);
@@ -181,26 +179,5 @@ public class PowerBeam extends GdxSprite implements Linker
     public void setBeamSize(Box _box)
     {
         beamSize.set(_box);
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

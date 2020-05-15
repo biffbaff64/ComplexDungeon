@@ -669,6 +669,8 @@ public class HeadsUpDisplay implements Disposable
 
             sb.clear();
             sb.append(app.getRoomSystem().getActiveRoomName().toUpperCase());
+            sb.append("     ").append("PHYSICS: ").append(AppConfig.isUsingBOX2DPhysics ? "BOX2D" : "CUSTOM");
+            sb.append("     ").append("ECS: ").append(AppConfig.isUsingAshleyECS ? "ASHLEY" : "CUSTOM");
 
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
         }

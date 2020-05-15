@@ -58,8 +58,6 @@ public class PathFollower extends BaseEnemy
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
         collisionObject.collidesWith = Gfx.CAT_PLAYER | Gfx.CAT_WALL | Gfx.CAT_DOOR | Gfx.CAT_ENEMY | Gfx.CAT_WEAPON;
 
-        setCollisionListener();
-
         setAction(Actions._STANDING);
 
         final float speedTemp = 3.0f;
@@ -85,22 +83,6 @@ public class PathFollower extends BaseEnemy
         direction.standStill();
 
         localIsDrawable = true;
-
-//        if (this.gid == GraphicID.G_FIRE_BALL)
-//        {
-//            sprite.setOrigin(52, 110);
-//
-//            canFlip = false;
-//        }
-//        else
-//        {
-//            if (this.gid == GraphicID.G_RED_MINE)
-//            {
-//                attackSystem    = new EnemyAttackSystem(this, app);
-//                stopWatch       = StopWatch.start();
-//                restingTime     = (2 + MathUtils.random(5)) * 1000;
-//            }
-//        }
 
         isRotating  = false;
         rotateSpeed = 0.0f;
@@ -145,21 +127,6 @@ public class PathFollower extends BaseEnemy
                         setAction(Actions._STANDING);
                     }
                 }
-//                else
-//                {
-//                    if (this.gid == GraphicID.G_RED_MINE)
-//                    {
-//                        if ((collisionObject.action != Actions._COLLIDING)
-//                            && (stopWatch.time(TimeUnit.MILLISECONDS) > restingTime)
-//                            && (MathUtils.random(100) < 20))
-//                        {
-//                            attackSystem.shoot();
-//
-//                            isShooting = true;
-//                            stopWatch.reset();
-//                        }
-//                    }
-//                }
             }
             break;
 
@@ -197,11 +164,6 @@ public class PathFollower extends BaseEnemy
     private void faceTarget(float targetX, float targetY)
     {
         Vector2 vector2 = getTargetVector(targetX, targetY);
-
-//        if (gid == GraphicID.G_FIRE_BALL)
-//        {
-//            sprite.setRotation(vector2.angle() - 180);
-//        }
 
         if (getSpriteAction() == Actions._RUNNING)
         {
@@ -263,32 +225,5 @@ public class PathFollower extends BaseEnemy
     private void moveWalker()
     {
         sprite.translate(speed.getX(), speed.getY());
-    }
-
-    /**
-     * onPositiveCollision() and onNegativeCollision are
-     * called BEFORE the main update method.
-     * Collision related responses can be set here and handled
-     * in the update() method.
-     */
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

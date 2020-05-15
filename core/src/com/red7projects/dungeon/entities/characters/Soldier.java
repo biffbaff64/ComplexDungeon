@@ -23,7 +23,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.systems.TargettingSystem;
 import com.red7projects.dungeon.game.Actions;
@@ -83,8 +82,6 @@ public class Soldier extends BaseEnemy
 
         animation.setFrameDuration(0.5f / 6f);
         elapsedAnimTime = MathUtils.random(entityDescriptor._FRAMES);
-
-        setCollisionListener();
 
         initSpawning();
     }
@@ -348,27 +345,5 @@ public class Soldier extends BaseEnemy
                 justBegunStanding = false;
             }
         }
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-                collisionObject.action = Actions._COLLIDABLE;
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

@@ -16,7 +16,7 @@
 
 package com.red7projects.dungeon.map;
 
-import com.red7projects.dungeon.entities.characters.JailKey;
+import com.red7projects.dungeon.entities.objects.JailKey;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.utils.logging.Trace;
 

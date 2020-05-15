@@ -664,8 +664,6 @@ public class DeveloperPanel extends BasicPanel
 
         updatePreferencesOnExit();
 
-        debugReport();
-
         AppConfig.developerPanelActive = false;
         AppConfig.gamePaused           = false;
 

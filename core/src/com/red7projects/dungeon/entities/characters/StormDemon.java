@@ -21,7 +21,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.systems.EnemyAttackSystem;
 import com.red7projects.dungeon.entities.systems.TargettingSystem;
@@ -97,7 +96,6 @@ public class StormDemon extends BaseEnemy
                 (sprite.getScaleY() - _MINIMUM_SCALE) + _SCALE_DISTANCE
             );
 
-        setCollisionListener();
         setAction(Actions._STANDING);
     }
 
@@ -192,40 +190,34 @@ public class StormDemon extends BaseEnemy
         }
     }
 
-    /**
-     * onPositiveCollision() and onNegativeCollision are
-     * called BEFORE the main update method.
-     * Collision related responses can be set here and handled
-     * in the update() method.
-     */
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-                if (!targettingSystem.isAdjustingTarget)
-                {
-                    targettingSystem.isAdjustingTarget = true;
-                    invisibilityTimer.reset();
-                    targettingSystem.setAdjustedTarget(collisionObject.parentSprite);
-
-                    collisionObject.action = Actions._INVISIBLE;
-                    setAction(Actions._RUNNING);
-                }
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-                collisionObject.action = Actions._COLLIDABLE;
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
-    }
+//    private void setCollisionListener()
+//    {
+//        addCollisionListener(new CollisionListener()
+//        {
+//            @Override
+//            public void onPositiveCollision(final GraphicID spriteHittingGid)
+//            {
+//                if (!targettingSystem.isAdjustingTarget)
+//                {
+//                    targettingSystem.isAdjustingTarget = true;
+//                    invisibilityTimer.reset();
+//                    targettingSystem.setAdjustedTarget(collisionObject.parentSprite);
+//
+//                    collisionObject.action = Actions._INVISIBLE;
+//                    setAction(Actions._RUNNING);
+//                }
+//            }
+//
+//            @Override
+//            public void onNegativeCollision()
+//            {
+//                collisionObject.action = Actions._COLLIDABLE;
+//            }
+//
+//            @Override
+//            public void dispose()
+//            {
+//            }
+//        });
+//    }
 }

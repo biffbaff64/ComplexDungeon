@@ -65,7 +65,7 @@ public class Explosion extends GdxSprite
 
         if (app.entityUtils.isOnScreen(this))
         {
-            Sfx.inst().startSound(Sfx.inst().SFX_EXPLOSION_1);
+            Sfx.inst().startSound(Sfx.SFX_EXPLOSION_1);
         }
     }
 

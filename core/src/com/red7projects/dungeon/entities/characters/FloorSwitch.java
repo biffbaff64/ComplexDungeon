@@ -49,7 +49,6 @@ public class FloorSwitch extends GdxSprite
         isAnimating = false;
 
         setAction(Actions._STANDING);
-        setCollisionListener();
     }
 
     @Override
@@ -110,26 +109,5 @@ public class FloorSwitch extends GdxSprite
 
         rightEdge = collisionObject.rectangle.x + collisionObject.rectangle.width;
         topEdge = collisionObject.rectangle.y + collisionObject.rectangle.height;
-    }
-
-    private void setCollisionListener()
-    {
-        addCollisionListener(new CollisionListener()
-        {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-            }
-
-            @Override
-            public void onNegativeCollision()
-            {
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
     }
 }

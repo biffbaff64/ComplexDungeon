@@ -20,7 +20,6 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
-import com.red7projects.dungeon.entities.objects.CollisionListener;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
 import com.red7projects.dungeon.entities.systems.EnemyAttackSystem;
 import com.red7projects.dungeon.entities.systems.TargettingSystem;
@@ -35,9 +34,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Scorpion extends BaseEnemy
 {
-    private       TargettingSystem targettingSystem;
-    private       boolean          canShoot;
-    private final App              app;
+    public  TargettingSystem targettingSystem;
+    private boolean          canShoot;
+    private App              app;
 
     public Scorpion(final GraphicID _gid, final App _app)
     {
@@ -68,16 +67,16 @@ public class Scorpion extends BaseEnemy
             destination = new Vector2(app.getPlayer().sprite.getX(), app.getPlayer().sprite.getY());
         }
 
-        targettingSystem                    = new TargettingSystem(app);
-        targettingSystem.rotationAllowed    = true;
-        targettingSystem.checkMoveAllowed   = false;
-        targettingSystem.speedX             = 3.0f;
-        targettingSystem.speedY             = 3.0f;
+        targettingSystem                  = new TargettingSystem(app);
+        targettingSystem.rotationAllowed  = true;
+        targettingSystem.checkMoveAllowed = false;
+        targettingSystem.speedX           = 3.0f;
+        targettingSystem.speedY           = 3.0f;
 
-        attackSystem        = new EnemyAttackSystem(this, app);
-        stopWatch           = StopWatch.start();
-        invisibilityTimer   = StopWatch.start();
-        restingTime         = (2 + MathUtils.random(3)) * 1000;
+        attackSystem      = new EnemyAttackSystem(this, app);
+        stopWatch         = StopWatch.start();
+        invisibilityTimer = StopWatch.start();
+        restingTime       = (2 + MathUtils.random(3)) * 1000;
 
         sprite.setScale(1.5f);
 
@@ -86,8 +85,6 @@ public class Scorpion extends BaseEnemy
 
         targettingSystem.speedX = speedTemp;
         targettingSystem.speedY = speedTemp;
-
-        setCollisionListener();
 
         initSpawning();
     }
@@ -160,40 +157,23 @@ public class Scorpion extends BaseEnemy
         updateCommon();
     }
 
-    /**
-     * onPositiveCollision() and onNegativeCollision are
-     * called BEFORE the main update method.
-     * Collision related responses can be set here and handled
-     * in the update() method.
-     */
-    private void setCollisionListener()
+    @Override
+    public void positiveCollisionResponse(final GraphicID spriteHittingGid)
     {
-        addCollisionListener(new CollisionListener()
+        if (!targettingSystem.isAdjustingTarget)
         {
-            @Override
-            public void onPositiveCollision(final GraphicID spriteHittingGid)
-            {
-                if (!targettingSystem.isAdjustingTarget)
-                {
-                    targettingSystem.isAdjustingTarget = true;
-                    invisibilityTimer.reset();
-                    targettingSystem.setAdjustedTarget(collisionObject.parentSprite);
+            targettingSystem.isAdjustingTarget = true;
+            invisibilityTimer.reset();
+            targettingSystem.setAdjustedTarget(collisionObject.parentSprite);
 
-                    collisionObject.action = Actions._INVISIBLE;
-                    setAction(Actions._RUNNING);
-                }
-            }
+            collisionObject.action = Actions._INVISIBLE;
+            setAction(Actions._RUNNING);
+        }
+    }
 
-            @Override
-            public void onNegativeCollision()
-            {
-                collisionObject.action = Actions._COLLIDABLE;
-            }
-
-            @Override
-            public void dispose()
-            {
-            }
-        });
+    @Override
+    public void negativeCollisionResponse()
+    {
+        collisionObject.action = Actions._COLLIDABLE;
     }
 }
