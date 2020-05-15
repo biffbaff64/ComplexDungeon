@@ -115,8 +115,6 @@ public class BaseRenderer implements Disposable
             app.mapData.mapPosition.set(0, 0);
         }
 
-        app.worldModel.setDebugMatrix();
-
         app.spriteBatch.enableBlending();
         app.spriteBatch.begin();
 

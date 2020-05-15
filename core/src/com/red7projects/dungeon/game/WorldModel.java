@@ -38,57 +38,56 @@ public class WorldModel
     public BodyBuilder          bodyBuilder;
     public Matrix4              debugMatrix;
 
-    private final App app;
-
     public WorldModel(App _app)
     {
-        this.app = _app;
-
-        box2DWorld = new World
-            (
-                new Vector2
+        if (AppConfig.isUsingBOX2DPhysics)
+        {
+            box2DWorld = new World
                     (
-                        (Gfx._WORLD_GRAVITY.x * Gfx._PPM),
-                        (Gfx._WORLD_GRAVITY.y * Gfx._PPM)
-                    ),
-                false
-            );
+                            new Vector2
+                                    (
+                                            (Gfx._WORLD_GRAVITY.x * Gfx._PPM),
+                                            (Gfx._WORLD_GRAVITY.y * Gfx._PPM)
+                                    ),
+                            false
+                    );
 
-        b2dr = new Box2DDebugRenderer
-            (
-                true,
-                true,
-                true,
-                true,
-                false,
-                false
-            );
+            b2dr = new Box2DDebugRenderer
+                    (
+                            true,
+                            true,
+                            false,
+                            true,
+                            false,
+                            true
+                    );
 
-        box2DEntityHelper    = new Box2DEntityHelper();
-        bodyBuilder          = new BodyBuilder(app);
-        box2DContactListener = new Box2DContactListener(app);
+            box2DEntityHelper    = new Box2DEntityHelper();
+            bodyBuilder          = new BodyBuilder(_app);
+            box2DContactListener = new Box2DContactListener(_app);
 
-        box2DWorld.setContactListener(box2DContactListener);
+            box2DWorld.setContactListener(box2DContactListener);
 
-        setDebugMatrix();
+            setDebugMatrix(_app);
+        }
     }
 
-    public void setDebugMatrix()
+    public void setDebugMatrix(App _app)
     {
-        if (Developer.isDevMode())
+        if (AppConfig.isUsingBOX2DPhysics)
         {
-            debugMatrix = app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
+            debugMatrix = _app.spriteBatch.getProjectionMatrix().cpy().scale(Gfx._PPM, Gfx._PPM, 0);
         }
     }
 
     public void drawDebugMatrix()
     {
-        if ((b2dr != null)
-            && (box2DWorld != null)
-            && (debugMatrix != null)
-            && Developer.isDevMode())
+        if (AppConfig.isUsingBOX2DPhysics)
         {
-            b2dr.render(box2DWorld, debugMatrix);
+            if ((b2dr != null) && Developer.isDevMode())
+            {
+                b2dr.render(box2DWorld, debugMatrix);
+            }
         }
     }
 

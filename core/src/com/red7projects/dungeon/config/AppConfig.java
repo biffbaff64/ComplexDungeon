@@ -120,6 +120,12 @@ public abstract class AppConfig
             pixmap.dispose();
         }
 
+        // ###################
+        app.settings.disable(Settings._BOX2D_PHYSICS);
+        app.settings.disable(Settings._B2D_RENDERER);
+        app.settings.disable(Settings._USING_ASHLEY_ECS);
+        // ###################
+
         Stats.setup();
 
         isUsingBOX2DPhysics = app.settings.isEnabled(Settings._BOX2D_PHYSICS);

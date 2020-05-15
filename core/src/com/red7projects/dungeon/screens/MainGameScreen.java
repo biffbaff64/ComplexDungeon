@@ -94,7 +94,6 @@ public class MainGameScreen extends AbstractBaseScreen
 
         DeveloperPanel developerPanel = new DeveloperPanel(app);
         developerPanel.loadDevMenu();
-        developerPanel.debugReport();
     }
 
     /**
