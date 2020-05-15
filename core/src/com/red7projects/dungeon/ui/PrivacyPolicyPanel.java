@@ -138,8 +138,8 @@ public class PrivacyPolicyPanel extends BasicPanel
         scrollPane = new ScrollPane(buffer, skin);
         scrollPane.setScrollingDisabled(true, false);
         scrollPane.setFadeScrollBars(false);
-        scrollPane.setWidth(Gfx._VIEW_WIDTH - 80);
-        scrollPane.setHeight((float) (Gfx._VIEW_HEIGHT / 8) * 6);
+        scrollPane.setWidth(Gfx._HUD_WIDTH - 80);
+        scrollPane.setHeight((float) (Gfx._HUD_HEIGHT / 8) * 6);
         scrollPane.setPosition(xOffset + 40, yOffset + 40);
 
         app.stage.addActor(scrollPane);
@@ -152,6 +152,6 @@ public class PrivacyPolicyPanel extends BasicPanel
         TextureRegionDrawable drawable = new TextureRegionDrawable(region);
 
         title = new Image(drawable);
-        title.setPosition(xOffset + 351, yOffset + (Gfx._VIEW_HEIGHT - 159));
+        title.setPosition(xOffset + 351, yOffset + (Gfx._HUD_HEIGHT - 159));
     }
 }

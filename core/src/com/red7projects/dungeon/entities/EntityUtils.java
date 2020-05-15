@@ -93,18 +93,22 @@ public class EntityUtils
     public GdxSprite findNearest(GraphicID _gid)
     {
         GdxSprite distantSprite = findFirstOf(_gid);
-        float distance = app.getPlayer().getPosition().dst(distantSprite.getPosition());
 
-        for (GdxSprite sprite : app.entityData.entityMap)
+        if (distantSprite != null)
         {
-            if (sprite.gid == _gid)
-            {
-                float tempDistance = app.getPlayer().getPosition().dst(sprite.getPosition());
+            float distance = app.getPlayer().getPosition().dst(distantSprite.getPosition());
 
-                if (Math.abs(tempDistance) < Math.abs(distance))
+            for (GdxSprite sprite : app.entityData.entityMap)
+            {
+                if (sprite.gid == _gid)
                 {
-                    distance      = tempDistance;
-                    distantSprite = sprite;
+                    float tempDistance = app.getPlayer().getPosition().dst(sprite.getPosition());
+
+                    if (Math.abs(tempDistance) < Math.abs(distance))
+                    {
+                        distance      = tempDistance;
+                        distantSprite = sprite;
+                    }
                 }
             }
         }

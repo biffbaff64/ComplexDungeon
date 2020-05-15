@@ -44,10 +44,10 @@ public class PausePanel extends BasicPanel implements Disposable
 
     private static final int[][] displayPos =
         {
-            { 979, (Gfx._VIEW_HEIGHT -  702), 603, 89},     // Main Menu
-            {1104, (Gfx._VIEW_HEIGHT -  825), 349, 78},     // Exit Pause
-            {1046, (Gfx._VIEW_HEIGHT -  950), 460, 78},     // Music
-            {1140, (Gfx._VIEW_HEIGHT - 1083), 283, 78},     // FX
+            { 979, (Gfx._HUD_HEIGHT -  702), 603, 89},     // Main Menu
+            {1104, (Gfx._HUD_HEIGHT -  825), 349, 78},     // Exit Pause
+            {1046, (Gfx._HUD_HEIGHT -  950), 460, 78},     // Music
+            {1140, (Gfx._HUD_HEIGHT - 1083), 283, 78},     // FX
         };
 
     private Texture background;

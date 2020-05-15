@@ -29,7 +29,9 @@ public class MessagePanel
 
     public void create()
     {
-        panelIndex = ((Villager) app.entityUtils.findNearest(GraphicID.G_VILLAGER)).villagerType;
+        Villager villager = (Villager) app.entityUtils.findNearest(GraphicID.G_VILLAGER);
+
+        panelIndex = villager == null ? 0 : villager.villagerType;
 
         if (!app.getHud().messageManager.doesPanelExist(panels[panelIndex]))
         {
@@ -39,7 +41,7 @@ public class MessagePanel
                 (
                     new SimpleVec2F
                         (
-                            (float) (Gfx._VIEW_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2,
+                            (float) (Gfx._HUD_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2,
                             -app.getHud().messageManager.getCurrentPanelHeight()
                         ),
                     new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + (Gfx.getTileHeight() * 2)),

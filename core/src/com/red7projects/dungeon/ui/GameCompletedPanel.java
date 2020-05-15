@@ -54,8 +54,8 @@ public class GameCompletedPanel implements Disposable
      */
     public void setup()
     {
-        originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._VIEW_WIDTH / 2));
-        originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._VIEW_HEIGHT / 2));
+        originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
+        originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
 
         background = app.assets.loadSingleAsset("data/dark_screen.png", Texture.class);
 

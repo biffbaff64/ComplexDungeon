@@ -104,7 +104,7 @@ public class StatsPanel extends BasicPanel
         buffer.setBackground(image.getDrawable());
 
         title = UIUtils.createImage("title_small", app.assets.getTextAtlas());
-        title.setPosition(xOffset + 350, yOffset + (Gfx._VIEW_HEIGHT - 160));
+        title.setPosition(xOffset + 350, yOffset + (Gfx._HUD_HEIGHT - 160));
 
         populateTable(buffer, skin);
 
@@ -112,8 +112,8 @@ public class StatsPanel extends BasicPanel
         scrollPane = UIUtils.createScrollPane(buffer, skin, _SCROLL_PANE_NAME);
         scrollPane.setScrollingDisabled(true, false);
         scrollPane.setFadeScrollBars(false);
-        scrollPane.setWidth(Gfx._VIEW_WIDTH - 80);
-        scrollPane.setHeight((float) (Gfx._VIEW_HEIGHT / 8) * 6);
+        scrollPane.setWidth(Gfx._HUD_WIDTH - 80);
+        scrollPane.setHeight((float) (Gfx._HUD_HEIGHT / 8) * 6);
         scrollPane.setPosition((xOffset + 40), (yOffset + 40));
 
         app.stage.addActor(scrollPane);
@@ -198,8 +198,8 @@ public class StatsPanel extends BasicPanel
 
                     float prefHeight = label.getPrefHeight() * 1.5f;
 
-                    table.add(label).padLeft(40).padBottom(10).prefWidth((float) Gfx._VIEW_WIDTH / 3).prefHeight(prefHeight);
-                    table.add(meterLabel).padLeft(40).padBottom(10).prefWidth((float) Gfx._VIEW_WIDTH / 4).prefHeight(prefHeight);
+                    table.add(label).padLeft(40).padBottom(10).prefWidth((float) Gfx._HUD_WIDTH / 3).prefHeight(prefHeight);
+                    table.add(meterLabel).padLeft(40).padBottom(10).prefWidth((float) Gfx._HUD_WIDTH / 4).prefHeight(prefHeight);
                 }
 
                 table.row();

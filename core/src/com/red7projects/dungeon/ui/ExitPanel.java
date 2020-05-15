@@ -52,8 +52,8 @@ public class ExitPanel implements Disposable
 
     private static final int[][] displayPos =
         {
-            {480, (Gfx._VIEW_HEIGHT - 520), 142, 66},   // Yes
-            {668, (Gfx._VIEW_HEIGHT - 520), 142, 66},   // No
+            {480, (Gfx._HUD_HEIGHT - 520), 142, 66},   // Yes
+            {668, (Gfx._HUD_HEIGHT - 520), 142, 66},   // No
         };
 
     public ExitPanel(App _app)

@@ -77,8 +77,8 @@ public class ZoomPanel extends BasicPanel implements UserInterfacePanel
 
         state.set(StateID._STATE_ZOOM_IN);
         
-        position.x = (float) ((Gfx._VIEW_WIDTH - textureRegion.getRegionWidth()) / 2);
-        position.y = (float) ((Gfx._VIEW_HEIGHT - textureRegion.getRegionHeight()) / 2);
+        position.x = (float) ((Gfx._HUD_WIDTH - textureRegion.getRegionWidth()) / 2);
+        position.y = (float) ((Gfx._HUD_HEIGHT - textureRegion.getRegionHeight()) / 2);
     }
 
     @Override
