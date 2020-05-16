@@ -194,11 +194,11 @@ public class MenuPage implements UIPage, Disposable
 
         imageButtons = new ImageButton[_NUM_BUTTONS];
 
-        imageButtons[_START]    = scene2DUtils.addButton("buttonStart", "buttonStart_pressed", 980, (Gfx._VIEW_HEIGHT - 720));
-        imageButtons[_HISCORES] = scene2DUtils.addButton("buttonHiscores", "buttonHiscores_pressed", 1050, (Gfx._VIEW_HEIGHT - 840));
-        imageButtons[_OPTIONS]  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1060, (Gfx._VIEW_HEIGHT - 960));
-        imageButtons[_CREDITS]  = scene2DUtils.addButton("buttonCredits", "buttonCredits_pressed", 1070, (Gfx._VIEW_HEIGHT - 1080));
-        imageButtons[_EXIT]     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._VIEW_HEIGHT - 1200));
+        imageButtons[_START]    = scene2DUtils.addButton("buttonStart", "buttonStart_pressed", 980, (Gfx._HUD_HEIGHT - 720));
+        imageButtons[_HISCORES] = scene2DUtils.addButton("buttonHiscores", "buttonHiscores_pressed", 1050, (Gfx._HUD_HEIGHT - 840));
+        imageButtons[_OPTIONS]  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1060, (Gfx._HUD_HEIGHT - 960));
+        imageButtons[_CREDITS]  = scene2DUtils.addButton("buttonCredits", "buttonCredits_pressed", 1070, (Gfx._HUD_HEIGHT - 1080));
+        imageButtons[_EXIT]     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._HUD_HEIGHT - 1200));
 
         imageButtons[_START].setZIndex(2);
         imageButtons[_HISCORES].setZIndex(2);
@@ -210,8 +210,8 @@ public class MenuPage implements UIPage, Disposable
         {
             Trace.dbg("Adding Heap Usage debug...");
 
-            javaHeapLabel   = scene2DUtils.addLabel("JAVA HEAP: ", 40, (Gfx._VIEW_HEIGHT - 400), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
-            nativeHeapLabel = scene2DUtils.addLabel("NATIVE HEAP: ", 40, (Gfx._VIEW_HEIGHT - 425), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
+            javaHeapLabel   = scene2DUtils.addLabel("JAVA HEAP: ", 40, (Gfx._HUD_HEIGHT - 400), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
+            nativeHeapLabel = scene2DUtils.addLabel("NATIVE HEAP: ", 40, (Gfx._HUD_HEIGHT - 425), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
 
             app.stage.addActor(javaHeapLabel);
             app.stage.addActor(nativeHeapLabel);

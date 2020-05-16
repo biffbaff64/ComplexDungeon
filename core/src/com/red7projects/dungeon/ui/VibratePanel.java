@@ -124,10 +124,4 @@ public class VibratePanel extends BasicPanel implements UserInterfacePanel
     public void forceZoomOut()
     {
     }
-
-//    @Override
-//    public boolean nameExists(String _nameID)
-//    {
-//        return super.nameExists(_nameID);
-//    }
 }

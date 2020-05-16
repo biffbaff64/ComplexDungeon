@@ -16,8 +16,6 @@
 
 package com.red7projects.dungeon.input.buttons;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.Actions;
@@ -104,8 +102,7 @@ public class GameButton implements GDXButton, Disposable
         this._isDisabled  = false;
         this.hasSound     = true;
         this.buttonAction = Actions._NO_ACTION;
-
-        this.buttonRect = new Box();
+        this.buttonRect   = new Box();
     }
 
     @Override
@@ -123,7 +120,7 @@ public class GameButton implements GDXButton, Disposable
         return !_isDisabled && buttonRect.contains(x, y);
     }
 
-    public void draw(SpriteBatch spriteBatch, OrthographicCamera camera)
+    public void draw()
     {
         if (_isDrawable)
         {
@@ -134,14 +131,14 @@ public class GameButton implements GDXButton, Disposable
                 textureRegion = bgDisabled;
             }
 
-            spriteBatch.draw
-                    (
-                            textureRegion,
-                            (camera.position.x + (float) (x - (Gfx._VIEW_WIDTH / 2))),
-                            (camera.position.y + (float) (y - (Gfx._VIEW_HEIGHT / 2))),
-                            width,
-                            height
-                    );
+            app.spriteBatch.draw
+                (
+                    textureRegion,
+                    (float) (x - (Gfx._VIEW_WIDTH / 2)),
+                    (float) (y - (Gfx._VIEW_HEIGHT / 2)),
+                    width,
+                    height
+                );
         }
     }
 
@@ -252,8 +249,8 @@ public class GameButton implements GDXButton, Disposable
     public String toString()
     {
         return "x: " + x
-                + ", y: " + y
-                + ", w: " + width
-                + ", h: " + height;
+            + ", y: " + y
+            + ", w: " + width
+            + ", h: " + height;
     }
 }

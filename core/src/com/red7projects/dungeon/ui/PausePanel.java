@@ -16,9 +16,7 @@
 
 package com.red7projects.dungeon.ui;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.Actions;
@@ -113,14 +111,14 @@ public class PausePanel extends BasicPanel implements Disposable
         }
     }
 
-    public void draw(SpriteBatch spriteBatch, OrthographicCamera camera, float originX, float originY)
+    public void draw(float originX, float originY)
     {
-        spriteBatch.draw(background, originX, originY);
+        app.spriteBatch.draw(background, originX, originY);
 
-        buttonMusicVolume.draw(spriteBatch, camera);
-        buttonFXVolume.draw(spriteBatch, camera);
-        buttonHome.draw(spriteBatch, camera);
-        buttonResume.draw(spriteBatch, camera);
+        buttonMusicVolume.draw();
+        buttonFXVolume.draw();
+        buttonHome.draw();
+        buttonResume.draw();
     }
 
     @Override

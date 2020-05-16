@@ -73,7 +73,10 @@ public final class Version
         Trace.divider(80);
 
         Trace.dbg(getDisplayVersion());
-        Trace.dbg("Signed in to Google?: " + app.googleServices.isSignedIn());
+        if (AppConfig.isAndroidApp())
+        {
+            Trace.dbg("Signed in to Google?: " + app.googleServices.isSignedIn());
+        }
 
         Trace.divider(80);
         Trace.divider('*', 80);

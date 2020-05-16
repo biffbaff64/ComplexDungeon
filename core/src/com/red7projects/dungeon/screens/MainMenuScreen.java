@@ -83,7 +83,7 @@ public class MainMenuScreen extends AbstractBaseScreen
         }
 
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
-        buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, (Gfx._VIEW_HEIGHT - 160));
+        buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, 1280);
         buttonExit.setVisible(false);
         buttonExit.setTouchable(Touchable.disabled);
 
@@ -97,7 +97,10 @@ public class MainMenuScreen extends AbstractBaseScreen
         panels.add(_CREDITS_PAGE, new CreditsPage(app));
         panels.add(_OPTIONS_PAGE, optionsPage);
 
-        app.googleServices.signInSilently();
+        if (AppConfig.isAndroidApp())
+        {
+            app.googleServices.signInSilently();
+        }
 
         app.mapData.mapPosition.set(0, 0);
     }
@@ -302,6 +305,9 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         if (gameState.get() == StateID._STATE_TITLE_SCREEN)
         {
+            float originX = (app.baseRenderer.hudGameCamera.camera.position.x - Gfx._HUD_HALF_WIDTH);
+            float originY = (app.baseRenderer.hudGameCamera.camera.position.y - Gfx._HUD_HALF_HEIGHT);
+
             switch (currentPage)
             {
                 case _MENU_PAGE:
@@ -310,56 +316,17 @@ public class MainMenuScreen extends AbstractBaseScreen
                 case _OPTIONS_PAGE:
                 case _EXIT_PAGE:
                 {
-                    if ("Sprite Cam".equals(gameCamera.name))
+                    app.spriteBatch.draw(background, originX, originY);
+                    app.spriteBatch.draw(overlay1, originX, originY);
+                    app.spriteBatch.draw(overlay1, originX, originY);
+
+                    if (exitPanel == null)
                     {
-                        if (background != null)
-                        {
-                            spriteBatch.draw
-                                    (
-                                        background,
-                                        gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
-                                        gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT,
-                                        Gfx._VIEW_WIDTH,
-                                        Gfx._VIEW_HEIGHT
-                                    );
-                        }
-
-                        starField.render();
-
-                        if (overlay1 != null)
-                        {
-                            spriteBatch.draw
-                                (
-                                    overlay1,
-                                    gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
-                                    gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT,
-                                    Gfx._VIEW_WIDTH,
-                                    Gfx._VIEW_HEIGHT
-                                );
-                        }
-
-                        if (overlay2 != null)
-                        {
-                            spriteBatch.draw
-                                (
-                                    overlay2,
-                                    gameCamera.camera.position.x - (float) Gfx._VIEW_HALF_WIDTH,
-                                    gameCamera.camera.position.y - (float) Gfx._VIEW_HALF_HEIGHT,
-                                    Gfx._VIEW_WIDTH,
-                                    Gfx._VIEW_HEIGHT
-                                );
-                        }
+                        panels.get(currentPage).draw(spriteBatch);
                     }
                     else
                     {
-                        if (exitPanel == null)
-                        {
-                            panels.get(currentPage).draw(spriteBatch);
-                        }
-                        else
-                        {
-                            exitPanel.draw(spriteBatch);
-                        }
+                        exitPanel.draw(spriteBatch);
                     }
                 }
                 break;
@@ -474,7 +441,7 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         if (panels != null)
         {
-            for (final UIPage page : panels)
+            for (UIPage page : panels)
             {
                 page.hide();
                 page.dispose();

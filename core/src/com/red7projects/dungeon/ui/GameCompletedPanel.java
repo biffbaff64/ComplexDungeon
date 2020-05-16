@@ -20,7 +20,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
-import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.UIButtons;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 
@@ -34,8 +33,6 @@ public class GameCompletedPanel implements Disposable
     private Texture     background;
     private ZoomPanel   zoomPanel;
     private StopWatch   stopWatch;
-    private float       originX;
-    private float       originY;
 
     private final App app;
 
@@ -54,9 +51,6 @@ public class GameCompletedPanel implements Disposable
      */
     public void setup()
     {
-        originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
-        originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
-
         background = app.assets.loadSingleAsset("data/dark_screen.png", Texture.class);
 
         zoomPanel = new ZoomPanel();
@@ -100,7 +94,7 @@ public class GameCompletedPanel implements Disposable
      */
     public void draw()
     {
-        app.spriteBatch.draw(background, originX, originY);
+        app.spriteBatch.draw(background, 0, 0);
 
         zoomPanel.draw(app);
     }

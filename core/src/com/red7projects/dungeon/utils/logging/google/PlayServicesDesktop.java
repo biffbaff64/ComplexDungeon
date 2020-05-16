@@ -33,7 +33,7 @@ public class PlayServicesDesktop implements PlayServices
     @Override
     public void createApiClient()
     {
-        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
+        Trace.__FILE_FUNC();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PlayServicesDesktop implements PlayServices
         {
             if (!app.settings.isEnabled(Settings._SIGN_IN_STATUS))
             {
-                com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
+                Trace.__FILE_FUNC();
 
                 app.settings.enable(Settings._SIGN_IN_STATUS);
             }
@@ -55,7 +55,7 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
+            Trace.__FILE_FUNC();
 
             signIn();
         }
@@ -66,7 +66,7 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
+            Trace.__FILE_FUNC();
 
             app.settings.disable(Settings._SIGN_IN_STATUS);
         }
@@ -89,7 +89,7 @@ public class PlayServicesDesktop implements PlayServices
     {
         if (isEnabled())
         {
-            com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC("" + score + ", " + level);
+            Trace.__FILE_FUNC("" + score + ", " + level);
         }
     }
 
@@ -101,7 +101,7 @@ public class PlayServicesDesktop implements PlayServices
     @Override
     public void showAchievementScreen()
     {
-        com.red7projects.dungeon.utils.logging.Trace.__FILE_FUNC();
+        Trace.__FILE_FUNC();
     }
 
     @Override

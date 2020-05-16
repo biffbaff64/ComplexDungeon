@@ -56,6 +56,8 @@ public class Gfx
 
     public static final int   _HUD_WIDTH        = 2560;
     public static final int   _HUD_HEIGHT       = 1440;
+    public static final int   _HUD_HALF_WIDTH  = (_HUD_WIDTH / 2);
+    public static final int   _HUD_HALF_HEIGHT = (_HUD_HEIGHT / 2);
     public static final int   _VIEW_WIDTH       = 3200;
     public static final int   _VIEW_HEIGHT      = 1800;
     public static final int   _VIEW_HALF_WIDTH  = (_VIEW_WIDTH / 2);

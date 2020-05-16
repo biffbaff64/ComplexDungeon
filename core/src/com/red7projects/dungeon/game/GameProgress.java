@@ -27,15 +27,6 @@ import java.util.Arrays;
 //@formatter:off
 public class GameProgress implements Disposable
 {
-    public static final int _LIGHTNING  = 0;
-    public static final int _FIRE       = 1;
-    public static final int _WIND       = 2;
-    public static final int _SUN        = 3;
-    public static final int _ICE        = 4;
-    public static final int _NATURE     = 5;
-    public static final int _WATER      = 6;
-    public static final int _EARTH      = 7;
-
     public boolean      isRestarting;           // Player has lost a life. Switch player, or start next life
     public boolean      levelCompleted;         // True if level finished and next level needed.
     public boolean      gameCompleted;          // True if all levels finished.
@@ -43,12 +34,8 @@ public class GameProgress implements Disposable
     public boolean      newHiScoreAvailable;    //
     public boolean      playerLifeOver;         //
     public boolean      cloudDemonInView;       //
-
+    public boolean[][]  collectItems;
     public int          playerLevel;            //
-
-    public boolean[] runes;
-    public boolean[] books;
-    public boolean[] potions;
 
     public Item score;
     public Item lives;
@@ -103,13 +90,14 @@ public class GameProgress implements Disposable
         playerLifeOver = false;
         playerLevel = 1;
 
-        runes   = new boolean[GameAssets._RUNES_FRAMES];
-        books   = new boolean[GameAssets._BOOKS_FRAMES];
-        potions = new boolean[GameAssets._POTIONS_FRAMES];
+        collectItems = new boolean[3][8];
+        collectItems[0] = new boolean[GameAssets._RUNES_FRAMES];
+        collectItems[1] = new boolean[GameAssets._BOOKS_FRAMES];
+        collectItems[2] = new boolean[GameAssets._POTIONS_FRAMES];
 
-        Arrays.fill(runes, false);
-        Arrays.fill(books, false);
-        Arrays.fill(potions, false);
+        Arrays.fill(collectItems[0], false);
+        Arrays.fill(collectItems[1], false);
+        Arrays.fill(collectItems[2], false);
     }
 
     public void closeLastGame()
@@ -126,9 +114,9 @@ public class GameProgress implements Disposable
         keyCount.setToMinimum();
         rescuedVillagers.setToMinimum();
 
-        Arrays.fill(runes, false);
-        Arrays.fill(books, false);
-        Arrays.fill(potions, false);
+        Arrays.fill(collectItems[0], false);
+        Arrays.fill(collectItems[1], false);
+        Arrays.fill(collectItems[2], false);
 
         playerLifeOver = false;
         playerLevel = 1;

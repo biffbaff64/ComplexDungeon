@@ -16,6 +16,7 @@ package com.red7projects.dungeon.assets;
  */
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public interface Assets
 {
@@ -34,4 +35,14 @@ public interface Assets
     TextureAtlas getTextAtlas();
 
     TextureAtlas getAchievementsAtlas();
+
+    TextureRegion buttonRegion(String _name);
+
+    TextureRegion animationRegion(String _name);
+
+    TextureRegion objectRegion(String _name);
+
+    TextureRegion textRegion(String _name);
+
+    TextureRegion achievementsRegion(final String _name);
 }

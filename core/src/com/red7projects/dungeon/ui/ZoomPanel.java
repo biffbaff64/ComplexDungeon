@@ -200,8 +200,8 @@ public class ZoomPanel extends BasicPanel implements UserInterfacePanel
             _app.spriteBatch.draw
                 (
                     textureRegion,
-                    (_app.mapData.mapPosition.getX() + position.getX()),
-                    (_app.mapData.mapPosition.getY() + position.getY()),
+                    position.getX(),
+                    position.getY(),
                     (float) textureRegion.getRegionWidth() / 2,
                     (float) textureRegion.getRegionHeight() / 2,
                     textureRegion.getRegionWidth(),

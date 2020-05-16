@@ -102,12 +102,7 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
     @Override
     public void draw(final App _app)
     {
-        _app.spriteBatch.draw
-            (
-                textureRegion,
-                (_app.mapData.mapPosition.getX() + position.x),
-                (_app.mapData.mapPosition.getY() + position.y)
-            );
+        _app.spriteBatch.draw(textureRegion, position.x, position.y);
     }
 
     @Override

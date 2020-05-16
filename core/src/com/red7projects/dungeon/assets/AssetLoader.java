@@ -18,6 +18,7 @@ package com.red7projects.dungeon.assets;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Disposable;
 
 @SuppressWarnings({"WeakerAccess"})
@@ -70,6 +71,36 @@ public class AssetLoader implements Assets, Disposable
     public TextureAtlas getAchievementsAtlas()
     {
         return assetManager.get(_ACHIEVEMENTS_ATLAS, TextureAtlas.class);
+    }
+
+    @Override
+    public TextureRegion buttonRegion(final String _name)
+    {
+        return assetManager.get(_BUTTONS_ATLAS, TextureAtlas.class).findRegion(_name);
+    }
+
+    @Override
+    public TextureRegion animationRegion(final String _name)
+    {
+        return assetManager.get(_ANIMATIONS_ATLAS, TextureAtlas.class).findRegion(_name);
+    }
+
+    @Override
+    public TextureRegion objectRegion(final String _name)
+    {
+        return assetManager.get(_OBJECTS_ATLAS, TextureAtlas.class).findRegion(_name);
+    }
+
+    @Override
+    public TextureRegion textRegion(final String _name)
+    {
+        return assetManager.get(_TEXT_ATLAS, TextureAtlas.class).findRegion(_name);
+    }
+
+    @Override
+    public TextureRegion achievementsRegion(final String _name)
+    {
+        return assetManager.get(_ACHIEVEMENTS_ATLAS, TextureAtlas.class).findRegion(_name);
     }
 
     /**

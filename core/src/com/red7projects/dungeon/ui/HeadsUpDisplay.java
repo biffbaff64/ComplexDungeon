@@ -18,7 +18,6 @@ package com.red7projects.dungeon.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -49,15 +48,12 @@ import java.util.Locale;
 
 public class HeadsUpDisplay implements Disposable
 {
+    //@formatter:off
     private static final int _X1            = 0;
     private static final int _X2            = 1;
     private static final int _Y             = 2;
     private static final int _WIDTH         = 3;
     private static final int _HEIGHT        = 4;
-
-    private static final int _RUNES_PANEL   = 0;
-    private static final int _BOOKS_PANEL   = 1;
-    private static final int _POTIONS_PANEL = 2;
 
     private static final int _JOYSTICK      = 0;
     private static final int _BUTTON_X      = 1;
@@ -71,35 +67,7 @@ public class HeadsUpDisplay implements Disposable
     private static final int _LIVES         = 9;
     private static final int _HEALTH        = 10;
     private static final int _VILLAGERS     = 11;
-    private static final int _COLLECT_PANEL = 12;
-    private static final int _COMPASS       = 13;
-    private static final int _RUNES_INDEX   = 14;
-    private static final int _LIGHTNING     = 14;
-    private static final int _FIRE          = 15;
-    private static final int _WIND          = 16;
-    private static final int _SUN           = 17;
-    private static final int _ICE           = 18;
-    private static final int _NATURE        = 19;
-    private static final int _WATER         = 20;
-    private static final int _EARTH         = 21;
-    private static final int _BOOKS_INDEX   = 22;
-    private static final int _BOOK1         = 22;
-    private static final int _BOOK2         = 23;
-    private static final int _BOOK3         = 24;
-    private static final int _BOOK4         = 25;
-    private static final int _BOOK5         = 26;
-    private static final int _BOOK6         = 27;
-    private static final int _BOOK7         = 28;
-    private static final int _BOOK8         = 29;
-    private static final int _POTIONS_INDEX = 30;
-    private static final int _POTION1       = 30;
-    private static final int _POTION2       = 31;
-    private static final int _POTION3       = 32;
-    private static final int _POTION4       = 33;
-    private static final int _POTION5       = 34;
-    private static final int _POTION6       = 35;
-    private static final int _POTION7       = 36;
-    private static final int _POTION8       = 37;
+    private static final int _COMPASS       = 12;
 
     private static final int[][] displayPos = new int[][]
         {
@@ -123,58 +91,25 @@ public class HeadsUpDisplay implements Disposable
             //
             // Y is distance from the TOP of the screen
             {1670, 1670,  107,    0,    0},             // Villagers
-            { 749,  749,   34,    0,    0},             // Collection Panel
             {2345, 2345,  203,    0,    0},             // Compass
-
-            //
-            // Runes
-            { 772,  772,   76,   96,   96},             // Lightning - Zeus
-            { 904,  904,   76,   96,   96},             // Fire      - Hephaestus
-            {1036, 1036,   76,   96,   96},             // Wind      - Aeolus
-            {1164, 1164,   76,   96,   96},             // Sun       - Helios
-            {1298, 1298,   76,   96,   96},             // Ice       - Boreas
-            {1430, 1430,   76,   96,   96},             // Nature    - Demeter
-            {1562, 1562,   76,   96,   96},             // Water     - Oceanus
-            {1695, 1695,   76,   96,   96},             // Earth     - Gaia
-
-            //
-            // Spell Books
-            { 772,  772,   76,   96,   96},             // Book 1
-            { 904,  904,   76,   96,   96},             // Book 2
-            {1036, 1036,   76,   96,   96},             // Book 3
-            {1164, 1164,   76,   96,   96},             // Book 4
-            {1298, 1298,   76,   96,   96},             // Book 5
-            {1430, 1430,   76,   96,   96},             // Book 6
-            {1562, 1562,   76,   96,   96},             // Book 7
-            {1695, 1695,   76,   96,   96},             // Book 8
-
-            //
-            // Potions
-            { 772,  772,   76,   96,   96},             // Potion 1
-            { 904,  904,   76,   96,   96},             // Potion 2
-            {1036, 1036,   76,   96,   96},             // Potion 3
-            {1164, 1164,   76,   96,   96},             // Potion 4
-            {1298, 1298,   76,   96,   96},             // Potion 5
-            {1430, 1430,   76,   96,   96},             // Potion 6
-            {1562, 1562,   76,   96,   96},             // Potion 7
-            {1695, 1695,   76,   96,   96},             // Potion 8
         };
+    //@formatter:on
 
-    public MessageManager messageManager;
-    public PausePanel     pausePanel;
-    public StateID        hudStateID;
-
-    public GDXButton buttonUp;
-    public GDXButton buttonDown;
-    public GDXButton buttonLeft;
-    public GDXButton buttonRight;
-    public GDXButton buttonA;
-    public GDXButton buttonB;
-    public GDXButton buttonX;
-    public GDXButton buttonY;
-
-    public Switch buttonPause;
-    public GameButton buttonDevOptions;
+    public MessageManager   messageManager;
+    public PausePanel       pausePanel;
+    public StateID          hudStateID;
+    public GDXButton        buttonUp;
+    public GDXButton        buttonDown;
+    public GDXButton        buttonLeft;
+    public GDXButton        buttonRight;
+    public GDXButton        buttonA;
+    public GDXButton        buttonB;
+    public GDXButton        buttonX;
+    public GDXButton        buttonY;
+    public Switch           buttonPause;
+    public GameButton       buttonDevOptions;
+    public ItemBar          itemBar;
+    public int              objectivesPanelIndex;
 
     private ProgressBar     healthBar;
     private ProgressBar     livesBar;
@@ -183,20 +118,12 @@ public class HeadsUpDisplay implements Disposable
     private BitmapFont      bigFont;
     private BitmapFont      midFont;
     private BitmapFont      smallFont;
-    private TextureRegion[] objectivesPanel;
-    private TextureRegion[] compassTexture;
-    private TextureRegion[] runesTexture;
-    private TextureRegion[] greyRunesTexture;
-    private TextureRegion[] booksTexture;
-    private TextureRegion[] greyBooksTexture;
-    private TextureRegion[] potionsTexture;
-    private TextureRegion[] greyPotionsTexture;
     private DeveloperPanel  developerPanel;
+    private TextureRegion[] compassTexture;
 
-    private int     objectivesPanelIndex;
-    private float   originX;
-    private float   originY;
-    private App     app;
+    private float originX;
+    private float originY;
+    private App   app;
 
     public HeadsUpDisplay(App _app)
     {
@@ -243,64 +170,8 @@ public class HeadsUpDisplay implements Disposable
                 app
             );
 
-        runesTexture = new TextureRegion[GameAssets._RUNES_FRAMES];
-        GfxUtils.splitRegion
-            (
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._RUNES_ASSET),
-                GameAssets._RUNES_FRAMES,
-                runesTexture,
-                app
-            );
+        itemBar = new ItemBar(app);
 
-        greyRunesTexture = new TextureRegion[GameAssets._RUNES_FRAMES];
-        GfxUtils.splitRegion
-            (
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._GREY_RUNES_ASSET),
-                GameAssets._RUNES_FRAMES,
-                greyRunesTexture,
-                app
-            );
-
-        booksTexture = new TextureRegion[GameAssets._BOOKS_FRAMES];
-        GfxUtils.splitRegion
-            (
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._BOOKS_ASSET),
-                GameAssets._BOOKS_FRAMES,
-                runesTexture,
-                app
-            );
-
-        greyBooksTexture = new TextureRegion[GameAssets._BOOKS_FRAMES];
-        GfxUtils.splitRegion
-            (
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._GREY_BOOKS_ASSET),
-                GameAssets._BOOKS_FRAMES,
-                greyBooksTexture,
-                app
-            );
-
-        potionsTexture = new TextureRegion[GameAssets._POTIONS_FRAMES];
-        GfxUtils.splitRegion
-            (
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._POTIONS_ASSET),
-                GameAssets._POTIONS_FRAMES,
-                potionsTexture,
-                app
-            );
-
-        greyPotionsTexture = new TextureRegion[GameAssets._POTIONS_FRAMES];
-        GfxUtils.splitRegion
-            (
-                app.assets.getAnimationsAtlas().findRegion(GameAssets._GREY_POTIONS_ASSET),
-                GameAssets._POTIONS_FRAMES,
-                greyPotionsTexture,
-                app
-            );
-
-        objectivesPanel = new TextureRegion[3];
-        objectivesPanel[0] = app.assets.getObjectsAtlas().findRegion("runes_panel");
-        objectivesPanel[1]   = app.assets.getObjectsAtlas().findRegion("books_panel");
-        objectivesPanel[2]   = app.assets.getObjectsAtlas().findRegion("potions_panel");
         objectivesPanelIndex = 0;
 
         FontUtils fontUtils = new FontUtils();
@@ -417,12 +288,12 @@ public class HeadsUpDisplay implements Disposable
         }
     }
 
-    public void render(OrthographicCamera camera, boolean _canDrawControls)
+    public void render(boolean _canDrawControls)
     {
         if (AppConfig.hudExists)
         {
-            originX = (camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
-            originY = (camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
+            originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
+            originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
 
             drawPanels();
             drawItems();
@@ -431,19 +302,19 @@ public class HeadsUpDisplay implements Disposable
 
             if (_canDrawControls && app.gameProgress.gameSetupDone)
             {
-                drawControls(camera);
+                drawControls();
             }
 
             if (Developer.isDevMode())
             {
-                buttonDevOptions.draw(app.spriteBatch, camera);
+                buttonDevOptions.draw();
             }
 
             //
             // Draw the Pause panel if activated
             if (hudStateID == StateID._STATE_PAUSED)
             {
-                pausePanel.draw(app.spriteBatch, camera, originX, originY);
+                pausePanel.draw(originX, originY);
             }
 
             drawOnScreenDebug();
@@ -462,19 +333,7 @@ public class HeadsUpDisplay implements Disposable
                 originY + (Gfx._HUD_HEIGHT - GameAssets.hudPanelHeight)
             );
 
-        if (app.mainGameScreen.gameControlLoop.messagePanel == null)
-        {
-            app.spriteBatch.draw
-                (
-                    objectivesPanel[objectivesPanelIndex],
-                    originX + displayPos[_COLLECT_PANEL][_X1],
-                    originY + displayPos[_COLLECT_PANEL][_Y]
-                );
-
-            drawRunes();
-            drawBooks();
-            drawPotions();
-        }
+        itemBar.draw(originX, originY);
     }
 
     /**
@@ -564,93 +423,6 @@ public class HeadsUpDisplay implements Disposable
         }
     }
 
-    private void drawRunes()
-    {
-        if (objectivesPanelIndex == _RUNES_PANEL)
-        {
-            TextureRegion textureRegion;
-
-            for (int i = 0; i < GameAssets._RUNES_FRAMES; i++)
-            {
-                if (app.gameProgress.runes[i])
-                {
-                    textureRegion = runesTexture[i];
-                }
-                else
-                {
-                    textureRegion = greyRunesTexture[i];
-                }
-
-                app.spriteBatch.draw
-                    (
-                        textureRegion,
-                        originX + displayPos[_RUNES_INDEX + i][_X1],
-                        originY + displayPos[_RUNES_INDEX + i][_Y],
-                        textureRegion.getRegionWidth() * 1.5f,
-                        textureRegion.getRegionHeight() * 1.5f
-                    );
-            }
-        }
-    }
-
-    private void drawBooks()
-    {
-        if (objectivesPanelIndex == _BOOKS_PANEL)
-        {
-            TextureRegion textureRegion;
-
-            for (int i = 0; i < GameAssets._BOOKS_FRAMES; i++)
-            {
-                if (app.gameProgress.books[i])
-                {
-                    textureRegion = booksTexture[i];
-                }
-                else
-                {
-                    textureRegion = greyBooksTexture[i];
-                }
-
-                app.spriteBatch.draw
-                    (
-                        textureRegion,
-                        originX + displayPos[_BOOKS_INDEX + i][_X1],
-                        originY + displayPos[_BOOKS_INDEX + i][_Y],
-                        textureRegion.getRegionWidth() * 1.5f,
-                        textureRegion.getRegionHeight() * 1.5f
-                    );
-            }
-        }
-    }
-
-    private void drawPotions()
-    {
-        if (objectivesPanelIndex == _POTIONS_PANEL)
-        {
-            TextureRegion textureRegion;
-
-            for (int i = 0; i < GameAssets._POTIONS_FRAMES; i++)
-            {
-                if (app.gameProgress.books[i])
-                {
-                    textureRegion = potionsTexture[i];
-                }
-                else
-                {
-                    textureRegion = greyPotionsTexture[i];
-                }
-
-                app.spriteBatch.draw
-                    (
-                        textureRegion,
-                        originX + displayPos[_POTIONS_INDEX + i][_X1],
-                        originY + displayPos[_POTIONS_INDEX + i][_Y],
-                        textureRegion.getRegionWidth() * 1.5f,
-                        textureRegion.getRegionHeight() * 1.5f
-                    );
-            }
-        }
-    }
-
     private void drawOnScreenDebug()
     {
         if (Developer.isDevMode())
@@ -664,23 +436,27 @@ public class HeadsUpDisplay implements Disposable
 
             sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
             sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
-
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 100);
 
             sb.clear();
             sb.append(app.getRoomSystem().getActiveRoomName().toUpperCase());
-            sb.append("     ").append("PHYSICS: ").append(AppConfig.isUsingBOX2DPhysics ? "BOX2D" : "CUSTOM");
-            sb.append("     ").append("ECS: ").append(AppConfig.isUsingAshleyECS ? "ASHLEY" : "CUSTOM");
-
             DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
+
+            sb.clear();
+            sb.append("PHYSICS: ").append(AppConfig.isUsingBOX2DPhysics ? "BOX2D" : "CUSTOM");
+            DebugRenderer.drawText(sb.toString(), originX + 2200, originY + 100);
+
+            sb.clear();
+            sb.append("ECS: ").append(AppConfig.isUsingAshleyECS ? "ASHLEY" : "CUSTOM");
+            DebugRenderer.drawText(sb.toString(), originX + 2200, originY + 50);
         }
     }
 
-    private void drawControls(OrthographicCamera camera)
+    private void drawControls()
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            if ( !AppConfig.gamePaused && (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL))
+            if (!AppConfig.gamePaused && (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL))
             {
                 if (app.inputManager.virtualJoystick != null)
                 {
@@ -699,10 +475,10 @@ public class HeadsUpDisplay implements Disposable
                         );
                 }
 
-                ((GameButton) buttonA).draw(app.spriteBatch, camera);
-                ((GameButton) buttonB).draw(app.spriteBatch, camera);
-                ((GameButton) buttonX).draw(app.spriteBatch, camera);
-                ((GameButton) buttonY).draw(app.spriteBatch, camera);
+                ((GameButton) buttonA).draw();
+                ((GameButton) buttonB).draw();
+                ((GameButton) buttonX).draw();
+                ((GameButton) buttonY).draw();
             }
         }
     }
@@ -880,9 +656,9 @@ public class HeadsUpDisplay implements Disposable
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            buttonUp = null;
-            buttonDown = null;
-            buttonLeft = null;
+            buttonUp    = null;
+            buttonDown  = null;
+            buttonLeft  = null;
             buttonRight = null;
 
             //
@@ -925,10 +701,10 @@ public class HeadsUpDisplay implements Disposable
         livesBar.dispose();
 
         healthBar = null;
-        livesBar = null;
+        livesBar  = null;
 
         messageManager = null;
-        pausePanel = null;
-        scorePanel = null;
+        pausePanel     = null;
+        scorePanel     = null;
     }
 }

@@ -67,12 +67,12 @@ public class WorldRenderer implements GameScreenRenderer
         // DO NOT Change the game state in here!!
         switch (stateID)
         {
-            case _STATE_TITLE_SCREEN:
-            {
-                app.baseRenderer.gameZoom.stop();
-                app.mainMenuScreen.draw(spriteBatch, gameCamera);
-            }
-            break;
+//            case _STATE_TITLE_SCREEN:
+//            {
+//                app.baseRenderer.gameZoom.stop();
+//                app.mainMenuScreen.draw(spriteBatch, gameCamera);
+//            }
+//            break;
 
             case _STATE_SETUP:
             case _STATE_GET_READY:
