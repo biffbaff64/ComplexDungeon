@@ -37,7 +37,7 @@ public class XButtonActions
         {
             if (app.getPlayer().getSpriteAction() == Actions._STANDING)
             {
-                app.mainGameScreen.gameState.set(StateID._STATE_MESSAGE_PANEL);
+                app.appState.set(StateID._STATE_MESSAGE_PANEL);
             }
         }
         else

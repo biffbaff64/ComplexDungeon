@@ -24,6 +24,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.utils.FontUtils;
 
 @SuppressWarnings("unused")
@@ -34,6 +36,15 @@ public class UIUtils
     public static void setup(App _app)
     {
         app = _app;
+    }
+
+    public static SimpleVec2F getHUDOffset()
+    {
+        return new SimpleVec2F
+            (
+                (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2)),
+                (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2))
+            );
     }
 
     public static Table createTable(int x, int y, int width, int height, Skin skin)

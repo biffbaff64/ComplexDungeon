@@ -38,7 +38,10 @@ import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.game.StateManager;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.input.UIButtons;
+import com.red7projects.dungeon.input.buttons.ButtonID;
+import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.buttons.Switch;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
@@ -78,15 +81,19 @@ public class MenuPage implements UIPage, Disposable
     private static int _GOOGLE      = 5;
     private static int _NUM_BUTTONS = 6;
 
-    private ImageButton[] imageButtons;
+    private GameButton[] gameButtons;
+
+    private float originX;
+    private float originY;
 
     private float buttonBarDelay;
     private int[] buttonBarYPos;
     private int buttonBarIndex;
-    private int timerDelay;
+
     private boolean flashState;
     private float flashInterval;
     private int flashIndex;
+    private int timerDelay;
 
     public MenuPage(App _app)
     {
@@ -115,11 +122,11 @@ public class MenuPage implements UIPage, Disposable
         menuState = new StateManager();
 
         buttonBarYPos = new int[_NUM_BUTTONS];
-        buttonBarYPos[0] = (int) imageButtons[_START].getY();
-        buttonBarYPos[1] = (int) imageButtons[_HISCORES].getY();
-        buttonBarYPos[2] = (int) imageButtons[_OPTIONS].getY();
-        buttonBarYPos[3] = (int) imageButtons[_CREDITS].getY();
-        buttonBarYPos[4] = (int) imageButtons[_EXIT].getY();
+        buttonBarYPos[0] = (int) gameButtons[_START].y;
+        buttonBarYPos[1] = (int) gameButtons[_HISCORES].y;
+        buttonBarYPos[2] = (int) gameButtons[_OPTIONS].y;
+        buttonBarYPos[3] = (int) gameButtons[_CREDITS].y;
+        buttonBarYPos[4] = (int) gameButtons[_EXIT].y;
     }
 
     @Override
@@ -167,7 +174,6 @@ public class MenuPage implements UIPage, Disposable
                     }
                 }
 
-                buttonBar.setY(buttonBarYPos[buttonBarIndex]);
                 buttonBarDelay = 0;
             }
 
@@ -178,40 +184,89 @@ public class MenuPage implements UIPage, Disposable
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch)
+    public void draw(SpriteBatch spriteBatch, OrthoGameCamera camera, float originX, float originY)
     {
         if (foreground != null)
         {
-            spriteBatch.draw(foreground, 0, 0);
+            spriteBatch.draw(foreground, originX, originY);
         }
+
+        gameButtons[_START].setPosition((int) originX + 492, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 360));
+        gameButtons[_HISCORES].setPosition((int) originX + 526, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 420));
+        gameButtons[_OPTIONS].setPosition((int) originX + 536, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 480));
+        gameButtons[_CREDITS].setPosition((int) originX + 543, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 540));
+        gameButtons[_EXIT].setPosition((int) originX + 589, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 600));
+
+        buttonBar.setPosition(320, buttonBarYPos[buttonBarIndex]);
 
         showMenuPageDebug();
     }
 
     private void addMenu()
     {
+        originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2));
+        originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2));
+
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
-        imageButtons = new ImageButton[_NUM_BUTTONS];
+        gameButtons = new GameButton[_NUM_BUTTONS];
 
-        imageButtons[_START]    = scene2DUtils.addButton("buttonStart", "buttonStart_pressed", 980, (Gfx._HUD_HEIGHT - 720));
-        imageButtons[_HISCORES] = scene2DUtils.addButton("buttonHiscores", "buttonHiscores_pressed", 1050, (Gfx._HUD_HEIGHT - 840));
-        imageButtons[_OPTIONS]  = scene2DUtils.addButton("buttonOptions", "buttonOptions_pressed", 1060, (Gfx._HUD_HEIGHT - 960));
-        imageButtons[_CREDITS]  = scene2DUtils.addButton("buttonCredits", "buttonCredits_pressed", 1070, (Gfx._HUD_HEIGHT - 1080));
-        imageButtons[_EXIT]     = scene2DUtils.addButton("buttonExit", "buttonExit_pressed", 1150, (Gfx._HUD_HEIGHT - 1200));
+        gameButtons[_START] = new GameButton
+            (
+                app.assets.buttonRegion("buttonStart"),
+                app.assets.buttonRegion("buttonStart_pressed"),
+                (int) originX + 492,
+                (int) originY + (Gfx._SMALL_HUD_HEIGHT - 360),
+                ButtonID._START,
+                app
+            );
 
-        imageButtons[_START].setZIndex(2);
-        imageButtons[_HISCORES].setZIndex(2);
-        imageButtons[_OPTIONS].setZIndex(2);
-        imageButtons[_CREDITS].setZIndex(2);
-        imageButtons[_EXIT].setZIndex(2);
+        gameButtons[_HISCORES] = new GameButton
+            (
+                app.assets.buttonRegion("buttonHiscores"),
+                app.assets.buttonRegion("buttonHiscores_pressed"),
+                (int) originX + 526,
+                (int) originY + (Gfx._SMALL_HUD_HEIGHT - 420),
+                ButtonID._START,
+                app
+            );
+
+        gameButtons[_OPTIONS] = new GameButton
+            (
+                app.assets.buttonRegion("buttonOptions"),
+                app.assets.buttonRegion("buttonOptions_pressed"),
+                (int) originX + 536,
+                (int) originY + (Gfx._SMALL_HUD_HEIGHT - 480),
+                ButtonID._START,
+                app
+            );
+
+        gameButtons[_CREDITS] = new GameButton
+            (
+                app.assets.buttonRegion("buttonCredits"),
+                app.assets.buttonRegion("buttonCredits_pressed"),
+                (int) originX + 543,
+                (int) originY + (Gfx._SMALL_HUD_HEIGHT - 540),
+                ButtonID._START,
+                app
+            );
+
+        gameButtons[_EXIT] = new GameButton
+            (
+                app.assets.buttonRegion("buttonExit"),
+                app.assets.buttonRegion("buttonExit_pressed"),
+                (int) originX + 589,
+                (int) originY + (Gfx._SMALL_HUD_HEIGHT - 600),
+                ButtonID._START,
+                app
+            );
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {
             Trace.dbg("Adding Heap Usage debug...");
 
-            javaHeapLabel   = scene2DUtils.addLabel("JAVA HEAP: ", 40, (Gfx._HUD_HEIGHT - 400), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
-            nativeHeapLabel = scene2DUtils.addLabel("NATIVE HEAP: ", 40, (Gfx._HUD_HEIGHT - 425), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
+            javaHeapLabel   = scene2DUtils.addLabel("JAVA HEAP: ", 40, (Gfx._SMALL_HUD_HEIGHT - 200), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
+            nativeHeapLabel = scene2DUtils.addLabel("NATIVE HEAP: ", 40, (Gfx._SMALL_HUD_HEIGHT - 220), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
 
             app.stage.addActor(javaHeapLabel);
             app.stage.addActor(nativeHeapLabel);
@@ -220,7 +275,6 @@ public class MenuPage implements UIPage, Disposable
         }
 
         buttonBar = scene2DUtils.makeObjectsImage("menu_arrows_green");
-        buttonBar.setPosition(640, imageButtons[_START].getY());
         buttonBar.setZIndex(1);
         buttonBar.setTouchable(Touchable.disabled);
         app.stage.addActor(buttonBar);
@@ -239,7 +293,7 @@ public class MenuPage implements UIPage, Disposable
             if (calendar.get(Calendar.DAY_OF_MONTH) == 11)
             {
                 decoration = scene2DUtils.makeObjectsImage("poppy");
-                decoration.setPosition((Gfx._VIEW_WIDTH - 100), 40);
+                decoration.setPosition((Gfx._SMALL_HUD_WIDTH - 100), 40);
                 app.stage.addActor(decoration);
             }
         }
@@ -247,7 +301,7 @@ public class MenuPage implements UIPage, Disposable
 
     private void addClickListeners()
     {
-        imageButtons[_START].addListener(new ClickListener()
+        gameButtons[_START].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -260,7 +314,7 @@ public class MenuPage implements UIPage, Disposable
             }
         });
 
-        imageButtons[_HISCORES].addListener(new ClickListener()
+        gameButtons[_HISCORES].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -273,7 +327,7 @@ public class MenuPage implements UIPage, Disposable
             }
         });
 
-        imageButtons[_OPTIONS].addListener(new ClickListener()
+        gameButtons[_OPTIONS].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -286,7 +340,7 @@ public class MenuPage implements UIPage, Disposable
             }
         });
 
-        imageButtons[_CREDITS].addListener(new ClickListener()
+        gameButtons[_CREDITS].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -299,7 +353,7 @@ public class MenuPage implements UIPage, Disposable
             }
         });
 
-        imageButtons[_EXIT].addListener(new ClickListener()
+        gameButtons[_EXIT].addListener(new ClickListener()
         {
             public void clicked(InputEvent event, float x, float y)
             {
@@ -332,15 +386,15 @@ public class MenuPage implements UIPage, Disposable
     {
         if (AppConfig.isAndroidApp())
         {
-            if ((imageButtons[_GOOGLE] == null) && !app.googleServices.isSignedIn())
+            if ((gameButtons[_GOOGLE] == null) && !app.googleServices.isSignedIn())
             {
                 createGoogleButton();
             }
 
-            if ((imageButtons[_GOOGLE] != null) && app.googleServices.isSignedIn())
+            if ((gameButtons[_GOOGLE] != null) && app.googleServices.isSignedIn())
             {
-                imageButtons[_GOOGLE].addAction(Actions.removeActor());
-                imageButtons[_GOOGLE] = null;
+                gameButtons[_GOOGLE].addAction(Actions.removeActor());
+                gameButtons[_GOOGLE] = null;
             }
         }
     }
@@ -359,7 +413,7 @@ public class MenuPage implements UIPage, Disposable
             {
                 Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
-                imageButtons[_GOOGLE] = scene2DUtils.addButton
+                gameButtons[_GOOGLE] = scene2DUtils.addButton
                     (
                         "btn_google_signin_dark",
                         "btn_google_signin_dark_pressed",
@@ -367,9 +421,9 @@ public class MenuPage implements UIPage, Disposable
                         30
                     );
 
-                imageButtons[_GOOGLE].setZIndex(1);
+                gameButtons[_GOOGLE].setZIndex(1);
 
-                imageButtons[_GOOGLE].addListener(new ClickListener()
+                gameButtons[_GOOGLE].addListener(new ClickListener()
                 {
                     public void clicked(InputEvent event, float x, float y)
                     {
@@ -391,20 +445,20 @@ public class MenuPage implements UIPage, Disposable
     {
         buttonBar.setVisible(_visible);
 
-        imageButtons[_START].setVisible(_visible);
-        imageButtons[_HISCORES].setVisible(_visible);
-        imageButtons[_OPTIONS].setVisible(_visible);
-        imageButtons[_CREDITS].setVisible(_visible);
-        imageButtons[_EXIT].setVisible(_visible);
+        gameButtons[_START].setVisible(_visible);
+        gameButtons[_HISCORES].setVisible(_visible);
+        gameButtons[_OPTIONS].setVisible(_visible);
+        gameButtons[_CREDITS].setVisible(_visible);
+        gameButtons[_EXIT].setVisible(_visible);
 
         if (decoration != null)
         {
             decoration.setVisible(_visible);
         }
 
-        if (imageButtons[_GOOGLE] != null)
+        if (gameButtons[_GOOGLE] != null)
         {
-            imageButtons[_GOOGLE].setVisible(_visible);
+            gameButtons[_GOOGLE].setVisible(_visible);
         }
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
@@ -424,17 +478,17 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public void dispose()
     {
-        imageButtons[_START].addAction(Actions.removeActor());
-        imageButtons[_HISCORES].addAction(Actions.removeActor());
-        imageButtons[_OPTIONS].addAction(Actions.removeActor());
-        imageButtons[_CREDITS].addAction(Actions.removeActor());
-        imageButtons[_EXIT].addAction(Actions.removeActor());
+        gameButtons[_START].addAction(Actions.removeActor());
+        gameButtons[_HISCORES].addAction(Actions.removeActor());
+        gameButtons[_OPTIONS].addAction(Actions.removeActor());
+        gameButtons[_CREDITS].addAction(Actions.removeActor());
+        gameButtons[_EXIT].addAction(Actions.removeActor());
 
-        imageButtons[_START] = null;
-        imageButtons[_HISCORES] = null;
-        imageButtons[_OPTIONS] = null;
-        imageButtons[_CREDITS] = null;
-        imageButtons[_EXIT] = null;
+        gameButtons[_START]    = null;
+        gameButtons[_HISCORES] = null;
+        gameButtons[_OPTIONS]  = null;
+        gameButtons[_CREDITS]  = null;
+        gameButtons[_EXIT]     = null;
 
         if (Developer.isDevMode() && app.settings.isEnabled(Settings._MENU_HEAPS))
         {

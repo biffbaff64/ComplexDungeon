@@ -112,7 +112,7 @@ public class InfoBox extends GdxSprite
     {
         if (!AppConfig.gamePaused
             && !app.getHud().messageManager.messageActive
-            && (app.mainGameScreen.gameState.get() == StateID._STATE_GAME))
+            && (app.appState.get() == StateID._STATE_GAME))
         {
             super.draw(spriteBatch);
         }

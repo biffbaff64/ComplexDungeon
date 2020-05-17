@@ -30,7 +30,7 @@ public class YButtonActions
 
     public void process()
     {
-        if (app.mainGameScreen.gameState.get().equals(StateID._STATE_GAME))
+        if (app.appState.get().equals(StateID._STATE_GAME))
         {
             app.getHud().setObjectivesPanelIndex((app.getHud().getObjectivesPanelIndex() + 1) % 3);
         }

@@ -32,6 +32,7 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
+import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.ui.*;
@@ -129,7 +130,7 @@ public class OptionsPage implements UIPage
         return false;
     }
 
-    public void draw(SpriteBatch spriteBatch)
+    public void draw(SpriteBatch spriteBatch, OrthoGameCamera camera, float originX, float originY)
     {
         switch (activePanel)
         {

@@ -25,6 +25,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.game.*;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
 import com.red7projects.dungeon.utils.logging.StopWatch;
@@ -161,7 +162,7 @@ public class HiscorePage implements UIPage, Disposable
     }
 
     @Override
-    public void draw(final SpriteBatch spriteBatch)
+    public void draw(SpriteBatch spriteBatch, OrthoGameCamera camera, float originX, float originY)
     {
         if (foreground != null)
         {

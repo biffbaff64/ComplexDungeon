@@ -167,8 +167,7 @@ public class GameControlLoop extends AbstractControlLoop
                 );
         }
 
-        scr().gameState.set(StateID._STATE_GET_READY);
-
+        app.appState.set(StateID._STATE_GET_READY);
         app.gameProgress.gameSetupDone = true;
     }
 
@@ -183,7 +182,7 @@ public class GameControlLoop extends AbstractControlLoop
         {
             Trace.__FILE_FUNC("----- START GAME (GET READY) -----");
 
-            scr().gameState.set(StateID._STATE_GAME);
+            app.appState.set(StateID._STATE_GAME);
             app.getHud().setStateID(StateID._STATE_PANEL_UPDATE);
 
             if (!scr().firstTime)
@@ -223,17 +222,17 @@ public class GameControlLoop extends AbstractControlLoop
     {
         app.getHud().update();
 
-        if (scr().gameState.get() == StateID._STATE_DEVELOPER_PANEL)
+        if (app.appState.get() == StateID._STATE_DEVELOPER_PANEL)
         {
             if (!AppConfig.developerPanelActive)
             {
-                scr().gameState.set(StateID._STATE_GAME);
+                app.appState.set(StateID._STATE_GAME);
                 app.getHud().setStateID(StateID._STATE_PANEL_UPDATE);
             }
         }
         else
         {
-            boolean isLerpingEnabled = (scr().gameState.get() == StateID._STATE_GAME);
+            boolean isLerpingEnabled = (app.appState.get() == StateID._STATE_GAME);
 
             app.baseRenderer.tiledGameCamera.isLerpingEnabled = isLerpingEnabled;
             app.baseRenderer.spriteGameCamera.isLerpingEnabled = isLerpingEnabled;
@@ -255,16 +254,16 @@ public class GameControlLoop extends AbstractControlLoop
                     }
                 }
 
-                if (scr().gameState.get() == StateID._STATE_PAUSED)
+                if (app.appState.get() == StateID._STATE_PAUSED)
                 {
                     if (!AppConfig.gamePaused)
                     {
-                        scr().gameState.set(StateID._STATE_GAME);
+                        app.appState.set(StateID._STATE_GAME);
                     }
                 }
                 else
                 {
-                    if (scr().gameState.get() == StateID._STATE_MESSAGE_PANEL)
+                    if (app.appState.get() == StateID._STATE_MESSAGE_PANEL)
                     {
                         app.getHud().hideControls(false);
 
@@ -298,7 +297,7 @@ public class GameControlLoop extends AbstractControlLoop
 
         if (!messagePanel.update())
         {
-            scr().gameState.set(StateID._STATE_GAME);
+            app.appState.set(StateID._STATE_GAME);
 
             messagePanel.dispose();
             messagePanel = null;
@@ -320,7 +319,7 @@ public class GameControlLoop extends AbstractControlLoop
         {
             if (AppConfig.quitToMainMenu)
             {
-                scr().gameState.set(StateID._STATE_GAME_OVER);
+                app.appState.set(StateID._STATE_GAME_OVER);
 
                 app.getHud().hideControls(true);
                 app.getHud().messageManager.enable();
@@ -328,7 +327,7 @@ public class GameControlLoop extends AbstractControlLoop
             }
             else
             {
-                scr().gameState.set(StateID._STATE_SETUP);
+                app.appState.set(StateID._STATE_SETUP);
             }
 
             scr().retryDelay = null;
@@ -349,7 +348,7 @@ public class GameControlLoop extends AbstractControlLoop
         app.mapUtils.update();
 
         scr().reset();
-        scr().gameState.set(StateID._STATE_SETUP);
+        app.appState.set(StateID._STATE_SETUP);
     }
 
     /**
@@ -362,7 +361,7 @@ public class GameControlLoop extends AbstractControlLoop
 
         if (!app.getHud().messageManager.doesPanelExist(GameAssets._GAMEOVER_MSG_ASSET))
         {
-            scr().gameState.set(StateID._STATE_END_GAME);
+            app.appState.set(StateID._STATE_END_GAME);
         }
     }
 
@@ -377,7 +376,7 @@ public class GameControlLoop extends AbstractControlLoop
         {
             scr().completedPanel.dispose();
             scr().completedPanel = null;
-            scr().gameState.set(StateID._STATE_END_GAME);
+            app.appState.set(StateID._STATE_END_GAME);
         }
     }
 
@@ -396,7 +395,7 @@ public class GameControlLoop extends AbstractControlLoop
 
         app.setScreen(app.mainMenuScreen);
 
-        scr().gameState.set(StateID._STATE_CLOSING);
+        app.appState.set(StateID._STATE_CLOSING);
     }
 
     private MainGameScreen scr()

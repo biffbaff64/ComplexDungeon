@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.ui.UIPage;
 
 public class CreditsPage implements UIPage, Disposable
@@ -56,7 +57,7 @@ public class CreditsPage implements UIPage, Disposable
     }
 
     @Override
-    public void draw(SpriteBatch spriteBatch)
+    public void draw(SpriteBatch spriteBatch, OrthoGameCamera camera, float originX, float originY)
     {
         if (foreground != null)
         {

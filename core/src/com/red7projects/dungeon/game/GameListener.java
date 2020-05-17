@@ -53,7 +53,7 @@ public class GameListener
     {
         AppConfig.controllersFitted = (Controllers.getControllers().size > 0);
 
-        switch (app.mainGameScreen.gameState.get())
+        switch (app.appState.get())
         {
             case _STATE_PAUSED:
             case _STATE_GAME:

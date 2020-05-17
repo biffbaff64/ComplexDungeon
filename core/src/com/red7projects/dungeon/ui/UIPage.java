@@ -17,6 +17,7 @@
 package com.red7projects.dungeon.ui;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 
 public interface UIPage
 {
@@ -26,7 +27,7 @@ public interface UIPage
 
     void hide();
 
-    void draw(SpriteBatch spriteBatch);
+    void draw(SpriteBatch spriteBatch, OrthoGameCamera camera, float originX, float originY);
 
     void reset();
 

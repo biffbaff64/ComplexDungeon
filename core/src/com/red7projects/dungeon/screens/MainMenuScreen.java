@@ -21,6 +21,7 @@ import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.ui.ExitPanel;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
+import com.red7projects.dungeon.ui.UIUtils;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.ArrayList;
@@ -63,6 +64,8 @@ public class MainMenuScreen extends AbstractBaseScreen
         {
             app.inputManager.virtualJoystick.hide();
         }
+
+        UIUtils.setup(app);
 
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
         buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, 1280);
@@ -281,14 +284,14 @@ public class MainMenuScreen extends AbstractBaseScreen
      * Draw the currently active page.
      *
      * @param spriteBatch The spritebatch to use.
-     * @param gameCamera  The camera to use.
+     * @param camera  The camera to use.
      */
-    public void draw(final SpriteBatch spriteBatch, final OrthoGameCamera gameCamera)
+    public void draw(final SpriteBatch spriteBatch, final OrthoGameCamera camera)
     {
         if (app.appState.get() == StateID._STATE_TITLE_SCREEN)
         {
-            float originX = (app.baseRenderer.hudGameCamera.camera.position.x - Gfx._HUD_HALF_WIDTH);
-            float originY = (app.baseRenderer.hudGameCamera.camera.position.y - Gfx._HUD_HALF_HEIGHT);
+            float originX = (camera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2));
+            float originY = (camera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2));
 
             switch (currentPage)
             {
@@ -300,11 +303,11 @@ public class MainMenuScreen extends AbstractBaseScreen
                 {
                     app.spriteBatch.draw(background, originX, originY);
                     app.spriteBatch.draw(overlay1, originX, originY);
-                    app.spriteBatch.draw(overlay1, originX, originY);
+                    app.spriteBatch.draw(overlay2, originX, originY);
 
                     if (exitPanel == null)
                     {
-                        panels.get(currentPage).draw(spriteBatch);
+                        panels.get(currentPage).draw(spriteBatch, camera, originX, originY);
                     }
                     else
                     {
