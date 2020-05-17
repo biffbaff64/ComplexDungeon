@@ -1,18 +1,3 @@
-/*
- *  Copyright 24/04/2018 Red7Projects.
- *  <p>
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *  <p>
- *  http://www.apache.org/licenses/LICENSE-2.0
- *  <p>
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
 
 package com.red7projects.dungeon.screens;
 
@@ -57,7 +42,6 @@ public class MainMenuScreen extends AbstractBaseScreen
     private ExitPanel         exitPanel;
     private MenuPage          menuPage;
     private OptionsPage       optionsPage;
-    private StateManager      gameState;
     private Texture           background;
     private Texture           overlay1;
     private Texture           overlay2;
@@ -68,8 +52,6 @@ public class MainMenuScreen extends AbstractBaseScreen
     public MainMenuScreen(final App _app)
     {
         super(_app);
-
-        this.gameState = new StateManager();
     }
 
     @Override
@@ -115,13 +97,13 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         super.update();
 
-        if (gameState.get() == StateID._STATE_TITLE_SCREEN)
+        if (app.appState.get() == StateID._STATE_TITLE_SCREEN)
         {
             StateID tempState;
 
-            if ((tempState = update(gameState).get()) != StateID._STATE_TITLE_SCREEN)
+            if ((tempState = update(app.appState).get()) != StateID._STATE_TITLE_SCREEN)
             {
-                gameState.set(tempState);
+                app.appState.set(tempState);
             }
 
             super.render(delta);
@@ -303,7 +285,7 @@ public class MainMenuScreen extends AbstractBaseScreen
      */
     public void draw(final SpriteBatch spriteBatch, final OrthoGameCamera gameCamera)
     {
-        if (gameState.get() == StateID._STATE_TITLE_SCREEN)
+        if (app.appState.get() == StateID._STATE_TITLE_SCREEN)
         {
             float originX = (app.baseRenderer.hudGameCamera.camera.position.x - Gfx._HUD_HALF_WIDTH);
             float originY = (app.baseRenderer.hudGameCamera.camera.position.y - Gfx._HUD_HALF_HEIGHT);
@@ -345,13 +327,8 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         Trace.__FILE_FUNC();
 
-        if (gameState == null)
-        {
-            this.gameState = new StateManager();
-        }
-
         app.currentScreenID = ScreenID._TITLE_SCREEN;
-        gameState.set(StateID._STATE_TITLE_SCREEN);
+        app.appState.set(StateID._STATE_TITLE_SCREEN);
 
         super.show();
 
@@ -382,17 +359,6 @@ public class MainMenuScreen extends AbstractBaseScreen
         super.hide();
 
         dispose();
-    }
-
-    /**
-     * Gets the current game state.
-     *
-     * @return StateManager value.
-     */
-    @Override
-    public StateManager getGameState()
-    {
-        return gameState;
     }
 
     @Override
@@ -431,7 +397,6 @@ public class MainMenuScreen extends AbstractBaseScreen
 
         exitPanel   = null;
         optionsPage = null;
-        gameState   = null;
     }
 
     /**

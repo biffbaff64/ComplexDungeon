@@ -54,8 +54,8 @@ public class MainGame extends App
 	public void pause()
 	{
 		if (!Developer.isDevMode()
-			&& (mainGameScreen.getGameState() != null)
-			&& (mainGameScreen.getGameState().equalTo(StateID._STATE_GAME)))
+			&& (appState != null)
+			&& (appState.equalTo(StateID._STATE_GAME)))
 		{
 			hud.buttonPause.press();
 		}
@@ -68,8 +68,8 @@ public class MainGame extends App
 	public void resume()
 	{
 		if (!Developer.isDevMode()
-			&& (mainGameScreen.getGameState() != null)
-			&& (mainGameScreen.getGameState().equalTo(StateID._STATE_GAME)))
+			&& (appState != null)
+			&& (appState.equalTo(StateID._STATE_GAME)))
 		{
 			hud.buttonPause.release();
 		}

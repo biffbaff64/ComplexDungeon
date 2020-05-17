@@ -56,6 +56,9 @@ public class Startup
         Trace.openLogfile(AppConfig._DEBUG_LOG_FILE);
         Trace.__FILE_FUNC_WithDivider();
 
+        app.appState = new StateManager();
+        app.appState.set(StateID._STATE_POWER_UP);
+
         app.settings = new Settings();
         app.settings.initialise();
 

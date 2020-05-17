@@ -104,7 +104,7 @@ public class BaseRenderer implements Disposable
         if (app.currentScreenID == ScreenID._GAME_SCREEN)
         {
             if ((app.getPlayer() != null)
-                    && app.mainGameScreen.getGameState().after(StateID._STATE_SETUP)
+                    && app.appState.after(StateID._STATE_SETUP)
                     && !app.settings.isEnabled(Settings._SCROLL_DEMO))
             {
                 app.mapUtils.positionAt

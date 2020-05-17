@@ -40,7 +40,7 @@ public class EndGameManager
         {
             app.getHud().hideControls(true);
 
-            app.mainGameScreen.getGameState().set(StateID._STATE_LEVEL_RETRY);
+            app.appState.set(StateID._STATE_LEVEL_RETRY);
 
             AppConfig.quitToMainMenu = true;
 
@@ -63,7 +63,7 @@ public class EndGameManager
                 app.mainGameScreen.completedPanel.setup();
 
                 app.getHud().setStateID(StateID._STATE_GAME_FINISHED);
-                app.mainGameScreen.getGameState().set(StateID._STATE_GAME_FINISHED);
+                app.appState.set(StateID._STATE_GAME_FINISHED);
 
                 returnFlag = true;
             }
@@ -75,7 +75,7 @@ public class EndGameManager
                 Trace.divider();
 
                 app.getHud().setStateID(StateID._STATE_LEVEL_FINISHED);
-                app.mainGameScreen.getGameState().set(StateID._STATE_LEVEL_FINISHED);
+                app.appState.set(StateID._STATE_LEVEL_FINISHED);
 
                 returnFlag = true;
             }
@@ -91,7 +91,7 @@ public class EndGameManager
                     Trace.divider();
 
                     app.mainGameScreen.retryDelay = StopWatch.start();
-                    app.mainGameScreen.getGameState().set(StateID._STATE_LEVEL_RETRY);
+                    app.appState.set(StateID._STATE_LEVEL_RETRY);
                 }
 
                 returnFlag = true;
@@ -101,7 +101,7 @@ public class EndGameManager
             // For example, from pause menu...
             else if (AppConfig.forceQuitToMenu)
             {
-                app.mainGameScreen.getGameState().set(StateID._STATE_END_GAME);
+                app.appState.set(StateID._STATE_END_GAME);
                 returnFlag = true;
             }
         }

@@ -282,7 +282,7 @@ public class HeadsUpDisplay implements Disposable
                 developerPanel.setup();
 
                 buttonDevOptions.release();
-                app.mainGameScreen.getGameState().set(StateID._STATE_DEVELOPER_PANEL);
+                app.appState.set(StateID._STATE_DEVELOPER_PANEL);
                 hudStateID = StateID._STATE_DEVELOPER_PANEL;
             }
         }
@@ -456,7 +456,7 @@ public class HeadsUpDisplay implements Disposable
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            if (!AppConfig.gamePaused && (app.mainGameScreen.gameState.get() != StateID._STATE_MESSAGE_PANEL))
+            if (!AppConfig.gamePaused && (app.appState.get() != StateID._STATE_MESSAGE_PANEL))
             {
                 if (app.inputManager.virtualJoystick != null)
                 {
@@ -487,7 +487,7 @@ public class HeadsUpDisplay implements Disposable
     {
         if (!AppConfig.gamePaused)
         {
-            if ((app.mainGameScreen.getGameState().get() == StateID._STATE_GAME_FINISHED)
+            if ((app.appState.get() == StateID._STATE_GAME_FINISHED)
                 && (app.mainGameScreen.completedPanel != null))
             {
                 app.mainGameScreen.completedPanel.draw();

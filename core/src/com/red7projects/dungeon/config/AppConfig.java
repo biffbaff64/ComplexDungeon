@@ -175,7 +175,7 @@ public abstract class AppConfig
      */
     public static void pause()
     {
-        app.mainGameScreen.getGameState().set(StateID._STATE_PAUSED);
+        app.appState.set(StateID._STATE_PAUSED);
         app.getHud().hudStateID = StateID._STATE_PAUSED;
         gamePaused = true;
     }
@@ -185,7 +185,7 @@ public abstract class AppConfig
      */
     public static void unPause()
     {
-        app.mainGameScreen.getGameState().set(StateID._STATE_GAME);
+        app.appState.set(StateID._STATE_GAME);
         app.getHud().hudStateID = StateID._STATE_PANEL_UPDATE;
         gamePaused = false;
     }

@@ -27,6 +27,7 @@ import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.input.objects.ControllerType;
+import com.red7projects.dungeon.utils.development.DebugRenderer;
 
 /**
  * Renderer for the HUD and also for MainMenuScreen child screens
@@ -36,22 +37,11 @@ public class HUDRenderer implements GameScreenRenderer
 {
     private final App app;
 
-    /**
-     * Constructor
-     *
-     * @param _app An instance of the global Game class
-     */
     public HUDRenderer(App _app)
     {
         this.app = _app;
     }
 
-    /**
-     * Performs the HUD drawing
-     *
-     * @param spriteBatch   The sprite batch to use
-     * @param hudCamera     The camera to use
-     */
     @Override
     public void render(SpriteBatch spriteBatch, OrthoGameCamera hudCamera)
     {
@@ -60,19 +50,7 @@ public class HUDRenderer implements GameScreenRenderer
             app.baseRenderer.hudZoom.stop();
             app.baseRenderer.gameZoom.stop();
 
-            StateID stateID;
-
-            if (AppConfig.gameScreenActive)
-            {
-                stateID = app.mainGameScreen.getGameState().get();
-            }
-            else
-            {
-                stateID = app.mainMenuScreen.getGameState().get();
-            }
-
-            // DO NOT Change the game state in here!!
-            switch (stateID)
+            switch (app.appState.get())
             {
                 case _STATE_TITLE_SCREEN:
                 {

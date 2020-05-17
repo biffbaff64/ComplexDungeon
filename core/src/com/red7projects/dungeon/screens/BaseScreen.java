@@ -44,8 +44,6 @@ public interface BaseScreen
 
     void resume();
 
-    StateManager getGameState();
-
     void dispose();
 
     void loadImages();

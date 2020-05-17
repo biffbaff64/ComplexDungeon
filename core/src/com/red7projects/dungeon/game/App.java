@@ -68,6 +68,7 @@ public abstract class App extends com.badlogic.gdx.Game
     public PlayServices   googleServices;
     public Settings       settings;
     public InputManager   inputManager;
+    public StateManager   appState;
 
     //
     // Globals to be made available when MainGameScreen is active.

@@ -121,6 +121,8 @@ public abstract class AbstractBaseScreen extends ScreenAdapter implements Dispos
     {
         app.baseRenderer.tiledGameCamera.resizeViewport(width, height, true);
         app.baseRenderer.spriteGameCamera.resizeViewport(width, height, true);
+
+        // TODO: 17/05/2020
 //        app.baseRenderer.hudGameCamera.resizeViewport(width, height, true);
     }
 

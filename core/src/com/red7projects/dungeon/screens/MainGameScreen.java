@@ -33,7 +33,6 @@ public class MainGameScreen extends AbstractBaseScreen
 {
     public       GameCompletedPanel completedPanel;
     public       StopWatch          retryDelay;
-    public final StateManager       gameState;
     public       EndGameManager     endGameManager;
     public       GameControlLoop    gameControlLoop;
 
@@ -58,7 +57,6 @@ public class MainGameScreen extends AbstractBaseScreen
         super(_app);
 
         this.firstTime = true;
-        this.gameState = new StateManager();
     }
 
     /**
@@ -82,7 +80,7 @@ public class MainGameScreen extends AbstractBaseScreen
             gameControlLoop.initialise();
             app.gameUtils.prepareNewGame();
 
-            gameState.set(StateID._STATE_SETUP);
+            app.appState.set(StateID._STATE_SETUP);
         }
 
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
@@ -102,7 +100,7 @@ public class MainGameScreen extends AbstractBaseScreen
     @Override
     public void update()
     {
-        switch (gameState.get())
+        switch (app.appState.get())
         {
             case _STATE_SETUP:
             case _STATE_GET_READY:
@@ -119,13 +117,13 @@ public class MainGameScreen extends AbstractBaseScreen
             case _STATE_TELEPORTING:
             case _STATE_END_GAME:
             {
-                gameControlLoop.update(gameState);
+                gameControlLoop.update(app.appState);
             }
             break;
 
             case _STATE_PREPARE_GAME_END:
             {
-                gameState.set(gameState.getStored());
+                app.appState.set(app.appState.getStored());
             }
             break;
 
@@ -137,7 +135,7 @@ public class MainGameScreen extends AbstractBaseScreen
             default:
             {
                 Trace.__FILE_FUNC();
-                Trace.dbg("Unsupported game state: " + gameState.get());
+                Trace.dbg("Unsupported game state: " + app.appState.get());
             }
         }
     }
@@ -169,12 +167,6 @@ public class MainGameScreen extends AbstractBaseScreen
         {
             app.entityManager.drawSprites();
         }
-    }
-
-    @Override
-    public StateManager getGameState()
-    {
-        return gameState;
     }
 
     /**
@@ -209,7 +201,7 @@ public class MainGameScreen extends AbstractBaseScreen
 
         initialise();
 
-        gameState.set(StateID._STATE_SETUP);
+        app.appState.set(StateID._STATE_SETUP);
     }
 
     /**
