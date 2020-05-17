@@ -1,5 +1,6 @@
 package com.red7projects.dungeon.graphics.camera;
 
+import com.badlogic.gdx.math.Vector3;
 import com.red7projects.dungeon.maths.SimpleVec3F;
 
 public interface GameCamera
@@ -9,6 +10,8 @@ public interface GameCamera
     void setPosition(SimpleVec3F _position, float _zoom);
 
     void setPosition(SimpleVec3F _position, float _zoom, boolean _shake);
+
+    Vector3 getPosition();
 
     void updatePosition();
 

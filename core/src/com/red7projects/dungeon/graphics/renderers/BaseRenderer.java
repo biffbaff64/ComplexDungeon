@@ -34,6 +34,7 @@ import com.red7projects.dungeon.graphics.camera.Zoom;
 import com.red7projects.dungeon.map.tiled.tiles.AnimatedTiledMapTile;
 import com.red7projects.dungeon.maths.SimpleVec3F;
 import com.red7projects.dungeon.screens.ScreenID;
+import com.red7projects.dungeon.utils.logging.Trace;
 
 public class BaseRenderer implements Disposable
 {
@@ -63,6 +64,8 @@ public class BaseRenderer implements Disposable
      */
     private void createCameras()
     {
+        Trace.__FILE_FUNC();
+
         AppConfig.camerasReady = false;
 
         tiledGameCamera  = new OrthoGameCamera(Gfx._GAME_SCENE_WIDTH, Gfx._GAME_SCENE_HEIGHT, "Tiled Cam", app);
@@ -76,6 +79,9 @@ public class BaseRenderer implements Disposable
         tiledGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         spriteGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         hudGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
+
+        hudGameCamera.camera.position.set(0, 0, 0);
+        hudGameCamera.camera.update();
 
         gameZoom      = new Zoom();
         hudZoom       = new Zoom();

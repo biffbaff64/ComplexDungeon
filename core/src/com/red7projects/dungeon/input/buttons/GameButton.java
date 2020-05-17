@@ -89,10 +89,6 @@ public class GameButton implements GDXButton, Disposable
         this.height      = 0;
         this._isDrawable = false;
         this.scale       = 1.0f;
-
-        mapIndex = app.inputManager.gameButtons.size;
-
-        app.inputManager.gameButtons.add(this);
     }
 
     public GameButton(App _app)
@@ -103,6 +99,10 @@ public class GameButton implements GDXButton, Disposable
         this.hasSound     = true;
         this.buttonAction = Actions._NO_ACTION;
         this.buttonRect   = new Box();
+
+        mapIndex = app.inputManager.gameButtons.size;
+
+        app.inputManager.gameButtons.add(this);
     }
 
     @Override

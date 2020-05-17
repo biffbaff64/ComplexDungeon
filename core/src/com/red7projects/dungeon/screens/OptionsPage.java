@@ -142,7 +142,7 @@ public class OptionsPage implements UIPage
             {
                 if (foreground != null)
                 {
-                    spriteBatch.draw(foreground, 0, 0);
+                    spriteBatch.draw(foreground, originX, originY);
                 }
             }
             break;
@@ -227,43 +227,46 @@ public class OptionsPage implements UIPage
 
     private void populateTable()
     {
+        final float originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2));
+        final float originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2));
+
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
         // ----------
-        musicCheckBox = scene2DUtils.addCheckBox(900, (Gfx._VIEW_HEIGHT - 470), Color.WHITE, skin);
+        musicCheckBox = scene2DUtils.addCheckBox((int) originX + 450, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 235), Color.WHITE, skin);
 
         // ----------
-        musicSlider = scene2DUtils.addSlider(1050, (Gfx._VIEW_HEIGHT - 470), skin);
+        musicSlider = scene2DUtils.addSlider((int) originX + 525, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 235), skin);
         Slider.SliderStyle style = musicSlider.getStyle();
         style.background = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("slider_background"));
         style.knob = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("slider_knob"));
         musicSlider.setStyle(style);
-        musicSlider.setSize(1000, 40);
+        musicSlider.setSize(500, 20);
 
         // ----------
-        musicLabel = scene2DUtils.addTextField("0%", 2100, (Gfx._VIEW_HEIGHT - 480), Color.WHITE, true, skin);
+        musicLabel = scene2DUtils.addTextField("0%", (int) originX + 1050, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 240), Color.WHITE, true, skin);
         TextField.TextFieldStyle labelStyle = musicLabel.getStyle();
         FontUtils fontUtils = new FontUtils();
-        labelStyle.font = fontUtils.createFont(GameAssets._ACME_FONT, 40);
+        labelStyle.font = fontUtils.createFont(GameAssets._ACME_FONT, 20);
         musicLabel.setStyle(labelStyle);
-        musicLabel.setSize(120, 80);
+        musicLabel.setSize(60, 40);
 
         // ----------
-        fxCheckBox = scene2DUtils.addCheckBox(900, (Gfx._VIEW_HEIGHT - 600), Color.WHITE, skin);
+        fxCheckBox = scene2DUtils.addCheckBox((int) originX + 450, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 300), Color.WHITE, skin);
 
         // ----------
-        fxSlider = scene2DUtils.addSlider(1050, (Gfx._VIEW_HEIGHT - 600), skin);
+        fxSlider = scene2DUtils.addSlider((int) originX + 525, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 300), skin);
         fxSlider.setStyle(style);
-        fxSlider.setSize(1000, 40);
+        fxSlider.setSize(500, 20);
 
         // ----------
-        fxLabel = scene2DUtils.addTextField("0%", 2100, (Gfx._VIEW_HEIGHT - 620), Color.WHITE, true, skin);
+        fxLabel = scene2DUtils.addTextField("0%", (int) originX + 1050, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 310), Color.WHITE, true, skin);
         fxLabel.setStyle(labelStyle);
-        fxLabel.setSize(120, 80);
+        fxLabel.setSize(60, 40);
 
         // ----------
-        buttonStats = scene2DUtils.addButton("new_stats_button", "new_stats_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1000));
-        buttonPrivacy = scene2DUtils.addButton("new_privacy_policy_button", "new_privacy_policy_button_pressed", 1930, (Gfx._VIEW_HEIGHT - 1150));
+        buttonStats = scene2DUtils.addButton("new_stats_button", "new_stats_button_pressed", (int) originX + 965, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 500));
+        buttonPrivacy = scene2DUtils.addButton("new_privacy_policy_button", "new_privacy_policy_button_pressed", (int) originX + 965, (int) originY + (Gfx._VIEW_HEIGHT - 575));
 
         // ----------
         if (AppConfig.isDesktopApp())
@@ -272,8 +275,8 @@ public class OptionsPage implements UIPage
                 (
                     "button_keyboard",
                     "button_keyboard_pressed",
-                    700,
-                    (Gfx._VIEW_HEIGHT - 840)
+                    (int) originX + 350,
+                    (int) originY + (Gfx._SMALL_HUD_HEIGHT - 420)
                 );
         }
 
@@ -283,8 +286,8 @@ public class OptionsPage implements UIPage
                 (
                     "new_test_access_button",
                     "new_test_access_button_pressed",
-                    2145,
-                    (Gfx._VIEW_HEIGHT - 130)
+                    (int) originX + 1070,
+                    (int) originY + (Gfx._SMALL_HUD_HEIGHT - 65)
                 );
         }
 

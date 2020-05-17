@@ -21,7 +21,6 @@ import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.ui.ExitPanel;
 import com.red7projects.dungeon.ui.Scene2DUtils;
 import com.red7projects.dungeon.ui.UIPage;
-import com.red7projects.dungeon.ui.UIUtils;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.ArrayList;
@@ -64,8 +63,6 @@ public class MainMenuScreen extends AbstractBaseScreen
         {
             app.inputManager.virtualJoystick.hide();
         }
-
-        UIUtils.setup(app);
 
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
         buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, 1280);
@@ -339,13 +336,13 @@ public class MainMenuScreen extends AbstractBaseScreen
         AppConfig.gameScreenActive  = false;
         AppConfig.finalScreenActive = false;
 
-        initialise();
-
         app.cameraUtils.resetCameraZoom();
         app.cameraUtils.disableAllCameras();
         app.baseRenderer.spriteGameCamera.isInUse = true;
         app.baseRenderer.hudGameCamera.isInUse    = true;
         app.baseRenderer.isDrawingStage           = true;
+
+        initialise();
 
         currentPage = (app.highScoreUtils.canAddNewEntry()) ? _HISCORE_PAGE : _MENU_PAGE;
 
