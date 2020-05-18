@@ -31,18 +31,18 @@ public class ItemBar
     private static final int[][] displayPos = new int[][]
         {
             //
-            { 749,  749,   34,    0,    0},  // Collection Panel
+            { 374,  374,   17,    0,    0},  // Collection Panel
 
             //
             //
-            { 772,  772,   76,   96,   96},
-            { 904,  904,   76,   96,   96},
-            {1036, 1036,   76,   96,   96},
-            {1164, 1164,   76,   96,   96},
-            {1298, 1298,   76,   96,   96},
-            {1430, 1430,   76,   96,   96},
-            {1562, 1562,   76,   96,   96},
-            {1695, 1695,   76,   96,   96},
+            { 386,  386,   38,   48,   48},
+            { 452,  452,   38,   48,   48},
+            { 518,  518,   38,   48,   48},
+            { 582,  582,   38,   48,   48},
+            { 649,  649,   38,   48,   48},
+            { 715,  715,   38,   48,   48},
+            { 781,  781,   38,   48,   48},
+            { 847,  847,   38,   48,   48},
         };
 
     private TextureRegion[]     objectivesPanel;
@@ -68,7 +68,7 @@ public class ItemBar
         {
             app.spriteBatch.draw
                 (
-                    objectivesPanel[app.getHud().objectivesPanelIndex],
+                    objectivesPanel[app.getHud().itemPanelIndex],
                     originX + displayPos[_COLLECT_PANEL][_X1],
                     originY + displayPos[_COLLECT_PANEL][_Y]
                 );
@@ -83,13 +83,13 @@ public class ItemBar
 
         for (int i = 0; i < 8; i++)
         {
-            if (app.gameProgress.collectItems[app.getHud().objectivesPanelIndex][i])
+            if (app.gameProgress.collectItems[app.getHud().itemPanelIndex][i])
             {
-                textureRegion = itemTextures[app.getHud().objectivesPanelIndex][i];
+                textureRegion = itemTextures[app.getHud().itemPanelIndex][i];
             }
             else
             {
-                textureRegion = itemGreyTextures[app.getHud().objectivesPanelIndex][i];
+                textureRegion = itemGreyTextures[app.getHud().itemPanelIndex][i];
             }
 
             app.spriteBatch.draw

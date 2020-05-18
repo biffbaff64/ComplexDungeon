@@ -42,8 +42,8 @@ public class UIUtils
     {
         return new SimpleVec2F
             (
-                (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2)),
-                (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2))
+                (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2)),
+                (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2))
             );
     }
 

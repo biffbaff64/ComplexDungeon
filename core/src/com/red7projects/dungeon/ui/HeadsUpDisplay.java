@@ -71,27 +71,27 @@ public class HeadsUpDisplay implements Disposable
 
     private static final int[][] displayPos = new int[][]
         {
-            {  80, 1640,  100,  240,  240},             // Joystick
+            {  40,  820,   50,  240,  240},             // Joystick
 
-            {2138,   44,  171,   96,   96},             // X
-            {2256,   44,  283,   96,   96},             // Y
-            {2376,   44,  171,   96,   96},             // B (Attack)
-            {2256,  158,   58,   96,   96},             // A (Action)
+            {1069,   22,   85,   96,   96},             // X
+            {1128,   22,  141,   96,   96},             // Y
+            {1188,   22,   85,   96,   96},             // B (Attack)
+            {1128,   79,   29,   96,   96},             // A (Action)
 
-            {2358, 2358, 1261,   66,   66},             // Pause Button
-            {2442, 2442, 1151,   66,   66},             // Dev Options
-
-            //
-            // Y is distance from the TOP of the screen
-            {1980, 1980,   57,    0,    0},             // Coins total
-            {1980, 1980,  141,    0,    0},             // Gems total
-            { 150,  150,   95,    0,    0},             // Life bar
-            { 150,  150,  179,    0,    0},             // Health bar
+            {1179, 1179,  630,   66,   66},             // Pause Button
+            {1121, 1121,  575,   66,   66},             // Dev Options
 
             //
             // Y is distance from the TOP of the screen
-            {1670, 1670,  107,    0,    0},             // Villagers
-            {2345, 2345,  203,    0,    0},             // Compass
+            { 990,  990,   28,    0,    0},             // Coins total
+            { 990,  990,   70,    0,    0},             // Gems total
+            {  75,   75,   47,    0,    0},             // Life bar
+            {  75,   75,   89,    0,    0},             // Health bar
+
+            //
+            // Y is distance from the TOP of the screen
+            { 835,  835,   53,    0,    0},             // Villagers
+            {1172, 1172,  101,    0,    0},             // Compass
         };
     //@formatter:on
 
@@ -109,7 +109,7 @@ public class HeadsUpDisplay implements Disposable
     public Switch           buttonPause;
     public GameButton       buttonDevOptions;
     public ItemBar          itemBar;
-    public int              objectivesPanelIndex;
+    public int              itemPanelIndex;
 
     private ProgressBar     healthBar;
     private ProgressBar     livesBar;
@@ -150,16 +150,16 @@ public class HeadsUpDisplay implements Disposable
         //
         // The player strength for the current life
         healthBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        healthBar.setHeight(38);
+        healthBar.setHeight(19);
         healthBar.setColor(Color.GREEN);
-        healthBar.setScale(6.0f);
+        healthBar.setScale(3.0f);
 
         //
         // The number of lives the player has
         livesBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        livesBar.setHeight(38);
+        livesBar.setHeight(19);
         livesBar.setColor(Color.GREEN);
-        livesBar.setScale(6.0f);
+        livesBar.setScale(3.0f);
 
         compassTexture = new TextureRegion[5];
         GfxUtils.splitRegion
@@ -172,14 +172,14 @@ public class HeadsUpDisplay implements Disposable
 
         itemBar = new ItemBar(app);
 
-        objectivesPanelIndex = 0;
+        itemPanelIndex = 0;
 
         FontUtils fontUtils = new FontUtils();
 
-        hudFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 50);
-        bigFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 40);
-        midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 30);
-        smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
+        hudFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 25);
+        bigFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
+        midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 15);
+        smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 10);
 
         AppConfig.hudExists = true;
 
@@ -436,19 +436,19 @@ public class HeadsUpDisplay implements Disposable
 
             sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
             sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
-            DebugRenderer.drawText(sb.toString(), originX + 100, originY + 100);
+            DebugRenderer.drawText(sb.toString(), originX + 50, originY + 50);
 
             sb.clear();
             sb.append(app.getRoomSystem().getActiveRoomName().toUpperCase());
-            DebugRenderer.drawText(sb.toString(), originX + 100, originY + 50);
+            DebugRenderer.drawText(sb.toString(), originX + 50, originY + 25);
 
             sb.clear();
             sb.append("PHYSICS: ").append(AppConfig.isUsingBOX2DPhysics ? "BOX2D" : "CUSTOM");
-            DebugRenderer.drawText(sb.toString(), originX + 2200, originY + 100);
+            DebugRenderer.drawText(sb.toString(), originX + 1100, originY + 50);
 
             sb.clear();
             sb.append("ECS: ").append(AppConfig.isUsingAshleyECS ? "ASHLEY" : "CUSTOM");
-            DebugRenderer.drawText(sb.toString(), originX + 2200, originY + 50);
+            DebugRenderer.drawText(sb.toString(), originX + 1100, originY + 25);
         }
     }
 
@@ -541,14 +541,14 @@ public class HeadsUpDisplay implements Disposable
         }
     }
 
-    public int getObjectivesPanelIndex()
+    public int getItemPanelIndex()
     {
-        return objectivesPanelIndex;
+        return itemPanelIndex;
     }
 
-    public void setObjectivesPanelIndex(int _index)
+    public void setItemPanelIndex(int _index)
     {
-        objectivesPanelIndex = _index;
+        itemPanelIndex = _index;
     }
 
     public void setStateID(final StateID id)
@@ -578,6 +578,9 @@ public class HeadsUpDisplay implements Disposable
     {
         Trace.__FILE_FUNC();
 
+        originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
+        originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
+
         buttonUp    = new Switch();
         buttonDown  = new Switch();
         buttonLeft  = new Switch();
@@ -589,7 +592,8 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_drop"),
                     app.assets.getButtonsAtlas().findRegion("button_drop_pressed"),
-                    displayPos[_BUTTON_A][_X1], displayPos[_BUTTON_A][_Y],
+                    (int) originX + displayPos[_BUTTON_A][_X1],
+                    (int) originY + displayPos[_BUTTON_A][_Y],
                     ButtonID._A,
                     app
                 );
@@ -598,7 +602,8 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_fire"),
                     app.assets.getButtonsAtlas().findRegion("button_fire_pressed"),
-                    displayPos[_BUTTON_B][_X1], displayPos[_BUTTON_B][_Y],
+                    (int) originX + displayPos[_BUTTON_B][_X1],
+                    (int) originY + displayPos[_BUTTON_B][_Y],
                     ButtonID._B,
                     app
                 );
@@ -607,7 +612,8 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_x"),
                     app.assets.getButtonsAtlas().findRegion("button_x_pressed"),
-                    displayPos[_BUTTON_X][_X1], displayPos[_BUTTON_X][_Y],
+                    (int) originX + displayPos[_BUTTON_X][_X1],
+                    (int) originY + displayPos[_BUTTON_X][_Y],
                     ButtonID._X,
                     app
                 );
@@ -616,7 +622,8 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_y"),
                     app.assets.getButtonsAtlas().findRegion("button_y_pressed"),
-                    displayPos[_BUTTON_Y][_X1], displayPos[_BUTTON_Y][_Y],
+                    (int) originX + displayPos[_BUTTON_Y][_X1],
+                    (int) originY + displayPos[_BUTTON_Y][_Y],
                     ButtonID._Y,
                     app
                 );
@@ -637,7 +644,8 @@ public class HeadsUpDisplay implements Disposable
                 (
                     app.assets.getButtonsAtlas().findRegion("button_d"),
                     app.assets.getButtonsAtlas().findRegion("button_d_pressed"),
-                    displayPos[_DEV_OPTIONS][_X1], displayPos[_DEV_OPTIONS][_Y],
+                    (int) originX + displayPos[_DEV_OPTIONS][_X1],
+                    (int) originY + displayPos[_DEV_OPTIONS][_Y],
                     ButtonID._DEV,
                     app
                 );

@@ -134,8 +134,8 @@ public class GameButton implements GDXButton, Disposable
             app.spriteBatch.draw
                 (
                     textureRegion,
-                    (float) (x - (Gfx._VIEW_WIDTH / 2)),
-                    (float) (y - (Gfx._VIEW_HEIGHT / 2)),
+                    (float) (x - (Gfx._HUD_WIDTH / 2)),
+                    (float) (y - (Gfx._HUD_HEIGHT / 2)),
                     width,
                     height
                 );

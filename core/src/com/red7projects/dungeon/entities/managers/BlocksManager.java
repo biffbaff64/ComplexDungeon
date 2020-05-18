@@ -118,8 +118,6 @@ public class BlocksManager extends GenericEntityManager
 
             Array<MarkerTile> tiles = app.mapUtils.findMultiTiles(graphicID);
 
-            gfxAsset.debug();
-
             if (app.settings.isEnabled(gfxAsset.preference)
                 && (tiles.size > 0))
             {

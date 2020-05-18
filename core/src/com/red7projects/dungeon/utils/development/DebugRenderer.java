@@ -51,7 +51,7 @@ public class DebugRenderer implements Disposable
         debugTextureRegion = new TextureRegion();
 
         FontUtils fontUtils = new FontUtils();
-        font = fontUtils.createFont(GameAssets._PRO_WINDOWS_FONT, 30, Color.WHITE);
+        font = fontUtils.createFont(GameAssets._PRO_WINDOWS_FONT, 15, Color.WHITE);
     }
 
     public static void drawText(String _message, float _x, float _y)

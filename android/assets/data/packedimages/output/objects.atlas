@@ -1,313 +1,307 @@
 
 objects.png
-size: 2048,2048
+size: 2048,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 bar
   rotate: false
-  xy: 2006, 2002
+  xy: 412, 6
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar9
   rotate: false
-  xy: 2006, 1968
+  xy: 836, 693
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar9patch
   rotate: false
-  xy: 2006, 1934
+  xy: 1926, 988
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bar_green
   rotate: false
-  xy: 2015, 1738
+  xy: 1028, 894
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_green9
   rotate: false
-  xy: 2015, 1710
+  xy: 1858, 358
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_grey
   rotate: false
-  xy: 1947, 1715
+  xy: 1325, 570
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_orange
   rotate: false
-  xy: 1975, 1704
+  xy: 1727, 147
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_orange9
   rotate: false
-  xy: 1947, 1687
+  xy: 1761, 181
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_red
   rotate: false
-  xy: 2003, 1682
+  xy: 480, 12
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_red9
   rotate: false
-  xy: 1975, 1676
+  xy: 904, 699
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_yellow
   rotate: false
-  xy: 2003, 1654
+  xy: 836, 631
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
 bar_yellow9
   rotate: false
-  xy: 1941, 1659
+  xy: 1926, 926
   size: 26, 26
   orig: 26, 26
   offset: 0, 0
   index: -1
+big_block_cover_bottom
+  rotate: false
+  xy: 1531, 560
+  size: 384, 128
+  orig: 384, 128
+  offset: 0, 0
+  index: -1
 big_block_cover_left
   rotate: false
-  xy: 1065, 7
+  xy: 2, 40
+  size: 640, 128
+  orig: 640, 128
+  offset: 0, 0
+  index: -1
+big_block_cover_right
+  rotate: false
+  xy: 1284, 892
   size: 640, 128
   orig: 640, 128
   offset: 0, 0
   index: -1
 books_panel
   rotate: false
-  xy: 2, 598
-  size: 1061, 230
-  orig: 1061, 230
+  xy: 1291, 443
+  size: 531, 115
+  orig: 531, 115
   offset: 0, 0
   index: -1
 compass
   rotate: false
-  xy: 1065, 409
-  size: 765, 153
-  orig: 765, 153
+  xy: 1279, 131
+  size: 380, 76
+  orig: 380, 76
   offset: 0, 0
   index: -1
 complete_star
   rotate: false
-  xy: 1981, 1766
+  xy: 1661, 143
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 completed_panel
   rotate: false
-  xy: 1065, 564
+  xy: 2, 574
   size: 832, 264
   orig: 832, 264
   offset: 0, 0
   index: -1
 dialog_background
   rotate: false
-  xy: 1467, 223
+  xy: 889, 182
   size: 388, 184
   orig: 388, 184
   offset: 0, 0
   index: -1
 divider
   rotate: false
-  xy: 1774, 1550
+  xy: 1291, 598
   size: 211, 40
   orig: 211, 40
   offset: 0, 0
   index: -1
 key_held_panel
   rotate: false
-  xy: 1774, 1705
+  xy: 1824, 386
   size: 171, 172
   orig: 171, 172
   offset: 0, 0
   index: -1
 loadbar_background
   rotate: false
-  xy: 644, 14
+  xy: 2, 2
   size: 408, 36
   orig: 408, 36
   offset: 0, 0
   index: -1
 menu_arrows_green
   rotate: false
-  xy: 2, 2
+  xy: 889, 640
   size: 640, 48
   orig: 640, 48
   offset: 0, 0
   index: -1
 menu_glow_blue01
   rotate: false
-  xy: 2, 52
+  xy: 2, 840
   size: 1024, 80
   orig: 1024, 80
   offset: 0, 0
   index: -1
+menu_glow_green01
+  rotate: false
+  xy: 2, 922
+  size: 1280, 98
+  orig: 1280, 98
+  offset: 0, 0
+  index: -1
 message_panel1
   rotate: false
-  xy: 2, 1634
-  size: 1770, 400
-  orig: 1770, 400
+  xy: 2, 372
+  size: 885, 200
+  orig: 885, 200
   offset: 0, 0
   index: -1
 message_panel2
   rotate: false
-  xy: 2, 1232
-  size: 1770, 400
-  orig: 1770, 400
+  xy: 2, 170
+  size: 885, 200
+  orig: 885, 200
   offset: 0, 0
   index: -1
 message_panel3
   rotate: false
-  xy: 2, 830
-  size: 1770, 400
-  orig: 1770, 400
+  xy: 1028, 690
+  size: 885, 200
+  orig: 885, 200
   offset: 0, 0
   index: -1
 potions_panel
   rotate: false
-  xy: 2, 366
-  size: 1061, 230
-  orig: 1061, 230
+  xy: 1291, 326
+  size: 531, 115
+  orig: 531, 115
   offset: 0, 0
   index: -1
 red7logo
   rotate: false
-  xy: 1774, 1879
+  xy: 644, 13
   size: 230, 155
   orig: 230, 155
   offset: 0, 0
   index: -1
 red7logo_large
   rotate: false
-  xy: 1065, 137
+  xy: 889, 368
   size: 400, 270
   orig: 400, 270
   offset: 0, 0
   index: -1
 red7logo_small
   rotate: false
-  xy: 1774, 1592
+  xy: 836, 727
   size: 165, 111
   orig: 165, 111
   offset: 0, 0
   index: -1
 runes_panel
   rotate: false
-  xy: 2, 134
-  size: 1061, 230
-  orig: 1061, 230
+  xy: 1279, 209
+  size: 531, 115
+  orig: 531, 115
   offset: 0, 0
   index: -1
 smallbar9
   rotate: false
-  xy: 1981, 1861
+  xy: 1003, 822
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 solid_black32x32
   rotate: false
-  xy: 2006, 1900
+  xy: 1824, 352
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_blue32x32
   rotate: false
-  xy: 2006, 1866
+  xy: 1291, 564
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_clear32x32
   rotate: false
-  xy: 1947, 1845
+  xy: 1727, 175
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_green32x32
   rotate: false
-  xy: 1999, 1832
+  xy: 446, 6
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_lime32x32
   rotate: false
-  xy: 1947, 1811
+  xy: 870, 693
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_red32x32
   rotate: false
-  xy: 1947, 1777
+  xy: 836, 659
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_white32x32
   rotate: false
-  xy: 1947, 1743
+  xy: 1926, 954
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 solid_yellow32x32
   rotate: false
-  xy: 1981, 1732
+  xy: 1960, 988
   size: 32, 32
   orig: 32, 32
-  offset: 0, 0
-  index: -1
-
-objects2.png
-size: 2048,256
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-big_block_cover_bottom
-  rotate: false
-  xy: 644, 2
-  size: 384, 128
-  orig: 384, 128
-  offset: 0, 0
-  index: -1
-big_block_cover_right
-  rotate: false
-  xy: 2, 2
-  size: 640, 128
-  orig: 640, 128
-  offset: 0, 0
-  index: -1
-menu_glow_green01
-  rotate: false
-  xy: 2, 132
-  size: 1280, 98
-  orig: 1280, 98
   offset: 0, 0
   index: -1

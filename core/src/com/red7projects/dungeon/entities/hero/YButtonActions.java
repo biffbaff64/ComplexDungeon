@@ -32,7 +32,7 @@ public class YButtonActions
     {
         if (app.appState.get().equals(StateID._STATE_GAME))
         {
-            app.getHud().setObjectivesPanelIndex((app.getHud().getObjectivesPanelIndex() + 1) % 3);
+            app.getHud().setItemPanelIndex((app.getHud().getItemPanelIndex() + 1) % 3);
         }
     }
 }

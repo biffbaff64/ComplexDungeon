@@ -65,7 +65,7 @@ public class MainMenuScreen extends AbstractBaseScreen
         }
 
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
-        buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, 1280);
+        buttonExit = scene2DUtils.addButton("new_back_button", "new_back_button_pressed", 20, 640);
         buttonExit.setVisible(false);
         buttonExit.setTouchable(Touchable.disabled);
 
@@ -287,8 +287,8 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         if (app.appState.get() == StateID._STATE_TITLE_SCREEN)
         {
-            float originX = (camera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2));
-            float originY = (camera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2));
+            float originX = (camera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
+            float originY = (camera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
 
             switch (currentPage)
             {

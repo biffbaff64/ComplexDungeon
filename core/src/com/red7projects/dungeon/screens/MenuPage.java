@@ -222,35 +222,35 @@ public class MenuPage implements UIPage, Disposable
 
     private void addMenu()
     {
-        final float originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._SMALL_HUD_WIDTH / 2));
-        final float originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._SMALL_HUD_HEIGHT / 2));
+        final float originX = (app.baseRenderer.hudGameCamera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
+        final float originY = (app.baseRenderer.hudGameCamera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));
 
         Scene2DUtils scene2DUtils = new Scene2DUtils(app);
 
         imageButtons = new ImageButton[_NUM_BUTTONS];
 
         imageButtons[_START] = scene2DUtils.makeImageButton("buttonStart", "buttonStart_pressed");
-        imageButtons[_START].setPosition((int) originX + 492, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 360));
+        imageButtons[_START].setPosition((int) originX + 492, (int) originY + (Gfx._HUD_HEIGHT - 360));
         imageButtons[_START].setVisible(true);
         app.stage.addActor(imageButtons[_START]);
 
         imageButtons[_HISCORES] = scene2DUtils.makeImageButton("buttonHiscores", "buttonHiscores_pressed");
-        imageButtons[_HISCORES].setPosition((int) originX + 526, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 420));
+        imageButtons[_HISCORES].setPosition((int) originX + 526, (int) originY + (Gfx._HUD_HEIGHT - 420));
         imageButtons[_HISCORES].setVisible(true);
         app.stage.addActor(imageButtons[_HISCORES]);
 
         imageButtons[_OPTIONS] = scene2DUtils.makeImageButton("buttonOptions", "buttonOptions_pressed");
-        imageButtons[_OPTIONS].setPosition((int) originX + 536, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 480));
+        imageButtons[_OPTIONS].setPosition((int) originX + 536, (int) originY + (Gfx._HUD_HEIGHT - 480));
         imageButtons[_OPTIONS].setVisible(true);
         app.stage.addActor(imageButtons[_OPTIONS]);
 
         imageButtons[_CREDITS] = scene2DUtils.makeImageButton("buttonCredits", "buttonCredits_pressed");
-        imageButtons[_CREDITS].setPosition((int) originX + 543, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 540));
+        imageButtons[_CREDITS].setPosition((int) originX + 543, (int) originY + (Gfx._HUD_HEIGHT - 540));
         imageButtons[_CREDITS].setVisible(true);
         app.stage.addActor(imageButtons[_CREDITS]);
 
         imageButtons[_EXIT] = scene2DUtils.makeImageButton("buttonExit", "buttonExit_pressed");
-        imageButtons[_EXIT].setPosition((int) originX + 589, (int) originY + (Gfx._SMALL_HUD_HEIGHT - 600));
+        imageButtons[_EXIT].setPosition((int) originX + 589, (int) originY + (Gfx._HUD_HEIGHT - 600));
         imageButtons[_EXIT].setVisible(true);
         app.stage.addActor(imageButtons[_EXIT]);
 
@@ -258,8 +258,8 @@ public class MenuPage implements UIPage, Disposable
         {
             Trace.dbg("Adding Heap Usage debug...");
 
-            javaHeapLabel   = scene2DUtils.addLabel("JAVA HEAP: ", 40, (Gfx._SMALL_HUD_HEIGHT - 200), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
-            nativeHeapLabel = scene2DUtils.addLabel("NATIVE HEAP: ", 40, (Gfx._SMALL_HUD_HEIGHT - 220), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
+            javaHeapLabel   = scene2DUtils.addLabel("JAVA HEAP: ", 40, (Gfx._HUD_HEIGHT - 200), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
+            nativeHeapLabel = scene2DUtils.addLabel("NATIVE HEAP: ", 40, (Gfx._HUD_HEIGHT - 220), 20, Color.WHITE, GameAssets._PRO_WINDOWS_FONT);
 
             app.stage.addActor(javaHeapLabel);
             app.stage.addActor(nativeHeapLabel);
@@ -286,7 +286,7 @@ public class MenuPage implements UIPage, Disposable
             if (calendar.get(Calendar.DAY_OF_MONTH) == 11)
             {
                 decoration = scene2DUtils.makeObjectsImage("poppy");
-                decoration.setPosition((Gfx._SMALL_HUD_WIDTH - 100), 40);
+                decoration.setPosition((Gfx._HUD_WIDTH - 100), 40);
                 app.stage.addActor(decoration);
             }
         }

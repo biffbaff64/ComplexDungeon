@@ -70,7 +70,7 @@ public class BaseRenderer implements Disposable
 
         tiledGameCamera  = new OrthoGameCamera(Gfx._GAME_SCENE_WIDTH, Gfx._GAME_SCENE_HEIGHT, "Tiled Cam", app);
         spriteGameCamera = new OrthoGameCamera(Gfx._GAME_SCENE_WIDTH, Gfx._GAME_SCENE_HEIGHT, "Sprite Cam", app);
-        hudGameCamera    = new OrthoGameCamera(Gfx._SMALL_HUD_SCENE_WIDTH, Gfx._SMALL_HUD_SCENE_HEIGHT, "Hud Cam", app);
+        hudGameCamera    = new OrthoGameCamera(Gfx._HUD_SCENE_WIDTH, Gfx._HUD_SCENE_HEIGHT, "Hud Cam", app);
 
         tiledGameCamera.setStretchViewport();
         spriteGameCamera.setStretchViewport();
