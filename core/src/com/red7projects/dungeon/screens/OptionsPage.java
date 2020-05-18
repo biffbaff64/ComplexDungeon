@@ -1,18 +1,3 @@
-/*
- *  Copyright 04/06/2018 Red7Projects.
- *  <p>
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *  <p>
- *  http://www.apache.org/licenses/LICENSE-2.0
- *  <p>
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
 
 package com.red7projects.dungeon.screens;
 
@@ -32,6 +17,8 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.game.Sfx;
+import com.red7projects.dungeon.game.StateID;
+import com.red7projects.dungeon.game.StateManager;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.graphics.Gfx;
@@ -56,6 +43,7 @@ public class OptionsPage implements UIPage
 
     private Texture   foreground;
     private Skin      skin;
+    private StateManager panelState;
 
     private StatsPanel         statsPanel;
     private PrivacyPolicyPanel privacyPanel;
@@ -72,59 +60,86 @@ public class OptionsPage implements UIPage
     public OptionsPage(App _app)
     {
         this.app = _app;
+
+        activePanel = ScreenID._SETTINGS_SCREEN;
+        panelState = new StateManager();
     }
 
     @Override
     public boolean update()
     {
-        if (AppConfig.optionsPageActive)
+        switch (panelState.get())
         {
-            if (activePanel == ScreenID._TEST_PANEL)
+            case _STATE_OPENING:
             {
-                testPanel.updatePanel();
+                panelState.set(StateID._STATE_SETUP);
             }
-        }
+            break;
 
-        if (justFinishedStatsPanel)
-        {
-            if (statsPanel != null)
+            case _STATE_SETUP:
             {
-                statsPanel.dispose();
+                create();
+
+                panelState.set(StateID._STATE_PANEL_UPDATE);
             }
+            break;
 
-            justFinishedStatsPanel = false;
-            statsPanel = null;
-            activePanel = ScreenID._SETTINGS_SCREEN;
-
-            showActors(true);
-        }
-
-        if (justFinishedPrivacyPanel)
-        {
-            if (privacyPanel != null)
+            case _STATE_PANEL_UPDATE:
             {
-                privacyPanel.dispose();
+                if (AppConfig.optionsPageActive)
+                {
+                    if (activePanel == ScreenID._TEST_PANEL)
+                    {
+                        testPanel.updatePanel();
+                    }
+                }
+
+                if (justFinishedStatsPanel)
+                {
+                    if (statsPanel != null)
+                    {
+                        statsPanel.dispose();
+                    }
+
+                    justFinishedStatsPanel = false;
+                    statsPanel = null;
+                    activePanel = ScreenID._SETTINGS_SCREEN;
+
+                    showActors(true);
+                }
+
+                if (justFinishedPrivacyPanel)
+                {
+                    if (privacyPanel != null)
+                    {
+                        privacyPanel.dispose();
+                    }
+
+                    justFinishedPrivacyPanel = false;
+                    privacyPanel = null;
+                    activePanel = ScreenID._SETTINGS_SCREEN;
+
+                    showActors(true);
+                }
+
+                if (justFinishedTestPanel)
+                {
+                    if (testPanel != null)
+                    {
+                        testPanel.clearUp();
+                    }
+
+                    justFinishedTestPanel = false;
+                    testPanel = null;
+                    activePanel = ScreenID._SETTINGS_SCREEN;
+
+                    showActors(true);
+                }
             }
+            break;
 
-            justFinishedPrivacyPanel = false;
-            privacyPanel = null;
-            activePanel = ScreenID._SETTINGS_SCREEN;
-
-            showActors(true);
-        }
-
-        if (justFinishedTestPanel)
-        {
-            if (testPanel != null)
-            {
-                testPanel.clearUp();
-            }
-
-            justFinishedTestPanel = false;
-            testPanel = null;
-            activePanel = ScreenID._SETTINGS_SCREEN;
-
-            showActors(true);
+            default:
+                break;
         }
 
         return false;
@@ -138,6 +153,7 @@ public class OptionsPage implements UIPage
             case _PRIVACY_POLICY_SCREEN:    privacyPanel.draw(spriteBatch);    break;
             case _TEST_PANEL:               testPanel.draw(spriteBatch);       break;
 
+            case _SETTINGS_SCREEN:
             default:
             {
                 if (foreground != null)
@@ -157,7 +173,13 @@ public class OptionsPage implements UIPage
     public void show()
     {
         setupCompleted = false;
+        activePanel = ScreenID._SETTINGS_SCREEN;
 
+        panelState.set(StateID._STATE_OPENING);
+    }
+
+    private void create()
+    {
         foreground = app.assets.loadSingleAsset("data/options_foreground.png", Texture.class);
 
         skin = new Skin(Gdx.files.internal("data/uiskin.json"));
