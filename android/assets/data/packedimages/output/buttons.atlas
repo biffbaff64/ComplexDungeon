@@ -223,16 +223,16 @@ button_arrow_right
   index: -1
 button_d
   rotate: false
-  xy: 807, 28
-  size: 66, 66
-  orig: 66, 66
+  xy: 607, 849
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 button_d_pressed
   rotate: false
-  xy: 875, 22
-  size: 66, 66
-  orig: 66, 66
+  xy: 246, 3
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 button_drop
@@ -405,7 +405,7 @@ new_back_button
   index: -1
 new_back_button_pressed
   rotate: false
-  xy: 883, 90
+  xy: 807, 52
   size: 71, 42
   orig: 71, 42
   offset: 0, 0

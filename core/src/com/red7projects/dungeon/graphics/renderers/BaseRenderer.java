@@ -74,7 +74,7 @@ public class BaseRenderer implements Disposable
 
         tiledGameCamera.setStretchViewport();
         spriteGameCamera.setStretchViewport();
-        hudGameCamera.setFitViewport();
+        hudGameCamera.setStretchViewport();
 
         tiledGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
         spriteGameCamera.setZoomDefault(Gfx._DEFAULT_ZOOM);
