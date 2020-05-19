@@ -35,16 +35,19 @@ public class MessagePanel
 
         if (!app.getHud().messageManager.doesPanelExist(panels[panelIndex]))
         {
+            UIUtils.setup(app);
+            SimpleVec2F offset = UIUtils.getHUDOffset();
+
             app.getHud().messageManager.enable();
             app.getHud().messageManager.addSlidePanel(panels[panelIndex]);
             app.getHud().messageManager.getCurrentPanel().set
                 (
                     new SimpleVec2F
                         (
-                            (float) (Gfx._HUD_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2,
-                            -app.getHud().messageManager.getCurrentPanelHeight()
+                            offset.getX() + (float) ((Gfx._HUD_WIDTH - app.getHud().messageManager.getCurrentPanelWidth()) / 2),
+                            offset.getY() - app.getHud().messageManager.getCurrentPanelHeight()
                         ),
-                    new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + (Gfx.getTileHeight() * 2)),
+                    new SimpleVec2F(0, app.getHud().messageManager.getCurrentPanelHeight() + Gfx.getTileHeight()),
                     new Direction(Movement._DIRECTION_STILL, Movement._DIRECTION_UP),
                     new Speed(0, 40)
                 );

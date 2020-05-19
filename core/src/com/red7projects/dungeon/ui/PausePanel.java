@@ -25,6 +25,7 @@ import com.red7projects.dungeon.game.Sfx;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.input.buttons.ButtonID;
 import com.red7projects.dungeon.input.buttons.GameButton;
+import com.red7projects.dungeon.maths.SimpleVec2F;
 
 public class PausePanel extends BasicPanel implements Disposable
 {
@@ -42,10 +43,10 @@ public class PausePanel extends BasicPanel implements Disposable
 
     private static final int[][] displayPos =
         {
-            { 979, (Gfx._HUD_HEIGHT -  702), 603, 89},     // Main Menu
-            {1104, (Gfx._HUD_HEIGHT -  825), 349, 78},     // Exit Pause
-            {1046, (Gfx._HUD_HEIGHT -  950), 460, 78},     // Music
-            {1140, (Gfx._HUD_HEIGHT - 1083), 283, 78},     // FX
+            {489, (Gfx._HUD_HEIGHT - 350), 302, 45},     // Main Menu
+            {552, (Gfx._HUD_HEIGHT - 412), 175, 39},     // Exit Pause
+            {523, (Gfx._HUD_HEIGHT - 475), 230, 39},     // Music
+            {570, (Gfx._HUD_HEIGHT - 541), 142, 39},     // FX
         };
 
     private Texture background;
@@ -124,13 +125,17 @@ public class PausePanel extends BasicPanel implements Disposable
     @Override
     public void setup()
     {
+        UIUtils.setup(app);
+        SimpleVec2F offset = UIUtils.getHUDOffset();
+
         background = app.assets.loadSingleAsset("data/pause_panel_background.png", Texture.class);
 
         buttonHome = new GameButton
             (
                 app.assets.getButtonsAtlas().findRegion("buttonHome"),
                 app.assets.getButtonsAtlas().findRegion("buttonHomePressed"),
-                displayPos[_EXIT][0], displayPos[_EXIT][1],
+                (int) offset.getX() + displayPos[_EXIT][0],
+                (int) offset.getY() + displayPos[_EXIT][1],
                 ButtonID._DEFAULT,
                 app
             );
@@ -139,7 +144,8 @@ public class PausePanel extends BasicPanel implements Disposable
             (
                 app.assets.getButtonsAtlas().findRegion("buttonMusicOn"),
                 app.assets.getButtonsAtlas().findRegion("buttonMusicOff"),
-                displayPos[_MUSIC][0], displayPos[_MUSIC][1],
+                (int) offset.getX() + displayPos[_MUSIC][0],
+                (int) offset.getY() + displayPos[_MUSIC][1],
                 ButtonID._DEFAULT,
                 app
             );
@@ -148,7 +154,8 @@ public class PausePanel extends BasicPanel implements Disposable
             (
                 app.assets.getButtonsAtlas().findRegion("buttonFXOn"),
                 app.assets.getButtonsAtlas().findRegion("buttonFXOff"),
-                displayPos[_FX][0], displayPos[_FX][1],
+                (int) offset.getX() + displayPos[_FX][0],
+                (int) offset.getY() + displayPos[_FX][1],
                 ButtonID._DEFAULT,
                 app
             );
@@ -157,7 +164,8 @@ public class PausePanel extends BasicPanel implements Disposable
             (
                 app.assets.getButtonsAtlas().findRegion("buttonResumeOn"),
                 app.assets.getButtonsAtlas().findRegion("buttonResumeOff"),
-                displayPos[_EXIT_PAUSE][0], displayPos[_EXIT_PAUSE][1],
+                (int) offset.getX() + displayPos[_EXIT_PAUSE][0],
+                (int) offset.getY() + displayPos[_EXIT_PAUSE][1],
                 ButtonID._DEFAULT,
                 app
             );
