@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 //@formatter:off
 public class RoomManager
 {
+    private static final String _MAZE_NW        = "maze1_nw.tmx";         //
+
     private static final String _PASSAGE_ES     = "passage_es.tmx";       //
     private static final String _PASSAGE_ESW    = "passage_esw.tmx";      //
     private static final String _PASSAGE_NS     = "passage_ns.tmx";       //
@@ -47,7 +49,7 @@ public class RoomManager
     private static final String _NES            = "room_nes.tmx";         //
     private static final String _NESW           = "room_nesw.tmx";        //
     private static final String _NESW2          = "room_nesw2.tmx";       //
-    private static final String _NEW            = "room_new.tmx";         //
+    private static final String _N3             = "room_n3.tmx";          //
     private static final String _NW             = "room_nw2.tmx";         //
     private static final String _NWS            = "room_nws.tmx";         //
     private static final String _S              = "room_s.tmx";           //
@@ -76,7 +78,7 @@ public class RoomManager
     private static final String _ROOM15_NE      = "room15_ne.tmx";        //
     private static final String _ROOM16_NW      = "room16_nw.tmx";        //
     private static final String _ROOM17_N       = "room17_n.tmx";         //
-    private static final String _ROOM18_N       = "room18_n.tmx";         //
+    private static final String _ROOM18_NS      = "room18_ns.tmx";         //
 
     private static final String _SECRET1        = "room_secret1.tmx";     //
 
@@ -84,7 +86,7 @@ public class RoomManager
 
     private static final int    _DEFAULT_START_ROW      = 1;
     private static final int    _DEFAULT_START_COLUMN   = 1;
-    private static final String _START_ROOM             = _ROOM18_N;
+    private static final String _START_ROOM             = _ROOM18_NS;
     private static final int    _START_POSITION         = Room._START;
 
     private int worldWidth;
@@ -100,12 +102,12 @@ public class RoomManager
             {null, new Room(_S2),           null,                   null,                   null,                   null,                   new Room(_PRISON_S),    null},  // 1
             {null, new Room(_ROOM1_NS),     new Room(_SECRET1),     new Room(_ROOM4_ES),    new Room(_W),           new Room(_S),           new Room(_SN),          null},  // 2
             {null, new Room(_PASSAGE_NES),  new Room(_NESW2),       new Room(_NESW),        new Room(_ROOM6_ESW),   new Room(_ROOM11_NESW), new Room(_ROOM10_NSW),  null},  // 3
-            {null, new Room(_ROOM2_NES),    new Room(_ROOM3_NEW),   new Room(_ROOM9_NESW),  new Room(_ROOM8_NW),    new Room(_ROOM7_NS),    new Room(_PASSAGE_NS),  null},  // 4
+            {null, new Room(_ROOM2_NES),    new Room(_ROOM3_NEW),   new Room(_ROOM9_NESW),  new Room(_MAZE_NW),     new Room(_ROOM7_NS),    new Room(_PASSAGE_NS),  null},  // 4
             {null, new Room(_N),            new Room(_E),           new Room(_ROOM5_NE),    null,                   new Room(_NES),         new Room(_NW),          null},  // 5
             {null, new Room(_PASSAGE_ES),   new Room(_WS),          null,                   null,                   new Room(_ROOM12_NS),   null,                   null},  // 6
             {null, new Room(_ROOM14_NS),    new Room(_PASSAGE_NE),  new Room(_PASSAGE_ESW), new Room(_ROOM13_ESW),  new Room(_NWS),         new Room(_PASSAGE_S),   null},  // 7
-            {null, new Room(_ROOM17_N),     new Room(_N2),          new Room(_ROOM18_N),    new Room(_ROOM2_NS),    new Room(_ROOM15_NE),   new Room(_ROOM16_NW),   null},  // 8
-            {null, null,                    null,                   null,                   new Room(_PRISON_N),    null,                   null,                   null},  // 9
+            {null, new Room(_ROOM17_N),     new Room(_N2),          new Room(_ROOM18_NS),   new Room(_ROOM2_NS),    new Room(_ROOM15_NE),   new Room(_ROOM16_NW),   null},  // 8
+            {null, null,                    null,                   new Room(_N3),          new Room(_PRISON_N),    null,                   null,                   null},  // 9
 
             // -----------------------------------------
             // DO NOT CHANGE THIS LINE
