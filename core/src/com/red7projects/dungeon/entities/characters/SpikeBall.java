@@ -52,7 +52,6 @@ public class SpikeBall extends BaseEnemy
         distance.set(descriptor._DIST.x * Gfx.getTileWidth(), descriptor._DIST.y * Gfx.getTileHeight());
         distanceReset.set(distance);
 
-        speed.set(descriptor._SPEED);
         setAction(Actions._STANDING);
         stopWatch = StopWatch.start();
 
@@ -60,13 +59,13 @@ public class SpikeBall extends BaseEnemy
         {
             setHorizontalMovementBounds();
 
-            speed.x = Math.max(2.0f + MathUtils.random(2.0f), speed.x);
+            speed.x = 4.0f + MathUtils.random(2.0f);
         }
         else if (descriptor._DIR.getY() != Movement._DIRECTION_STILL)
         {
             setVerticalMovementBounds();
 
-            speed.y = Math.max(2.0f + MathUtils.random(2.0f), speed.y);
+            speed.y = 4.0f + MathUtils.random(2.0f);
         }
     }
 
