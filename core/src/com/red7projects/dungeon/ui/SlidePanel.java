@@ -65,7 +65,7 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
     {
         if (isActive)
         {
-            switch (state.get())
+            switch (state.peek())
             {
                 case _STATE_OPENING:
                 {
@@ -178,7 +178,7 @@ public class SlidePanel extends BasicPanel implements UserInterfacePanel
 
     public StateID getState()
     {
-        return state.get();
+        return state.peek();
     }
 
     public void setState(final StateID newState)

@@ -59,7 +59,7 @@ public class VibratePanel extends BasicPanel implements UserInterfacePanel
     {
         if (!isFinished)
         {
-            switch (state.get())
+            switch (state.peek())
             {
                 case _STATE_SETUP:
                 {

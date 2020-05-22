@@ -1,99 +1,56 @@
-/*
- *  Copyright 24/04/2018 Red7Projects.
- *  <p>
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *  <p>
- *  http://www.apache.org/licenses/LICENSE-2.0
- *  <p>
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
 
 package com.red7projects.dungeon.game;
 
+import java.util.Stack;
+
 public class StateManager
 {
-    private StateID gameState;
-    private StateID previousState;
-    private StateID storedState;
+    private Stack<StateID> stateStack;
 
-    public StateManager(StateID state)
+    public StateManager(StateID _state)
     {
         this();
 
-        set(state);
+        push(_state);
     }
 
     public StateManager()
     {
-        gameState       = StateID._INACTIVE;
-        previousState   = StateID._INACTIVE;
-        storedState     = StateID._INACTIVE;
+        stateStack = new Stack<>();
     }
 
-    public void set(StateID state)
+    public void push(StateID _state)
     {
-        previousState   = gameState;
-        gameState       = state;
+        stateStack.push(_state);
     }
 
-    public StateID get()
+    public void pop()
     {
-        return gameState;
+        stateStack.pop();
     }
 
-    public StateID getPrevious()
+    public void set(StateID _state)
     {
-        return previousState;
+        if (!stateStack.isEmpty())
+        {
+            stateStack.pop();
+        }
+
+        stateStack.push(_state);
     }
 
-    public StateID getStored()
+    public StateID peek()
     {
-        return storedState;
-    }
-
-    public void setStored(StateID _state)
-    {
-        storedState = _state;
-    }
-
-    public boolean hasChanged(StateID state)
-    {
-        return state.compareTo(gameState) != 0;
+        return stateStack.peek();
     }
 
     public boolean equalTo(StateID state)
     {
-        return state.compareTo(gameState) == 0;
-    }
-
-    public boolean differentTo(StateID state)
-    {
-        return state.compareTo(gameState) != 0;
-    }
-
-    public boolean before(StateID state)
-    {
-        return state.compareTo(gameState) > 0;
-    }
-
-    public boolean greaterThanOrEqualTo(StateID state)
-    {
-        return state.compareTo(gameState) <= 0;
+        return state.compareTo(peek()) == 0;
     }
 
     public boolean after(StateID state)
     {
-        return state.compareTo(gameState) < 0;
-    }
-
-    public boolean isPaused()
-    {
-        return gameState == StateID._STATE_PAUSED;
+        return state.compareTo(peek()) < 0;
     }
 }

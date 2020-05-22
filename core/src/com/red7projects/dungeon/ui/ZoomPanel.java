@@ -89,7 +89,7 @@ public class ZoomPanel extends BasicPanel implements UserInterfacePanel
     {
         if (!isFinished)
         {
-            switch (state.get())
+            switch (state.peek())
             {
                 //
                 // Zoom the panel into view
@@ -247,7 +247,7 @@ public class ZoomPanel extends BasicPanel implements UserInterfacePanel
 
     public StateID getState()
     {
-        return state.get();
+        return state.peek();
     }
 
     public void setState(final StateID newState)

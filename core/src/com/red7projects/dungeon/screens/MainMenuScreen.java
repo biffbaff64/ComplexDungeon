@@ -97,11 +97,11 @@ public class MainMenuScreen extends AbstractBaseScreen
     {
         super.update();
 
-        if (app.appState.get() == StateID._STATE_TITLE_SCREEN)
+        if (app.appState.peek() == StateID._STATE_TITLE_SCREEN)
         {
             StateID tempState;
 
-            if ((tempState = update(app.appState).get()) != StateID._STATE_TITLE_SCREEN)
+            if ((tempState = update(app.appState).peek()) != StateID._STATE_TITLE_SCREEN)
             {
                 app.appState.set(tempState);
             }
@@ -117,7 +117,7 @@ public class MainMenuScreen extends AbstractBaseScreen
             Sfx.inst().playTitleTune(true);
         }
 
-        if (state.get() == StateID._STATE_TITLE_SCREEN)
+        if (state.peek() == StateID._STATE_TITLE_SCREEN)
         {
             panels.get(currentPage).update();
 
@@ -178,7 +178,7 @@ public class MainMenuScreen extends AbstractBaseScreen
                 }
                 else
                 {
-                    if (menuPage.menuState.get().equals(StateID._STATE_MENU_UPDATE))
+                    if (menuPage.menuState.peek().equals(StateID._STATE_MENU_UPDATE))
                     {
                         //
                         // Start button(s) check
@@ -204,10 +204,10 @@ public class MainMenuScreen extends AbstractBaseScreen
             }
             else
             {
-                if (menuPage.menuState.get().equals(StateID._STATE_MENU_UPDATE))
+                if (menuPage.menuState.peek().equals(StateID._STATE_MENU_UPDATE))
                 {
                     // If we're still on the title screen...
-                    if (state.get() == StateID._STATE_TITLE_SCREEN)
+                    if (state.peek() == StateID._STATE_TITLE_SCREEN)
                     {
                         //
                         // Check HISCORES button, open hiscores page if pressed
@@ -271,7 +271,7 @@ public class MainMenuScreen extends AbstractBaseScreen
         else
         {
             Trace.__FILE_FUNC();
-            Trace.dbg("Unsupported game state: " + state.get());
+            Trace.dbg("Unsupported game state: " + state.peek());
         }
 
         return state;
@@ -285,7 +285,7 @@ public class MainMenuScreen extends AbstractBaseScreen
      */
     public void draw(final SpriteBatch spriteBatch, final OrthoGameCamera camera)
     {
-        if (app.appState.get() == StateID._STATE_TITLE_SCREEN)
+        if (app.appState.peek() == StateID._STATE_TITLE_SCREEN)
         {
             float originX = (camera.camera.position.x - (float) (Gfx._HUD_WIDTH / 2));
             float originY = (camera.camera.position.y - (float) (Gfx._HUD_HEIGHT / 2));

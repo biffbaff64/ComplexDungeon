@@ -42,7 +42,7 @@ public class GameControlLoop extends AbstractControlLoop
     @Override
     public void update(StateManager gameState)
     {
-        switch (gameState.get())
+        switch (gameState.peek())
         {
             //
             // Initialise the current level.
@@ -131,7 +131,7 @@ public class GameControlLoop extends AbstractControlLoop
 
             default:
             {
-                Trace.__FILE_FUNC("Unsupported gameState: " + gameState.get());
+                Trace.__FILE_FUNC("Unsupported gameState: " + gameState.peek());
             }
             break;
         }
@@ -222,7 +222,7 @@ public class GameControlLoop extends AbstractControlLoop
     {
         app.getHud().update();
 
-        if (app.appState.get() == StateID._STATE_DEVELOPER_PANEL)
+        if (app.appState.peek() == StateID._STATE_DEVELOPER_PANEL)
         {
             if (!AppConfig.developerPanelActive)
             {
@@ -232,7 +232,7 @@ public class GameControlLoop extends AbstractControlLoop
         }
         else
         {
-            boolean isLerpingEnabled = (app.appState.get() == StateID._STATE_GAME);
+            boolean isLerpingEnabled = (app.appState.peek() == StateID._STATE_GAME);
 
             app.baseRenderer.tiledGameCamera.isLerpingEnabled = isLerpingEnabled;
             app.baseRenderer.spriteGameCamera.isLerpingEnabled = isLerpingEnabled;
@@ -254,7 +254,7 @@ public class GameControlLoop extends AbstractControlLoop
                     }
                 }
 
-                if (app.appState.get() == StateID._STATE_PAUSED)
+                if (app.appState.peek() == StateID._STATE_PAUSED)
                 {
                     if (!AppConfig.gamePaused)
                     {
@@ -263,7 +263,7 @@ public class GameControlLoop extends AbstractControlLoop
                 }
                 else
                 {
-                    if (app.appState.get() == StateID._STATE_MESSAGE_PANEL)
+                    if (app.appState.peek() == StateID._STATE_MESSAGE_PANEL)
                     {
                         app.getHud().hideControls(false);
 

@@ -135,7 +135,7 @@ public class BasicPanel implements BasicUIPanel, Disposable
     @Override
     public StateID getState()
     {
-        return state.get();
+        return state.peek();
     }
 
     @Override

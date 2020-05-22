@@ -97,7 +97,7 @@ public class HiscorePage implements UIPage, Disposable
     {
         boolean isFinished = false;
 
-        if (state.get() != StateID._STATE_NEW_HISCORE)
+        if (state.peek() != StateID._STATE_NEW_HISCORE)
         {
             if (stopWatch.time(TimeUnit.MILLISECONDS) >= 75)
             {

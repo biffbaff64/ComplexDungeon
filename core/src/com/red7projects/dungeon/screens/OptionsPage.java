@@ -68,7 +68,7 @@ public class OptionsPage implements UIPage
     @Override
     public boolean update()
     {
-        switch (panelState.get())
+        switch (panelState.peek())
         {
             case _STATE_OPENING:
             {

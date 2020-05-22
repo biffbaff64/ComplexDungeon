@@ -138,7 +138,7 @@ public class MenuPage implements UIPage, Disposable
     @Override
     public boolean update()
     {
-        switch (menuState.get())
+        switch (menuState.peek())
         {
             case _STATE_OPENING:
             {

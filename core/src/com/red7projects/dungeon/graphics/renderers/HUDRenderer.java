@@ -48,7 +48,7 @@ public class HUDRenderer implements GameScreenRenderer
             app.baseRenderer.hudZoom.stop();
             app.baseRenderer.gameZoom.stop();
 
-            switch (app.appState.get())
+            switch (app.appState.peek())
             {
                 case _STATE_TITLE_SCREEN:
                 {

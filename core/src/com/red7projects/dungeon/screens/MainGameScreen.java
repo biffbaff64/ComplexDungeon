@@ -100,7 +100,7 @@ public class MainGameScreen extends AbstractBaseScreen
     @Override
     public void update()
     {
-        switch (app.appState.get())
+        switch (app.appState.peek())
         {
             case _STATE_SETUP:
             case _STATE_GET_READY:
@@ -123,7 +123,7 @@ public class MainGameScreen extends AbstractBaseScreen
 
             case _STATE_PREPARE_GAME_END:
             {
-                app.appState.set(app.appState.getStored());
+                app.appState.pop();
             }
             break;
 
@@ -135,7 +135,7 @@ public class MainGameScreen extends AbstractBaseScreen
             default:
             {
                 Trace.__FILE_FUNC();
-                Trace.dbg("Unsupported game state: " + app.appState.get());
+                Trace.dbg("Unsupported game state: " + app.appState.peek());
             }
         }
     }

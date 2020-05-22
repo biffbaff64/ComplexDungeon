@@ -218,7 +218,7 @@ public class MainPlayer extends GdxSprite
     @Override
     public void update(int spriteNum)
     {
-        if (app.appState.get() == StateID._STATE_PAUSED)
+        if (app.appState.peek() == StateID._STATE_PAUSED)
         {
             setAction(Actions._PAUSED);
         }

@@ -456,7 +456,7 @@ public class HeadsUpDisplay implements Disposable
     {
         if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
         {
-            if (!AppConfig.gamePaused && (app.appState.get() != StateID._STATE_MESSAGE_PANEL))
+            if (!AppConfig.gamePaused && (app.appState.peek() != StateID._STATE_MESSAGE_PANEL))
             {
                 if (app.inputManager.virtualJoystick != null)
                 {
@@ -487,7 +487,7 @@ public class HeadsUpDisplay implements Disposable
     {
         if (!AppConfig.gamePaused)
         {
-            if ((app.appState.get() == StateID._STATE_GAME_FINISHED)
+            if ((app.appState.peek() == StateID._STATE_GAME_FINISHED)
                 && (app.mainGameScreen.completedPanel != null))
             {
                 app.mainGameScreen.completedPanel.draw();
