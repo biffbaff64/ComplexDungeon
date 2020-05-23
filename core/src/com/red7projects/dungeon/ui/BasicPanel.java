@@ -34,7 +34,7 @@ import com.red7projects.dungeon.physics.Direction;
 import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.types.XYSetF;
 
-public class BasicPanel implements BasicUIPanel, Disposable
+public abstract class BasicPanel implements BasicUIPanel, Disposable
 {
     public int xOffset = 0;
     public int yOffset = 0;

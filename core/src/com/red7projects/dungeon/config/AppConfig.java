@@ -53,14 +53,10 @@ public abstract class AppConfig
     public static ControllerPos  virtualControllerPos;      // Virtual (on-screen) joystick position (LEFT or RIGHT)
 
     public static boolean        isShowingSplashScreen;     //
-    public static boolean        menuScreenActive;          //
     public static boolean        gameScreenActive;          //
     public static boolean        finalScreenActive;         //
-    public static boolean        hiscoresPageActive;        //
     public static boolean        optionsPageActive;         //
-    public static boolean        creditsPageActive;         //
     public static boolean        developerPanelActive;      //
-    public static boolean        debugConsoleActive;        //
 
     public static Array<ControllerType> availableInputs;
 
@@ -82,14 +78,10 @@ public abstract class AppConfig
         shutDownActive       = false;
         entitiesExist        = false;
         hudExists            = false;
-        menuScreenActive     = false;
         gameScreenActive     = false;
         finalScreenActive    = false;
-        hiscoresPageActive   = false;
         optionsPageActive    = false;
-        creditsPageActive    = false;
         developerPanelActive = false;
-        debugConsoleActive   = false;
         controllersFitted    = false;
         gameButtonsReady     = false;
         usedController       = "None";

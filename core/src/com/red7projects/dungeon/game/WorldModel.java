@@ -43,14 +43,14 @@ public class WorldModel
         if (AppConfig.isUsingBOX2DPhysics)
         {
             box2DWorld = new World
-                    (
-                            new Vector2
-                                    (
-                                            (Gfx._WORLD_GRAVITY.x * Gfx._PPM),
-                                            (Gfx._WORLD_GRAVITY.y * Gfx._PPM)
-                                    ),
-                            false
-                    );
+                (
+                    new Vector2
+                        (
+                            (Gfx._WORLD_GRAVITY.x * Gfx._PPM),
+                            (Gfx._WORLD_GRAVITY.y * Gfx._PPM)
+                        ),
+                    false
+                );
 
             if (Developer.isDevMode())
             {

@@ -332,7 +332,6 @@ public class MainMenuScreen extends AbstractBaseScreen
 
         super.show();
 
-        AppConfig.menuScreenActive  = true;
         AppConfig.gameScreenActive  = false;
         AppConfig.finalScreenActive = false;
 

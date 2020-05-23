@@ -195,7 +195,6 @@ public class MainGameScreen extends AbstractBaseScreen
         app.currentScreenID = ScreenID._GAME_SCREEN;
         app.cameraUtils.disableAllCameras();
 
-        AppConfig.menuScreenActive  = false;
         AppConfig.gameScreenActive  = true;
         AppConfig.finalScreenActive = false;
 

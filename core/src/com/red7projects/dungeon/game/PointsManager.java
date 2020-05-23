@@ -34,8 +34,8 @@ public class PointsManager
 
     private static final Points[] pointsTable =
         {
-            new Points(GraphicID.G_STORM_DEMON,         50),
-            new Points(GraphicID.G_BOUNCER,          100),
+            new Points(GraphicID.G_STORM_DEMON,     500),
+            new Points(GraphicID.G_BOUNCER,         100),
             new Points(GraphicID.G_COIN,            25),
             new Points(GraphicID.G_GEM,             25),
             new Points(GraphicID.G_KEY,             50),

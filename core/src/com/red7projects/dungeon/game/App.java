@@ -33,17 +33,14 @@ import com.red7projects.dungeon.map.MapUtils;
 import com.red7projects.dungeon.map.PathUtils;
 import com.red7projects.dungeon.map.RoomManager;
 import com.red7projects.dungeon.physics.CollisionUtils;
-import com.red7projects.dungeon.physics.box2d.BodyBuilder;
-import com.red7projects.dungeon.physics.box2d.Box2DContactListener;
-import com.red7projects.dungeon.physics.box2d.Box2DEntityHelper;
 import com.red7projects.dungeon.screens.MainGameScreen;
 import com.red7projects.dungeon.screens.MainMenuScreen;
 import com.red7projects.dungeon.screens.ScreenID;
 import com.red7projects.dungeon.ui.HeadsUpDisplay;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.utils.logging.google.AdsController;
-import com.red7projects.dungeon.utils.logging.google.PlayServices;
+import com.red7projects.dungeon.utils.google.AdsController;
+import com.red7projects.dungeon.utils.google.PlayServices;
 
 @SuppressWarnings({"WeakerAccess"})
 //@formatter:off
@@ -73,18 +70,18 @@ public abstract class App extends com.badlogic.gdx.Game
     //
     // Globals to be made available when MainGameScreen is active.
     // These must be released when MainGameScreen is destroyed.
-    public HeadsUpDisplay       hud;
-    public RoomManager          roomManager;
+    public HeadsUpDisplay hud;
+    public RoomManager    roomManager;
 
     // TODO: 28/02/2019 - Try and remove the need for as many of these as possible
-    public MapData              mapData;
-    public CollisionUtils       collisionUtils;
-    public PathUtils            pathUtils;
-    public HighScoreUtils       highScoreUtils;
-    public EntityManager        entityManager;
-    public EntityUtils          entityUtils;
-    public EntityData           entityData;
-    public GameUtils            gameUtils;
+    public MapData        mapData;
+    public CollisionUtils collisionUtils;
+    public PathUtils      pathUtils;
+    public HighScoreUtils highScoreUtils;
+    public EntityManager  entityManager;
+    public EntityUtils    entityUtils;
+    public EntityData     entityData;
+    public GameUtils      gameUtils;
 
     public MainPlayer getPlayer()
     {

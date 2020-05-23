@@ -18,7 +18,7 @@ package com.red7projects.dungeon;
 
 import android.content.Intent;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.red7projects.dungeon.utils.logging.google.RCConstants;
+import com.red7projects.dungeon.utils.google.RCConstants;
 
 class LeaderboardHandler implements OnSuccessListener<Intent>
 {

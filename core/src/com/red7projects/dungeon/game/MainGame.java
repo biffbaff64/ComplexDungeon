@@ -3,8 +3,8 @@ package com.red7projects.dungeon.game;
 import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.utils.logging.google.DummyAdsController;
-import com.red7projects.dungeon.utils.logging.google.PlayServices;
+import com.red7projects.dungeon.utils.google.DummyAdsController;
+import com.red7projects.dungeon.utils.google.PlayServices;
 
 // @formatter:off
 public class MainGame extends App

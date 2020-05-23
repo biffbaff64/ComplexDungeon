@@ -64,15 +64,6 @@ public class GfxAsset
         this.playMode   = _playmode;
     }
 
-    public GfxAsset(GfxAsset source)
-    {
-        this.graphicID  = source.graphicID;
-        this.preference = source.preference;
-        this.asset      = source.asset;
-        this.frames     = source.frames;
-        this.playMode   = source.playMode;
-    }
-
     public void debug()
     {
         Trace.__FILE_FUNC_WithDivider();

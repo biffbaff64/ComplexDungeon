@@ -1,5 +1,5 @@
 /*
- *  Copyright 31/01/2019 Red7Projects.
+ *  Copyright 24/04/2018 Red7Projects.
  *  <p>
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -14,23 +14,31 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.assets;
+package com.red7projects.dungeon.utils.google;
 
-import com.red7projects.dungeon.physics.Movement;
+import com.red7projects.dungeon.game.App;
 
-/**
- * Matches a graphics asset with a Movement.Dir direction.
- * Useful for maps of assets which differ depending upon
- * direction of movement.
- */
-public class AssetForDirection
+public interface PlayServices
 {
-    public final Movement.Dir direction;
-    public final String   asset;
+    void setup(App _app);
 
-    public AssetForDirection(final Movement.Dir _direction, final String _asset)
-    {
-        this.direction = _direction;
-        this.asset = _asset;
-    }
+    void createApiClient();
+
+    void signIn();
+
+    void signInSilently();
+
+    void signOut();
+
+    boolean isSignedIn();
+
+    boolean isEnabled();
+
+    void submitScore(int score, int level);
+
+    void unlockAchievement(String achievementId);
+
+    void showAchievementScreen();
+
+    void showLeaderboard();
 }

@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.red7projects.dungeon.utils.logging.google;
+package com.red7projects.dungeon.utils.google;
 
 public enum RCConstants
 {

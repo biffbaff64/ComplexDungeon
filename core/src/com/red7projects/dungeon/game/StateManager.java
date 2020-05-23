@@ -7,6 +7,12 @@ public class StateManager
 {
     private Stack<StateID> stateStack;
 
+    /**
+     * Construct a new StateManager, and set
+     * the current state to the supplied {@link StateID}.
+     *
+     * @param _state    the Supplied StateID.
+     */
     public StateManager(StateID _state)
     {
         this();
