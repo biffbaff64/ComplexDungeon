@@ -41,7 +41,6 @@ import java.io.IOException;
 public class PrivacyPolicyPanel extends BasicPanel
 {
     private final String _FILE_NAME     = "documents/privacy_policy.txt";
-//    private final String _BACKGROUND    = "data/empty_screen.png";
 
     private       Image title;
     private final App   app;
@@ -105,15 +104,12 @@ public class PrivacyPolicyPanel extends BasicPanel
         buffer.clear();
         scrollPane.clear();
 
-//        app.assets.unloadAsset(_BACKGROUND);
-
         buffer.addAction(Actions.removeActor());
         scrollPane.addAction(Actions.removeActor());
         title.addAction(Actions.removeActor());
 
         title = null;
         skin = null;
-//        texture = null;
     }
 
     public void setup()
@@ -128,8 +124,6 @@ public class PrivacyPolicyPanel extends BasicPanel
         Texture sky = app.assets.loadSingleAsset("data/night_sky.png", Texture.class);
         Image image = new Image(new TextureRegion(sky));
         buffer.setBackground(image.getDrawable());
-
-//        texture = app.assets.loadSingleAsset(_BACKGROUND, Texture.class);
 
         createTitle();
 

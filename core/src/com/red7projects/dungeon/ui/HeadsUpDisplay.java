@@ -40,6 +40,7 @@ import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.utils.development.DebugRenderer;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.development.DeveloperPanel;
+import com.red7projects.dungeon.utils.development.RoomSelector;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.Locale;
@@ -120,6 +121,7 @@ public class HeadsUpDisplay implements Disposable
     private BitmapFont      smallFont;
     private DeveloperPanel  developerPanel;
     private TextureRegion[] compassTexture;
+    private RoomSelector    roomSelector;
 
     private float originX;
     private float originY;
@@ -150,16 +152,16 @@ public class HeadsUpDisplay implements Disposable
         //
         // The player strength for the current life
         healthBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        healthBar.setHeight(19);
+        healthBar.height = 19;
+        healthBar.scale = 3.0f;
         healthBar.setColor(Color.GREEN);
-        healthBar.setScale(3.0f);
 
         //
         // The number of lives the player has
         livesBar = new ProgressBar(1, 0, 0, Constants._MAX_PROGRESSBAR_LENGTH, "bar9", app);
-        livesBar.setHeight(19);
+        livesBar.height = 19;
+        livesBar.scale = 3.0f;
         livesBar.setColor(Color.GREEN);
-        livesBar.setScale(3.0f);
 
         compassTexture = new TextureRegion[5];
         GfxUtils.splitRegion
@@ -171,7 +173,6 @@ public class HeadsUpDisplay implements Disposable
             );
 
         itemBar = new ItemBar(app);
-
         itemPanelIndex = 0;
 
         FontUtils fontUtils = new FontUtils();
@@ -180,6 +181,12 @@ public class HeadsUpDisplay implements Disposable
         bigFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
         midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 15);
         smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 10);
+
+        if (Developer.isDevMode())
+        {
+            roomSelector = new RoomSelector(app);
+            roomSelector.setRoomlist();
+        }
 
         AppConfig.hudExists = true;
 
@@ -285,6 +292,8 @@ public class HeadsUpDisplay implements Disposable
                 app.appState.set(StateID._STATE_DEVELOPER_PANEL);
                 hudStateID = StateID._STATE_DEVELOPER_PANEL;
             }
+
+            roomSelector.update((int) originX + 434, (int) originY + (Gfx._HUD_HEIGHT - 70));
         }
     }
 

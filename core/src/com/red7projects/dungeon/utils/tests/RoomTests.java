@@ -19,6 +19,7 @@ public abstract class RoomTests
         app = _app;
 
         markerIDCheck(TileID._PLAYER_TILE, true);
+        markerIDCheck(TileID._VILLAGER_TILE, false);
         markerIDCheck(TileID._SHIELD_TILE, false);
 
         objectIDCheck();

@@ -264,27 +264,27 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup color="#ffaa00" id="65" name="collision" visible="0">
+ <objectgroup color="#ffaa00" id="65" name="collision">
   <object id="880" name="Wall" type="Collision" x="0" y="2176" width="1216" height="512"/>
-  <object id="881" name="Wall" type="Collision" x="0" y="3264" width="2240" height="960"/>
-  <object id="882" name="Wall" type="Collision" x="2240" y="3264" width="576" height="768"/>
-  <object id="883" name="Wall" type="Collision" x="2048" y="0" width="1600" height="1024"/>
-  <object id="884" name="Wall" type="Collision" x="6144" y="2624" width="1024" height="1280"/>
+  <object id="881" name="Wall" type="Collision" x="0" y="3264" width="2240" height="896"/>
+  <object id="882" name="Wall" type="Collision" x="2240" y="3264" width="576" height="704"/>
+  <object id="883" name="Wall" type="Collision" x="2048" y="0" width="1600" height="960"/>
+  <object id="884" name="Wall" type="Collision" x="6144" y="2624" width="1024" height="1216"/>
   <object id="885" name="Wall" type="Collision" x="2240" y="4928" width="4928" height="320"/>
   <object id="886" name="Wall" type="Collision" x="0" y="4736" width="2240" height="512"/>
-  <object id="887" name="Wall" type="Collision" x="3840" y="3712" width="1280" height="192"/>
-  <object id="889" name="Wall" type="Collision" x="5120" y="2624" width="1024" height="192"/>
-  <object id="890" name="Wall" type="Collision" x="5632" y="3712" width="512" height="192"/>
+  <object id="887" name="Wall" type="Collision" x="3840" y="3712" width="1280" height="128"/>
+  <object id="889" name="Wall" type="Collision" x="5120" y="2624" width="1024" height="128"/>
+  <object id="890" name="Wall" type="Collision" x="5632" y="3712" width="512" height="128"/>
   <object id="891" name="Wall" type="Collision" x="4608" y="4608" width="640" height="320"/>
-  <object id="893" name="Wall" type="Collision" x="3840" y="3904" width="768" height="1024"/>
+  <object id="893" name="Wall" type="Collision" x="3840" y="3840" width="768" height="1088"/>
   <object id="894" name="Wall" type="Collision" x="3648" y="1920" width="576" height="64"/>
   <object id="895" name="Wall" type="Collision" x="5888" y="1728" width="448" height="896"/>
   <object id="896" name="Wall" type="Collision" x="4224" y="0" width="832" height="1984"/>
   <object id="897" name="Wall" type="Collision" x="5888" y="1536" width="448" height="192"/>
-  <object id="898" name="Wall" type="Collision" x="5056" y="960" width="320" height="768"/>
-  <object id="899" name="Wall" type="Collision" x="3328" y="1984" width="1088" height="192"/>
-  <object id="902" name="Wall" type="Collision" x="2624" y="1984" width="192" height="192"/>
-  <object id="903" name="Wall" type="Collision" x="2432" y="1984" width="192" height="448"/>
+  <object id="898" name="Wall" type="Collision" x="5056" y="896" width="320" height="768"/>
+  <object id="899" name="Wall" type="Collision" x="3328" y="1984" width="1088" height="128"/>
+  <object id="902" name="Wall" type="Collision" x="2624" y="1984" width="192" height="128"/>
+  <object id="903" name="Wall" type="Collision" x="2432" y="1984" width="192" height="384"/>
   <object id="915" name="Spike Block Vertical" gid="18" x="2816" y="4032" width="64" height="64">
    <properties>
     <property name="xdirection" value="still"/>
@@ -296,10 +296,10 @@
    </properties>
   </object>
   <object id="916" name="Wall" type="Collision" x="0" y="2688" width="1920" height="576"/>
-  <object id="917" name="Wall" type="Collision" x="5056" y="0" width="1280" height="960"/>
-  <object id="918" name="Wall" type="Collision" x="768" y="0" width="1280" height="1600"/>
+  <object id="917" name="Wall" type="Collision" x="5056" y="0" width="1280" height="896"/>
+  <object id="918" name="Wall" type="Collision" x="768" y="0" width="1280" height="1536"/>
   <object id="924" name="Wall" type="Collision" x="6336" y="0" width="832" height="2624"/>
-  <object id="927" name="Wall" type="Collision" x="6656" y="3904" width="512" height="1024"/>
+  <object id="927" name="Wall" type="Collision" x="6656" y="3840" width="512" height="1088"/>
   <object id="932" name="Spike Block Vertical" gid="18" x="4416" y="2176" width="64" height="64">
    <properties>
     <property name="xdirection" value="still"/>
@@ -310,7 +310,7 @@
     <property name="yspeed" type="float" value="0"/>
    </properties>
   </object>
-  <object id="934" name="Wall" type="Collision" x="3648" y="0" width="576" height="1280"/>
+  <object id="934" name="Wall" type="Collision" x="3648" y="0" width="576" height="1216"/>
   <object id="935" name="Spike Block" gid="17" x="2560" y="2688" width="64" height="64">
    <properties>
     <property name="xdirection" value="right"/>
@@ -321,12 +321,12 @@
     <property name="yspeed" type="float" value="0"/>
    </properties>
   </object>
-  <object id="936" name="Wall" type="Collision" x="2432" y="2432" width="128" height="256"/>
-  <object id="937" name="Wall" type="Collision" x="2432" y="2688" width="192" height="192"/>
+  <object id="936" name="Wall" type="Collision" x="2432" y="2368" width="128" height="320"/>
+  <object id="937" name="Wall" type="Collision" x="2432" y="2688" width="192" height="128"/>
   <object id="942" name="Wall" type="Collision" x="0" y="0" width="256" height="2176"/>
-  <object id="944" name="Wall" type="Collision" x="2816" y="3264" width="256" height="704"/>
-  <object id="945" name="Wall" type="Collision" x="3072" y="3264" width="256" height="768"/>
-  <object id="946" name="Wall" type="Collision" x="4672" y="1984" width="384" height="192"/>
-  <object id="947" name="Wall" type="Collision" x="4416" y="1984" width="256" height="128"/>
+  <object id="944" name="Wall" type="Collision" x="2816" y="3264" width="256" height="640"/>
+  <object id="945" name="Wall" type="Collision" x="3072" y="3264" width="256" height="704"/>
+  <object id="946" name="Wall" type="Collision" x="4672" y="1984" width="384" height="128"/>
+  <object id="947" name="Wall" type="Collision" x="4416" y="1984" width="256" height="64"/>
  </objectgroup>
 </map>
