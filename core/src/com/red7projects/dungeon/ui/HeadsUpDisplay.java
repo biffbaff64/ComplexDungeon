@@ -293,7 +293,7 @@ public class HeadsUpDisplay implements Disposable
                 hudStateID = StateID._STATE_DEVELOPER_PANEL;
             }
 
-            roomSelector.update((int) originX + 434, (int) originY + (Gfx._HUD_HEIGHT - 70));
+            roomSelector.update((int) originX + 1100, (int) originY + 75);
         }
     }
 
