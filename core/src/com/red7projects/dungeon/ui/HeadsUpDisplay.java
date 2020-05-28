@@ -40,7 +40,6 @@ import com.red7projects.dungeon.utils.FontUtils;
 import com.red7projects.dungeon.utils.development.DebugRenderer;
 import com.red7projects.dungeon.utils.development.Developer;
 import com.red7projects.dungeon.utils.development.DeveloperPanel;
-import com.red7projects.dungeon.utils.development.RoomSelector;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 import java.util.Locale;
@@ -121,7 +120,6 @@ public class HeadsUpDisplay implements Disposable
     private BitmapFont      smallFont;
     private DeveloperPanel  developerPanel;
     private TextureRegion[] compassTexture;
-    private RoomSelector    roomSelector;
 
     private float originX;
     private float originY;
@@ -181,12 +179,6 @@ public class HeadsUpDisplay implements Disposable
         bigFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 20);
         midFont   = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 15);
         smallFont = fontUtils.createFont(GameAssets._HUD_PANEL_FONT, 10);
-
-        if (Developer.isDevMode())
-        {
-            roomSelector = new RoomSelector(app);
-            roomSelector.setRoomlist();
-        }
 
         AppConfig.hudExists = true;
 
@@ -292,8 +284,6 @@ public class HeadsUpDisplay implements Disposable
                 app.appState.set(StateID._STATE_DEVELOPER_PANEL);
                 hudStateID = StateID._STATE_DEVELOPER_PANEL;
             }
-
-            roomSelector.update((int) originX + 1100, (int) originY + 75);
         }
     }
 

@@ -19,8 +19,6 @@
 
 package com.red7projects.dungeon.utils.logging;
 
-import com.badlogic.gdx.utils.Array;
-
 import java.util.Arrays;
 import java.util.Locale;
 

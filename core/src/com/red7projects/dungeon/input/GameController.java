@@ -346,7 +346,7 @@ public class GameController implements ControllerListener
             UIButtons.controllerAxisValue = -1.0f;
         }
 
-        if ((axisCode == ControllerMap._AXIS_LEFT_X) || (axisCode == ControllerMap._AXIS_RIGHT_X))
+        if (axisCode == ControllerMap._AXIS_LEFT_X)
         {
             app.inputManager._horizontalValue = value;
 
@@ -392,7 +392,7 @@ public class GameController implements ControllerListener
                 UIButtons.controllerAxisValue = 0;
             }
         }
-        else if ((axisCode == ControllerMap._AXIS_LEFT_Y) || (axisCode == ControllerMap._AXIS_RIGHT_Y))
+        else if (axisCode == ControllerMap._AXIS_LEFT_Y)
         {
             app.inputManager._verticalValue = value;
 

@@ -30,4 +30,19 @@ public class SimpleLine2D
         this.x2 = _x2;
         this.y2 = _y2;
     }
+
+    public boolean intersects(SimpleLine2D line2)
+    {
+        float s1_x = x2 - x1;
+        float s1_y = y2 - y1;
+        float s2_x = line2.x2 - line2.x1;
+        float s2_y = line2.y2 - line2.y1;
+
+        final float v = (-s2_x * s1_y) + (s1_x * s2_y);
+
+        float s = ((-s1_y * (x1 - line2.x1)) + (s1_x * (y1 - line2.y1))) / v;
+        float t = ((s2_x * (y1 - line2.y1)) - (s2_y * (x1 - line2.x1))) / v;
+
+        return ((s >= 0) && (s <= 1) && (t >= 0) && (t <= 1));
+    }
 }

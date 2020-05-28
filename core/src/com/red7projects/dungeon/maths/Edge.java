@@ -46,30 +46,15 @@ public class Edge extends SimpleLine2D
                 isIntersecting = true;
             }
 
-            if (linesIntersect(this, new SimpleLine2D(x, y, x, y + height))
-                    || linesIntersect(this, new SimpleLine2D(x, y + height, x + width, y + height))
-                    || linesIntersect(this, new SimpleLine2D(x + width, y, x + width, y + height))
-                    || linesIntersect(this, new SimpleLine2D(x, y, x + width, y)))
+            if (intersects(new SimpleLine2D(x, y, x, y + height))
+                    || intersects(new SimpleLine2D(x, y + height, x + width, y + height))
+                    || intersects(new SimpleLine2D(x + width, y, x + width, y + height))
+                    || intersects(new SimpleLine2D(x, y, x + width, y)))
             {
                 isIntersecting = true;
             }
         }
 
         return isIntersecting;
-    }
-
-    private boolean linesIntersect(SimpleLine2D line1, SimpleLine2D line2)
-    {
-        float s1_x = line1.x2 - line1.x1;
-        float s1_y = line1.y2 - line1.y1;
-        float s2_x = line2.x2 - line2.x1;
-        float s2_y = line2.y2 - line2.y1;
-
-        final float v = (-s2_x * s1_y) + (s1_x * s2_y);
-
-        float s = ((-s1_y * (line1.x1 - line2.x1)) + (s1_x * (line1.y1 - line2.y1))) / v;
-        float t = ((s2_x * (line1.y1 - line2.y1)) - (s2_y * (line1.x1 - line2.x1))) / v;
-
-        return ((s >= 0) && (s <= 1) && (t >= 0) && (t <= 1));
     }
 }
