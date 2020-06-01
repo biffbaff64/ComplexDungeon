@@ -4,142 +4,128 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-apple
+barrel1
   rotate: false
-  xy: 1978, 1320
-  size: 64, 64
-  orig: 64, 64
+  xy: 1924, 1380
+  size: 90, 152
+  orig: 90, 152
   offset: 0, 0
   index: -1
-armour_gold
+barrel2
   rotate: false
-  xy: 548, 290
-  size: 64, 46
-  orig: 64, 46
+  xy: 1924, 1226
+  size: 90, 152
+  orig: 90, 152
   offset: 0, 0
   index: -1
-axe
+barrel3
   rotate: false
-  xy: 1978, 1254
-  size: 64, 64
-  orig: 64, 64
+  xy: 1924, 1072
+  size: 90, 152
+  orig: 90, 152
+  offset: 0, 0
+  index: -1
+barrel4
+  rotate: false
+  xy: 1924, 918
+  size: 90, 152
+  orig: 90, 152
   offset: 0, 0
   index: -1
 bullet1
   rotate: false
-  xy: 2010, 1118
+  xy: 1990, 1750
   size: 32, 18
   orig: 32, 18
   offset: 0, 0
   index: -1
-bullet2
-  rotate: false
-  xy: 1978, 1188
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 bullet3
   rotate: false
-  xy: 1924, 1836
+  xy: 1968, 12
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-cake
-  rotate: false
-  xy: 572, 338
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 cast_down
   rotate: false
-  xy: 1474, 12
+  xy: 1474, 4
   size: 492, 120
   orig: 492, 120
   offset: 0, 0
   index: -1
-cherries
+crate
   rotate: false
-  xy: 1968, 68
-  size: 64, 64
-  orig: 64, 64
+  xy: 1924, 276
+  size: 98, 120
+  orig: 98, 120
   offset: 0, 0
   index: -1
 exclamation_mark
   rotate: false
-  xy: 516, 290
+  xy: 1990, 1820
   size: 30, 48
   orig: 30, 48
   offset: 0, 0
   index: -1
-flame_thrower
-  rotate: false
-  xy: 2, 484
-  size: 636, 1336
-  orig: 636, 1336
-  offset: 0, 0
-  index: -1
-flame_thrower_vertical
-  rotate: false
-  xy: 640, 1184
-  size: 1336, 636
-  orig: 1336, 636
-  offset: 0, 0
-  index: -1
-grapes
-  rotate: false
-  xy: 1968, 2
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 ljm_death
   rotate: false
-  xy: 1924, 1870
+  xy: 1990, 1870
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 mini_fireball
   rotate: false
-  xy: 1978, 1534
+  xy: 1924, 1534
   size: 64, 384
   orig: 64, 384
   offset: 0, 0
   index: -1
-monster
-  rotate: false
-  xy: 1474, 134
-  size: 512, 128
-  orig: 512, 128
-  offset: 0, 0
-  index: -1
-plant_pot
-  rotate: false
-  xy: 1978, 1386
-  size: 64, 146
-  orig: 64, 146
-  offset: 0, 0
-  index: -1
 player_appear
   rotate: false
-  xy: 2, 1822
+  xy: 2, 270
   size: 1920, 96
   orig: 1920, 96
   offset: 0, 0
   index: -1
 player_laser
   rotate: false
-  xy: 2, 264
+  xy: 2, 2
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
+pot1
+  rotate: false
+  xy: 1924, 788
+  size: 93, 128
+  orig: 93, 128
+  offset: 0, 0
+  index: -1
+pot2
+  rotate: false
+  xy: 1924, 658
+  size: 93, 128
+  orig: 93, 128
+  offset: 0, 0
+  index: -1
+pot3
+  rotate: false
+  xy: 1924, 528
+  size: 93, 128
+  orig: 93, 128
+  offset: 0, 0
+  index: -1
+pot4
+  rotate: false
+  xy: 1924, 398
+  size: 93, 128
+  orig: 93, 128
+  offset: 0, 0
+  index: -1
 question_mark
   rotate: false
-  xy: 2010, 1138
+  xy: 1990, 1770
   size: 30, 48
   orig: 30, 48
   offset: 0, 0
@@ -153,58 +139,79 @@ scorpìon_walk
   index: -1
 shield
   rotate: false
-  xy: 572, 404
+  xy: 1968, 46
   size: 64, 78
   orig: 64, 78
   offset: 0, 0
   index: -1
-soldier_fight_down
-  rotate: false
-  xy: 640, 954
-  size: 1368, 228
-  orig: 1368, 228
-  offset: 0, 0
-  index: -1
-soldier_fight_left
-  rotate: false
-  xy: 640, 724
-  size: 1368, 228
-  orig: 1368, 228
-  offset: 0, 0
-  index: -1
-soldier_fight_right
-  rotate: false
-  xy: 640, 494
-  size: 1368, 228
-  orig: 1368, 228
-  offset: 0, 0
-  index: -1
-soldier_fight_up
-  rotate: false
-  xy: 640, 264
-  size: 1368, 228
-  orig: 1368, 228
-  offset: 0, 0
-  index: -1
 spinning_spikes
   rotate: false
-  xy: 2, 6
+  xy: 2, 12
   size: 1470, 256
   orig: 1470, 256
   offset: 0, 0
   index: -1
-teleporter
-  rotate: false
-  xy: 2, 274
-  size: 512, 64
-  orig: 512, 64
-  offset: 0, 0
-  index: -1
 treasure_chest
   rotate: false
-  xy: 2, 340
+  xy: 1474, 126
   size: 568, 142
   orig: 568, 142
+  offset: 0, 0
+  index: -1
+walk_down
+  rotate: false
+  xy: 2, 1726
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_down_left
+  rotate: false
+  xy: 2, 1532
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_down_right
+  rotate: false
+  xy: 2, 1338
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_left
+  rotate: false
+  xy: 2, 1144
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_right
+  rotate: false
+  xy: 2, 950
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_up
+  rotate: false
+  xy: 2, 756
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_up_left
+  rotate: false
+  xy: 2, 562
+  size: 1920, 192
+  orig: 1920, 192
+  offset: 0, 0
+  index: -1
+walk_up_right
+  rotate: false
+  xy: 2, 368
+  size: 1920, 192
+  orig: 1920, 192
   offset: 0, 0
   index: -1
 
@@ -213,226 +220,212 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-abxy
+apple
   rotate: false
-  xy: 1511, 154
-  size: 264, 64
-  orig: 264, 64
+  xy: 1978, 1834
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
-alcove_torch
+axe
   rotate: false
-  xy: 1530, 414
-  size: 256, 192
-  orig: 256, 192
-  offset: 0, 0
-  index: -1
-armour_silver
-  rotate: false
-  xy: 1838, 1459
-  size: 64, 46
-  orig: 64, 46
-  offset: 0, 0
-  index: -1
-big_block
-  rotate: false
-  xy: 1788, 132
-  size: 256, 640
-  orig: 256, 640
+  xy: 1978, 1768
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 books
   rotate: false
-  xy: 2, 143
+  xy: 2, 4
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
+books_grey
+  rotate: false
+  xy: 260, 4
+  size: 256, 32
+  orig: 256, 32
+  offset: 0, 0
+  index: -1
+bouncer
+  rotate: false
+  xy: 516, 612
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+bullet2
+  rotate: false
+  xy: 1978, 1702
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+cake
+  rotate: false
+  xy: 1978, 1636
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 cast_down_left
   rotate: false
-  xy: 1540, 1913
+  xy: 1540, 368
   size: 492, 120
   orig: 492, 120
   offset: 0, 0
   index: -1
 cast_down_right
   rotate: false
-  xy: 1540, 1791
+  xy: 1540, 246
   size: 492, 120
   orig: 492, 120
   offset: 0, 0
   index: -1
 cast_left
   rotate: false
-  xy: 1540, 1669
+  xy: 1540, 124
   size: 492, 120
   orig: 492, 120
   offset: 0, 0
   index: -1
-escalator_down
+cast_right
   rotate: false
-  xy: 492, 262
-  size: 1024, 64
-  orig: 1024, 64
+  xy: 1540, 2
+  size: 492, 120
+  orig: 492, 120
   offset: 0, 0
   index: -1
-explosion64
+cherries
   rotate: false
-  xy: 1518, 220
-  size: 256, 192
-  orig: 256, 192
+  xy: 1978, 1570
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
-fireball
+flame_thrower
   rotate: false
-  xy: 260, 267
-  size: 230, 1380
-  orig: 230, 1380
+  xy: 2, 710
+  size: 636, 1336
+  orig: 636, 1336
   offset: 0, 0
   index: -1
-floating_plank
+flame_thrower_vertical
   rotate: false
-  xy: 1286, 132
-  size: 128, 128
-  orig: 128, 128
+  xy: 640, 1410
+  size: 1336, 636
+  orig: 1336, 636
   offset: 0, 0
   index: -1
-green_demon_cloud
+gold_key
   rotate: false
-  xy: 1838, 1507
-  size: 160, 160
-  orig: 160, 160
+  xy: 516, 514
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+grapes
+  rotate: false
+  xy: 1978, 1504
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+grey_runes
+  rotate: false
+  xy: 518, 4
+  size: 256, 32
+  orig: 256, 32
   offset: 0, 0
   index: -1
 laserhoriz9
   rotate: false
-  xy: 1718, 708
+  xy: 1978, 1438
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-laservert9
+monster
   rotate: false
-  xy: 1974, 1441
-  size: 64, 64
-  orig: 64, 64
+  xy: 2, 580
+  size: 512, 128
+  orig: 512, 128
   offset: 0, 0
   index: -1
-lever
+plant_pot
   rotate: false
-  xy: 1718, 774
-  size: 328, 79
-  orig: 328, 79
+  xy: 1978, 1900
+  size: 64, 146
+  orig: 64, 146
   offset: 0, 0
   index: -1
-pot1
+potions
   rotate: false
-  xy: 1416, 132
-  size: 93, 128
-  orig: 93, 128
+  xy: 776, 4
+  size: 256, 32
+  orig: 256, 32
   offset: 0, 0
   index: -1
-pot2
+potions_grey
   rotate: false
-  xy: 1926, 2
-  size: 93, 128
-  orig: 93, 128
+  xy: 1034, 4
+  size: 256, 32
+  orig: 256, 32
   offset: 0, 0
   index: -1
-prisoner_stand_down
+selection_ring
   rotate: false
-  xy: 1028, 2
-  size: 896, 128
-  orig: 896, 128
+  xy: 1284, 38
+  size: 192, 64
+  orig: 192, 64
   offset: 0, 0
   index: -1
-scorpion_sting
+soldier_fight_down
   rotate: false
-  xy: 492, 674
-  size: 1224, 179
-  orig: 1224, 179
+  xy: 640, 1180
+  size: 1368, 228
+  orig: 1368, 228
   offset: 0, 0
   index: -1
-soldier_stand_down
+soldier_fight_left
   rotate: false
-  xy: 492, 458
-  size: 1036, 148
-  orig: 1036, 148
+  xy: 640, 950
+  size: 1368, 228
+  orig: 1368, 228
   offset: 0, 0
   index: -1
-soldier_walk_down
+soldier_fight_right
   rotate: false
-  xy: 492, 1305
-  size: 1480, 148
-  orig: 1480, 148
+  xy: 640, 720
+  size: 1368, 228
+  orig: 1368, 228
   offset: 0, 0
   index: -1
-soldier_walk_left
+soldier_fight_up
   rotate: false
-  xy: 492, 1155
-  size: 1480, 148
-  orig: 1480, 148
-  offset: 0, 0
-  index: -1
-soldier_walk_right
-  rotate: false
-  xy: 492, 1005
-  size: 1480, 148
-  orig: 1480, 148
-  offset: 0, 0
-  index: -1
-soldier_walk_up
-  rotate: false
-  xy: 492, 855
-  size: 1480, 148
-  orig: 1480, 148
+  xy: 640, 490
+  size: 1368, 228
+  orig: 1368, 228
   offset: 0, 0
   index: -1
 spawn64x64
   rotate: false
-  xy: 492, 608
+  xy: 2, 38
   size: 1280, 64
   orig: 1280, 64
   offset: 0, 0
   index: -1
-spinning_spikes_vertical
+teleporter
   rotate: false
-  xy: 2, 177
-  size: 256, 1470
-  orig: 256, 1470
-  offset: 0, 0
-  index: -1
-storm_demon
-  rotate: false
-  xy: 492, 1455
-  size: 1344, 192
-  orig: 1344, 192
-  offset: 0, 0
-  index: -1
-villager1_stand_down
-  rotate: false
-  xy: 492, 328
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager1_stand_left
-  rotate: false
-  xy: 260, 132
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager1_stand_right
-  rotate: false
-  xy: 2, 2
-  size: 1024, 128
-  orig: 1024, 128
+  xy: 2, 514
+  size: 512, 64
+  orig: 512, 64
   offset: 0, 0
   index: -1
 wood_door
   rotate: false
-  xy: 2, 1649
+  xy: 2, 104
   size: 1536, 384
   orig: 1536, 384
   offset: 0, 0
@@ -443,431 +436,284 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+armour_gold
+  rotate: false
+  xy: 1978, 1548
+  size: 64, 46
+  orig: 64, 46
+  offset: 0, 0
+  index: -1
+armour_silver
+  rotate: false
+  xy: 1978, 1500
+  size: 64, 46
+  orig: 64, 46
+  offset: 0, 0
+  index: -1
 arrows
   rotate: false
-  xy: 2, 1180
+  xy: 1954, 1334
   size: 82, 82
   orig: 82, 82
   offset: 0, 0
   index: -1
-barrel1
+big_block
   rotate: false
-  xy: 1926, 1312
-  size: 90, 152
-  orig: 90, 152
+  xy: 234, 43
+  size: 256, 640
+  orig: 256, 640
   offset: 0, 0
   index: -1
-barrel2
+cast_up
   rotate: false
-  xy: 1926, 1158
-  size: 90, 152
-  orig: 90, 152
+  xy: 1484, 1540
+  size: 492, 120
+  orig: 492, 120
   offset: 0, 0
   index: -1
-barrel3
+cast_up_left
   rotate: false
-  xy: 1930, 894
-  size: 90, 152
-  orig: 90, 152
+  xy: 1484, 1418
+  size: 492, 120
+  orig: 492, 120
   offset: 0, 0
   index: -1
-barrel4
+cast_up_right
   rotate: false
-  xy: 1926, 740
-  size: 90, 152
-  orig: 90, 152
-  offset: 0, 0
-  index: -1
-big_block_horizontal
-  rotate: false
-  xy: 2, 772
-  size: 640, 384
-  orig: 640, 384
-  offset: 0, 0
-  index: -1
-books_grey
-  rotate: false
-  xy: 86, 1164
-  size: 256, 32
-  orig: 256, 32
-  offset: 0, 0
-  index: -1
-bouncer
-  rotate: false
-  xy: 1926, 1824
-  size: 96, 96
-  orig: 96, 96
-  offset: 0, 0
-  index: -1
-chest1
-  rotate: false
-  xy: 1634, 464
-  size: 256, 142
-  orig: 256, 142
-  offset: 0, 0
-  index: -1
-chest2
-  rotate: false
-  xy: 1376, 402
-  size: 256, 142
-  orig: 256, 142
-  offset: 0, 0
-  index: -1
-coin
-  rotate: false
-  xy: 1102, 480
-  size: 256, 64
-  orig: 256, 64
-  offset: 0, 0
-  index: -1
-crate
-  rotate: false
-  xy: 1926, 1922
-  size: 98, 120
-  orig: 98, 120
-  offset: 0, 0
-  index: -1
-escalator_left
-  rotate: false
-  xy: 86, 1198
-  size: 1024, 64
-  orig: 1024, 64
-  offset: 0, 0
-  index: -1
-escalator_right
-  rotate: false
-  xy: 774, 742
-  size: 1024, 64
-  orig: 1024, 64
-  offset: 0, 0
-  index: -1
-escalator_up
-  rotate: false
-  xy: 736, 676
-  size: 1024, 64
-  orig: 1024, 64
+  xy: 1460, 1296
+  size: 492, 120
+  orig: 492, 120
   offset: 0, 0
   index: -1
 fight_down
   rotate: false
-  xy: 2, 230
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 1073
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
 fight_down_left
   rotate: false
-  xy: 2, 108
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 879
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
 fight_down_right
   rotate: false
-  xy: 1376, 36
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 685
+  size: 1152, 192
+  orig: 1152, 192
+  offset: 0, 0
+  index: -1
+fireball
+  rotate: false
+  xy: 2, 36
+  size: 230, 1380
+  orig: 230, 1380
+  offset: 0, 0
+  index: -1
+floating_plank
+  rotate: false
+  xy: 1870, 772
+  size: 128, 128
+  orig: 128, 128
   offset: 0, 0
   index: -1
 floor_button
   rotate: false
-  xy: 1754, 1198
-  size: 128, 64
-  orig: 128, 64
-  offset: 0, 0
-  index: -1
-floor_button_locked
-  rotate: false
-  xy: 644, 772
+  xy: 1838, 316
   size: 128, 64
   orig: 128, 64
   offset: 0, 0
   index: -1
 gems
   rotate: false
-  xy: 2, 12
+  xy: 1414, 1108
   size: 456, 64
   orig: 456, 64
   offset: 0, 0
   index: -1
 gems_blue
   rotate: false
-  xy: 460, 12
+  xy: 1414, 1042
   size: 456, 64
   orig: 456, 64
   offset: 0, 0
   index: -1
 gems_gold
   rotate: false
-  xy: 918, 12
+  xy: 1414, 976
   size: 456, 64
   orig: 456, 64
   offset: 0, 0
   index: -1
 gems_red
   rotate: false
-  xy: 644, 480
+  xy: 1414, 910
   size: 456, 64
   orig: 456, 64
   offset: 0, 0
   index: -1
-gold_key
+green_demon_cloud
   rotate: false
-  xy: 1926, 1726
-  size: 96, 96
-  orig: 96, 96
-  offset: 0, 0
-  index: -1
-grey_runes
-  rotate: false
-  xy: 344, 1164
-  size: 256, 32
-  orig: 256, 32
+  xy: 1872, 1012
+  size: 160, 160
+  orig: 160, 160
   offset: 0, 0
   index: -1
 huge_key
   rotate: false
-  xy: 1886, 1048
+  xy: 1872, 902
   size: 142, 108
   orig: 142, 108
   offset: 0, 0
   index: -1
 keys
   rotate: false
-  xy: 1634, 608
+  xy: 1414, 763
   size: 320, 64
   orig: 320, 64
   offset: 0, 0
   index: -1
-litter
+laservert9
   rotate: false
-  xy: 1112, 1198
-  size: 640, 64
-  orig: 640, 64
+  xy: 1978, 1596
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+lever
+  rotate: false
+  xy: 1414, 829
+  size: 328, 79
+  orig: 328, 79
   offset: 0, 0
   index: -1
 locked_door
   rotate: false
-  xy: 644, 78
+  xy: 1484, 1662
   size: 512, 384
   orig: 512, 384
   offset: 0, 0
   index: -1
 menu_arrows_green
   rotate: false
-  xy: 2, 352
+  xy: 492, 7
   size: 640, 288
   orig: 640, 288
   offset: 0, 0
   index: -1
-paper
+prisoner_stand_down
   rotate: false
-  xy: 2, 642
-  size: 732, 128
-  orig: 732, 128
-  offset: 0, 0
-  index: -1
-pot3
-  rotate: false
-  xy: 1926, 1596
-  size: 93, 128
-  orig: 93, 128
-  offset: 0, 0
-  index: -1
-pot4
-  rotate: false
-  xy: 1926, 1466
-  size: 93, 128
-  orig: 93, 128
-  offset: 0, 0
-  index: -1
-potions
-  rotate: false
-  xy: 602, 1164
-  size: 256, 32
-  orig: 256, 32
-  offset: 0, 0
-  index: -1
-potions_grey
-  rotate: false
-  xy: 1634, 430
-  size: 256, 32
-  orig: 256, 32
+  xy: 1134, 167
+  size: 896, 128
+  orig: 896, 128
   offset: 0, 0
   index: -1
 prisoner_stand_down_left
   rotate: false
-  xy: 1028, 1914
-  size: 896, 128
-  orig: 896, 128
-  offset: 0, 0
-  index: -1
-prisoner_stand_down_right
-  rotate: false
-  xy: 1028, 1784
-  size: 896, 128
-  orig: 896, 128
-  offset: 0, 0
-  index: -1
-prisoner_stand_left
-  rotate: false
-  xy: 1028, 1654
-  size: 896, 128
-  orig: 896, 128
-  offset: 0, 0
-  index: -1
-prisoner_stand_right
-  rotate: false
-  xy: 1028, 1524
-  size: 896, 128
-  orig: 896, 128
-  offset: 0, 0
-  index: -1
-prisoner_stand_up
-  rotate: false
-  xy: 1028, 1394
-  size: 896, 128
-  orig: 896, 128
-  offset: 0, 0
-  index: -1
-prisoner_stand_up_left
-  rotate: false
-  xy: 1028, 1264
-  size: 896, 128
-  orig: 896, 128
-  offset: 0, 0
-  index: -1
-prisoner_stand_up_right
-  rotate: false
-  xy: 736, 546
+  xy: 1134, 37
   size: 896, 128
   orig: 896, 128
   offset: 0, 0
   index: -1
 round2
   rotate: false
-  xy: 644, 968
+  xy: 1870, 642
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 runes
   rotate: false
-  xy: 1376, 2
+  xy: 2, 2
   size: 256, 32
   orig: 256, 32
   offset: 0, 0
   index: -1
 sacks
   rotate: false
-  xy: 1800, 744
+  xy: 1744, 736
   size: 124, 172
   orig: 124, 172
   offset: 0, 0
   index: -1
-selection_ring
+scorpion_sting
   rotate: false
-  xy: 644, 1098
-  size: 192, 64
-  orig: 192, 64
+  xy: 234, 1267
+  size: 1224, 179
+  orig: 1224, 179
+  offset: 0, 0
+  index: -1
+soldier_walk_down
+  rotate: false
+  xy: 2, 1898
+  size: 1480, 148
+  orig: 1480, 148
+  offset: 0, 0
+  index: -1
+soldier_walk_left
+  rotate: false
+  xy: 2, 1748
+  size: 1480, 148
+  orig: 1480, 148
+  offset: 0, 0
+  index: -1
+soldier_walk_right
+  rotate: false
+  xy: 2, 1598
+  size: 1480, 148
+  orig: 1480, 148
+  offset: 0, 0
+  index: -1
+soldier_walk_up
+  rotate: false
+  xy: 2, 1448
+  size: 1480, 148
+  orig: 1480, 148
+  offset: 0, 0
+  index: -1
+stand_down
+  rotate: false
+  xy: 492, 491
+  size: 1344, 192
+  orig: 1344, 192
+  offset: 0, 0
+  index: -1
+stand_down_left
+  rotate: false
+  xy: 492, 297
+  size: 1344, 192
+  orig: 1344, 192
+  offset: 0, 0
+  index: -1
+sword_fight_up
+  rotate: false
+  xy: 1460, 1174
+  size: 492, 120
+  orig: 492, 120
   offset: 0, 0
   index: -1
 torch
   rotate: false
-  xy: 1762, 674
+  xy: 1414, 697
   size: 284, 64
   orig: 284, 64
   offset: 0, 0
   index: -1
 turret
   rotate: false
-  xy: 644, 838
+  xy: 1838, 512
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 turret_base
   rotate: false
-  xy: 1800, 918
+  xy: 1838, 382
   size: 128, 128
   orig: 128, 128
-  offset: 0, 0
-  index: -1
-villager1_stand_up
-  rotate: false
-  xy: 2, 1914
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager2_stand_down
-  rotate: false
-  xy: 2, 1784
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager2_stand_left
-  rotate: false
-  xy: 2, 1654
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager2_stand_right
-  rotate: false
-  xy: 2, 1524
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager2_stand_up
-  rotate: false
-  xy: 2, 1394
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager3_stand_down
-  rotate: false
-  xy: 2, 1264
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager3_stand_left
-  rotate: false
-  xy: 860, 1068
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager3_stand_right
-  rotate: false
-  xy: 774, 938
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-villager3_stand_up
-  rotate: false
-  xy: 774, 808
-  size: 1024, 128
-  orig: 1024, 128
-  offset: 0, 0
-  index: -1
-walk_down
-  rotate: false
-  xy: 1158, 280
-  size: 820, 120
-  orig: 820, 120
-  offset: 0, 0
-  index: -1
-walk_down_left
-  rotate: false
-  xy: 1158, 158
-  size: 820, 120
-  orig: 820, 120
   offset: 0, 0
   index: -1
 
@@ -876,171 +722,337 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-cast_right
+abxy
   rotate: false
-  xy: 2, 246
-  size: 492, 120
-  orig: 492, 120
+  xy: 260, 586
+  size: 264, 64
+  orig: 264, 64
   offset: 0, 0
   index: -1
-cast_up
+alcove_torch
   rotate: false
-  xy: 578, 368
-  size: 492, 120
-  orig: 492, 120
+  xy: 1606, 1816
+  size: 256, 192
+  orig: 256, 192
   offset: 0, 0
   index: -1
-cast_up_left
+big_block_horizontal
   rotate: false
-  xy: 2, 124
-  size: 492, 120
-  orig: 492, 120
+  xy: 2, 152
+  size: 640, 384
+  orig: 640, 384
   offset: 0, 0
   index: -1
-cast_up_right
+chest1
   rotate: false
-  xy: 496, 246
-  size: 492, 120
-  orig: 492, 120
+  xy: 1606, 1478
+  size: 256, 142
+  orig: 256, 142
+  offset: 0, 0
+  index: -1
+chest2
+  rotate: false
+  xy: 1606, 1334
+  size: 256, 142
+  orig: 256, 142
+  offset: 0, 0
+  index: -1
+coin
+  rotate: false
+  xy: 644, 392
+  size: 256, 64
+  orig: 256, 64
+  offset: 0, 0
+  index: -1
+explosion64
+  rotate: false
+  xy: 1606, 1622
+  size: 256, 192
+  orig: 256, 192
   offset: 0, 0
   index: -1
 fight_left
   rotate: false
-  xy: 824, 1222
-  size: 574, 120
-  orig: 574, 120
+  xy: 644, 458
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
-fight_right
+floor_button_locked
   rotate: false
-  xy: 2, 978
-  size: 574, 120
-  orig: 574, 120
+  xy: 902, 392
+  size: 128, 64
+  orig: 128, 64
   offset: 0, 0
   index: -1
-fight_up
+litter
   rotate: false
-  xy: 824, 1100
-  size: 574, 120
-  orig: 574, 120
+  xy: 1040, 2
+  size: 640, 64
+  orig: 640, 64
   offset: 0, 0
   index: -1
-fight_up_left
+prisoner_stand_down_right
   rotate: false
-  xy: 2, 856
-  size: 574, 120
-  orig: 574, 120
+  xy: 1040, 328
+  size: 896, 128
+  orig: 896, 128
   offset: 0, 0
   index: -1
-fight_up_right
+prisoner_stand_left
   rotate: false
-  xy: 578, 978
-  size: 574, 120
-  orig: 574, 120
+  xy: 1040, 68
+  size: 896, 128
+  orig: 896, 128
   offset: 0, 0
   index: -1
-stand_down
+soldier_stand_down
   rotate: false
-  xy: 2, 734
-  size: 574, 120
-  orig: 574, 120
+  xy: 2, 2
+  size: 1036, 148
+  orig: 1036, 148
   offset: 0, 0
   index: -1
-stand_down_left
+spinning_spikes_vertical
   rotate: false
-  xy: 578, 856
-  size: 574, 120
-  orig: 574, 120
+  xy: 2, 538
+  size: 256, 1470
+  orig: 256, 1470
   offset: 0, 0
   index: -1
 stand_down_right
   rotate: false
-  xy: 2, 612
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 1816
+  size: 1344, 192
+  orig: 1344, 192
   offset: 0, 0
   index: -1
 stand_left
   rotate: false
-  xy: 578, 734
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 1622
+  size: 1344, 192
+  orig: 1344, 192
   offset: 0, 0
   index: -1
 stand_right
   rotate: false
-  xy: 2, 490
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 1428
+  size: 1344, 192
+  orig: 1344, 192
   offset: 0, 0
   index: -1
 stand_up
   rotate: false
-  xy: 578, 612
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 1234
+  size: 1344, 192
+  orig: 1344, 192
   offset: 0, 0
   index: -1
 stand_up_left
   rotate: false
-  xy: 2, 368
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 1040
+  size: 1344, 192
+  orig: 1344, 192
   offset: 0, 0
   index: -1
 stand_up_right
   rotate: false
-  xy: 578, 490
-  size: 574, 120
-  orig: 574, 120
+  xy: 260, 846
+  size: 1344, 192
+  orig: 1344, 192
   offset: 0, 0
   index: -1
-sword_fight_up
+storm_demon
+  rotate: false
+  xy: 260, 652
+  size: 1344, 192
+  orig: 1344, 192
+  offset: 0, 0
+  index: -1
+villager1_stand_down
+  rotate: false
+  xy: 644, 198
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+
+animations5.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+escalator_down
   rotate: false
   xy: 2, 2
-  size: 492, 120
-  orig: 492, 120
+  size: 1024, 64
+  orig: 1024, 64
   offset: 0, 0
   index: -1
-walk_down_right
+fight_right
   rotate: false
-  xy: 2, 1466
-  size: 820, 120
-  orig: 820, 120
+  xy: 2, 1820
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
-walk_left
+fight_up
   rotate: false
-  xy: 2, 1344
-  size: 820, 120
-  orig: 820, 120
+  xy: 2, 1626
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
-walk_right
+fight_up_left
   rotate: false
-  xy: 824, 1466
-  size: 820, 120
-  orig: 820, 120
+  xy: 2, 1432
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
-walk_up
+fight_up_right
   rotate: false
-  xy: 2, 1222
-  size: 820, 120
-  orig: 820, 120
+  xy: 2, 1238
+  size: 1152, 192
+  orig: 1152, 192
   offset: 0, 0
   index: -1
-walk_up_left
+paper
   rotate: false
-  xy: 824, 1344
-  size: 820, 120
-  orig: 820, 120
+  xy: 1156, 1884
+  size: 732, 128
+  orig: 732, 128
   offset: 0, 0
   index: -1
-walk_up_right
+prisoner_stand_right
   rotate: false
-  xy: 2, 1100
-  size: 820, 120
-  orig: 820, 120
+  xy: 1028, 1108
+  size: 896, 128
+  orig: 896, 128
+  offset: 0, 0
+  index: -1
+prisoner_stand_up
+  rotate: false
+  xy: 1028, 978
+  size: 896, 128
+  orig: 896, 128
+  offset: 0, 0
+  index: -1
+prisoner_stand_up_left
+  rotate: false
+  xy: 1028, 848
+  size: 896, 128
+  orig: 896, 128
+  offset: 0, 0
+  index: -1
+prisoner_stand_up_right
+  rotate: false
+  xy: 1028, 718
+  size: 896, 128
+  orig: 896, 128
+  offset: 0, 0
+  index: -1
+villager1_stand_left
+  rotate: false
+  xy: 2, 1108
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager1_stand_right
+  rotate: false
+  xy: 2, 978
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager1_stand_up
+  rotate: false
+  xy: 2, 848
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager2_stand_down
+  rotate: false
+  xy: 2, 718
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager2_stand_left
+  rotate: false
+  xy: 2, 588
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager2_stand_right
+  rotate: false
+  xy: 2, 458
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager2_stand_up
+  rotate: false
+  xy: 2, 328
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager3_stand_down
+  rotate: false
+  xy: 2, 198
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager3_stand_left
+  rotate: false
+  xy: 2, 68
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+
+animations6.png
+size: 2048,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+escalator_left
+  rotate: false
+  xy: 2, 134
+  size: 1024, 64
+  orig: 1024, 64
+  offset: 0, 0
+  index: -1
+escalator_right
+  rotate: false
+  xy: 2, 68
+  size: 1024, 64
+  orig: 1024, 64
+  offset: 0, 0
+  index: -1
+escalator_up
+  rotate: false
+  xy: 2, 2
+  size: 1024, 64
+  orig: 1024, 64
+  offset: 0, 0
+  index: -1
+villager3_stand_right
+  rotate: false
+  xy: 2, 330
+  size: 1024, 128
+  orig: 1024, 128
+  offset: 0, 0
+  index: -1
+villager3_stand_up
+  rotate: false
+  xy: 2, 200
+  size: 1024, 128
+  orig: 1024, 128
   offset: 0, 0
   index: -1

@@ -144,18 +144,39 @@ public class GameController implements ControllerListener
         }
     }
 
+    /**
+     * A {@link Controller} got connected.
+     *
+     * @param controller
+     */
     @Override
     public void connected(Controller controller)
     {
         AppConfig.controllersFitted = true;
     }
 
+    /**
+     * A {@link Controller} got disconnected.
+     *
+     * @param controller
+     */
     @Override
     public void disconnected(Controller controller)
     {
         AppConfig.controllersFitted = false;
     }
 
+    /**
+     * A button on the {@link Controller} was pressed.
+     * The buttonCode is controller specific.
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts button constants for known controllers.
+     *
+     * @param controller
+     * @param buttonCode - The {@link ControllerMap} button code.
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean buttonDown(Controller controller, int buttonCode)
     {
@@ -247,6 +268,17 @@ public class GameController implements ControllerListener
         return false;
     }
 
+    /**
+     * A button on the {@link Controller} was released.
+     * The buttonCode is controller specific.
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts button constants for known controllers.
+     *
+     * @param controller
+     * @param buttonCode - The {@link ControllerMap} button code.
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean buttonUp(Controller controller, int buttonCode)
     {
@@ -330,6 +362,19 @@ public class GameController implements ControllerListener
         return false;
     }
 
+    /**
+     * An axis on the {@link Controller} moved.
+     * The axisCode is controller specific.
+     * The axis value is in the range [-1, 1].
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts axes constants for known controllers.
+     *
+     * @param controller
+     * @param axisCode - The {@link ControllerMap} axis code.
+     * @param value the axis value, -1 to 1
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean axisMoved(Controller controller, int axisCode, float value)
     {
@@ -346,7 +391,7 @@ public class GameController implements ControllerListener
             UIButtons.controllerAxisValue = -1.0f;
         }
 
-        if (axisCode == ControllerMap._AXIS_LEFT_X)
+        if ((axisCode == ControllerMap._AXIS_LEFT_X) || (axisCode == ControllerMap._AXIS_RIGHT_X))
         {
             app.inputManager._horizontalValue = value;
 
@@ -392,7 +437,7 @@ public class GameController implements ControllerListener
                 UIButtons.controllerAxisValue = 0;
             }
         }
-        else if (axisCode == ControllerMap._AXIS_LEFT_Y)
+        else if ((axisCode == ControllerMap._AXIS_LEFT_Y) || (axisCode == ControllerMap._AXIS_RIGHT_Y))
         {
             app.inputManager._verticalValue = value;
 
@@ -457,26 +502,77 @@ public class GameController implements ControllerListener
         return false;
     }
 
+    /**
+     * A POV on the {@link Controller} moved.
+     * The povCode is controller specific.
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts POV constants for known controllers.
+     *
+     * @param controller
+     * @param povCode
+     * @param value
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean povMoved(Controller controller, int povCode, PovDirection value)
     {
         UIButtons.controllerPovDirection = value;
+        UIButtons.controllerPovCode = povCode;
 
         return false;
     }
 
+    /**
+     * An x-slider on the {@link Controller} moved.
+     * The sliderCode is controller specific.
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts slider constants for known controllers.
+     *
+     * @param controller
+     * @param sliderCode
+     * @param value
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean xSliderMoved(Controller controller, int sliderCode, boolean value)
     {
         return false;
     }
 
+    /**
+     * An y-slider on the {@link Controller} moved.
+     * The sliderCode is controller specific.
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts slider constants for known controllers.
+     *
+     * @param controller
+     * @param sliderCode
+     * @param value
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean ySliderMoved(Controller controller, int sliderCode, boolean value)
     {
         return false;
     }
 
+    /**
+     * An accelerometer value on the {@link Controller} changed.
+     * The accelerometerCode is controller specific.
+     * The <code>com.badlogic.gdx.controllers.mapping</code> package
+     * hosts slider constants for known controllers. The value is a
+     * {@link Vector3} representing the acceleration on a 3-axis
+     * accelerometer in m/s^2.
+     *
+     * @param controller
+     * @param accelerometerCode
+     * @param value
+     *
+     * @return whether to hand the event to other listeners.
+     */
     @Override
     public boolean accelerometerMoved(Controller controller, int accelerometerCode, Vector3 value)
     {
@@ -515,6 +611,7 @@ public class GameController implements ControllerListener
         ControllerMap._BUTTON_DPAD_RIGHT  = DefaultControllerMap._BUTTON_DPAD_RIGHT;
         ControllerMap._BUTTON_DPAD_UP     = DefaultControllerMap._BUTTON_DPAD_UP;
         ControllerMap._BUTTON_DPAD_DOWN   = DefaultControllerMap._BUTTON_DPAD_DOWN;
+        ControllerMap._BUTTON_DPAD_CENTRE = DefaultControllerMap._BUTTON_DPAD_CENTRE;
         ControllerMap._LEFT_TRIGGER       = DefaultControllerMap._LEFT_TRIGGER;
         ControllerMap._RIGHT_TRIGGER      = DefaultControllerMap._RIGHT_TRIGGER;
 

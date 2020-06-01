@@ -98,15 +98,15 @@ public class MainPlayer extends GdxSprite
 
         collisionObject.bodyCategory = Gfx.CAT_PLAYER;
         collisionObject.collidesWith = Gfx.CAT_MOBILE_ENEMY
-                                    | Gfx.CAT_FIXED_ENEMY
-                                    | Gfx.CAT_ENEMY_WEAPON
-                                    | Gfx.CAT_COLLECTIBLE
-                                    | Gfx.CAT_OBSTACLE
-                                    | Gfx.CAT_EXIT_BOX
-                                    | Gfx.CAT_INTERACTIVE
-                                    | Gfx.CAT_PLATFORM
-                                    | Gfx.CAT_VILLAGER
-                                    | Gfx.CAT_DOOR;
+            | Gfx.CAT_FIXED_ENEMY
+            | Gfx.CAT_ENEMY_WEAPON
+            | Gfx.CAT_COLLECTIBLE
+            | Gfx.CAT_OBSTACLE
+            | Gfx.CAT_EXIT_BOX
+            | Gfx.CAT_INTERACTIVE
+            | Gfx.CAT_PLATFORM
+            | Gfx.CAT_VILLAGER
+            | Gfx.CAT_DOOR;
 
         isHurting           = false;
         isShooting          = false;
@@ -118,13 +118,13 @@ public class MainPlayer extends GdxSprite
         canOfferButton      = false;
         canOpenMessagePanel = false;
 
-        buttons             = new ButtonInputHandler(app);
-        collision           = new CollisionHandler(app);
-        actionButton        = new ActionButtonHandler(app);
-        bulletManager       = new PlayerBulletManager(app);
-        tileRectangle       = new CollisionRect(gid);
-        viewBox             = new Box();
-        maxMoveSpeed        = new Speed();
+        buttons       = new ButtonInputHandler(app);
+        collision     = new CollisionHandler(app);
+        actionButton  = new ActionButtonHandler(app);
+        bulletManager = new PlayerBulletManager(app);
+        tileRectangle = new CollisionRect(gid);
+        viewBox       = new Box();
+        maxMoveSpeed  = new Speed();
 
         final TextureRegion abxyTexture = app.assets.getAnimationsAtlas().findRegion(GameAssets._ABXY_ASSET);
         abxy = new TextureRegion[4];
@@ -188,8 +188,8 @@ public class MainPlayer extends GdxSprite
         else
         {
             TileID tileID = app.collisionUtils.getTileAtPosition
-                        (collision.getBottomPoint(Point._CENTRE).getX() / Gfx.getTileWidth(),
-                            collision.getBottomPoint(Point._CENTRE).getY() / Gfx.getTileHeight());
+                (collision.getBottomPoint(Point._CENTRE).getX() / Gfx.getTileWidth(),
+                    collision.getBottomPoint(Point._CENTRE).getY() / Gfx.getTileHeight());
 
             if (tileID == TileID._ESCALATOR_LEFT_TILE)
             {
@@ -275,7 +275,7 @@ public class MainPlayer extends GdxSprite
                 }
 
                 buttons.checkButtons();
-           }
+            }
             break;
 
             case _HURT:
@@ -301,13 +301,6 @@ public class MainPlayer extends GdxSprite
                 if (animation.isAnimationFinished(elapsedAnimTime))
                 {
                     setAction(Actions._STANDING);
-                }
-                else
-                {
-                    if (animation.getKeyFrameIndex(elapsedAnimTime) == GameAssets._PLAYER_FIGHT_FRAMES / 2)
-                    {
-                        bulletManager.createBullet(app.getPlayer(), app);
-                    }
                 }
             }
             break;
@@ -354,44 +347,44 @@ public class MainPlayer extends GdxSprite
     {
         final DirectionAnim[] runningAnims =
             {
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP, GameAssets._RUN_UP_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN, GameAssets._RUN_DOWN_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL, GameAssets._RUN_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP,     GameAssets._RUN_UP_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN,   GameAssets._RUN_DOWN_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL,  GameAssets._RUN_LEFT_ASSET),
 
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP, GameAssets._RUN_UP_RIGHT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN, GameAssets._RUN_DOWN_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP,    GameAssets._RUN_UP_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN,  GameAssets._RUN_DOWN_RIGHT_ASSET),
                 new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._RUN_RIGHT_ASSET),
 
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP, GameAssets._RUN_UP_ASSET),
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._RUN_DOWN_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP,    GameAssets._RUN_UP_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN,  GameAssets._RUN_DOWN_ASSET),
             };
 
         final DirectionAnim[] idleAnims =
             {
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP, GameAssets._IDLE_UP_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN, GameAssets._IDLE_DOWN_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL, GameAssets._IDLE_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP,     GameAssets._IDLE_UP_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN,   GameAssets._IDLE_DOWN_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL,  GameAssets._IDLE_LEFT_ASSET),
 
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP, GameAssets._IDLE_UP_RIGHT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN, GameAssets._IDLE_DOWN_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP,    GameAssets._IDLE_UP_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN,  GameAssets._IDLE_DOWN_RIGHT_ASSET),
                 new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._IDLE_RIGHT_ASSET),
 
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP, GameAssets._IDLE_UP_ASSET),
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._IDLE_DOWN_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP,    GameAssets._IDLE_UP_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN,  GameAssets._IDLE_DOWN_ASSET),
             };
 
         final DirectionAnim[] fightAnims =
             {
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP, GameAssets._CAST_UP_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_LEFT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL, GameAssets._CAST_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_UP,     GameAssets._FIGHT_UP_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_DOWN,   GameAssets._FIGHT_DOWN_LEFT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_LEFT, Movement._DIRECTION_STILL,  GameAssets._FIGHT_LEFT_ASSET),
 
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP, GameAssets._CAST_UP_RIGHT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_RIGHT_ASSET),
-                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._CAST_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_UP,    GameAssets._FIGHT_UP_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_DOWN,  GameAssets._FIGHT_DOWN_RIGHT_ASSET),
+                new DirectionAnim(Movement._DIRECTION_RIGHT, Movement._DIRECTION_STILL, GameAssets._FIGHT_RIGHT_ASSET),
 
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP, GameAssets._CAST_UP_ASSET),
-                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN, GameAssets._CAST_DOWN_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_UP,    GameAssets._FIGHT_UP_ASSET),
+                new DirectionAnim(Movement._DIRECTION_STILL, Movement._DIRECTION_DOWN,  GameAssets._FIGHT_DOWN_ASSET),
             };
 
         final DirectionAnim[] dyingAnims =
@@ -732,7 +725,7 @@ public class MainPlayer extends GdxSprite
         if (app.gameProgress.lives.getTotal() > 0)
         {
             setAction(Actions._RESETTING);
-            isDrawable = false;
+            isDrawable                    = false;
             app.gameProgress.isRestarting = true;
             app.mapData.checkPoint.set(sprite.getX(), sprite.getY());
         }

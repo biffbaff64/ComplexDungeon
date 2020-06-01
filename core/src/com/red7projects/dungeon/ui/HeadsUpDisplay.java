@@ -30,6 +30,7 @@ import com.red7projects.dungeon.game.Constants;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GfxUtils;
+import com.red7projects.dungeon.input.UIButtons;
 import com.red7projects.dungeon.input.buttons.ButtonID;
 import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;

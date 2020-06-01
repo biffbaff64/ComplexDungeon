@@ -48,10 +48,11 @@ public class Qumox3507Pad implements ControlMapData
     public static final int             _BUTTON_BACK            = 8;
     public static final int             _BUTTON_START           = 9;
 
-    public static final PovDirection _BUTTON_DPAD_UP    = PovDirection.north;
-    public static final PovDirection _BUTTON_DPAD_DOWN  = PovDirection.south;
-    public static final PovDirection _BUTTON_DPAD_RIGHT = PovDirection.east;
-    public static final PovDirection _BUTTON_DPAD_LEFT  = PovDirection.west;
+    public static final PovDirection    _BUTTON_DPAD_UP         = PovDirection.north;
+    public static final PovDirection    _BUTTON_DPAD_DOWN       = PovDirection.south;
+    public static final PovDirection    _BUTTON_DPAD_RIGHT      = PovDirection.east;
+    public static final PovDirection    _BUTTON_DPAD_LEFT       = PovDirection.west;
+    public static final PovDirection    _BUTTON_DPAD_CENTRE     = PovDirection.center;
 
     public static final int             _BUTTON_LB              = 4;
     public static final int             _BUTTON_L3              = 8;

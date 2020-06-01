@@ -54,14 +54,14 @@ public class GameAssets
     public static final String _DYING_UP_RIGHT_ASSET   = "stand_up_right";
     public static final String _DYING_DOWN_RIGHT_ASSET = "stand_down_right";
 
-    public static final String _CAST_UP_ASSET         = "cast_up";
-    public static final String _CAST_DOWN_ASSET       = "cast_down";
-    public static final String _CAST_LEFT_ASSET       = "cast_left";
-    public static final String _CAST_RIGHT_ASSET      = "cast_right";
-    public static final String _CAST_UP_LEFT_ASSET    = "cast_up_left";
-    public static final String _CAST_DOWN_LEFT_ASSET  = "cast_down_left";
-    public static final String _CAST_UP_RIGHT_ASSET   = "cast_up_right";
-    public static final String _CAST_DOWN_RIGHT_ASSET = "cast_down_right";
+    public static final String _FIGHT_UP_ASSET         = "fight_up";
+    public static final String _FIGHT_DOWN_ASSET       = "fight_down";
+    public static final String _FIGHT_LEFT_ASSET       = "fight_left";
+    public static final String _FIGHT_RIGHT_ASSET      = "fight_right";
+    public static final String _FIGHT_UP_LEFT_ASSET    = "fight_up_left";
+    public static final String _FIGHT_DOWN_LEFT_ASSET  = "fight_down_left";
+    public static final String _FIGHT_UP_RIGHT_ASSET   = "fight_up_right";
+    public static final String _FIGHT_DOWN_RIGHT_ASSET = "fight_down_right";
 
     public static final String _PLAYER_SPAWN_ASSET = "player_appear";
 
@@ -282,8 +282,9 @@ public class GameAssets
 
     private static final AssetSize[] assetSizes =
         {
-            new AssetSize(GraphicID.G_PLAYER,                   82, 120),
-            new AssetSize(GraphicID.G_PLAYER_FIGHT,             82, 120),
+            new AssetSize(GraphicID.G_PLAYER,                   192,192),
+            new AssetSize(GraphicID.G_PLAYER_CAST,              82, 120),
+            new AssetSize(GraphicID.G_PLAYER_FIGHT,             192,192),
             new AssetSize(GraphicID.G_ARROW,                    82, 82),
             new AssetSize(GraphicID.G_SMALL_BULLET,             32, 32),
             new AssetSize(GraphicID.G_PRISONER,                 128, 128),

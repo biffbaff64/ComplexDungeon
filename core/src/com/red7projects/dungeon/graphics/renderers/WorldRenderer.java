@@ -3,6 +3,7 @@ package com.red7projects.dungeon.graphics.renderers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.red7projects.dungeon.game.App;
+import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.utils.development.DebugRenderer;
 
@@ -32,6 +33,20 @@ public class WorldRenderer implements GameScreenRenderer
             case _STATE_TELEPORTING:
             case _STATE_DEBUG_HANG:
             {
+                if (app.appState.peek() == StateID._STATE_GAME)
+                {
+//                    if (UIButtons.controllerLBPressed)
+//                    {
+//                        app.baseRenderer.tiledGameCamera.camera.rotate(1.0f);
+//                        app.baseRenderer.spriteGameCamera.camera.rotate(1.0f);
+//                    }
+//                    else if (UIButtons.controllerRBPressed)
+//                    {
+//                        app.baseRenderer.tiledGameCamera.camera.rotate(-1.0f);
+//                        app.baseRenderer.spriteGameCamera.camera.rotate(-1.0f);
+//                    }
+                }
+
                 app.baseRenderer.gameZoom.stop();
                 app.mainGameScreen.draw();
 

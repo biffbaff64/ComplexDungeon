@@ -36,6 +36,7 @@ public abstract class ControllerMap
     public static PovDirection _BUTTON_DPAD_DOWN;
     public static PovDirection _BUTTON_DPAD_RIGHT;
     public static PovDirection _BUTTON_DPAD_LEFT;
+    public static PovDirection _BUTTON_DPAD_CENTRE;
 
     public static int _BUTTON_LB;
     public static int _BUTTON_L3;

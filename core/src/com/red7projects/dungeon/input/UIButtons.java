@@ -49,7 +49,9 @@ public class UIButtons
     public static int           controllerButtonCode;
     public static int           controllerAxisCode;
     public static float         controllerAxisValue;
+
     public static PovDirection  controllerPovDirection;
+    public static int           controllerPovCode;
 
     public static boolean       controllerStartPressed;
     public static boolean       controllerFirePressed;
@@ -62,6 +64,7 @@ public class UIButtons
     public static boolean       controllerBackPressed;
     public static boolean       controllerLeftFirePressed;
     public static boolean       controllerRightFirePressed;
+
     public static boolean       controllerUpPressed;
     public static boolean       controllerDownPressed;
     public static boolean       controllerLeftPressed;

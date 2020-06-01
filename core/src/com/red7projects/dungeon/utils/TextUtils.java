@@ -25,7 +25,7 @@ public class TextUtils
     {
         if (font == null)
         {
-            setFont(GameAssets._PRO_WINDOWS_FONT, 30, Color.WHITE);
+            setFont(GameAssets._PRO_WINDOWS_FONT, 20, Color.WHITE);
         }
 
         font.draw(app.spriteBatch, _message, _x, _y);
