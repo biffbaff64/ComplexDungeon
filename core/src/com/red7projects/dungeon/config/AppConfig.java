@@ -32,7 +32,6 @@ import com.red7projects.dungeon.utils.logging.Trace;
 
 public abstract class AppConfig
 {
-
     // =================================================================
     //
     public static final String _PREFS_FILE_NAME = "com.red7projects.dungeon.preferences";
