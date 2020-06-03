@@ -20,7 +20,6 @@ import com.red7projects.dungeon.config.AppConfig;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.input.buttons.GameButton;
 import com.red7projects.dungeon.input.objects.ControllerType;
-import com.red7projects.dungeon.utils.development.Developer;
 
 public class TouchScreen
 {
@@ -73,20 +72,6 @@ public class TouchScreen
         }
         else
         {
-            //
-            // Debug Console or Developer Options Menu
-            if (Developer.isDevMode())
-            {
-                if (app.getHud().buttonDevOptions != null)
-                {
-                    if (app.getHud().buttonDevOptions.contains(screenX, screenY))
-                    {
-                        app.getHud().buttonDevOptions.press();
-                        returnFlag = true;
-                    }
-                }
-            }
-
             if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
             {
                 if (((GameButton) app.getHud().buttonA).contains(screenX, screenY))
@@ -138,20 +123,6 @@ public class TouchScreen
         }
         else
         {
-            //
-            // Debug Console or Developer Options Menu
-            if (Developer.isDevMode())
-            {
-                if (app.getHud().buttonDevOptions != null)
-                {
-                    if (app.getHud().buttonDevOptions.contains(screenX, screenY))
-                    {
-                        app.getHud().buttonDevOptions.release();
-                        returnFlag = true;
-                    }
-                }
-            }
-
             if (AppConfig.availableInputs.contains(ControllerType._VIRTUAL, true))
             {
                 if (((GameButton) app.getHud().buttonB).contains(screenX, screenY))

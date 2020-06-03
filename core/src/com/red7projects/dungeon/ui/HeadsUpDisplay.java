@@ -30,7 +30,6 @@ import com.red7projects.dungeon.game.Constants;
 import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GfxUtils;
-import com.red7projects.dungeon.input.UIButtons;
 import com.red7projects.dungeon.input.buttons.ButtonID;
 import com.red7projects.dungeon.input.buttons.GDXButton;
 import com.red7projects.dungeon.input.buttons.GameButton;
@@ -62,13 +61,12 @@ public class HeadsUpDisplay implements Disposable
     private static final int _BUTTON_B      = 3;
     private static final int _BUTTON_A      = 4;
     private static final int _PAUSE         = 5;
-    private static final int _DEV_OPTIONS   = 6;
-    private static final int _COINS         = 7;
-    private static final int _GEMS          = 8;
-    private static final int _LIVES         = 9;
-    private static final int _HEALTH        = 10;
-    private static final int _VILLAGERS     = 11;
-    private static final int _COMPASS       = 12;
+    private static final int _COINS         = 6;
+    private static final int _GEMS          = 7;
+    private static final int _LIVES         = 8;
+    private static final int _HEALTH        = 9;
+    private static final int _VILLAGERS     = 10;
+    private static final int _COMPASS       = 11;
 
     private static final int[][] displayPos = new int[][]
         {
@@ -80,7 +78,6 @@ public class HeadsUpDisplay implements Disposable
             {1128,   79,   29,   96,   96},             // A (Action)
 
             {1179, 1179,  630,   66,   66},             // Pause Button
-            {1121, 1121,  575,   66,   66},             // Dev Options
 
             //
             // Y is distance from the TOP of the screen
@@ -108,7 +105,7 @@ public class HeadsUpDisplay implements Disposable
     public GDXButton        buttonX;
     public GDXButton        buttonY;
     public Switch           buttonPause;
-    public GameButton       buttonDevOptions;
+    public Switch           buttonDevOptions;
     public ItemBar          itemBar;
     public int              itemPanelIndex;
 
@@ -278,7 +275,7 @@ public class HeadsUpDisplay implements Disposable
             {
                 AppConfig.developerPanelActive = true;
 
-                developerPanel = new DeveloperPanel(app);
+                developerPanel = new DeveloperPanel(app, (int) originX, (int) originY);
                 developerPanel.setup();
 
                 buttonDevOptions.release();
@@ -303,11 +300,6 @@ public class HeadsUpDisplay implements Disposable
             if (_canDrawControls && app.gameProgress.gameSetupDone)
             {
                 drawControls();
-            }
-
-            if (Developer.isDevMode())
-            {
-                buttonDevOptions.draw();
             }
 
             //
@@ -640,15 +632,7 @@ public class HeadsUpDisplay implements Disposable
 
         if (Developer.isDevMode())
         {
-            buttonDevOptions = new GameButton
-                (
-                    app.assets.getButtonsAtlas().findRegion("button_d"),
-                    app.assets.getButtonsAtlas().findRegion("button_d_pressed"),
-                    (int) originX + displayPos[_DEV_OPTIONS][_X1],
-                    (int) originY + displayPos[_DEV_OPTIONS][_Y],
-                    ButtonID._DEV,
-                    app
-                );
+            buttonDevOptions = new Switch();
         }
 
         hideControls(false);
@@ -683,12 +667,7 @@ public class HeadsUpDisplay implements Disposable
         buttonB = null;
         buttonX = null;
         buttonY = null;
-
-        if (Developer.isDevMode())
-        {
-            ((GameButton) buttonDevOptions).dispose();
-            buttonDevOptions = null;
-        }
+        buttonDevOptions = null;
 
         buttonPause = null;
 

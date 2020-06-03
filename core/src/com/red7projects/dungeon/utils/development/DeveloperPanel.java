@@ -53,8 +53,6 @@ public class DeveloperPanel extends BasicPanel
     private int disableEnemiesRow;
     private int glProfilerRow;
     private int glProfilerColumn;
-    private int androidOnDesktopColumn;
-    private int androidOnDesktopRow;
 
     private static class DMEntry
     {
@@ -72,32 +70,34 @@ public class DeveloperPanel extends BasicPanel
 
     private static final int _TABLE_COLUMNS = 3;
 
-    private DMEntry[][]             devMenu;
-    private Texture                 foreground;
-    private CheckBox[][]            buttons;
-    private TextField               heading;
-    private Table                   table;
-    private GLProfiler              glProfiler;
-    private TextButton              exitButton;
-    private TextButton              buttonResetPrefs;
-    private TextButton              buttonResetHiScores;
-    private TextButton              buttonResetStats;
-    private TextButton              buttonGLProfiler;
-    private TextButton              buttonCollisionDump;
+    private DMEntry[][]     devMenu;
+    private Texture         foreground;
+    private CheckBox[][]    buttons;
+    private TextField       heading;
+    private Table           table;
+    private GLProfiler      glProfiler;
+    private TextButton      exitButton;
+    private TextButton      buttonResetPrefs;
+    private TextButton      buttonResetHiScores;
+    private TextButton      buttonResetStats;
+    private TextButton      buttonGLProfiler;
+    private TextButton      buttonCollisionDump;
 
 
-    private       int     mapXBase;
-    private       int     mapYBase;
-    private       boolean previousDisableEnemies;
-    private       boolean previousExternalController;
-    private       boolean okToResetPrefs;
-    private final App     app;
+    private       int       originX;
+    private       int       originY;
+    private       boolean   previousDisableEnemies;
+    private       boolean   previousExternalController;
+    private       boolean   okToResetPrefs;
+    private final App       app;
 
-    public DeveloperPanel(App _app)
+    public DeveloperPanel(App _app, int _originX, int _originY)
     {
         super();
 
         this.app = _app;
+        this.originX = _originX;
+        this.originY = _originY;
 
         if (Developer.isDevMode())
         {
@@ -116,13 +116,9 @@ public class DeveloperPanel extends BasicPanel
 
         foreground = app.assets.loadSingleAsset("data/night_sky.png", Texture.class);
 
-        mapXBase = app.mapData.mapPosition.getX();
-        mapYBase = app.mapData.mapPosition.getY();
-
         okToResetPrefs = false;
 
         Skin skin = new Skin(Gdx .files.internal("data/uiskin.json"));
-        skin.getFont("default-font").getData().setScale(2.0f);
 
         table = createTable();
         createHeading(skin);
@@ -134,9 +130,9 @@ public class DeveloperPanel extends BasicPanel
         scrollPane = new ScrollPane(table, skin);
         scrollPane.setScrollingDisabled(false, false);
         scrollPane.setFadeScrollBars(false);
-        scrollPane.setWidth((float)(Gfx._VIEW_WIDTH - 100));
-        scrollPane.setHeight((float)(Gfx._VIEW_HEIGHT - 200));
-        scrollPane.setPosition(mapXBase + 50, mapYBase + 50);
+        scrollPane.setWidth((float)(Gfx._HUD_WIDTH - 100));
+        scrollPane.setHeight((float)(Gfx._HUD_HEIGHT - 200));
+        scrollPane.setPosition(originX + 50, originY + 50);
         scrollPane.setScrollbarsOnTop(true);
 
         app.stage.addActor(scrollPane);
@@ -174,10 +170,12 @@ public class DeveloperPanel extends BasicPanel
     private void createHeading(Skin _skin)
     {
         heading = new TextField("DEVELOPER OPTIONS", _skin);
+        heading.setSize(400, 96);
+        heading.setDisabled(true);
         heading.setPosition
             (
-                mapXBase + ((Gfx._VIEW_WIDTH - heading.getWidth()) / 2),
-                mapYBase + (Gfx._VIEW_HEIGHT - 80),
+                originX + ((Gfx._HUD_WIDTH - heading.getWidth()) / 2),
+                originY + (Gfx._HUD_HEIGHT - 80),
                 Align.center
             );
 
@@ -187,8 +185,6 @@ public class DeveloperPanel extends BasicPanel
         style.font = font;
 
         heading.setStyle(style);
-        heading.setSize(400, 96);
-        heading.setDisabled(true);
     }
 
     private void createButtons(Skin _skin)
@@ -202,26 +198,26 @@ public class DeveloperPanel extends BasicPanel
 
         int x = 20;
 
-        buttonResetPrefs.setPosition(mapXBase + x, mapYBase + 15);
+        buttonResetPrefs.setPosition(originX + x, originY + 15);
 
         x += buttonResetPrefs.getWidth() + 20;
 
-        buttonResetHiScores.setPosition(mapXBase + x, mapYBase + 15);
+        buttonResetHiScores.setPosition(originX + x, originY + 15);
 
         x += buttonResetHiScores.getWidth() + 20;
 
-        buttonResetStats.setPosition(mapXBase + x, mapYBase + 15);
+        buttonResetStats.setPosition(originX + x, originY + 15);
 
         x += buttonResetStats.getWidth() + 20;
 
-        buttonGLProfiler.setPosition(mapXBase + x, mapYBase + 15);
+        buttonGLProfiler.setPosition(originX + x, originY + 15);
 
         x += buttonGLProfiler.getWidth() + 20;
 
-        buttonCollisionDump.setPosition(mapXBase + x, mapYBase + 15);
+        buttonCollisionDump.setPosition(originX + x, originY + 15);
 
-        exitButton.setPosition(mapXBase + 20, mapYBase + (Gfx._VIEW_HEIGHT - 100));
-        exitButton.setSize(128, 64);
+        exitButton.setPosition(originX + 20, originY + (Gfx._HUD_HEIGHT - 100));
+        exitButton.setSize(80, 40);
 
         createButtonListeners();
     }
@@ -247,8 +243,8 @@ public class DeveloperPanel extends BasicPanel
                 buttons[row][column].setHeight(label[column].getHeight());
 
                 CheckBox.CheckBoxStyle style = buttons[row][column].getStyle();
-                style.checkboxOn = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("toggle_on"));
-                style.checkboxOff = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("toggle_off"));
+                style.checkboxOn = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("toggle_on_small"));
+                style.checkboxOff = new TextureRegionDrawable(app.assets.getButtonsAtlas().findRegion("toggle_off_small"));
 
                 buttons[row][column].setStyle(style);
 
@@ -373,7 +369,7 @@ public class DeveloperPanel extends BasicPanel
     {
         if (foreground != null)
         {
-            spriteBatch.draw(foreground, 0, 0, Gfx._VIEW_WIDTH, Gfx._VIEW_HEIGHT);
+            spriteBatch.draw(foreground, 0, 0, Gfx._HUD_WIDTH, Gfx._HUD_HEIGHT);
         }
     }
 

@@ -23,7 +23,6 @@ import com.red7projects.dungeon.graphics.camera.Shake;
 import com.red7projects.dungeon.input.objects.ControllerType;
 import com.red7projects.dungeon.ui.GameCompletedPanel;
 import com.red7projects.dungeon.utils.development.Developer;
-import com.red7projects.dungeon.utils.development.DeveloperPanel;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -89,9 +88,6 @@ public class MainGameScreen extends AbstractBaseScreen
         }
 
         Shake.setAllowed(app.settings.isEnabled(Settings._VIBRATIONS));
-
-        DeveloperPanel developerPanel = new DeveloperPanel(app);
-        developerPanel.loadDevMenu();
     }
 
     /**

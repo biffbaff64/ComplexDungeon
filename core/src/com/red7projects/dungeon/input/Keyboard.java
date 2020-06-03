@@ -174,6 +174,13 @@ public class Keyboard extends InputAdapter
                 }
                 break;
 
+                case Input.Keys.O:
+                {
+                    app.getHud().buttonDevOptions.press();
+                    returnFlag = true;
+                }
+                break;
+
                 case Input.Keys.SHIFT_LEFT:
                 case Input.Keys.SHIFT_RIGHT:
                 {
@@ -262,6 +269,13 @@ public class Keyboard extends InputAdapter
                 case Input.Keys.CONTROL_RIGHT:
                 {
                     ctrlButtonHeld = false;
+                    returnFlag = true;
+                }
+                break;
+
+                case Input.Keys.O:
+                {
+                    app.getHud().buttonDevOptions.release();
                     returnFlag = true;
                 }
                 break;

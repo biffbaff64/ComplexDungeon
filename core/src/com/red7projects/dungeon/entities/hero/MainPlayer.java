@@ -534,10 +534,10 @@ public class MainPlayer extends GdxSprite
     @Override
     public void updateCollisionBox()
     {
-        collisionObject.rectangle.x      = sprite.getX();
-        collisionObject.rectangle.y      = sprite.getY();
-        collisionObject.rectangle.width  = frameWidth;
-        collisionObject.rectangle.height = frameHeight;
+        collisionObject.rectangle.x      = sprite.getX() + (frameWidth / 3);
+        collisionObject.rectangle.y      = sprite.getY() + (frameHeight / 5);
+        collisionObject.rectangle.width  = frameWidth / 3;
+        collisionObject.rectangle.height = frameHeight / 2;
 
         viewBox.x      = (int) (sprite.getX() - (_VIEWBOX_WIDTH / 2));
         viewBox.y      = (int) (sprite.getY() - (_VIEWBOX_HEIGHT / 2));
