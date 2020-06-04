@@ -44,8 +44,6 @@ import com.red7projects.dungeon.utils.logging.Meters;
 import com.red7projects.dungeon.utils.logging.Stats;
 import com.red7projects.dungeon.utils.logging.Trace;
 
-import java.util.concurrent.TimeUnit;
-
 @SuppressWarnings({"WeakerAccess"})
 public class MainPlayer extends GdxSprite
 {
@@ -137,7 +135,7 @@ public class MainPlayer extends GdxSprite
 
         System.arraycopy(tmpFrames, 0, abxy, 0, 4);
 
-        setup();
+        setup(true);
     }
 
     /**
@@ -145,7 +143,7 @@ public class MainPlayer extends GdxSprite
      * because it does not create objects, and is called on initialisation and also
      * when restarting after losing a life.
      */
-    public void setup()
+    public void setup(boolean _spawning)
     {
         Trace.__FILE_FUNC();
 
@@ -173,7 +171,15 @@ public class MainPlayer extends GdxSprite
         sprite.setPosition(initXY.getX(), initXY.getY());
         collisionObject.clearCollision();
 
-        setAction(Actions._SPAWNING);
+        if (_spawning)
+        {
+            setAction(Actions._SPAWNING);
+        }
+        else
+        {
+            setAction(Actions._STANDING);
+            localIsDrawable = true;
+        }
     }
 
     @Override
@@ -749,23 +755,25 @@ public class MainPlayer extends GdxSprite
     {
         if (isMovingX)
         {
-            if (speed.getX() > maxMoveSpeed.getX())
-            {
-                // Slow down if going too fast
-                speed.x -= 1;
-            }
-            else if ((stopWatch.time(TimeUnit.MILLISECONDS) >= (100 + (35 * speed.getX())))
-                && (speed.getX() < maxMoveSpeed.getX()))
-            {
-                // Bring the player xSpeed up to max
-                speed.x += 1;
-                stopWatch.reset();
-            }
-            else if (speed.getX() == 0)
-            {
-                // minimum xSpeed
-                speed.setX(1);
-            }
+//            if (speed.getX() > maxMoveSpeed.getX())
+//            {
+//                // Slow down if going too fast
+//                speed.x -= 1;
+//            }
+//            else if ((stopWatch.time(TimeUnit.MILLISECONDS) >= (100 + (35 * speed.getX())))
+//                && (speed.getX() < maxMoveSpeed.getX()))
+//            {
+//                // Bring the player xSpeed up to max
+//                speed.x += 1;
+//                stopWatch.reset();
+//            }
+//            else if (speed.getX() == 0)
+//            {
+//                // minimum xSpeed
+//                speed.setX(1);
+//            }
+
+            speed.setX(_PLAYER_X_SPEED);
         }
         else
         {
@@ -774,23 +782,25 @@ public class MainPlayer extends GdxSprite
 
         if (isMovingY)
         {
-            if (speed.getY() > maxMoveSpeed.getY())
-            {
-                // Slow down if going too fast
-                speed.y -= 1;
-            }
-            else if ((stopWatch.time(TimeUnit.MILLISECONDS) >= (100 + (35 * speed.getY())))
-                && (speed.getY() < maxMoveSpeed.getY()))
-            {
-                // Bring the player xSpeed up to max
-                speed.y += 1;
-                stopWatch.reset();
-            }
-            else if (speed.getY() == 0)
-            {
-                // minimum xSpeed
-                speed.setY(1);
-            }
+//            if (speed.getY() > maxMoveSpeed.getY())
+//            {
+//                // Slow down if going too fast
+//                speed.y -= 1;
+//            }
+//            else if ((stopWatch.time(TimeUnit.MILLISECONDS) >= (100 + (35 * speed.getY())))
+//                && (speed.getY() < maxMoveSpeed.getY()))
+//            {
+//                // Bring the player xSpeed up to max
+//                speed.y += 1;
+//                stopWatch.reset();
+//            }
+//            else if (speed.getY() == 0)
+//            {
+//                // minimum xSpeed
+//                speed.setY(1);
+//            }
+
+            speed.setY(_PLAYER_Y_SPEED);
         }
         else
         {

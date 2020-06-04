@@ -26,6 +26,7 @@ import com.red7projects.dungeon.physics.CollisionUtils;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.ui.HeadsUpDisplay;
 import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.utils.tests.RoomTests;
 
 @SuppressWarnings("WeakerAccess")
 public class GameUtils
@@ -55,6 +56,8 @@ public class GameUtils
             //
             // Initialise the room that the game will start in.
             app.getRoomSystem().initialise();
+
+            RoomTests.validateRooms(app);
 
             //
             // Make sure all progress counters are initialised.
@@ -187,7 +190,7 @@ public class GameUtils
         // Reset positions etc.
         app.entityUtils.resetAllPositions();
 
-        app.getPlayer().setup();
+        app.getPlayer().setup(true);
 
         if (app.gameProgress.levelCompleted)
         {

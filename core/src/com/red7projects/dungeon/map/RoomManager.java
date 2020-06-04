@@ -23,6 +23,7 @@ import com.red7projects.dungeon.map.tiled.TmxMapLoader;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.utils.logging.Trace;
+import com.red7projects.dungeon.utils.tests.RoomTests;
 import org.jetbrains.annotations.NotNull;
 
 //@formatter:off

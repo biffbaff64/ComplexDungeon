@@ -206,7 +206,7 @@ public class GameControlLoop extends AbstractControlLoop
 
             if (app.getPlayer() != null)
             {
-                app.getPlayer().setup();
+                app.getPlayer().setup(false);
             }
         }
     }
