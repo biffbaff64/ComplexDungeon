@@ -99,6 +99,10 @@ public class Soldier extends BaseEnemy
 
             case _STANDING:
             {
+                if (app.entityUtils.isOnScreen(this))
+                {
+                    setAction(Actions._RUNNING);
+                }
             }
             break;
 

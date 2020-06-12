@@ -54,20 +54,20 @@ public class EntityManager implements Disposable
         Trace.__FILE_FUNC();
 
         // ----------
-//        app.entityData.managerList.add(new VillageManager(app));
-//        app.entityData.managerList.add(new PrisonManager(app));
+        app.entityData.managerList.add(new VillageManager(app));
+        app.entityData.managerList.add(new PrisonManager(app));
         // ----------
         app.entityData.managerList.add(new PickupManager(app));
         app.entityData.managerList.add(new InteractiveManager(app));
         app.entityData.managerList.add(new DecorationsManager(app));
         // ----------
-//        app.entityData.managerList.add(new SoldierManager(app));
-//        app.entityData.managerList.add(new MonstersManager(app));
+        app.entityData.managerList.add(new SoldierManager(app));
+        app.entityData.managerList.add(new MonstersManager(app));
         // ----------
         app.entityData.managerList.add(new BlocksManager(app));
-//        app.entityData.managerList.add(new FlamesManager(app));
-//        app.entityData.managerList.add(new PowerBeamManager(app));
-//        app.entityData.managerList.add(new TurretManager(app));
+        app.entityData.managerList.add(new FlamesManager(app));
+        app.entityData.managerList.add(new PowerBeamManager(app));
+        app.entityData.managerList.add(new TurretManager(app));
         // ----------
     }
 

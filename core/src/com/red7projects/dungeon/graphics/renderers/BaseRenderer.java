@@ -200,9 +200,7 @@ public class BaseRenderer implements Disposable
             app.spriteBatch.setProjectionMatrix(hudGameCamera.camera.combined);
             app.spriteBatch.begin();
 
-            cameraPos.x = 0;
-            cameraPos.y = 0;
-            cameraPos.z = 0;
+            cameraPos.setEmpty();
 
             hudGameCamera.setPosition(cameraPos, hudZoom.getZoomValue(), false);
             hudRenderer.render(app.spriteBatch, hudGameCamera);
