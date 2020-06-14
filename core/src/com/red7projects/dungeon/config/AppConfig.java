@@ -124,6 +124,7 @@ public abstract class AppConfig
             Trace.divider();
             Trace.dbg("isDevMode()         : " + Developer.isDevMode());
             Trace.dbg("isGodMode()         : " + Developer.isGodMode());
+            Trace.dbg("isLaptop()          : " + Developer.isLaptop());
             Trace.divider();
             Trace.dbg("isUsingAshleyECS    : " + isUsingAshleyECS);
             Trace.dbg("isUsingBOX2DPhysics : " + isUsingBOX2DPhysics);

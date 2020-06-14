@@ -24,7 +24,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
-import com.red7projects.dungeon.entities.systems.TargettingSystem;
+import com.red7projects.dungeon.entities.systems.RoamingSystem;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
@@ -35,13 +35,16 @@ import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 
+import org.xguzm.pathfinding.grid.GridCell;
+import org.xguzm.pathfinding.grid.NavigationGrid;
+
 import java.util.concurrent.TimeUnit;
 
 public class Soldier extends BaseEnemy
 {
-    private TargettingSystem targettingSystem;
-    private Speed            previousSpeed;
-    private App              app;
+    private RoamingSystem roamingSystem;
+    private Speed         previousSpeed;
+    private App           app;
 
     public Soldier(final GraphicID _gid, final App _app)
     {
@@ -64,11 +67,9 @@ public class Soldier extends BaseEnemy
                                     | Gfx.CAT_ENTITY_BARRIER
                                     | Gfx.CAT_WEAPON;
 
-        targettingSystem                    = new TargettingSystem(app);
-        targettingSystem.rotationAllowed    = false;
-        targettingSystem.checkMoveAllowed   = false;
-        targettingSystem.speedX             = 3.0f;
-        targettingSystem.speedY             = 3.0f;
+        roamingSystem                   = new RoamingSystem(app);
+        roamingSystem.speedX            = 3.0f;
+        roamingSystem.speedY            = 3.0f;
 
         stopWatch           = StopWatch.start();
         invisibilityTimer   = StopWatch.start();
@@ -109,8 +110,12 @@ public class Soldier extends BaseEnemy
             case _RUNNING:
             {
                 //
+                // Aim for the player
+                destination.set(app.getPlayer().getPosition().x, app.getPlayer().getPosition().y);
+
+                //
                 // Movement speed is set here
-                targettingSystem.faceTarget(destination.x, destination.y, this);
+                roamingSystem.faceTarget(destination.x, destination.y, this);
 
                 moveSoldier();
             }
@@ -186,6 +191,11 @@ public class Soldier extends BaseEnemy
 
         rightEdge = collisionObject.rectangle.x + collisionObject.rectangle.width;
         topEdge   = collisionObject.rectangle.y + collisionObject.rectangle.height;
+    }
+
+    @Override
+    public void positiveCollisionResponse(final GraphicID spriteHittingGid)
+    {
     }
 
     private void moveSoldier()
