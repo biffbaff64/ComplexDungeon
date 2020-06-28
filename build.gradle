@@ -123,9 +123,6 @@ project(":core") {
         implementation "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         implementation "net.dermetfan.libgdx-utils:libgdx-utils:$libgdxUtilsVersion"
         implementation "net.dermetfan.libgdx-utils:libgdx-utils-box2d:$libgdxUtilsBox2DVersion"
-        implementation "de.tomgrill.gdxdialogs:gdx-dialogs-core:$gdxDialogsVersion"
-        implementation "com.strongjoshua:libgdx-inGameConsole:$inGameConsoleVersion"
-        implementation "com.github.xaguzman:pathfinding:$guzmanPathfindingVersion"
     }
 }
 

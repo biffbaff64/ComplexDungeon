@@ -76,30 +76,6 @@ public class Trace
     }
 
     /**
-     * Write a value, or values, to the logcat or console.
-     *
-     * @param args  Further values to write.
-     */
-    public static void traceInt(Object... args)
-    {
-        if (Gdx.app.getLogLevel() != Application.LOG_DEBUG)
-        {
-            StringBuilder sb = new StringBuilder((int) args[0]);
-
-            if (args.length > 1)
-            {
-                for (Object arg : args)
-                {
-                    sb.append(" ");
-                    sb.append(arg);
-                }
-            }
-
-            Gdx.app.debug(debugTag, sb.toString());
-        }
-    }
-
-    /**
      * Write an error string to logcat or console.
      *
      * @param string    The string to write.

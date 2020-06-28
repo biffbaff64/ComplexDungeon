@@ -85,9 +85,6 @@ public abstract class AppConfig
         gameButtonsReady     = false;
         usedController       = "None";
 
-        //
-        // Set _DEVMODE from the _DEV_MODE Environment variable.
-        // Set _LAPTOP from the _MACHINE Environment variable.
         Developer.setMode(_app);
 
         availableInputs = new Array<>();

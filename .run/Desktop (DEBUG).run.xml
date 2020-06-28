@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Desktop (DEBUG)" type="Application" factoryName="Application" singleton="false">
+    <envs>
+      <env name="_DEV_MODE" value="TRUE" />
+      <env name="_USING_LAPTOP" value="FALSE" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.red7projects.dungeon.desktop.DesktopLauncher" />
+    <module name="desktop" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/android/assets" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

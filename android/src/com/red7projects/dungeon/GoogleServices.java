@@ -26,7 +26,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.tasks.Task;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.config.Preferences;
+import com.red7projects.dungeon.config.Settings;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.utils.google.PlayServices;
 import com.red7projects.dungeon.utils.google.RCConstants;
@@ -88,15 +88,15 @@ public class GoogleServices implements PlayServices
         {
             Trace.__FILE_FUNC("GPGS: signInResult: PASS:");
 
-            Settings.putBoolean(Settings._SIGN_IN_STATUS, true);
-            Settings.flush();
+            app.settings.prefs.putBoolean(Settings._SIGN_IN_STATUS, true);
+            app.settings.prefs.flush();
         }
         else
         {
             Trace.__FILE_FUNC("GPGS: signInResult: FAIL:");
 
-            Settings.putBoolean(Settings._SIGN_IN_STATUS, false);
-            Settings.flush();
+            app.settings.prefs.putBoolean(Settings._SIGN_IN_STATUS, false);
+            app.settings.prefs.flush();
         }
 
         Trace.__FILE_FUNC("GPGS: " + GoogleSignIn.hasPermissions(GoogleSignIn.getLastSignedInAccount(androidLauncher), Games.SCOPE_GAMES_LITE));
@@ -136,8 +136,8 @@ public class GoogleServices implements PlayServices
                         {
                             Trace.__FILE_FUNC("GPGS: signInResult: PASS:");
 
-                            Settings.putBoolean(Settings._SIGN_IN_STATUS, true);
-                            Settings.flush();
+                            app.settings.prefs.putBoolean(Settings._SIGN_IN_STATUS, true);
+                            app.settings.prefs.flush();
                         });
             }
         }
@@ -166,7 +166,7 @@ public class GoogleServices implements PlayServices
     @Override
     public boolean isEnabled()
     {
-        return Settings.getBoolean(Settings._PLAY_SERVICES);
+        return app.settings.prefs.getBoolean(Settings._PLAY_SERVICES);
     }
 
     void onActivityResult(int requestCode, Intent data)

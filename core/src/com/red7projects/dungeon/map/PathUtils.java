@@ -24,6 +24,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.red7projects.dungeon.entities.paths.Navigation;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.utils.logging.Trace;
 
@@ -49,6 +50,8 @@ public class PathUtils
     public boolean setup(final App app)
     {
         Trace.__FILE_FUNC();
+
+//        Navigation.createData(app);
 
         MapLayer mapLayer = app.mapData.currentMap.getLayers().get
             (

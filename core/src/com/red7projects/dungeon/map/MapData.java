@@ -25,15 +25,15 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
-import com.red7projects.dungeon.map.tiled.TiledMap;
-import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
-import com.red7projects.dungeon.map.tiled.TmxMapLoader;
-import com.red7projects.dungeon.map.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.physics.Movement;
@@ -80,8 +80,8 @@ public class MapData implements Disposable
     public TiledMapTileLayer extraGameTilesLayer;
     public TiledMapTileLayer markerTilesLayer;
 
-    public TiledMap         currentMap;
-    public MapObjects       mapObjects;
+    public TiledMap   currentMap;
+    public MapObjects mapObjects;
     public Array<Rectangle> enemyFreeZones;
 
     private       String currentMapName;

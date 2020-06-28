@@ -16,15 +16,14 @@
 
 package com.red7projects.dungeon.physics;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Disposable;
 import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
-import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.GraphicID;
 import com.red7projects.dungeon.map.TileID;
-import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
 import com.red7projects.dungeon.physics.aabb.AABBData;
 import com.red7projects.dungeon.physics.aabb.CollisionObject;
 import com.red7projects.dungeon.utils.logging.Trace;

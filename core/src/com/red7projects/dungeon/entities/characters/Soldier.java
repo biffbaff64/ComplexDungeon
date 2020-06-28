@@ -19,11 +19,13 @@ package com.red7projects.dungeon.entities.characters;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.red7projects.dungeon.assets.GameAssets;
 import com.red7projects.dungeon.entities.objects.BaseEnemy;
 import com.red7projects.dungeon.entities.objects.EntityDescriptor;
+import com.red7projects.dungeon.entities.paths.Navigation;
 import com.red7projects.dungeon.entities.systems.RoamingSystem;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
@@ -35,16 +37,14 @@ import com.red7projects.dungeon.physics.Speed;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 import com.red7projects.dungeon.utils.logging.Trace;
 
-import org.xguzm.pathfinding.grid.GridCell;
-import org.xguzm.pathfinding.grid.NavigationGrid;
-
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Soldier extends BaseEnemy
 {
-    private RoamingSystem roamingSystem;
-    private Speed         previousSpeed;
-    private App           app;
+    private RoamingSystem   roamingSystem;
+    private Speed           previousSpeed;
+    private App             app;
 
     public Soldier(final GraphicID _gid, final App _app)
     {
@@ -60,22 +60,23 @@ public class Soldier extends BaseEnemy
 
         collisionObject.bodyCategory = Gfx.CAT_MOBILE_ENEMY;
         collisionObject.collidesWith = Gfx.CAT_PLAYER
-                                    | Gfx.CAT_VILLAGER
-                                    | Gfx.CAT_WALL
-                                    | Gfx.CAT_DOOR
-                                    | Gfx.CAT_ENEMY
-                                    | Gfx.CAT_ENTITY_BARRIER
-                                    | Gfx.CAT_WEAPON;
+            | Gfx.CAT_VILLAGER
+            | Gfx.CAT_WALL
+            | Gfx.CAT_DOOR
+            | Gfx.CAT_ENEMY
+            | Gfx.CAT_ENTITY_BARRIER
+            | Gfx.CAT_WEAPON;
 
-        roamingSystem                   = new RoamingSystem(app);
-        roamingSystem.speedX            = 3.0f;
-        roamingSystem.speedY            = 3.0f;
+        roamingSystem                  = new RoamingSystem(app);
+        roamingSystem.checkMoveAllowed = true;
+        roamingSystem.speedX           = 3.0f;
+        roamingSystem.speedY           = 3.0f;
 
-        stopWatch           = StopWatch.start();
-        invisibilityTimer   = StopWatch.start();
-        restingTime         = (5 + MathUtils.random(3)) * 1000;
-        destination         = new Vector2();
-        previousSpeed       = new Speed();
+        stopWatch         = StopWatch.start();
+        invisibilityTimer = StopWatch.start();
+        restingTime       = (5 + MathUtils.random(3)) * 1000;
+        destination       = new Vector2();
+        previousSpeed     = new Speed();
 
         distance.setEmpty();
         speed.setEmpty();
@@ -95,6 +96,10 @@ public class Soldier extends BaseEnemy
             case _SPAWNING:
             {
                 updateSpawning();
+
+                if (getSpriteAction() == Actions._STANDING)
+                {
+                }
             }
             break;
 
@@ -102,6 +107,11 @@ public class Soldier extends BaseEnemy
             {
                 if (app.entityUtils.isOnScreen(this))
                 {
+                    //
+                    // Aim for the player
+//                    destination.set(pathList.get(pathIndex).x, pathList.get(pathIndex).y);
+
+
                     setAction(Actions._RUNNING);
                 }
             }
@@ -109,10 +119,6 @@ public class Soldier extends BaseEnemy
 
             case _RUNNING:
             {
-                //
-                // Aim for the player
-                destination.set(app.getPlayer().getPosition().x, app.getPlayer().getPosition().y);
-
                 //
                 // Movement speed is set here
                 roamingSystem.faceTarget(destination.x, destination.y, this);
@@ -130,8 +136,8 @@ public class Soldier extends BaseEnemy
                         setAction(Actions._STANDING);
 
                         stopWatch.reset();
-                        restingTime = 1000;
-                        isShooting  = false;
+                        restingTime       = 1000;
+                        isShooting        = false;
                         justBegunStanding = true;
                     }
                 }

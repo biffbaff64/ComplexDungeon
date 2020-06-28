@@ -31,7 +31,6 @@ import com.red7projects.dungeon.game.StateID;
 import com.red7projects.dungeon.graphics.Gfx;
 import com.red7projects.dungeon.graphics.camera.OrthoGameCamera;
 import com.red7projects.dungeon.graphics.camera.Zoom;
-import com.red7projects.dungeon.map.tiled.tiles.AnimatedTiledMapTile;
 import com.red7projects.dungeon.maths.SimpleVec3F;
 import com.red7projects.dungeon.screens.ScreenID;
 import com.red7projects.dungeon.utils.logging.Trace;
@@ -145,8 +144,6 @@ public class BaseRenderer implements Disposable
             }
 
             app.mapData.render(tiledGameCamera.camera);
-
-            AnimatedTiledMapTile.updateAnimationBaseTime();
 
             //
             // Deleted but, for future reference, the

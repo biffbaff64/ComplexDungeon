@@ -1,13 +1,13 @@
 package com.red7projects.dungeon.utils.tests;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.map.MapData;
 import com.red7projects.dungeon.map.Room;
 import com.red7projects.dungeon.map.TileID;
-import com.red7projects.dungeon.map.tiled.TiledMap;
-import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
-import com.red7projects.dungeon.map.tiled.TmxMapLoader;
 import com.red7projects.dungeon.utils.logging.Trace;
 
 public abstract class RoomTests
@@ -36,8 +36,8 @@ public abstract class RoomTests
 
                 if (room != null)
                 {
-                    TmxMapLoader    tmxMapLoader = new TmxMapLoader();
-                    TiledMap        map          = tmxMapLoader.load(app.getRoomSystem().getMapNameWithPath(room.roomName));
+                    TmxMapLoader tmxMapLoader = new TmxMapLoader();
+                    TiledMap     map          = tmxMapLoader.load(app.getRoomSystem().getMapNameWithPath(room.roomName));
 
                     int width = (int) map.getProperties().get("width");
                     int height = (int) map.getProperties().get("height");
@@ -59,8 +59,8 @@ public abstract class RoomTests
                 if (room != null)
                 {
                     TmxMapLoader      tmxMapLoader = new TmxMapLoader();
-                    TiledMap          map          = tmxMapLoader.load(app.getRoomSystem().getMapNameWithPath(room.roomName));
-                    TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
+                    TiledMap          map   = tmxMapLoader.load(app.getRoomSystem().getMapNameWithPath(room.roomName));
+                    TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
 
                     int tileCount = 0;
                     boolean roomPassed = false;

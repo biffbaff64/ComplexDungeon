@@ -53,7 +53,6 @@ public class Startup
         // Initialise DEBUG classes
         //noinspection LibGDXLogLevel
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
-        Trace.openLogfile(AppConfig._DEBUG_LOG_FILE);
         Trace.__FILE_FUNC_WithDivider();
 
         app.appState = new StateManager(StateID._STATE_POWER_UP);

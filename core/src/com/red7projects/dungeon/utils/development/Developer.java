@@ -26,6 +26,10 @@ public abstract class Developer
     private static boolean _LAPTOP = false;
     private static App app;
 
+    /**
+     * Set _DEVMODE from the _DEV_MODE Environment variable.
+     * Set _LAPTOP from the _MACHINE Environment variable.
+     */
     public static void setMode(App _app)
     {
         app = _app;

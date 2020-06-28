@@ -426,16 +426,16 @@ public class HeadsUpDisplay implements Disposable
                 sb.append(" : GOD MODE");
             }
 
-            sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
-            sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
             DebugRenderer.drawText(sb.toString(), originX + 50, originY + 50);
 
             sb.clear();
             sb.append(app.getRoomSystem().getActiveRoomName().toUpperCase());
+            sb.append(" : FPS: ").append(Gdx.graphics.getFramesPerSecond());
+            sb.append(" : ZOOM: ").append(app.baseRenderer.tiledGameCamera.camera.zoom);
             DebugRenderer.drawText(sb.toString(), originX + 50, originY + 25);
 
             sb.clear();
-            sb.append("'O' For Dev Options");
+            sb.append("'O' - Dev Options");
             DebugRenderer.drawText(sb.toString(), originX + 1100, originY + 75);
 
             sb.clear();

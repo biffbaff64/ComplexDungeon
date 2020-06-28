@@ -16,14 +16,13 @@
 
 package com.red7projects.dungeon.map;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.Array;
-import com.red7projects.dungeon.map.tiled.TiledMap;
-import com.red7projects.dungeon.map.tiled.TiledMapTileLayer;
-import com.red7projects.dungeon.map.tiled.TmxMapLoader;
 import com.red7projects.dungeon.maths.SimpleVec2;
 import com.red7projects.dungeon.maths.SimpleVec2F;
 import com.red7projects.dungeon.utils.logging.Trace;
-import com.red7projects.dungeon.utils.tests.RoomTests;
 import org.jetbrains.annotations.NotNull;
 
 //@formatter:off
@@ -282,8 +281,8 @@ public class RoomManager
         if ((_room != null) && (_room.roomName != null))
         {
             TmxMapLoader      tmxMapLoader = new TmxMapLoader();
-            TiledMap          map          = tmxMapLoader.load(getMapNameWithPath(_room.roomName));
-            TiledMapTileLayer layer        = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
+            TiledMap          map   = tmxMapLoader.load(getMapNameWithPath(_room.roomName));
+            TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(MapData._MARKER_TILES);
 
             for (int row = 0; row < layer.getHeight(); row++)
             {

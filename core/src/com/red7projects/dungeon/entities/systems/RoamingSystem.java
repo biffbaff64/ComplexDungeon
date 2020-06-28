@@ -6,6 +6,7 @@ import com.red7projects.dungeon.entities.objects.GdxSprite;
 import com.red7projects.dungeon.game.Actions;
 import com.red7projects.dungeon.game.App;
 import com.red7projects.dungeon.graphics.Gfx;
+import com.red7projects.dungeon.physics.Movement;
 import com.red7projects.dungeon.utils.logging.StopWatch;
 
 import java.util.concurrent.TimeUnit;
@@ -126,15 +127,75 @@ public class RoamingSystem implements DecisionSystem
     }
 
     @Override
-    public float checkXMovement(final float _xMove, final GdxSprite gdxSprite)
+    public float checkXMovement(float _xMove, GdxSprite parentSprite)
     {
-        return 0;
+        if (_xMove > 0)
+        {
+            if (parentSprite.collisionObject.hasContactRight() && parentSprite.collisionObject.isContactObstacle)
+            {
+                _xMove = 0;
+                parentSprite.direction.setX(Movement._DIRECTION_STILL);
+            }
+            else
+            {
+                parentSprite.direction.setX(Movement._DIRECTION_RIGHT);
+            }
+        }
+        else if (_xMove < 0)
+        {
+            if (parentSprite.collisionObject.hasContactLeft() && parentSprite.collisionObject.isContactObstacle)
+            {
+                _xMove = 0;
+                parentSprite.direction.setX(Movement._DIRECTION_STILL);
+            }
+            else
+            {
+                parentSprite.direction.setX(Movement._DIRECTION_LEFT);
+            }
+        }
+        else
+        {
+            _xMove = 0;
+            parentSprite.direction.setX(Movement._DIRECTION_STILL);
+        }
+
+        return _xMove;
     }
 
     @Override
-    public float checkYMovement(final float _yMove, final GdxSprite gdxSprite)
+    public float checkYMovement(float _yMove, GdxSprite parentSprite)
     {
-        return 0;
+        if (_yMove > 0)
+        {
+            if (parentSprite.collisionObject.hasContactUp() && parentSprite.collisionObject.isContactObstacle)
+            {
+                _yMove = 0;
+                parentSprite.direction.setX(Movement._DIRECTION_STILL);
+            }
+            else
+            {
+                parentSprite.direction.setX(Movement._DIRECTION_UP);
+            }
+        }
+        else if (_yMove < 0)
+        {
+            if (parentSprite.collisionObject.hasContactDown() && parentSprite.collisionObject.isContactObstacle)
+            {
+                _yMove = 0;
+                parentSprite.direction.setX(Movement._DIRECTION_STILL);
+            }
+            else
+            {
+                parentSprite.direction.setX(Movement._DIRECTION_DOWN);
+            }
+        }
+        else
+        {
+            _yMove = 0;
+            parentSprite.direction.setX(Movement._DIRECTION_STILL);
+        }
+
+        return _yMove;
     }
 
     @Override
